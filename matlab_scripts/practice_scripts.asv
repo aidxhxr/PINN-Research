@@ -1,0 +1,18 @@
+%% MATLAB Tutorial
+% Amirkhan Aidarkhan - January 2023
+
+clear all
+close all
+clc
+
+counter = 0
+%
+while counter >= 5;
+    counter = counter - 1
+end
+
+%% Plotting
+x = 0:0.1:5;
+y = x.^2
+
+plto()
