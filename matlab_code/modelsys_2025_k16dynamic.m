@@ -11,7 +11,7 @@ function [t, Sol, treatvals] = modelsys_2025_k16dynamic(p, retef, wntef, CCret, 
 %funcpercent = apc functioning, apc_s = multiplier of axin synth
 %k8log = if k8 affected is T, k17log = if k17 affected is T
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%x%%%%%%%%%%%%%%%%%%%%%%%%%
 % Time discretization: 
 N_t = 5e3;
 t_0 = 0; 
