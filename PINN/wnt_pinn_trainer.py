@@ -150,7 +150,7 @@ def train_window(net, t0, t1, y0, P, iters=2000, lr=2e-3, n_col=2000,
         opt.zero_grad()
         loss, _ = _residual_loss(net, ts, t0c, y0, P, aw, update=True)
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(net.parameters(), 1e3)
+        torch.nn.utils.clip_grad_norm_(net.parameters(), 10.0)
         opt.step()
         sched.step()
         last = loss.item()
@@ -189,7 +189,6 @@ def solve_pinn(model, gamma1=1.0, T=None, win_len=1000.0, iters=2000,
     if T is None:
         T = P['T']
     y0_np = initial_state(P)
-    scale = make_scale(y0_np)
     edges = sorted(set(list(np.arange(0., T + win_len, win_len)) + [3000., 25000.]))
     edges = np.array([e for e in edges if e <= T + 1e-9])
     if edges[-1] < T - 1e-9:
@@ -200,9 +199,13 @@ def solve_pinn(model, gamma1=1.0, T=None, win_len=1000.0, iters=2000,
 
     y0 = torch.tensor(y0_np, device=DEVICE).reshape(1, -1)
     aw = AdaptiveWeights(N_RES)  # carried across windows so weights warm-start
+    AW_RESET_TIMES = {3000.0, 25000.0}
     out_t, out_z, win_losses = [], [], []
     for wd in range(n_win):
         t0, t1 = float(edges[wd]), float(edges[wd + 1])
+        if t0 in AW_RESET_TIMES:
+            aw = AdaptiveWeights(N_RES)
+        scale = make_scale(y0.cpu().numpy().ravel())
         net = PINN(N_STATE, scale, t1 - t0, P, nodes, layers).to(DEVICE)
         loss, aw = train_window(net, t0, t1, y0, P, iters=iters, lr=lr,
                                 n_col=n_col, lbfgs_iters=lbfgs_iters, aw=aw,
