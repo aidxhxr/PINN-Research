@@ -342,8 +342,8 @@ def plot_all(const_sol, dyn_sol, ref_const=None, ref_dyn=None, show=True):
     hox6 = [('H5', r'HOXA5 ($H_a$)'), ('H13', r'HOXA13 ($H_i$)'),
             ('M', r'MYC ($M$)'), ('Mi', r'MIZ1 ($M_i$)'),
             ('Ca', r'MYC:MIZ1 ($C_a$)'), ('Ci', r'HOXA13:$\beta$-cat ($C_i$)')]
-    sol = const_sol if const_sol is not None else dyn_sol
-    rref = ref_const if const_sol is not None else ref_dyn
+    sol = dyn_sol if dyn_sol is not None else const_sol
+    rref = ref_dyn if dyn_sol is not None else ref_const
     for a, (k, ttl) in zip(ax.ravel(), hox6):
         a.plot(sol['t'], sol[k], color=C_BLACK, lw=2.2)
         if rref is not None and k in rref:
