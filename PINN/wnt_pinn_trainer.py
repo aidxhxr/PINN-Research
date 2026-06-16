@@ -2,6 +2,9 @@
 PINN trainer for the stiff 27-state Wnt/Retinoid/HOX ODE.
 Uses adaptive per-equation weighting, time-marching windows pinned at Wnt on/off, and L-BFGS polish.
 """
+import glob
+import os
+
 import numpy as np
 import torch
 import torch.nn as nn
@@ -183,8 +186,13 @@ def train_window(net, t0, t1, y0, P, iters=2000, lr=2e-3, n_col=2000,
 # =============================================================================
 def solve_pinn(model, gamma1=1.0, T=None, win_len=1000.0, iters=2000,
                lr=2e-3, n_col=2000, n_out=300, nodes=128, layers=5,
-               lbfgs_iters=50, max_windows=None, seed=0, verbose=True):
-    """Time-march the PINN window by window and return dict of t and output vars."""
+               lbfgs_iters=50, max_windows=None, seed=0, verbose=True,
+               checkpoint_dir=None):
+    """Time-march the PINN window by window and return dict of t and output vars.
+
+    checkpoint_dir: if given, saves ckpt_win_NNN.npz after each window and
+    auto-resumes from the last completed window on restart.
+    """
     P = build_params(model, gamma1=gamma1)
     if T is None:
         T = P['T']
@@ -201,7 +209,28 @@ def solve_pinn(model, gamma1=1.0, T=None, win_len=1000.0, iters=2000,
     aw = AdaptiveWeights(N_RES)  # carried across windows so weights warm-start
     AW_RESET_TIMES = {3000.0, 25000.0}
     out_t, out_z, win_losses = [], [], []
-    for wd in range(n_win):
+
+    start_wd = 0
+    if checkpoint_dir is not None:
+        os.makedirs(checkpoint_dir, exist_ok=True)
+        ckpts = sorted(glob.glob(os.path.join(checkpoint_dir, "ckpt_win_*.npz")))
+        if ckpts:
+            for cf in ckpts:
+                d = np.load(cf, allow_pickle=False)
+                out_t.append(d['t'])
+                out_z.append(d['z'])
+                win_losses.append(float(d['loss']))
+            last = np.load(ckpts[-1], allow_pickle=False)
+            start_wd = int(last['wd']) + 1
+            y0 = torch.tensor(last['y0_next'], device=DEVICE).reshape(1, -1)
+            aw = AdaptiveWeights(N_RES)
+            aw.ema = torch.tensor(last['aw_ema'], device=DEVICE)
+            if verbose:
+                print(f"  [{model}] RESUMED from checkpoint: "
+                      f"windows 0-{start_wd - 1} already done, "
+                      f"continuing at window {start_wd}/{n_win}")
+
+    for wd in range(start_wd, n_win):
         t0, t1 = float(edges[wd]), float(edges[wd + 1])
         if t0 in AW_RESET_TIMES:
             aw = AdaptiveWeights(N_RES)
@@ -215,10 +244,21 @@ def solve_pinn(model, gamma1=1.0, T=None, win_len=1000.0, iters=2000,
             tg = torch.linspace(t0, t1, n_out, device=DEVICE).reshape(-1, 1)
             t0g = torch.full_like(tg, t0)
             zg = net(tg, t0g, y0)
-            out_t.append(tg.cpu().numpy().ravel())
-            out_z.append(zg.cpu().numpy())
+            t_np = tg.cpu().numpy().ravel()
+            z_np = zg.cpu().numpy()
+            out_t.append(t_np)
+            out_z.append(z_np)
             y0 = net(torch.full((1, 1), t1, device=DEVICE),
                      torch.full((1, 1), t0, device=DEVICE), y0).detach()
+
+        if checkpoint_dir is not None:
+            np.savez(os.path.join(checkpoint_dir, f"ckpt_win_{wd:03d}.npz"),
+                     t=t_np, z=z_np,
+                     y0_next=y0.cpu().numpy(),
+                     aw_ema=aw.ema.cpu().numpy(),
+                     loss=np.array(loss),
+                     wd=np.array(wd))
+
         if verbose:
             print(f"  [{model}] win {wd + 1:>3}/{n_win}  t<= {t1:>7.0f}  "
                   f"loss={loss:.3e}")
