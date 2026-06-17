@@ -1,8 +1,4 @@
-"""
-Full PINN training script — equivalent to PINN_solution.ipynb.
-Run inside tmux: python3 -u PINN_solution.py 2>&1 | tee train.log
-Figures are saved as PNG (no display needed).
-"""
+
 import sys
 sys.path.insert(0, '/home/jovyan/.local/lib/python3.12/site-packages')
 
@@ -21,9 +17,6 @@ import wnt_pinn_trainer as tr
 print('device:', tr.DEVICE)
 print('trainer using stub physics:', tr.USING_STUB, '(should be False)')
 
-# ---------------------------------------------------------------------------
-# 1. SciPy reference (validation only)
-# ---------------------------------------------------------------------------
 def reference_dict(model):
     t, U, P = ref.solve_reference(model)
     BcatTcf = ref.bcat_tcf(U, P)
