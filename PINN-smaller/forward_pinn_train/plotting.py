@@ -5,8 +5,15 @@ import matplotlib.pyplot as plt
 from config import BASELINE, REGIMES, VAR_NAMES, VAR_LABELS
 from metrics import stemness
 
+# Active-dynamics window. The model is trained over the full horizon
+# (T=3000), but all the interesting behaviour — the ATRA pulse and the
+# relaxation back to steady state — lives in roughly the first 150 tau.
+# Plotting the whole horizon leaves a long flat tail, so zoom in here.
+# (matches XMAX in compare.py)
+XMAX = 150.0
 
-def plot_all(solutions, refs):
+
+def plot_all(solutions, refs, xmax=XMAX):
     for i, (key, label) in enumerate(zip(VAR_NAMES, VAR_LABELS)):
         fig, ax = plt.subplots(figsize=(8, 4.5))
         for name in REGIMES:
@@ -17,6 +24,7 @@ def plot_all(solutions, refs):
                     label=f"{name} (ref)")
         ax.axvspan(BASELINE["tau1"], BASELINE["tau2"],
                    alpha=0.08, color="orange", label="ATRA")
+        ax.set_xlim(0, xmax)
         ax.set_xlabel(r"$\tau$"); ax.set_ylabel(label)
         ax.set_title(label); ax.legend(fontsize=7, ncol=2)
         fig.tight_layout(); fig.savefig(f"pinn7_{key}.png", dpi=150)
@@ -29,6 +37,7 @@ def plot_all(solutions, refs):
         ax.plot(sol["t"], stemness(sol, pc), lw=2.0, label=name)
     ax.axvspan(BASELINE["tau1"], BASELINE["tau2"],
                alpha=0.08, color="orange", label="ATRA")
+    ax.set_xlim(0, xmax)
     ax.set_xlabel(r"$\tau$"); ax.set_ylabel("Stemness")
     ax.set_title("Stemness index"); ax.legend()
     fig.tight_layout(); fig.savefig("pinn7_stemness.png", dpi=150)

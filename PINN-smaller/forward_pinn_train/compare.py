@@ -19,8 +19,9 @@ from metrics import stemness
 from scipy.integrate import solve_ivp
 
 RUN_DIR = os.path.join("runs", "20260619_073040")
-T = 3000.0
+T = 3000.0       # horizon the model was trained on
 N = 6000
+XMAX = 150.0     # active-dynamics window (matches Untitled-Copy1.ipynb tau_span)
 
 # ---- scipy reference (same settings as reference.py) -------------------
 def ref_solution(name):
@@ -60,7 +61,7 @@ for name in REGIMES:
 
 # quantitative table -----------------------------------------------------
 print("\n" + "=" * 78)
-print("Relative L2 error  PINN vs scipy   (whole horizon | ATRA window 40-80)")
+print(f"Relative L2 error  PINN vs scipy   (active window 0-{XMAX:.0f})")
 print("=" * 78)
 header = f"{'regime':<18s}" + "".join(f"{vl[:7]:>9s}" for vl in VAR_LABELS) + f"{'MEAN':>9s}"
 print(header)
@@ -68,7 +69,8 @@ err_table = {}
 for name in REGIMES:
     tr, yr = refs[name]
     tp, yp = pinns[name]
-    errs = [rel_l2(yp[:, i], yr[:, i]) for i in range(7)]
+    w = tr <= XMAX
+    errs = [rel_l2(yp[w, i], yr[w, i]) for i in range(7)]
     err_table[name] = errs
     row = f"{name:<18s}" + "".join(f"{e*100:>8.2f}%" for e in errs)
     row += f"{np.mean(errs)*100:>8.2f}%"
@@ -96,15 +98,17 @@ for ax, (vn, vl) in zip(axes.flat[:7], panels):
         ax.plot(tp, yp[:, i], "-", lw=2, color=COLORS[name], label=f"{name} PINN")
         ax.plot(tr, yr[:, i], "--", lw=1, color=COLORS[name], alpha=0.55)
     ax.axvspan(BASELINE["tau1"], BASELINE["tau2"], alpha=0.10, color="orange")
+    ax.set_xlim(0, XMAX)
     ax.set_title(vl); ax.set_xlabel(r"$\tau$")
 
 # panel 8: RA input mu_R(tau)
 ax = axes.flat[7]
 for name in REGIMES:
     p = {**BASELINE, **REGIMES[name]}
-    t = np.linspace(0, T, N)
+    t = np.linspace(0, XMAX, N)
     ax.plot(t, [_ra_input(x, p) for x in t], color=COLORS[name], lw=1, label=name)
 ax.axvspan(BASELINE["tau1"], BASELINE["tau2"], alpha=0.10, color="orange")
+ax.set_xlim(0, XMAX)
 ax.set_title(r"RA input $\mu_R(\tau)$ (forcing)"); ax.set_xlabel(r"$\tau$")
 
 # panel 9: stemness
@@ -116,6 +120,7 @@ for name in REGIMES:
     ax.plot(tr, stemness(to_soldict(tr, yr), p), "--", lw=1,
             color=COLORS[name], alpha=0.55)
 ax.axvspan(BASELINE["tau1"], BASELINE["tau2"], alpha=0.10, color="orange")
+ax.set_xlim(0, XMAX)
 ax.set_title("Stemness index"); ax.set_xlabel(r"$\tau$")
 
 axes.flat[0].legend(fontsize=7, ncol=1)
