@@ -13,6 +13,7 @@ from residual import physics_residual
 def train_regime(name, t_ref, y_ref, *,
                  T=3000.0,
                  width=256, depth=4,
+                 n_fourier=16, fourier_sigma=4.0,
                  n_colloc=200_000,
                  n_data=3000,
                  adam_epochs=5000,
@@ -30,7 +31,8 @@ def train_regime(name, t_ref, y_ref, *,
     t_d = torch.tensor(t_ref[idx, None],  device=DEVICE)
     y_d = torch.tensor(y_ref[idx],        device=DEVICE)
 
-    net = ForwardPINN(T_max=T, width=width, depth=depth).to(DEVICE)
+    net = ForwardPINN(T_max=T, width=width, depth=depth,
+                      n_fourier=n_fourier, fourier_sigma=fourier_sigma).to(DEVICE)
     n_params = sum(q.numel() for q in net.parameters())
     print(f"  arch {depth}×{width}  params {n_params:,}")
 

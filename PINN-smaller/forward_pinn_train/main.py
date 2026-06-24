@@ -6,7 +6,7 @@ from training import train_regime
 from plotting import plot_all, plot_losses, print_summary
 
 
-def main(T=3000.0):
+def main(T=150.0):
     print("="*60)
     print("Forward PINN - 7-ODE Reduced WNT-RA-HOX Model")
     print(f"Device : {DEVICE}")
@@ -30,7 +30,9 @@ def main(T=3000.0):
             T=T,
             width=256,
             depth=4,
-            n_colloc=200_000,
+            n_fourier=16,
+            fourier_sigma=4.0,
+            n_colloc=50_000,
             n_data=3000,
             adam_epochs=5000,
             lbfgs_steps=500,
