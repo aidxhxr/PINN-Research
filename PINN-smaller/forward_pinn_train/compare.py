@@ -18,10 +18,11 @@ from odes import _ode_rhs, _ra_input
 from metrics import stemness
 from scipy.integrate import solve_ivp
 
-RUN_DIR = os.path.join("runs", "20260619_073040")
-T = 3000.0       # horizon the model was trained on
+import glob
+RUN_DIR = max(glob.glob(os.path.join("runs", "*")), key=os.path.getmtime)
+T = 150.0        # horizon the model was trained on (active-dynamics window)
 N = 6000
-XMAX = 150.0     # active-dynamics window (matches Untitled-Copy1.ipynb tau_span)
+XMAX = T         # plot/compare over the whole trained horizon
 
 # ---- scipy reference (same settings as reference.py) -------------------
 def ref_solution(name):

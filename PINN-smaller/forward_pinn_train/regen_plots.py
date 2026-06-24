@@ -4,6 +4,7 @@ Loads the trained final models + scipy references and calls plot_all,
 which now zooms to the active-dynamics window (XMAX). Saves into plots/.
 """
 import os
+import glob
 import numpy as np
 import torch
 
@@ -13,8 +14,8 @@ from odes import _ode_rhs
 from plotting import plot_all
 from scipy.integrate import solve_ivp
 
-RUN_DIR = os.path.join("runs", "20260619_073040")
-T = 3000.0
+RUN_DIR = max(glob.glob(os.path.join("runs", "*")), key=os.path.getmtime)
+T = 150.0
 N = 6000
 
 
