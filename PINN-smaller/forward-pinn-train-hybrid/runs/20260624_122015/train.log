@@ -1,0 +1,20 @@
+============================================================
+Hybrid (sparse-data) Forward PINN - 7-ODE WNT-RA-HOX Model
+Device : cuda
+GPU    : NVIDIA RTX PRO 6000 Blackwell Server Edition
+VRAM   : 102.0 GB
+Threads: 48
+============================================================
+
+[1/3] Reference solutions (scipy Radau) ...
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+
+[2/3] Training hybrid PINNs (sparse data + physics) ...
+
+── Normal ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/8000  L=8.79e+00  Ld=8.31e-01  Lp=1.16e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
+    Adam   250/8000  L=2.90e-03  Ld=2.54e-04  Lp=2.64e-03  Lic=5.89e-07  lr=1.0e-03  [119s]
