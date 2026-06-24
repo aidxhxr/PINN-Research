@@ -16,5 +16,5 @@ Threads: 48
 
 ── Normal ──
   arch 4×256  params 207,879  obs=40 (noise=0.0)
-    Adam     1/8000  L=8.79e+00  Ld=8.31e-01  Lp=1.16e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
-    Adam   250/8000  L=2.90e-03  Ld=2.54e-04  Lp=2.64e-03  Lic=5.89e-07  lr=1.0e-03  [119s]
+    Adam     1/1000  L=8.79e+00  Ld=8.31e-01  Lp=1.16e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
+    Adam   250/1000  L=3.15e-03  Ld=2.73e-04  Lp=2.86e-03  Lic=6.13e-07  lr=8.5e-04  [259s]

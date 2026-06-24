@@ -25,7 +25,7 @@ T = 150.0
 N = 6000
 
 # must match main.py training settings to reconstruct the same observations
-N_DATA, NOISE_STD, SEED = 100, 0.0, 42
+N_DATA, NOISE_STD, SEED = 40, 0.0, 42
 
 
 def ref_solution(name):
