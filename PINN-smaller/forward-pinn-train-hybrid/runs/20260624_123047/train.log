@@ -18,3 +18,8 @@ Threads: 48
   arch 4×256  params 207,879  obs=40 (noise=0.0)
     Adam     1/1000  L=8.79e+00  Ld=8.31e-01  Lp=1.16e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
     Adam   250/1000  L=3.15e-03  Ld=2.73e-04  Lp=2.86e-03  Lic=6.13e-07  lr=8.5e-04  [259s]
+    Adam   500/1000  L=1.31e-03  Ld=9.13e-05  Lp=1.21e-03  Lic=1.15e-07  lr=5.0e-04  [519s]
+    Adam   750/1000  L=1.02e-03  Ld=6.27e-05  Lp=9.54e-04  Lic=7.97e-08  lr=1.5e-04  [778s]
+    Adam  1000/1000  L=9.63e-04  Ld=5.92e-05  Lp=9.02e-04  Lic=6.92e-08  lr=1.0e-06  [1038s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=8.63e-04  [1270s]
