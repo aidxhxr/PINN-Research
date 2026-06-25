@@ -1,0 +1,129 @@
+============================================================
+Hybrid (sparse-data) Forward PINN - 7-ODE WNT-RA-HOX Model
+Device : cuda
+GPU    : NVIDIA RTX PRO 6000 Blackwell Server Edition
+VRAM   : 102.0 GB
+Threads: 48
+============================================================
+
+[1/3] Reference solutions (scipy Radau) ...
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+
+[2/3] Training hybrid PINNs (sparse data + physics) ...
+
+── Normal ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=8.79e+00  Ld=8.31e-01  Lp=1.16e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
+    Adam   250/1000  L=3.15e-03  Ld=2.73e-04  Lp=2.86e-03  Lic=6.13e-07  lr=8.5e-04  [261s]
+    Adam   500/1000  L=1.31e-03  Ld=9.13e-05  Lp=1.21e-03  Lic=1.15e-07  lr=5.0e-04  [521s]
+    Adam   750/1000  L=1.02e-03  Ld=6.27e-05  Lp=9.54e-04  Lic=7.97e-08  lr=1.5e-04  [781s]
+    Adam  1000/1000  L=9.63e-04  Ld=5.92e-05  Lp=9.02e-04  Lic=6.92e-08  lr=1.0e-06  [1042s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=8.63e-04  [1273s]
+    LBFGS  200/500  L=6.66e-04  [1502s]
+    LBFGS  300/500  L=5.16e-04  [1736s]
+    LBFGS  400/500  L=5.21e-04  [1956s]
+    LBFGS  500/500  L=4.67e-04  [2168s]
+  done  (2168s total)
+
+── Early adenoma ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=9.15e+00  Ld=1.14e+00  Lp=1.21e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
+    Adam   250/1000  L=3.46e-03  Ld=2.79e-04  Lp=3.14e-03  Lic=1.70e-06  lr=8.5e-04  [236s]
+    Adam   500/1000  L=1.36e-03  Ld=8.53e-05  Lp=1.27e-03  Lic=1.02e-07  lr=5.0e-04  [496s]
+    Adam   750/1000  L=1.05e-03  Ld=6.22e-05  Lp=9.85e-04  Lic=7.80e-08  lr=1.5e-04  [757s]
+    Adam  1000/1000  L=9.91e-04  Ld=5.92e-05  Lp=9.30e-04  Lic=7.04e-08  lr=1.0e-06  [1017s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=7.79e-04  [1256s]
+    LBFGS  200/500  L=7.29e-04  [1469s]
+    LBFGS  300/500  L=6.36e-04  [1688s]
+    LBFGS  400/500  L=6.36e-04  [1914s]
+    LBFGS  500/500  L=5.94e-04  [2123s]
+  done  (2123s total)
+
+── Cancer-like ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=9.68e+00  Ld=1.49e+00  Lp=1.39e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
+    Adam   250/1000  L=5.47e-03  Ld=2.88e-04  Lp=4.26e-03  Lic=4.63e-05  lr=8.5e-04  [202s]
+    Adam   500/1000  L=1.74e-03  Ld=1.02e-04  Lp=1.64e-03  Lic=8.39e-08  lr=5.0e-04  [458s]
+    Adam   750/1000  L=1.34e-03  Ld=7.07e-05  Lp=1.27e-03  Lic=6.08e-08  lr=1.5e-04  [719s]
+    Adam  1000/1000  L=1.27e-03  Ld=6.64e-05  Lp=1.20e-03  Lic=5.03e-08  lr=1.0e-06  [979s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=1.08e-03  [1232s]
+    LBFGS  200/500  L=1.02e-03  [1439s]
+    LBFGS  300/500  L=9.89e-04  [1678s]
+    LBFGS  400/500  L=8.84e-04  [1897s]
+    LBFGS  500/500  L=8.19e-04  [2113s]
+  done  (2113s total)
+
+── Strong APC-mutant ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=1.03e+01  Ld=1.82e+00  Lp=1.64e+00  Lic=3.40e-01  lr=1.0e-03  [1s]
+    Adam   250/1000  L=6.78e-03  Ld=3.20e-04  Lp=6.31e-03  Lic=7.49e-06  lr=8.5e-04  [203s]
+    Adam   500/1000  L=2.50e-03  Ld=1.18e-04  Lp=2.38e-03  Lic=1.23e-07  lr=5.0e-04  [421s]
+    Adam   750/1000  L=1.91e-03  Ld=8.16e-05  Lp=1.83e-03  Lic=8.30e-08  lr=1.5e-04  [681s]
+    Adam  1000/1000  L=1.82e-03  Ld=7.67e-05  Lp=1.74e-03  Lic=7.05e-08  lr=1.0e-06  [942s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=1.71e-03  [1216s]
+    LBFGS  200/500  L=1.37e-03  [1467s]
+    LBFGS  300/500  L=1.31e-03  [1684s]
+    LBFGS  400/500  L=1.15e-03  [1891s]
+    LBFGS  500/500  L=1.38e-03  [2106s]
+  done  (2106s total)
+
+[3/3] Plotting ...
+
+======================================================================
+Final values & stemness
+======================================================================
+
+Normal
+  $\beta$-catenin  0.7030
+  APC              0.4092
+  HOXA5            0.3376
+  HOXA13           1.2640
+  MYC              1.0787
+  RA               0.1750
+  CYP26A1          1.4742
+  Stemness         0.8444
+  Min S (ATRA)    0.3404
+  Mean S (ATRA)   0.3711
+
+Early adenoma
+  $\beta$-catenin  1.0646
+  APC              0.1772
+  HOXA5            0.3106
+  HOXA13           1.4310
+  MYC              1.2861
+  RA               0.1627
+  CYP26A1          1.6778
+  Stemness         1.6773
+  Min S (ATRA)    0.9031
+  Mean S (ATRA)   0.9575
+
+Cancer-like
+  $\beta$-catenin  1.5914
+  APC              0.1038
+  HOXA5            0.2934
+  HOXA13           1.5167
+  MYC              1.4018
+  RA               0.1553
+  CYP26A1          1.7904
+  Stemness         2.8052
+  Min S (ATRA)    1.7261
+  Mean S (ATRA)   1.8222
+
+Strong APC-mutant
+  $\beta$-catenin  2.1147
+  APC              0.0728
+  HOXA5            0.2877
+  HOXA13           1.5645
+  MYC              1.4563
+  RA               0.1492
+  CYP26A1          1.8504
+  Stemness         3.9255
+  Min S (ATRA)    2.6051
+  Mean S (ATRA)   2.7010
