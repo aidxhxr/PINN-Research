@@ -6,9 +6,21 @@ import numpy as np
 import torch
 
 from config import (BASELINE, REGIMES, DEVICE, VAR_NAMES,
-                    UNKNOWN, INIT_GUESS)
+                    UNKNOWN, INIT_GUESS, PARAM_RANGE)
 from model import ForwardPINN, InverseParams, time_derivatives
 from residual import physics_residual
+
+
+def _fmt_est(cur, true_vals):
+    """Compact per-iteration log line: W and thetaP explicitly, plus the
+    mean relative error over all unknowns (a full 36-param line would be
+    unreadable). Every estimate is still stored in *_history.json."""
+    errs = [abs(cur[k] - true_vals[k]) / abs(true_vals[k])
+            for k in cur if true_vals[k] != 0]
+    mean_err = 100.0 * sum(errs) / len(errs)
+    return (f"W={cur['W']:.3f}(*{true_vals['W']:.2f})  "
+            f"thetaP={cur['thetaP']:.3f}(*{true_vals['thetaP']:.2f})  "
+            f"<rel.err>={mean_err:.0f}%")
 
 
 def sample_sparse(t_ref, y_ref, n_data, noise_std, seed):
@@ -43,24 +55,22 @@ def train_inverse(name, t_ref, y_ref, *,
                   log_every=100,
                   out_dir="."):
     torch.manual_seed(seed)
-    true_p = {**BASELINE, **REGIMES[name]}            # ground truth (held out)
+    true_p = {**BASELINE, **REGIMES[name]}
     true_vals = {k: true_p[k] for k in UNKNOWN}
 
-    # sparse, possibly noisy observations of the trajectory
     t_arr, y_arr, idx = sample_sparse(t_ref, y_ref, n_data, noise_std, seed)
     t_d = torch.tensor(t_arr, device=DEVICE)
     y_d = torch.tensor(y_arr, device=DEVICE)
-    y0  = torch.tensor(y_ref[0], device=DEVICE)        # IC anchor (known)
+    y0  = torch.tensor(y_ref[0], device=DEVICE)
 
     net = ForwardPINN(T_max=T, width=width, depth=depth,
                       n_fourier=n_fourier, fourier_sigma=fourier_sigma).to(DEVICE)
-    params = InverseParams(INIT_GUESS).to(DEVICE)
+    params = InverseParams(INIT_GUESS, PARAM_RANGE).to(DEVICE)
     n_net = sum(q.numel() for q in net.parameters())
     print(f"  arch {depth}×{width}  net params {n_net:,}  "
           f"unknowns {UNKNOWN}")
     print(f"  init guess {params.values()}  |  true {true_vals}")
 
-    # network and physical parameters get separate (larger) learning rates
     opt = torch.optim.Adam([
         {"params": net.parameters(),    "lr": lr},
         {"params": params.parameters(), "lr": lr_param},
@@ -104,8 +114,7 @@ def train_inverse(name, t_ref, y_ref, *,
             for k in UNKNOWN:
                 hist[k].append(cur[k])
             dt = wall.perf_counter() - t0
-            est = "  ".join(f"{k}={cur[k]:.3f}(*{true_vals[k]:.2f})"
-                            for k in UNKNOWN)
+            est = _fmt_est(cur, true_vals)
             print(f"    Adam {ep:>5}/{adam_epochs}  L={loss.item():.2e}  "
                   f"Ld={Ld.item():.2e}  Lp={Lp.item():.2e}  "
                   f"Lic={Lic.item():.2e}  | {est}  [{dt:.0f}s]")
@@ -147,7 +156,7 @@ def train_inverse(name, t_ref, y_ref, *,
                 est = "  ".join(f"{k}={cur[k]:.3f}(*{true_vals[k]:.2f})"
                                 for k in UNKNOWN)
                 print(f"    LBFGS {step:>4}/{lbfgs_steps}  "
-                      f"L={float(loss):.2e}  | {est}  [{dt:.0f}s]")
+                      f"L={float(loss.detach()):.2e}  | {est}  [{dt:.0f}s]")
 
     with torch.no_grad():
         t_eval = torch.linspace(0, T, 6000, device=DEVICE).reshape(-1, 1)

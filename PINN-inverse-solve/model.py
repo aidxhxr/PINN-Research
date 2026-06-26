@@ -21,7 +21,6 @@ class ForwardPINN(nn.Module):
         self.T_max = T_max
         self.n_fourier = n_fourier
         if n_fourier > 0:
-            # fixed (non-trained) random frequencies, in cycles over [0,1]
             self.register_buffer("B", torch.randn(n_fourier) * fourier_sigma)
             in_dim = 1 + 2 * n_fourier
         else:
@@ -41,10 +40,10 @@ class ForwardPINN(nn.Module):
                 nn.init.zeros_(m.bias)
 
     def _embed(self, t):
-        tn = t / self.T_max                      # (N,1) normalised to ~[0,1]
+        tn = t / self.T_max
         if self.n_fourier == 0:
             return tn
-        proj = 2.0 * np.pi * tn * self.B         # (N, n_fourier)
+        proj = 2.0 * np.pi * tn * self.B
         return torch.cat([tn, torch.sin(proj), torch.cos(proj)], dim=1)
 
     def forward(self, t):
@@ -62,7 +61,6 @@ def time_derivatives(net, t):
 
 
 def _inv_softplus(y):
-    # numerically stable inverse of softplus, so softplus(raw) == y at init
     return np.log(np.expm1(y))
 
 
@@ -70,35 +68,48 @@ def _logit(y):
     return np.log(y / (1.0 - y))
 
 
+def _constrain(raw, lo, hi):
+    """Map an unconstrained raw scalar into [lo, hi]; hi=None -> [lo, inf)."""
+    if hi is None:
+        return lo + F.softplus(raw)
+    return lo + (hi - lo) * torch.sigmoid(raw)
+
+
+def _unconstrain(val, lo, hi):
+    """Inverse of _constrain, so a raw init reproduces `val` exactly."""
+    if hi is None:
+        return _inv_softplus(val - lo)
+    return _logit((val - lo) / (hi - lo))
+
+
 class InverseParams(nn.Module):
     """Trainable ODE parameters recovered by the inverse PINN.
 
-    Each unknown is stored as an unconstrained raw scalar and mapped onto
-    its valid range so the optimiser never has to respect a hard bound:
-        W       > 0          via softplus
-        thetaP  in (0, 1)    via sigmoid
+    Data-driven: takes (init_guess, param_range) and stores one
+    unconstrained raw scalar per unknown, each mapped onto its valid range
+    so the optimiser never has to respect a hard bound:
+        thetaP in (0, 1)     via sigmoid
+        every other unknown  > 0  via softplus
+    Scales from 2 to all 36 unknowns with no further edits.
     `.dict()` returns the current estimates as differentiable tensors, ready
-    to drop into the BASELINE parameter dict for the physics residual.
+    to splice into the BASELINE parameter dict for the physics residual.
     """
 
-    def __init__(self, init_guess):
+    def __init__(self, init_guess, param_range):
         super().__init__()
-        self.raw_W = nn.Parameter(
-            torch.tensor(_inv_softplus(init_guess["W"])))
-        self.raw_thetaP = nn.Parameter(
-            torch.tensor(_logit(init_guess["thetaP"])))
-
-    @property
-    def W(self):
-        return F.softplus(self.raw_W)
-
-    @property
-    def thetaP(self):
-        return torch.sigmoid(self.raw_thetaP)
+        self.param_range = dict(param_range)
+        self.raw = nn.ParameterDict()
+        for k, (lo, hi) in self.param_range.items():
+            self.raw[k] = nn.Parameter(
+                torch.tensor(_unconstrain(init_guess[k], lo, hi)))
 
     def dict(self):
-        return {"W": self.W, "thetaP": self.thetaP}
+        out = {}
+        for k, raw in self.raw.items():
+            lo, hi = self.param_range[k]
+            out[k] = _constrain(raw, lo, hi)
+        return out
 
     def values(self):
         with torch.no_grad():
-            return {"W": float(self.W), "thetaP": float(self.thetaP)}
+            return {k: float(v) for k, v in self.dict().items()}

@@ -1,6 +1,6 @@
 import torch
 
-from config import DEVICE, REGIMES
+from config import DEVICE, REGIMES, UNKNOWN
 from reference import generate_references
 from training import train_inverse
 from plotting import (plot_states, plot_param_convergence,
@@ -9,7 +9,8 @@ from plotting import (plot_states, plot_param_convergence,
 
 def main(T=150.0):
     print("=" * 60)
-    print("Inverse PINN - recover (W, thetaP) for the 7-ODE WNT-RA-HOX model")
+    print(f"Inverse PINN - recover {len(UNKNOWN)} parameters "
+          f"for the 7-ODE WNT-RA-HOX model")
     print(f"Device : {DEVICE}")
     if DEVICE.type == "cuda":
         print(f"GPU    : {torch.cuda.get_device_name()}")
