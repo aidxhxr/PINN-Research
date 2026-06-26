@@ -35,21 +35,40 @@ VAR_LABELS = [r"$\beta$-catenin", "APC", "HOXA5", "HOXA13",
               "MYC", "RA", "CYP26A1"]
 
 # ----------------------------------------------------------------------
-# INVERSE PROBLEM SETUP
+# INVERSE PROBLEM SETUP — recover ALL identifiable biological parameters
 # ----------------------------------------------------------------------
 # Forward PINN: parameters known -> solve for the trajectory.
 # Inverse PINN: trajectory (sparse, noisy observations) known -> recover
-# the unknown ODE parameters. We recover the two regime-defining,
-# biologically meaningful parameters:
-#     W       WNT drive on beta-catenin               (true: 0.80 .. 2.00)
-#     thetaP  APC functionality (1=healthy, 0=lost)   (true: 1.00 .. 0.25)
-# Their per-regime TRUE values live in REGIMES above. The network sees
-# only the trajectory data + the ODE structure, never these values.
-UNKNOWN = ["W", "thetaP"]
+# the unknown ODE parameters jointly with the state network.
+#
+# This is the deliberately over-parameterised "recover everything"
+# baseline: every CONTINUOUS parameter that appears in the physics
+# residual is treated as unknown. A downstream sensitivity analysis uses
+# the per-parameter recovery error to prune this set.
+#
+# Held FIXED (not biological unknowns here):
+#   nB, nM, nH                  integer Hill exponents (structural)
+#   mu0, AR, TR, phi, DR, q,    RA-forcing PROTOCOL (the experimentally
+#   tau1, tau2                  set circadian + ATRA schedule)
+#   alpha13, alpha5            do not appear in the residual at all
+#                              (zero gradient -> meaningless to recover)
+FIXED = {
+    "nB", "nM", "nH",
+    "mu0", "AR", "TR", "phi", "DR", "q", "tau1", "tau2",
+    "alpha13", "alpha5",
+}
 
-# Deliberately wrong starting guess (same for every regime) so the
-# convergence plots show the estimates travelling to the true values.
-INIT_GUESS = dict(W=1.20, thetaP=0.60)
+# Derived: everything else, kept in BASELINE order (W, thetaP lead). -> 36
+UNKNOWN = [k for k in BASELINE if k not in FIXED]
 
-# Valid ranges for the constrained re-parameterisation (softplus / sigmoid).
-PARAM_RANGE = dict(W=(0.0, None), thetaP=(0.0, 1.0))
+# Valid ranges for the constrained re-parameterisation:
+#   thetaP in (0,1)  -> sigmoid;   every other unknown > 0 -> softplus.
+PARAM_RANGE = {k: ((0.0, 1.0) if k == "thetaP" else (0.0, None))
+               for k in UNKNOWN}
+
+# Deliberately wrong starting guess: a uniform +50% offset (1.5x baseline)
+# for every unknown, so the convergence plots show a clear init->truth gap.
+# W, thetaP keep their hand-picked wrong values.
+INIT_GUESS = {k: 1.5 * BASELINE[k] for k in UNKNOWN}
+INIT_GUESS["W"] = 1.20
+INIT_GUESS["thetaP"] = 0.60
