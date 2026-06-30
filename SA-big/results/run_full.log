@@ -1,0 +1,1222 @@
+======================================================================
+SA-big: sensitivity analysis of the 27-state Wnt/Retinoid/HOX model
+  parameters varied : 30 (+/-30% box)
+  outputs scored    : 9
+  solver            : {'method': 'BDF', 'rtol': 0.001, 'atol': 1e-06, 't_N': 12000.0, 'N_t': 1200}
+======================================================================
+
+[baseline] solving nominal model ...
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+  baseline settled outputs (time-avg over [6000, 12000]):
+    RA          0.29733
+    CYP26A1     0.00001
+    APC         0.02863
+    b-catenin   0.21268
+    HOXA5       0.00150
+    MYC         0.05226
+    HOXA13      0.04444
+    Bcat-TCF    0.00619
+    Stemness    0.21570
+  wrote /home/29/aidahxr/PINN-Research/SA-big/results/baseline_outputs.csv
+
+[local] central-difference elasticities ...
+  evaluating 60 solves on 60 workers...
+    60/60 done
+  wrote /home/29/aidahxr/PINN-Research/SA-big/results/local_elasticity.csv
+  saved local-sensitivity plots + CSV
+
+[morris] N=24 trajectories ...
+  evaluating 744 solves on 60 workers...
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    64/744 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    128/744 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    192/744 done
+    256/744 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    320/744 done
+    384/744 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    448/744 done
+    512/744 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    576/744 done
+    640/744 done
+    704/744 done
+    744/744 done
+  note: 56/744 solves failed -> imputed with column mean
+
+  ── RA ──
+  Rank Parameter       mu_star      sigma         mu
+  1    MCsynth          0.5234     0.4026    -0.4308 *
+  2    v16              0.4251     0.3783     0.3145 *
+  3    k14              0.3291      0.197    -0.3291 *
+  4    kp6              0.2549     0.2362       0.22 *
+  5    kp5              0.2516     0.2361    -0.2212 *
+  6    k8               0.1573     0.1883   -0.07311 *
+  7    km5              0.1444     0.1481      0.114 *
+  8    km6              0.1417     0.1836   -0.04671 *
+  9    k7               0.1284     0.1209     0.1284 *
+  10   kp1              0.1124     0.2545    0.05651 *
+  11   k21             0.05629     0.1975 -0.0004339 *
+  12   gamma1          0.05592     0.1891     0.0558 *
+  13   kp3             0.05591     0.1891   -0.05574 *
+  14   v19             0.04444     0.1522   -0.01136 *
+  15   wntef            0.0398     0.1506    0.01605 *
+  16   k2              0.03738     0.1377    0.03738 *
+  17   k23             0.03208     0.1358   -0.03206 *
+  18   v18             0.02807     0.1367   -0.02798 *
+  19   km9             0.02801     0.1367    0.02797 *
+  20   k10             0.02798     0.1367   -0.02793 *
+  21   k20             0.02797     0.1367   -0.02792 *
+  22   k22             0.01833    0.08842    0.01825 *
+  23   v17             0.01574    0.07639    0.01565 *
+  24   km1             0.00121   0.001566  -0.001182 *
+  25   k15           0.0003209   0.001209   0.000309 *
+  26   km3           0.0001871  0.0002717 -0.0001231 *
+  27   retef          0.000159  0.0002579 -2.492e-05 *
+  28   kp4           0.0001448  0.0002552  -5.92e-05 *
+  29   kp9           8.495e-05  0.0001453  1.873e-05 *
+  30   km4           7.042e-05  0.0001084  2.985e-05 *
+
+  ── CYP26A1 ──
+  Rank Parameter       mu_star      sigma         mu
+  1    kp1             0.01586    0.04563  -0.002795 *
+  2    MCsynth         0.01422     0.0458    0.01422 *
+  3    gamma1          0.01106    0.03856   -0.01106 *
+  4    k21            0.009329    0.03301 -2.263e-06 *
+  5    k14            0.008968    0.03065   0.008968 *
+  6    kp3            0.008202    0.02807   0.008202 *
+  7    kp5            0.007256    0.03445   0.007256 *
+  8    v16            0.006497     0.0274  -0.006497 *
+  9    k2             0.006315    0.03093  -0.006312 *
+  10   k10            0.005398    0.02644   0.005398 *
+  11   v19             0.00528    0.02477    0.00528 *
+  12   wntef          0.005146     0.0189  -0.002368 *
+  13   v18            0.003958    0.01916   0.003958 *
+  14   k23            0.003912    0.01917   0.003912 *
+  15   km9            0.003903    0.01912  -0.003903 *
+  16   k20            0.003585    0.01756   0.003585 *
+  17   k22            0.002235   0.009982  -0.001798 *
+  18   km6           0.0006572    0.00177  0.0006572 *
+  19   k8            0.0004334   0.001468  0.0004334 *
+  20   kp6           0.0002205   0.001062 -0.0002205 *
+  21   v17           0.0002198   0.001071  0.0002175 *
+  22   km5           0.0002185    0.00107 -0.0002185 *
+  23   k7            1.834e-06  1.111e-06 -1.834e-06 *
+  24   retef         9.251e-07  3.332e-06 -9.129e-07 *
+  25   km4            7.08e-07  3.126e-06 -5.558e-07 *
+  26   km1            7.04e-07  3.361e-06 -7.013e-07 *
+  27   km3           5.228e-08  2.076e-07 -3.569e-08 *
+  28   kp4           8.595e-09  1.921e-08  3.539e-09 *
+  29   kp9           7.493e-09  1.774e-08 -6.138e-09 *
+  30   k15           5.893e-09  1.243e-08 -3.283e-09 *
+
+  ── APC ──
+  Rank Parameter       mu_star      sigma         mu
+  1    MCsynth         0.04362    0.08264   -0.03889 *
+  2    v16             0.02995    0.04435    0.02351 *
+  3    k14             0.02089    0.02484   -0.02089 *
+  4    kp5             0.02005    0.03628   -0.01849 *
+  5    kp6             0.01632    0.02764    0.01459 *
+  6    k7              0.01534    0.04727    0.01534 *
+  7    km5             0.01068    0.02045   0.009145 *
+  8    km6            0.008898    0.01505  -0.004131 *
+  9    k8             0.007774    0.01142  -0.003969 *
+  10   retef          0.007516     0.0102   0.007516 *
+  11   kp1            0.004142   0.009137   0.002153 *
+  12   gamma1         0.002113   0.006424   0.002113 *
+  13   k21            0.001995   0.006758 -8.613e-05 *
+  14   kp3            0.001911   0.006459  -0.001904 *
+  15   v19            0.001881   0.006166 -3.068e-05 *
+  16   wntef          0.001626   0.005815  0.0002818 *
+  17   k2             0.001256   0.004692   0.001256 *
+  18   k23            0.001118   0.004636  -0.001118 *
+  19   k10           0.0009664   0.004672 -0.0009429 *
+  20   v18           0.0009605   0.004669 -0.0009562 *
+  21   km9           0.0009575    0.00467  0.0009536 *
+  22   k20            0.000956   0.004659 -0.0009534 *
+  23   k22            0.000875   0.004214  0.0008708 *
+  24   v17           0.0007886   0.003821  0.0007855 *
+  25   km1           4.459e-05  5.333e-05 -3.841e-05 *
+  26   k15           2.471e-05  0.0001031  2.114e-05 *
+  27   kp4           6.453e-06   1.44e-05 -4.454e-06 *
+  28   km3           5.321e-06  7.251e-06 -3.296e-06 *
+  29   km4           4.803e-06  8.639e-06  1.768e-06 *
+  30   kp9           4.513e-06   1.11e-05  1.674e-06 *
+
+  ── b-catenin ──
+  Rank Parameter       mu_star      sigma         mu
+  1    MCsynth         0.04295    0.03853    0.03573 *
+  2    v16             0.04039    0.03554   -0.02978 *
+  3    k14             0.02708    0.02075    0.02708 *
+  4    kp5             0.02401    0.02405    0.02181 *
+  5    kp6             0.02029    0.02192   -0.01649 *
+  6    k8              0.01408    0.01875   0.004395 *
+  7    km5             0.01298    0.01463   -0.01086 *
+  8    km6             0.01243    0.01597   0.004736 *
+  9    kp1             0.01216    0.02681  -0.006151 *
+  10   retef           0.01131   0.007248   -0.01131 *
+  11   k7              0.01002    0.01202   -0.01002 *
+  12   gamma1          0.00618    0.01975   -0.00618 *
+  13   k21            0.005892    0.02063  5.133e-05 *
+  14   kp3            0.005873    0.01977   0.005843 *
+  15   v19            0.004636     0.0157   0.001232 *
+  16   k2             0.004377     0.0149  -0.004374 *
+  17   wntef          0.003813    0.01511  -0.002051 *
+  18   k23            0.003443    0.01418   0.003443 *
+  19   k10            0.003029     0.0143   0.002835 *
+  20   v18            0.002971    0.01428   0.002909 *
+  21   km9            0.002952     0.0143  -0.002914 *
+  22   k20            0.002943    0.01427   0.002925 *
+  23   k22            0.001888    0.00902  -0.001855 *
+  24   v17            0.001196   0.005576  -0.001164 *
+  25   km1           0.0001991  0.0002731  0.0001872 *
+  26   k15           6.189e-05  0.0001186 -4.053e-06 *
+  27   kp9           3.113e-05  4.788e-05  8.159e-06 *
+  28   km4           2.758e-05  5.244e-05  1.505e-06 *
+  29   km3           2.722e-05  4.872e-05  1.935e-06 *
+  30   kp4            2.27e-05   3.66e-05  7.499e-06 *
+
+  ── HOXA5 ──
+  Rank Parameter       mu_star      sigma         mu
+  1    gamma1        1.935e-05  4.831e-06  1.935e-05
+  2    MCsynth       1.382e-05  3.014e-05 -1.262e-05 *
+  3    v16           9.964e-06  1.551e-05  8.457e-06 *
+  4    kp5           6.841e-06   1.29e-05 -6.216e-06 *
+  5    k14           6.407e-06  7.463e-06 -6.407e-06 *
+  6    k7             5.33e-06  1.757e-05   5.33e-06 *
+  7    kp6           5.088e-06  9.806e-06  4.584e-06 *
+  8    k15           3.684e-06  1.697e-06 -3.684e-06
+  9    v17           3.578e-06  1.133e-06  3.578e-06
+  10   km5           3.555e-06  7.596e-06  3.403e-06 *
+  11   k8            2.571e-06   3.67e-06 -2.017e-06 *
+  12   km6            2.54e-06  4.062e-06 -1.407e-06 *
+  13   retef         2.478e-06   3.89e-06  2.478e-06 *
+  14   kp1           1.408e-06  3.552e-06 -3.682e-08 *
+  15   v19           1.375e-06   4.51e-06 -1.274e-06 *
+  16   k2             6.73e-07  2.758e-06  6.728e-07 *
+  17   k21           5.223e-07  1.809e-06 -5.153e-07 *
+  18   k23           3.575e-07  1.434e-06 -3.567e-07 *
+  19   kp3           3.192e-07  1.123e-06 -4.912e-08 *
+  20   km9           3.036e-07  1.447e-06  2.916e-07 *
+  21   v18           3.021e-07  1.446e-06 -2.953e-07 *
+  22   k20           2.062e-07  9.744e-07  1.983e-07 *
+  23   k10           2.042e-07  9.039e-07 -1.668e-07 *
+  24   k22           2.005e-07  9.395e-07   1.95e-07 *
+  25   wntef         1.893e-07  8.912e-07  1.823e-07 *
+  26   km1           1.916e-08  2.094e-08 -1.671e-08 *
+  27   km4           6.915e-09  1.266e-08 -2.088e-09 *
+  28   kp9           4.947e-09  7.942e-09  2.515e-10 *
+  29   kp4            4.61e-09  7.316e-09 -1.772e-09 *
+  30   km3           3.223e-09  4.367e-09 -4.101e-10 *
+
+  ── MYC ──
+  Rank Parameter       mu_star      sigma         mu
+  1    gamma1         0.001452  0.0003591  -0.001452
+  2    MCsynth       0.0009292   0.001891  0.0009215 *
+  3    v16           0.0007329   0.001096 -0.0005961 *
+  4    kp5            0.000506  0.0009067  0.0004448 *
+  5    k14           0.0004591  0.0005323  0.0004591 *
+  6    kp6           0.0003649  0.0006686 -0.0003533 *
+  7    k7            0.0003443   0.001043 -0.0003443 *
+  8    km5           0.0002521  0.0005201 -0.0002515 *
+  9    k8            0.0001983  0.0002858  0.0001168 *
+  10   km6           0.0001869  0.0003064  0.0001149 *
+  11   retef         0.0001861  0.0002718 -0.0001861 *
+  12   kp1           7.834e-05  0.0002112   3.23e-06 *
+  13   v19           7.191e-05  0.0002332  6.326e-05 *
+  14   k2            4.822e-05  0.0001907 -4.822e-05 *
+  15   k21           2.286e-05  7.239e-05  2.176e-06 *
+  16   kp3           2.069e-05  6.864e-05  2.019e-05 *
+  17   k20           1.854e-05  8.812e-05 -1.793e-05 *
+  18   wntef         1.592e-05  5.525e-05  -1.54e-05 *
+  19   k23           1.521e-05  4.903e-05  1.516e-05 *
+  20   k10           1.183e-05  5.067e-05  8.946e-06 *
+  21   km9           1.079e-05  4.996e-05 -9.931e-06 *
+  22   v18           1.071e-05  4.986e-05   1.02e-05 *
+  23   k22           6.147e-06   2.69e-05  -5.74e-06 *
+  24   km1           1.601e-06  1.788e-06  1.433e-06 *
+  25   v17           1.403e-06  4.075e-06 -9.947e-07 *
+  26   k15           9.948e-07  2.856e-06 -6.434e-07 *
+  27   km4           5.098e-07  9.434e-07  1.447e-07 *
+  28   kp9             3.8e-07  6.189e-07 -1.003e-08 *
+  29   kp4           3.395e-07  5.298e-07  1.245e-07 *
+  30   km3            2.42e-07  3.335e-07  2.659e-08 *
+
+  ── HOXA13 ──
+  Rank Parameter       mu_star      sigma         mu
+  1    MCsynth        1.87e-06  1.916e-06  1.127e-06 *
+  2    v16           1.433e-06   1.74e-06 -5.827e-07 *
+  3    kp5           8.887e-07  1.047e-06  5.393e-07 *
+  4    kp6           8.543e-07  9.547e-07  -6.95e-07 *
+  5    k14           8.327e-07  7.113e-07  8.312e-07 *
+  6    retef         6.652e-07  5.806e-07 -6.622e-07 *
+  7    km5           6.388e-07  7.791e-07 -4.604e-07 *
+  8    k8            5.362e-07  7.985e-07  1.255e-07 *
+  9    km6           4.457e-07  7.725e-07 -8.243e-08 *
+  10   k7            4.063e-07  4.749e-07 -3.838e-07 *
+  11   kp1           2.217e-07  4.027e-07 -1.666e-07 *
+  12   v19           1.525e-07  4.464e-07 -8.562e-08 *
+  13   wntef         1.336e-07  5.136e-07   7.39e-08 *
+  14   k2            1.007e-07  2.772e-07 -1.005e-07 *
+  15   v17           9.222e-08  4.218e-07 -8.521e-08 *
+  16   k22           8.457e-08  3.892e-07 -7.958e-08 *
+  17   gamma1        6.708e-08  1.815e-07 -6.124e-08 *
+  18   k21           6.288e-08  2.003e-07  7.035e-10 *
+  19   kp3           6.143e-08  1.895e-07  5.718e-08 *
+  20   k23           4.925e-08  1.287e-07  4.088e-08 *
+  21   km9           3.713e-08  1.289e-07 -3.007e-08 *
+  22   v18           3.451e-08  1.291e-07  2.362e-08 *
+  23   k20           3.222e-08  1.394e-07  3.158e-08 *
+  24   k10           3.201e-08   1.22e-07  2.732e-08 *
+  25   km1           1.645e-08  3.038e-08  1.093e-08 *
+  26   k15           6.939e-09  1.196e-08  1.865e-09 *
+  27   km3           4.334e-09  8.123e-09 -1.779e-09 *
+  28   kp9           4.252e-09  7.868e-09  1.148e-09 *
+  29   km4           3.395e-09  5.764e-09 -1.313e-09 *
+  30   kp4           3.091e-09  5.796e-09  1.364e-09 *
+
+  ── Bcat-TCF ──
+  Rank Parameter       mu_star      sigma         mu
+  1    gamma1           0.0014  0.0003437    -0.0014
+  2    MCsynth       0.0007079  0.0008038  0.0007079 *
+  3    v16           0.0006549  0.0006806 -0.0005256 *
+  4    k14           0.0004576  0.0004223  0.0004576 *
+  5    kp5           0.0004215  0.0005467  0.0003645 *
+  6    kp6           0.0003288   0.000405  -0.000313 *
+  7    k8            0.0002181  0.0002949  0.0001174 *
+  8    km5           0.0002022  0.0002732 -0.0002022 *
+  9    k7            0.0001898   0.000315 -0.0001898 *
+  10   km6           0.0001886  0.0002615  0.0001173 *
+  11   retef         0.0001796  0.0001542 -0.0001796 *
+  12   kp1            0.000114  0.0002841 -1.324e-05 *
+  13   v19            8.36e-05  0.0002717  6.902e-05 *
+  14   k2            6.676e-05   0.000243 -6.674e-05 *
+  15   k21           3.896e-05  0.0001332  1.007e-06 *
+  16   kp3            3.82e-05  0.0001276  3.772e-05 *
+  17   k23           2.578e-05  9.107e-05  2.577e-05 *
+  18   wntef         2.546e-05   9.61e-05 -2.498e-05 *
+  19   k10           2.076e-05  9.287e-05  1.735e-05 *
+  20   v18           1.956e-05  9.223e-05  1.877e-05 *
+  21   km9           1.934e-05  9.242e-05 -1.871e-05 *
+  22   k22           7.957e-06  3.536e-05 -7.459e-06 *
+  23   k20           7.662e-06   3.51e-05 -7.052e-06 *
+  24   km1            2.54e-06   3.26e-06  2.373e-06 *
+  25   v17           1.991e-06  6.107e-06  9.389e-07 *
+  26   k15           8.895e-07  2.013e-06  -2.58e-07 *
+  27   km4           4.705e-07  8.409e-07  6.557e-08 *
+  28   kp9           4.529e-07  7.223e-07  6.442e-08 *
+  29   kp4           3.335e-07  5.511e-07  1.115e-07 *
+  30   km3           3.286e-07  5.559e-07  3.102e-08 *
+
+  ── Stemness ──
+  Rank Parameter       mu_star      sigma         mu
+  1    MCsynth         0.04826    0.04346    0.04019 *
+  2    v16             0.04503    0.04019   -0.03323 *
+  3    k14             0.03044    0.02302    0.03044 *
+  4    kp5             0.02679    0.02742    0.02431 *
+  5    kp6             0.02288    0.02479   -0.01872 *
+  6    k8              0.01564    0.02066   0.005114 *
+  7    km5             0.01457    0.01666   -0.01218 *
+  8    km6             0.01391    0.01789   0.005347 *
+  9    kp1             0.01313    0.02894  -0.006657 *
+  10   retef           0.01264   0.008303   -0.01264 *
+  11   k7              0.01126    0.01324   -0.01126 *
+  12   gamma1         0.006679    0.02128  -0.006679 *
+  13   k21            0.006352    0.02224  5.676e-05 *
+  14   kp3             0.00633    0.02131   0.006298 *
+  15   v19            0.005045    0.01701    0.00128 *
+  16   k2             0.004704    0.01604  -0.004701 *
+  17   wntef          0.004154    0.01636  -0.002166 *
+  18   k23            0.003713    0.01529   0.003713 *
+  19   k10             0.00326    0.01542    0.00306 *
+  20   v18            0.003202     0.0154   0.003137 *
+  21   km9            0.003181    0.01542  -0.003142 *
+  22   k20            0.003172    0.01538   0.003152 *
+  23   k22            0.002066   0.009875  -0.002031 *
+  24   v17            0.001337   0.006252  -0.001304 *
+  25   km1           0.0002124  0.0002893  0.0002001 *
+  26   k15            6.68e-05  0.0001324 -5.966e-06 *
+  27   kp9           3.249e-05  4.989e-05  8.152e-06 *
+  28   km3            2.88e-05  5.103e-05   2.56e-06 *
+  29   km4           2.872e-05  5.435e-05  1.238e-06 *
+  30   kp4           2.408e-05  3.896e-05  8.295e-06 *
+  wrote /home/29/aidahxr/PINN-Research/SA-big/results/morris_all.csv
+  wrote /home/29/aidahxr/PINN-Research/SA-big/results/morris_overall_ranking.csv
+
+  saved Morris plots + CSVs
+
+[sobol] base sample M=32 (calc_second_order=False) ...
+  evaluating 1024 solves on 60 workers...
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:356: RuntimeWarning: overflow encountered in multiply
+  new_factor = NUM_JAC_FACTOR_INCREASE * factor[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:378: RuntimeWarning: overflow encountered in multiply
+  factor[max_diff < NUM_JAC_DIFF_SMALL * scale] *= NUM_JAC_FACTOR_INCREASE
+    64/1024 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    128/1024 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    192/1024 done
+    256/1024 done
+    320/1024 done
+    384/1024 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    448/1024 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    512/1024 done
+    576/1024 done
+    640/1024 done
+    704/1024 done
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:357: RuntimeWarning: overflow encountered in multiply
+  h_new = (y[ind] + new_factor * y_scale[ind]) - y[ind]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/common.py:326: RuntimeWarning: overflow encountered in multiply
+  h = (y + factor * y_scale) - y
+    768/1024 done
+    832/1024 done
+    896/1024 done
+    960/1024 done
+    1024/1024 done
+  note: 87/1024 solves failed -> imputed with column mean
+  wrote /home/29/aidahxr/PINN-Research/SA-big/results/sobol_all.csv
+  saved Sobol plots + CSV
+
+DONE. Figures -> sa_plots/ , numbers -> results/
