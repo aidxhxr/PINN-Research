@@ -1,0 +1,506 @@
+[
+  {
+    "param": "lambdaC",
+    "sensitivity": 12.113338053157477,
+    "sens_frac": 0.5555665629048795,
+    "recov_err_pct": 0.16629216640622793,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.1646557122836737,
+      "Early adenoma": 0.03894202664092409,
+      "Cancer-like": 0.2690129088853949,
+      "Strong APC-mutant": 0.19255801781491902
+    }
+  },
+  {
+    "param": "etaRC",
+    "sensitivity": 6.935453234477056,
+    "sens_frac": 0.31808787129998345,
+    "recov_err_pct": 6.060531341785228,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 5.531081492356874,
+      "Early adenoma": 1.26877929037,
+      "Cancer-like": 7.6450491439817485,
+      "Strong APC-mutant": 9.79721544043229
+    }
+  },
+  {
+    "param": "etaBC",
+    "sensitivity": 18.16964708036149,
+    "sens_frac": 0.8333333333333235,
+    "recov_err_pct": 8.026632093011296,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 4.518188523131558,
+      "Early adenoma": 3.829134965165378,
+      "Cancer-like": 6.592873226913583,
+      "Strong APC-mutant": 17.166331656834664
+    }
+  },
+  {
+    "param": "a5",
+    "sensitivity": 1.5059467291839568,
+    "sens_frac": 0.06906879380225776,
+    "recov_err_pct": 8.231457492624832,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.4476896395258131,
+      "Early adenoma": 11.259150044220272,
+      "Cancer-like": 14.609745363122856,
+      "Strong APC-mutant": 6.60924492363039
+    }
+  },
+  {
+    "param": "eps5",
+    "sensitivity": 0.10992910514915337,
+    "sens_frac": 0.005041792348476966,
+    "recov_err_pct": 10.891085483000694,
+    "identifiable": "MARGINAL",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 16.54470299850793,
+      "Early adenoma": 13.540293573540845,
+      "Cancer-like": 7.335113463957931,
+      "Strong APC-mutant": 6.144231895996074
+    }
+  },
+  {
+    "param": "kappaBC",
+    "sensitivity": 6.199337026235511,
+    "sens_frac": 0.2843266116111459,
+    "recov_err_pct": 14.63121971077395,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 21.831874474944136,
+      "Early adenoma": 15.68965909199962,
+      "Cancer-like": 0.8866632970218724,
+      "Strong APC-mutant": 20.11668197913017
+    }
+  },
+  {
+    "param": "eps13",
+    "sensitivity": 0.11377114905687553,
+    "sens_frac": 0.005218003985515069,
+    "recov_err_pct": 20.653384591394524,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 29.69055871705173,
+      "Early adenoma": 25.7783168853716,
+      "Cancer-like": 18.673839816951144,
+      "Strong APC-mutant": 8.470822946203626
+    }
+  },
+  {
+    "param": "kappa13",
+    "sensitivity": 2.110116535330291,
+    "sens_frac": 0.09677845906039308,
+    "recov_err_pct": 21.07796268163224,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 6.200287642495825,
+      "Early adenoma": 16.68578415037542,
+      "Cancer-like": 25.78030156392459,
+      "Strong APC-mutant": 35.64547736973313
+    }
+  },
+  {
+    "param": "etaB13",
+    "sensitivity": 9.205954520716505,
+    "sens_frac": 0.422222222222218,
+    "recov_err_pct": 24.820168628063684,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 5.09000933034955,
+      "Early adenoma": 24.148586575672805,
+      "Cancer-like": 21.716559330632663,
+      "Strong APC-mutant": 48.32551927559971
+    }
+  },
+  {
+    "param": "etaM13",
+    "sensitivity": 5.659886376735144,
+    "sens_frac": 0.25958522803177786,
+    "recov_err_pct": 26.02308494289486,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 20.504299802769594,
+      "Early adenoma": 25.217886172124775,
+      "Cancer-like": 38.39689337959859,
+      "Strong APC-mutant": 19.973260417086497
+    }
+  },
+  {
+    "param": "rho5",
+    "sensitivity": 1.2753353185973266,
+    "sens_frac": 0.05849202394872725,
+    "recov_err_pct": 26.51248294923487,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 42.28553489011057,
+      "Early adenoma": 35.41837178348437,
+      "Cancer-like": 11.160474514620624,
+      "Strong APC-mutant": 17.18555060872391
+    }
+  },
+  {
+    "param": "kappaBM",
+    "sensitivity": 7.439204431482615,
+    "sens_frac": 0.34119193393337516,
+    "recov_err_pct": 26.843256649823516,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 24.628736306004928,
+      "Early adenoma": 26.8197836835639,
+      "Cancer-like": 24.04461095347541,
+      "Strong APC-mutant": 31.879895656249822
+    }
+  },
+  {
+    "param": "kappaB13",
+    "sensitivity": 3.1409974266259937,
+    "sens_frac": 0.1440588165496473,
+    "recov_err_pct": 28.011296474154666,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 33.462524804117486,
+      "Early adenoma": 55.08545604638779,
+      "Cancer-like": 10.181307901910785,
+      "Strong APC-mutant": 13.315897144202605
+    }
+  },
+  {
+    "param": "etaBM",
+    "sensitivity": 21.803576496434044,
+    "sens_frac": 1.0,
+    "recov_err_pct": 29.362685555051407,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 1.4840743016299431,
+      "Early adenoma": 22.263757931084555,
+      "Cancer-like": 42.295274287504995,
+      "Strong APC-mutant": 51.40763569998613
+    }
+  },
+  {
+    "param": "deltaP1",
+    "sensitivity": 1.6738677303176301,
+    "sens_frac": 0.07677032850970068,
+    "recov_err_pct": 32.19339319807321,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 3.960842608484975,
+      "Early adenoma": 43.465813863388426,
+      "Cancer-like": 55.737282809667995,
+      "Strong APC-mutant": 25.60963351075146
+    }
+  },
+  {
+    "param": "kappaRC",
+    "sensitivity": 4.460981551894562,
+    "sens_frac": 0.2045986149393496,
+    "recov_err_pct": 37.11519467310439,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 29.175371743057156,
+      "Early adenoma": 36.8276180014026,
+      "Cancer-like": 40.463735848417535,
+      "Strong APC-mutant": 41.994053099540274
+    }
+  },
+  {
+    "param": "epsC",
+    "sensitivity": 0.21127154660389338,
+    "sens_frac": 0.009689765650990638,
+    "recov_err_pct": 38.67256025910654,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 86.47991116240038,
+      "Early adenoma": 30.840169526361954,
+      "Cancer-like": 21.52307652235623,
+      "Strong APC-mutant": 15.84708382530757
+    }
+  },
+  {
+    "param": "etaR",
+    "sensitivity": 8.854616684920769,
+    "sens_frac": 0.40610845135287477,
+    "recov_err_pct": 48.718800392140615,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 42.93024877316124,
+      "Early adenoma": 52.24631429608829,
+      "Cancer-like": 53.556136261295016,
+      "Strong APC-mutant": 46.1425022380179
+    }
+  },
+  {
+    "param": "rho13",
+    "sensitivity": 1.8771584218596242,
+    "sens_frac": 0.08609405994317638,
+    "recov_err_pct": 49.04032188524035,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 73.68002242809891,
+      "Early adenoma": 60.726853849591976,
+      "Cancer-like": 58.64769941038628,
+      "Strong APC-mutant": 3.1067118528842474
+    }
+  },
+  {
+    "param": "lambda5",
+    "sensitivity": 3.948611236943106,
+    "sens_frac": 0.18109924477706207,
+    "recov_err_pct": 49.192263687095995,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 19.422936540120038,
+      "Early adenoma": 25.421440742244616,
+      "Cancer-like": 70.11302962161706,
+      "Strong APC-mutant": 81.81164784440227
+    }
+  },
+  {
+    "param": "epsM",
+    "sensitivity": 0.10192671387781364,
+    "sens_frac": 0.004674770393494098,
+    "recov_err_pct": 50.791007603404395,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 53.917594924779344,
+      "Early adenoma": 57.29865968185327,
+      "Cancer-like": 47.06957417452542,
+      "Strong APC-mutant": 44.87820163245952
+    }
+  },
+  {
+    "param": "kappaR",
+    "sensitivity": 5.327833834556706,
+    "sens_frac": 0.24435595854781295,
+    "recov_err_pct": 51.70180069667338,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 80.51410647323742,
+      "Early adenoma": 46.07064600972405,
+      "Cancer-like": 43.934083953438176,
+      "Strong APC-mutant": 36.28836635029386
+    }
+  },
+  {
+    "param": "W",
+    "sensitivity": 15.446015076495682,
+    "sens_frac": 0.7084165792259753,
+    "recov_err_pct": 51.949455553615124,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 16.411636209890208,
+      "Early adenoma": 43.9459547609809,
+      "Cancer-like": 65.48644818564819,
+      "Strong APC-mutant": 81.9537830579412
+    }
+  },
+  {
+    "param": "lambdaP",
+    "sensitivity": 3.9205677291905325,
+    "sens_frac": 0.17981305635026154,
+    "recov_err_pct": 61.040484635458,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 45.07590311166222,
+      "Early adenoma": 73.76622498889881,
+      "Cancer-like": 66.55252711591866,
+      "Strong APC-mutant": 58.7672833253523
+    }
+  },
+  {
+    "param": "thetaP",
+    "sensitivity": 7.719466232559863,
+    "sens_frac": 0.354045871044247,
+    "recov_err_pct": 68.50985697426142,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 30.671370069252347,
+      "Early adenoma": 1.5295053669252359,
+      "Cancer-like": 56.75044915093819,
+      "Strong APC-mutant": 185.08810330992995
+    }
+  },
+  {
+    "param": "kappaM13",
+    "sensitivity": 1.593175448821258,
+    "sens_frac": 0.07306945487048055,
+    "recov_err_pct": 80.80557307523205,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 13.050044044661524,
+      "Early adenoma": 37.87574598004224,
+      "Cancer-like": 64.68564516441782,
+      "Strong APC-mutant": 207.61085711180658
+    }
+  },
+  {
+    "param": "epsP",
+    "sensitivity": 0.12871324171178108,
+    "sens_frac": 0.005903308649057279,
+    "recov_err_pct": 84.9893990467258,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 281.06845873853035,
+      "Early adenoma": 20.544192507663837,
+      "Cancer-like": 29.09548883586497,
+      "Strong APC-mutant": 9.24945610484398
+    }
+  },
+  {
+    "param": "etaM",
+    "sensitivity": 6.626189970242817,
+    "sens_frac": 0.3039038100619192,
+    "recov_err_pct": 87.38287756841245,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 89.0126538729541,
+      "Early adenoma": 89.7627090328383,
+      "Cancer-like": 89.88856705866951,
+      "Strong APC-mutant": 80.86758030918794
+    }
+  },
+  {
+    "param": "eta13",
+    "sensitivity": 7.7662349936616195,
+    "sens_frac": 0.35619087514985354,
+    "recov_err_pct": 92.18861280269479,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 7.9232884567863,
+      "Early adenoma": 33.359461366711834,
+      "Cancer-like": 118.02003032558828,
+      "Strong APC-mutant": 209.4516710616928
+    }
+  },
+  {
+    "param": "kappaM",
+    "sensitivity": 1.9349515077366481,
+    "sens_frac": 0.08874468406837327,
+    "recov_err_pct": 98.50951306864509,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 97.48268780591492,
+      "Early adenoma": 98.28796565362418,
+      "Cancer-like": 99.1736914207055,
+      "Strong APC-mutant": 99.09370739433574
+    }
+  },
+  {
+    "param": "kappa5",
+    "sensitivity": 1.2247229071810697,
+    "sens_frac": 0.05617073452978561,
+    "recov_err_pct": 132.10009787857604,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 11.629322833806043,
+      "Early adenoma": 31.639284890280873,
+      "Cancer-like": 181.8218165147786,
+      "Strong APC-mutant": 303.3099672754386
+    }
+  },
+  {
+    "param": "epsR",
+    "sensitivity": 0.15946964029912916,
+    "sens_frac": 0.0073139211966078265,
+    "recov_err_pct": 163.58273774076557,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 228.53501565489594,
+      "Early adenoma": 177.48214742400882,
+      "Cancer-like": 128.67565205785624,
+      "Strong APC-mutant": 119.63813582630118
+    }
+  },
+  {
+    "param": "aC",
+    "sensitivity": 1.2047573833471594,
+    "sens_frac": 0.055255035041805935,
+    "recov_err_pct": 166.21535740321187,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 6.985801670351746,
+      "Early adenoma": 47.99325183326977,
+      "Cancer-like": 195.65129897936086,
+      "Strong APC-mutant": 414.23107712986507
+    }
+  },
+  {
+    "param": "a13",
+    "sensitivity": 2.168563290024906,
+    "sens_frac": 0.09945906307525157,
+    "recov_err_pct": 183.93595901938727,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 119.96752283325537,
+      "Early adenoma": 74.60210706544204,
+      "Cancer-like": 196.72325437292992,
+      "Strong APC-mutant": 344.45095180592176
+    }
+  },
+  {
+    "param": "rhoB",
+    "sensitivity": 1.252386665389873,
+    "sens_frac": 0.057439506110142056,
+    "recov_err_pct": 195.57240547108782,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 52.694448532764405,
+      "Early adenoma": 48.71122371794569,
+      "Cancer-like": 359.7988506283867,
+      "Strong APC-mutant": 321.0850990052545
+    }
+  },
+  {
+    "param": "aM",
+    "sensitivity": 3.6142721500415607,
+    "sens_frac": 0.16576510512542159,
+    "recov_err_pct": 238.05363074222907,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 84.24896780450842,
+      "Early adenoma": 183.76628456394266,
+      "Cancer-like": 306.17755208399313,
+      "Strong APC-mutant": 378.021718516472
+    }
+  }
+]
