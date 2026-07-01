@@ -1,0 +1,14 @@
+Info: module 'multiprocessing_on_dill' is not installed.
+Parameter estimation of kinetic models with PySCeS using the CVODE solver won't work!
+
+====================================================================
+Profile-likelihood identifiability — regime=Normal, 36 params, 6 conditions, points=7, prob=0.95
+identifiability pkg: /home/29/aidahxr/.local/lib/python3.12/site-packages/identifiability/__init__.py
+====================================================================
+MLE start loaded from /home/29/aidahxr/PINN-Research/PINN-inverse-multicond/runs/20260630_032142_odefit/Normal_odefit_recovered.json
+[114s] MLE fit: nfev=449, chisqr=2.6965e-02, redchi=4.3048e-06, nfree=6264
+Profiling all parameters (parallel across cores)...
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/lsoda.py:161: UserWarning: lsoda: Repeated convergence failures (perhaps bad Jacobian or tolerances).
+  solver._y, solver.t = integrator.run(
+/home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/lsoda.py:161: UserWarning: lsoda: Repeated convergence failures (perhaps bad Jacobian or tolerances).
+  solver._y, solver.t = integrator.run(
