@@ -4,3 +4,6 @@ PINN-inverse-solve/inverse_pinn_architecture.png
 __pycache__/
 *.aux
 PINN-inverse-better/architecture.log
+
+# Local agent working notes (see CLAUDE.md session log index)
+notes/
