@@ -1,0 +1,65 @@
+============================================================
+Inverse PINN (multicond-better) — recover 36 parameters
+  smaller weight-decayed nets + alternating two-timescale opt
+  6 experimental conditions: ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc']
+Device : cuda
+GPU    : NVIDIA RTX PRO 6000 Blackwell Server Edition
+VRAM   : 102.0 GB
+Threads: 48
+============================================================
+
+[1/3] Reference trajectories (scipy Radau, per condition) ...
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Early adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Cancer-like          ctrl       t=[0, 150]  shape=(5000, 7)
+  Cancer-like          noATRA     t=[0, 150]  shape=(5000, 7)
+  Cancer-like          earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lateATRA   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lowATRA    t=[0, 150]  shape=(5000, 7)
+  Cancer-like          strongCirc t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    ctrl       t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    noATRA     t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lateATRA   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lowATRA    t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    strongCirc t=[0, 150]  shape=(5000, 7)
+
+[2/3] Inverse training (shared params over conditions) ...
+
+── Normal ──
+  arch 3×128  net params 38,279 × 6 cond  unknowns 36
+  conditions ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc']
+  init guess W=1.2 thetaP=0.6 (+50% on the rest)  |  true W=0.8 thetaP=1.0
+    Adam     1/2500  L=8.24e+00  Ld=8.31e-01  Lp=6.36e-01  Lic=3.38e-01  λp=1.02  | W=1.200(*0.80)  thetaP=0.600(*1.00)  <rel.err>=50%  [1s]
+    Adam   100/2500  L=1.56e-01  Ld=1.20e-01  Lp=3.50e-02  Lic=3.62e-05  λp=1.02  | W=0.959(*0.80)  thetaP=0.675(*1.00)  <rel.err>=55%  [31s]
+    Adam   200/2500  L=6.25e-03  Ld=3.16e-03  Lp=3.04e-03  Lic=3.52e-07  λp=1.02  | W=0.968(*0.80)  thetaP=0.694(*1.00)  <rel.err>=56%  [63s]
+    Adam   300/2500  L=2.89e-03  Ld=1.19e-03  Lp=1.65e-03  Lic=1.44e-07  λp=1.02  | W=0.970(*0.80)  thetaP=0.703(*1.00)  <rel.err>=56%  [94s]
+    Adam   400/2500  L=1.96e-03  Ld=7.13e-04  Lp=1.22e-03  Lic=9.49e-08  λp=1.02  | W=0.971(*0.80)  thetaP=0.707(*1.00)  <rel.err>=55%  [126s]
+    Adam   500/2500  L=1.49e-03  Ld=5.42e-04  Lp=9.08e-04  Lic=7.29e-08  λp=1.04  | W=0.971(*0.80)  thetaP=0.708(*1.00)  <rel.err>=54%  [158s]
+    Adam   600/2500  L=1.26e-03  Ld=4.65e-04  Lp=7.67e-04  Lic=5.97e-08  λp=1.04  | W=0.971(*0.80)  thetaP=0.709(*1.00)  <rel.err>=53%  [189s]
+    Adam   700/2500  L=1.12e-03  Ld=4.25e-04  Lp=6.52e-04  Lic=5.04e-08  λp=1.06  | W=0.971(*0.80)  thetaP=0.710(*1.00)  <rel.err>=53%  [221s]
+    Adam   800/2500  L=1.05e-03  Ld=3.99e-04  Lp=6.08e-04  Lic=2.19e-07  λp=1.06  | W=0.970(*0.80)  thetaP=0.711(*1.00)  <rel.err>=53%  [252s]
+    Adam   900/2500  L=9.75e-04  Ld=3.80e-04  Lp=5.49e-04  Lic=7.05e-08  λp=1.08  | W=0.970(*0.80)  thetaP=0.711(*1.00)  <rel.err>=52%  [284s]
+    Adam  1000/2500  L=9.10e-04  Ld=3.66e-04  Lp=5.01e-04  Lic=1.50e-07  λp=1.08  | W=0.970(*0.80)  thetaP=0.712(*1.00)  <rel.err>=52%  [316s]
+    Adam  1100/2500  L=8.63e-04  Ld=3.56e-04  Lp=4.58e-04  Lic=4.11e-08  λp=1.11  | W=0.969(*0.80)  thetaP=0.712(*1.00)  <rel.err>=52%  [347s]
+    Adam  1200/2500  L=8.40e-04  Ld=3.46e-04  Lp=4.46e-04  Lic=3.93e-08  λp=1.11  | W=0.968(*0.80)  thetaP=0.712(*1.00)  <rel.err>=52%  [379s]
+    Adam  1300/2500  L=8.25e-04  Ld=3.39e-04  Lp=4.30e-04  Lic=3.94e-08  λp=1.13  | W=0.968(*0.80)  thetaP=0.712(*1.00)  <rel.err>=52%  [410s]
+    Adam  1400/2500  L=8.01e-04  Ld=3.33e-04  Lp=4.15e-04  Lic=3.60e-08  λp=1.13  | W=0.967(*0.80)  thetaP=0.713(*1.00)  <rel.err>=51%  [441s]
+    Adam  1500/2500  L=7.93e-04  Ld=3.29e-04  Lp=4.03e-04  Lic=3.70e-08  λp=1.15  | W=0.967(*0.80)  thetaP=0.713(*1.00)  <rel.err>=51%  [473s]
+    Adam  1600/2500  L=7.77e-04  Ld=3.24e-04  Lp=3.92e-04  Lic=3.66e-08  λp=1.15  | W=0.966(*0.80)  thetaP=0.713(*1.00)  <rel.err>=51%  [504s]
+    Adam  1700/2500  L=7.61e-04  Ld=3.22e-04  Lp=3.73e-04  Lic=3.73e-08  λp=1.18  | W=0.966(*0.80)  thetaP=0.713(*1.00)  <rel.err>=51%  [536s]
+    Adam  1800/2500  L=7.56e-04  Ld=3.19e-04  Lp=3.71e-04  Lic=3.64e-08  λp=1.18  | W=0.965(*0.80)  thetaP=0.713(*1.00)  <rel.err>=50%  [568s]
+    Adam  1900/2500  L=7.44e-04  Ld=3.17e-04  Lp=3.53e-04  Lic=3.57e-08  λp=1.21  | W=0.964(*0.80)  thetaP=0.713(*1.00)  <rel.err>=50%  [600s]
+    Adam  2000/2500  L=7.54e-04  Ld=3.15e-04  Lp=3.62e-04  Lic=3.47e-08  λp=1.21  | W=0.964(*0.80)  thetaP=0.713(*1.00)  <rel.err>=50%  [632s]
+    Adam  2100/2500  L=7.45e-04  Ld=3.14e-04  Lp=3.48e-04  Lic=3.37e-08  λp=1.24  | W=0.963(*0.80)  thetaP=0.713(*1.00)  <rel.err>=50%  [665s]
+    Adam  2200/2500  L=7.42e-04  Ld=3.13e-04  Lp=3.46e-04  Lic=3.40e-08  λp=1.24  | W=0.963(*0.80)  thetaP=0.713(*1.00)  <rel.err>=50%  [697s]
