@@ -12,3 +12,48 @@ Profiling all parameters (parallel across cores)...
   solver._y, solver.t = integrator.run(
 /home/29/aidahxr/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/lsoda.py:161: UserWarning: lsoda: Repeated convergence failures (perhaps bad Jacobian or tolerances).
   solver._y, solver.t = integrator.run(
+[2122s] profiling done
+
+param            mle      true    ci_low   ci_high   rel_w  verdict
+--------------------------------------------------------------------
+eps13           1.02         1     0.978      1.03    0.05  IDENT
+lambdaC         0.85      0.85      0.85     0.926    0.09  IDENT
+kappaRC        0.487       0.5     0.448     0.517    0.14  IDENT
+epsM           0.611       0.6     0.551     0.667    0.19  IDENT
+epsC           0.817       0.8     0.704     0.863    0.19  IDENT
+epsR           0.443       0.4     0.354     0.445    0.21  IDENT
+etaBC            1.5       1.5      1.49      1.91    0.28  IDENT
+epsP            1.24         1      1.22      1.61    0.31  IDENT
+kappaR         0.432       0.4      0.26     0.432    0.40  IDENT
+etaM            5.94       2.5      4.35       6.8    0.41  IDENT
+a5             0.375      0.15     0.242     0.433    0.51  WEAK
+rho5            1.34       1.1      0.47      1.34    0.65  WEAK
+kappaM         0.281       0.5     0.281      0.48    0.71  WEAK
+kappa5         0.904       0.5     0.269     0.917    0.72  WEAK
+lambda5         1.93       1.3     0.711      2.53    0.94  WEAK
+kappaBM        0.505       0.5      0.35     0.844    0.98  WEAK
+rho13           1.42       1.3     0.499      1.94    1.01  WEAK
+eps5            2.68       1.2      1.05      4.26    1.20  WEAK
+kappa13        0.589      0.55     0.208     0.955    1.27  WEAK
+kappaBC        0.517       0.5     0.183     0.858    1.31  WEAK
+thetaP         0.834         1     0.285      1.43    1.37  WEAK
+rhoB            0.37       1.1    0.0933      0.69    1.61  WEAK
+etaRC            1.5       1.5      1.28      4.35    2.04  WEAK
+aM             0.189      0.18     0.121     0.524    2.13  WEAK
+etaR            5.36       2.5      3.14      15.7    2.34  WEAK
+kappaB13       0.439       0.5     0.246      1.29    2.37  WEAK
+a13            0.234      0.18    0.0837     0.676    2.53  WEAK
+lambdaP         1.59       1.6     0.544      4.63    2.56  WEAK
+etaM13         0.435      0.55     0.108      1.27    2.67  WEAK
+eta13          0.823      0.75     0.649      4.03    4.10  WEAK
+etaBM           1.34      1.35     0.981       6.7    4.25  WEAK
+W              0.782       0.8     0.486       3.9    4.37  WEAK
+deltaP1          1.1       3.5     bound     bound     inf  NON-IDENT
+etaB13         0.995      0.95      0.34     bound     inf  NON-IDENT
+kappaM13        0.67       0.5     bound      3.28     inf  NON-IDENT
+aC            0.0941      0.08     bound     0.146     inf  NON-IDENT
+--------------------------------------------------------------------
+IDENT (tight CI): 10   WEAK (wide CI): 22   NON-IDENT (unbounded): 4   / 36
+profile_likelihood.png written
+
+Wrote Normal_profile_ci.csv / .json into runs/20260701_053210_ident
