@@ -1,7 +1,3 @@
-[queue] waiting for runs/20260702_160102_integral/summary.txt ...
-[queue] prior run finished; starting queue
-[queue] === running variant: plumb ===
-[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/refs.pkl
   Normal               ctrl       t=[0, 150]  shape=(5000, 7)
   Normal               noATRA     t=[0, 150]  shape=(5000, 7)
   Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
@@ -43,8 +39,3 @@
   Strong APC-mutant    mycPulse   t=[0, 150]  shape=(5000, 7)
   Strong APC-mutant    wntRAcombo t=[0, 150]  shape=(5000, 7)
 wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/refs.pkl
-[run] variant=plumb starts=2  4 regimes in parallel
-  launched Normal (pid 249327) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Normal.log
-  launched Early adenoma (pid 249328) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Early_adenoma.log
-  launched Cancer-like (pid 249329) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Cancer-like.log
-  launched Strong APC-mutant (pid 249330) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Strong_APC-mutant.log

@@ -1,0 +1,9 @@
+=== regime=Normal  variant=plumb  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'deriv', 'activation': 'gelu', 'n_starts': 2} ===
+  [Norm#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=deriv
+    [Norm#0] Adam     1/2000  L=9.10e+00  Ld=5.41e-01  Lp=9.75e-01  Lic=3.81e-01  lp=0.95 | W=1.194(*0.80)  thetaP=0.599(*1.00)  <rel.err>=50% [9s]
+    [Norm#0] Adam   200/2000  L=8.02e-03  Ld=4.01e-03  Lp=4.28e-03  Lic=5.78e-07  lp=0.94 | W=0.992(*0.80)  thetaP=0.689(*1.00)  <rel.err>=55% [885s]
+    [Norm#0] Adam   400/2000  L=1.81e-03  Ld=6.62e-04  Lp=1.24e-03  Lic=8.53e-08  lp=0.92 | W=0.995(*0.80)  thetaP=0.704(*1.00)  <rel.err>=52% [1766s]
+    [Norm#0] Adam   600/2000  L=1.06e-03  Ld=3.75e-04  Lp=7.42e-04  Lic=4.01e-08  lp=0.92 | W=0.995(*0.80)  thetaP=0.708(*1.00)  <rel.err>=50% [2649s]
+    [Norm#0] Adam   800/2000  L=8.13e-04  Ld=2.99e-04  Lp=5.57e-04  Lic=1.97e-08  lp=0.92 | W=0.993(*0.80)  thetaP=0.710(*1.00)  <rel.err>=49% [3532s]
+    [Norm#0] Adam  1000/2000  L=6.83e-04  Ld=2.55e-04  Lp=4.62e-04  Lic=1.47e-08  lp=0.93 | W=0.991(*0.80)  thetaP=0.711(*1.00)  <rel.err>=48% [4413s]
+    [Norm#0] Adam  1200/2000  L=6.04e-04  Ld=2.27e-04  Lp=4.05e-04  Lic=1.20e-08  lp=0.93 | W=0.989(*0.80)  thetaP=0.712(*1.00)  <rel.err>=48% [5295s]
