@@ -1,0 +1,9 @@
+=== regime=Early adenoma  variant=plumb  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'deriv', 'activation': 'gelu', 'n_starts': 2} ===
+  [Earl#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=deriv
+    [Earl#0] Adam     1/2000  L=9.41e+00  Ld=5.42e-01  Lp=9.03e-01  Lic=4.00e-01  lp=0.95 | W=1.194(*1.00)  thetaP=0.599(*0.75)  <rel.err>=48% [9s]
+    [Earl#0] Adam   200/2000  L=8.74e-03  Ld=4.89e-03  Lp=4.11e-03  Lic=6.96e-07  lp=0.93 | W=0.982(*1.00)  thetaP=0.672(*0.75)  <rel.err>=54% [885s]
+    [Earl#0] Adam   400/2000  L=1.97e-03  Ld=8.13e-04  Lp=1.14e-03  Lic=5.26e-06  lp=0.92 | W=0.984(*1.00)  thetaP=0.673(*0.75)  <rel.err>=48% [1765s]
+    [Earl#0] Adam   600/2000  L=9.08e-04  Ld=3.24e-04  Lp=6.20e-04  Lic=1.21e-06  lp=0.90 | W=0.984(*1.00)  thetaP=0.672(*0.75)  <rel.err>=44% [2648s]
+    [Earl#0] Adam   800/2000  L=6.35e-04  Ld=2.24e-04  Lp=4.56e-04  Lic=9.64e-09  lp=0.90 | W=0.984(*1.00)  thetaP=0.671(*0.75)  <rel.err>=43% [3530s]
+    [Earl#0] Adam  1000/2000  L=5.26e-04  Ld=1.83e-04  Lp=3.81e-04  Lic=6.94e-09  lp=0.90 | W=0.984(*1.00)  thetaP=0.671(*0.75)  <rel.err>=41% [4411s]
+    [Earl#0] Adam  1200/2000  L=4.63e-04  Ld=1.60e-04  Lp=3.37e-04  Lic=5.69e-09  lp=0.90 | W=0.983(*1.00)  thetaP=0.670(*0.75)  <rel.err>=40% [5292s]

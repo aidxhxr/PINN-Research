@@ -1,0 +1,9 @@
+=== regime=Cancer-like  variant=plumb  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'deriv', 'activation': 'gelu', 'n_starts': 2} ===
+  [Canc#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=deriv
+    [Canc#0] Adam     1/2000  L=9.68e+00  Ld=5.63e-01  Lp=9.22e-01  Lic=4.12e-01  lp=0.95 | W=1.194(*1.50)  thetaP=0.599(*0.50)  <rel.err>=48% [9s]
+    [Canc#0] Adam   200/2000  L=1.01e-02  Ld=5.95e-03  Lp=4.42e-03  Lic=8.23e-07  lp=0.94 | W=1.004(*1.50)  thetaP=0.670(*0.50)  <rel.err>=57% [886s]
+    [Canc#0] Adam   400/2000  L=2.36e-03  Ld=1.16e-03  Lp=1.21e-03  Lic=3.96e-06  lp=0.93 | W=1.004(*1.50)  thetaP=0.668(*0.50)  <rel.err>=52% [1767s]
+    [Canc#0] Adam   600/2000  L=1.11e-03  Ld=4.36e-04  Lp=6.82e-04  Lic=1.78e-06  lp=0.93 | W=1.003(*1.50)  thetaP=0.665(*0.50)  <rel.err>=48% [2651s]
+    [Canc#0] Adam   800/2000  L=7.29e-04  Ld=2.76e-04  Lp=4.87e-04  Lic=8.86e-09  lp=0.93 | W=1.003(*1.50)  thetaP=0.662(*0.50)  <rel.err>=45% [3534s]
+    [Canc#0] Adam  1000/2000  L=5.75e-04  Ld=2.16e-04  Lp=3.86e-04  Lic=6.14e-09  lp=0.93 | W=1.003(*1.50)  thetaP=0.660(*0.50)  <rel.err>=44% [4416s]
+    [Canc#0] Adam  1200/2000  L=4.88e-04  Ld=1.85e-04  Lp=3.26e-04  Lic=4.99e-09  lp=0.93 | W=1.003(*1.50)  thetaP=0.658(*0.50)  <rel.err>=44% [5299s]
