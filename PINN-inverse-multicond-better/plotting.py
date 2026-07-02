@@ -163,14 +163,21 @@ def plot_param_error(all_hist, true_params):
 
 
 def plot_losses(all_hist):
+    """log10(loss) on a LINEAR y-axis (tick labels read -1, -2, -3 ...),
+    rather than the raw loss on a log-scaled axis. Same information, but the
+    ordinate is literally log(loss) as requested."""
+    def _log10(x):
+        # guard against zeros/negatives in the recorded losses
+        return np.log10(np.clip(np.asarray(x, dtype=float), 1e-300, None))
+
     n = len(all_hist)
     fig, axes = plt.subplots(1, n, figsize=(5*n, 4), squeeze=False)
     for ax, (name, h) in zip(axes[0], all_hist.items()):
-        ax.semilogy(h["epoch"], h["loss"], "k-",  label="total")
-        ax.semilogy(h["epoch"], h["Ld"],   "b--", label="data")
-        ax.semilogy(h["epoch"], h["Lp"],   "r--", label="physics")
-        ax.semilogy(h["epoch"], h["Lic"],  "g--", label="IC")
-        ax.set_xlabel("Iteration"); ax.set_ylabel("Loss")
+        ax.plot(h["epoch"], _log10(h["loss"]), "k-",  label="total")
+        ax.plot(h["epoch"], _log10(h["Ld"]),   "b--", label="data")
+        ax.plot(h["epoch"], _log10(h["Lp"]),   "r--", label="physics")
+        ax.plot(h["epoch"], _log10(h["Lic"]),  "g--", label="IC")
+        ax.set_xlabel("Iteration"); ax.set_ylabel("log10(loss)")
         ax.set_title(name); ax.legend(fontsize=7); ax.grid(True, alpha=0.3)
     fig.tight_layout(); fig.savefig("inv_losses.png", dpi=150)
     plt.close(fig)
@@ -346,3 +353,29 @@ def report_identifiability(recovered, true_params, sens, out_dir="."):
     print(f"wrote {os.path.join(out_dir, 'identifiability.csv')} "
           f"and identifiability.json")
     return rows
+
+
+def _load_histories(run_dir):
+    """Reload {safe}_history.json for every regime from a finished run dir."""
+    all_hist = {}
+    for name in REGIMES:
+        safe = name.replace(" ", "_").replace("/", "_")
+        path = os.path.join(run_dir, f"{safe}_history.json")
+        with open(path) as fh:
+            all_hist[name] = json.load(fh)
+    return all_hist
+
+
+if __name__ == "__main__":
+    # Re-plot the loss curves from a saved run WITHOUT retraining, e.g.:
+    #   python3 plotting.py runs/20260701_052831
+    import sys
+    run_dir = sys.argv[1] if len(sys.argv) > 1 else "."
+    all_hist = _load_histories(run_dir)
+    cwd = os.getcwd()
+    os.chdir(run_dir)                 # savefig uses relative paths
+    try:
+        plot_losses(all_hist)        # writes inv_losses.png (log10 y-axis)
+    finally:
+        os.chdir(cwd)
+    print(f"wrote {os.path.join(run_dir, 'inv_losses.png')}")
