@@ -43,3 +43,21 @@
     [Earl#1] Adam  1800/2000  L=2.03e-04  Ld=1.98e-04  Lp=2.76e-07  Lic=2.14e-09  lp=15.64 | W=1.207(*1.00)  thetaP=0.521(*0.75)  <rel.err>=47% [1238s]
     [Earl#1] Adam  2000/2000  L=2.02e-04  Ld=1.98e-04  Lp=2.69e-07  Lic=2.13e-09  lp=16.09 | W=1.200(*1.00)  thetaP=0.521(*0.75)  <rel.err>=47% [1376s]
     [Earl#1] L-BFGS (150) ...
+    [Earl#1] LBFGS   50/150  L=7.48e-05 | W=1.044(*1.00)  thetaP=0.516(*0.75)  <rel.err>=48% [1864s]
+    [Earl#1] LBFGS  100/150  L=3.60e-05 | W=0.842(*1.00)  thetaP=0.526(*0.75)  <rel.err>=27% [2339s]
+    [Earl#1] LBFGS  150/150  L=2.36e-05 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2811s]
+    [Earl#1] param-refine (600, frozen, integral) ...
+    [Earl#1] refine   50/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2814s]
+    [Earl#1] refine  100/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2818s]
+    [Earl#1] refine  150/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2821s]
+    [Earl#1] refine  200/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2824s]
+    [Earl#1] refine  250/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2828s]
+    [Earl#1] refine  300/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2831s]
+    [Earl#1] refine  350/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2834s]
+    [Earl#1] refine  400/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2838s]
+    [Earl#1] refine  450/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2842s]
+    [Earl#1] refine  500/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2845s]
+    [Earl#1] refine  550/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2849s]
+    [Earl#1] refine  600/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [2853s]
+  [Earl#1] done  under10%=17/36  phys=2.82e-08  W=0.810 thetaP=0.540  (2853s)
+  >> Early adenoma start 1: under10%=17/36 phys=2.82e-08  (best so far under10%=16/36 phys=2.41e-08)
