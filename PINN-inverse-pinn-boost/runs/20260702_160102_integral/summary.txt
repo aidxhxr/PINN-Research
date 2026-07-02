@@ -1,0 +1,8 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_160102_integral
+regime                under10%  baseline  delta
+Normal                      17        10     +7
+Early adenoma               16         4    +12
+Cancer-like                 10         5     +5
+Strong APC-mutant            7         7     +0
+TOTAL                       50        26    +24

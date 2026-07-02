@@ -43,3 +43,21 @@
     [Stro#1] Adam  1800/2000  L=2.17e-04  Ld=2.11e-04  Lp=3.51e-07  Lic=1.30e-09  lp=15.84 | W=1.558(*2.00)  thetaP=0.489(*0.25)  <rel.err>=51% [1239s]
     [Stro#1] Adam  2000/2000  L=2.16e-04  Ld=2.10e-04  Lp=3.41e-07  Lic=1.29e-09  lp=16.16 | W=1.559(*2.00)  thetaP=0.488(*0.25)  <rel.err>=51% [1367s]
     [Stro#1] L-BFGS (150) ...
+    [Stro#1] LBFGS   50/150  L=9.12e-05 | W=1.615(*2.00)  thetaP=0.472(*0.25)  <rel.err>=53% [1847s]
+    [Stro#1] LBFGS  100/150  L=4.65e-05 | W=1.591(*2.00)  thetaP=0.470(*0.25)  <rel.err>=39% [2322s]
+    [Stro#1] LBFGS  150/150  L=3.03e-05 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2800s]
+    [Stro#1] param-refine (600, frozen, integral) ...
+    [Stro#1] refine   50/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2804s]
+    [Stro#1] refine  100/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2807s]
+    [Stro#1] refine  150/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2811s]
+    [Stro#1] refine  200/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2815s]
+    [Stro#1] refine  250/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2818s]
+    [Stro#1] refine  300/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2821s]
+    [Stro#1] refine  350/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2825s]
+    [Stro#1] refine  400/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2828s]
+    [Stro#1] refine  450/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2831s]
+    [Stro#1] refine  500/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2834s]
+    [Stro#1] refine  550/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2837s]
+    [Stro#1] refine  600/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2840s]
+  [Stro#1] done  under10%=8/36  phys=4.02e-08  W=1.519 thetaP=0.471  (2841s)
+  >> Strong APC-mutant start 1: under10%=8/36 phys=4.02e-08  (best so far under10%=7/36 phys=3.64e-08)

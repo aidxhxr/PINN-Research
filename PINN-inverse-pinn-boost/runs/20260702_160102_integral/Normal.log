@@ -43,3 +43,21 @@
     [Norm#1] Adam  1800/2000  L=2.65e-04  Ld=2.62e-04  Lp=3.89e-07  Lic=4.88e-09  lp=7.46 | W=1.030(*0.80)  thetaP=0.576(*1.00)  <rel.err>=56% [1237s]
     [Norm#1] Adam  2000/2000  L=2.64e-04  Ld=2.61e-04  Lp=3.69e-07  Lic=4.86e-09  lp=7.33 | W=1.019(*0.80)  thetaP=0.576(*1.00)  <rel.err>=56% [1374s]
     [Norm#1] L-BFGS (150) ...
+    [Norm#1] LBFGS   50/150  L=6.94e-05 | W=0.829(*0.80)  thetaP=0.608(*1.00)  <rel.err>=65% [1865s]
+    [Norm#1] LBFGS  100/150  L=3.87e-05 | W=0.789(*0.80)  thetaP=0.624(*1.00)  <rel.err>=57% [2340s]
+    [Norm#1] LBFGS  150/150  L=2.32e-05 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2815s]
+    [Norm#1] param-refine (600, frozen, integral) ...
+    [Norm#1] refine   50/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2819s]
+    [Norm#1] refine  100/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2822s]
+    [Norm#1] refine  150/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2825s]
+    [Norm#1] refine  200/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2829s]
+    [Norm#1] refine  250/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2832s]
+    [Norm#1] refine  300/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2836s]
+    [Norm#1] refine  350/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2839s]
+    [Norm#1] refine  400/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2843s]
+    [Norm#1] refine  450/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2846s]
+    [Norm#1] refine  500/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2850s]
+    [Norm#1] refine  550/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2854s]
+    [Norm#1] refine  600/600  Lp=5.78e-08  under10%=16/36 | W=0.801(*0.80)  thetaP=0.631(*1.00)  <rel.err>=43% [2857s]
+  [Norm#1] done  under10%=16/36  phys=5.78e-08  W=0.801 thetaP=0.631  (2857s)
+  >> Normal start 1: under10%=16/36 phys=5.78e-08  (best so far under10%=17/36 phys=3.71e-08)

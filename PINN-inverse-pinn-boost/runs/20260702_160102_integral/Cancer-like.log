@@ -43,3 +43,21 @@
     [Canc#1] Adam  1800/2000  L=2.12e-04  Ld=2.06e-04  Lp=3.46e-07  Lic=1.42e-09  lp=17.18 | W=1.381(*1.50)  thetaP=0.500(*0.50)  <rel.err>=47% [1240s]
     [Canc#1] Adam  2000/2000  L=2.11e-04  Ld=2.05e-04  Lp=3.38e-07  Lic=1.41e-09  lp=17.56 | W=1.381(*1.50)  thetaP=0.499(*0.50)  <rel.err>=46% [1374s]
     [Canc#1] L-BFGS (150) ...
+    [Canc#1] LBFGS   50/150  L=8.58e-05 | W=1.377(*1.50)  thetaP=0.487(*0.50)  <rel.err>=46% [1860s]
+    [Canc#1] LBFGS  100/150  L=3.70e-05 | W=1.322(*1.50)  thetaP=0.490(*0.50)  <rel.err>=30% [2335s]
+    [Canc#1] LBFGS  150/150  L=2.30e-05 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2813s]
+    [Canc#1] param-refine (600, frozen, integral) ...
+    [Canc#1] refine   50/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2816s]
+    [Canc#1] refine  100/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2820s]
+    [Canc#1] refine  150/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2824s]
+    [Canc#1] refine  200/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2827s]
+    [Canc#1] refine  250/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2831s]
+    [Canc#1] refine  300/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2834s]
+    [Canc#1] refine  350/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2838s]
+    [Canc#1] refine  400/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2841s]
+    [Canc#1] refine  450/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2844s]
+    [Canc#1] refine  500/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2847s]
+    [Canc#1] refine  550/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2850s]
+    [Canc#1] refine  600/600  Lp=2.62e-08  under10%=13/36 | W=1.178(*1.50)  thetaP=0.493(*0.50)  <rel.err>=27% [2853s]
+  [Canc#1] done  under10%=13/36  phys=2.62e-08  W=1.178 thetaP=0.493  (2853s)
+  >> Cancer-like start 1: under10%=13/36 phys=2.62e-08  (best so far under10%=10/36 phys=2.50e-08)
