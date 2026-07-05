@@ -1,0 +1,4 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb
+regime                under10%  baseline  delta
+TOTAL                        0         0     +0
