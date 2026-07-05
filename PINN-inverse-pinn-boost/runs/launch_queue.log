@@ -48,3 +48,62 @@ wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/
   launched Early adenoma (pid 249328) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Early_adenoma.log
   launched Cancer-like (pid 249329) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Cancer-like.log
   launched Strong APC-mutant (pid 249330) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb/Strong_APC-mutant.log
+[done] variant=plumb  (fail=1)
+
+run: /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260702_174401_plumb
+regime                under10%  baseline  delta
+TOTAL                        0         0     +0
+[queue] === running variant: siren ===
+[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren/refs.pkl
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Cancer-like          ctrl       t=[0, 150]  shape=(5000, 7)
+  Cancer-like          noATRA     t=[0, 150]  shape=(5000, 7)
+  Cancer-like          earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lateATRA   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lowATRA    t=[0, 150]  shape=(5000, 7)
+  Cancer-like          strongCirc t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntInhib   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          mycPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    ctrl       t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    noATRA     t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lateATRA   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lowATRA    t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    strongCirc t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntInhib   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    mycPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntRAcombo t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren/refs.pkl
+[run] variant=siren starts=2  4 regimes in parallel
+  launched Normal (pid 1302888) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren/Normal.log
+  launched Early adenoma (pid 1302889) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren/Early_adenoma.log
+  launched Cancer-like (pid 1302890) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren/Cancer-like.log
+  launched Strong APC-mutant (pid 1302891) -> /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren/Strong_APC-mutant.log
+[done] variant=siren  (fail=1)
+
+run: /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260703_003546_siren
+regime                under10%  baseline  delta
+TOTAL                        0         0     +0
+[queue] all variants done
