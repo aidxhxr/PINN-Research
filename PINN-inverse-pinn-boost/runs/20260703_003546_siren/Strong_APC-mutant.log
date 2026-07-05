@@ -1,0 +1,60 @@
+=== regime=Strong APC-mutant  variant=siren  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'deriv', 'activation': 'siren', 'siren_w0': 30.0, 'n_starts': 2} ===
+  [Stro#0] arch 4x256 act=siren net 207,879x10cond  rel_w=True colloc=fixed res=deriv
+    [Stro#0] Adam     1/2000  L=9.73e+00  Ld=5.73e-01  Lp=9.38e-01  Lic=4.14e-01  lp=0.94 | W=1.194(*2.00)  thetaP=0.601(*0.25)  <rel.err>=52% [8s]
+    [Stro#0] Adam   200/2000  L=1.31e+03  Ld=5.00e-01  Lp=1.55e+03  Lic=3.37e-01  lp=0.85 | W=0.672(*2.00)  thetaP=0.598(*0.25)  <rel.err>=84% [786s]
+    [Stro#0] Adam   400/2000  L=1.17e+04  Ld=4.82e-01  Lp=1.53e+04  Lic=3.37e-01  lp=0.76 | W=0.481(*2.00)  thetaP=0.596(*0.25)  <rel.err>=118% [1565s]
+    [Stro#0] Adam   600/2000  L=4.11e+05  Ld=5.05e-01  Lp=5.99e+05  Lic=2.52e-01  lp=0.69 | W=0.503(*2.00)  thetaP=0.636(*0.25)  <rel.err>=117% [2345s]
+    [Stro#0] Adam   800/2000  L=8.05e+04  Ld=5.05e-01  Lp=1.30e+05  Lic=3.50e-01  lp=0.62 | W=0.391(*2.00)  thetaP=0.647(*0.25)  <rel.err>=126% [3125s]
+    [Stro#0] Adam  1000/2000  L=7.31e+04  Ld=5.24e-01  Lp=1.31e+05  Lic=1.85e-01  lp=0.56 | W=0.388(*2.00)  thetaP=0.663(*0.25)  <rel.err>=134% [3905s]
+    [Stro#0] Adam  1200/2000  L=7.49e+04  Ld=5.31e-01  Lp=1.49e+05  Lic=2.66e-01  lp=0.50 | W=0.267(*2.00)  thetaP=0.681(*0.25)  <rel.err>=123% [4686s]
+    [Stro#0] Adam  1400/2000  L=6.39e+04  Ld=5.40e-01  Lp=1.41e+05  Lic=2.40e-01  lp=0.45 | W=0.229(*2.00)  thetaP=0.691(*0.25)  <rel.err>=122% [5467s]
+    [Stro#0] Adam  1600/2000  L=5.69e+04  Ld=5.46e-01  Lp=1.39e+05  Lic=2.39e-01  lp=0.41 | W=0.182(*2.00)  thetaP=0.695(*0.25)  <rel.err>=133% [6247s]
+    [Stro#0] Adam  1800/2000  L=5.17e+04  Ld=5.45e-01  Lp=1.40e+05  Lic=2.56e-01  lp=0.37 | W=0.158(*2.00)  thetaP=0.700(*0.25)  <rel.err>=138% [7027s]
+    [Stro#0] Adam  2000/2000  L=4.64e+04  Ld=5.47e-01  Lp=1.39e+05  Lic=2.62e-01  lp=0.33 | W=0.150(*2.00)  thetaP=0.704(*0.25)  <rel.err>=144% [7807s]
+    [Stro#0] L-BFGS (150) ...
+    [Stro#0] LBFGS   50/150  L=4.43e+04 | W=0.150(*2.00)  thetaP=0.704(*0.25)  <rel.err>=144% [8236s]
+    [Stro#0] LBFGS  100/150  L=4.43e+04 | W=0.150(*2.00)  thetaP=0.704(*0.25)  <rel.err>=144% [8607s]
+    [Stro#0] LBFGS  150/150  L=4.43e+04 | W=0.150(*2.00)  thetaP=0.704(*0.25)  <rel.err>=144% [8979s]
+    [Stro#0] param-refine (600, frozen, deriv) ...
+    [Stro#0] refine   50/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9086s]
+    [Stro#0] refine  100/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9149s]
+    [Stro#0] refine  150/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9212s]
+    [Stro#0] refine  200/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9275s]
+    [Stro#0] refine  250/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9337s]
+    [Stro#0] refine  300/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9400s]
+    [Stro#0] refine  350/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9462s]
+    [Stro#0] refine  400/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9523s]
+    [Stro#0] refine  450/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9584s]
+    [Stro#0] refine  500/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9643s]
+    [Stro#0] refine  550/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9703s]
+    [Stro#0] refine  600/600  Lp=1.33e+05  under10%=3/36 | W=0.153(*2.00)  thetaP=0.705(*0.25)  <rel.err>=855% [9764s]
+Traceback (most recent call last):
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/run_boost.py", line 89, in <module>
+    main()
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/run_boost.py", line 76, in main
+    train_inverse(
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/training.py", line 386, in train_inverse
+    res = _train_once(
+          ^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/training.py", line 328, in _train_once
+    fphys = total_phys()
+            ^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/training.py", line 177, in total_phys
+    return float(sum(physics_loss(c) for c in conds) / len(conds))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/training.py", line 177, in <genexpr>
+    return float(sum(physics_loss(c) for c in conds) / len(conds))
+                     ^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/training.py", line 171, in physics_loss
+    z, dz = time_derivatives(net, tc)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/model.py", line 103, in time_derivatives
+    dz[:, i:i+1] = torch.autograd.grad(
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/.local/lib/python3.12/site-packages/torch/autograd/__init__.py", line 530, in grad
+    result = _engine_run_backward(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/.local/lib/python3.12/site-packages/torch/autograd/graph.py", line 882, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn
