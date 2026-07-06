@@ -1,0 +1,9 @@
+param,true_value,null_participation,soft_participation,verdict
+lambdaC,0.85,0.0000,0.0000,IDENT
+etaBM,1.35,0.0000,0.0000,IDENT
+kappaBM,0.5,0.0000,0.0000,IDENT
+kappaBC,0.5,0.0000,0.0000,IDENT
+etaBC,1.5,0.0000,0.0000,IDENT
+etaRC,1.5,0.0000,0.0000,IDENT
+kappaB13,0.5,0.0000,0.0000,IDENT
+kappaR,0.4,0.0000,0.0000,IDENT

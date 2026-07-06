@@ -1,0 +1,16 @@
+{
+  "regime": "Normal",
+  "n_obs": 14000,
+  "K": 8,
+  "sigma": 0.002,
+  "cond_number": 100.70273586873276,
+  "eig_max": 903275584.1861906,
+  "eig_min": 8969722.38533441,
+  "n_null_directions": 0,
+  "n_ident": 8,
+  "n_weak": 0,
+  "n_nonident": 0,
+  "nonident_params": [],
+  "n_correlated_pairs": 0,
+  "top_correlated_pairs": []
+}
