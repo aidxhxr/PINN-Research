@@ -97,7 +97,7 @@ def main(out_dir=".", regime="Normal"):
     # MLE start from the ODE-fit recovery if available
     safe = regime.replace(" ", "_").replace("/", "_")
     start = {k: INIT_GUESS[k] for k in UNKNOWN}
-    for root in (out_dir, os.path.join(HERE, "runs", "20260630_032142_odefit")):
+    for root in (out_dir, os.path.join(HERE, "runs", "20260701_203130_odefit_excite")):
         cand = os.path.join(root, f"{safe}_odefit_recovered.json")
         if os.path.exists(cand):
             start = json.load(open(cand))["recovered"]

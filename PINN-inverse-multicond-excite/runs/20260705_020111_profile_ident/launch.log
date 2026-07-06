@@ -1,0 +1,4 @@
+launching regime: Normal -> /home/29/aidahxr/PINN-Research/PINN-inverse-multicond-excite/runs/20260705_020111_profile_ident/Normal_profile_ci.csv
+launching regime: Early adenoma -> /home/29/aidahxr/PINN-Research/PINN-inverse-multicond-excite/runs/20260705_020111_profile_ident/Early_adenoma_profile_ci.csv
+launching regime: Cancer-like -> /home/29/aidahxr/PINN-Research/PINN-inverse-multicond-excite/runs/20260705_020111_profile_ident/Cancer-like_profile_ci.csv
+launching regime: Strong APC-mutant -> /home/29/aidahxr/PINN-Research/PINN-inverse-multicond-excite/runs/20260705_020111_profile_ident/Strong_APC-mutant_profile_ci.csv
