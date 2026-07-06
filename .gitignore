@@ -5,5 +5,9 @@ __pycache__/
 *.aux
 PINN-inverse-better/architecture.log
 
+# stray LaTeX build artifacts from root-dir compiles
+/build.log
+/texput.log
+
 # Local agent working notes (see CLAUDE.md session log index)
 notes/
