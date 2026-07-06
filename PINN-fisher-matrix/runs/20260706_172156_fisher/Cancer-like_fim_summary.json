@@ -1,0 +1,55 @@
+{
+  "regime": "Cancer-like",
+  "n_obs": 14000,
+  "K": 36,
+  "sigma": 0.002,
+  "cond_number": 20427240.341301043,
+  "eig_max": 1689384462.8610723,
+  "eig_min": 0.0,
+  "n_null_directions": 1,
+  "n_ident": 14,
+  "n_weak": 20,
+  "n_nonident": 2,
+  "nonident_params": [
+    "thetaP",
+    "deltaP1"
+  ],
+  "n_correlated_pairs": 7,
+  "top_correlated_pairs": [
+    [
+      "thetaP",
+      "deltaP1",
+      1.0
+    ],
+    [
+      "aM",
+      "etaBM",
+      -1.0
+    ],
+    [
+      "etaR",
+      "etaM",
+      0.999
+    ],
+    [
+      "epsP",
+      "rho13",
+      -0.995
+    ],
+    [
+      "aC",
+      "etaBC",
+      -0.993
+    ],
+    [
+      "W",
+      "eta13",
+      -0.993
+    ],
+    [
+      "etaB13",
+      "kappaB13",
+      -0.99
+    ]
+  ]
+}

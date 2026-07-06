@@ -1,0 +1,12 @@
+{
+  "regime": "Early adenoma",
+  "n_obs": 14000,
+  "K": 36,
+  "sigma": 0.002,
+  "cond_number": 97604133081658.8,
+  "eig_max": 2588917230.0766087,
+  "eig_min": 2.652466804772126e-05,
+  "n_ident": 36,
+  "n_weak": 0,
+  "n_nonident": 0
+}

@@ -1,0 +1,11 @@
+param_i,param_j,R
+aM,etaBM,-0.9999
+thetaP,deltaP1,0.9996
+etaR,etaM,0.9994
+etaB13,kappaB13,-0.9989
+aC,etaBC,-0.9984
+epsP,rho13,-0.9983
+W,eta13,-0.9975
+epsP,rhoB,-0.9975
+etaM13,kappaM13,-0.9968
+rhoB,rho13,0.9928
