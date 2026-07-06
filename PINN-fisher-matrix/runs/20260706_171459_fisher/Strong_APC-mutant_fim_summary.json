@@ -1,0 +1,12 @@
+{
+  "regime": "Strong APC-mutant",
+  "n_obs": 14000,
+  "K": 36,
+  "sigma": 0.002,
+  "cond_number": 361243186064243.9,
+  "eig_max": 2247692774.387055,
+  "eig_min": 6.22210428070835e-06,
+  "n_ident": 36,
+  "n_weak": 0,
+  "n_nonident": 0
+}

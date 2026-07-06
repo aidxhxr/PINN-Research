@@ -1,0 +1,20 @@
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+======================================================================
+Fisher Information Matrix analysis — 36 params, 10 conditions, sigma=0.002
+======================================================================
+[Normal] FIM built in 36.9s  (n_obs=14000, K=36)
+[Normal] cond(FIM)=1.081e+17  IDENT=36 WEAK=0 NON-IDENT=0 / 36
+[Normal] wrote Normal_fisher.png
+[Early adenoma] FIM built in 39.0s  (n_obs=14000, K=36)
+[Early adenoma] cond(FIM)=9.760e+13  IDENT=36 WEAK=0 NON-IDENT=0 / 36
+[Early adenoma] wrote Early_adenoma_fisher.png
+[Cancer-like] FIM built in 40.7s  (n_obs=14000, K=36)
+[Cancer-like] cond(FIM)=2.043e+07  IDENT=36 WEAK=0 NON-IDENT=0 / 36
+[Cancer-like] wrote Cancer-like_fisher.png
+[Strong APC-mutant] FIM built in 42.1s  (n_obs=14000, K=36)
+[Strong APC-mutant] cond(FIM)=3.612e+14  IDENT=36 WEAK=0 NON-IDENT=0 / 36
+[Strong APC-mutant] wrote Strong_APC-mutant_fisher.png
+wrote cross_regime_spectra.png
+
+Done. Outputs in runs/20260706_171459_fisher
