@@ -1,0 +1,72 @@
+=== Bayesian inverse PINN — regime=Strong APC-mutant device=cuda ===
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Cancer-like          ctrl       t=[0, 150]  shape=(5000, 7)
+  Cancer-like          noATRA     t=[0, 150]  shape=(5000, 7)
+  Cancer-like          earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lateATRA   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lowATRA    t=[0, 150]  shape=(5000, 7)
+  Cancer-like          strongCirc t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntInhib   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          mycPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    ctrl       t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    noATRA     t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lateATRA   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lowATRA    t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    strongCirc t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntInhib   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    mycPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntRAcombo t=[0, 150]  shape=(5000, 7)
+  n_resid=209,930  SSR@MAP=5.422e-02  sigma_res=5.0819e-04
+    [Stro] Laplace metric set; eps0=0.0002441
+    [Stro] warm-init  100/160  eps=0.0003  acc=0.79  U=92729.9 [87s]
+    [Stro] warm-covA  100/240  eps=0.0006  acc=0.79  U=92576.8 [218s]
+    [Stro] warm-covA  200/240  eps=0.0003  acc=0.79  U=92471.9 [300s]
+    [Stro] warm-covB  100/160  eps=0.0011  acc=0.78  U=92392.3 [416s]
+    [Stro] warm-fine  100/240  eps=0.0016  acc=0.78  U=92310.7 [547s]
+    [Stro] warm-fine  200/240  eps=0.0006  acc=0.79  U=92243.5 [632s]
+    [Stro] warmup done: eps=0.0010  mean-acc=0.79
+    [Stro] draw   100/1500  acc=0.94  U=92139.0  [749s]
+    [Stro] draw   200/1500  acc=0.93  U=92053.7  [832s]
+    [Stro] draw   300/1500  acc=0.93  U=91999.1  [914s]
+    [Stro] draw   400/1500  acc=0.92  U=91935.5  [995s]
+    [Stro] draw   500/1500  acc=0.90  U=91859.0  [1077s]
+    [Stro] draw   600/1500  acc=0.92  U=91806.3  [1161s]
+    [Stro] draw   700/1500  acc=0.92  U=91743.7  [1246s]
+    [Stro] draw   800/1500  acc=0.93  U=91692.3  [1327s]
+    [Stro] draw   900/1500  acc=0.91  U=91638.7  [1413s]
+    [Stro] draw  1000/1500  acc=0.91  U=91574.6  [1497s]
+    [Stro] draw  1100/1500  acc=0.91  U=91505.5  [1581s]
+    [Stro] draw  1200/1500  acc=0.90  U=91458.6  [1664s]
+    [Stro] draw  1300/1500  acc=0.92  U=91401.3  [1747s]
+    [Stro] draw  1400/1500  acc=0.90  U=91360.1  [1831s]
+    [Stro] draw  1500/1500  acc=0.92  U=91317.1  [1913s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Strong_APC-mutant] accept=0.92  IDENT=36 WEAK=0 NON-IDENT=0 /36  CI covers truth: 1/36
+          W: post=1.120±0.004 true=2.000  CI95=1.112..1.129  [IDENT]  ess=3
+     thetaP: post=0.613±0.001 true=0.250  CI95=0.611..0.615  [IDENT]  ess=5
+  [Strong_APC-mutant] DONE
