@@ -138,11 +138,20 @@ def write_summary_md(data, run_dir):
     lines.append("Tier-1 B-PINN: HMC over the 36 parameters with the "
                  "pinn-boost state nets frozen and the derivative-free "
                  "integral residual as the physics likelihood.\n")
+    # convergence/honesty gate: if a regime's chain did not mix (ESS) or the
+    # posterior is not calibrated (covers truth), its IDENT/NON-IDENT counts are
+    # meaningless — flag it loudly at the top so the headline can't mislead.
+    any_fail = any(not data[s]["meta"].get("gate_pass", False) for s in regimes)
+    if any_fail:
+        lines.append("> **⚠ GATE FAILED for one or more regimes — the "
+                     "IDENT/NON-IDENT counts below are NOT trustworthy.** "
+                     "A chain needs ESS(median) ≥ 200 and CI coverage ≥ 33/36 "
+                     "before its verdicts mean anything.\n")
     # per-regime headline
     lines.append("## Per-regime summary\n")
-    lines.append("| regime | accept | IDENT | WEAK | NON-IDENT | "
-                 "W post | thetaP post (true) |")
-    lines.append("|---|---|---|---|---|---|---|")
+    lines.append("| regime | gate | ESS med | covers | accept | IDENT | WEAK | "
+                 "NON-IDENT | W post | thetaP post (true) |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|")
     for safe in regimes:
         summ = data[safe]["summary"]
         meta = data[safe]["meta"]
@@ -150,8 +159,12 @@ def write_summary_md(data, run_dir):
         nw = sum(1 for k in summ if summ[k]["verdict"] == "WEAK")
         nn = sum(1 for k in summ if summ[k]["verdict"] == "NON-IDENT")
         W, th = summ["W"], summ["thetaP"]
+        gate = "✅PASS" if meta.get("gate_pass", False) else "❌FAIL"
+        essm = meta.get("ess_median", float("nan"))
+        cov = meta.get("covers_true", "?")
         lines.append(
-            f"| {REGIME_LABEL[safe]} | {meta['accept']:.2f} | {nid} | {nw} | "
+            f"| {REGIME_LABEL[safe]} | {gate} | {essm:.0f} | {cov}/36 | "
+            f"{meta['accept']:.2f} | {nid} | {nw} | "
             f"{nn} | {W['post_mean']:.3f}±{W['post_std']:.3f} | "
             f"{th['post_mean']:.3f}±{th['post_std']:.3f} "
             f"({th['true']:.2f}) |")

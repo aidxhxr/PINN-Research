@@ -144,9 +144,22 @@ def load_conditions(regime, seed_run, T, n_colloc):
 
 # ----------------------------------------------------------------------
 # Potential energy  U(s) = phys neg-log-lik + neg-log-prior.
+#
+# The physics likelihood is the MEAN squared residual times a FIXED effective
+# sample size n_eff, NOT the raw sum over every collocation point. This matters:
+# the trapezoidal residual needs a fine grid (n_colloc ~ 4000) to integrate the
+# fast circadian forcing accurately, but if we treated each of the ~210k
+# grid*state*condition residuals as an independent observation the posterior
+# precision would scale with n_colloc^2 — i.e. the posterior width would be an
+# artifact of grid density, not of information (the first run's failure mode:
+# ESS~3, "36/36 IDENT", truth 30-50 sigma out). n_eff caps the likelihood at a
+# physically defensible count of independent constraints, decoupling integration
+# accuracy from information content. sigma_res still calibrates reduced-chi^2=1
+# (it is the per-point RMS residual), so the two changes are orthogonal.
 # ----------------------------------------------------------------------
-def make_potential(conds, sigma_res, sigma_prior_vec):
-    inv2_res = 1.0 / (2.0 * sigma_res ** 2)
+def make_potential(conds, sigma_res, sigma_prior_vec, n_eff, n_resid):
+    # scale so nll = n_eff * mean(weighted resid^2) / (2 sigma_res^2)
+    inv2_res = (n_eff / n_resid) / (2.0 * sigma_res ** 2)
     inv2_pri = 1.0 / (2.0 * sigma_prior_vec ** 2)
 
     def sum_sq_residual(s):
@@ -501,10 +514,17 @@ def main():
     ap.add_argument("--seed-run", required=True,
                     help="pinn-boost integral run dir with the frozen *_net.pt")
     ap.add_argument("--out", required=True)
-    ap.add_argument("--warmup", type=int, default=800)
-    ap.add_argument("--draws", type=int, default=1200)
-    ap.add_argument("--leapfrog", type=int, default=18)
+    ap.add_argument("--warmup", type=int, default=2000)
+    ap.add_argument("--draws", type=int, default=2000)
+    ap.add_argument("--leapfrog", type=int, default=20)
     ap.add_argument("--colloc", type=int, default=4000)
+    ap.add_argument("--n-eff", type=int, default=None,
+                    help="effective # of independent physics constraints in the "
+                         "likelihood; default = len(conds)*7*eff_per_traj so the "
+                         "posterior width does not scale with collocation density")
+    ap.add_argument("--eff-per-traj", type=int, default=40,
+                    help="effective time samples per (condition,state) trajectory "
+                         "(default 40 = the repo's sparse-data obs budget)")
     ap.add_argument("--target-accept", type=float, default=0.8)
     ap.add_argument("--sigma-prior-log", type=float, default=1.0)
     ap.add_argument("--sigma-prior-theta", type=float, default=2.0)
@@ -537,27 +557,51 @@ def main():
         [args.sigma_prior_theta if k == "thetaP" else args.sigma_prior_log
          for k in UNKNOWN], device=DEVICE)
 
-    # calibrate sigma_res so reduced chi^2 = 1 at the MAP (unless overridden)
+    # effective # of independent physics constraints (see make_potential): the
+    # likelihood uses the MEAN residual * n_eff, not the raw 210k-term sum, so
+    # the posterior width reflects information, not collocation density.
+    n_eff = args.n_eff or (len(conds) * 7 * args.eff_per_traj)
+
+    # calibrate sigma_res so reduced chi^2 = 1 at the MAP (unless overridden).
+    # sigma_res = per-point RMS residual; independent of n_eff.
     _, ssr_fn = make_potential(conds, sigma_res=1.0,
-                               sigma_prior_vec=sigma_prior_vec)
+                               sigma_prior_vec=sigma_prior_vec,
+                               n_eff=n_eff, n_resid=n_resid)
     with torch.no_grad():
         ssr_map = float(ssr_fn(map_raw))
     sigma_res = args.sigma_res or float(np.sqrt(ssr_map / n_resid))
-    print(f"  n_resid={n_resid:,}  SSR@MAP={ssr_map:.3e}  "
+    print(f"  n_resid={n_resid:,}  n_eff={n_eff:,}  SSR@MAP={ssr_map:.3e}  "
           f"sigma_res={sigma_res:.4e}", flush=True)
 
-    potential, _ = make_potential(conds, sigma_res, sigma_prior_vec)
+    potential, _ = make_potential(conds, sigma_res, sigma_prior_vec,
+                                  n_eff=n_eff, n_resid=n_resid)
 
     S_raw, info = hmc_run(potential, map_raw, warmup=args.warmup,
                           draws=args.draws, L=args.leapfrog,
                           target_accept=args.target_accept,
                           log_every=100, tag=safe[:4], rng_seed=args.seed + 7)
 
-    meta = dict(regime=safe, sigma_res=sigma_res, n_resid=n_resid,
+    meta = dict(regime=safe, sigma_res=sigma_res, n_resid=n_resid, n_eff=n_eff,
                 eps=info["eps"], accept=info["accept"],
                 warmup=args.warmup, draws=args.draws, leapfrog=args.leapfrog,
                 colloc=args.colloc, sigma_prior_log=args.sigma_prior_log,
                 sigma_prior_theta=args.sigma_prior_theta)
+    summary, V = summarise(S_raw, sigma_prior_vec, true_vals,
+                           args.out, safe, meta)
+
+    # --- convergence/honesty gate: the verdict is only trustworthy if the
+    # chain actually mixed (ESS) and the posterior is calibrated (covers truth).
+    # Without this gate a stuck chain reads as "36/36 IDENT" (the first run).
+    ess_all = np.array([summary[k]["ess"] for k in summary])
+    ess_med = float(np.median(ess_all))
+    ess_min = float(ess_all.min())
+    cov = sum(1 for k in summary if summary[k]["covers_true"])
+    ess_ok = ess_med >= 200.0
+    cov_ok = cov >= 0.90 * len(summary)
+    meta.update(ess_median=ess_med, ess_min=ess_min, covers_true=cov,
+                gate_ess_ok=bool(ess_ok), gate_cov_ok=bool(cov_ok),
+                gate_pass=bool(ess_ok and cov_ok))
+    # rewrite the summary json now that the gate fields are known
     summary, V = summarise(S_raw, sigma_prior_vec, true_vals,
                            args.out, safe, meta)
     plot_marginals(V, summary, true_vals, sigma_prior_vec, args.out, safe)
@@ -566,8 +610,15 @@ def main():
     nid = sum(1 for k in summary if summary[k]["verdict"] == "IDENT")
     nweak = sum(1 for k in summary if summary[k]["verdict"] == "WEAK")
     nnon = sum(1 for k in summary if summary[k]["verdict"] == "NON-IDENT")
-    cov = sum(1 for k in summary if summary[k]["covers_true"])
-    print(f"\n  [{safe}] accept={info['accept']:.2f}  "
+    gate = "PASS" if (ess_ok and cov_ok) else "FAIL"
+    print(f"\n  [{safe}] GATE={gate}  (ESS med={ess_med:.0f} min={ess_min:.0f} "
+          f"need>=200 -> {'ok' if ess_ok else 'FAIL'};  "
+          f"covers_true={cov}/36 need>=33 -> {'ok' if cov_ok else 'FAIL'})",
+          flush=True)
+    if not (ess_ok and cov_ok):
+        print(f"  [{safe}] !! verdicts below are NOT trustworthy until the gate "
+              f"passes — do not report IDENT/NON-IDENT counts", flush=True)
+    print(f"  [{safe}] accept={info['accept']:.2f}  "
           f"IDENT={nid} WEAK={nweak} NON-IDENT={nnon} /36  "
           f"CI covers truth: {cov}/36", flush=True)
     for k in ["W", "thetaP"]:
