@@ -1,0 +1,51 @@
+=== Bayesian FORWARD PINN — regime=Cancer-like  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Canc] MAP     1/4000  L=6.793e+02  lr=2.0e-03  [1s]
+    [Canc] MAP   500/4000  L=2.774e-01  lr=1.9e-03  [9s]
+    [Canc] MAP  1000/4000  L=1.643e-01  lr=1.7e-03  [17s]
+    [Canc] MAP  1500/4000  L=1.303e-01  lr=1.4e-03  [26s]
+    [Canc] MAP  2000/4000  L=1.188e-01  lr=1.0e-03  [35s]
+    [Canc] MAP  2500/4000  L=1.151e-01  lr=6.2e-04  [43s]
+    [Canc] MAP  3000/4000  L=1.137e-01  lr=3.0e-04  [52s]
+    [Canc] MAP  3500/4000  L=1.132e-01  lr=8.6e-05  [60s]
+    [Canc] MAP  4000/4000  L=1.131e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.907e-02  ic=1.125e-03  phys=1.408e-03
+    [Canc] dim=10951  eps0=2.441e-05
+    [Canc] warm-init  100/200  eps=0.0000  acc=0.73  U=1168.4 [75s]
+    [Canc] warm-init  200/200  eps=0.0000  acc=0.75  U=903.7 [151s]
+    [Canc] warm-varA  100/300  eps=0.0000  acc=0.74  U=816.2 [227s]
+    [Canc] warm-varA  200/300  eps=0.0000  acc=0.75  U=711.3 [302s]
+    [Canc] warm-varA  300/300  eps=0.0000  acc=0.74  U=656.1 [377s]
+    [Canc] warm-varB  100/200  eps=0.0001  acc=0.73  U=606.2 [453s]
+    [Canc] warm-varB  200/200  eps=0.0001  acc=0.74  U=567.5 [528s]
+    [Canc] warm-fine  100/300  eps=0.0002  acc=0.73  U=537.2 [604s]
+    [Canc] warm-fine  200/300  eps=0.0002  acc=0.75  U=508.3 [679s]
+    [Canc] warm-fine  300/300  eps=0.0002  acc=0.74  U=486.5 [755s]
+    [Canc] warmup done: eps=0.0002  mean-acc=0.74
+    [Canc] draw   100/1000  acc=0.88  U=493.8  [831s]
+    [Canc] draw   200/1000  acc=0.88  U=450.9  [907s]
+    [Canc] draw   300/1000  acc=0.83  U=447.8  [983s]
+    [Canc] draw   400/1000  acc=0.86  U=438.8  [1058s]
+    [Canc] draw   500/1000  acc=0.84  U=433.2  [1134s]
+    [Canc] draw   600/1000  acc=0.86  U=413.8  [1210s]
+    [Canc] draw   700/1000  acc=0.84  U=427.5  [1285s]
+    [Canc] draw   800/1000  acc=0.83  U=405.6  [1362s]
+    [Canc] draw   900/1000  acc=0.85  U=387.7  [1437s]
+    [Canc] draw  1000/1000  acc=0.85  U=390.7  [1513s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Cancer-like] accept=0.85  eps=0.0002  ess(U)=4  ess(pred)=98
+  [Cancer-like] mean cov95=0.92  mean relRMSE=0.001  mean rel band width=0.003
+       b: cov95=0.87  relRMSE=0.002  relBand=0.005
+     apc: cov95=0.90  relRMSE=0.001  relBand=0.002
+      h5: cov95=0.90  relRMSE=0.001  relBand=0.002
+     h13: cov95=0.95  relRMSE=0.001  relBand=0.004
+       m: cov95=0.94  relRMSE=0.001  relBand=0.003
+       r: cov95=0.94  relRMSE=0.000  relBand=0.002
+       c: cov95=0.93  relRMSE=0.001  relBand=0.004
+  [Cancer-like] DONE

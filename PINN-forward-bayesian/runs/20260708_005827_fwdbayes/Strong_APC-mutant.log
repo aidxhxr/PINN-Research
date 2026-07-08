@@ -1,0 +1,51 @@
+=== Bayesian FORWARD PINN — regime=Strong APC-mutant  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Stro] MAP     1/4000  L=7.017e+02  lr=2.0e-03  [1s]
+    [Stro] MAP   500/4000  L=3.513e-01  lr=1.9e-03  [9s]
+    [Stro] MAP  1000/4000  L=1.536e-01  lr=1.7e-03  [18s]
+    [Stro] MAP  1500/4000  L=1.266e-01  lr=1.4e-03  [26s]
+    [Stro] MAP  2000/4000  L=1.189e-01  lr=1.0e-03  [35s]
+    [Stro] MAP  2500/4000  L=1.159e-01  lr=6.2e-04  [44s]
+    [Stro] MAP  3000/4000  L=1.145e-01  lr=3.0e-04  [52s]
+    [Stro] MAP  3500/4000  L=1.139e-01  lr=8.6e-05  [61s]
+    [Stro] MAP  4000/4000  L=1.138e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.899e-02  ic=1.164e-03  phys=1.502e-03
+    [Stro] dim=10951  eps0=2.441e-05
+    [Stro] warm-init  100/200  eps=0.0000  acc=0.74  U=1374.4 [76s]
+    [Stro] warm-init  200/200  eps=0.0000  acc=0.74  U=1100.8 [151s]
+    [Stro] warm-varA  100/300  eps=0.0000  acc=0.74  U=999.6 [226s]
+    [Stro] warm-varA  200/300  eps=0.0000  acc=0.75  U=906.5 [302s]
+    [Stro] warm-varA  300/300  eps=0.0000  acc=0.74  U=807.6 [377s]
+    [Stro] warm-varB  100/200  eps=0.0000  acc=0.73  U=769.7 [453s]
+    [Stro] warm-varB  200/200  eps=0.0001  acc=0.75  U=736.6 [529s]
+    [Stro] warm-fine  100/300  eps=0.0003  acc=0.73  U=702.2 [605s]
+    [Stro] warm-fine  200/300  eps=0.0002  acc=0.74  U=676.9 [681s]
+    [Stro] warm-fine  300/300  eps=0.0002  acc=0.75  U=625.8 [756s]
+    [Stro] warmup done: eps=0.0002  mean-acc=0.74
+    [Stro] draw   100/1000  acc=0.85  U=599.3  [833s]
+    [Stro] draw   200/1000  acc=0.89  U=588.3  [909s]
+    [Stro] draw   300/1000  acc=0.86  U=556.7  [985s]
+    [Stro] draw   400/1000  acc=0.87  U=537.1  [1060s]
+    [Stro] draw   500/1000  acc=0.85  U=508.4  [1136s]
+    [Stro] draw   600/1000  acc=0.83  U=501.8  [1211s]
+    [Stro] draw   700/1000  acc=0.89  U=495.1  [1287s]
+    [Stro] draw   800/1000  acc=0.87  U=483.5  [1364s]
+    [Stro] draw   900/1000  acc=0.86  U=485.8  [1439s]
+    [Stro] draw  1000/1000  acc=0.86  U=459.2  [1513s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Strong_APC-mutant] accept=0.86  eps=0.0002  ess(U)=3  ess(pred)=280
+  [Strong_APC-mutant] mean cov95=0.94  mean relRMSE=0.001  mean rel band width=0.003
+       b: cov95=0.94  relRMSE=0.001  relBand=0.005
+     apc: cov95=0.95  relRMSE=0.001  relBand=0.002
+      h5: cov95=0.89  relRMSE=0.001  relBand=0.003
+     h13: cov95=0.97  relRMSE=0.001  relBand=0.005
+       m: cov95=0.97  relRMSE=0.001  relBand=0.003
+       r: cov95=0.95  relRMSE=0.001  relBand=0.002
+       c: cov95=0.95  relRMSE=0.001  relBand=0.003
+  [Strong_APC-mutant] DONE
