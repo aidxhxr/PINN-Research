@@ -1,0 +1,39 @@
+=== Bayesian FORWARD PINN — regime=Cancer-like  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Canc] MAP     1/4000  L=6.812e+02  lr=2.0e-03  [0s]
+    [Canc] MAP   500/4000  L=3.061e-01  lr=1.9e-03  [7s]
+    [Canc] MAP  1000/4000  L=1.644e-01  lr=1.7e-03  [16s]
+    [Canc] MAP  1500/4000  L=1.273e-01  lr=1.4e-03  [24s]
+    [Canc] MAP  2000/4000  L=1.146e-01  lr=1.0e-03  [33s]
+    [Canc] MAP  2500/4000  L=1.107e-01  lr=6.2e-04  [42s]
+    [Canc] MAP  3000/4000  L=1.092e-01  lr=3.0e-04  [51s]
+    [Canc] MAP  3500/4000  L=1.087e-01  lr=8.6e-05  [60s]
+    [Canc] MAP  4000/4000  L=1.085e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.865e-02  ic=1.131e-03  phys=1.399e-03
+    [Canc] dim=10951  eps0=2.441e-05
+    [Canc] warm-varA  100/120  eps=0.0000  acc=0.74  U=1177.1 [91s]
+    [Canc] warm-fine  100/120  eps=0.0002  acc=0.73  U=920.4 [191s]
+    [Canc] warmup done: eps=0.0002  mean-acc=0.73
+    [Canc] draw   100/600  acc=0.94  U=834.5  [251s]
+    [Canc] draw   200/600  acc=0.94  U=770.7  [301s]
+    [Canc] draw   300/600  acc=0.93  U=727.5  [351s]
+    [Canc] draw   400/600  acc=0.93  U=691.3  [400s]
+    [Canc] draw   500/600  acc=0.93  U=631.0  [450s]
+    [Canc] draw   600/600  acc=0.93  U=639.3  [500s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Cancer-like] accept=0.93  eps=0.0002  ess(U)=3  ess(pred)=400
+  [Cancer-like] mean cov95=0.63  mean relRMSE=0.002  mean rel band width=0.003
+       b: cov95=0.60  relRMSE=0.003  relBand=0.004
+     apc: cov95=0.65  relRMSE=0.001  relBand=0.002
+      h5: cov95=0.55  relRMSE=0.002  relBand=0.002
+     h13: cov95=0.63  relRMSE=0.002  relBand=0.004
+       m: cov95=0.65  relRMSE=0.001  relBand=0.003
+       r: cov95=0.71  relRMSE=0.001  relBand=0.001
+       c: cov95=0.65  relRMSE=0.002  relBand=0.003
+  [Cancer-like] DONE

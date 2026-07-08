@@ -1,0 +1,31 @@
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+# Bayesian forward PINN — posterior-predictive UQ
+
+Forward B-PINN (Yang/Karniadakis 2020): HMC over the network WEIGHTS with the ODE parameters KNOWN, given ~sparse noisy observations + the derivative-free trapezoidal physics residual. Deliverable = a 95% credible band on the reconstructed trajectory (UQ on the forward solve).
+
+## Per-regime summary
+
+| regime | accept | ess(U) | ess(pred) | mean cov95 | mean relRMSE | mean rel band |
+|---|---|---|---|---|---|---|
+| Normal | 0.90 | 3 | 400 | 0.73 | 0.002 | 0.005 |
+| Early adenoma | 0.91 | 3 | 400 | 0.63 | 0.002 | 0.003 |
+| Cancer-like | 0.93 | 3 | 400 | 0.63 | 0.002 | 0.003 |
+| Strong APC-mutant | 0.91 | 3 | 400 | 0.56 | 0.002 | 0.002 |
+
+## Per-state 95% coverage (rows = state, cols = regime)
+
+| state | Normal | Early adenoma | Cancer-like | Strong APC-mutant |
+|---|---|---|---|---|
+| b | 0.70 | 0.51 | 0.60 | 0.51 |
+| apc | 0.62 | 0.50 | 0.65 | 0.62 |
+| h5 | 0.63 | 0.59 | 0.55 | 0.44 |
+| h13 | 0.84 | 0.77 | 0.63 | 0.57 |
+| m | 0.84 | 0.70 | 0.65 | 0.57 |
+| r | 0.72 | 0.65 | 0.71 | 0.67 |
+| c | 0.78 | 0.68 | 0.65 | 0.56 |
+
+_Reading: coverage near 0.95 = the band is calibrated; a state whose band is wide (high rel band width) but still tracks the truth is where the sparse data + physics leave the forward solve least pinned down._
+
+
+aggregate figures + fwd_bayes_summary.md written to /home/29/aidahxr/PINN-Research/PINN-forward-bayesian/runs/20260708_003044_fwdbayes

@@ -1,0 +1,39 @@
+=== Bayesian FORWARD PINN — regime=Early adenoma  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Earl] MAP     1/4000  L=6.303e+02  lr=2.0e-03  [0s]
+    [Earl] MAP   500/4000  L=2.786e-01  lr=1.9e-03  [7s]
+    [Earl] MAP  1000/4000  L=1.690e-01  lr=1.7e-03  [15s]
+    [Earl] MAP  1500/4000  L=1.299e-01  lr=1.4e-03  [24s]
+    [Earl] MAP  2000/4000  L=1.195e-01  lr=1.0e-03  [33s]
+    [Earl] MAP  2500/4000  L=1.165e-01  lr=6.2e-04  [42s]
+    [Earl] MAP  3000/4000  L=1.154e-01  lr=3.0e-04  [51s]
+    [Earl] MAP  3500/4000  L=1.149e-01  lr=8.6e-05  [60s]
+    [Earl] MAP  4000/4000  L=1.148e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.927e-02  ic=1.198e-03  phys=1.379e-03
+    [Earl] dim=10951  eps0=2.441e-05
+    [Earl] warm-varA  100/120  eps=0.0000  acc=0.74  U=1168.6 [91s]
+    [Earl] warm-fine  100/120  eps=0.0004  acc=0.73  U=926.4 [190s]
+    [Earl] warmup done: eps=0.0002  mean-acc=0.73
+    [Earl] draw   100/600  acc=0.90  U=844.7  [250s]
+    [Earl] draw   200/600  acc=0.92  U=758.6  [299s]
+    [Earl] draw   300/600  acc=0.92  U=722.7  [349s]
+    [Earl] draw   400/600  acc=0.90  U=665.4  [399s]
+    [Earl] draw   500/600  acc=0.91  U=619.3  [449s]
+    [Earl] draw   600/600  acc=0.91  U=592.9  [499s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Early_adenoma] accept=0.91  eps=0.0002  ess(U)=3  ess(pred)=400
+  [Early_adenoma] mean cov95=0.63  mean relRMSE=0.002  mean rel band width=0.003
+       b: cov95=0.51  relRMSE=0.003  relBand=0.005
+     apc: cov95=0.50  relRMSE=0.002  relBand=0.003
+      h5: cov95=0.59  relRMSE=0.002  relBand=0.002
+     h13: cov95=0.77  relRMSE=0.002  relBand=0.005
+       m: cov95=0.70  relRMSE=0.002  relBand=0.003
+       r: cov95=0.65  relRMSE=0.001  relBand=0.001
+       c: cov95=0.68  relRMSE=0.002  relBand=0.003
+  [Early_adenoma] DONE

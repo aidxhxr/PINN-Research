@@ -1,0 +1,39 @@
+=== Bayesian FORWARD PINN — regime=Strong APC-mutant  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Stro] MAP     1/4000  L=6.996e+02  lr=2.0e-03  [0s]
+    [Stro] MAP   500/4000  L=3.419e-01  lr=1.9e-03  [8s]
+    [Stro] MAP  1000/4000  L=1.529e-01  lr=1.7e-03  [16s]
+    [Stro] MAP  1500/4000  L=1.237e-01  lr=1.4e-03  [25s]
+    [Stro] MAP  2000/4000  L=1.168e-01  lr=1.0e-03  [34s]
+    [Stro] MAP  2500/4000  L=1.144e-01  lr=6.2e-04  [43s]
+    [Stro] MAP  3000/4000  L=1.134e-01  lr=3.0e-04  [52s]
+    [Stro] MAP  3500/4000  L=1.131e-01  lr=8.6e-05  [61s]
+    [Stro] MAP  4000/4000  L=1.130e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.917e-02  ic=1.126e-03  phys=1.333e-03
+    [Stro] dim=10951  eps0=2.441e-05
+    [Stro] warm-varA  100/120  eps=0.0000  acc=0.74  U=1279.1 [91s]
+    [Stro] warm-fine  100/120  eps=0.0003  acc=0.74  U=1107.3 [191s]
+    [Stro] warmup done: eps=0.0002  mean-acc=0.73
+    [Stro] draw   100/600  acc=0.92  U=967.9  [251s]
+    [Stro] draw   200/600  acc=0.90  U=871.2  [300s]
+    [Stro] draw   300/600  acc=0.90  U=810.5  [351s]
+    [Stro] draw   400/600  acc=0.92  U=761.0  [401s]
+    [Stro] draw   500/600  acc=0.91  U=719.6  [450s]
+    [Stro] draw   600/600  acc=0.90  U=677.3  [499s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Strong_APC-mutant] accept=0.91  eps=0.0002  ess(U)=3  ess(pred)=400
+  [Strong_APC-mutant] mean cov95=0.56  mean relRMSE=0.002  mean rel band width=0.002
+       b: cov95=0.51  relRMSE=0.003  relBand=0.004
+     apc: cov95=0.62  relRMSE=0.001  relBand=0.001
+      h5: cov95=0.44  relRMSE=0.002  relBand=0.002
+     h13: cov95=0.57  relRMSE=0.002  relBand=0.003
+       m: cov95=0.57  relRMSE=0.001  relBand=0.003
+       r: cov95=0.67  relRMSE=0.001  relBand=0.001
+       c: cov95=0.56  relRMSE=0.002  relBand=0.003
+  [Strong_APC-mutant] DONE
