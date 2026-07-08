@@ -1,0 +1,40 @@
+=== 3 conditions: ['ctrl', 'noATRA', 'earlyATRA'] ===
+Stage A done [39s]
+
+=== 3 conditions: 5/36 under 10%  (W err=35.1%  thetaP err=28.7%)  [134s] ===
+  lambdaC    err=   0.0%  OK
+  etaBM      err=   1.5%  OK
+  etaBC      err=   4.9%  OK
+  a5         err=   9.0%  OK
+  kappaBM    err=   9.9%  OK
+  epsM       err=  11.4%
+  etaRC      err=  14.6%
+  eps13      err=  23.7%
+  etaR       err=  24.5%
+  kappaRC    err=  26.1%
+  deltaP1    err=  26.3%
+  eta13      err=  27.3%
+  etaB13     err=  28.5%
+  thetaP     err=  28.7%
+  kappaR     err=  30.6%
+  eps5       err=  33.5%
+  W          err=  35.1%
+  kappaBC    err=  36.8%
+  rho5       err=  38.3%
+  aM         err=  39.2%
+  a13        err=  46.3%
+  rho13      err=  48.1%
+  kappaM13   err=  50.1%
+  rhoB       err=  58.3%
+  etaM       err=  64.2%
+  lambda5    err=  76.0%
+  kappaM     err=  78.5%
+  epsC       err=  86.5%
+  aC         err=  91.7%
+  lambdaP    err=  93.0%
+  kappa13    err= 125.3%
+  etaM13     err= 134.1%
+  epsP       err= 143.1%
+  kappa5     err= 180.9%
+  kappaB13   err= 184.8%
+  epsR       err= 201.4%

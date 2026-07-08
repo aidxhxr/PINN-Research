@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/27/nkim8/PINN-Research/PINN-inverse-multicond-better/main.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
