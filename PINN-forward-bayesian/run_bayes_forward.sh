@@ -14,12 +14,13 @@ export PYTHONPATH="$HERE:${PYTHONPATH:-}"
 
 NOISE="${NOISE:-0.02}"
 NDATA="${NDATA:-40}"
-WARMUP="${WARMUP:-400}"
-DRAWS="${DRAWS:-600}"
+WARMUP="${WARMUP:-1000}"
+DRAWS="${DRAWS:-1000}"
 COLLOC="${COLLOC:-800}"
+LEAPFROG="${LEAPFROG:-40}"
 
 echo "run_dir  = $RUN_DIR"
-echo "n_data=$NDATA noise=$NOISE warmup=$WARMUP draws=$DRAWS colloc=$COLLOC"
+echo "n_data=$NDATA noise=$NOISE warmup=$WARMUP draws=$DRAWS colloc=$COLLOC leapfrog=$LEAPFROG"
 
 pids=()
 for REGIME in "Normal" "Early adenoma" "Cancer-like" "Strong APC-mutant"; do
@@ -28,6 +29,7 @@ for REGIME in "Normal" "Early adenoma" "Cancer-like" "Strong APC-mutant"; do
       --regime "$REGIME" --out "$RUN_DIR" \
       --n-data "$NDATA" --noise-std "$NOISE" \
       --warmup "$WARMUP" --draws "$DRAWS" --colloc "$COLLOC" \
+      --leapfrog "$LEAPFROG" \
       --threads 14 --seed 0 \
       > "$RUN_DIR/${safe}.log" 2>&1 &
   pids+=($!)
