@@ -1,0 +1,39 @@
+=== Bayesian FORWARD PINN — regime=Normal  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Norm] MAP     1/4000  L=5.639e+02  lr=2.0e-03  [1s]
+    [Norm] MAP   500/4000  L=3.194e-01  lr=1.9e-03  [7s]
+    [Norm] MAP  1000/4000  L=1.555e-01  lr=1.7e-03  [16s]
+    [Norm] MAP  1500/4000  L=1.344e-01  lr=1.4e-03  [25s]
+    [Norm] MAP  2000/4000  L=1.287e-01  lr=1.0e-03  [34s]
+    [Norm] MAP  2500/4000  L=1.262e-01  lr=6.2e-04  [42s]
+    [Norm] MAP  3000/4000  L=1.250e-01  lr=3.0e-04  [51s]
+    [Norm] MAP  3500/4000  L=1.244e-01  lr=8.6e-05  [60s]
+    [Norm] MAP  4000/4000  L=1.243e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.972e-02  ic=1.357e-03  phys=1.647e-03
+    [Norm] dim=10951  eps0=4.883e-05
+    [Norm] warm-varA  100/120  eps=0.0000  acc=0.74  U=1182.0 [91s]
+    [Norm] warm-fine  100/120  eps=0.0004  acc=0.74  U=987.5 [191s]
+    [Norm] warmup done: eps=0.0003  mean-acc=0.73
+    [Norm] draw   100/600  acc=0.91  U=863.9  [250s]
+    [Norm] draw   200/600  acc=0.90  U=827.4  [300s]
+    [Norm] draw   300/600  acc=0.90  U=779.7  [350s]
+    [Norm] draw   400/600  acc=0.91  U=768.4  [400s]
+    [Norm] draw   500/600  acc=0.91  U=690.5  [449s]
+    [Norm] draw   600/600  acc=0.90  U=676.3  [500s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Normal] accept=0.90  eps=0.0003  ess(U)=3  ess(pred)=400
+  [Normal] mean cov95=0.73  mean relRMSE=0.002  mean rel band width=0.005
+       b: cov95=0.70  relRMSE=0.003  relBand=0.007
+     apc: cov95=0.62  relRMSE=0.003  relBand=0.006
+      h5: cov95=0.63  relRMSE=0.002  relBand=0.003
+     h13: cov95=0.84  relRMSE=0.002  relBand=0.007
+       m: cov95=0.84  relRMSE=0.002  relBand=0.006
+       r: cov95=0.72  relRMSE=0.001  relBand=0.002
+       c: cov95=0.78  relRMSE=0.002  relBand=0.005
+  [Normal] DONE
