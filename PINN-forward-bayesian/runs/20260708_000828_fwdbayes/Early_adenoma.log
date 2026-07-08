@@ -1,0 +1,22 @@
+=== Bayesian FORWARD PINN — regime=Early adenoma  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Earl] MAP     1/4000  L=6.305e+02  lr=2.0e-03  [1s]
+    [Earl] MAP   500/4000  L=3.364e-01  lr=1.9e-03  [8s]
+    [Earl] MAP  1000/4000  L=1.899e-01  lr=1.7e-03  [17s]
+    [Earl] MAP  1500/4000  L=1.369e-01  lr=1.4e-03  [25s]
+    [Earl] MAP  2000/4000  L=1.231e-01  lr=1.0e-03  [34s]
+    [Earl] MAP  2500/4000  L=1.184e-01  lr=6.2e-04  [43s]
+    [Earl] MAP  3000/4000  L=1.165e-01  lr=3.0e-04  [51s]
+    [Earl] MAP  3500/4000  L=1.158e-01  lr=8.6e-05  [60s]
+    [Earl] MAP  4000/4000  L=1.157e-01  lr=1.0e-05  [68s]
+  calibrated sigma: data=1.934e-02  ic=1.192e-03  phys=1.385e-03
+    [Earl] dim=10951  eps0=2.441e-05
+    [Earl] warm-varA  100/120  eps=0.0000  acc=0.74  U=1177.8 [89s]
+    [Earl] warm-fine  100/120  eps=0.0004  acc=0.73  U=950.3 [189s]
+    [Earl] warmup done: eps=0.0002  mean-acc=0.73
+    [Earl] draw   100/600  acc=0.90  U=832.2  [249s]
+    [Earl] draw   200/600  acc=0.91  U=747.8  [298s]

@@ -1,0 +1,22 @@
+=== Bayesian FORWARD PINN — regime=Cancer-like  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early adenoma         t=[0, 150]  shape=(5000, 7)
+  Cancer-like           t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant     t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Canc] MAP     1/4000  L=6.815e+02  lr=2.0e-03  [1s]
+    [Canc] MAP   500/4000  L=3.060e-01  lr=1.9e-03  [9s]
+    [Canc] MAP  1000/4000  L=1.537e-01  lr=1.7e-03  [17s]
+    [Canc] MAP  1500/4000  L=1.232e-01  lr=1.4e-03  [26s]
+    [Canc] MAP  2000/4000  L=1.164e-01  lr=1.0e-03  [35s]
+    [Canc] MAP  2500/4000  L=1.139e-01  lr=6.2e-04  [43s]
+    [Canc] MAP  3000/4000  L=1.128e-01  lr=3.0e-04  [52s]
+    [Canc] MAP  3500/4000  L=1.124e-01  lr=8.6e-05  [60s]
+    [Canc] MAP  4000/4000  L=1.123e-01  lr=1.0e-05  [69s]
+  calibrated sigma: data=1.899e-02  ic=1.131e-03  phys=1.413e-03
+    [Canc] dim=10951  eps0=2.441e-05
+    [Canc] warm-varA  100/120  eps=0.0000  acc=0.74  U=1187.9 [89s]
+    [Canc] warm-fine  100/120  eps=0.0002  acc=0.74  U=996.9 [190s]
+    [Canc] warmup done: eps=0.0002  mean-acc=0.74
+    [Canc] draw   100/600  acc=0.94  U=900.4  [249s]
+    [Canc] draw   200/600  acc=0.88  U=892.2  [299s]
