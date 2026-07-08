@@ -14,8 +14,8 @@ mkdir -p "$RUN_DIR"
 export MPLBACKEND=Agg
 export PYTHONPATH="$HERE:${PYTHONPATH:-}"
 
-WARMUP="${WARMUP:-800}"
-DRAWS="${DRAWS:-1500}"
+WARMUP="${WARMUP:-2000}"
+DRAWS="${DRAWS:-2000}"
 COLLOC="${COLLOC:-4000}"
 
 echo "seed_run = $SEED_RUN"
