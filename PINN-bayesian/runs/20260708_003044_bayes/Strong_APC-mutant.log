@@ -1,0 +1,55 @@
+=== Bayesian inverse PINN — regime=Strong APC-mutant device=cuda ===
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Cancer-like          ctrl       t=[0, 150]  shape=(5000, 7)
+  Cancer-like          noATRA     t=[0, 150]  shape=(5000, 7)
+  Cancer-like          earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lateATRA   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lowATRA    t=[0, 150]  shape=(5000, 7)
+  Cancer-like          strongCirc t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntInhib   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          mycPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    ctrl       t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    noATRA     t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lateATRA   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lowATRA    t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    strongCirc t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntInhib   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    mycPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntRAcombo t=[0, 150]  shape=(5000, 7)
+  n_resid=279,930  n_eff=2,800  SSR@MAP=4.069e-02  sigma_res=3.8127e-04
+    [Stro] Laplace metric set; eps0=0.03125
+    [Stro] warm-init  100/400  eps=0.0015  acc=0.77  U=1228.1 [188s]
+    [Stro] warm-init  200/400  eps=0.0039  acc=0.80  U=1184.1 [370s]
+    [Stro] warm-init  300/400  eps=0.0055  acc=0.80  U=1186.0 [552s]
+    [Stro] warm-init  400/400  eps=0.0065  acc=0.80  U=1175.2 [647s]
+    [Stro] warm-covA  100/600  eps=0.0047  acc=0.79  U=1174.3 [740s]
+    [Stro] warm-covA  200/600  eps=0.0085  acc=0.80  U=1164.7 [834s]
+    [Stro] warm-covA  300/600  eps=0.0111  acc=0.80  U=1159.5 [926s]
+    [Stro] warm-covA  400/600  eps=0.0042  acc=0.79  U=1163.1 [1019s]
+    [Stro] warm-covA  500/600  eps=0.0046  acc=0.80  U=1164.2 [1112s]
+    [Stro] warm-covA  600/600  eps=0.0067  acc=0.80  U=1160.6 [1206s]
+    [Stro] warm-covB  100/400  eps=0.0147  acc=0.78  U=1151.1 [1303s]
+    [Stro] warm-covB  200/400  eps=0.0184  acc=0.79  U=1151.7 [1397s]
