@@ -52,3 +52,78 @@ Threads: 48
     Adam   750/1000  L=7.24e-04  Ld=7.09e-04  Lp=7.61e-04  lr=1.5e-04  [1165s]
     Adam  1000/1000  L=6.37e-04  Ld=6.05e-04  Lp=7.11e-04  lr=1.0e-06  [1538s]
     L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=2.46e-04  [1987s]
+    LBFGS  200/500  L=1.80e-04  [2437s]
+    LBFGS  300/500  L=1.59e-04  [2880s]
+    LBFGS  400/500  L=1.29e-04  [3314s]
+    LBFGS  500/500  L=9.95e-05  [3717s]
+  done  (3717s total)
+
+── Severe APC Loss ──
+  arch 4×256  params 207,879
+    Adam     1/1000  L=1.77e+00  Ld=1.83e+00  Lp=1.64e+00  lr=1.0e-03  [2s]
+    Adam   250/1000  L=2.59e-03  Ld=2.67e-03  Lp=2.41e-03  lr=8.5e-04  [388s]
+    Adam   500/1000  L=1.44e-03  Ld=1.62e-03  Lp=1.01e-03  lr=5.0e-04  [776s]
+    Adam   750/1000  L=9.08e-04  Ld=9.53e-04  Lp=8.04e-04  lr=1.5e-04  [1119s]
+    Adam  1000/1000  L=8.15e-04  Ld=8.35e-04  Lp=7.70e-04  lr=1.0e-06  [1432s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=4.30e-04  [1773s]
+    LBFGS  200/500  L=3.52e-04  [2083s]
+    LBFGS  300/500  L=2.76e-04  [2391s]
+    LBFGS  400/500  L=2.50e-04  [2722s]
+    LBFGS  500/500  L=1.71e-04  [3004s]
+  done  (3004s total)
+
+[3/3] Plotting ...
+
+======================================================================
+Final values & stemness
+======================================================================
+
+Normal
+  $\beta$-catenin  0.4629
+  APC              0.5064
+  HOXA5            0.3877
+  HOXA13           1.0092
+  MYC              0.8024
+  RA               0.1974
+  CYP26A1          1.1889
+  Stemness         0.4450
+  Min S (ATRA)    0.0518
+  Mean S (ATRA)   0.0836
+
+Early Adenoma
+  $\beta$-catenin  1.0693
+  APC              0.1784
+  HOXA5            0.3117
+  HOXA13           1.4390
+  MYC              1.2900
+  RA               0.1606
+  CYP26A1          1.6828
+  Stemness         1.6873
+  Min S (ATRA)    0.9199
+  Mean S (ATRA)   0.9521
+
+Advanced Adenoma
+  $\beta$-catenin  1.6042
+  APC              0.1054
+  HOXA5            0.2989
+  HOXA13           1.5338
+  MYC              1.4112
+  RA               0.1534
+  CYP26A1          1.8039
+  Stemness         2.8309
+  Min S (ATRA)    1.7743
+  Mean S (ATRA)   1.8219
+
+Severe APC Loss
+  $\beta$-catenin  2.1172
+  APC              0.0720
+  HOXA5            0.2930
+  HOXA13           1.5697
+  MYC              1.4595
+  RA               0.1515
+  CYP26A1          1.8528
+  Stemness         3.9251
+  Min S (ATRA)    2.6173
+  Mean S (ATRA)   2.6895
