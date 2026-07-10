@@ -23,13 +23,13 @@ BASELINE = dict(
 )
 
 REGIMES = {
-    "Normal":            dict(W=0.80, thetaP=1.00),
-    "Early adenoma":     dict(W=1.00, thetaP=0.75),
-    "Cancer-like":       dict(W=1.50, thetaP=0.50),
-    "Strong APC-mutant": dict(W=2.00, thetaP=0.25),
+    "Normal":            dict(W=0.50, thetaP=1.00),
+    "Early Adenoma":     dict(W=1.00, thetaP=0.75),
+    "Advanced Adenoma":       dict(W=1.50, thetaP=0.50),
+    "Severe APC Loss": dict(W=2.00, thetaP=0.25),
 }
 
 Y0 = np.array([0.20, 1.00, 0.80, 0.30, 0.30, 0.60, 0.40])
-VAR_NAMES  = ["b", "apc", "h5", "h13", "m", "r", "c"]
+VAR_NAMES  = ["b", "p", r"$h_5$", r"$h_{13}$", "m", "r", "c"]
 VAR_LABELS = [r"$\beta$-catenin", "APC", "HOXA5", "HOXA13",
               "MYC", "RA", "CYP26A1"]
