@@ -77,3 +77,17 @@
     [Norm] draw  1300/2000  acc=0.87  U=1146.5  [4163s]
     [Norm] draw  1400/2000  acc=0.90  U=1151.0  [4257s]
     [Norm] draw  1500/2000  acc=0.88  U=1146.6  [4350s]
+    [Norm] draw  1600/2000  acc=0.88  U=1142.7  [4444s]
+    [Norm] draw  1700/2000  acc=0.87  U=1151.4  [4537s]
+    [Norm] draw  1800/2000  acc=0.88  U=1152.3  [4632s]
+    [Norm] draw  1900/2000  acc=0.88  U=1150.4  [4724s]
+    [Norm] draw  2000/2000  acc=0.90  U=1145.7  [4817s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Normal] GATE=FAIL  (ESS med=13 min=3 need>=200 -> FAIL;  covers_true=19/36 need>=33 -> FAIL)
+  [Normal] !! verdicts below are NOT trustworthy until the gate passes — do not report IDENT/NON-IDENT counts
+  [Normal] accept=0.89  IDENT=34 WEAK=2 NON-IDENT=0 /36  CI covers truth: 19/36
+          W: post=0.750±0.007 true=0.800  CI95=0.739..0.769  [IDENT]  ess=4
+     thetaP: post=0.997±0.002 true=1.000  CI95=0.993..0.999  [WEAK]  ess=33
+  [Normal] DONE
