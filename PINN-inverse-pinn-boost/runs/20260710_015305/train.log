@@ -1,0 +1,70 @@
+============================================================
+Inverse PINN (better) — recover 36 parameters
+  10 experimental conditions: ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc', 'wntPulse', 'wntInhib', 'mycPulse', 'wntRAcombo']
+Device : cuda
+GPU    : NVIDIA RTX PRO 6000 Blackwell Server Edition
+VRAM   : 102.0 GB
+Threads: 48
+============================================================
+
+[1/3] Reference trajectories (scipy Radau, per condition) ...
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+
+[2/3] Inverse training (shared params over conditions) ...
+
+── Normal ──
+  [Norm#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=False colloc=random res=deriv
+    [Norm#0] Adam     1/2500  L=8.45e+00  Ld=8.92e-01  Lp=7.47e-01  Lic=3.40e-01  lp=1.01 | W=1.194(*0.80)  thetaP=0.599(*1.00)  <rel.err>=50% [5s]
+    [Norm#0] Adam   100/2500  L=1.12e-01  Ld=7.82e-02  Lp=3.28e-02  Lic=1.92e-05  lp=1.01 | W=0.986(*0.80)  thetaP=0.673(*1.00)  <rel.err>=55% [368s]
+    [Norm#0] Adam   200/2500  L=6.86e-03  Ld=3.42e-03  Lp=3.26e-03  Lic=7.22e-06  lp=1.01 | W=0.993(*0.80)  thetaP=0.687(*1.00)  <rel.err>=54% [688s]
+    [Norm#0] Adam   300/2500  L=3.63e-03  Ld=1.21e-03  Lp=1.62e-03  Lic=3.90e-05  lp=1.01 | W=0.994(*0.80)  thetaP=0.696(*1.00)  <rel.err>=52% [950s]
+    [Norm#0] Adam   400/2500  L=1.74e-03  Ld=6.38e-04  Lp=1.08e-03  Lic=7.38e-08  lp=1.01 | W=0.994(*0.80)  thetaP=0.702(*1.00)  <rel.err>=51% [1212s]
+    [Norm#0] Adam   500/2500  L=1.32e-03  Ld=4.47e-04  Lp=8.32e-04  Lic=1.41e-06  lp=1.01 | W=0.994(*0.80)  thetaP=0.705(*1.00)  <rel.err>=50% [1471s]
+    [Norm#0] Adam   600/2500  L=2.45e-03  Ld=3.58e-04  Lp=6.76e-04  Lic=7.09e-05  lp=1.00 | W=0.993(*0.80)  thetaP=0.707(*1.00)  <rel.err>=49% [1732s]
+    [Norm#0] Adam   700/2500  L=9.11e-04  Ld=3.06e-04  Lp=5.90e-04  Lic=8.10e-07  lp=1.00 | W=0.992(*0.80)  thetaP=0.708(*1.00)  <rel.err>=48% [1992s]
+    [Norm#0] Adam   800/2500  L=8.42e-04  Ld=2.70e-04  Lp=5.19e-04  Lic=2.57e-06  lp=1.00 | W=0.991(*0.80)  thetaP=0.708(*1.00)  <rel.err>=48% [2257s]
+    [Norm#0] Adam   900/2500  L=7.20e-04  Ld=2.45e-04  Lp=4.73e-04  Lic=3.80e-08  lp=1.00 | W=0.990(*0.80)  thetaP=0.709(*1.00)  <rel.err>=47% [2516s]
+    [Norm#0] Adam  1000/2500  L=6.62e-04  Ld=2.24e-04  Lp=4.36e-04  Lic=1.52e-08  lp=1.00 | W=0.988(*0.80)  thetaP=0.709(*1.00)  <rel.err>=46% [2786s]
+    [Norm#0] Adam  1100/2500  L=6.11e-04  Ld=2.09e-04  Lp=4.01e-04  Lic=1.15e-08  lp=1.00 | W=0.987(*0.80)  thetaP=0.710(*1.00)  <rel.err>=46% [3141s]
+    [Norm#0] Adam  1200/2500  L=5.73e-04  Ld=1.96e-04  Lp=3.75e-04  Lic=1.05e-08  lp=1.01 | W=0.986(*0.80)  thetaP=0.710(*1.00)  <rel.err>=45% [3509s]
+    [Norm#0] Adam  1300/2500  L=5.58e-04  Ld=1.85e-04  Lp=3.71e-04  Lic=8.92e-09  lp=1.01 | W=0.984(*0.80)  thetaP=0.711(*1.00)  <rel.err>=45% [3875s]
+    [Norm#0] Adam  1400/2500  L=5.20e-04  Ld=1.76e-04  Lp=3.42e-04  Lic=9.00e-09  lp=1.00 | W=0.983(*0.80)  thetaP=0.711(*1.00)  <rel.err>=44% [4242s]
