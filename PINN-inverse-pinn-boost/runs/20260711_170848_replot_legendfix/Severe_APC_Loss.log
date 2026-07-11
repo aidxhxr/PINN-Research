@@ -1,0 +1,63 @@
+=== regime=Strong APC-mutant  variant=integral  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'integral', 'activation': 'gelu', 'n_starts': 2} ===
+  [Stro#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+    [Stro#0] Adam     1/2000  L=8.86e+00  Ld=5.73e-01  Lp=3.27e-04  Lic=4.14e-01  lp=9.51 | W=1.194(*2.00)  thetaP=0.599(*0.25)  <rel.err>=52% [2s]
+    [Stro#0] Adam   200/2000  L=6.22e-03  Ld=6.08e-03  Lp=1.17e-05  Lic=1.61e-06  lp=9.01 | W=1.145(*2.00)  thetaP=0.690(*0.25)  <rel.err>=67% [138s]
+    [Stro#0] Adam   400/2000  L=1.44e-03  Ld=1.22e-03  Lp=1.74e-06  Lic=1.00e-05  lp=9.31 | W=1.141(*2.00)  thetaP=0.687(*0.25)  <rel.err>=63% [276s]
+    [Stro#0] Adam   600/2000  L=6.63e-04  Ld=5.98e-04  Lp=9.28e-07  Lic=2.80e-06  lp=10.02 | W=1.143(*2.00)  thetaP=0.680(*0.25)  <rel.err>=59% [413s]
+    [Stro#0] Adam   800/2000  L=4.02e-04  Ld=3.95e-04  Lp=6.24e-07  Lic=2.26e-09  lp=10.52 | W=1.146(*2.00)  thetaP=0.673(*0.25)  <rel.err>=54% [550s]
+    [Stro#0] Adam  1000/2000  L=3.15e-04  Ld=3.09e-04  Lp=4.72e-07  Lic=1.73e-09  lp=11.00 | W=1.149(*2.00)  thetaP=0.666(*0.25)  <rel.err>=53% [687s]
+    [Stro#0] Adam  1200/2000  L=2.68e-04  Ld=2.64e-04  Lp=3.85e-07  Lic=1.44e-09  lp=11.49 | W=1.153(*2.00)  thetaP=0.661(*0.25)  <rel.err>=53% [825s]
+    [Stro#0] Adam  1400/2000  L=2.43e-04  Ld=2.39e-04  Lp=3.34e-07  Lic=1.28e-09  lp=12.00 | W=1.157(*2.00)  thetaP=0.656(*0.25)  <rel.err>=52% [962s]
+    [Stro#0] Adam  1600/2000  L=2.29e-04  Ld=2.26e-04  Lp=3.04e-07  Lic=1.20e-09  lp=12.52 | W=1.161(*2.00)  thetaP=0.653(*0.25)  <rel.err>=52% [1099s]
+    [Stro#0] Adam  1800/2000  L=2.24e-04  Ld=2.20e-04  Lp=2.88e-07  Lic=1.16e-09  lp=13.02 | W=1.164(*2.00)  thetaP=0.650(*0.25)  <rel.err>=52% [1237s]
+    [Stro#0] Adam  2000/2000  L=2.23e-04  Ld=2.19e-04  Lp=2.78e-07  Lic=1.16e-09  lp=13.51 | W=1.167(*2.00)  thetaP=0.648(*0.25)  <rel.err>=52% [1374s]
+    [Stro#0] L-BFGS (150) ...
+    [Stro#0] LBFGS   50/150  L=7.71e-05 | W=1.241(*2.00)  thetaP=0.631(*0.25)  <rel.err>=53% [1996s]
+    [Stro#0] LBFGS  100/150  L=3.67e-05 | W=1.209(*2.00)  thetaP=0.624(*0.25)  <rel.err>=40% [2624s]
+    [Stro#0] LBFGS  150/150  L=2.25e-05 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3263s]
+    [Stro#0] param-refine (600, frozen, integral) ...
+    [Stro#0] refine   50/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3267s]
+    [Stro#0] refine  100/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3271s]
+    [Stro#0] refine  150/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3274s]
+    [Stro#0] refine  200/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3278s]
+    [Stro#0] refine  250/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3282s]
+    [Stro#0] refine  300/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3286s]
+    [Stro#0] refine  350/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3290s]
+    [Stro#0] refine  400/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3294s]
+    [Stro#0] refine  450/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3298s]
+    [Stro#0] refine  500/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3302s]
+    [Stro#0] refine  550/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3306s]
+    [Stro#0] refine  600/600  Lp=3.64e-08  under10%=7/36 | W=1.159(*2.00)  thetaP=0.621(*0.25)  <rel.err>=36% [3311s]
+  [Stro#0] done  under10%=7/36  phys=3.64e-08  W=1.159 thetaP=0.621  (3311s)
+  >> Strong APC-mutant start 0: under10%=7/36 phys=3.64e-08  (best so far under10%=7/36 phys=3.64e-08)
+  [Stro#1] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+    [Stro#1] Adam     1/2000  L=8.85e+00  Ld=5.68e-01  Lp=3.04e-04  Lic=4.14e-01  lp=10.03 | W=1.608(*2.00)  thetaP=0.405(*0.25)  <rel.err>=53% [1s]
+    [Stro#1] Adam   200/2000  L=6.96e-03  Ld=6.77e-03  Lp=1.04e-05  Lic=4.11e-06  lp=9.98 | W=1.580(*2.00)  thetaP=0.507(*0.25)  <rel.err>=67% [138s]
+    [Stro#1] Adam   400/2000  L=1.41e-03  Ld=1.35e-03  Lp=1.70e-06  Lic=2.08e-06  lp=11.34 | W=1.558(*2.00)  thetaP=0.508(*0.25)  <rel.err>=64% [275s]
+    [Stro#1] Adam   600/2000  L=8.68e-04  Ld=6.33e-04  Lp=9.27e-07  Lic=1.12e-05  lp=12.45 | W=1.554(*2.00)  thetaP=0.504(*0.25)  <rel.err>=60% [412s]
+    [Stro#1] Adam   800/2000  L=4.22e-04  Ld=4.11e-04  Lp=6.65e-07  Lic=8.60e-08  lp=13.25 | W=1.554(*2.00)  thetaP=0.501(*0.25)  <rel.err>=56% [549s]
+    [Stro#1] Adam  1000/2000  L=3.19e-04  Ld=3.11e-04  Lp=5.28e-07  Lic=2.29e-09  lp=13.94 | W=1.554(*2.00)  thetaP=0.497(*0.25)  <rel.err>=54% [687s]
+    [Stro#1] Adam  1200/2000  L=2.66e-04  Ld=2.60e-04  Lp=4.45e-07  Lic=1.76e-09  lp=14.54 | W=1.554(*2.00)  thetaP=0.494(*0.25)  <rel.err>=52% [824s]
+    [Stro#1] Adam  1400/2000  L=2.37e-04  Ld=2.31e-04  Lp=3.95e-07  Lic=1.49e-09  lp=15.05 | W=1.555(*2.00)  thetaP=0.492(*0.25)  <rel.err>=52% [962s]
+    [Stro#1] Adam  1600/2000  L=2.23e-04  Ld=2.17e-04  Lp=3.67e-07  Lic=1.35e-09  lp=15.48 | W=1.556(*2.00)  thetaP=0.491(*0.25)  <rel.err>=51% [1102s]
+    [Stro#1] Adam  1800/2000  L=2.17e-04  Ld=2.11e-04  Lp=3.51e-07  Lic=1.30e-09  lp=15.84 | W=1.558(*2.00)  thetaP=0.489(*0.25)  <rel.err>=51% [1239s]
+    [Stro#1] Adam  2000/2000  L=2.16e-04  Ld=2.10e-04  Lp=3.41e-07  Lic=1.29e-09  lp=16.16 | W=1.559(*2.00)  thetaP=0.488(*0.25)  <rel.err>=51% [1367s]
+    [Stro#1] L-BFGS (150) ...
+    [Stro#1] LBFGS   50/150  L=9.12e-05 | W=1.615(*2.00)  thetaP=0.472(*0.25)  <rel.err>=53% [1847s]
+    [Stro#1] LBFGS  100/150  L=4.65e-05 | W=1.591(*2.00)  thetaP=0.470(*0.25)  <rel.err>=39% [2322s]
+    [Stro#1] LBFGS  150/150  L=3.03e-05 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2800s]
+    [Stro#1] param-refine (600, frozen, integral) ...
+    [Stro#1] refine   50/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2804s]
+    [Stro#1] refine  100/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2807s]
+    [Stro#1] refine  150/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2811s]
+    [Stro#1] refine  200/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2815s]
+    [Stro#1] refine  250/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2818s]
+    [Stro#1] refine  300/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2821s]
+    [Stro#1] refine  350/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2825s]
+    [Stro#1] refine  400/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2828s]
+    [Stro#1] refine  450/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2831s]
+    [Stro#1] refine  500/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2834s]
+    [Stro#1] refine  550/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2837s]
+    [Stro#1] refine  600/600  Lp=4.02e-08  under10%=8/36 | W=1.519(*2.00)  thetaP=0.471(*0.25)  <rel.err>=33% [2840s]
+  [Stro#1] done  under10%=8/36  phys=4.02e-08  W=1.519 thetaP=0.471  (2841s)
+  >> Strong APC-mutant start 1: under10%=8/36 phys=4.02e-08  (best so far under10%=7/36 phys=3.64e-08)
