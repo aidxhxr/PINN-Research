@@ -1,0 +1,66 @@
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Cancer-like          ctrl       t=[0, 150]  shape=(5000, 7)
+  Cancer-like          noATRA     t=[0, 150]  shape=(5000, 7)
+  Cancer-like          earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    ctrl       t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    noATRA     t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    earlyATRA  t=[0, 150]  shape=(5000, 7)
+Stage A: fit nets to data only ...
+  ctrl       data L=3.59e-05  traj RMSE vs ref=0.0055  [6s]
+  noATRA     data L=3.13e-05  traj RMSE vs ref=0.0045  [11s]
+  earlyATRA  data L=1.99e-05  traj RMSE vs ref=0.0052  [15s]
+
+Stage B: gradient-match params (nets frozen) ...
+/home/29/aidahxr/PINN-Research/PINN-inverse-better/_test_gradmatch.py:89: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  print(f"  step {step:4d}  Lp={float(L):.2e}  W={cur['W']:.3f}(*0.80) "
+  step    1  Lp=3.70e-01  W=1.074(*0.80) thetaP=0.756(*1.00)  <err>=52%  [16s]
+  step   50  Lp=2.39e-04  W=0.504(*0.80) thetaP=0.698(*1.00)  <err>=48%  [36s]
+  step  100  Lp=2.39e-04  W=0.504(*0.80) thetaP=0.698(*1.00)  <err>=48%  [37s]
+  step  150  Lp=2.39e-04  W=0.504(*0.80) thetaP=0.698(*1.00)  <err>=48%  [38s]
+  step  200  Lp=2.39e-04  W=0.504(*0.80) thetaP=0.698(*1.00)  <err>=48%  [39s]
+  step  250  Lp=2.39e-04  W=0.504(*0.80) thetaP=0.698(*1.00)  <err>=48%  [40s]
+  step  300  Lp=2.39e-04  W=0.504(*0.80) thetaP=0.698(*1.00)  <err>=48%  [41s]
+
+=== gradient-match result: 6/36 under 10% ===
+  lambdaC    rec=   0.850 true=  0.850  err=   0.0%  OK
+  etaBM      rec=   1.331 true=  1.350  err=   1.4%  OK
+  etaBC      rec=   1.447 true=  1.500  err=   3.6%  OK
+  a5         rec=   0.163 true=  0.150  err=   8.8%  OK
+  epsM       rec=   0.653 true=  0.600  err=   8.8%  OK
+  kappaBM    rec=   0.549 true=  0.500  err=   9.8%  OK
+  etaRC      rec=   1.329 true=  1.500  err=  11.4%
+  etaR       rec=   2.205 true=  2.500  err=  11.8%
+  eps13      rec=   0.860 true=  1.000  err=  14.0%
+  eta13      rec=   0.890 true=  0.750  err=  18.7%
+  deltaP1    rec=   2.764 true=  3.500  err=  21.0%
+  kappaRC    rec=   0.627 true=  0.500  err=  25.5%
+  kappaR     rec=   0.515 true=  0.400  err=  28.7%
+  thetaP     rec=   0.698 true=  1.000  err=  30.2%
+  lambda5    rec=   1.714 true=  1.300  err=  31.9%
+  kappaBC    rec=   0.334 true=  0.500  err=  33.2%
+  W          rec=   0.504 true=  0.800  err=  37.0%
+  aM         rec=   0.250 true=  0.180  err=  38.7%
+  etaB13     rec=   0.582 true=  0.950  err=  38.8%
+  kappaM13   rec=   0.702 true=  0.500  err=  40.4%
+  rho5       rec=   1.596 true=  1.100  err=  45.1%
+  kappaB13   rec=   0.729 true=  0.500  err=  45.7%
+  etaM       rec=   1.295 true=  2.500  err=  48.2%
+  rho13      rec=   0.664 true=  1.300  err=  48.9%
+  a13        rec=   0.280 true=  0.180  err=  55.4%
+  eps5       rec=   1.895 true=  1.200  err=  57.9%
+  epsC       rec=   1.316 true=  0.800  err=  64.6%
+  rhoB       rec=   0.366 true=  1.100  err=  66.7%
+  kappaM     rec=   0.136 true=  0.500  err=  72.8%
+  etaM13     rec=   1.001 true=  0.550  err=  82.1%
+  kappa5     rec=   0.957 true=  0.500  err=  91.5%
+  lambdaP    rec=   0.040 true=  1.600  err=  97.5%
+  aC         rec=   0.001 true=  0.080  err=  98.9%
+  kappa13    rec=   1.200 true=  0.550  err= 118.2%
+  epsP       rec=   2.641 true=  1.000  err= 164.1%
+  epsR       rec=   1.078 true=  0.400  err= 169.4%

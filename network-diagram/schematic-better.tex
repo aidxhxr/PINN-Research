@@ -1,0 +1,60 @@
+\documentclass[tikz,border=15pt]{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{arrows.meta, positioning, calc}
+
+\begin{document}
+\begin{tikzpicture}[
+    scale=2.0, transform shape, % Reduced main scale significantly from 2.8 to 2.0 to make the diagram much smaller
+    >=Stealth,
+    node distance = 18mm and 18mm,
+    every node/.style={font=\sffamily},
+    box/.style={draw, rounded corners, fill=magenta!25, inner sep=4pt, font=\sffamily\bfseries},
+    label/.style={font=\sffamily\bfseries},
+    activation/.style={-{Stealth[length=4mm, width=3mm]}, draw=green!55!black, line width=2.5pt},
+    inhibition/.style={-{Bar[width=4mm]}, draw=red!80!black, line width=2.5pt}, 
+    mediation/.style={-{Triangle[length=3mm, width=3mm]}, draw=blue!70!black, line width=2.2pt, dashed},
+]
+
+% ---------- Nodes ----------
+\node[box] (WNT) at (4,7.2) {WNT};
+\node[label] (BCAT) at (4,6.0) {\boldmath$\beta$-catenin};
+
+\node[label] (MYC)   at (1.5,4.6) {MYC};
+\node[label] (HOXA13) at (4.0,4.4) {HOXA13};
+\node[label] (CYP)   at (6.6,4.6) {CYP26A1};
+
+\node[label] (HOXA5) at (1.5,3.0) {HOXA5};
+\node[label] (APC)   at (4.0,3.0) {APC};
+\node[label] (RA)    at (6.6,3.0) {RA};
+\node[box, fill=green!15] (VITA) at (6.6,1.4) {Vitamin A};
+
+% ---------- Edges ----------
+\draw[activation] (WNT) -- (BCAT);
+\draw[activation] (BCAT) -- (MYC);
+\draw[mediation] (BCAT) -- (HOXA13);
+\draw[activation] (BCAT) -- (CYP);
+\draw[inhibition] (MYC) -- (HOXA5);
+\draw[inhibition] (HOXA13) -- (APC);
+\draw[inhibition] (APC) .. controls (5.6,3.9) and (4.25,4.9) .. ([xshift=7pt]BCAT.south);
+\draw[inhibition] (CYP) -- (RA);
+\draw[mediation] (HOXA5) -- (APC);
+\draw[activation] (RA) to[out=200, in=-20] (HOXA5);
+\draw[activation] (VITA) -- (RA);
+
+% ---------- Shifted Legend further right towards the corner ----------
+\begin{scope}[shift={(6.8, 7.3)}] % Shifted from x=6.0 to x=6.8 to push it further to the right corner
+\node[draw, align=left, inner sep=4pt] (legendbox) at (0,0) {
+  \begin{tikzpicture}[scale=0.42, transform shape, baseline]
+    \node[font=\sffamily\bfseries] at (0,1.0) {\underline{Legend}};
+    \draw[activation, line width=1.2pt, -{Stealth[length=2.5mm, width=1.8mm]}] (0,0.5) -- (1.4,0.5);
+    \node[font=\sffamily\bfseries, anchor=west] at (1.6,0.5) {activation};
+    \draw[inhibition, line width=1.2pt, -{Bar[width=2.5mm]}] (0,0.0) -- (1.4,0.0);
+    \node[font=\sffamily\bfseries, anchor=west] at (1.6,0.0) {inhibition};
+    \draw[mediation, line width=1.0pt, -{Triangle[length=2mm, width=2mm]}] (0,-0.5) -- (1.4,-0.5);
+    \node[font=\sffamily\bfseries, anchor=west] at (1.6,-0.5) {mediation};
+  \end{tikzpicture}
+};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

@@ -37,15 +37,16 @@ def plot_states(solutions, refs, observations, xmax=XMAX):
             c = COLORS[name]
             ax.plot(sol["t"], sol[key], "-", lw=2.0, color=c,
                     label=f"{name} (PINN)")
-            ax.plot(tr, yr[:, i], "--", lw=1.0, color=c, alpha=0.55)
+            ax.plot(tr, yr[:, i], "--", lw=1.0, color=c, alpha=0.55,
+                    label=f"{name} (ref)")
             obs = observations[name]
             ax.scatter(obs["t"], obs["y"][:, i], s=12, color=c,
                        edgecolor="k", linewidth=0.3, zorder=5, alpha=0.7)
         ax.axvspan(BASELINE["tau1"], BASELINE["tau2"],
                    alpha=0.08, color="orange", label="ATRA")
         ax.set_xlim(0, xmax)
-        ax.set_xlabel(r"$\tau$"); ax.set_ylabel(label)
-        ax.set_title(f"{label}  —  PINN (solid) vs ref (dashed), dots=data "
+        ax.set_xlabel(r"$\tau$"); ax.set_ylabel(key)
+        ax.set_title(f"{label}, dots=data "
                      f"[{CTRL} condition]")
         ax.legend(fontsize=7, ncol=2)
         fig.tight_layout(); fig.savefig(f"inv_state_{key}.png", dpi=150)
