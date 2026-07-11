@@ -25,6 +25,24 @@ def _grid(n):
     return rows, cols
 
 
+def best_params(recovered, true_params, k=8):
+    """The k best-recovered (best-converging) unknowns: those with the smallest
+    final relative error averaged over the regimes. Used to draw the reduced
+    'best-k' companion figures alongside the full 36-param ones."""
+    names = list(REGIMES)
+    scored = []
+    for pk in UNKNOWN:
+        errs = []
+        for nm in names:
+            tv = true_params[nm][pk]; rv = recovered[nm][pk]
+            if tv != 0:
+                errs.append(abs(rv - tv) / abs(tv))
+        if errs:
+            scored.append((float(np.mean(errs)), pk))
+    scored.sort(key=lambda r: r[0])
+    return [pk for _, pk in scored[:k]]
+
+
 def plot_states(solutions, refs, observations, xmax=XMAX):
     """Per-variable, CONTROL condition: recovered PINN trajectory (solid),
     scipy reference (dashed), and the sparse observations fed to the solver
@@ -68,13 +86,15 @@ def plot_states(solutions, refs, observations, xmax=XMAX):
     plt.close(fig)
 
 
-def plot_param_convergence(all_hist, true_params):
-    n = len(UNKNOWN)
+def plot_param_convergence(all_hist, true_params, params=None,
+                           fname="inv_param_convergence.png", title_suffix=""):
+    params = list(UNKNOWN) if params is None else list(params)
+    n = len(params)
     rows, cols = _grid(n)
     fig, axes = plt.subplots(rows, cols, figsize=(3.4*cols, 2.6*rows),
                              squeeze=False)
     axflat = axes.ravel()
-    for ax, pk in zip(axflat, UNKNOWN):
+    for ax, pk in zip(axflat, params):
         for name in REGIMES:
             h = all_hist[name]; c = COLORS[name]
             ax.plot(h["epoch"], h[pk], "-", lw=1.3, color=c, label=name)
@@ -89,21 +109,24 @@ def plot_param_convergence(all_hist, true_params):
     fig.legend(handles, labels, loc="lower center", ncol=len(REGIMES),
                fontsize=9)
     fig.suptitle("Inverse PINN — parameter convergence "
-                 "(dashed = true, dotted = init)", fontsize=13)
+                 "(dashed = true, dotted = init)" + title_suffix, fontsize=13)
     fig.tight_layout(rect=[0, 0.04, 1, 0.96])
-    fig.savefig("inv_param_convergence.png", dpi=150)
+    fig.savefig(fname, dpi=150)
     plt.close(fig)
 
 
-def plot_recovery_bars(recovered, true_params):
-    n = len(UNKNOWN)
+def plot_recovery_bars(recovered, true_params, params=None,
+                       fname="inv_recovery_bars.png",
+                       suptitle="Inverse PINN — true vs recovered (all unknowns)"):
+    params = list(UNKNOWN) if params is None else list(params)
+    n = len(params)
     rows, cols = _grid(n)
     fig, axes = plt.subplots(rows, cols, figsize=(3.4*cols, 2.6*rows),
                              squeeze=False)
     axflat = axes.ravel()
     names = list(REGIMES)
     x = np.arange(len(names)); w = 0.38
-    for ax, pk in zip(axflat, UNKNOWN):
+    for ax, pk in zip(axflat, params):
         tru = [true_params[nm][pk] for nm in names]
         rec = [recovered[nm][pk]   for nm in names]
         ax.bar(x - w/2, tru, w, label="true", color="0.6")
@@ -117,18 +140,19 @@ def plot_recovery_bars(recovered, true_params):
         ax.axis("off")
     handles, labels = axflat[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=9)
-    fig.suptitle("Inverse PINN — true vs recovered (all unknowns)",
-                 fontsize=13)
+    fig.suptitle(suptitle, fontsize=13)
     fig.tight_layout(rect=[0, 0.04, 1, 0.96])
-    fig.savefig("inv_recovery_bars.png", dpi=150)
+    fig.savefig(fname, dpi=150)
     plt.close(fig)
 
 
-def plot_param_error(all_hist, true_params):
+def plot_param_error(all_hist, true_params, params=None,
+                     fname="inv_param_error.png"):
     """Parameter-recovery error vs training iteration — the headline 'is it
     getting better?' curve. Left: mean & median relative error (%) over all
     unknowns, per regime (log-y, so you literally watch it fall). Right: how
     many of the unknowns are within 5% as training proceeds."""
+    params = list(UNKNOWN) if params is None else list(params)
     fig, (axL, axR) = plt.subplots(1, 2, figsize=(13, 4.8))
     for name in REGIMES:
         h = all_hist[name]; c = COLORS[name]
@@ -137,7 +161,7 @@ def plot_param_error(all_hist, true_params):
         # (n_iter, n_param) relative error in %
         E = np.array([
             [abs(h[pk][i] - tv[pk]) / abs(tv[pk]) * 100.0
-             for pk in UNKNOWN if tv[pk] != 0]
+             for pk in params if tv[pk] != 0]
             for i in range(len(eps))
         ])
         axL.semilogy(eps, E.mean(axis=1), "-", lw=1.8, color=c,
@@ -147,7 +171,6 @@ def plot_param_error(all_hist, true_params):
         axR.plot(eps, (E <= 5.0).sum(axis=1), "-", lw=1.8, color=c,
                  label=name)
 
-    n_adam = max(all_hist[n]["epoch"][-1] for n in REGIMES)
     for ax in (axL, axR):
         ax.set_xlabel("Iteration (Adam + L-BFGS)")
         ax.grid(True, alpha=0.3)
@@ -156,10 +179,10 @@ def plot_param_error(all_hist, true_params):
     axL.set_title("Parameter recovery error vs iteration")
     axL.legend(fontsize=7, ncol=2)
     axR.set_ylabel("# params within 5%")
-    axR.set_ylim(0, len(UNKNOWN))
-    axR.set_title(f"Params recovered <5%  (of {len(UNKNOWN)})")
+    axR.set_ylim(0, len(params))
+    axR.set_title(f"Params recovered <5%  (of {len(params)})")
     axR.legend(fontsize=8)
-    fig.tight_layout(); fig.savefig("inv_param_error.png", dpi=150)
+    fig.tight_layout(); fig.savefig(fname, dpi=150)
     plt.close(fig)
 
 

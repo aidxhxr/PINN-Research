@@ -132,6 +132,21 @@ def main():
         plotting.plot_param_error(all_hist, true_params)
         plotting.plot_recovery_bars(recovered, true_params)
 
+        # ---- best-8 (best-converging) companion figures ----
+        best8 = plotting.best_params(recovered, true_params, k=8)
+        print(f"  best-8 params: {best8}")
+        plotting.plot_param_convergence(
+            all_hist, true_params, params=best8,
+            fname="inv_param_convergence_best8.png",
+            title_suffix="  — 8 best-converging params")
+        plotting.plot_param_error(
+            all_hist, true_params, params=best8,
+            fname="inv_param_error_best8.png")
+        plotting.plot_recovery_bars(
+            recovered, true_params, params=best8,
+            fname="inv_recovery_bars_best8.png",
+            suptitle="Inverse PINN — true vs recovered (8 best-converging params)")
+
         if not args.no_states:
             print("  reloading ctrl nets for state + stemness plots ...")
             refs = _load_refs(run_dir, args.T)

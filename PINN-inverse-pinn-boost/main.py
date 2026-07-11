@@ -6,7 +6,7 @@ from training import train_inverse
 from plotting import (plot_states, plot_param_convergence,
                       plot_recovery_bars, plot_param_error, plot_losses,
                       print_summary, print_sensitivity,
-                      report_identifiability)
+                      report_identifiability, best_params)
 
 
 def main(T=150.0):
@@ -61,6 +61,18 @@ def main(T=150.0):
     plot_recovery_bars(recovered, true_params)
     plot_param_error(all_hist, true_params)
     plot_losses(all_hist)
+
+    # best-8 (best-converging) companion figures alongside the full-36 set
+    best8 = best_params(recovered, true_params, k=8)
+    plot_param_convergence(all_hist, true_params, params=best8,
+                           fname="inv_param_convergence_best8.png",
+                           title_suffix="  — 8 best-converging params")
+    plot_recovery_bars(recovered, true_params, params=best8,
+                       fname="inv_recovery_bars_best8.png",
+                       suptitle="Inverse PINN — true vs recovered "
+                                "(8 best-converging params)")
+    plot_param_error(all_hist, true_params, params=best8,
+                     fname="inv_param_error_best8.png")
     print_summary(recovered, true_params)
     sens = print_sensitivity(refs)
     report_identifiability(recovered, true_params, sens)
