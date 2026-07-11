@@ -62,11 +62,16 @@ def plot_states(solutions, refs, observations, xmax=XMAX):
                        edgecolor="k", linewidth=0.3, zorder=5, alpha=0.7)
         ax.axvspan(BASELINE["tau1"], BASELINE["tau2"],
                    alpha=0.08, color="orange", label="ATRA")
+        # proxy handle so the meaning of the scatter markers lives in the legend
+        ax.scatter([], [], s=12, color="0.4", edgecolor="k", linewidth=0.3,
+                   label=f"{CTRL} condition")
         ax.set_xlim(0, xmax)
         ax.set_xlabel(r"$\tau$"); ax.set_ylabel(key)
-        ax.set_title(f"{label}, dots=data "
-                     f"[{CTRL} condition]")
-        ax.legend(fontsize=7, ncol=2)
+        ax.set_title(label)
+        # legend inside the axes; 'best' picks the least-obstructive spot,
+        # except RA where we pin it top-right
+        loc = "upper right" if key == "r" else "best"
+        ax.legend(fontsize=7, ncol=2, loc=loc, framealpha=0.85)
         fig.tight_layout(); fig.savefig(f"inv_state_{key}.png", dpi=150)
         plt.close(fig)
 
