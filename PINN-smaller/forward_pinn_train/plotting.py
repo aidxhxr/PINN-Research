@@ -25,7 +25,7 @@ def plot_all(solutions, refs, xmax=XMAX):
         ax.axvspan(BASELINE["tau1"], BASELINE["tau2"],
                    alpha=0.08, color="orange", label="ATRA")
         ax.set_xlim(0, xmax)
-        ax.set_xlabel(r"$\tau$"); ax.set_ylabel(label)
+        ax.set_xlabel(r"$\tau$"); ax.set_ylabel(key)
         ax.set_title(label); ax.legend(fontsize=7, ncol=2)
         fig.tight_layout(); fig.savefig(f"pinn7_{key}.png", dpi=150)
         plt.show(); plt.close(fig)

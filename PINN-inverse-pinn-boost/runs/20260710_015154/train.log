@@ -1,0 +1,55 @@
+============================================================
+Inverse PINN (better) — recover 36 parameters
+  10 experimental conditions: ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc', 'wntPulse', 'wntInhib', 'mycPulse', 'wntRAcombo']
+Device : cuda
+GPU    : NVIDIA RTX PRO 6000 Blackwell Server Edition
+VRAM   : 102.0 GB
+Threads: 48
+============================================================
+
+[1/3] Reference trajectories (scipy Radau, per condition) ...
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Cancer-like          ctrl       t=[0, 150]  shape=(5000, 7)
+  Cancer-like          noATRA     t=[0, 150]  shape=(5000, 7)
+  Cancer-like          earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lateATRA   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          lowATRA    t=[0, 150]  shape=(5000, 7)
+  Cancer-like          strongCirc t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntInhib   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          mycPulse   t=[0, 150]  shape=(5000, 7)
+  Cancer-like          wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    ctrl       t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    noATRA     t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lateATRA   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    lowATRA    t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    strongCirc t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntInhib   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    mycPulse   t=[0, 150]  shape=(5000, 7)
+  Strong APC-mutant    wntRAcombo t=[0, 150]  shape=(5000, 7)
+
+[2/3] Inverse training (shared params over conditions) ...
+
+── Normal ──
+  [Norm#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=False colloc=random res=deriv
