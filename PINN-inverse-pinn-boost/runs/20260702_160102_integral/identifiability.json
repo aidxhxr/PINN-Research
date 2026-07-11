@@ -1,0 +1,398 @@
+[
+  {
+    "param": "kappaBM",
+    "sensitivity": 6.504501580811845,
+    "sens_frac": 0.32455693574215605,
+    "recov_err_pct": 0.01871900217214062,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.01871900217214062
+    }
+  },
+  {
+    "param": "etaBM",
+    "sensitivity": 20.041172640289346,
+    "sens_frac": 1.0,
+    "recov_err_pct": 0.058591900343913435,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.058591900343913435
+    }
+  },
+  {
+    "param": "lambdaC",
+    "sensitivity": 12.782528868300478,
+    "sens_frac": 0.6378134202887605,
+    "recov_err_pct": 0.06395622867330479,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.06395622867330479
+    }
+  },
+  {
+    "param": "aM",
+    "sensitivity": 3.347960393775476,
+    "sens_frac": 0.1670541167359127,
+    "recov_err_pct": 0.08798680346464027,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.08798680346464027
+    }
+  },
+  {
+    "param": "etaB13",
+    "sensitivity": 8.461828448122084,
+    "sens_frac": 0.422222222222218,
+    "recov_err_pct": 0.412876146820717,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.412876146820717
+    }
+  },
+  {
+    "param": "eta13",
+    "sensitivity": 7.108426166770499,
+    "sens_frac": 0.3546911298234229,
+    "recov_err_pct": 0.5682534823623648,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.5682534823623648
+    }
+  },
+  {
+    "param": "etaM13",
+    "sensitivity": 5.1909126772811245,
+    "sens_frac": 0.2590124225987497,
+    "recov_err_pct": 0.5962157688258575,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.5962157688258575
+    }
+  },
+  {
+    "param": "kappaB13",
+    "sensitivity": 2.746345111898335,
+    "sens_frac": 0.13703515064668811,
+    "recov_err_pct": 0.6343410041365849,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.6343410041365849
+    }
+  },
+  {
+    "param": "W",
+    "sensitivity": 14.412111074609374,
+    "sens_frac": 0.7191251396954833,
+    "recov_err_pct": 0.8137252172147197,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.8137252172147197
+    }
+  },
+  {
+    "param": "epsM",
+    "sensitivity": 0.114520169711925,
+    "sens_frac": 0.005714244957987229,
+    "recov_err_pct": 1.2732713322371656,
+    "identifiable": "YES",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 1.2732713322371656
+    }
+  },
+  {
+    "param": "kappaBC",
+    "sensitivity": 5.4204179840098705,
+    "sens_frac": 0.27046411311846336,
+    "recov_err_pct": 1.32119569665754,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 1.32119569665754
+    }
+  },
+  {
+    "param": "etaRC",
+    "sensitivity": 6.842801802631968,
+    "sens_frac": 0.34143719658777283,
+    "recov_err_pct": 1.556025814432053,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 1.556025814432053
+    }
+  },
+  {
+    "param": "etaBC",
+    "sensitivity": 16.70097720024093,
+    "sens_frac": 0.8333333333333238,
+    "recov_err_pct": 2.267152726842288,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 2.267152726842288
+    }
+  },
+  {
+    "param": "kappaM13",
+    "sensitivity": 1.4363191623049616,
+    "sens_frac": 0.07166841921302987,
+    "recov_err_pct": 2.326938828857239,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 2.326938828857239
+    }
+  },
+  {
+    "param": "a13",
+    "sensitivity": 2.0087762362652617,
+    "sens_frac": 0.10023247004154642,
+    "recov_err_pct": 3.5687395854830077,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 3.5687395854830077
+    }
+  },
+  {
+    "param": "eps13",
+    "sensitivity": 0.1111303642317818,
+    "sens_frac": 0.005545102885265966,
+    "recov_err_pct": 4.14174280934978,
+    "identifiable": "YES",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 4.14174280934978
+    }
+  },
+  {
+    "param": "rhoB",
+    "sensitivity": 1.170398353218407,
+    "sens_frac": 0.058399694180844564,
+    "recov_err_pct": 5.689030616675048,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 5.689030616675048
+    }
+  },
+  {
+    "param": "etaM",
+    "sensitivity": 6.4087639282433155,
+    "sens_frac": 0.31977988729859014,
+    "recov_err_pct": 10.596515131526125,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 10.596515131526125
+    }
+  },
+  {
+    "param": "kappaRC",
+    "sensitivity": 4.204021082022363,
+    "sens_frac": 0.20976921647643004,
+    "recov_err_pct": 10.92860430588065,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 10.92860430588065
+    }
+  },
+  {
+    "param": "lambdaP",
+    "sensitivity": 3.666862510921009,
+    "sens_frac": 0.18296646492378443,
+    "recov_err_pct": 11.188812336083446,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 11.188812336083446
+    }
+  },
+  {
+    "param": "kappa13",
+    "sensitivity": 1.9516894275930834,
+    "sens_frac": 0.09738399357278854,
+    "recov_err_pct": 11.311709885592117,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 11.311709885592117
+    }
+  },
+  {
+    "param": "etaR",
+    "sensitivity": 8.679892259022548,
+    "sens_frac": 0.4331030132225452,
+    "recov_err_pct": 16.005168502283666,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 16.005168502283666
+    }
+  },
+  {
+    "param": "thetaP",
+    "sensitivity": 7.557212758153881,
+    "sens_frac": 0.37708435997210055,
+    "recov_err_pct": 20.32715276464684,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 20.32715276464684
+    }
+  },
+  {
+    "param": "kappaM",
+    "sensitivity": 1.87245086899833,
+    "sens_frac": 0.09343020503870557,
+    "recov_err_pct": 21.55875809225205,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 21.55875809225205
+    }
+  },
+  {
+    "param": "rho13",
+    "sensitivity": 1.7570660544242553,
+    "sens_frac": 0.08767281665405022,
+    "recov_err_pct": 26.87690834786697,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 26.87690834786697
+    }
+  },
+  {
+    "param": "lambda5",
+    "sensitivity": 3.7975987985523822,
+    "sens_frac": 0.18948985005587748,
+    "recov_err_pct": 28.710396564694378,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 28.710396564694378
+    }
+  },
+  {
+    "param": "epsC",
+    "sensitivity": 0.20538455003750994,
+    "sens_frac": 0.010248130372602023,
+    "recov_err_pct": 37.418005331559065,
+    "identifiable": "NO",
+    "apriori": "weak",
+    "per_regime": {
+      "Normal": 37.418005331559065
+    }
+  },
+  {
+    "param": "kappaR",
+    "sensitivity": 4.969937696064275,
+    "sens_frac": 0.24798637211841917,
+    "recov_err_pct": 41.72826547189795,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 41.72826547189795
+    }
+  },
+  {
+    "param": "deltaP1",
+    "sensitivity": 1.6023786591588582,
+    "sens_frac": 0.07995433640133164,
+    "recov_err_pct": 48.18265029066864,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 48.18265029066864
+    }
+  },
+  {
+    "param": "kappa5",
+    "sensitivity": 1.1565598829756385,
+    "sens_frac": 0.05770919215827585,
+    "recov_err_pct": 49.11374764431544,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 49.11374764431544
+    }
+  },
+  {
+    "param": "rho5",
+    "sensitivity": 1.3131004520509866,
+    "sens_frac": 0.06552014074322293,
+    "recov_err_pct": 49.41791624644665,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 49.41791624644665
+    }
+  },
+  {
+    "param": "aC",
+    "sensitivity": 1.1159867979251328,
+    "sens_frac": 0.05568470557863627,
+    "recov_err_pct": 66.80392606729055,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 66.80392606729055
+    }
+  },
+  {
+    "param": "epsR",
+    "sensitivity": 0.15606532644501808,
+    "sens_frac": 0.00778723527041903,
+    "recov_err_pct": 79.05601613236797,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 79.05601613236797
+    }
+  },
+  {
+    "param": "eps5",
+    "sensitivity": 0.10551769228648814,
+    "sens_frac": 0.0052650458224367015,
+    "recov_err_pct": 82.30176821270295,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 82.30176821270295
+    }
+  },
+  {
+    "param": "a5",
+    "sensitivity": 1.3949834974064221,
+    "sens_frac": 0.06960588197329565,
+    "recov_err_pct": 123.4675026535031,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 123.4675026535031
+    }
+  },
+  {
+    "param": "epsP",
+    "sensitivity": 0.12417906866789408,
+    "sens_frac": 0.0061961977423543235,
+    "recov_err_pct": 230.02723986818557,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 230.02723986818557
+    }
+  }
+]
