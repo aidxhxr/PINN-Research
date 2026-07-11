@@ -173,8 +173,13 @@ def _train_once(name, refs_for_regime, true_vals, *,
         return (r**2).mean()
 
     def total_phys():
-        with torch.no_grad():
-            return float(sum(physics_loss(c) for c in conds) / len(conds))
+        # The "deriv" residual computes dz/dt via autograd (time_derivatives),
+        # which needs a live grad graph, so it cannot run under no_grad. Only
+        # the derivative-free "integral" residual is safe to no_grad.
+        if residual_mode == "integral":
+            with torch.no_grad():
+                return float(sum(physics_loss(c) for c in conds) / len(conds))
+        return float(sum(physics_loss(c) for c in conds) / len(conds))
 
     safe = name.replace(" ", "_").replace("/", "_")
     t0 = wall.perf_counter()
