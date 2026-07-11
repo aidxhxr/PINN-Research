@@ -399,7 +399,24 @@ def ess_1d(x):
 # ----------------------------------------------------------------------
 # Posterior predictive trajectory band + diagnostics.
 # ----------------------------------------------------------------------
-def predictive(flatnet, S, data, T, n_eval, max_draws):
+def predictive_band(mean, lo, hi, sigma):
+    """Posterior-PREDICTIVE 95% band for a new observation y = f(t) + eps,
+    eps ~ N(0, sigma^2). Combines the epistemic (reconstruction) uncertainty in
+    [lo, hi] with the aleatoric observation noise sigma:
+
+        pred_std = sqrt(epi_std^2 + sigma^2),  epi_std = (hi - lo) / (2 * 1.96)
+        pred_lo/hi = mean -/+ 1.96 * pred_std
+
+    Reconstructing epi_std from the stored percentiles means this same helper
+    serves both the live path and a replot from an existing .npz (which only
+    keeps mean/lo/hi), so no HMC rerun is needed to widen the band."""
+    Z = 1.959963984540054  # 97.5th-percentile of the standard normal
+    epi_std = (hi - lo) / (2.0 * Z)
+    pred_std = np.sqrt(epi_std ** 2 + float(sigma) ** 2)
+    return mean - Z * pred_std, mean + Z * pred_std
+
+
+def predictive(flatnet, S, data, T, n_eval, max_draws, noise_std):
     t_eval = torch.linspace(0, T, n_eval, device=DEVICE).reshape(-1, 1)
     idx = np.linspace(0, S.shape[0] - 1,
                       min(max_draws, S.shape[0])).astype(int)
@@ -409,32 +426,49 @@ def predictive(flatnet, S, data, T, n_eval, max_draws):
             preds[j] = flatnet.forward(S[k], t_eval).cpu().numpy()
     te = t_eval.cpu().numpy().ravel()
     mean = preds.mean(0)
-    lo = np.percentile(preds, 2.5, axis=0)
+    lo = np.percentile(preds, 2.5, axis=0)   # epistemic (reconstruction) band
     hi = np.percentile(preds, 97.5, axis=0)
+    pred_lo, pred_hi = predictive_band(mean, lo, hi, noise_std)
     # reference interpolated onto the eval grid
     ref = np.stack([np.interp(te, data["t_ref"], data["y_ref"][:, i])
                     for i in range(7)], axis=1)
-    return dict(t=te, preds=preds, mean=mean, lo=lo, hi=hi, ref=ref)
+    return dict(t=te, preds=preds, mean=mean, lo=lo, hi=hi,
+                pred_lo=pred_lo, pred_hi=pred_hi, noise_std=float(noise_std),
+                ref=ref)
 
 
 def summarise(pred, info, meta, out_dir, safe):
     te, mean, lo, hi, ref = (pred["t"], pred["mean"], pred["lo"],
                              pred["hi"], pred["ref"])
+    pred_lo, pred_hi = pred["pred_lo"], pred["pred_hi"]
+    t_obs, y_obs = meta["_t_obs"], meta["_y_obs"]
     scale = np.maximum(np.abs(ref).max(axis=0), 0.05)
     per_state = {}
     for i, vn in enumerate(VAR_NAMES):
         rmse = float(np.sqrt(np.mean((mean[:, i] - ref[:, i]) ** 2)))
         rel_rmse = rmse / scale[i]
+        # epistemic band: does the reconstruction cover the noise-free truth?
         cover = float(np.mean((ref[:, i] >= lo[:, i]) & (ref[:, i] <= hi[:, i])))
         width = float(np.mean(hi[:, i] - lo[:, i]))
         rel_width = width / scale[i]
+        # predictive band: does it cover the noisy observations (calibration)?
+        plo_o = np.interp(t_obs, te, pred_lo[:, i])
+        phi_o = np.interp(t_obs, te, pred_hi[:, i])
+        pred_cover = float(np.mean((y_obs[:, i] >= plo_o) & (y_obs[:, i] <= phi_o)))
+        pred_width = float(np.mean(pred_hi[:, i] - pred_lo[:, i]))
+        rel_pred_width = pred_width / scale[i]
         per_state[vn] = dict(rmse=rmse, rel_rmse=rel_rmse,
-                             coverage95=cover, band_width=width,
-                             rel_band_width=rel_width)
+                             coverage95_truth=cover, coverage95=cover,
+                             band_width=width, rel_band_width=rel_width,
+                             pred_coverage_obs=pred_cover,
+                             pred_band_width=pred_width,
+                             rel_pred_band_width=rel_pred_width)
     overall = dict(
         mean_rel_rmse=float(np.mean([per_state[v]["rel_rmse"] for v in VAR_NAMES])),
         mean_coverage95=float(np.mean([per_state[v]["coverage95"] for v in VAR_NAMES])),
-        mean_rel_band_width=float(np.mean([per_state[v]["rel_band_width"] for v in VAR_NAMES])))
+        mean_rel_band_width=float(np.mean([per_state[v]["rel_band_width"] for v in VAR_NAMES])),
+        mean_pred_coverage_obs=float(np.mean([per_state[v]["pred_coverage_obs"] for v in VAR_NAMES])),
+        mean_rel_pred_band_width=float(np.mean([per_state[v]["rel_pred_band_width"] for v in VAR_NAMES])))
 
     # predictive-functional ESS (mean of beta-catenin over time, per draw) — a
     # meaningful mixing check (redundant weights mix slower than functionals).
@@ -450,30 +484,36 @@ def summarise(pred, info, meta, out_dir, safe):
         json.dump(summary, fh, indent=2)
     np.savez_compressed(
         os.path.join(out_dir, f"{safe}_predictive.npz"),
-        t=te, mean=mean, lo=lo, hi=hi, ref=ref,
-        t_obs=meta["_t_obs"], y_obs=meta["_y_obs"],
+        t=te, mean=mean, lo=lo, hi=hi,
+        pred_lo=pred_lo, pred_hi=pred_hi, noise_std=pred["noise_std"],
+        ref=ref, t_obs=meta["_t_obs"], y_obs=meta["_y_obs"],
         var_names=np.array(VAR_NAMES))
     return summary
 
 
-def plot_predictive(pred, data, summary, out_dir, safe):
+def plot_predictive(pred, t_obs, y_obs, summary, out_dir, safe):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
     te, mean, lo, hi, ref = (pred["t"], pred["mean"], pred["lo"],
                              pred["hi"], pred["ref"])
+    pred_lo, pred_hi = pred["pred_lo"], pred["pred_hi"]
     fig, axes = plt.subplots(3, 3, figsize=(16, 11))
     for i, (vn, lab) in enumerate(zip(VAR_NAMES, VAR_LABELS)):
         ax = axes.flat[i]
-        ax.fill_between(te, lo[:, i], hi[:, i], color="#4c72b0", alpha=0.30,
-                        label="95% credible band")
-        ax.plot(te, mean[:, i], color="#1f4e9c", lw=1.6, label="post. mean")
+        # wide, visible posterior-predictive band (reconstruction (+) obs noise)
+        ax.fill_between(te, pred_lo[:, i], pred_hi[:, i], color="#4c72b0",
+                        alpha=0.25, label="95% predictive band")
+        # thin inner epistemic band (how tightly the function is pinned)
+        ax.fill_between(te, lo[:, i], hi[:, i], color="#1f4e9c", alpha=0.45,
+                        label="reconstruction 95%")
+        ax.plot(te, mean[:, i], color="#1f4e9c", lw=1.4, label="post. mean")
         ax.plot(te, ref[:, i], color="crimson", lw=1.4, ls="--", label="truth")
-        ax.scatter(data["t_obs"], data["y_obs"][:, i], s=16, color="k",
+        ax.scatter(t_obs, y_obs[:, i], s=16, color="k",
                    zorder=5, label="noisy obs")
         ps = summary["per_state"][vn]
-        ax.set_title(f"{lab}   cov95={ps['coverage95']:.2f}  "
+        ax.set_title(f"{lab}   pred cov(obs)={ps['pred_coverage_obs']:.2f}  "
                      f"relRMSE={ps['rel_rmse']:.2f}", fontsize=10)
         ax.set_xlabel("t")
         if i == 0:
@@ -482,7 +522,7 @@ def plot_predictive(pred, data, summary, out_dir, safe):
         axes.flat[j].axis("off")
     ov = summary["overall"]
     fig.suptitle(f"{safe} — Bayesian forward PINN posterior predictive   "
-                 f"[mean cov95={ov['mean_coverage95']:.2f}, "
+                 f"[mean pred cov(obs)={ov['mean_pred_coverage_obs']:.2f}, "
                  f"mean relRMSE={ov['mean_rel_rmse']:.2f}]", fontsize=13)
     fig.tight_layout(rect=[0, 0, 1, 0.98])
     fig.savefig(os.path.join(out_dir, f"{safe}_predictive.png"), dpi=120)
@@ -559,7 +599,8 @@ def main():
                       L=args.leapfrog, target_accept=args.target_accept,
                       log_every=100, tag=safe[:4], rng_seed=args.seed + 7)
 
-    pred = predictive(flatnet, S, data, args.T, args.n_eval, args.max_pred_draws)
+    pred = predictive(flatnet, S, data, args.T, args.n_eval,
+                      args.max_pred_draws, args.noise_std)
     meta = dict(regime=safe, n_data=args.n_data, noise_std=args.noise_std,
                 colloc=args.colloc, net_dim=flatnet.dim, width=args.width,
                 depth=args.depth, warmup=args.warmup, draws=args.draws,
@@ -567,19 +608,21 @@ def main():
                 sigma_data=sig["data"], sigma_ic=sig["ic"], sigma_phys=sig["phys"],
                 _t_obs=data["t_obs"], _y_obs=data["y_obs"])
     summary = summarise(pred, info, meta, args.out, safe)
-    plot_predictive(pred, data, summary, args.out, safe)
+    plot_predictive(pred, data["t_obs"], data["y_obs"], summary, args.out, safe)
 
     ov = summary["overall"]
     print(f"\n  [{safe}] accept={info['accept']:.2f}  eps={info['eps']:.4f}  "
           f"ess(U)={summary['ess_U']:.0f}  ess(pred)={summary['ess_pred_beta']:.0f}",
           flush=True)
-    print(f"  [{safe}] mean cov95={ov['mean_coverage95']:.2f}  "
+    print(f"  [{safe}] mean pred cov(obs)={ov['mean_pred_coverage_obs']:.2f}  "
           f"mean relRMSE={ov['mean_rel_rmse']:.3f}  "
-          f"mean rel band width={ov['mean_rel_band_width']:.3f}", flush=True)
+          f"mean rel pred band={ov['mean_rel_pred_band_width']:.3f}  "
+          f"(epi cov(truth)={ov['mean_coverage95']:.2f}, "
+          f"rel epi band={ov['mean_rel_band_width']:.3f})", flush=True)
     for vn in VAR_NAMES:
         ps = summary["per_state"][vn]
-        print(f"    {vn:>4}: cov95={ps['coverage95']:.2f}  "
-              f"relRMSE={ps['rel_rmse']:.3f}  relBand={ps['rel_band_width']:.3f}",
+        print(f"    {vn:>4}: predCov(obs)={ps['pred_coverage_obs']:.2f}  "
+              f"relRMSE={ps['rel_rmse']:.3f}  relPredBand={ps['rel_pred_band_width']:.3f}",
               flush=True)
     print(f"  [{safe}] DONE", flush=True)
 
