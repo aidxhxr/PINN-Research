@@ -18,12 +18,12 @@ BASELINE = dict(
     epsC=0.80, aC=0.08, etaRC=1.50, kappaRC=0.50,
     etaBC=1.50, kappaBC=0.50,
     mu0=0.35, AR=0.04, TR=24.0, phi=0.0,
-    DR=1.50, q=0.30, tau1=40.0, tau2=80.0,
+    DR=1.50, q=0.30, tau1=40.0, tau2=88.0,
     alpha13=1.00, alpha5=1.00,
 )
 
 REGIMES = {
-    "Normal":            dict(W=0.50, thetaP=1.00),
+    "Normal":            dict(W=0.80, thetaP=1.00),
     "Early Adenoma":     dict(W=1.00, thetaP=0.75),
     "Advanced Adenoma":       dict(W=1.50, thetaP=0.50),
     "Severe APC Loss": dict(W=2.00, thetaP=0.25),
