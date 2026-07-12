@@ -1,0 +1,51 @@
+=== Bayesian FORWARD PINN — regime=Normal  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early Adenoma         t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma      t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss       t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Norm] MAP     1/4000  L=6.133e+02  lr=2.0e-03  [2s]
+    [Norm] MAP   500/4000  L=4.318e-01  lr=1.9e-03  [19s]
+    [Norm] MAP  1000/4000  L=2.279e-01  lr=1.7e-03  [36s]
+    [Norm] MAP  1500/4000  L=1.517e-01  lr=1.4e-03  [53s]
+    [Norm] MAP  2000/4000  L=1.346e-01  lr=1.0e-03  [69s]
+    [Norm] MAP  2500/4000  L=1.281e-01  lr=6.2e-04  [86s]
+    [Norm] MAP  3000/4000  L=1.254e-01  lr=3.0e-04  [103s]
+    [Norm] MAP  3500/4000  L=1.244e-01  lr=8.6e-05  [119s]
+    [Norm] MAP  4000/4000  L=1.241e-01  lr=1.0e-05  [136s]
+  calibrated sigma: data=1.952e-02  ic=1.479e-03  phys=1.751e-03
+    [Norm] dim=10951  eps0=2.441e-05
+    [Norm] warm-init  100/200  eps=0.0000  acc=0.73  U=1486.4 [147s]
+    [Norm] warm-init  200/200  eps=0.0000  acc=0.75  U=1151.4 [294s]
+    [Norm] warm-varA  100/300  eps=0.0000  acc=0.74  U=988.7 [442s]
+    [Norm] warm-varA  200/300  eps=0.0000  acc=0.75  U=903.6 [590s]
+    [Norm] warm-varA  300/300  eps=0.0000  acc=0.74  U=770.0 [738s]
+    [Norm] warm-varB  100/200  eps=0.0001  acc=0.73  U=765.5 [885s]
+    [Norm] warm-varB  200/200  eps=0.0001  acc=0.74  U=682.9 [1032s]
+    [Norm] warm-fine  100/300  eps=0.0002  acc=0.73  U=642.5 [1180s]
+    [Norm] warm-fine  200/300  eps=0.0003  acc=0.75  U=653.9 [1328s]
+    [Norm] warm-fine  300/300  eps=0.0002  acc=0.74  U=615.2 [1475s]
+    [Norm] warmup done: eps=0.0003  mean-acc=0.74
+    [Norm] draw   100/1000  acc=0.89  U=574.4  [1623s]
+    [Norm] draw   200/1000  acc=0.89  U=553.9  [1770s]
+    [Norm] draw   300/1000  acc=0.89  U=545.0  [1918s]
+    [Norm] draw   400/1000  acc=0.86  U=532.7  [2065s]
+    [Norm] draw   500/1000  acc=0.91  U=516.3  [2213s]
+    [Norm] draw   600/1000  acc=0.86  U=506.4  [2361s]
+    [Norm] draw   700/1000  acc=0.90  U=513.7  [2508s]
+    [Norm] draw   800/1000  acc=0.87  U=495.5  [2657s]
+    [Norm] draw   900/1000  acc=0.89  U=473.2  [2805s]
+    [Norm] draw  1000/1000  acc=0.88  U=453.3  [2952s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Normal] accept=0.88  eps=0.0003  ess(U)=4  ess(pred)=400
+  [Normal] mean pred cov(obs)=0.95  mean relRMSE=0.002  mean rel pred band=0.080  (epi cov(truth)=0.96, rel epi band=0.006)
+       b: predCov(obs)=0.93  relRMSE=0.002  relPredBand=0.107
+       p: predCov(obs)=0.93  relRMSE=0.002  relPredBand=0.076
+    $h_5$: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.098
+    $h_{13}$: predCov(obs)=0.95  relRMSE=0.002  relPredBand=0.062
+       m: predCov(obs)=0.97  relRMSE=0.002  relPredBand=0.071
+       r: predCov(obs)=0.90  relRMSE=0.001  relPredBand=0.099
+       c: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.045
+  [Normal] DONE

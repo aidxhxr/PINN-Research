@@ -1,0 +1,51 @@
+=== Bayesian FORWARD PINN — regime=Early Adenoma  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early Adenoma         t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma      t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss       t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Earl] MAP     1/4000  L=6.928e+02  lr=2.0e-03  [2s]
+    [Earl] MAP   500/4000  L=3.484e-01  lr=1.9e-03  [19s]
+    [Earl] MAP  1000/4000  L=2.050e-01  lr=1.7e-03  [36s]
+    [Earl] MAP  1500/4000  L=1.420e-01  lr=1.4e-03  [52s]
+    [Earl] MAP  2000/4000  L=1.232e-01  lr=1.0e-03  [69s]
+    [Earl] MAP  2500/4000  L=1.178e-01  lr=6.2e-04  [86s]
+    [Earl] MAP  3000/4000  L=1.160e-01  lr=3.0e-04  [102s]
+    [Earl] MAP  3500/4000  L=1.153e-01  lr=8.6e-05  [119s]
+    [Earl] MAP  4000/4000  L=1.152e-01  lr=1.0e-05  [136s]
+  calibrated sigma: data=1.919e-02  ic=1.195e-03  phys=1.459e-03
+    [Earl] dim=10951  eps0=2.441e-05
+    [Earl] warm-init  100/200  eps=0.0000  acc=0.74  U=1237.1 [148s]
+    [Earl] warm-init  200/200  eps=0.0000  acc=0.75  U=969.9 [296s]
+    [Earl] warm-varA  100/300  eps=0.0000  acc=0.74  U=877.4 [444s]
+    [Earl] warm-varA  200/300  eps=0.0000  acc=0.75  U=787.6 [591s]
+    [Earl] warm-varA  300/300  eps=0.0000  acc=0.74  U=726.1 [739s]
+    [Earl] warm-varB  100/200  eps=0.0001  acc=0.73  U=705.9 [886s]
+    [Earl] warm-varB  200/200  eps=0.0001  acc=0.74  U=663.5 [1032s]
+    [Earl] warm-fine  100/300  eps=0.0002  acc=0.73  U=652.6 [1182s]
+    [Earl] warm-fine  200/300  eps=0.0003  acc=0.75  U=605.9 [1329s]
+    [Earl] warm-fine  300/300  eps=0.0001  acc=0.74  U=585.1 [1476s]
+    [Earl] warmup done: eps=0.0002  mean-acc=0.74
+    [Earl] draw   100/1000  acc=0.87  U=575.7  [1623s]
+    [Earl] draw   200/1000  acc=0.85  U=537.1  [1770s]
+    [Earl] draw   300/1000  acc=0.86  U=547.6  [1917s]
+    [Earl] draw   400/1000  acc=0.89  U=508.1  [2064s]
+    [Earl] draw   500/1000  acc=0.88  U=492.7  [2212s]
+    [Earl] draw   600/1000  acc=0.88  U=465.5  [2359s]
+    [Earl] draw   700/1000  acc=0.87  U=463.3  [2506s]
+    [Earl] draw   800/1000  acc=0.88  U=451.5  [2655s]
+    [Earl] draw   900/1000  acc=0.85  U=461.1  [2803s]
+    [Earl] draw  1000/1000  acc=0.87  U=444.8  [2950s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Early_Adenoma] accept=0.87  eps=0.0002  ess(U)=3  ess(pred)=104
+  [Early_Adenoma] mean pred cov(obs)=0.94  mean relRMSE=0.001  mean rel pred band=0.073  (epi cov(truth)=0.91, rel epi band=0.004)
+       b: predCov(obs)=0.93  relRMSE=0.002  relPredBand=0.072
+       p: predCov(obs)=0.93  relRMSE=0.001  relPredBand=0.078
+    $h_5$: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.098
+    $h_{13}$: predCov(obs)=0.95  relRMSE=0.001  relPredBand=0.055
+       m: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.061
+       r: predCov(obs)=0.90  relRMSE=0.001  relPredBand=0.111
+       c: predCov(obs)=0.95  relRMSE=0.001  relPredBand=0.039
+  [Early_Adenoma] DONE

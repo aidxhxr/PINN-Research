@@ -1,0 +1,51 @@
+=== Bayesian FORWARD PINN — regime=Advanced Adenoma  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early Adenoma         t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma      t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss       t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Adva] MAP     1/4000  L=7.502e+02  lr=2.0e-03  [2s]
+    [Adva] MAP   500/4000  L=2.720e-01  lr=1.9e-03  [19s]
+    [Adva] MAP  1000/4000  L=1.589e-01  lr=1.7e-03  [36s]
+    [Adva] MAP  1500/4000  L=1.260e-01  lr=1.4e-03  [52s]
+    [Adva] MAP  2000/4000  L=1.164e-01  lr=1.0e-03  [69s]
+    [Adva] MAP  2500/4000  L=1.132e-01  lr=6.2e-04  [86s]
+    [Adva] MAP  3000/4000  L=1.120e-01  lr=3.0e-04  [102s]
+    [Adva] MAP  3500/4000  L=1.115e-01  lr=8.6e-05  [119s]
+    [Adva] MAP  4000/4000  L=1.114e-01  lr=1.0e-05  [136s]
+  calibrated sigma: data=1.904e-02  ic=1.124e-03  phys=1.315e-03
+    [Adva] dim=10951  eps0=2.441e-05
+    [Adva] warm-init  100/200  eps=0.0000  acc=0.73  U=978.7 [147s]
+    [Adva] warm-init  200/200  eps=0.0000  acc=0.75  U=801.6 [295s]
+    [Adva] warm-varA  100/300  eps=0.0000  acc=0.74  U=695.4 [444s]
+    [Adva] warm-varA  200/300  eps=0.0000  acc=0.75  U=622.5 [591s]
+    [Adva] warm-varA  300/300  eps=0.0000  acc=0.75  U=598.1 [738s]
+    [Adva] warm-varB  100/200  eps=0.0000  acc=0.73  U=535.7 [886s]
+    [Adva] warm-varB  200/200  eps=0.0001  acc=0.74  U=533.3 [1032s]
+    [Adva] warm-fine  100/300  eps=0.0002  acc=0.73  U=516.9 [1182s]
+    [Adva] warm-fine  200/300  eps=0.0004  acc=0.75  U=498.5 [1330s]
+    [Adva] warm-fine  300/300  eps=0.0003  acc=0.74  U=501.4 [1478s]
+    [Adva] warmup done: eps=0.0002  mean-acc=0.74
+    [Adva] draw   100/1000  acc=0.88  U=471.1  [1628s]
+    [Adva] draw   200/1000  acc=0.86  U=463.2  [1776s]
+    [Adva] draw   300/1000  acc=0.85  U=467.1  [1924s]
+    [Adva] draw   400/1000  acc=0.86  U=422.5  [2072s]
+    [Adva] draw   500/1000  acc=0.86  U=409.9  [2220s]
+    [Adva] draw   600/1000  acc=0.88  U=411.4  [2368s]
+    [Adva] draw   700/1000  acc=0.89  U=423.3  [2516s]
+    [Adva] draw   800/1000  acc=0.87  U=416.4  [2665s]
+    [Adva] draw   900/1000  acc=0.83  U=417.7  [2813s]
+    [Adva] draw  1000/1000  acc=0.88  U=406.4  [2959s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Advanced_Adenoma] accept=0.87  eps=0.0002  ess(U)=4  ess(pred)=195
+  [Advanced_Adenoma] mean pred cov(obs)=0.94  mean relRMSE=0.001  mean rel pred band=0.069  (epi cov(truth)=0.96, rel epi band=0.003)
+       b: predCov(obs)=0.93  relRMSE=0.001  relPredBand=0.048
+       p: predCov(obs)=0.93  relRMSE=0.000  relPredBand=0.078
+    $h_5$: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.098
+    $h_{13}$: predCov(obs)=0.95  relRMSE=0.001  relPredBand=0.051
+       m: predCov(obs)=0.95  relRMSE=0.001  relPredBand=0.056
+       r: predCov(obs)=0.90  relRMSE=0.000  relPredBand=0.118
+       c: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.035
+  [Advanced_Adenoma] DONE
