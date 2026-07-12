@@ -1,0 +1,8 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/20260711_203325_integral
+regime                under10%  baseline  delta
+Normal                      17        10     +7
+Early Adenoma               16         4    +12
+Advanced Adenoma            10         5     +5
+Severe APC Loss              7         7     +0
+TOTAL                       50        26    +24
