@@ -1,0 +1,69 @@
+{
+  "regime": "Severe APC Loss",
+  "n_obs": 14000,
+  "K": 36,
+  "sigma": 0.002,
+  "cond_number": 178436985712596.56,
+  "eig_max": 2253057322.220421,
+  "eig_min": 1.2626627339745343e-05,
+  "n_null_directions": 1,
+  "n_ident": 14,
+  "n_weak": 21,
+  "n_nonident": 1,
+  "nonident_params": [
+    "thetaP"
+  ],
+  "n_correlated_pairs": 10,
+  "top_correlated_pairs": [
+    [
+      "aM",
+      "etaBM",
+      -1.0
+    ],
+    [
+      "thetaP",
+      "deltaP1",
+      1.0
+    ],
+    [
+      "etaR",
+      "etaM",
+      0.999
+    ],
+    [
+      "etaB13",
+      "kappaB13",
+      -0.999
+    ],
+    [
+      "aC",
+      "etaBC",
+      -0.998
+    ],
+    [
+      "epsP",
+      "rho13",
+      -0.998
+    ],
+    [
+      "W",
+      "eta13",
+      -0.998
+    ],
+    [
+      "epsP",
+      "rhoB",
+      -0.997
+    ],
+    [
+      "etaM13",
+      "kappaM13",
+      -0.996
+    ],
+    [
+      "rhoB",
+      "rho13",
+      0.993
+    ]
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "regime": "Normal",
+  "n_obs": 14000,
+  "K": 36,
+  "sigma": 0.002,
+  "cond_number": 3.736772880402638e+19,
+  "eig_max": 7903759544.393377,
+  "eig_min": 2.1151297650024015e-10,
+  "n_null_directions": 1,
+  "n_ident": 13,
+  "n_weak": 22,
+  "n_nonident": 1,
+  "nonident_params": [
+    "deltaP1"
+  ],
+  "n_correlated_pairs": 0,
+  "top_correlated_pairs": []
+}
