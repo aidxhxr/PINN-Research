@@ -1,0 +1,51 @@
+=== Bayesian FORWARD PINN — regime=Severe APC Loss  device=cuda ===
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early Adenoma         t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma      t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss       t=[0, 150]  shape=(5000, 7)
+  net dim=10,951  obs=40 (noise=0.02)  colloc=800
+    [Seve] MAP     1/4000  L=7.746e+02  lr=2.0e-03  [2s]
+    [Seve] MAP   500/4000  L=3.753e-01  lr=1.9e-03  [19s]
+    [Seve] MAP  1000/4000  L=1.722e-01  lr=1.7e-03  [36s]
+    [Seve] MAP  1500/4000  L=2.016e-01  lr=1.4e-03  [52s]
+    [Seve] MAP  2000/4000  L=1.221e-01  lr=1.0e-03  [69s]
+    [Seve] MAP  2500/4000  L=1.174e-01  lr=6.2e-04  [86s]
+    [Seve] MAP  3000/4000  L=1.155e-01  lr=3.0e-04  [102s]
+    [Seve] MAP  3500/4000  L=1.148e-01  lr=8.6e-05  [119s]
+    [Seve] MAP  4000/4000  L=1.146e-01  lr=1.0e-05  [136s]
+  calibrated sigma: data=1.904e-02  ic=1.183e-03  phys=1.518e-03
+    [Seve] dim=10951  eps0=2.441e-05
+    [Seve] warm-init  100/200  eps=0.0000  acc=0.73  U=1276.0 [148s]
+    [Seve] warm-init  200/200  eps=0.0000  acc=0.75  U=966.1 [296s]
+    [Seve] warm-varA  100/300  eps=0.0000  acc=0.74  U=860.4 [444s]
+    [Seve] warm-varA  200/300  eps=0.0000  acc=0.74  U=759.1 [592s]
+    [Seve] warm-varA  300/300  eps=0.0000  acc=0.75  U=668.7 [739s]
+    [Seve] warm-varB  100/200  eps=0.0000  acc=0.73  U=616.7 [886s]
+    [Seve] warm-varB  200/200  eps=0.0001  acc=0.75  U=601.9 [1034s]
+    [Seve] warm-fine  100/300  eps=0.0002  acc=0.73  U=542.0 [1182s]
+    [Seve] warm-fine  200/300  eps=0.0001  acc=0.74  U=528.3 [1330s]
+    [Seve] warm-fine  300/300  eps=0.0004  acc=0.75  U=506.7 [1477s]
+    [Seve] warmup done: eps=0.0002  mean-acc=0.74
+    [Seve] draw   100/1000  acc=0.88  U=466.1  [1625s]
+    [Seve] draw   200/1000  acc=0.89  U=468.6  [1772s]
+    [Seve] draw   300/1000  acc=0.87  U=441.4  [1919s]
+    [Seve] draw   400/1000  acc=0.88  U=430.7  [2067s]
+    [Seve] draw   500/1000  acc=0.87  U=437.5  [2214s]
+    [Seve] draw   600/1000  acc=0.90  U=438.2  [2362s]
+    [Seve] draw   700/1000  acc=0.87  U=419.3  [2510s]
+    [Seve] draw   800/1000  acc=0.87  U=411.0  [2658s]
+    [Seve] draw   900/1000  acc=0.91  U=400.9  [2807s]
+    [Seve] draw  1000/1000  acc=0.88  U=383.8  [2954s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Severe_APC_Loss] accept=0.88  eps=0.0002  ess(U)=4  ess(pred)=97
+  [Severe_APC_Loss] mean pred cov(obs)=0.95  mean relRMSE=0.001  mean rel pred band=0.067  (epi cov(truth)=0.96, rel epi band=0.003)
+       b: predCov(obs)=0.93  relRMSE=0.002  relPredBand=0.037
+       p: predCov(obs)=0.93  relRMSE=0.001  relPredBand=0.078
+    $h_5$: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.098
+    $h_{13}$: predCov(obs)=0.95  relRMSE=0.001  relPredBand=0.050
+       m: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.054
+       r: predCov(obs)=0.90  relRMSE=0.000  relPredBand=0.121
+       c: predCov(obs)=0.97  relRMSE=0.001  relPredBand=0.034
+  [Severe_APC_Loss] DONE
