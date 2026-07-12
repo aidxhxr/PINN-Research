@@ -1,0 +1,16 @@
+{
+  "regime": "Advanced Adenoma",
+  "n_obs": 14000,
+  "K": 8,
+  "sigma": 0.002,
+  "cond_number": 229.40605843735207,
+  "eig_max": 920368453.7449943,
+  "eig_min": 4011962.2821397083,
+  "n_null_directions": 0,
+  "n_ident": 8,
+  "n_weak": 0,
+  "n_nonident": 0,
+  "nonident_params": [],
+  "n_correlated_pairs": 0,
+  "top_correlated_pairs": []
+}

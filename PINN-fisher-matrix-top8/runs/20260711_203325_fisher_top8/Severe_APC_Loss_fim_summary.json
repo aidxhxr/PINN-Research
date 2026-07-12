@@ -1,0 +1,16 @@
+{
+  "regime": "Severe APC Loss",
+  "n_obs": 14000,
+  "K": 8,
+  "sigma": 0.002,
+  "cond_number": 665.1967588828089,
+  "eig_max": 966537192.7198083,
+  "eig_min": 1453009.4739834536,
+  "n_null_directions": 0,
+  "n_ident": 8,
+  "n_weak": 0,
+  "n_nonident": 0,
+  "nonident_params": [],
+  "n_correlated_pairs": 0,
+  "top_correlated_pairs": []
+}
