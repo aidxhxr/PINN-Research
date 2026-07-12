@@ -23,7 +23,7 @@ echo "run_dir  = $RUN_DIR"
 echo "warmup=$WARMUP draws=$DRAWS colloc=$COLLOC"
 
 pids=()
-for REGIME in "Normal" "Early adenoma" "Cancer-like" "Strong APC-mutant"; do
+for REGIME in "Normal" "Early Adenoma" "Advanced Adenoma" "Severe APC Loss"; do
   safe="${REGIME// /_}"
   python3 -u "$HERE/bayesian_infer.py" \
       --regime "$REGIME" --seed-run "$SEED_RUN" --out "$RUN_DIR" \

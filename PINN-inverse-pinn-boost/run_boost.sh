@@ -18,7 +18,7 @@ REFS="$RUN_DIR/refs.pkl"
 echo "[prep] building reference trajectories -> $REFS"
 python3 -u "$HERE/prep_refs.py" "$REFS" 2>&1 | tee "$RUN_DIR/prep.log"
 
-REGIMES=("Normal" "Early adenoma" "Cancer-like" "Strong APC-mutant")
+REGIMES=("Normal" "Early Adenoma" "Advanced Adenoma" "Severe APC Loss")
 THREADS=14   # 4 regimes x 14 ~= 56 of 64 cores
 
 echo "[run] variant=$VARIANT starts=$STARTS  4 regimes in parallel"
