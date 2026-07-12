@@ -23,7 +23,7 @@ echo "run_dir  = $RUN_DIR"
 echo "n_data=$NDATA noise=$NOISE warmup=$WARMUP draws=$DRAWS colloc=$COLLOC leapfrog=$LEAPFROG"
 
 pids=()
-for REGIME in "Normal" "Early adenoma" "Cancer-like" "Strong APC-mutant"; do
+for REGIME in "Normal" "Early Adenoma" "Advanced Adenoma" "Severe APC Loss"; do
   safe="${REGIME// /_}"
   python3 -u "$HERE/bayesian_forward.py" \
       --regime "$REGIME" --out "$RUN_DIR" \
