@@ -1,0 +1,63 @@
+=== regime=Early Adenoma  variant=integral  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'integral', 'activation': 'gelu', 'n_starts': 2} ===
+  [Earl#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+    [Earl#0] Adam     1/2000  L=8.55e+00  Ld=5.42e-01  Lp=3.17e-04  Lic=4.00e-01  lp=10.10 | W=1.194(*1.00)  thetaP=0.599(*0.75)  <rel.err>=48% [4s]
+    [Earl#0] Adam   200/2000  L=6.08e-03  Ld=5.97e-03  Lp=1.09e-05  Lic=3.72e-07  lp=9.75 | W=0.973(*1.00)  thetaP=0.686(*0.75)  <rel.err>=53% [409s]
+    [Earl#0] Adam   400/2000  L=9.03e-04  Ld=8.81e-04  Lp=1.36e-06  Lic=3.79e-07  lp=10.14 | W=0.965(*1.00)  thetaP=0.680(*0.75)  <rel.err>=48% [814s]
+    [Earl#0] Adam   600/2000  L=4.79e-04  Ld=4.65e-04  Lp=7.43e-07  Lic=2.45e-07  lp=11.42 | W=0.965(*1.00)  thetaP=0.679(*0.75)  <rel.err>=45% [1218s]
+    [Earl#0] Adam   800/2000  L=3.36e-04  Ld=3.29e-04  Lp=5.16e-07  Lic=2.87e-09  lp=12.43 | W=0.966(*1.00)  thetaP=0.679(*0.75)  <rel.err>=43% [1622s]
+    [Earl#0] Adam  1000/2000  L=2.66e-04  Ld=2.60e-04  Lp=3.96e-07  Lic=2.26e-09  lp=13.34 | W=0.968(*1.00)  thetaP=0.679(*0.75)  <rel.err>=41% [2026s]
+    [Earl#0] Adam  1200/2000  L=2.27e-04  Ld=2.22e-04  Lp=3.29e-07  Lic=1.94e-09  lp=14.21 | W=0.970(*1.00)  thetaP=0.679(*0.75)  <rel.err>=40% [2430s]
+    [Earl#0] Adam  1400/2000  L=2.05e-04  Ld=2.01e-04  Lp=2.90e-07  Lic=1.75e-09  lp=15.07 | W=0.972(*1.00)  thetaP=0.679(*0.75)  <rel.err>=39% [2833s]
+    [Earl#0] Adam  1600/2000  L=1.94e-04  Ld=1.90e-04  Lp=2.68e-07  Lic=1.66e-09  lp=15.95 | W=0.973(*1.00)  thetaP=0.679(*0.75)  <rel.err>=39% [3200s]
+    [Earl#0] Adam  1800/2000  L=1.90e-04  Ld=1.85e-04  Lp=2.56e-07  Lic=1.62e-09  lp=16.84 | W=0.974(*1.00)  thetaP=0.679(*0.75)  <rel.err>=38% [3501s]
+    [Earl#0] Adam  2000/2000  L=1.89e-04  Ld=1.85e-04  Lp=2.49e-07  Lic=1.62e-09  lp=17.78 | W=0.974(*1.00)  thetaP=0.678(*0.75)  <rel.err>=38% [3802s]
+    [Earl#0] L-BFGS (150) ...
+    [Earl#0] LBFGS   50/150  L=7.31e-05 | W=0.924(*1.00)  thetaP=0.670(*0.75)  <rel.err>=39% [6162s]
+    [Earl#0] LBFGS  100/150  L=3.51e-05 | W=0.859(*1.00)  thetaP=0.678(*0.75)  <rel.err>=23% [8282s]
+    [Earl#0] LBFGS  150/150  L=2.11e-05 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10250s]
+    [Earl#0] param-refine (600, frozen, integral) ...
+    [Earl#0] refine   50/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10257s]
+    [Earl#0] refine  100/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10264s]
+    [Earl#0] refine  150/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10271s]
+    [Earl#0] refine  200/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10278s]
+    [Earl#0] refine  250/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10284s]
+    [Earl#0] refine  300/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10290s]
+    [Earl#0] refine  350/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10296s]
+    [Earl#0] refine  400/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10302s]
+    [Earl#0] refine  450/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10308s]
+    [Earl#0] refine  500/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10314s]
+    [Earl#0] refine  550/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10320s]
+    [Earl#0] refine  600/600  Lp=2.41e-08  under10%=16/36 | W=0.827(*1.00)  thetaP=0.690(*0.75)  <rel.err>=18% [10327s]
+  [Earl#0] done  under10%=16/36  phys=2.41e-08  W=0.827 thetaP=0.690  (10327s)
+  >> Early Adenoma start 0: under10%=16/36 phys=2.41e-08  (best so far under10%=16/36 phys=2.41e-08)
+  [Earl#1] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+    [Earl#1] Adam     1/2000  L=8.55e+00  Ld=5.38e-01  Lp=3.30e-04  Lic=4.00e-01  lp=10.13 | W=1.608(*1.00)  thetaP=0.405(*0.75)  <rel.err>=54% [2s]
+    [Earl#1] Adam   200/2000  L=7.33e-03  Ld=7.15e-03  Lp=1.32e-05  Lic=2.07e-06  lp=10.33 | W=1.297(*1.00)  thetaP=0.517(*0.75)  <rel.err>=61% [226s]
+    [Earl#1] Adam   400/2000  L=1.23e-03  Ld=1.05e-03  Lp=1.42e-06  Lic=8.00e-06  lp=11.56 | W=1.270(*1.00)  thetaP=0.521(*0.75)  <rel.err>=55% [454s]
+    [Earl#1] Adam   600/2000  L=5.49e-04  Ld=5.37e-04  Lp=6.85e-07  Lic=1.51e-07  lp=12.68 | W=1.259(*1.00)  thetaP=0.520(*0.75)  <rel.err>=52% [680s]
+    [Earl#1] Adam   800/2000  L=3.70e-04  Ld=3.64e-04  Lp=4.85e-07  Lic=4.67e-09  lp=13.45 | W=1.249(*1.00)  thetaP=0.520(*0.75)  <rel.err>=51% [905s]
+    [Earl#1] Adam  1000/2000  L=2.88e-04  Ld=2.82e-04  Lp=3.91e-07  Lic=3.37e-09  lp=14.00 | W=1.238(*1.00)  thetaP=0.521(*0.75)  <rel.err>=51% [1129s]
+    [Earl#1] Adam  1200/2000  L=2.44e-04  Ld=2.39e-04  Lp=3.38e-07  Lic=2.72e-09  lp=14.45 | W=1.229(*1.00)  thetaP=0.521(*0.75)  <rel.err>=50% [1353s]
+    [Earl#1] Adam  1400/2000  L=2.20e-04  Ld=2.16e-04  Lp=3.06e-07  Lic=2.38e-09  lp=14.84 | W=1.221(*1.00)  thetaP=0.521(*0.75)  <rel.err>=49% [1578s]
+    [Earl#1] Adam  1600/2000  L=2.08e-04  Ld=2.03e-04  Lp=2.87e-07  Lic=2.21e-09  lp=15.23 | W=1.213(*1.00)  thetaP=0.521(*0.75)  <rel.err>=48% [1804s]
+    [Earl#1] Adam  1800/2000  L=2.03e-04  Ld=1.98e-04  Lp=2.76e-07  Lic=2.14e-09  lp=15.64 | W=1.207(*1.00)  thetaP=0.521(*0.75)  <rel.err>=47% [2027s]
+    [Earl#1] Adam  2000/2000  L=2.02e-04  Ld=1.98e-04  Lp=2.69e-07  Lic=2.13e-09  lp=16.09 | W=1.200(*1.00)  thetaP=0.521(*0.75)  <rel.err>=47% [2250s]
+    [Earl#1] L-BFGS (150) ...
+    [Earl#1] LBFGS   50/150  L=7.48e-05 | W=1.044(*1.00)  thetaP=0.516(*0.75)  <rel.err>=48% [4056s]
+    [Earl#1] LBFGS  100/150  L=3.60e-05 | W=0.842(*1.00)  thetaP=0.526(*0.75)  <rel.err>=27% [5764s]
+    [Earl#1] LBFGS  150/150  L=2.36e-05 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7199s]
+    [Earl#1] param-refine (600, frozen, integral) ...
+    [Earl#1] refine   50/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7204s]
+    [Earl#1] refine  100/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7210s]
+    [Earl#1] refine  150/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7215s]
+    [Earl#1] refine  200/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7220s]
+    [Earl#1] refine  250/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7225s]
+    [Earl#1] refine  300/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7230s]
+    [Earl#1] refine  350/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7235s]
+    [Earl#1] refine  400/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7241s]
+    [Earl#1] refine  450/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7247s]
+    [Earl#1] refine  500/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7252s]
+    [Earl#1] refine  550/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7257s]
+    [Earl#1] refine  600/600  Lp=2.82e-08  under10%=17/36 | W=0.810(*1.00)  thetaP=0.540(*0.75)  <rel.err>=22% [7262s]
+  [Earl#1] done  under10%=17/36  phys=2.82e-08  W=0.810 thetaP=0.540  (7262s)
+  >> Early Adenoma start 1: under10%=17/36 phys=2.82e-08  (best so far under10%=16/36 phys=2.41e-08)
