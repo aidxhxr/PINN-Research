@@ -1,0 +1,24 @@
+{
+  "regime": "Early Adenoma",
+  "n_obs": 14000,
+  "K": 36,
+  "sigma": 0.002,
+  "cond_number": 78569077928307.4,
+  "eig_max": 2612071755.08064,
+  "eig_min": 3.324554422624253e-05,
+  "n_null_directions": 1,
+  "n_ident": 17,
+  "n_weak": 18,
+  "n_nonident": 1,
+  "nonident_params": [
+    "deltaP1"
+  ],
+  "n_correlated_pairs": 1,
+  "top_correlated_pairs": [
+    [
+      "thetaP",
+      "deltaP1",
+      1.0
+    ]
+  ]
+}

@@ -1,0 +1,24 @@
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+======================================================================
+Fisher Information Matrix analysis — 36 params, 10 conditions, sigma=0.002
+======================================================================
+[Normal] FIM built in 42.0s  (n_obs=14000, K=36)
+[Normal] cond(FIM)=3.74e+19  null-dirs=1  IDENT=13 WEAK=22 NON-IDENT=1  |R|>0.99 pairs=0
+    NON-IDENT: ['deltaP1']
+[Normal] wrote Normal_fisher.png
+[Early Adenoma] FIM built in 41.4s  (n_obs=14000, K=36)
+[Early Adenoma] cond(FIM)=7.86e+13  null-dirs=1  IDENT=17 WEAK=18 NON-IDENT=1  |R|>0.99 pairs=1
+    NON-IDENT: ['deltaP1']
+[Early Adenoma] wrote Early_Adenoma_fisher.png
+[Advanced Adenoma] FIM built in 43.1s  (n_obs=14000, K=36)
+[Advanced Adenoma] cond(FIM)=1.88e+07  null-dirs=1  IDENT=14 WEAK=20 NON-IDENT=2  |R|>0.99 pairs=6
+    NON-IDENT: ['thetaP', 'deltaP1']
+[Advanced Adenoma] wrote Advanced_Adenoma_fisher.png
+[Severe APC Loss] FIM built in 44.0s  (n_obs=14000, K=36)
+[Severe APC Loss] cond(FIM)=1.78e+14  null-dirs=1  IDENT=14 WEAK=21 NON-IDENT=1  |R|>0.99 pairs=10
+    NON-IDENT: ['thetaP']
+[Severe APC Loss] wrote Severe_APC_Loss_fisher.png
+wrote cross_regime_spectra.png
+
+Done. Outputs in runs/20260711_203325_fisher
