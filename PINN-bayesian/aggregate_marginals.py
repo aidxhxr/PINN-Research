@@ -19,12 +19,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-REGIME_ORDER = ["Normal", "Early_adenoma", "Cancer-like", "Strong_APC-mutant"]
-REGIME_LABEL = {"Normal": "Normal", "Early_adenoma": "Early adenoma",
-                "Cancer-like": "Cancer-like",
-                "Strong_APC-mutant": "Strong APC-mutant"}
-COLORS = {"Normal": "#2ca02c", "Early_adenoma": "#1f77b4",
-          "Cancer-like": "#ff7f0e", "Strong_APC-mutant": "#d62728"}
+REGIME_ORDER = ["Normal", "Early_Adenoma", "Advanced_Adenoma", "Severe_APC_Loss"]
+REGIME_LABEL = {"Normal": "Normal", "Early_Adenoma": "Early Adenoma",
+                "Advanced_Adenoma": "Advanced Adenoma",
+                "Severe_APC_Loss": "Severe APC Loss"}
+COLORS = {"Normal": "#2ca02c", "Early_Adenoma": "#1f77b4",
+          "Advanced_Adenoma": "#ff7f0e", "Severe_APC_Loss": "#d62728"}
 
 
 def load_run(run_dir):

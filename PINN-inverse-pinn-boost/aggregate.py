@@ -5,9 +5,9 @@ import json
 import os
 import sys
 
-BASELINE = {"Normal": 10, "Early adenoma": 4,
-            "Cancer-like": 5, "Strong APC-mutant": 7}
-ORDER = ["Normal", "Early adenoma", "Cancer-like", "Strong APC-mutant"]
+BASELINE = {"Normal": 10, "Early Adenoma": 4,
+            "Advanced Adenoma": 5, "Severe APC Loss": 7}
+ORDER = ["Normal", "Early Adenoma", "Advanced Adenoma", "Severe APC Loss"]
 
 
 def count_under(rec, tru, tol=0.10):
