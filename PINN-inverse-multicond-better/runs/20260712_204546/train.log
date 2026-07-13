@@ -136,3 +136,28 @@ Threads: 48
     LBFGS  450/600  L=2.82e-04  | W=0.970(*1.00)  thetaP=0.674(*0.75)  <rel.err>=42%  [8292s]
     LBFGS  500/600  L=2.94e-04  | W=0.966(*1.00)  thetaP=0.673(*0.75)  <rel.err>=42%  [8893s]
     LBFGS  550/600  L=2.64e-04  | W=0.963(*1.00)  thetaP=0.673(*0.75)  <rel.err>=42%  [9540s]
+    LBFGS  600/600  L=2.62e-04  | W=0.959(*1.00)  thetaP=0.672(*0.75)  <rel.err>=42%  [10120s]
+    param-refine (500 steps, nets frozen) ...
+    refine   50/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10440s]
+    refine  100/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10490s]
+    refine  150/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10539s]
+    refine  200/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10588s]
+    refine  250/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10638s]
+    refine  300/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10687s]
+    refine  350/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10737s]
+    refine  400/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10787s]
+    refine  450/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10836s]
+    refine  500/500  Lp=4.38e-05  | W=0.622(*1.00)  thetaP=0.683(*0.75)  <rel.err>=45%  [10886s]
+  recovered W=0.622 thetaP=0.683  (10886s)
+
+── Advanced Adenoma ──
+  arch 3×128  net params 38,279 × 6 cond  unknowns 36
+  conditions ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc']
+  init guess W=1.2 thetaP=0.6 (+50% on the rest)  |  true W=1.5 thetaP=0.5
+    Adam     1/2500  L=8.93e+00  Ld=1.49e+00  Lp=6.48e-01  Lic=3.38e-01  λp=1.04  | W=1.200(*1.50)  thetaP=0.600(*0.50)  <rel.err>=48%  [1s]
+    Adam   100/2500  L=5.71e-02  Ld=3.48e-02  Lp=2.12e-02  Lic=1.56e-05  λp=1.04  | W=1.044(*1.50)  thetaP=0.672(*0.50)  <rel.err>=55%  [158s]
+    Adam   200/2500  L=8.46e-03  Ld=5.54e-03  Lp=2.79e-03  Lic=5.13e-07  λp=1.04  | W=1.057(*1.50)  thetaP=0.675(*0.50)  <rel.err>=56%  [321s]
+    Adam   300/2500  L=4.38e-03  Ld=2.67e-03  Lp=1.60e-03  Lic=1.58e-07  λp=1.06  | W=1.056(*1.50)  thetaP=0.675(*0.50)  <rel.err>=55%  [482s]
+    Adam   400/2500  L=3.08e-03  Ld=1.73e-03  Lp=1.22e-03  Lic=3.06e-06  λp=1.06  | W=1.055(*1.50)  thetaP=0.673(*0.50)  <rel.err>=53%  [644s]
+    Adam   500/2500  L=2.30e-03  Ld=1.29e-03  Lp=9.24e-04  Lic=2.31e-07  λp=1.09  | W=1.055(*1.50)  thetaP=0.672(*0.50)  <rel.err>=52%  [798s]
+    Adam   600/2500  L=1.94e-03  Ld=1.06e-03  Lp=7.98e-04  Lic=6.14e-07  λp=1.09  | W=1.054(*1.50)  thetaP=0.670(*0.50)  <rel.err>=50%  [941s]
