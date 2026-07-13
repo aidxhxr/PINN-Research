@@ -50,6 +50,19 @@ SIGMA   = 0.002     # measurement noise std (matches recover_odefit / profiling)
 REL_STEP = 1e-3     # central-difference relative perturbation for sensitivities
 K = len(UNKNOWN)
 
+# --- sensitivity-analysis (SA-big) palette — match the professor's SA plots ---
+# defined once in SA-big/run_sa.py & synthesize.py; reused here so the
+# identifiability figures read as the same visual system.
+SA_BLUE, SA_ORANGE, SA_GREY, SA_DARK = "#1f77b4", "#ff7f0e", "#bbbbbb", "#444444"
+# 3-way verdict on the 2-tone SA palette: good=blue, middling=grey, bad=orange.
+VERDICT_COLOR = {"IDENT": SA_BLUE, "WEAK": SA_GREY, "NON-IDENT": SA_ORANGE}
+REGIME_COLORS = [SA_BLUE, SA_ORANGE, "#888888", SA_DARK]
+plt.rcParams.update({
+    "figure.facecolor": "white", "axes.facecolor": "white",
+    "savefig.facecolor": "white", "axes.spines.top": False,
+    "axes.spines.right": False, "axes.edgecolor": "#444444",
+})
+
 
 def solve(p, t_eval):
     sol = solve_ivp(lambda t, y: _ode_rhs(t, y, p), (0.0, T), Y0,
@@ -216,7 +229,7 @@ def plot_regime(regime, safe, FIM, R, evals, part_null, part_soft, verdict, out_
     # (c) eigenvalue spectrum (sloppiness)
     axc = fig.add_subplot(gs[1, 0])
     ev = np.clip(evals[::-1], 1e-30, None)               # descending
-    axc.semilogy(range(1, len(ev) + 1), ev, "o-", color="#1f5fa8", ms=5)
+    axc.semilogy(range(1, len(ev) + 1), ev, "o-", color=SA_BLUE, ms=5)
     axc.axhline(ev[0] * 1e-6, ls="--", color="grey", lw=1)
     axc.text(len(ev), ev[0] * 1e-6, "  cond$^{-1}\\!=10^{6}$ floor",
              va="center", fontsize=9, color="grey")
@@ -230,8 +243,7 @@ def plot_regime(regime, safe, FIM, R, evals, part_null, part_soft, verdict, out_
     axd = fig.add_subplot(gs[1, 1])
     score = part_null + 0.01 * part_soft
     order = np.argsort(-score)                           # worst-constrained first
-    cmap = {"IDENT": "#2c7d3f", "WEAK": "#e08a1e", "NON-IDENT": "#c0392b"}
-    cols = [cmap[v] for v in verdict[order]]
+    cols = [VERDICT_COLOR[v] for v in verdict[order]]
     y = np.arange(K)
     axd.barh(y, part_null[order], color=cols, label="null ($\\lambda<1$)")
     axd.barh(y, part_soft[order], left=part_null[order], color=cols, alpha=0.35,
@@ -239,11 +251,11 @@ def plot_regime(regime, safe, FIM, R, evals, part_null, part_soft, verdict, out_
     axd.set_yticks(y)
     axd.set_yticklabels([labels[i] for i in order], fontsize=6.5)
     axd.set_xlim(0, 1.02)
-    axd.axvline(0.5, ls="--", color="#c0392b", lw=1)
+    axd.axvline(0.5, ls="--", color=SA_DARK, lw=1)
     axd.set_xlabel("participation in flat subspace  "
                    "$\\sqrt{\\sum_{k\\in\\mathrm{null}} V_{jk}^2}$")
     axd.set_title("(d) Non-identifiable-subspace participation\n"
-                  "green IDENT · orange WEAK · red NON-IDENT",
+                  "blue IDENT · grey WEAK · orange NON-IDENT",
                   fontsize=11, fontweight="bold")
     axd.invert_yaxis()
     axd.grid(alpha=0.3, axis="x")
@@ -268,17 +280,20 @@ def plot_soft_eigvecs(regime, safe, evals, evecs, out_dir, n=4):
         v = evecs[:, k]
         v = v * np.sign(v[np.argmax(np.abs(v))])         # sign convention
         dom = np.argmax(np.abs(v))
-        cols = ["#c0392b" if i == dom else "#1f5fa8" for i in x]
-        ax.bar(x, v, color=cols)
-        ax.axhline(0, color="k", lw=0.5)
+        cols = [SA_BLUE if v[i] >= 0 else SA_ORANGE for i in x]  # sign, SA convention
+        bars = ax.bar(x, v, color=cols)
+        bars[dom].set_edgecolor(SA_DARK)                         # outline the driver
+        bars[dom].set_linewidth(1.6)
+        ax.axhline(0, color=SA_DARK, lw=0.5)
         ax.set_ylabel(f"$\\lambda_{{{k+1}}}$={evals[k]:.2e}", fontsize=9)
         ax.text(0.005, 0.9, f"dominant: {UNKNOWN[dom]}", transform=ax.transAxes,
-                va="top", fontsize=10, fontweight="bold", color="#c0392b")
+                va="top", fontsize=10, fontweight="bold", color=SA_DARK)
         ax.grid(alpha=0.25, axis="y")
     axes[-1].set_xticks(x)
     axes[-1].set_xticklabels(UNKNOWN, rotation=90, fontsize=6.5)
     fig.suptitle(f"Softest FIM eigenvectors (non-identifiable directions) — "
-                 f"{regime}\ndominant parameter of each flat direction in red",
+                 f"{regime}\ndominant parameter of each flat direction outlined; "
+                 f"blue +, orange −",
                  fontsize=13, fontweight="bold")
     fig.tight_layout(rect=(0, 0, 1, 0.96))
     fig.savefig(os.path.join(out_dir, f"{safe}_soft_eigvecs.png"),
@@ -295,7 +310,7 @@ def _tick(ax, labels):
 
 def plot_cross_regime(results, out_dir):
     fig, ax = plt.subplots(figsize=(9, 6))
-    colours = ["#1f5fa8", "#2c7d3f", "#e08a1e", "#c0392b"]
+    colours = REGIME_COLORS
     for res, col in zip(results, colours):
         ev = np.clip(res["evals"][::-1], 1e-30, None)
         ax.semilogy(range(1, len(ev) + 1), ev, "o-", ms=4, color=col,
