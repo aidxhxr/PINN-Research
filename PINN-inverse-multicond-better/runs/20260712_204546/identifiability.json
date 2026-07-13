@@ -1,0 +1,506 @@
+[
+  {
+    "param": "lambdaC",
+    "sensitivity": 12.39297841882083,
+    "sens_frac": 0.5678041806061995,
+    "recov_err_pct": 0.3331856149338299,
+    "identifiable": "YES",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.28585522036594924,
+      "Early Adenoma": 0.3763463374642343,
+      "Advanced Adenoma": 0.2269093367889601,
+      "Severe APC Loss": 0.44363156511617596
+    }
+  },
+  {
+    "param": "etaRC",
+    "sensitivity": 7.018366141555954,
+    "sens_frac": 0.321557699975374,
+    "recov_err_pct": 8.758414418890958,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 0.973380165526283,
+      "Early Adenoma": 10.88702115369114,
+      "Advanced Adenoma": 10.362827815238695,
+      "Severe APC Loss": 12.810428541107713
+    }
+  },
+  {
+    "param": "etaM13",
+    "sensitivity": 5.669753928125542,
+    "sens_frac": 0.25976886867720506,
+    "recov_err_pct": 10.79784151082188,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 11.665146524177503,
+      "Early Adenoma": 18.321756925405413,
+      "Advanced Adenoma": 2.5857529331522087,
+      "Severe APC Loss": 10.6187096605524
+    }
+  },
+  {
+    "param": "etaBC",
+    "sensitivity": 18.1884571625698,
+    "sens_frac": 0.8333333333333238,
+    "recov_err_pct": 11.56835995548747,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 2.7021837451491963,
+      "Early Adenoma": 4.640690232462022,
+      "Advanced Adenoma": 13.18671901201379,
+      "Severe APC Loss": 25.74384683232487
+    }
+  },
+  {
+    "param": "kappa13",
+    "sensitivity": 2.1173478584487913,
+    "sens_frac": 0.09700968767919457,
+    "recov_err_pct": 12.093268905295798,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 4.87760248805484,
+      "Early Adenoma": 2.511676840958725,
+      "Advanced Adenoma": 7.53029286635048,
+      "Severe APC Loss": 33.45350342581915
+    }
+  },
+  {
+    "param": "deltaP1",
+    "sensitivity": 1.6821726113181439,
+    "sens_frac": 0.07707143585089613,
+    "recov_err_pct": 13.888935851129203,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 30.48330212111135,
+      "Early Adenoma": 3.591529103409436,
+      "Advanced Adenoma": 12.133117469905866,
+      "Severe APC Loss": 9.347794710090161
+    }
+  },
+  {
+    "param": "eps5",
+    "sensitivity": 0.10970833968747311,
+    "sens_frac": 0.005026463519641901,
+    "recov_err_pct": 13.966174193356176,
+    "identifiable": "MARGINAL",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 24.50836165101374,
+      "Early Adenoma": 7.620098219068858,
+      "Advanced Adenoma": 17.204419024563528,
+      "Severe APC Loss": 6.5318178787785826
+    }
+  },
+  {
+    "param": "a5",
+    "sensitivity": 1.5091721834569392,
+    "sens_frac": 0.06914514381143982,
+    "recov_err_pct": 14.060357791182632,
+    "identifiable": "MARGINAL",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 11.13778478069664,
+      "Early Adenoma": 9.308100012834961,
+      "Advanced Adenoma": 33.14786710116757,
+      "Severe APC Loss": 2.647679270031363
+    }
+  },
+  {
+    "param": "eps13",
+    "sensitivity": 0.11395638060948081,
+    "sens_frac": 0.005221094326973823,
+    "recov_err_pct": 21.700551817770148,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 23.00517993449549,
+      "Early Adenoma": 28.019596972209328,
+      "Advanced Adenoma": 20.32807291271752,
+      "Severe APC Loss": 15.449357451658251
+    }
+  },
+  {
+    "param": "kappaBC",
+    "sensitivity": 6.227056647899989,
+    "sens_frac": 0.28530258651783086,
+    "recov_err_pct": 23.721916800430524,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 22.570690930231684,
+      "Early Adenoma": 0.45532516849600135,
+      "Advanced Adenoma": 23.950751176712217,
+      "Severe APC Loss": 47.91089992628219
+    }
+  },
+  {
+    "param": "lambda5",
+    "sensitivity": 3.98327187069856,
+    "sens_frac": 0.18249998864186823,
+    "recov_err_pct": 24.403673225303294,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 8.408422498002384,
+      "Early Adenoma": 18.575490897844432,
+      "Advanced Adenoma": 32.4671586099004,
+      "Severe APC Loss": 38.16362089546595
+    }
+  },
+  {
+    "param": "etaB13",
+    "sensitivity": 9.215484962368715,
+    "sens_frac": 0.4222222222222181,
+    "recov_err_pct": 28.652351729640017,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 10.384489792244175,
+      "Early Adenoma": 22.245926659126358,
+      "Advanced Adenoma": 33.676389314970415,
+      "Severe APC Loss": 48.302601152219125
+    }
+  },
+  {
+    "param": "kappaBM",
+    "sensitivity": 7.472467977479987,
+    "sens_frac": 0.34236310382139706,
+    "recov_err_pct": 33.57389072076607,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 22.844623028769952,
+      "Early Adenoma": 30.369628534226976,
+      "Advanced Adenoma": 32.872045047143516,
+      "Severe APC Loss": 48.209266272923855
+    }
+  },
+  {
+    "param": "etaBM",
+    "sensitivity": 21.82614859508401,
+    "sens_frac": 1.0,
+    "recov_err_pct": 33.62706191182745,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 2.096439550950986,
+      "Early Adenoma": 26.76527653186168,
+      "Advanced Adenoma": 49.39755030935653,
+      "Severe APC Loss": 56.24898125514059
+    }
+  },
+  {
+    "param": "rho13",
+    "sensitivity": 1.8885995565545688,
+    "sens_frac": 0.08652921738927158,
+    "recov_err_pct": 38.212799892121126,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 86.67783301865377,
+      "Early Adenoma": 9.313226926928657,
+      "Advanced Adenoma": 37.943173086809985,
+      "Severe APC Loss": 18.91696653609207
+    }
+  },
+  {
+    "param": "kappaB13",
+    "sensitivity": 3.1550420349359953,
+    "sens_frac": 0.1445533105023677,
+    "recov_err_pct": 39.52202733698725,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 37.74196961255849,
+      "Early Adenoma": 50.663113202953426,
+      "Advanced Adenoma": 27.853226285107645,
+      "Severe APC Loss": 41.82980024732943
+    }
+  },
+  {
+    "param": "etaR",
+    "sensitivity": 8.95159811401633,
+    "sens_frac": 0.4101318230753974,
+    "recov_err_pct": 42.365511642245664,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 39.48758594853709,
+      "Early Adenoma": 47.227273144520254,
+      "Advanced Adenoma": 35.05339628332661,
+      "Severe APC Loss": 47.6937911925987
+    }
+  },
+  {
+    "param": "rho5",
+    "sensitivity": 1.289900945693633,
+    "sens_frac": 0.059098880412834835,
+    "recov_err_pct": 43.06581288830442,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 54.89951943702871,
+      "Early Adenoma": 43.94092413069713,
+      "Advanced Adenoma": 49.05919710682587,
+      "Severe APC Loss": 24.363610878665966
+    }
+  },
+  {
+    "param": "W",
+    "sensitivity": 15.477680789726383,
+    "sens_frac": 0.7091347665988347,
+    "recov_err_pct": 45.40136564654838,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 24.02244161107761,
+      "Early Adenoma": 37.78177468833817,
+      "Advanced Adenoma": 50.646040839557394,
+      "Severe APC Loss": 69.15520544722034
+    }
+  },
+  {
+    "param": "kappaRC",
+    "sensitivity": 4.483307640923123,
+    "sens_frac": 0.20540992935111405,
+    "recov_err_pct": 49.168641137410816,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 57.95718151325771,
+      "Early Adenoma": 45.84446024772344,
+      "Advanced Adenoma": 43.44636475880497,
+      "Severe APC Loss": 49.426558029857134
+    }
+  },
+  {
+    "param": "kappa5",
+    "sensitivity": 1.2380728343213312,
+    "sens_frac": 0.05672429237470633,
+    "recov_err_pct": 55.13402351466486,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 3.261191928330953,
+      "Early Adenoma": 14.599608232287542,
+      "Advanced Adenoma": 72.37893778718592,
+      "Severe APC Loss": 130.29635611085504
+    }
+  },
+  {
+    "param": "epsC",
+    "sensitivity": 0.21098455748628578,
+    "sens_frac": 0.009666595852545723,
+    "recov_err_pct": 55.443866495155895,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 118.137942116735,
+      "Early Adenoma": 43.255787280867374,
+      "Advanced Adenoma": 31.866846929817616,
+      "Severe APC Loss": 28.51488965320356
+    }
+  },
+  {
+    "param": "kappaM13",
+    "sensitivity": 1.5993028805361134,
+    "sens_frac": 0.07327462623874606,
+    "recov_err_pct": 58.88071597059054,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 19.658435587894154,
+      "Early Adenoma": 53.75231300625962,
+      "Advanced Adenoma": 80.79824783371839,
+      "Severe APC Loss": 81.31386745449001
+    }
+  },
+  {
+    "param": "epsM",
+    "sensitivity": 0.10205798098712267,
+    "sens_frac": 0.00467595006707274,
+    "recov_err_pct": 61.58796024705433,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 50.82868775801823,
+      "Early Adenoma": 62.70916776291695,
+      "Advanced Adenoma": 67.85248093360435,
+      "Severe APC Loss": 64.96150453367781
+    }
+  },
+  {
+    "param": "thetaP",
+    "sensitivity": 7.768737885962487,
+    "sens_frac": 0.3559371848000829,
+    "recov_err_pct": 63.189603975175814,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 33.90079273082293,
+      "Early Adenoma": 8.956248806154637,
+      "Advanced Adenoma": 33.05941854083305,
+      "Severe APC Loss": 176.84195582289263
+    }
+  },
+  {
+    "param": "eta13",
+    "sensitivity": 7.780796047236162,
+    "sens_frac": 0.35648964879624534,
+    "recov_err_pct": 71.87388759011063,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 14.047066424426694,
+      "Early Adenoma": 22.552751511375657,
+      "Advanced Adenoma": 83.07410107148331,
+      "Severe APC Loss": 167.82163135315685
+    }
+  },
+  {
+    "param": "kappaR",
+    "sensitivity": 5.346383886631941,
+    "sens_frac": 0.24495315164472617,
+    "recov_err_pct": 73.85839086048689,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 101.72046228273986,
+      "Early Adenoma": 69.43347195364296,
+      "Advanced Adenoma": 66.80659610517387,
+      "Severe APC Loss": 57.47303310039087
+    }
+  },
+  {
+    "param": "lambdaP",
+    "sensitivity": 3.93163526188307,
+    "sens_frac": 0.1801341746004885,
+    "recov_err_pct": 78.64133329541833,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 68.81312367695492,
+      "Early Adenoma": 86.28829767383934,
+      "Advanced Adenoma": 85.77425160081856,
+      "Severe APC Loss": 73.68966023006051
+    }
+  },
+  {
+    "param": "etaM",
+    "sensitivity": 6.689042634313938,
+    "sens_frac": 0.3064692153621889,
+    "recov_err_pct": 82.55098422199875,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 87.73582317135376,
+      "Early Adenoma": 86.46129939449034,
+      "Advanced Adenoma": 71.8446951869351,
+      "Severe APC Loss": 84.16211913521579
+    }
+  },
+  {
+    "param": "kappaM",
+    "sensitivity": 1.9553021588964918,
+    "sens_frac": 0.08958530408506851,
+    "recov_err_pct": 96.3792466485833,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 94.21916812158545,
+      "Early Adenoma": 97.69499975898015,
+      "Advanced Adenoma": 94.39667288499692,
+      "Severe APC Loss": 99.20614582877074
+    }
+  },
+  {
+    "param": "rhoB",
+    "sensitivity": 1.257359376911895,
+    "sens_frac": 0.057607936252898735,
+    "recov_err_pct": 102.6558881788385,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 59.14369625672005,
+      "Early Adenoma": 17.06828750994121,
+      "Advanced Adenoma": 74.61464133440197,
+      "Severe APC Loss": 259.7969276142908
+    }
+  },
+  {
+    "param": "epsP",
+    "sensitivity": 0.12891633820221873,
+    "sens_frac": 0.005906508775041286,
+    "recov_err_pct": 118.03902099348299,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 315.1897015538534,
+      "Early Adenoma": 63.968102839946496,
+      "Advanced Adenoma": 62.45983551939924,
+      "Severe APC Loss": 30.53844406073285
+    }
+  },
+  {
+    "param": "a13",
+    "sensitivity": 2.173207944178001,
+    "sens_frac": 0.09956900708847373,
+    "recov_err_pct": 137.65521025603687,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 67.48474577021426,
+      "Early Adenoma": 73.78237261076615,
+      "Advanced Adenoma": 153.58129234354817,
+      "Severe APC Loss": 255.77243029961895
+    }
+  },
+  {
+    "param": "aC",
+    "sensitivity": 1.2073377467655455,
+    "sens_frac": 0.05531611504915159,
+    "recov_err_pct": 251.869245379269,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 4.196343668392069,
+      "Early Adenoma": 14.951255634668788,
+      "Advanced Adenoma": 371.7078440190986,
+      "Severe APC Loss": 616.6215381949164
+    }
+  },
+  {
+    "param": "aM",
+    "sensitivity": 3.6220132402967185,
+    "sens_frac": 0.16594834514745854,
+    "recov_err_pct": 268.23909642673186,
+    "identifiable": "NO",
+    "apriori": "identifiable",
+    "per_regime": {
+      "Normal": 81.45619243642128,
+      "Early Adenoma": 214.37635932578135,
+      "Advanced Adenoma": 358.46248578219337,
+      "Severe APC Loss": 418.6613481625314
+    }
+  },
+  {
+    "param": "epsR",
+    "sensitivity": 0.15946491576677255,
+    "sens_frac": 0.007306140846245749,
+    "recov_err_pct": 281.04065503995355,
+    "identifiable": "NO",
+    "apriori": "non-ident",
+    "per_regime": {
+      "Normal": 363.3434711038833,
+      "Early Adenoma": 288.3838291914754,
+      "Advanced Adenoma": 246.28707795746982,
+      "Severe APC Loss": 226.14824190698565
+    }
+  }
+]
