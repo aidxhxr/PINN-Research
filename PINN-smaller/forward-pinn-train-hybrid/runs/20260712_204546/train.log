@@ -1,0 +1,74 @@
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+============================================================
+Hybrid (sparse-data) Forward PINN - 7-ODE WNT-RA-HOX Model
+Device : cuda
+GPU    : NVIDIA RTX PRO 6000 Blackwell Server Edition
+VRAM   : 102.0 GB
+Threads: 48
+============================================================
+
+[1/3] Reference solutions (scipy Radau) ...
+  Normal                t=[0, 150]  shape=(5000, 7)
+  Early Adenoma         t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma      t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss       t=[0, 150]  shape=(5000, 7)
+
+[2/3] Training hybrid PINNs (sparse data + physics) ...
+
+── Normal ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=8.96e+00  Ld=8.38e-01  Lp=1.32e+00  Lic=3.40e-01  lr=1.0e-03  [5s]
+    Adam   250/1000  L=2.82e-03  Ld=2.94e-04  Lp=2.52e-03  Lic=4.53e-07  lr=8.5e-04  [1267s]
+    Adam   500/1000  L=1.22e-03  Ld=8.79e-05  Lp=1.13e-03  Lic=8.72e-08  lr=5.0e-04  [2532s]
+    Adam   750/1000  L=9.45e-04  Ld=5.62e-05  Lp=8.88e-04  Lic=5.65e-08  lr=1.5e-04  [3798s]
+    Adam  1000/1000  L=9.00e-04  Ld=5.22e-05  Lp=8.47e-04  Lic=5.25e-08  lr=1.0e-06  [5064s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=6.60e-04  [6845s]
+    LBFGS  200/500  L=6.09e-04  [8636s]
+    LBFGS  300/500  L=5.56e-04  [10018s]
+    LBFGS  400/500  L=4.10e-04  [10790s]
+    LBFGS  500/500  L=4.62e-04  [11476s]
+  done  (11476s total)
+
+── Early Adenoma ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=9.32e+00  Ld=1.15e+00  Lp=1.37e+00  Lic=3.40e-01  lr=1.0e-03  [2s]
+    Adam   250/1000  L=3.35e-03  Ld=3.05e-04  Lp=3.03e-03  Lic=6.36e-07  lr=8.5e-04  [527s]
+    Adam   500/1000  L=1.34e-03  Ld=8.40e-05  Lp=1.26e-03  Lic=8.94e-08  lr=5.0e-04  [1053s]
+    Adam   750/1000  L=1.01e-03  Ld=5.38e-05  Lp=9.57e-04  Lic=6.02e-08  lr=1.5e-04  [1564s]
+    Adam  1000/1000  L=9.60e-04  Ld=5.00e-05  Lp=9.09e-04  Lic=5.71e-08  lr=1.0e-06  [2022s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=8.40e-04  [2587s]
+    LBFGS  200/500  L=5.90e-04  [3205s]
+    LBFGS  300/500  L=5.32e-04  [3889s]
+    LBFGS  400/500  L=4.74e-04  [4708s]
+    LBFGS  500/500  L=4.40e-04  [5494s]
+  done  (5494s total)
+
+── Advanced Adenoma ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=9.85e+00  Ld=1.50e+00  Lp=1.55e+00  Lic=3.40e-01  lr=1.0e-03  [3s]
+    Adam   250/1000  L=5.42e-03  Ld=2.96e-04  Lp=4.08e-03  Lic=5.23e-05  lr=8.5e-04  [697s]
+    Adam   500/1000  L=1.65e-03  Ld=8.08e-05  Lp=1.56e-03  Lic=7.62e-08  lr=5.0e-04  [1341s]
+    Adam   750/1000  L=1.28e-03  Ld=4.95e-05  Lp=1.23e-03  Lic=4.68e-08  lr=1.5e-04  [1983s]
+    Adam  1000/1000  L=1.22e-03  Ld=4.57e-05  Lp=1.18e-03  Lic=4.17e-08  lr=1.0e-06  [2625s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=1.19e-03  [3420s]
+    LBFGS  200/500  L=1.00e-03  [3978s]
+    LBFGS  300/500  L=9.13e-04  [4477s]
+    LBFGS  400/500  L=9.24e-04  [4951s]
+    LBFGS  500/500  L=8.84e-04  [5447s]
+  done  (5447s total)
+
+── Severe APC Loss ──
+  arch 4×256  params 207,879  obs=40 (noise=0.0)
+    Adam     1/1000  L=1.04e+01  Ld=1.83e+00  Lp=1.80e+00  Lic=3.40e-01  lr=1.0e-03  [2s]
+    Adam   250/1000  L=6.40e-03  Ld=2.86e-04  Lp=5.98e-03  Lic=6.76e-06  lr=8.5e-04  [464s]
+    Adam   500/1000  L=2.41e-03  Ld=8.99e-05  Lp=2.31e-03  Lic=1.24e-07  lr=5.0e-04  [930s]
+    Adam   750/1000  L=1.85e-03  Ld=5.83e-05  Lp=1.79e-03  Lic=7.54e-08  lr=1.5e-04  [1394s]
+    Adam  1000/1000  L=1.77e-03  Ld=5.42e-05  Lp=1.71e-03  Lic=6.69e-08  lr=1.0e-06  [1859s]
+    L-BFGS (500 steps, 10000 colloc) ...
+    LBFGS  100/500  L=1.32e-03  [2427s]
+    LBFGS  200/500  L=1.24e-03  [3272s]
+    LBFGS  300/500  L=1.40e-03  [4084s]
