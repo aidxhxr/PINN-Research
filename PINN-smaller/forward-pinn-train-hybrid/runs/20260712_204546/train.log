@@ -72,3 +72,60 @@ Threads: 48
     LBFGS  100/500  L=1.32e-03  [2427s]
     LBFGS  200/500  L=1.24e-03  [3272s]
     LBFGS  300/500  L=1.40e-03  [4084s]
+    LBFGS  400/500  L=1.47e-03  [4890s]
+    LBFGS  500/500  L=1.10e-03  [5803s]
+  done  (5803s total)
+
+[3/3] Plotting ...
+
+======================================================================
+Final values & stemness
+======================================================================
+
+Normal
+  $\beta$-catenin  0.7092
+  APC              0.3960
+  HOXA5            0.3350
+  HOXA13           1.2640
+  MYC              1.0809
+  RA               0.1720
+  CYP26A1          1.4737
+  Stemness         0.8615
+  Min S (ATRA)    0.3356
+  Mean S (ATRA)   0.3640
+
+Early Adenoma
+  $\beta$-catenin  1.0780
+  APC              0.1714
+  HOXA5            0.3001
+  HOXA13           1.4358
+  MYC              1.2868
+  RA               0.1563
+  CYP26A1          1.6691
+  Stemness         1.7241
+  Min S (ATRA)    0.9064
+  Mean S (ATRA)   0.9472
+
+Advanced Adenoma
+  $\beta$-catenin  1.6035
+  APC              0.1027
+  HOXA5            0.2929
+  HOXA13           1.5284
+  MYC              1.4074
+  RA               0.1540
+  CYP26A1          1.7938
+  Stemness         2.8439
+  Min S (ATRA)    1.7644
+  Mean S (ATRA)   1.8189
+
+Severe APC Loss
+  $\beta$-catenin  2.1123
+  APC              0.0715
+  HOXA5            0.2906
+  HOXA13           1.5623
+  MYC              1.4544
+  RA               0.1525
+  CYP26A1          1.8478
+  Stemness         3.9139
+  Min S (ATRA)    2.6165
+  Mean S (ATRA)   2.6853
