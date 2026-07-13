@@ -1,0 +1,23 @@
+# Bayesian inverse PINN — posterior identifiability
+
+Tier-1 B-PINN: HMC over the 36 parameters with the pinn-boost state nets frozen and the derivative-free integral residual as the physics likelihood.
+
+> **⚠ GATE FAILED for one or more regimes — the IDENT/NON-IDENT counts below are NOT trustworthy.** A chain needs ESS(median) ≥ 200 and CI coverage ≥ 33/36 before its verdicts mean anything.
+
+## Per-regime summary
+
+| regime | gate | ESS med | covers | accept | IDENT | WEAK | NON-IDENT | W post | thetaP post (true) |
+|---|---|---|---|---|---|---|---|---|---|
+| Normal | ❌FAIL | 13 | 19/36 | 0.89 | 34 | 2 | 0 | 0.750±0.007 | 0.997±0.002 (1.00) |
+| Early Adenoma | ❌FAIL | 139 | 19/36 | 0.88 | 36 | 0 | 0 | 0.840±0.018 | 0.624±0.097 (0.75) |
+| Advanced Adenoma | ❌FAIL | 8 | 7/36 | 0.88 | 36 | 0 | 0 | 0.832±0.014 | 0.441±0.034 (0.50) |
+| Severe APC Loss | ❌FAIL | 13 | 13/36 | 0.88 | 36 | 0 | 0 | 0.913±0.028 | 0.275±0.024 (0.25) |
+
+## W and thetaP across regimes
+
+| regime | W true | W post (CI95) | shrink | thetaP true | thetaP post (CI95) | shrink | verdict |
+|---|---|---|---|---|---|---|---|
+| Normal | 0.80 | 0.750 [0.74,0.77] | 0.01 | 1.00 | 0.997 [0.99,1.00] | 0.31 | WEAK |
+| Early Adenoma | 1.00 | 0.840 [0.80,0.87] | 0.02 | 0.75 | 0.624 [0.45,0.78] | 0.21 | IDENT |
+| Advanced Adenoma | 1.50 | 0.832 [0.80,0.86] | 0.02 | 0.50 | 0.441 [0.38,0.53] | 0.07 | IDENT |
+| Severe APC Loss | 2.00 | 0.913 [0.86,0.97] | 0.03 | 0.25 | 0.275 [0.22,0.32] | 0.06 | IDENT |

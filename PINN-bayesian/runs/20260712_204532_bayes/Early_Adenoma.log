@@ -1,0 +1,93 @@
+=== Bayesian inverse PINN — regime=Early Adenoma device=cuda ===
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+  n_resid=279,930  n_eff=2,800  SSR@MAP=2.700e-02  sigma_res=3.1059e-04
+    [Earl] Laplace metric set; eps0=0.125
+    [Earl] warm-init  100/400  eps=0.0178  acc=0.78  U=1352.8 [235s]
+    [Earl] warm-init  200/400  eps=0.0200  acc=0.79  U=1367.7 [484s]
+    [Earl] warm-init  300/400  eps=0.0419  acc=0.80  U=1355.2 [733s]
+    [Earl] warm-init  400/400  eps=0.0217  acc=0.79  U=1355.3 [982s]
+    [Earl] warm-covA  100/600  eps=0.0133  acc=0.78  U=1356.8 [1231s]
+    [Earl] warm-covA  200/600  eps=0.0313  acc=0.80  U=1354.0 [1482s]
+    [Earl] warm-covA  300/600  eps=0.0111  acc=0.79  U=1347.0 [1730s]
+    [Earl] warm-covA  400/600  eps=0.0145  acc=0.80  U=1352.2 [1980s]
+    [Earl] warm-covA  500/600  eps=0.0167  acc=0.80  U=1352.6 [2231s]
+    [Earl] warm-covA  600/600  eps=0.0214  acc=0.80  U=1359.3 [2480s]
+    [Earl] warm-covB  100/400  eps=0.0236  acc=0.78  U=1365.9 [2731s]
+    [Earl] warm-covB  200/400  eps=0.0496  acc=0.80  U=1356.3 [2983s]
+    [Earl] warm-covB  300/400  eps=0.0306  acc=0.79  U=1359.8 [3234s]
+    [Earl] warm-covB  400/400  eps=0.0540  acc=0.80  U=1355.9 [3480s]
+    [Earl] warm-fine  100/600  eps=0.0224  acc=0.77  U=1358.0 [3730s]
+    [Earl] warm-fine  200/600  eps=0.0531  acc=0.80  U=1356.5 [3980s]
+    [Earl] warm-fine  300/600  eps=0.0369  acc=0.79  U=1365.5 [4229s]
+    [Earl] warm-fine  400/600  eps=0.0276  acc=0.79  U=1355.5 [4482s]
+    [Earl] warm-fine  500/600  eps=0.0393  acc=0.80  U=1358.5 [4730s]
+    [Earl] warm-fine  600/600  eps=0.0523  acc=0.80  U=1361.7 [4981s]
+    [Earl] warmup done: eps=0.0381  mean-acc=0.79
+    [Earl] draw   100/2000  acc=0.80  U=1360.7  [5225s]
+    [Earl] draw   200/2000  acc=0.75  U=1360.4  [5464s]
+    [Earl] draw   300/2000  acc=0.90  U=1356.8  [5702s]
+    [Earl] draw   400/2000  acc=0.93  U=1353.1  [5939s]
+    [Earl] draw   500/2000  acc=0.94  U=1354.4  [6177s]
+    [Earl] draw   600/2000  acc=0.91  U=1351.5  [6416s]
+    [Earl] draw   700/2000  acc=0.77  U=1350.9  [6653s]
+    [Earl] draw   800/2000  acc=0.90  U=1353.1  [6892s]
+    [Earl] draw   900/2000  acc=0.92  U=1366.2  [7131s]
+    [Earl] draw  1000/2000  acc=0.94  U=1354.9  [7369s]
+    [Earl] draw  1100/2000  acc=0.92  U=1357.3  [7606s]
+    [Earl] draw  1200/2000  acc=0.93  U=1352.6  [7834s]
+    [Earl] draw  1300/2000  acc=0.89  U=1352.9  [8055s]
+    [Earl] draw  1400/2000  acc=0.94  U=1357.7  [8274s]
+    [Earl] draw  1500/2000  acc=0.89  U=1351.2  [8494s]
+    [Earl] draw  1600/2000  acc=0.90  U=1355.6  [8715s]
+    [Earl] draw  1700/2000  acc=0.87  U=1354.1  [8937s]
+    [Earl] draw  1800/2000  acc=0.88  U=1353.5  [9157s]
+    [Earl] draw  1900/2000  acc=0.94  U=1358.7  [9375s]
+    [Earl] draw  2000/2000  acc=0.78  U=1366.5  [9590s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Early_Adenoma] GATE=FAIL  (ESS med=139 min=8 need>=200 -> FAIL;  covers_true=19/36 need>=33 -> FAIL)
+  [Early_Adenoma] !! verdicts below are NOT trustworthy until the gate passes — do not report IDENT/NON-IDENT counts
+  [Early_Adenoma] accept=0.88  IDENT=36 WEAK=0 NON-IDENT=0 /36  CI covers truth: 19/36
+          W: post=0.840±0.018 true=1.000  CI95=0.801..0.871  [IDENT]  ess=60
+     thetaP: post=0.624±0.097 true=0.750  CI95=0.454..0.784  [IDENT]  ess=8
+  [Early_Adenoma] DONE
