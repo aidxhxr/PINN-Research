@@ -210,3 +210,145 @@ Threads: 48
     LBFGS  150/500  L=3.93e-04  | W=1.128(*2.00)  thetaP=0.639(*0.25)  <rel.err>=48%  [5172s]
     LBFGS  200/500  L=3.70e-04  | W=1.126(*2.00)  thetaP=0.637(*0.25)  <rel.err>=48%  [5653s]
     LBFGS  250/500  L=3.08e-04  | W=1.122(*2.00)  thetaP=0.634(*0.25)  <rel.err>=48%  [6159s]
+    LBFGS  300/500  L=3.14e-04  | W=1.119(*2.00)  thetaP=0.630(*0.25)  <rel.err>=48%  [6649s]
+    LBFGS  350/500  L=3.25e-04  | W=1.116(*2.00)  thetaP=0.628(*0.25)  <rel.err>=48%  [7151s]
+    LBFGS  400/500  L=3.22e-04  | W=1.114(*2.00)  thetaP=0.627(*0.25)  <rel.err>=48%  [7503s]
+    LBFGS  450/500  L=3.10e-04  | W=1.112(*2.00)  thetaP=0.626(*0.25)  <rel.err>=47%  [7879s]
+    LBFGS  500/500  L=3.13e-04  | W=1.111(*2.00)  thetaP=0.625(*0.25)  <rel.err>=47%  [8234s]
+  recovered W=1.111 thetaP=0.625  (8234s)
+
+[3/3] Plotting + diagnostics ...
+
+======================================================================
+Recovered parameters (inverse PINN) — rel. error %, by regime
+(sorted best -> worst; worst = least-identifiable)
+======================================================================
+param         Normal  Early Ad  Advanced  Severe A     mean
+-----------------------------------------------------------
+lambdaC         0.1%      0.3%      0.0%      0.3%     0.2%
+kappaBC         0.4%      1.7%      2.0%     12.9%     4.3%
+etaBC           4.8%      4.5%      4.2%      6.1%     4.9%
+etaR            4.2%      4.7%      9.0%     13.5%     7.9%
+etaBM           0.6%     11.4%     12.2%     10.2%     8.6%
+etaM            8.2%      4.4%      8.2%     14.7%     8.9%
+etaM13         11.5%     24.9%      1.0%      7.1%    11.1%
+lambdaP        14.9%      2.6%     13.6%     15.0%    11.5%
+kappaBM        23.4%      6.9%     13.3%     15.8%    14.9%
+etaRC          11.6%     15.0%     16.4%     18.7%    15.4%
+kappa13         6.4%      7.8%     24.3%     27.3%    16.5%
+etaB13         19.7%     23.3%     15.9%     10.8%    17.4%
+kappaM13       18.1%     34.5%     18.6%      2.3%    18.4%
+kappaM         16.3%     17.2%     20.9%     21.4%    19.0%
+eps13          27.1%     25.7%     16.3%     13.7%    20.7%
+W              22.3%      3.2%     30.6%     44.5%    25.1%
+deltaP1        20.2%     15.1%     28.6%     39.3%    25.8%
+lambda5        43.4%     31.7%     25.3%     16.7%    29.3%
+aC             36.0%     33.6%     27.5%     25.3%    30.6%
+rho13          51.9%      0.8%     36.5%     52.9%    35.5%
+kappaB13       71.2%     45.6%     11.3%     16.6%    36.2%
+epsC           81.3%     37.2%     21.4%     29.2%    42.3%
+eta13           9.2%      3.5%     56.2%    113.2%    45.5%
+epsM           61.8%     49.2%     43.6%     50.8%    51.3%
+thetaP         26.6%     11.5%     28.1%    150.1%    54.1%
+rhoB           52.0%      2.5%     55.7%    110.0%    55.1%
+a13            48.8%     63.0%     59.9%     64.4%    59.0%
+kappaR         57.9%     61.4%     62.3%     59.8%    60.3%
+rho5           36.8%     78.5%     76.4%     62.6%    63.6%
+kappaRC        53.3%     59.7%     69.5%     73.4%    64.0%
+aM             76.6%     83.7%     68.7%     62.2%    72.8%
+kappa5         57.3%     72.6%     84.5%     98.2%    78.1%
+epsP          162.0%     73.1%     77.6%     84.9%    99.4%
+a5            138.4%    127.3%    123.7%    125.2%   128.6%
+eps5          134.4%    128.8%    131.9%    130.6%   131.4%
+epsR          204.1%    162.0%    128.2%    108.3%   150.7%
+-----------------------------------------------------------
+3/36 parameters recovered within 5% (mean over regimes)
+
+======================================================================
+Practical identifiability — relative RHS sensitivity per parameter
+(aggregated over time, 7 equations, and all conditions; higher = easier)
+(sorted most -> least identifiable)
+======================================================================
+param        rel.sensitivity
+----------------------------
+etaBM                22.3121
+etaBC                18.5934
+W                    15.8155
+lambdaC              13.3240
+etaB13                9.4207
+etaR                  9.1726
+thetaP                8.0034
+eta13                 7.9605
+kappaBM               7.6577
+etaRC                 7.2078
+etaM                  6.8499
+kappaBC               6.3814
+etaM13                5.7996
+kappaR                5.3936
+kappaRC               4.5258
+lambda5               4.0730
+lambdaP               4.0275
+aM                    3.7072
+kappaB13              3.2332
+a13                   2.2243
+kappa13               2.1710
+kappaM                2.0078
+rho13                 1.9386
+deltaP1               1.7195
+kappaM13              1.6404
+a5                    1.5447
+rho5                  1.3279
+rhoB                  1.2869
+kappa5                1.2717
+aC                    1.2357
+epsC                  0.2075
+epsR                  0.1655
+epsP                  0.1306
+eps13                 0.1154
+eps5                  0.1056
+epsM                  0.1027
+
+==============================================================================
+PARAMETER IDENTIFIABILITY — verdict per unknown (sorted best -> worst)
+==============================================================================
+param        rel.sens   %ofmax  recov.err  identifiable      a-priori
+---------------------------------------------------------------------
+lambdaC       13.3240    59.7%       0.2%           YES  identifiable
+kappaBC        6.3814    28.6%       4.3%           YES  identifiable
+etaBC         18.5934    83.3%       4.9%           YES  identifiable
+etaR           9.1726    41.1%       7.9%      MARGINAL  identifiable
+etaBM         22.3121   100.0%       8.6%      MARGINAL  identifiable
+etaM           6.8499    30.7%       8.9%      MARGINAL  identifiable
+etaM13         5.7996    26.0%      11.1%      MARGINAL  identifiable
+lambdaP        4.0275    18.1%      11.5%      MARGINAL  identifiable
+kappaBM        7.6577    34.3%      14.9%      MARGINAL  identifiable
+etaRC          7.2078    32.3%      15.4%      MARGINAL  identifiable
+kappa13        2.1710     9.7%      16.5%      MARGINAL  identifiable
+etaB13         9.4207    42.2%      17.4%      MARGINAL  identifiable
+kappaM13       1.6404     7.4%      18.4%      MARGINAL  identifiable
+kappaM         2.0078     9.0%      19.0%      MARGINAL  identifiable
+eps13          0.1154     0.5%      20.7%            NO     non-ident
+W             15.8155    70.9%      25.1%            NO  identifiable
+deltaP1        1.7195     7.7%      25.8%            NO  identifiable
+lambda5        4.0730    18.3%      29.3%            NO  identifiable
+aC             1.2357     5.5%      30.6%            NO  identifiable
+rho13          1.9386     8.7%      35.5%            NO  identifiable
+kappaB13       3.2332    14.5%      36.2%            NO  identifiable
+epsC           0.2075     0.9%      42.3%            NO     non-ident
+eta13          7.9605    35.7%      45.5%            NO  identifiable
+epsM           0.1027     0.5%      51.3%            NO     non-ident
+thetaP         8.0034    35.9%      54.1%            NO  identifiable
+rhoB           1.2869     5.8%      55.1%            NO  identifiable
+a13            2.2243    10.0%      59.0%            NO  identifiable
+kappaR         5.3936    24.2%      60.3%            NO  identifiable
+rho5           1.3279     6.0%      63.6%            NO  identifiable
+kappaRC        4.5258    20.3%      64.0%            NO  identifiable
+aM             3.7072    16.6%      72.8%            NO  identifiable
+kappa5         1.2717     5.7%      78.1%            NO  identifiable
+epsP           0.1306     0.6%      99.4%            NO     non-ident
+a5             1.5447     6.9%     128.6%            NO  identifiable
+eps5           0.1056     0.5%     131.4%            NO     non-ident
+epsR           0.1655     0.7%     150.7%            NO     non-ident
+---------------------------------------------------------------------
+3 identifiable (<5%) | 11 marginal (5-20%) | 22 not identifiable (>20%)  of 36
+wrote ./identifiability.csv and identifiability.json
