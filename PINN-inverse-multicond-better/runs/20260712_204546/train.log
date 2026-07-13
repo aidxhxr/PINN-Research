@@ -232,3 +232,168 @@ Threads: 48
     Adam  1900/2500  L=1.32e-03  Ld=7.44e-04  Lp=3.98e-04  Lic=3.41e-08  λp=1.44  | W=1.156(*2.00)  thetaP=0.657(*0.25)  <rel.err>=51%  [2379s]
     Adam  2000/2500  L=1.33e-03  Ld=7.32e-04  Lp=4.15e-04  Lic=3.08e-08  λp=1.44  | W=1.156(*2.00)  thetaP=0.656(*0.25)  <rel.err>=51%  [2498s]
     Adam  2100/2500  L=1.32e-03  Ld=7.25e-04  Lp=3.97e-04  Lic=2.90e-08  λp=1.50  | W=1.156(*2.00)  thetaP=0.656(*0.25)  <rel.err>=51%  [2618s]
+    Adam  2200/2500  L=1.29e-03  Ld=7.19e-04  Lp=3.81e-04  Lic=3.01e-08  λp=1.50  | W=1.156(*2.00)  thetaP=0.656(*0.25)  <rel.err>=51%  [2737s]
+    Adam  2300/2500  L=1.31e-03  Ld=7.16e-04  Lp=3.75e-04  Lic=3.25e-08  λp=1.57  | W=1.155(*2.00)  thetaP=0.656(*0.25)  <rel.err>=51%  [2857s]
+    Adam  2400/2500  L=1.31e-03  Ld=7.14e-04  Lp=3.76e-04  Lic=3.08e-08  λp=1.57  | W=1.155(*2.00)  thetaP=0.656(*0.25)  <rel.err>=51%  [2975s]
+    Adam  2500/2500  L=1.31e-03  Ld=7.14e-04  Lp=3.65e-04  Lic=3.27e-08  λp=1.64  | W=1.155(*2.00)  thetaP=0.656(*0.25)  <rel.err>=51%  [3095s]
+    L-BFGS (600 steps) ...
+    LBFGS   50/600  L=1.22e-03  | W=1.147(*2.00)  thetaP=0.655(*0.25)  <rel.err>=51%  [3538s]
+    LBFGS  100/600  L=1.07e-03  | W=1.149(*2.00)  thetaP=0.654(*0.25)  <rel.err>=51%  [3999s]
+    LBFGS  150/600  L=8.54e-04  | W=1.134(*2.00)  thetaP=0.651(*0.25)  <rel.err>=51%  [4403s]
+    LBFGS  200/600  L=7.70e-04  | W=1.128(*2.00)  thetaP=0.648(*0.25)  <rel.err>=51%  [4676s]
+    LBFGS  250/600  L=7.33e-04  | W=1.120(*2.00)  thetaP=0.645(*0.25)  <rel.err>=52%  [4969s]
+    LBFGS  300/600  L=7.54e-04  | W=1.115(*2.00)  thetaP=0.643(*0.25)  <rel.err>=52%  [5251s]
+    LBFGS  350/600  L=5.68e-04  | W=1.111(*2.00)  thetaP=0.639(*0.25)  <rel.err>=52%  [5528s]
+    LBFGS  400/600  L=5.99e-04  | W=1.107(*2.00)  thetaP=0.637(*0.25)  <rel.err>=53%  [5750s]
+    LBFGS  450/600  L=5.47e-04  | W=1.103(*2.00)  thetaP=0.636(*0.25)  <rel.err>=53%  [5950s]
+    LBFGS  500/600  L=5.02e-04  | W=1.101(*2.00)  thetaP=0.634(*0.25)  <rel.err>=53%  [6131s]
+    LBFGS  550/600  L=4.91e-04  | W=1.099(*2.00)  thetaP=0.633(*0.25)  <rel.err>=54%  [6323s]
+    LBFGS  600/600  L=4.49e-04  | W=1.098(*2.00)  thetaP=0.632(*0.25)  <rel.err>=54%  [6517s]
+    param-refine (500 steps, nets frozen) ...
+    refine   50/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6662s]
+    refine  100/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6675s]
+    refine  150/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6688s]
+    refine  200/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6701s]
+    refine  250/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6715s]
+    refine  300/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6727s]
+    refine  350/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6740s]
+    refine  400/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6753s]
+    refine  450/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6766s]
+    refine  500/500  Lp=9.60e-05  | W=0.617(*2.00)  thetaP=0.692(*0.25)  <rel.err>=94%  [6779s]
+  recovered W=0.617 thetaP=0.692  (6779s)
+
+[3/3] Plotting + diagnostics ...
+
+======================================================================
+Recovered parameters (inverse PINN) — rel. error %, by regime
+(sorted best -> worst; worst = least-identifiable)
+======================================================================
+param         Normal  Early Ad  Advanced  Severe A     mean
+-----------------------------------------------------------
+lambdaC         0.3%      0.4%      0.2%      0.4%     0.3%
+etaRC           1.0%     10.9%     10.4%     12.8%     8.8%
+etaM13         11.7%     18.3%      2.6%     10.6%    10.8%
+etaBC           2.7%      4.6%     13.2%     25.7%    11.6%
+kappa13         4.9%      2.5%      7.5%     33.5%    12.1%
+deltaP1        30.5%      3.6%     12.1%      9.3%    13.9%
+eps5           24.5%      7.6%     17.2%      6.5%    14.0%
+a5             11.1%      9.3%     33.1%      2.6%    14.1%
+eps13          23.0%     28.0%     20.3%     15.4%    21.7%
+kappaBC        22.6%      0.5%     24.0%     47.9%    23.7%
+lambda5         8.4%     18.6%     32.5%     38.2%    24.4%
+etaB13         10.4%     22.2%     33.7%     48.3%    28.7%
+kappaBM        22.8%     30.4%     32.9%     48.2%    33.6%
+etaBM           2.1%     26.8%     49.4%     56.2%    33.6%
+rho13          86.7%      9.3%     37.9%     18.9%    38.2%
+kappaB13       37.7%     50.7%     27.9%     41.8%    39.5%
+etaR           39.5%     47.2%     35.1%     47.7%    42.4%
+rho5           54.9%     43.9%     49.1%     24.4%    43.1%
+W              24.0%     37.8%     50.6%     69.2%    45.4%
+kappaRC        58.0%     45.8%     43.4%     49.4%    49.2%
+kappa5          3.3%     14.6%     72.4%    130.3%    55.1%
+epsC          118.1%     43.3%     31.9%     28.5%    55.4%
+kappaM13       19.7%     53.8%     80.8%     81.3%    58.9%
+epsM           50.8%     62.7%     67.9%     65.0%    61.6%
+thetaP         33.9%      9.0%     33.1%    176.8%    63.2%
+eta13          14.0%     22.6%     83.1%    167.8%    71.9%
+kappaR        101.7%     69.4%     66.8%     57.5%    73.9%
+lambdaP        68.8%     86.3%     85.8%     73.7%    78.6%
+etaM           87.7%     86.5%     71.8%     84.2%    82.6%
+kappaM         94.2%     97.7%     94.4%     99.2%    96.4%
+rhoB           59.1%     17.1%     74.6%    259.8%   102.7%
+epsP          315.2%     64.0%     62.5%     30.5%   118.0%
+a13            67.5%     73.8%    153.6%    255.8%   137.7%
+aC              4.2%     15.0%    371.7%    616.6%   251.9%
+aM             81.5%    214.4%    358.5%    418.7%   268.2%
+epsR          363.3%    288.4%    246.3%    226.1%   281.0%
+-----------------------------------------------------------
+1/36 parameters recovered within 5% (mean over regimes)
+
+======================================================================
+Practical identifiability — relative RHS sensitivity per parameter
+(aggregated over time, 7 equations, and all conditions; higher = easier)
+(sorted most -> least identifiable)
+======================================================================
+param        rel.sensitivity
+----------------------------
+etaBM                21.8261
+etaBC                18.1885
+W                    15.4777
+lambdaC              12.3930
+etaB13                9.2155
+etaR                  8.9516
+eta13                 7.7808
+thetaP                7.7687
+kappaBM               7.4725
+etaRC                 7.0184
+etaM                  6.6890
+kappaBC               6.2271
+etaM13                5.6698
+kappaR                5.3464
+kappaRC               4.4833
+lambda5               3.9833
+lambdaP               3.9316
+aM                    3.6220
+kappaB13              3.1550
+a13                   2.1732
+kappa13               2.1173
+kappaM                1.9553
+rho13                 1.8886
+deltaP1               1.6822
+kappaM13              1.5993
+a5                    1.5092
+rho5                  1.2899
+rhoB                  1.2574
+kappa5                1.2381
+aC                    1.2073
+epsC                  0.2110
+epsR                  0.1595
+epsP                  0.1289
+eps13                 0.1140
+eps5                  0.1097
+epsM                  0.1021
+
+==============================================================================
+PARAMETER IDENTIFIABILITY — verdict per unknown (sorted best -> worst)
+==============================================================================
+param        rel.sens   %ofmax  recov.err  identifiable      a-priori
+---------------------------------------------------------------------
+lambdaC       12.3930    56.8%       0.3%           YES  identifiable
+etaRC          7.0184    32.2%       8.8%      MARGINAL  identifiable
+etaM13         5.6698    26.0%      10.8%      MARGINAL  identifiable
+etaBC         18.1885    83.3%      11.6%      MARGINAL  identifiable
+kappa13        2.1173     9.7%      12.1%      MARGINAL  identifiable
+deltaP1        1.6822     7.7%      13.9%      MARGINAL  identifiable
+eps5           0.1097     0.5%      14.0%      MARGINAL     non-ident
+a5             1.5092     6.9%      14.1%      MARGINAL  identifiable
+eps13          0.1140     0.5%      21.7%            NO     non-ident
+kappaBC        6.2271    28.5%      23.7%            NO  identifiable
+lambda5        3.9833    18.2%      24.4%            NO  identifiable
+etaB13         9.2155    42.2%      28.7%            NO  identifiable
+kappaBM        7.4725    34.2%      33.6%            NO  identifiable
+etaBM         21.8261   100.0%      33.6%            NO  identifiable
+rho13          1.8886     8.7%      38.2%            NO  identifiable
+kappaB13       3.1550    14.5%      39.5%            NO  identifiable
+etaR           8.9516    41.0%      42.4%            NO  identifiable
+rho5           1.2899     5.9%      43.1%            NO  identifiable
+W             15.4777    70.9%      45.4%            NO  identifiable
+kappaRC        4.4833    20.5%      49.2%            NO  identifiable
+kappa5         1.2381     5.7%      55.1%            NO  identifiable
+epsC           0.2110     1.0%      55.4%            NO     non-ident
+kappaM13       1.5993     7.3%      58.9%            NO  identifiable
+epsM           0.1021     0.5%      61.6%            NO     non-ident
+thetaP         7.7687    35.6%      63.2%            NO  identifiable
+eta13          7.7808    35.6%      71.9%            NO  identifiable
+kappaR         5.3464    24.5%      73.9%            NO  identifiable
+lambdaP        3.9316    18.0%      78.6%            NO  identifiable
+etaM           6.6890    30.6%      82.6%            NO  identifiable
+kappaM         1.9553     9.0%      96.4%            NO  identifiable
+rhoB           1.2574     5.8%     102.7%            NO  identifiable
+epsP           0.1289     0.6%     118.0%            NO     non-ident
+a13            2.1732    10.0%     137.7%            NO  identifiable
+aC             1.2073     5.5%     251.9%            NO  identifiable
+aM             3.6220    16.6%     268.2%            NO  identifiable
+epsR           0.1595     0.7%     281.0%            NO     non-ident
+---------------------------------------------------------------------
+1 identifiable (<5%) | 7 marginal (5-20%) | 28 not identifiable (>20%)  of 36
+wrote ./identifiability.csv and identifiability.json
