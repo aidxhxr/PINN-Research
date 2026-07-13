@@ -135,3 +135,280 @@ Threads: 48
     Adam  1900/2500  L=3.34e-04  Ld=1.03e-04  Lp=2.25e-04  Lic=3.15e-09  λp=1.03  | W=1.013(*1.00)  thetaP=0.664(*0.75)  <rel.err>=35%  [7639s]
     Adam  2000/2500  L=3.33e-04  Ld=1.01e-04  Lp=2.26e-04  Lic=3.22e-09  λp=1.03  | W=1.013(*1.00)  thetaP=0.664(*0.75)  <rel.err>=34%  [8096s]
     Adam  2100/2500  L=3.20e-04  Ld=9.91e-05  Lp=2.15e-04  Lic=3.15e-09  λp=1.03  | W=1.013(*1.00)  thetaP=0.664(*0.75)  <rel.err>=34%  [8552s]
+    Adam  2200/2500  L=3.25e-04  Ld=9.79e-05  Lp=2.21e-04  Lic=3.15e-09  λp=1.03  | W=1.012(*1.00)  thetaP=0.664(*0.75)  <rel.err>=34%  [9009s]
+    Adam  2300/2500  L=3.23e-04  Ld=9.70e-05  Lp=2.20e-04  Lic=3.04e-09  λp=1.03  | W=1.012(*1.00)  thetaP=0.664(*0.75)  <rel.err>=33%  [9424s]
+    Adam  2400/2500  L=3.13e-04  Ld=9.64e-05  Lp=2.11e-04  Lic=3.01e-09  λp=1.03  | W=1.012(*1.00)  thetaP=0.663(*0.75)  <rel.err>=33%  [9801s]
+    Adam  2500/2500  L=3.11e-04  Ld=9.61e-05  Lp=2.09e-04  Lic=3.04e-09  λp=1.03  | W=1.011(*1.00)  thetaP=0.663(*0.75)  <rel.err>=33%  [10176s]
+    L-BFGS (600 steps) ...
+    LBFGS   50/600  L=2.97e-04  | W=1.007(*1.00)  thetaP=0.663(*0.75)  <rel.err>=33%  [10712s]
+    LBFGS  100/600  L=3.01e-04  | W=0.995(*1.00)  thetaP=0.661(*0.75)  <rel.err>=32%  [11226s]
+    LBFGS  150/600  L=2.48e-04  | W=0.974(*1.00)  thetaP=0.660(*0.75)  <rel.err>=31%  [11682s]
+    LBFGS  200/600  L=2.33e-04  | W=0.963(*1.00)  thetaP=0.660(*0.75)  <rel.err>=31%  [12072s]
+    LBFGS  250/600  L=2.05e-04  | W=0.953(*1.00)  thetaP=0.661(*0.75)  <rel.err>=30%  [12471s]
+    LBFGS  300/600  L=1.94e-04  | W=0.945(*1.00)  thetaP=0.660(*0.75)  <rel.err>=30%  [12800s]
+    LBFGS  350/600  L=1.85e-04  | W=0.940(*1.00)  thetaP=0.659(*0.75)  <rel.err>=30%  [13108s]
+    LBFGS  400/600  L=1.85e-04  | W=0.936(*1.00)  thetaP=0.658(*0.75)  <rel.err>=30%  [13407s]
+    LBFGS  450/600  L=1.72e-04  | W=0.935(*1.00)  thetaP=0.658(*0.75)  <rel.err>=30%  [13703s]
+    LBFGS  500/600  L=1.79e-04  | W=0.936(*1.00)  thetaP=0.659(*0.75)  <rel.err>=30%  [13962s]
+    LBFGS  550/600  L=1.67e-04  | W=0.937(*1.00)  thetaP=0.659(*0.75)  <rel.err>=29%  [14200s]
+    LBFGS  600/600  L=1.63e-04  | W=0.937(*1.00)  thetaP=0.660(*0.75)  <rel.err>=29%  [14605s]
+    param-refine (500 steps, nets frozen) ...
+    refine   50/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14719s]
+    refine  100/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14733s]
+    refine  150/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14747s]
+    refine  200/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14761s]
+    refine  250/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14774s]
+    refine  300/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14788s]
+    refine  350/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14801s]
+    refine  400/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14814s]
+    refine  450/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14828s]
+    refine  500/500  Lp=8.87e-05  | W=0.851(*1.00)  thetaP=0.675(*0.75)  <rel.err>=53%  [14841s]
+  recovered W=0.851 thetaP=0.675  (14841s)
+
+── Advanced Adenoma ──
+  arch 4×256  net params 207,879 × 10 cond  unknowns 36
+  conditions ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc', 'wntPulse', 'wntInhib', 'mycPulse', 'wntRAcombo']
+  init guess W=1.2 thetaP=0.6 (+50% on the rest)  |  true W=1.5 thetaP=0.5
+    Adam     1/2500  L=9.11e+00  Ld=1.54e+00  Lp=7.47e-01  Lic=3.40e-01  λp=1.03  | W=1.194(*1.50)  thetaP=0.599(*0.50)  <rel.err>=48%  [3s]
+    Adam   100/2500  L=4.87e-02  Ld=2.35e-02  Lp=1.80e-02  Lic=3.32e-04  λp=1.03  | W=1.053(*1.50)  thetaP=0.666(*0.50)  <rel.err>=55%  [243s]
+    Adam   200/2500  L=7.47e-03  Ld=3.92e-03  Lp=2.52e-03  Lic=4.68e-05  λp=1.03  | W=1.057(*1.50)  thetaP=0.666(*0.50)  <rel.err>=55%  [486s]
+    Adam   300/2500  L=3.35e-03  Ld=1.67e-03  Lp=1.62e-03  Lic=3.97e-07  λp=1.03  | W=1.057(*1.50)  thetaP=0.666(*0.50)  <rel.err>=53%  [728s]
+    Adam   400/2500  L=2.27e-03  Ld=9.58e-04  Lp=1.17e-03  Lic=5.32e-06  λp=1.04  | W=1.057(*1.50)  thetaP=0.664(*0.50)  <rel.err>=51%  [971s]
+    Adam   500/2500  L=1.66e-03  Ld=6.22e-04  Lp=9.86e-04  Lic=9.50e-07  λp=1.04  | W=1.058(*1.50)  thetaP=0.662(*0.50)  <rel.err>=49%  [1213s]
+    Adam   600/2500  L=1.46e-03  Ld=4.86e-04  Lp=8.10e-04  Lic=6.40e-06  λp=1.04  | W=1.058(*1.50)  thetaP=0.661(*0.50)  <rel.err>=47%  [1456s]
+    Adam   700/2500  L=1.37e-03  Ld=3.85e-04  Lp=7.05e-04  Lic=1.26e-05  λp=1.04  | W=1.059(*1.50)  thetaP=0.659(*0.50)  <rel.err>=46%  [1698s]
+    Adam   800/2500  L=1.05e-03  Ld=3.18e-04  Lp=6.04e-04  Lic=5.28e-06  λp=1.04  | W=1.059(*1.50)  thetaP=0.658(*0.50)  <rel.err>=45%  [1941s]
+    Adam   900/2500  L=9.11e-04  Ld=2.75e-04  Lp=5.37e-04  Lic=3.92e-06  λp=1.04  | W=1.060(*1.50)  thetaP=0.656(*0.50)  <rel.err>=44%  [2183s]
+    Adam  1000/2500  L=7.29e-04  Ld=2.43e-04  Lp=4.70e-04  Lic=9.26e-09  λp=1.03  | W=1.060(*1.50)  thetaP=0.655(*0.50)  <rel.err>=43%  [2425s]
+    Adam  1100/2500  L=6.47e-04  Ld=2.18e-04  Lp=4.15e-04  Lic=5.35e-09  λp=1.03  | W=1.061(*1.50)  thetaP=0.654(*0.50)  <rel.err>=42%  [2626s]
+    Adam  1200/2500  L=5.95e-04  Ld=1.99e-04  Lp=3.84e-04  Lic=7.49e-09  λp=1.03  | W=1.061(*1.50)  thetaP=0.653(*0.50)  <rel.err>=42%  [2806s]
+    Adam  1300/2500  L=5.65e-04  Ld=1.84e-04  Lp=3.69e-04  Lic=8.10e-09  λp=1.03  | W=1.061(*1.50)  thetaP=0.652(*0.50)  <rel.err>=42%  [2983s]
+    Adam  1400/2500  L=5.12e-04  Ld=1.72e-04  Lp=3.29e-04  Lic=6.19e-09  λp=1.03  | W=1.062(*1.50)  thetaP=0.651(*0.50)  <rel.err>=41%  [3161s]
+    Adam  1500/2500  L=4.71e-04  Ld=1.63e-04  Lp=2.98e-04  Lic=5.72e-09  λp=1.03  | W=1.062(*1.50)  thetaP=0.650(*0.50)  <rel.err>=41%  [3340s]
+    Adam  1600/2500  L=4.51e-04  Ld=1.55e-04  Lp=2.89e-04  Lic=4.09e-09  λp=1.02  | W=1.062(*1.50)  thetaP=0.649(*0.50)  <rel.err>=41%  [3519s]
+    Adam  1700/2500  L=4.36e-04  Ld=1.48e-04  Lp=2.81e-04  Lic=4.14e-09  λp=1.02  | W=1.062(*1.50)  thetaP=0.649(*0.50)  <rel.err>=41%  [3697s]
+    Adam  1800/2500  L=4.15e-04  Ld=1.43e-04  Lp=2.68e-04  Lic=4.61e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.648(*0.50)  <rel.err>=41%  [3876s]
+    Adam  1900/2500  L=3.92e-04  Ld=1.38e-04  Lp=2.50e-04  Lic=3.62e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.648(*0.50)  <rel.err>=41%  [4055s]
+    Adam  2000/2500  L=3.96e-04  Ld=1.35e-04  Lp=2.57e-04  Lic=3.99e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.647(*0.50)  <rel.err>=41%  [4234s]
+    Adam  2100/2500  L=3.78e-04  Ld=1.32e-04  Lp=2.42e-04  Lic=3.38e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.647(*0.50)  <rel.err>=41%  [4412s]
+    Adam  2200/2500  L=3.84e-04  Ld=1.30e-04  Lp=2.51e-04  Lic=3.36e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.646(*0.50)  <rel.err>=40%  [4592s]
+    Adam  2300/2500  L=3.80e-04  Ld=1.29e-04  Lp=2.48e-04  Lic=3.27e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.646(*0.50)  <rel.err>=40%  [4770s]
+    Adam  2400/2500  L=3.67e-04  Ld=1.28e-04  Lp=2.36e-04  Lic=3.12e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.646(*0.50)  <rel.err>=40%  [4949s]
+    Adam  2500/2500  L=3.64e-04  Ld=1.28e-04  Lp=2.34e-04  Lic=3.21e-09  λp=1.01  | W=1.063(*1.50)  thetaP=0.645(*0.50)  <rel.err>=40%  [5127s]
+    L-BFGS (600 steps) ...
+    LBFGS   50/600  L=3.49e-04  | W=1.062(*1.50)  thetaP=0.645(*0.50)  <rel.err>=40%  [5332s]
+    LBFGS  100/600  L=3.42e-04  | W=1.061(*1.50)  thetaP=0.642(*0.50)  <rel.err>=40%  [5492s]
+    LBFGS  150/600  L=2.96e-04  | W=1.062(*1.50)  thetaP=0.638(*0.50)  <rel.err>=39%  [5635s]
+    LBFGS  200/600  L=2.87e-04  | W=1.060(*1.50)  thetaP=0.635(*0.50)  <rel.err>=39%  [5776s]
+    LBFGS  250/600  L=3.01e-04  | W=1.062(*1.50)  thetaP=0.635(*0.50)  <rel.err>=39%  [5921s]
+    LBFGS  300/600  L=2.66e-04  | W=1.064(*1.50)  thetaP=0.636(*0.50)  <rel.err>=39%  [6060s]
+    LBFGS  350/600  L=2.67e-04  | W=1.066(*1.50)  thetaP=0.636(*0.50)  <rel.err>=38%  [6210s]
+    LBFGS  400/600  L=2.32e-04  | W=1.066(*1.50)  thetaP=0.637(*0.50)  <rel.err>=38%  [6350s]
+    LBFGS  450/600  L=2.45e-04  | W=1.067(*1.50)  thetaP=0.637(*0.50)  <rel.err>=38%  [6481s]
+    LBFGS  500/600  L=2.37e-04  | W=1.066(*1.50)  thetaP=0.638(*0.50)  <rel.err>=38%  [6624s]
+    LBFGS  550/600  L=2.04e-04  | W=1.064(*1.50)  thetaP=0.637(*0.50)  <rel.err>=37%  [6761s]
+    LBFGS  600/600  L=2.04e-04  | W=1.061(*1.50)  thetaP=0.637(*0.50)  <rel.err>=37%  [6897s]
+    param-refine (500 steps, nets frozen) ...
+    refine   50/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6936s]
+    refine  100/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6939s]
+    refine  150/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6941s]
+    refine  200/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6944s]
+    refine  250/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6947s]
+    refine  300/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6950s]
+    refine  350/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6953s]
+    refine  400/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6955s]
+    refine  450/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6958s]
+    refine  500/500  Lp=8.31e-05  | W=0.080(*1.50)  thetaP=0.753(*0.50)  <rel.err>=71%  [6961s]
+  recovered W=0.080 thetaP=0.753  (6961s)
+
+── Severe APC Loss ──
+  arch 4×256  net params 207,879 × 10 cond  unknowns 36
+  conditions ['ctrl', 'noATRA', 'earlyATRA', 'lateATRA', 'lowATRA', 'strongCirc', 'wntPulse', 'wntInhib', 'mycPulse', 'wntRAcombo']
+  init guess W=1.2 thetaP=0.6 (+50% on the rest)  |  true W=2.0 thetaP=0.25
+    Adam     1/2500  L=9.46e+00  Ld=1.89e+00  Lp=7.47e-01  Lic=3.40e-01  λp=1.04  | W=1.194(*2.00)  thetaP=0.599(*0.25)  <rel.err>=52%  [1s]
+    Adam   100/2500  L=3.97e-02  Ld=2.14e-02  Lp=1.43e-02  Lic=1.75e-04  λp=1.04  | W=1.113(*2.00)  thetaP=0.663(*0.25)  <rel.err>=60%  [114s]
+    Adam   200/2500  L=9.11e-03  Ld=4.87e-03  Lp=2.63e-03  Lic=7.46e-05  λp=1.04  | W=1.130(*2.00)  thetaP=0.663(*0.25)  <rel.err>=61%  [228s]
+    Adam   300/2500  L=5.20e-03  Ld=2.25e-03  Lp=1.66e-03  Lic=6.06e-05  λp=1.04  | W=1.131(*2.00)  thetaP=0.662(*0.25)  <rel.err>=60%  [341s]
+    Adam   400/2500  L=5.03e-03  Ld=1.28e-03  Lp=1.28e-03  Lic=1.22e-04  λp=1.02  | W=1.131(*2.00)  thetaP=0.661(*0.25)  <rel.err>=58%  [455s]
+    Adam   500/2500  L=2.21e-03  Ld=9.03e-04  Lp=1.17e-03  Lic=5.88e-06  λp=1.02  | W=1.131(*2.00)  thetaP=0.659(*0.25)  <rel.err>=57%  [569s]
+    Adam   600/2500  L=1.84e-03  Ld=6.76e-04  Lp=1.05e-03  Lic=4.91e-06  λp=1.02  | W=1.132(*2.00)  thetaP=0.658(*0.25)  <rel.err>=56%  [683s]
+    Adam   700/2500  L=1.57e-03  Ld=5.91e-04  Lp=9.36e-04  Lic=1.54e-06  λp=1.02  | W=1.132(*2.00)  thetaP=0.656(*0.25)  <rel.err>=55%  [796s]
+    Adam   800/2500  L=1.36e-03  Ld=5.03e-04  Lp=8.31e-04  Lic=8.19e-07  λp=1.02  | W=1.133(*2.00)  thetaP=0.654(*0.25)  <rel.err>=53%  [910s]
+    Adam   900/2500  L=1.21e-03  Ld=4.38e-04  Lp=7.61e-04  Lic=4.83e-08  λp=1.02  | W=1.133(*2.00)  thetaP=0.652(*0.25)  <rel.err>=52%  [1024s]
+    Adam  1000/2500  L=1.08e-03  Ld=3.92e-04  Lp=6.77e-04  Lic=4.16e-08  λp=1.01  | W=1.134(*2.00)  thetaP=0.651(*0.25)  <rel.err>=51%  [1138s]
+    Adam  1100/2500  L=9.60e-04  Ld=3.55e-04  Lp=5.96e-04  Lic=1.50e-08  λp=1.01  | W=1.135(*2.00)  thetaP=0.649(*0.25)  <rel.err>=51%  [1252s]
+    Adam  1200/2500  L=8.85e-04  Ld=3.25e-04  Lp=5.53e-04  Lic=1.04e-08  λp=1.01  | W=1.135(*2.00)  thetaP=0.648(*0.25)  <rel.err>=50%  [1365s]
+    Adam  1300/2500  L=8.32e-04  Ld=2.99e-04  Lp=5.26e-04  Lic=1.12e-08  λp=1.01  | W=1.136(*2.00)  thetaP=0.646(*0.25)  <rel.err>=49%  [1479s]
+    Adam  1400/2500  L=7.44e-04  Ld=2.78e-04  Lp=4.61e-04  Lic=7.68e-09  λp=1.01  | W=1.136(*2.00)  thetaP=0.645(*0.25)  <rel.err>=49%  [1593s]
+    Adam  1500/2500  L=6.72e-04  Ld=2.60e-04  Lp=4.07e-04  Lic=6.46e-09  λp=1.01  | W=1.136(*2.00)  thetaP=0.644(*0.25)  <rel.err>=49%  [1707s]
+    Adam  1600/2500  L=6.38e-04  Ld=2.44e-04  Lp=3.91e-04  Lic=5.89e-09  λp=1.01  | W=1.137(*2.00)  thetaP=0.643(*0.25)  <rel.err>=48%  [1821s]
+    Adam  1700/2500  L=6.10e-04  Ld=2.31e-04  Lp=3.77e-04  Lic=5.66e-09  λp=1.01  | W=1.137(*2.00)  thetaP=0.642(*0.25)  <rel.err>=48%  [1934s]
+    Adam  1800/2500  L=5.75e-04  Ld=2.20e-04  Lp=3.55e-04  Lic=6.00e-09  λp=1.00  | W=1.137(*2.00)  thetaP=0.641(*0.25)  <rel.err>=48%  [2048s]
+    Adam  1900/2500  L=5.33e-04  Ld=2.11e-04  Lp=3.22e-04  Lic=5.26e-09  λp=1.00  | W=1.137(*2.00)  thetaP=0.640(*0.25)  <rel.err>=48%  [2162s]
+    Adam  2000/2500  L=5.37e-04  Ld=2.03e-04  Lp=3.33e-04  Lic=5.34e-09  λp=1.00  | W=1.138(*2.00)  thetaP=0.639(*0.25)  <rel.err>=48%  [2276s]
+    Adam  2100/2500  L=5.09e-04  Ld=1.98e-04  Lp=3.11e-04  Lic=4.40e-09  λp=1.00  | W=1.138(*2.00)  thetaP=0.639(*0.25)  <rel.err>=48%  [2389s]
+    Adam  2200/2500  L=5.14e-04  Ld=1.94e-04  Lp=3.21e-04  Lic=4.14e-09  λp=1.00  | W=1.138(*2.00)  thetaP=0.638(*0.25)  <rel.err>=48%  [2503s]
+    Adam  2300/2500  L=5.05e-04  Ld=1.91e-04  Lp=3.15e-04  Lic=4.05e-09  λp=1.00  | W=1.138(*2.00)  thetaP=0.637(*0.25)  <rel.err>=48%  [2617s]
+    Adam  2400/2500  L=4.86e-04  Ld=1.89e-04  Lp=2.97e-04  Lic=3.69e-09  λp=1.00  | W=1.138(*2.00)  thetaP=0.637(*0.25)  <rel.err>=48%  [2731s]
+    Adam  2500/2500  L=4.79e-04  Ld=1.89e-04  Lp=2.90e-04  Lic=3.83e-09  λp=1.00  | W=1.138(*2.00)  thetaP=0.636(*0.25)  <rel.err>=48%  [2845s]
+    L-BFGS (600 steps) ...
+    LBFGS   50/600  L=4.66e-04  | W=1.136(*2.00)  thetaP=0.635(*0.25)  <rel.err>=47%  [2958s]
+    LBFGS  100/600  L=4.05e-04  | W=1.136(*2.00)  thetaP=0.627(*0.25)  <rel.err>=47%  [3102s]
+    LBFGS  150/600  L=3.76e-04  | W=1.137(*2.00)  thetaP=0.621(*0.25)  <rel.err>=47%  [3241s]
+    LBFGS  200/600  L=3.98e-04  | W=1.135(*2.00)  thetaP=0.619(*0.25)  <rel.err>=47%  [3376s]
+    LBFGS  250/600  L=3.56e-04  | W=1.136(*2.00)  thetaP=0.617(*0.25)  <rel.err>=47%  [3529s]
+    LBFGS  300/600  L=3.60e-04  | W=1.138(*2.00)  thetaP=0.617(*0.25)  <rel.err>=47%  [3650s]
+    LBFGS  350/600  L=3.16e-04  | W=1.140(*2.00)  thetaP=0.618(*0.25)  <rel.err>=47%  [3784s]
+    LBFGS  400/600  L=3.16e-04  | W=1.141(*2.00)  thetaP=0.618(*0.25)  <rel.err>=47%  [3912s]
+    LBFGS  450/600  L=3.00e-04  | W=1.142(*2.00)  thetaP=0.620(*0.25)  <rel.err>=47%  [4047s]
+    LBFGS  500/600  L=2.58e-04  | W=1.142(*2.00)  thetaP=0.621(*0.25)  <rel.err>=47%  [4197s]
+    LBFGS  550/600  L=3.05e-04  | W=1.141(*2.00)  thetaP=0.621(*0.25)  <rel.err>=47%  [4337s]
+    LBFGS  600/600  L=2.82e-04  | W=1.140(*2.00)  thetaP=0.622(*0.25)  <rel.err>=47%  [4467s]
+    param-refine (500 steps, nets frozen) ...
+    refine   50/500  Lp=1.04e-04  | W=0.145(*2.00)  thetaP=0.774(*0.25)  <rel.err>=96%  [4512s]
+    refine  100/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4515s]
+    refine  150/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4518s]
+    refine  200/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4521s]
+    refine  250/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4524s]
+    refine  300/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4527s]
+    refine  350/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4529s]
+    refine  400/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4532s]
+    refine  450/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4535s]
+    refine  500/500  Lp=1.04e-04  | W=0.142(*2.00)  thetaP=0.776(*0.25)  <rel.err>=96%  [4538s]
+  recovered W=0.142 thetaP=0.776  (4538s)
+
+[3/3] Plotting + diagnostics ...
+
+======================================================================
+Recovered parameters (inverse PINN) — rel. error %, by regime
+(sorted best -> worst; worst = least-identifiable)
+======================================================================
+param         Normal  Early Ad  Advanced  Severe A     mean
+-----------------------------------------------------------
+lambdaC         0.2%      0.0%      0.0%      0.0%     0.1%
+kappaBC         2.4%      2.0%      1.7%      8.6%     3.7%
+etaRC           0.6%      8.7%      9.1%      9.3%     6.9%
+etaBC           0.6%      2.2%      3.9%     21.6%     7.1%
+eps13           4.1%     12.2%      9.9%      5.5%     7.9%
+kappaBM         1.1%      0.7%     30.2%     28.7%    15.2%
+etaBM           0.5%      1.5%     29.4%     49.0%    20.1%
+kappaB13        0.5%     19.4%     16.1%     48.6%    21.2%
+rho5            3.9%     25.2%     42.3%     32.3%    25.9%
+etaB13          0.4%     35.5%     12.8%     55.3%    26.0%
+kappa13         0.0%     10.8%     48.8%     46.8%    26.6%
+lambda5        33.3%     23.2%     39.0%     38.6%    33.5%
+epsM           36.0%     27.1%     33.7%     45.1%    35.5%
+kappaRC        11.6%     42.2%     46.0%     43.0%    35.7%
+lambdaP        25.7%     26.0%     47.2%     55.3%    38.6%
+epsC           86.7%     29.1%     14.5%     23.9%    38.6%
+etaM13          0.4%     68.8%     74.1%     26.5%    42.4%
+deltaP1        74.6%      4.7%     43.7%     54.7%    44.4%
+epsP           75.2%     58.3%     20.2%     27.9%    45.4%
+W               3.0%     14.9%     94.7%     92.9%    51.4%
+etaR           38.6%     87.4%     55.9%     50.7%    58.1%
+kappaM         35.6%     46.3%     99.3%     99.1%    70.1%
+thetaP         12.9%     10.0%     50.6%    210.5%    71.0%
+etaM           29.6%     81.5%     94.7%     88.3%    73.5%
+kappaR         73.2%     80.6%     78.3%     69.4%    75.4%
+kappa5         32.7%     45.9%    106.4%    128.7%    78.4%
+eps5          125.4%    220.3%      4.4%      0.4%    87.6%
+rho13          31.8%     10.2%    146.1%    230.6%   104.7%
+eta13           7.7%     10.6%    174.5%    235.2%   107.0%
+rhoB           27.8%     12.0%    131.5%    269.2%   110.1%
+kappaM13        9.7%    277.0%    154.5%     15.5%   114.2%
+a5            219.1%    314.9%      5.5%      2.1%   135.4%
+aM              0.5%     10.9%    228.8%    359.5%   149.9%
+aC             29.6%     37.4%    159.9%    475.4%   175.6%
+a13             7.3%     42.1%    301.8%    368.4%   179.9%
+epsR          247.4%    194.6%    153.3%    141.2%   184.1%
+-----------------------------------------------------------
+2/36 parameters recovered within 5% (mean over regimes)
+
+======================================================================
+Practical identifiability — relative RHS sensitivity per parameter
+(aggregated over time, 7 equations, and all conditions; higher = easier)
+(sorted most -> least identifiable)
+======================================================================
+param        rel.sensitivity
+----------------------------
+etaBM                20.0474
+etaBC                16.7062
+W                    14.4159
+lambdaC              12.7866
+etaR                  8.6826
+etaB13                8.4645
+thetaP                7.5614
+eta13                 7.1108
+etaRC                 6.8449
+kappaBM               6.5073
+etaM                  6.4108
+kappaBC               5.4227
+etaM13                5.1926
+kappaR                4.9715
+kappaRC               4.2053
+lambda5               3.7987
+lambdaP               3.6684
+aM                    3.3491
+kappaB13              2.7475
+a13                   2.0095
+kappa13               1.9524
+kappaM                1.8731
+rho13                 1.7577
+deltaP1               1.6027
+kappaM13              1.4368
+a5                    1.3955
+rho5                  1.3136
+rhoB                  1.1708
+kappa5                1.1570
+aC                    1.1164
+epsC                  0.2054
+epsR                  0.1560
+epsP                  0.1242
+epsM                  0.1145
+eps13                 0.1111
+eps5                  0.1055
+
+==============================================================================
+PARAMETER IDENTIFIABILITY — verdict per unknown (sorted best -> worst)
+==============================================================================
+param        rel.sens   %ofmax  recov.err  identifiable      a-priori
+---------------------------------------------------------------------
+lambdaC       12.7866    63.8%       0.1%           YES  identifiable
+kappaBC        5.4227    27.0%       3.7%           YES  identifiable
+etaRC          6.8449    34.1%       6.9%      MARGINAL  identifiable
+etaBC         16.7062    83.3%       7.1%      MARGINAL  identifiable
+eps13          0.1111     0.6%       7.9%      MARGINAL     non-ident
+kappaBM        6.5073    32.5%      15.2%      MARGINAL  identifiable
+etaBM         20.0474   100.0%      20.1%            NO  identifiable
+kappaB13       2.7475    13.7%      21.2%            NO  identifiable
+rho5           1.3136     6.6%      25.9%            NO  identifiable
+etaB13         8.4645    42.2%      26.0%            NO  identifiable
+kappa13        1.9524     9.7%      26.6%            NO  identifiable
+lambda5        3.7987    18.9%      33.5%            NO  identifiable
+epsM           0.1145     0.6%      35.5%            NO     non-ident
+kappaRC        4.2053    21.0%      35.7%            NO  identifiable
+lambdaP        3.6684    18.3%      38.6%            NO  identifiable
+epsC           0.2054     1.0%      38.6%            NO          weak
+etaM13         5.1926    25.9%      42.4%            NO  identifiable
+deltaP1        1.6027     8.0%      44.4%            NO  identifiable
+epsP           0.1242     0.6%      45.4%            NO     non-ident
+W             14.4159    71.9%      51.4%            NO  identifiable
+etaR           8.6826    43.3%      58.1%            NO  identifiable
+kappaM         1.8731     9.3%      70.1%            NO  identifiable
+thetaP         7.5614    37.7%      71.0%            NO  identifiable
+etaM           6.4108    32.0%      73.5%            NO  identifiable
+kappaR         4.9715    24.8%      75.4%            NO  identifiable
+kappa5         1.1570     5.8%      78.4%            NO  identifiable
+eps5           0.1055     0.5%      87.6%            NO     non-ident
+rho13          1.7577     8.8%     104.7%            NO  identifiable
+eta13          7.1108    35.5%     107.0%            NO  identifiable
+rhoB           1.1708     5.8%     110.1%            NO  identifiable
+kappaM13       1.4368     7.2%     114.2%            NO  identifiable
+a5             1.3955     7.0%     135.4%            NO  identifiable
+aM             3.3491    16.7%     149.9%            NO  identifiable
+aC             1.1164     5.6%     175.6%            NO  identifiable
+a13            2.0095    10.0%     179.9%            NO  identifiable
+epsR           0.1560     0.8%     184.1%            NO     non-ident
+---------------------------------------------------------------------
+2 identifiable (<5%) | 4 marginal (5-20%) | 30 not identifiable (>20%)  of 36
+wrote ./identifiability.csv and identifiability.json
