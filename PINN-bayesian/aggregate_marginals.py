@@ -23,8 +23,8 @@ REGIME_ORDER = ["Normal", "Early_Adenoma", "Advanced_Adenoma", "Severe_APC_Loss"
 REGIME_LABEL = {"Normal": "Normal", "Early_Adenoma": "Early Adenoma",
                 "Advanced_Adenoma": "Advanced Adenoma",
                 "Severe_APC_Loss": "Severe APC Loss"}
-COLORS = {"Normal": "#2ca02c", "Early_Adenoma": "#1f77b4",
-          "Advanced_Adenoma": "#ff7f0e", "Severe_APC_Loss": "#d62728"}
+COLORS = {"Normal": "#1f77b4", "Early_Adenoma": "#ff7f0e",
+          "Advanced_Adenoma": "#888888", "Severe_APC_Loss": "#444444"}
 
 
 def load_run(run_dir):
@@ -94,7 +94,7 @@ def plot_identifiability(data, run_dir):
 
     # left: stacked verdict counts per regime
     cats = ["IDENT", "WEAK", "NON-IDENT"]
-    ccol = {"IDENT": "#2ca02c", "WEAK": "#ff7f0e", "NON-IDENT": "#d62728"}
+    ccol = {"IDENT": "#1f77b4", "WEAK": "#bbbbbb", "NON-IDENT": "#ff7f0e"}
     counts = {c: [] for c in cats}
     for safe in regimes:
         summ = data[safe]["summary"]
@@ -114,7 +114,7 @@ def plot_identifiability(data, run_dir):
     a0.legend(fontsize=9)
 
     # right: heatmap
-    im = a1.imshow(H, aspect="auto", cmap="RdYlGn_r", vmin=0, vmax=1)
+    im = a1.imshow(H, aspect="auto", cmap="Oranges", vmin=0, vmax=1)
     a1.set_yticks(np.arange(len(names)))
     a1.set_yticklabels(names, fontsize=7)
     a1.set_xticks(np.arange(len(regimes)))

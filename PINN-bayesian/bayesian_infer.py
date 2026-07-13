@@ -473,13 +473,13 @@ def plot_marginals(V, summary, true_vals, sigma_prior_vec, out_dir, safe):
     for i, k in enumerate(UNKNOWN):
         ax = axes.flat[i]
         vals = V[:, i]
-        ax.hist(vals, bins=40, density=True, color="#4c72b0", alpha=0.75)
+        ax.hist(vals, bins=40, density=True, color="#1f77b4", alpha=0.75)
         tv = true_vals[k]
-        ax.axvline(tv, color="crimson", lw=2, label="true")
+        ax.axvline(tv, color="#444444", lw=2, label="true")
         ax.axvline(summary[k]["post_mean"], color="k", ls="--", lw=1.2,
                    label="post mean")
-        col = {"IDENT": "#2ca02c", "WEAK": "#ff7f0e",
-               "NON-IDENT": "#d62728"}[summary[k]["verdict"]]
+        col = {"IDENT": "#1f77b4", "WEAK": "#bbbbbb",
+               "NON-IDENT": "#ff7f0e"}[summary[k]["verdict"]]
         ax.set_title(f"{k}  [{summary[k]['verdict']}]  "
                      f"shrink={summary[k]['shrink_vs_prior']:.2f}",
                      fontsize=9, color=col)
@@ -487,7 +487,7 @@ def plot_marginals(V, summary, true_vals, sigma_prior_vec, out_dir, safe):
     for j in range(len(UNKNOWN), nrow * ncol):
         axes.flat[j].axis("off")
     fig.suptitle(f"{safe} — posterior marginals (36 params)  "
-                 f"[green=identifiable, red=reverts to prior]", fontsize=14)
+                 f"[blue=identifiable, orange=reverts to prior]", fontsize=14)
     fig.tight_layout(rect=[0, 0, 1, 0.99])
     fig.savefig(os.path.join(out_dir, f"{safe}_marginals.png"), dpi=110)
     plt.close(fig)
@@ -496,8 +496,8 @@ def plot_marginals(V, summary, true_vals, sigma_prior_vec, out_dir, safe):
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     for ax, k in zip(axes, ["W", "thetaP"]):
         i = UNKNOWN.index(k)
-        ax.hist(V[:, i], bins=45, density=True, color="#4c72b0", alpha=0.8)
-        ax.axvline(true_vals[k], color="crimson", lw=2, label="true")
+        ax.hist(V[:, i], bins=45, density=True, color="#1f77b4", alpha=0.8)
+        ax.axvline(true_vals[k], color="#cc3333", lw=2, label="true")
         ax.set_title(f"{safe}: {k}  [{summary[k]['verdict']}]  "
                      f"post={summary[k]['post_mean']:.3f}"
                      f"±{summary[k]['post_std']:.3f}")
