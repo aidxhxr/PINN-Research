@@ -7,7 +7,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-SEED_RUN="${SEED_RUN:-$HERE/../PINN-inverse-pinn-boost/runs/20260702_160102_integral}"
+SEED_RUN="${SEED_RUN:-$HERE/../PINN-inverse-pinn-boost/runs/20260711_203325_integral}"
 RUN_DIR="$HERE/runs/$(date +%Y%m%d_%H%M%S)_bayes"
 mkdir -p "$RUN_DIR"
 
@@ -17,10 +17,12 @@ export PYTHONPATH="$HERE:${PYTHONPATH:-}"
 WARMUP="${WARMUP:-2000}"
 DRAWS="${DRAWS:-2000}"
 COLLOC="${COLLOC:-4000}"
+LEAP="${LEAP:-20}"          # leapfrog steps per draw (longer -> better mixing on sloppy)
+TACC="${TACC:-0.8}"         # HMC target accept (lower -> bigger eps, escapes tiny-step trap)
 
 echo "seed_run = $SEED_RUN"
 echo "run_dir  = $RUN_DIR"
-echo "warmup=$WARMUP draws=$DRAWS colloc=$COLLOC"
+echo "warmup=$WARMUP draws=$DRAWS colloc=$COLLOC leapfrog=$LEAP target_accept=$TACC"
 
 pids=()
 for REGIME in "Normal" "Early Adenoma" "Advanced Adenoma" "Severe APC Loss"; do
@@ -28,6 +30,7 @@ for REGIME in "Normal" "Early Adenoma" "Advanced Adenoma" "Severe APC Loss"; do
   python3 -u "$HERE/bayesian_infer.py" \
       --regime "$REGIME" --seed-run "$SEED_RUN" --out "$RUN_DIR" \
       --warmup "$WARMUP" --draws "$DRAWS" --colloc "$COLLOC" \
+      --leapfrog "$LEAP" --target-accept "$TACC" \
       --threads 14 --seed 0 \
       > "$RUN_DIR/${safe}.log" 2>&1 &
   pids+=($!)
