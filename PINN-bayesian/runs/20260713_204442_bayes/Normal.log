@@ -1,0 +1,113 @@
+=== Bayesian inverse PINN — regime=Normal device=cuda ===
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+  n_resid=279,930  n_eff=2,800  SSR@MAP=4.150e-02  sigma_res=3.8501e-04
+    [Norm] Laplace metric set; eps0=0.03125
+    [Norm] warm-init  100/600  eps=0.0028  acc=0.67  U=1151.4 [207s]
+    [Norm] warm-init  200/600  eps=0.0059  acc=0.70  U=1159.9 [413s]
+    [Norm] warm-init  300/600  eps=0.0039  acc=0.69  U=1152.1 [620s]
+    [Norm] warm-init  400/600  eps=0.0060  acc=0.70  U=1149.4 [826s]
+    [Norm] warm-init  500/600  eps=0.0075  acc=0.70  U=1148.9 [1031s]
+    [Norm] warm-init  600/600  eps=0.0071  acc=0.70  U=1149.0 [1238s]
+    [Norm] warm-covA  100/900  eps=0.0063  acc=0.69  U=1149.6 [1444s]
+    [Norm] warm-covA  200/900  eps=0.0034  acc=0.69  U=1157.8 [1653s]
+    [Norm] warm-covA  300/900  eps=0.0044  acc=0.70  U=1148.2 [1858s]
+    [Norm] warm-covA  400/900  eps=0.0096  acc=0.70  U=1154.8 [2063s]
+    [Norm] warm-covA  500/900  eps=0.0076  acc=0.70  U=1149.2 [2272s]
+    [Norm] warm-covA  600/900  eps=0.0060  acc=0.69  U=1149.1 [2479s]
+    [Norm] warm-covA  700/900  eps=0.0073  acc=0.70  U=1152.7 [2686s]
+    [Norm] warm-covA  800/900  eps=0.0058  acc=0.69  U=1147.5 [2893s]
+    [Norm] warm-covA  900/900  eps=0.0067  acc=0.70  U=1150.4 [3100s]
+    [Norm] warm-covB  100/600  eps=0.0138  acc=0.68  U=1145.0 [3307s]
+    [Norm] warm-covB  200/600  eps=0.0065  acc=0.69  U=1148.4 [3515s]
+    [Norm] warm-covB  300/600  eps=0.0168  acc=0.70  U=1143.9 [3721s]
+    [Norm] warm-covB  400/600  eps=0.0092  acc=0.69  U=1151.9 [3929s]
+    [Norm] warm-covB  500/600  eps=0.0077  acc=0.69  U=1154.9 [4134s]
+    [Norm] warm-covB  600/600  eps=0.0094  acc=0.70  U=1146.1 [4342s]
+    [Norm] warm-fine  100/900  eps=0.0089  acc=0.68  U=1154.1 [4551s]
+    [Norm] warm-fine  200/900  eps=0.0124  acc=0.70  U=1144.5 [4760s]
+    [Norm] warm-fine  300/900  eps=0.0120  acc=0.70  U=1151.7 [4968s]
+    [Norm] warm-fine  400/900  eps=0.0179  acc=0.70  U=1138.8 [5176s]
+    [Norm] warm-fine  500/900  eps=0.0086  acc=0.69  U=1152.6 [5382s]
+    [Norm] warm-fine  600/900  eps=0.0183  acc=0.71  U=1143.1 [5588s]
+    [Norm] warm-fine  700/900  eps=0.0141  acc=0.69  U=1151.4 [5795s]
+    [Norm] warm-fine  800/900  eps=0.0077  acc=0.69  U=1142.0 [6002s]
+    [Norm] warm-fine  900/900  eps=0.0096  acc=0.70  U=1144.1 [6210s]
+    [Norm] warmup done: eps=0.0115  mean-acc=0.69
+    [Norm] draw   100/3000  acc=0.83  U=1141.1  [6416s]
+    [Norm] draw   200/3000  acc=0.79  U=1146.1  [6626s]
+    [Norm] draw   300/3000  acc=0.81  U=1137.1  [6833s]
+    [Norm] draw   400/3000  acc=0.84  U=1143.3  [7039s]
+    [Norm] draw   500/3000  acc=0.78  U=1140.9  [7246s]
+    [Norm] draw   600/3000  acc=0.81  U=1139.9  [7452s]
+    [Norm] draw   700/3000  acc=0.76  U=1136.9  [7657s]
+    [Norm] draw   800/3000  acc=0.74  U=1142.6  [7864s]
+    [Norm] draw   900/3000  acc=0.79  U=1140.6  [8070s]
+    [Norm] draw  1000/3000  acc=0.83  U=1143.0  [8276s]
+    [Norm] draw  1100/3000  acc=0.83  U=1138.9  [8484s]
+    [Norm] draw  1200/3000  acc=0.79  U=1136.5  [8688s]
+    [Norm] draw  1300/3000  acc=0.81  U=1143.7  [8895s]
+    [Norm] draw  1400/3000  acc=0.81  U=1139.3  [9100s]
+    [Norm] draw  1500/3000  acc=0.77  U=1142.7  [9306s]
+    [Norm] draw  1600/3000  acc=0.79  U=1135.5  [9513s]
+    [Norm] draw  1700/3000  acc=0.82  U=1138.2  [9720s]
+    [Norm] draw  1800/3000  acc=0.77  U=1144.7  [9927s]
+    [Norm] draw  1900/3000  acc=0.70  U=1141.5  [10133s]
+    [Norm] draw  2000/3000  acc=0.81  U=1147.7  [10338s]
+    [Norm] draw  2100/3000  acc=0.82  U=1138.5  [10542s]
+    [Norm] draw  2200/3000  acc=0.80  U=1149.1  [10749s]
+    [Norm] draw  2300/3000  acc=0.77  U=1140.9  [10956s]
+    [Norm] draw  2400/3000  acc=0.75  U=1139.5  [11163s]
+    [Norm] draw  2500/3000  acc=0.76  U=1140.5  [11374s]
+    [Norm] draw  2600/3000  acc=0.82  U=1139.1  [11583s]
+    [Norm] draw  2700/3000  acc=0.80  U=1138.7  [11792s]
+    [Norm] draw  2800/3000  acc=0.78  U=1148.8  [12000s]
+    [Norm] draw  2900/3000  acc=0.79  U=1137.5  [12207s]
+    [Norm] draw  3000/3000  acc=0.81  U=1141.0  [12415s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Normal] GATE=FAIL  (ESS med=96 min=15 need>=200 -> FAIL;  covers_true=21/36 need>=33 -> FAIL)
+  [Normal] !! verdicts below are NOT trustworthy until the gate passes — do not report IDENT/NON-IDENT counts
+  [Normal] accept=0.79  IDENT=34 WEAK=1 NON-IDENT=1 /36  CI covers truth: 21/36
+          W: post=0.759±0.009 true=0.800  CI95=0.740..0.775  [IDENT]  ess=44
+     thetaP: post=0.973±0.053 true=1.000  CI95=0.900..0.998  [WEAK]  ess=109
+  [Normal] DONE

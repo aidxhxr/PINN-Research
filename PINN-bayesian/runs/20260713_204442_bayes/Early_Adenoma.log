@@ -1,0 +1,113 @@
+=== Bayesian inverse PINN — regime=Early Adenoma device=cuda ===
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+  n_resid=279,930  n_eff=2,800  SSR@MAP=2.700e-02  sigma_res=3.1059e-04
+    [Earl] Laplace metric set; eps0=0.125
+    [Earl] warm-init  100/600  eps=0.0377  acc=0.68  U=1360.2 [212s]
+    [Earl] warm-init  200/600  eps=0.0157  acc=0.69  U=1354.8 [424s]
+    [Earl] warm-init  300/600  eps=0.0293  acc=0.70  U=1350.5 [633s]
+    [Earl] warm-init  400/600  eps=0.0306  acc=0.70  U=1349.5 [845s]
+    [Earl] warm-init  500/600  eps=0.0153  acc=0.69  U=1356.3 [1054s]
+    [Earl] warm-init  600/600  eps=0.0333  acc=0.71  U=1352.2 [1262s]
+    [Earl] warm-covA  100/900  eps=0.0165  acc=0.69  U=1355.6 [1473s]
+    [Earl] warm-covA  200/900  eps=0.0207  acc=0.70  U=1349.1 [1684s]
+    [Earl] warm-covA  300/900  eps=0.0427  acc=0.70  U=1350.0 [1894s]
+    [Earl] warm-covA  400/900  eps=0.0239  acc=0.69  U=1352.8 [2105s]
+    [Earl] warm-covA  500/900  eps=0.0143  acc=0.69  U=1360.9 [2315s]
+    [Earl] warm-covA  600/900  eps=0.0197  acc=0.70  U=1354.6 [2526s]
+    [Earl] warm-covA  700/900  eps=0.0333  acc=0.70  U=1362.1 [2736s]
+    [Earl] warm-covA  800/900  eps=0.0175  acc=0.69  U=1363.7 [2946s]
+    [Earl] warm-covA  900/900  eps=0.0367  acc=0.71  U=1355.1 [3155s]
+    [Earl] warm-covB  100/600  eps=0.0229  acc=0.68  U=1350.2 [3369s]
+    [Earl] warm-covB  200/600  eps=0.0349  acc=0.70  U=1360.5 [3579s]
+    [Earl] warm-covB  300/600  eps=0.0260  acc=0.69  U=1352.8 [3788s]
+    [Earl] warm-covB  400/600  eps=0.0497  acc=0.70  U=1349.9 [3998s]
+    [Earl] warm-covB  500/600  eps=0.0673  acc=0.70  U=1360.0 [4208s]
+    [Earl] warm-covB  600/600  eps=0.0437  acc=0.69  U=1357.3 [4419s]
+    [Earl] warm-fine  100/900  eps=0.0455  acc=0.68  U=1365.9 [4629s]
+    [Earl] warm-fine  200/900  eps=0.0157  acc=0.69  U=1360.2 [4839s]
+    [Earl] warm-fine  300/900  eps=0.0294  acc=0.70  U=1359.2 [5047s]
+    [Earl] warm-fine  400/900  eps=0.0376  acc=0.70  U=1360.7 [5256s]
+    [Earl] warm-fine  500/900  eps=0.0388  acc=0.70  U=1359.1 [5465s]
+    [Earl] warm-fine  600/900  eps=0.0378  acc=0.70  U=1357.1 [5674s]
+    [Earl] warm-fine  700/900  eps=0.0333  acc=0.70  U=1352.2 [5885s]
+    [Earl] warm-fine  800/900  eps=0.0358  acc=0.70  U=1365.0 [6093s]
+    [Earl] warm-fine  900/900  eps=0.0293  acc=0.69  U=1356.5 [6302s]
+    [Earl] warmup done: eps=0.0378  mean-acc=0.69
+    [Earl] draw   100/3000  acc=0.72  U=1357.5  [6509s]
+    [Earl] draw   200/3000  acc=0.82  U=1353.2  [6715s]
+    [Earl] draw   300/3000  acc=0.79  U=1351.7  [6923s]
+    [Earl] draw   400/3000  acc=0.77  U=1359.8  [7132s]
+    [Earl] draw   500/3000  acc=0.58  U=1355.8  [7339s]
+    [Earl] draw   600/3000  acc=0.72  U=1360.0  [7549s]
+    [Earl] draw   700/3000  acc=0.54  U=1354.8  [7762s]
+    [Earl] draw   800/3000  acc=0.77  U=1357.1  [7969s]
+    [Earl] draw   900/3000  acc=0.82  U=1354.9  [8177s]
+    [Earl] draw  1000/3000  acc=0.76  U=1364.8  [8386s]
+    [Earl] draw  1100/3000  acc=0.64  U=1357.4  [8594s]
+    [Earl] draw  1200/3000  acc=0.59  U=1358.7  [8803s]
+    [Earl] draw  1300/3000  acc=0.43  U=1353.2  [9012s]
+    [Earl] draw  1400/3000  acc=0.36  U=1357.3  [9219s]
+    [Earl] draw  1500/3000  acc=0.70  U=1352.7  [9428s]
+    [Earl] draw  1600/3000  acc=0.71  U=1352.8  [9634s]
+    [Earl] draw  1700/3000  acc=0.75  U=1354.5  [9841s]
+    [Earl] draw  1800/3000  acc=0.69  U=1351.4  [10048s]
+    [Earl] draw  1900/3000  acc=0.78  U=1357.9  [10257s]
+    [Earl] draw  2000/3000  acc=0.62  U=1366.6  [10468s]
+    [Earl] draw  2100/3000  acc=0.77  U=1355.4  [10674s]
+    [Earl] draw  2200/3000  acc=0.65  U=1358.5  [10886s]
+    [Earl] draw  2300/3000  acc=0.75  U=1361.1  [11094s]
+    [Earl] draw  2400/3000  acc=0.68  U=1357.5  [11302s]
+    [Earl] draw  2500/3000  acc=0.78  U=1366.9  [11509s]
+    [Earl] draw  2600/3000  acc=0.64  U=1358.1  [11716s]
+    [Earl] draw  2700/3000  acc=0.63  U=1357.4  [11928s]
+    [Earl] draw  2800/3000  acc=0.76  U=1363.2  [12138s]
+    [Earl] draw  2900/3000  acc=0.55  U=1351.9  [12350s]
+    [Earl] draw  3000/3000  acc=0.52  U=1355.2  [12537s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Early_Adenoma] GATE=FAIL  (ESS med=1265 min=49 need>=200 -> ok;  covers_true=20/36 need>=33 -> FAIL)
+  [Early_Adenoma] !! verdicts below are NOT trustworthy until the gate passes — do not report IDENT/NON-IDENT counts
+  [Early_Adenoma] accept=0.68  IDENT=34 WEAK=2 NON-IDENT=0 /36  CI covers truth: 20/36
+          W: post=0.842±0.018 true=1.000  CI95=0.804..0.876  [IDENT]  ess=594
+     thetaP: post=0.586±0.175 true=0.750  CI95=0.314..0.871  [WEAK]  ess=49
+  [Early_Adenoma] DONE

@@ -1,0 +1,113 @@
+=== Bayesian inverse PINN — regime=Advanced Adenoma device=cuda ===
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+  n_resid=279,930  n_eff=2,800  SSR@MAP=2.799e-02  sigma_res=3.1621e-04
+    [Adva] Laplace metric set; eps0=0.01562
+    [Adva] warm-init  100/600  eps=0.0077  acc=0.68  U=1292.5 [213s]
+    [Adva] warm-init  200/600  eps=0.0038  acc=0.69  U=1278.0 [422s]
+    [Adva] warm-init  300/600  eps=0.0026  acc=0.69  U=1273.0 [632s]
+    [Adva] warm-init  400/600  eps=0.0050  acc=0.70  U=1271.9 [842s]
+    [Adva] warm-init  500/600  eps=0.0017  acc=0.68  U=1267.9 [1053s]
+    [Adva] warm-init  600/600  eps=0.0039  acc=0.71  U=1264.6 [1262s]
+    [Adva] warm-covA  100/900  eps=0.0041  acc=0.69  U=1260.8 [1476s]
+    [Adva] warm-covA  200/900  eps=0.0022  acc=0.69  U=1265.1 [1688s]
+    [Adva] warm-covA  300/900  eps=0.0024  acc=0.70  U=1259.0 [1900s]
+    [Adva] warm-covA  400/900  eps=0.0026  acc=0.70  U=1255.9 [2107s]
+    [Adva] warm-covA  500/900  eps=0.0041  acc=0.70  U=1247.3 [2318s]
+    [Adva] warm-covA  600/900  eps=0.0025  acc=0.69  U=1245.5 [2528s]
+    [Adva] warm-covA  700/900  eps=0.0028  acc=0.70  U=1250.9 [2737s]
+    [Adva] warm-covA  800/900  eps=0.0035  acc=0.70  U=1246.6 [2948s]
+    [Adva] warm-covA  900/900  eps=0.0033  acc=0.70  U=1243.3 [3156s]
+    [Adva] warm-covB  100/600  eps=0.0027  acc=0.68  U=1237.0 [3371s]
+    [Adva] warm-covB  200/600  eps=0.0034  acc=0.69  U=1235.6 [3580s]
+    [Adva] warm-covB  300/600  eps=0.0034  acc=0.69  U=1235.4 [3790s]
+    [Adva] warm-covB  400/600  eps=0.0055  acc=0.70  U=1227.9 [4002s]
+    [Adva] warm-covB  500/600  eps=0.0048  acc=0.69  U=1226.4 [4213s]
+    [Adva] warm-covB  600/600  eps=0.0059  acc=0.70  U=1218.1 [4422s]
+    [Adva] warm-fine  100/900  eps=0.0046  acc=0.68  U=1207.5 [4634s]
+    [Adva] warm-fine  200/900  eps=0.0028  acc=0.69  U=1207.6 [4845s]
+    [Adva] warm-fine  300/900  eps=0.0066  acc=0.70  U=1205.5 [5055s]
+    [Adva] warm-fine  400/900  eps=0.0038  acc=0.69  U=1203.4 [5265s]
+    [Adva] warm-fine  500/900  eps=0.0043  acc=0.70  U=1201.2 [5473s]
+    [Adva] warm-fine  600/900  eps=0.0064  acc=0.70  U=1202.1 [5680s]
+    [Adva] warm-fine  700/900  eps=0.0056  acc=0.69  U=1196.8 [5890s]
+    [Adva] warm-fine  800/900  eps=0.0054  acc=0.70  U=1198.6 [6098s]
+    [Adva] warm-fine  900/900  eps=0.0075  acc=0.70  U=1194.4 [6306s]
+    [Adva] warmup done: eps=0.0056  mean-acc=0.69
+    [Adva] draw   100/3000  acc=0.78  U=1196.0  [6515s]
+    [Adva] draw   200/3000  acc=0.79  U=1200.8  [6721s]
+    [Adva] draw   300/3000  acc=0.79  U=1206.1  [6928s]
+    [Adva] draw   400/3000  acc=0.78  U=1197.1  [7133s]
+    [Adva] draw   500/3000  acc=0.74  U=1198.4  [7341s]
+    [Adva] draw   600/3000  acc=0.80  U=1192.1  [7550s]
+    [Adva] draw   700/3000  acc=0.83  U=1197.5  [7756s]
+    [Adva] draw   800/3000  acc=0.83  U=1200.9  [7964s]
+    [Adva] draw   900/3000  acc=0.83  U=1193.7  [8170s]
+    [Adva] draw  1000/3000  acc=0.80  U=1191.4  [8377s]
+    [Adva] draw  1100/3000  acc=0.84  U=1187.7  [8583s]
+    [Adva] draw  1200/3000  acc=0.84  U=1187.2  [8790s]
+    [Adva] draw  1300/3000  acc=0.76  U=1186.3  [8995s]
+    [Adva] draw  1400/3000  acc=0.56  U=1187.3  [9203s]
+    [Adva] draw  1500/3000  acc=0.79  U=1184.8  [9407s]
+    [Adva] draw  1600/3000  acc=0.54  U=1185.3  [9616s]
+    [Adva] draw  1700/3000  acc=0.74  U=1188.0  [9824s]
+    [Adva] draw  1800/3000  acc=0.76  U=1186.5  [10034s]
+    [Adva] draw  1900/3000  acc=0.62  U=1183.1  [10239s]
+    [Adva] draw  2000/3000  acc=0.52  U=1179.6  [10445s]
+    [Adva] draw  2100/3000  acc=0.46  U=1176.2  [10653s]
+    [Adva] draw  2200/3000  acc=0.72  U=1180.3  [10862s]
+    [Adva] draw  2300/3000  acc=0.76  U=1184.7  [11069s]
+    [Adva] draw  2400/3000  acc=0.75  U=1178.6  [11273s]
+    [Adva] draw  2500/3000  acc=0.77  U=1181.5  [11479s]
+    [Adva] draw  2600/3000  acc=0.65  U=1174.4  [11688s]
+    [Adva] draw  2700/3000  acc=0.46  U=1178.4  [11893s]
+    [Adva] draw  2800/3000  acc=0.50  U=1182.0  [12100s]
+    [Adva] draw  2900/3000  acc=0.53  U=1177.6  [12307s]
+    [Adva] draw  3000/3000  acc=0.51  U=1173.1  [12500s]
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  [Advanced_Adenoma] GATE=FAIL  (ESS med=12 min=3 need>=200 -> FAIL;  covers_true=8/36 need>=33 -> FAIL)
+  [Advanced_Adenoma] !! verdicts below are NOT trustworthy until the gate passes — do not report IDENT/NON-IDENT counts
+  [Advanced_Adenoma] accept=0.70  IDENT=36 WEAK=0 NON-IDENT=0 /36  CI covers truth: 8/36
+          W: post=0.818±0.021 true=1.500  CI95=0.783..0.859  [IDENT]  ess=6
+     thetaP: post=0.151±0.028 true=0.500  CI95=0.120..0.216  [IDENT]  ess=3
+  [Advanced_Adenoma] DONE
