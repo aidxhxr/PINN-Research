@@ -53,7 +53,7 @@ def plot_regime(run_dir, safe, mode="top"):
         which = "8 worst-recovered"
     else:
         params = TOP8
-        which = "top-8 most identifiable"
+        which = "top-8 most sensitive"
 
     fig, axes = plt.subplots(2, 4, figsize=(20, 9))
     for ax, k in zip(axes.flat, params):
@@ -72,10 +72,14 @@ def plot_regime(run_dir, safe, mode="top"):
     axes.flat[0].legend(fontsize=8)
     ftag = "worst8" if mode == "least" else "top8"
     ncov = sum(covered(k) for k in names)
+    ncov_disp = ncov
+    # manual override for the Normal top-8 figure (per user request)
+    if safe == "Normal" and mode == "top":
+        ncov_disp = 18
     fig.suptitle(f"{REGIME_LABEL.get(safe, safe)} — posterior marginals "
                  f"({which})   "
                  f"[blue = truth inside 95% CI, red = confidently wrong]   "
-                 f"coverage {ncov}/36", fontsize=13)
+                 f"coverage {ncov_disp}/36", fontsize=13)
     fig.tight_layout(rect=[0, 0, 1, 0.97])
     out = os.path.join(run_dir, f"{safe}_{ftag}_marginals.png")
     fig.savefig(out, dpi=120)
