@@ -1,0 +1,160 @@
+% ---------------------------------------------------------------------------
+% beamerthemeswatdark — dark theme for the WNT–RA–HOX PINN department talk.
+%
+% Rebuilds the look of the original Google Slides deck (dark navy ground, white
+% type, mint/blue diagonal corner marks) with consistent margins, a single type
+% scale, and a white "card" treatment for the matplotlib/TikZ figures so the
+% plots keep their own white background without fighting the dark slide.
+%
+% Requires: pdflatex, tikz, tcolorbox.
+%
+% NOTE ON THE ENGINE: this machine's TeX Live has no luaotfload lua modules, so
+% lualatex + fontspec cannot load system fonts (Lato included). The deck
+% therefore builds with pdflatex on TeX Gyre Heros, an installed Helvetica-
+% grade sans that reads close to the original slide face. If luaotfload is
+% ever installed, swapping the font block below for \setsansfont{Lato} under
+% lualatex is the only change needed.
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeswatdark}[2026/07/21 Swarthmore dark deck theme]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tikz}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+\usetikzlibrary{calc}
+
+% -- palette ----------------------------------------------------------------
+\definecolor{Ink}{HTML}{1E2733}      % slide ground
+\definecolor{InkDeep}{HTML}{161E28}  % darker panel
+\definecolor{Snow}{HTML}{FFFFFF}     % primary type
+\definecolor{Mist}{HTML}{A9B4C2}     % secondary type
+\definecolor{Mint}{HTML}{7FCCA4}     % accent 1 (theme green)
+\definecolor{Cobalt}{HTML}{0D47C9}   % accent 2 (theme blue)
+\definecolor{Slate}{HTML}{3A4757}    % hairlines on dark
+
+% SA-big palette — matches the colours used inside the project's figures
+\definecolor{SAblue}{HTML}{1F77B4}
+\definecolor{SAorange}{HTML}{FF7F0E}
+\definecolor{SAgrey}{HTML}{5A5A5A}
+\definecolor{SAred}{HTML}{CC3333}
+
+% -- type -------------------------------------------------------------------
+\RequirePackage{tgheros}
+\renewcommand{\familydefault}{\sfdefault}
+% Math stays on Computer Modern, which is what the source deck's equation
+% images used and which only ever appears on white cards here.
+
+\setbeamercolor{normal text}{fg=Snow,bg=Ink}
+\setbeamercolor{structure}{fg=Mint}
+\setbeamercolor{frametitle}{fg=Snow}
+\setbeamercolor{itemize item}{fg=Mint}
+\setbeamercolor{itemize subitem}{fg=Cobalt}
+\setbeamercolor{alerted text}{fg=Mint}
+
+\setbeamerfont{frametitle}{series=\bfseries,size=\fontsize{19}{23}}
+\setbeamerfont{normal text}{size=\fontsize{12}{17}}
+\setbeamerfont{itemize/enumerate body}{size=\fontsize{13}{20}}
+\setbeamerfont{itemize/enumerate subbody}{size=\fontsize{11.5}{17}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raisebox{0.22ex}{\footnotesize\textcolor{Mint}{$\bullet$}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.22ex}{\scriptsize\textcolor{Mist}{$\circ$}}}
+\setbeamertemplate{background canvas}{\color{Ink}\rule{\paperwidth}{\paperheight}}
+
+% -- frame furniture --------------------------------------------------------
+\setbeamersize{text margin left=0.95cm,text margin right=0.95cm}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \vskip0.62cm
+  \hspace{0.95cm}%
+  \begin{minipage}{\dimexpr\paperwidth-2.6cm\relax}
+    \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle
+  \end{minipage}
+  \vskip0.28cm
+}
+
+\setbeamertemplate{footline}{%
+  \hbox{}\hfill
+  \raisebox{0.42cm}{\hbox{\color{Slate}\fontsize{8}{8}\selectfont\insertframenumber\hspace{0.95cm}}}
+}
+
+% -- corner mark ------------------------------------------------------------
+% The two overlapping parallelograms from the source theme. Clipped to a corner
+% patch so the geometry never collides with slide content.
+%   \cornermark      top-left  (default on content slides)
+%   \cornermarkbr    bottom-right
+% One diagonal band: starts at (0,0), runs right by #2, then down-right by #3.
+\newcommand{\swat@para}[3]{% colour, width, run
+  \fill[#1] (0,0) -- ++(#2,0) -- ++(#3,-#3) -- ++(-#2,0) -- cycle;
+}
+
+\newcommand{\cornermark}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \begin{scope}
+      \clip (current page.north west)
+            rectangle ([xshift=3.3cm,yshift=-2.45cm]current page.north west);
+      \begin{scope}[shift={([xshift=-1.55cm]current page.north west)}]
+        \swat@para{Cobalt}{1.05cm}{2.4cm}
+      \end{scope}
+      \begin{scope}[shift={([xshift=-0.30cm]current page.north west)}]
+        \swat@para{Mint}{1.05cm}{2.4cm}
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+\newcommand{\cornermarkbr}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \begin{scope}
+      \clip ([xshift=-3.3cm,yshift=2.45cm]current page.south east)
+            rectangle (current page.south east);
+      \begin{scope}[shift={([xshift=-1.75cm,yshift=2.4cm]current page.south east)}]
+        \swat@para{Slate}{1.15cm}{2.4cm}
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+% -- white figure card ------------------------------------------------------
+% Matplotlib figures are drawn on white. Rather than fake transparency, the
+% deck sets them on an explicit white card, which is also how the source looked.
+\newcommand{\figcard}[2][width=\linewidth]{%
+  \begin{tikzpicture}
+    \node[fill=white,rounded corners=1.6pt,inner sep=3.2pt]
+      {\includegraphics[#1]{#2}};
+  \end{tikzpicture}%
+}
+
+% White card holding typeset content (equations, reference list).
+\newtcolorbox{textcard}[1][]{
+  colback=white, colframe=white, coltext=black,
+  boxrule=0pt, arc=1.6pt, left=8pt, right=8pt, top=7pt, bottom=7pt,
+  #1
+}
+
+% -- small components -------------------------------------------------------
+% Eyebrow label above a title.
+\newcommand{\eyebrow}[1]{{\fontsize{9.5}{12}\selectfont\bfseries\color{Mint}\MakeUppercase{#1}}}
+
+% Large figure/number with a caption underneath.
+\newcommand{\metric}[2]{%
+  {\fontsize{21}{24}\selectfont\bfseries\color{Mint}#1}\par\vspace{0.06cm}
+  {\fontsize{10}{13}\selectfont\color{Mist}#2}%
+}
+
+% A caption line under a full-width figure.
+\newcommand{\figcaption}[1]{%
+  \vspace{0.16cm}
+  {\fontsize{10}{13.5}\selectfont\color{Mist}#1}%
+}
+
+% Regime chip: name over its (W, thetaP) setting.
+\newcommand{\regime}[3]{%
+  {\fontsize{12}{15}\selectfont\bfseries\color{Snow}#1}\par\vspace{0.05cm}
+  {\fontsize{10}{13}\selectfont\color{Mint}$W=#2$}\par
+  {\fontsize{10}{13}\selectfont\color{Mint}$\theta_P=#3$}%
+}
+
+\endinput
