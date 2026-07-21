@@ -12,3 +12,17 @@ PINN-inverse-better/architecture.log
 # Local agent working notes (see CLAUDE.md session log index)
 notes/
 PINN-smaller/forward-pinn-train-hybrid/architecture.log
+
+# macOS finder junk
+.DS_Store
+
+# Beamer/LaTeX build output -- only the sources and the final PDF are tracked
+presentation/build/
+*.nav
+*.snm
+*.toc
+*.out
+
+# presentation-codex scratch: images/text extracted from the source PDF
+presentation-codex/tmp/
+presentation-codex/output/latex/*.log
