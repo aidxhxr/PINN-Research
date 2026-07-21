@@ -1,0 +1,74 @@
+% Key references slide for the Department PINN Presentation.
+% Build:  pdflatex references_slide.tex   ->  render to PNG via make_png.py
+\documentclass[border=0pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+
+% SA-big palette used across the project figures
+\definecolor{sablue}{HTML}{1F77B4}
+\definecolor{saorange}{HTML}{FF7F0E}
+\definecolor{sagrey}{HTML}{5A5A5A}
+\definecolor{sared}{HTML}{CC3333}
+
+\newcommand{\refnum}[1]{\textcolor{sablue}{\bfseries #1}}
+\newcommand{\reftitle}[1]{\textbf{#1}}
+\newcommand{\refwhy}[1]{{\small\itshape\textcolor{sagrey}{#1}}}
+
+\begin{document}
+\begin{minipage}{22cm}
+\setlength{\parskip}{0pt}
+\centering
+{\Huge\bfseries Key References}\\[2pt]
+{\color{sablue}\rule{22cm}{2.2pt}}\\[10pt]
+
+\raggedright
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{0.9cm}@{}p{20.6cm}@{}}
+
+\refnum{1.} &
+\reftitle{Raissi, Perdikaris \& Karniadakis (2019).} Physics-informed neural
+networks: a deep learning framework for solving forward and inverse problems
+involving nonlinear PDEs. \emph{J.\ Comput.\ Phys.} \textbf{378}, 686--707.\\
+& \refwhy{Foundational PINN formulation --- the data + physics-residual loss used in every model here.}\\[4pt]
+
+\refnum{2.} &
+\reftitle{Yazdani, Lu, Raissi \& Karniadakis (2020).} Systems biology informed
+deep learning for inferring parameters and hidden dynamics.
+\emph{PLoS Comput.\ Biol.} \textbf{16}(11), e1007575.\\
+& \refwhy{Closest template to this work: inverse PINNs on biological ODE networks; the local-sensitivity/Fisher route to identifiability.}\\[4pt]
+
+\refnum{3.} &
+\reftitle{Yang, Meng \& Karniadakis (2021).} B-PINNs: Bayesian physics-informed
+neural networks for forward and inverse PDE problems with noisy data.
+\emph{J.\ Comput.\ Phys.} \textbf{425}, 109913.\\
+& \refwhy{Basis of the Bayesian inverse PINN: HMC over parameters gives posterior marginals instead of a point estimate.}\\[4pt]
+
+\refnum{4.} &
+\reftitle{Raue \emph{et al.} (2009).} Structural and practical identifiability
+analysis of partially observed dynamical models by exploiting the profile
+likelihood. \emph{Bioinformatics} \textbf{25}(15), 1923--1929.\\
+& \refwhy{The identifiability verdict --- profile likelihood distinguishes the structural from the practical (high-WNT $\theta_P$) wall.}\\[4pt]
+
+\refnum{5.} &
+\reftitle{Wang, Yu \& Perdikaris (2022).} When and why PINNs fail to train:
+a neural tangent kernel perspective. \emph{J.\ Comput.\ Phys.} \textbf{449}, 110768.\\
+& \refwhy{Explains the loss-term imbalance and spectral bias behind the training pathologies; motivates adaptive loss weighting.}\\[4pt]
+
+\refnum{6.} &
+\reftitle{Tancik \emph{et al.} (2020).} Fourier features let networks learn high
+frequency functions in low dimensional domains. \emph{NeurIPS} \textbf{33},
+7537--7547.\\
+& \refwhy{Fourier-feature time embedding --- required to capture the circadian RA forcing and the ATRA pulse.}\\[4pt]
+
+\refnum{7.} &
+\reftitle{Ji, Qiu, Zhang \& Deng (2021).} Stiff-PINN: physics-informed neural
+network for stiff chemical kinetics. \emph{J.\ Phys.\ Chem.\ A} \textbf{125}(36),
+8098--8106.\\
+& \refwhy{Diagnoses PINN failure on stiff multiscale kinetics --- the same stiffness that shapes the WNT--RA--HOX residual.}\\
+
+\end{tabular}
+\end{minipage}
+\end{document}
