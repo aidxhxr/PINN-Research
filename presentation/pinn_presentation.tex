@@ -1,0 +1,492 @@
+% ===========================================================================
+% Physics-Informed Neural Network for a Reduced WNT-HOX-Retinoic Acid Model
+% of Colorectal Cancer  —  Department talk, Swarthmore College, 2026-07-21.
+%
+% Slide-for-slide rebuild of "Department PINN Presentation.pdf" (20 slides).
+%
+% Build:   bash build.sh          (or: pdflatex pinn_presentation.tex, twice)
+% Figures: bash sync_figures.sh   (refreshes assets/figures from run dirs)
+% ===========================================================================
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage{beamerthemeswatdark}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{microtype}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+
+\graphicspath{{assets/figures/}{assets/media/}}
+
+% Photographic media is extracted from the source deck by extract_media.py.
+% Until that runs, \media falls back to a labelled placeholder so the deck
+% still compiles and the layout can be judged.
+\newcommand{\mediaplaceholder}[2][width=\linewidth]{%
+  \begin{tikzpicture}
+    \node[draw=Slate,dashed,rounded corners=2pt,inner sep=6pt,
+          text=Mist,align=center,font=\fontsize{8}{10}\selectfont,
+          minimum height=1.8cm,text width=2.6cm]
+      {#2\\[2pt]\itshape missing};
+  \end{tikzpicture}%
+}
+\newcommand{\media}[3][width=\linewidth]{%
+  \IfFileExists{assets/media/#2}%
+    {\includegraphics[#1]{#2}}%
+    {\mediaplaceholder[#1]{#3}}%
+}
+
+% Reference-list bits (defined here, not inside the frame — beamer re-reads
+% frame bodies, which breaks \newcommand parameter numbers).
+\newcommand{\refnum}[1]{\textcolor{SAblue}{\bfseries #1}}
+\newcommand{\refwhy}[1]{{\itshape\color{SAgrey}#1}}
+
+\title{Physics-Informed Neural Network for a Reduced WNT-HOX-Retinoic Acid Model of Colorectal Cancer}
+\author{Amirkhan Aidarkhan, Nathaniel Kim}
+\date{July 21, 2026}
+
+\begin{document}
+
+% ---------------------------------------------------------------- 1. Title --
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \begin{scope}
+      \clip ([xshift=-4.6cm,yshift=1.9cm]current page.east)
+            rectangle ([yshift=-2.4cm]current page.north east);
+      \begin{scope}[shift={([xshift=-2.35cm,yshift=-1.15cm]current page.north east)}]
+        \fill[Mint] (0,0) -- ++(1.35cm,0) -- ++(-2.55cm,-2.55cm) -- ++(-1.35cm,0) -- cycle;
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+
+  \vspace{0.30cm}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.235\textwidth}
+      \colorbox{white}{\makebox[\linewidth][c]{%
+        \raisebox{0pt}{\media[width=0.92\linewidth]{swarthmore_logo.png}{Swarthmore logo}}}}
+    \end{column}
+    \begin{column}{0.735\textwidth}
+      {\fontsize{20.5}{25}\selectfont\bfseries\color{Snow}%
+       Physics-Informed Neural Network for\\
+       a Reduced WNT-HOX-Retinoic Acid\\
+       Model of Colorectal Cancer\par}
+      \vspace{0.30cm}
+      \centering
+      {\fontsize{12.5}{16}\selectfont\color{Snow}Amirkhan Aidarkhan, Nathaniel Kim\par}
+      \vspace{0.12cm}
+      {\fontsize{12.5}{16}\selectfont\color{Snow}Advisor: Dr.\ Kataboh\par}
+      \vspace{0.26cm}
+      {\fontsize{11.5}{15}\selectfont\color{Snow}Department of Mathematics \& Statistics, Swarthmore College\par}
+      \vspace{0.06cm}
+      {\fontsize{11.5}{15}\selectfont\color{Snow}July 21, 2026\par}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.34cm}
+  \begin{columns}[c,totalwidth=\textwidth]
+    \begin{column}{0.40\textwidth}
+      \centering\media[height=2.55cm]{colon_cancer.png}{colon cancer figure}
+    \end{column}
+    \begin{column}{0.08\textwidth}
+      \centering{\fontsize{22}{22}\selectfont\color{Snow}$+$}
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \centering\media[height=2.55cm]{neural_network.png}{neural network image}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------------- 2. Overview --
+\begin{frame}{Overview}
+  \cornermarkbr
+  \vspace{0.50cm}
+  \hspace{0.55cm}%
+  \begin{minipage}{0.72\textwidth}
+    \begin{itemize}\setlength\itemsep{0.34cm}
+      \item Biology/Schematic
+      \item Equations
+      \item Forward PINN
+      \item Inverse PINN
+      \item Inverse Bayesian PINN
+      \item Next Steps
+    \end{itemize}
+  \end{minipage}
+\end{frame}
+
+% ------------------------------------------------------ 3. Biology network --
+\begin{frame}{Biological Network Governing WNT--HOX--RA Signaling}
+  \vspace{-0.10cm}
+  {\fontsize{12.5}{16}\selectfont\bfseries\color{Snow}Objective\par}
+  \vspace{0.10cm}
+  {\fontsize{11}{14.5}\selectfont\color{Snow}%
+   Develop a reduced mathematical model describing the interactions among the
+   \textbf{WNT}, \textbf{HOX}, and \textbf{Retinoic Acid (RA)} pathways during
+   colorectal cancer progression.\par}
+  \vspace{0.24cm}
+
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.50\textwidth}
+      \centering\figcard[height=4.42cm]{schematic.pdf}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      {\fontsize{12.5}{16}\selectfont\bfseries\color{Snow}State Variables\par}
+      \vspace{0.06cm}
+      {\fontsize{11}{15}\selectfont\color{Snow}%
+       $y=[B(t),\,P(t),\,H_5(t),\,H_{13}(t),\,M(t),\,R(t),\,C(t)]$\par}
+      \vspace{0.16cm}
+      {\fontsize{11}{16.6}\selectfont\color{Snow}
+        \textbf{B} = $\beta$-catenin\par
+        \textbf{P} = APC\par
+        \textbf{H\textsubscript{5}} = HOXA5\par
+        \textbf{H\textsubscript{13}} = HOXA13\par
+        \textbf{M} = MYC\par
+        \textbf{R} = Retinoic Acid\par
+        \textbf{C} = CYP26A1\par}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------- 4. RA input + treatment --
+\begin{frame}{RA Input + Treatment}
+  \vspace{0.08cm}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.485\textwidth}
+      \begin{textcard}
+        \centering
+        {\fontsize{11}{13}\selectfont\bfseries RA Input}\par\vspace{0.05cm}
+        \begin{tikzpicture}
+          \begin{axis}[
+            width=1.02\linewidth,height=3.05cm,
+            xmin=0,xmax=72,ymin=-0.06,ymax=2.16,
+            axis lines=none,ticks=none,clip=false]
+            \path[name path=zero] (axis cs:0,0) -- (axis cs:72,0);
+            \addplot[name path=ra,SAblue,line width=1.5pt,domain=0:72,samples=260]
+              {1+cos(deg(2*pi*x/24))};
+            \addplot[SAblue!10,draw=none] fill between[of=ra and zero];
+          \end{axis}
+        \end{tikzpicture}
+      \end{textcard}
+      \vspace{0.30cm}
+      \begin{textcard}
+        \centering\vspace{0.04cm}
+        $\displaystyle A_d\left[1+\cos\left(\frac{2\pi t}{T_d}-\phi\right)\right]$
+        \vspace{0.04cm}
+      \end{textcard}
+    \end{column}
+    \begin{column}{0.485\textwidth}
+      \begin{textcard}
+        \centering
+        {\fontsize{11}{13}\selectfont\bfseries ATRA Treatment}\par\vspace{0.05cm}
+        \begin{tikzpicture}
+          \begin{axis}[
+            width=1.02\linewidth,height=3.05cm,
+            xmin=0,xmax=72,ymin=-0.03,ymax=1.10,
+            axis lines=none,ticks=none,clip=false]
+            \path[name path=zerob] (axis cs:0,0) -- (axis cs:72,0);
+            \addplot[name path=pulse,Mint!62!black,line width=1.5pt,domain=0:72,samples=280]
+              {0.5*(tanh(0.30*(x-19))-tanh(0.30*(x-53)))};
+            \addplot[Mint!14,draw=none] fill between[of=pulse and zerob];
+          \end{axis}
+        \end{tikzpicture}
+      \end{textcard}
+      \vspace{0.30cm}
+      \begin{textcard}
+        \centering\vspace{0.04cm}
+        $\displaystyle u_R(t)=u_0+\frac{D}{2}\left[\tanh(q(t-t_1))-\tanh(q(t-t_2))\right].$
+        \vspace{0.04cm}
+      \end{textcard}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------- 5. Dimensional model --
+\begin{frame}{Dimensional Model}
+  \vspace{-0.06cm}
+  \begin{textcard}[left=14pt,right=14pt,top=9pt,bottom=9pt]
+    \setlength{\jot}{5.2pt}
+    \small
+    \begin{align*}
+      \frac{dB}{dt}   &= a_BW+v_{13}\frac{H_{13}^{n_H}}{K_{13}^{n_H}+H_{13}^{n_H}}
+                         -d_BB-k_{PB}PB-v_5\frac{H_5B}{K_5+B},\\
+      \frac{dP}{dt}   &= a_P\frac{1+\rho_5H_5}{1+\rho_BB+\rho_{13}H_{13}}
+                         -\Bigl(d_{P0}+d_{P1}(1-\Theta_P)\Bigr)P,\\
+      \frac{dH_5}{dt} &= a_5+v_R\frac{R}{K_R+R}-d_5H_5-v_M\frac{MH_5}{K_M+M},\\
+      \frac{dH_{13}}{dt} &= a_{13}+v_{B13}\frac{B^{n_B}}{K_{B13}^{n_B}+B^{n_B}}
+                         +v_{M13}\frac{M^{n_M}}{K_{M13}^{n_M}+M^{n_M}}-d_{13}H_{13},\\
+      \frac{dM}{dt}   &= a_M+v_{BM}\frac{B^{n_B}}{K_{BM}^{n_B}+B^{n_B}}-d_MM,\\
+      \frac{dR}{dt}   &= u_0+A_d\left[1+\cos\left(\frac{2\pi t}{T_d}-\phi\right)\right]
+                         +\frac{D}{2}\Bigl[\tanh(q(t-t_1))-\tanh(q(t-t_2))\Bigr]
+                         -d_RR-k_{CR}CR,\\
+      \frac{dC}{dt}   &= a_C+v_{RC}\frac{R}{K_{RC}+R}
+                         +v_{BC}\frac{B^{n_B}}{K_{BC}^{n_B}+B^{n_B}}-d_CC.
+    \end{align*}
+  \end{textcard}
+\end{frame}
+
+% -------------------------------------------------------------- 6. Regimes --
+\begin{frame}{4 Regimes}
+  \cornermarkbr
+  \vspace{0.12cm}
+  {\fontsize{12.5}{17}\selectfont\color{Snow}%
+   Disease progression is modeled by increasing WNT signaling ($W$) and
+   progressive loss of APC function ($\Theta_p$), mimicking CRC progression.\par}
+  \vspace{0.40cm}
+  \hspace{0.35cm}%
+  \begin{minipage}{0.66\textwidth}
+    \begin{itemize}\setlength\itemsep{0.14cm}
+      \item ``Normal''
+        \begin{itemize}\item $W=\mathbf{0.8}$,\quad $\Theta_p=\mathbf{1.0}$\end{itemize}
+      \item ``Early Adenoma''
+        \begin{itemize}\item $W=\mathbf{1.0}$,\quad $\Theta_p=\mathbf{0.75}$\end{itemize}
+      \item ``Advanced Adenoma''
+        \begin{itemize}\item $W=\mathbf{1.5}$,\quad $\Theta_p=\mathbf{0.5}$\end{itemize}
+      \item ``Severe APC Loss''
+        \begin{itemize}\item $W=\mathbf{2.0}$,\quad $\Theta_p=\mathbf{0.25}$\end{itemize}
+    \end{itemize}
+  \end{minipage}
+\end{frame}
+
+% ----------------------------------------------- 7. Reference core dynamics --
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.30cm}
+  \centering
+  \figcard[height=6.62cm]{scipy_core_dynamics.png}
+\end{frame}
+
+% ------------------------------------------- 8. Forward PINN architecture ---
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.24cm}
+  \centering
+  \figcard[height=6.78cm]{forward_architecture.pdf}
+\end{frame}
+
+% ------------------------------------------------- 9. Forward PINN losses ---
+\begin{frame}{Forward PINN Loss}
+  \cornermark
+  \vspace{0.10cm}
+  \centering
+  \figcard[width=0.90\textwidth]{forward_losses.png}
+\end{frame}
+
+% ---------------------------------------------- 10. Forward PINN dynamics ---
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.30cm}
+  \centering
+  \figcard[height=6.62cm]{pinn_forward_core_dynamics.png}
+\end{frame}
+
+% ------------------------------------------ 11. Inverse PINN architecture ---
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.24cm}
+  \centering
+  \figcard[height=6.78cm]{inverse_architecture.pdf}
+\end{frame}
+
+% ------------------------------------------------ 12. Inverse PINN losses ---
+\begin{frame}{Inverse PINN Loss}
+  \cornermark
+  \vspace{0.10cm}
+  \centering
+  \figcard[width=0.90\textwidth]{inverse_losses.png}
+\end{frame}
+
+% --------------------------------------------- 13. Inverse PINN dynamics ----
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.30cm}
+  \centering
+  \figcard[height=6.62cm]{pinn_inverse_core_dynamics.png}
+\end{frame}
+
+% ------------------------------------------------- 14. Parameter recovery ---
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.22cm}
+  \centering
+  \figcard[height=6.80cm]{inverse_recovery_bars_best8.png}
+\end{frame}
+
+% ------------------------------------------- 15. Bayesian UQ — Normal ------
+\begin{frame}{Inverse Bayesian PINN --- uncertainty quantification}
+  \vspace{0.12cm}
+  \centering
+  \figcard[width=0.985\textwidth]{normal_top8_marginals.png}
+\end{frame}
+
+% ------------------------------------------- 16. Bayesian UQ — Severe -----
+\begin{frame}[plain]
+  \vspace{0.62cm}
+  \centering
+  \figcard[width=0.985\textwidth]{severe_worst8_marginals.png}
+\end{frame}
+
+% ------------------------------------------------ 17. Recovery comparison ---
+\begin{frame}{Parameter Recovery Comparison}
+  \cornermarkbr
+  \vspace{0.50cm}
+  \centering
+  \begin{minipage}{0.90\textwidth}
+    \fontsize{12.5}{16}\selectfont
+    \renewcommand{\arraystretch}{1.62}
+    \arrayrulecolor{Slate}
+    \begin{tabular}{@{}p{0.30\linewidth}
+                      >{\raggedleft\arraybackslash}p{0.24\linewidth}
+                      >{\raggedleft\arraybackslash}p{0.18\linewidth}
+                      >{\raggedleft\arraybackslash}p{0.14\linewidth}@{}}
+      \toprule
+      \color{Snow}
+        & \bfseries\color{Snow}Bayesian inverse PINN
+        & \bfseries\color{Snow}Inverse PINN
+        & \bfseries\color{Snow}ODE-fit \\
+      \midrule
+      \color{Snow}``Normal''            & \color{Snow}\bfseries 19 & \color{Snow}\bfseries 17 & \color{Snow}\bfseries 18/36 \\
+      \color{Snow}``Early Adenoma''     & \color{Snow}\bfseries 20 & \color{Snow}\bfseries 16 & \color{Snow}\bfseries 17/36 \\
+      \color{Snow}``Advanced Adenoma''  & \color{Snow}\bfseries 11 & \color{Snow}\bfseries 10 & \color{Snow}\bfseries 13/36 \\
+      \color{Snow}``Severe APC Loss''   & \color{Snow}\bfseries  8 & \color{Snow}\bfseries  7 & \color{Snow}\bfseries 11/36 \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+\end{frame}
+
+% ------------------------------------------------------------ 18. Next steps --
+\begin{frame}{Next Steps}
+  \vspace{0.40cm}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.50\textwidth}
+      \vspace{0.55cm}
+      \hspace{0.25cm}%
+      \begin{minipage}{0.94\linewidth}
+        \begin{itemize}\setlength\itemsep{0.26cm}
+          \item Improve Bayesian PINN
+            \begin{itemize}\item Investigate limitations\end{itemize}
+          \item Hybrid Mechanistic-Neural Model
+          \item Stochastic Modeling
+        \end{itemize}
+      \end{minipage}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \centering
+      \media[width=0.94\linewidth]{next_steps.png}{Next Steps graphic}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------- 19. Key references --
+\begin{frame}[plain]
+  \vspace{0.30cm}
+  \centering
+  \begin{minipage}{0.965\textwidth}
+    \begin{textcard}[left=16pt,right=16pt,top=10pt,bottom=10pt]
+      \centering
+      {\fontsize{17}{20}\selectfont\bfseries Key References\par}
+      \vspace{0.10cm}
+      {\color{SAblue}\rule{\linewidth}{1.5pt}}
+      \vspace{0.18cm}
+
+      \raggedright
+      \fontsize{8.4}{10.4}\selectfont
+      \renewcommand{\arraystretch}{1.10}
+      \begin{tabular}{@{}p{0.5cm}@{}p{\dimexpr\linewidth-0.5cm\relax}@{}}
+        \refnum{1.} & \textbf{Raissi, Perdikaris \& Karniadakis (2019).}
+          Physics-informed neural networks: a deep learning framework for solving
+          forward and inverse problems involving nonlinear PDEs.
+          \emph{J.\ Comput.\ Phys.} \textbf{378}, 686--707.\\[1pt]
+        & \refwhy{Foundational PINN formulation --- the data + physics-residual loss used in every model here.}\\[3.5pt]
+
+        \refnum{2.} & \textbf{Yazdani, Lu, Raissi \& Karniadakis (2020).}
+          Systems biology informed deep learning for inferring parameters and
+          hidden dynamics. \emph{PLoS Comput.\ Biol.} \textbf{16}(11), e1007575.\\[1pt]
+        & \refwhy{Closest template to this work: inverse PINNs on biological ODE networks; the local-sensitivity/Fisher route to identifiability.}\\[3.5pt]
+
+        \refnum{3.} & \textbf{Yang, Meng \& Karniadakis (2021).}
+          B-PINNs: Bayesian physics-informed neural networks for forward and
+          inverse PDE problems with noisy data.
+          \emph{J.\ Comput.\ Phys.} \textbf{425}, 109913.\\[1pt]
+        & \refwhy{Basis of the Bayesian inverse PINN: HMC over parameters gives posterior marginals instead of a point estimate.}\\[3.5pt]
+
+        \refnum{4.} & \textbf{Raue \emph{et al.} (2009).}
+          Structural and practical identifiability analysis of partially observed
+          dynamical models by exploiting the profile likelihood.
+          \emph{Bioinformatics} \textbf{25}(15), 1923--1929.\\[1pt]
+        & \refwhy{The identifiability verdict --- profile likelihood distinguishes the structural from the practical (high-WNT $\theta_P$) wall.}\\[3.5pt]
+
+        \refnum{5.} & \textbf{Wang, Yu \& Perdikaris (2022).}
+          When and why PINNs fail to train: a neural tangent kernel perspective.
+          \emph{J.\ Comput.\ Phys.} \textbf{449}, 110768.\\[1pt]
+        & \refwhy{Explains the loss-term imbalance and spectral bias behind the training pathologies; motivates adaptive loss weighting.}\\[3.5pt]
+
+        \refnum{6.} & \textbf{Tancik \emph{et al.} (2020).}
+          Fourier features let networks learn high frequency functions in low
+          dimensional domains. \emph{NeurIPS} \textbf{33}, 7537--7547.\\[1pt]
+        & \refwhy{Fourier-feature time embedding --- required to capture the circadian RA forcing and the ATRA pulse.}\\[3.5pt]
+
+        \refnum{7.} & \textbf{Ji, Qiu, Zhang \& Deng (2021).}
+          Stiff-PINN: physics-informed neural network for stiff chemical kinetics.
+          \emph{J.\ Phys.\ Chem.\ A} \textbf{125}(36), 8098--8106.\\[1pt]
+        & \refwhy{Diagnoses PINN failure on stiff multiscale kinetics --- the same stiffness that shapes the WNT--RA--HOX residual.}\\
+      \end{tabular}
+    \end{textcard}
+  \end{minipage}
+\end{frame}
+
+% ------------------------------------------------------------ 20. Thank you --
+\begin{frame}[plain]
+  \cornermark
+  \vspace{0.30cm}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.48\textwidth}
+      \vspace{0.30cm}
+      \hspace{0.55cm}%
+      \begin{minipage}{0.92\linewidth}
+        {\fontsize{21}{25}\selectfont\color{Snow}Thank you!\par}
+        \vspace{0.24cm}
+        {\fontsize{12.5}{16}\selectfont\color{Snow}Questions? (we will try to answer)\par}
+      \end{minipage}
+
+      \vspace{0.34cm}
+      \centering
+      \media[height=2.32cm]{photo_pk.png}{PK on the phone}\par
+      \vspace{0.10cm}
+      {\fontsize{8.4}{10.4}\selectfont\color{Snow}%
+       PK calling Amir + Nate to check in on our progress\ldots\par}
+
+      \vspace{0.24cm}
+      \begin{columns}[T,totalwidth=\linewidth]
+        \begin{column}{0.48\linewidth}
+          \centering\media[height=2.05cm]{photo_nate.png}{Nate + diet coke}\par
+          \vspace{0.06cm}
+          {\fontsize{7.6}{9.4}\selectfont\color{Snow}%
+           4th diet coke of the day + Celsius b/c his sleep schedule is so cooked\par}
+        \end{column}
+        \begin{column}{0.48\linewidth}
+          \centering\media[height=2.05cm]{photo_amir.png}{Amir, world cup}\par
+          \vspace{0.06cm}
+          {\fontsize{7.6}{9.4}\selectfont\color{Snow}%
+           Don't know what in the world is going on b/c he spent more hours
+           watching the world cup than working\par}
+        \end{column}
+      \end{columns}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \vspace{0.55cm}
+      \centering
+      \colorbox{white}{\hspace{2pt}\raisebox{-2pt}{%
+        \media[height=4.30cm]{photo_group.png}{group photo}}\hspace{2pt}}
+
+      \vspace{0.62cm}
+      {\fontsize{11.5}{15}\selectfont\color{Snow}%
+       Thank you very much to the \colorbox{Mint}{\textcolor{Ink}{Provost's Office}}
+       for funding our summer research project!\par}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}
