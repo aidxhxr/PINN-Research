@@ -122,17 +122,15 @@
     \end{column}
   \end{columns}
   \vspace{0.32cm}
-  \begin{columns}[c,totalwidth=0.88\textwidth]
-    \begin{column}{0.39\textwidth}
-      \centering\imagepanel[height=3.00cm]{assets/source_colon_cancer.jpg}
-    \end{column}
-    \begin{column}{0.08\textwidth}
-      \centering{\LARGE\bfseries\color{Garnet}+}
-    \end{column}
-    \begin{column}{0.39\textwidth}
-      \centering\imagepanel[width=0.98\linewidth]{assets/neural_network.pdf}
-    \end{column}
-  \end{columns}
+  % One centered row (not columns): a tabular vertically centres each cell and
+  % puts the "+" exactly midway between the two panels, whatever their widths.
+  \begin{center}
+    \begin{tabular}{@{}c@{\hspace{0.50cm}}c@{\hspace{0.50cm}}c@{}}
+      \raisebox{-0.5\height}{\imagepanel[height=3.00cm]{assets/source_colon_cancer.jpg}} &
+      \raisebox{-0.5\height}{\LARGE\bfseries\color{Garnet}+} &
+      \raisebox{-0.5\height}{\imagepanel[width=4.90cm]{assets/neural_network.pdf}}
+    \end{tabular}
+  \end{center}
 \end{frame}
 
 % 2 — Overview
