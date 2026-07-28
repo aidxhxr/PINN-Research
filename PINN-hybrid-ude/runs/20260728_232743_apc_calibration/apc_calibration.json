@@ -1,0 +1,111 @@
+{
+  "term": "apc_mutation",
+  "formula_replaced": "deltaP1 * (1 - thetaP)",
+  "hybrid_formula": "deltaP = 1 + f_APC(1 - thetaP)",
+  "train_thetaP": [
+    1.0,
+    0.75,
+    0.5,
+    0.25
+  ],
+  "valid_thetaP": [
+    0.875,
+    0.625,
+    0.375
+  ],
+  "conditions": [
+    "ctrl",
+    "earlyATRA",
+    "wntInhib"
+  ],
+  "fixed_W": 0.8,
+  "best_start": 4,
+  "best_seed": 4042,
+  "train_physics": 6.717484490421299e-06,
+  "validation_physics": 3.938866143244323e-06,
+  "train_metrics": {
+    "thetaP": [
+      1.0,
+      0.75,
+      0.5,
+      0.25
+    ],
+    "apc_loss": [
+      0.0,
+      0.25,
+      0.5,
+      0.75
+    ],
+    "learned": [
+      0.0,
+      0.8737373167421046,
+      1.7478577599306033,
+      2.6221979005224956
+    ],
+    "truth": [
+      0.0,
+      0.875,
+      1.75,
+      2.625
+    ],
+    "rmse": 0.00187318732422364,
+    "nrmse": 0.0011442979899579913
+  },
+  "validation_metrics": {
+    "thetaP": [
+      0.875,
+      0.625,
+      0.375
+    ],
+    "apc_loss": [
+      0.125,
+      0.375,
+      0.625
+    ],
+    "learned": [
+      0.4368070249242578,
+      1.310761770284057,
+      2.185007693995514
+    ],
+    "truth": [
+      0.4375,
+      1.3125,
+      2.1875
+    ],
+    "rmse": 0.0017993745414248358,
+    "nrmse": 0.0012041209688490725
+  },
+  "curve_rmse": 0.0018118292577444027,
+  "curve_nrmse": 0.0011947507821758819,
+  "anchor_value": 0.0,
+  "minimum_output": 0.0,
+  "minimum_increment": 0.006551023629055167,
+  "starts": [
+    {
+      "start": 0,
+      "seed": 42,
+      "physics": 6.721782896978663e-06
+    },
+    {
+      "start": 1,
+      "seed": 1042,
+      "physics": 6.726738612994927e-06
+    },
+    {
+      "start": 2,
+      "seed": 2042,
+      "physics": 6.723182358608263e-06
+    },
+    {
+      "start": 3,
+      "seed": 3042,
+      "physics": 6.72017266569864e-06
+    },
+    {
+      "start": 4,
+      "seed": 4042,
+      "physics": 6.717484490421299e-06
+    }
+  ],
+  "checkpoint": "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_232743_apc_calibration/apc_mutation.pt"
+}
