@@ -1,0 +1,298 @@
+[queue] starts=3 variants: control ra_h5 ra_h5_nc
+=== [queue] START control  2026-07-26T19:58:30+00:00 ===
+variant=control
+HYBRID_TERM=none
+HYBRID_CONSTRAINT=anchored
+HYBRID_WD=1e-6
+starts=3
+started=2026-07-26T19:58:30+00:00
+[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control/refs.pkl
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control/refs.pkl
+[run] variant=control starts=3  4 regimes in parallel
+  launched Normal (pid 3726604) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control/Normal.log
+  launched Early Adenoma (pid 3726605) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control/Early_Adenoma.log
+  launched Advanced Adenoma (pid 3726606) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control/Advanced_Adenoma.log
+  launched Severe APC Loss (pid 3726607) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control/Severe_APC_Loss.log
+[done] variant=control  (fail=0)
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+variant=control  term=None  constraint=anchored  wd=1e-06
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      18   36          -
+Early Adenoma               15   36          -
+Advanced Adenoma            12   36          -
+Severe APC Loss              8   36          -
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/run_hybrid.sh: line 64: -u: command not found
+[queue] control FAILED
+=== [queue] END   control  2026-07-26T21:43:16+00:00 ===
+=== [queue] START ra_h5  2026-07-26T21:43:16+00:00 ===
+variant=ra_h5
+HYBRID_TERM=ra_h5
+HYBRID_CONSTRAINT=anchored
+HYBRID_WD=1e-8
+starts=3
+started=2026-07-26T21:43:16+00:00
+[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/refs.pkl
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/refs.pkl
+[run] variant=ra_h5 starts=3  4 regimes in parallel
+  launched Normal (pid 3945928) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/Normal.log
+  launched Early Adenoma (pid 3945930) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma.log
+  launched Advanced Adenoma (pid 3945931) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma.log
+  launched Severe APC Loss (pid 3945932) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss.log
+[done] variant=ra_h5  (fail=0)
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5
+variant=ra_h5  term=ra_h5  constraint=anchored  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      19   34       7.6%     0.70  anchor weak
+Early Adenoma               17   34      12.6%     0.74  anchor weak
+Advanced Adenoma            11   34      23.7%     0.76  anchor weak
+Severe APC Loss              6   34      17.3%     0.76  anchor weak
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+learned term 'ra_h5' -- functional identifiability
+regime                            range      RMSE    NRMSE
+Normal               [ 0.142, 1.174]    0.1140    7.6%
+Early Adenoma        [ 0.138, 1.036]    0.1817   12.6%
+Advanced Adenoma     [ 0.137, 0.970]    0.3336   23.7%
+Severe APC Loss      [ 0.136, 0.947]    0.2418   17.3%
+
+wrote /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5/learned_term_ra_h5.png
+=== [queue] END   ra_h5  2026-07-26T23:34:10+00:00 ===
+=== [queue] START ra_h5_nc  2026-07-26T23:34:10+00:00 ===
+variant=ra_h5_nc
+HYBRID_TERM=ra_h5
+HYBRID_CONSTRAINT=none
+HYBRID_WD=1e-8
+starts=3
+started=2026-07-26T23:34:10+00:00
+[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/refs.pkl
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/refs.pkl
+[run] variant=ra_h5_nc starts=3  4 regimes in parallel
+  launched Normal (pid 4175228) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/Normal.log
+  launched Early Adenoma (pid 4175229) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/Early_Adenoma.log
+  launched Advanced Adenoma (pid 4175230) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/Advanced_Adenoma.log
+  launched Severe APC Loss (pid 4175231) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/Severe_APC_Loss.log
+[done] variant=ra_h5_nc  (fail=0)
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc
+variant=ra_h5_nc  term=ra_h5  constraint=none  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      18   34       3.3%     1.00  anchor weak
+Early Adenoma               18   34      10.9%     1.00  anchor weak
+Advanced Adenoma            10   34      24.1%     1.00  anchor weak
+Severe APC Loss              7   34      19.3%     1.00  anchor weak
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+learned term 'ra_h5' -- functional identifiability
+regime                            range      RMSE    NRMSE
+Normal               [ 0.142, 1.174]    0.0498    3.3%
+Early Adenoma        [ 0.138, 1.036]    0.1567   10.9%
+Advanced Adenoma     [ 0.137, 0.970]    0.3399   24.1%
+Severe APC Loss      [ 0.136, 0.947]    0.2699   19.3%
+
+wrote /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/learned_term_ra_h5.png
+=== [queue] END   ra_h5_nc  2026-07-27T01:24:33+00:00 ===
+[queue] all done 2026-07-27T01:24:33+00:00
+
+########## 20260726_214316_ra_h5  vs  20260726_195830_control ##########
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5
+variant=ra_h5  term=ra_h5  constraint=anchored  wd=1e-08
+control: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      19   34        18     +1       7.6%     0.70  anchor weak
+Early Adenoma               17   34        15     +2      12.6%     0.74  anchor weak
+Advanced Adenoma            11   34        11     +0      23.7%     0.76  anchor weak
+Severe APC Loss              6   34         7     -1      17.3%     0.76  anchor weak
+TOTAL                       53             51     +2
+
+H2 localisation test -- learned term sits in the dh5 equation.
+Prediction: recovery drops concentrate in that equation; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               3        2     +1
+dapc             6        6     +0
+dh5              6        1     +5  <-- learned term here
+dh13            13       15     -2
+dm              10       10     +0
+dr               4        4     +0
+dc              11       13     -2
+
+H2/H3 sharp test -- 'a5' is the basal-production term in dh5;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     37.4%       123.1%
+Early Adenoma              17.2%       114.0%
+Advanced Adenoma            8.9%        97.7%
+Severe APC Loss            13.4%       106.5%
+
+########## 20260726_233410_ra_h5_nc  vs  20260726_195830_control ##########
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc
+variant=ra_h5_nc  term=ra_h5  constraint=none  wd=1e-08
+control: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      18   34        18     +0       3.3%     1.00  anchor weak
+Early Adenoma               18   34        15     +3      10.9%     1.00  anchor weak
+Advanced Adenoma            10   34        11     -1      24.1%     1.00  anchor weak
+Severe APC Loss              7   34         7     +0      19.3%     1.00  anchor weak
+TOTAL                       53             51     +2
+
+H2 localisation test -- learned term sits in the dh5 equation.
+Prediction: recovery drops concentrate in that equation; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               3        2     +1
+dapc             6        6     +0
+dh5              6        1     +5  <-- learned term here
+dh13            13       15     -2
+dm              10       10     +0
+dr               4        4     +0
+dc              11       13     -2
+
+H2/H3 sharp test -- 'a5' is the basal-production term in dh5;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     12.1%       123.1%
+Early Adenoma               1.7%       114.0%
+Advanced Adenoma            1.7%        97.7%
+Severe APC Loss             2.2%       106.5%
