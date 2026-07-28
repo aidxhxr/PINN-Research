@@ -1,0 +1,658 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage[numbers]{natbib}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{longtable}
+
+\title{A Reduced WNT--RA--HOX Model for Colorectal Cancer Stemness}
+\author{Amir, Nate, PK}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document records the dimensional and nondimensional WNT--RA--HOX model,
+its biological interpretation, parameter realization, and planned scientific
+machine-learning extensions. It is the repository copy of the supplied
+Overleaf notes.
+\end{abstract}
+
+\section{Model Overview}
+
+This model describes the regulatory interactions among the WNT, HOX, and
+retinoic acid (RA) pathways in colorectal cancer. The seven state variables
+are
+\[
+B(t)=\text{$\beta$-catenin},\qquad
+P(t)=\text{APC},\qquad
+H_5(t)=\text{HOXA5},
+\]
+\[
+H_{13}(t)=\text{HOXA13},\qquad
+M(t)=\text{MYC},\qquad
+R(t)=\text{RA},\qquad
+C(t)=\text{CYP26A1}.
+\]
+
+The model contains a pro-stemness loop,
+\[
+\beta\text{-catenin}\longrightarrow\text{MYC}
+\longrightarrow\text{HOXA13}\longrightarrow\beta\text{-catenin},
+\]
+a differentiation loop,
+\[
+\text{RA}\longrightarrow\text{HOXA5}\longrightarrow\text{APC}
+\dashv\beta\text{-catenin},
+\]
+and an RA homeostasis loop,
+\[
+\text{RA}\longrightarrow\text{CYP26A1}\dashv\text{RA}.
+\]
+Reduced APC functionality represents APC-mutant colorectal cancer cells.
+
+\section{Dimensional Model}
+
+\begin{align}
+\frac{dB}{dt}
+&=
+a_BW
++v_{13}\frac{H_{13}^{n_H}}{K_{13}^{n_H}+H_{13}^{n_H}}
+-d_BB-k_{PB}PB-v_5\frac{H_5B}{K_5+B},
+\\
+\frac{dP}{dt}
+&=
+a_P\frac{1+\rho_5H_5}{1+\rho_BB+\rho_{13}H_{13}}
+-\Big(\gamma_{P0}+\gamma_{P1}(1-\Theta_P)\Big)P,
+\\
+\frac{dH_5}{dt}
+&=
+a_5+v_R\frac{R}{K_R+R}-d_5H_5
+-v_M\frac{MH_5}{K_M+M},
+\\
+\frac{dH_{13}}{dt}
+&=
+a_{13}
++v_{B13}\frac{B^{n_B}}{K_{B13}^{n_B}+B^{n_B}}
++v_{M13}\frac{M^{n_M}}{K_{M13}^{n_M}+M^{n_M}}
+-d_{13}H_{13},
+\\
+\frac{dM}{dt}
+&=
+a_M+v_{BM}\frac{B^{n_B}}{K_{BM}^{n_B}+B^{n_B}}-d_MM,
+\\
+\frac{dR}{dt}
+&=
+u_R(t)-d_RR-k_{CR}CR,
+\\
+\frac{dC}{dt}
+&=
+a_C+v_{RC}\frac{R}{K_{RC}+R}
++v_{BC}\frac{B^{n_B}}{K_{BC}^{n_B}+B^{n_B}}-d_CC.
+\end{align}
+
+The RA input is
+\begin{align}
+u_R(t)
+&=
+u_0
++A_d\left[1+\cos\left(\frac{2\pi t}{T_d}-\phi\right)\right]
+\nonumber\\
+&\quad+
+\frac{D}{2}\left[
+\tanh(q(t-t_1))-\tanh(q(t-t_2))
+\right].
+\end{align}
+
+\section{Nondimensionalization}
+
+Define
+\[
+b=\frac{B}{B_0},\quad
+p=\frac{P}{P_0},\quad
+h_5=\frac{H_5}{H_{50}},\quad
+h_{13}=\frac{H_{13}}{H_{130}},
+\]
+\[
+m=\frac{M}{M_0},\quad
+r=\frac{R}{R_0},\quad
+c=\frac{C}{C_0},\quad
+\tau=d_Bt.
+\]
+Thus \(d/dt=d_B\,d/d\tau\).
+
+\subsection{\(\beta\)-catenin equation}
+
+Substitution and division by \(d_BB_0\) give
+\[
+\boxed{
+\frac{db}{d\tau}
+=
+w+\eta_{13}\frac{h_{13}^{n_H}}
+{\kappa_{13}^{n_H}+h_{13}^{n_H}}
+-b-\lambda_Ppb-\lambda_5\frac{h_5b}{\kappa_5+b}.
+}
+\]
+Here
+\[
+w=\frac{a_BW}{d_BB_0},\quad
+\eta_{13}=\frac{v_{13}}{d_BB_0},\quad
+\kappa_{13}=\frac{K_{13}}{H_{130}},
+\]
+\[
+\lambda_P=\frac{k_{PB}P_0}{d_B},\quad
+\lambda_5=\frac{v_5H_{50}}{d_BB_0},\quad
+\kappa_5=\frac{K_5}{B_0}.
+\]
+
+\subsection{APC equation}
+
+Choose
+\[
+P_0=\frac{a_P}{\gamma_{P0}},\qquad
+\varepsilon_P=\frac{d_B}{\gamma_{P0}},
+\qquad
+\delta_{P1}=\frac{\gamma_{P1}}{\gamma_{P0}},
+\qquad
+\theta_P=\Theta_P.
+\]
+After absorbing the dimensional state scales into the \(\rho\) coefficients,
+\[
+\boxed{
+\frac{dp}{d\tau}
+=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}{1+\rho_Bb+\rho_{13}h_{13}}
+-\delta_P(\theta_P)p
+\right].
+}
+\]
+The APC mutation function is
+\[
+\boxed{
+\delta_P(\theta_P)=1+\delta_{P1}(1-\theta_P).
+}
+\]
+Normal APC function corresponds to \(\theta_P=1\), while
+\(0<\theta_P<1\) represents partial APC loss.
+
+\subsection{HOXA5 equation}
+
+With \(H_{50}=a_5/d_5\), \(\varepsilon_5=d_B/d_5\), and the corresponding
+dimensionless gains and thresholds,
+\[
+\boxed{
+\frac{dh_5}{d\tau}
+=
+\frac{1}{\varepsilon_5}
+\left[
+a_5^*+\eta_R\frac{r}{\kappa_R+r}
+-h_5-\eta_M\frac{mh_5}{\kappa_M+m}
+\right].
+}
+\]
+
+\subsection{HOXA13 equation}
+
+\[
+\boxed{
+\frac{dh_{13}}{d\tau}
+=
+\frac{1}{\varepsilon_{13}}
+\left[
+a_{13}^*
++\eta_{B13}\frac{b^{n_B}}{\kappa_{B13}^{n_B}+b^{n_B}}
++\eta_{M13}\frac{m^{n_M}}{\kappa_{M13}^{n_M}+m^{n_M}}
+-h_{13}
+\right].
+}
+\]
+
+\subsection{MYC equation}
+
+The dimensional MYC equation is
+\[
+\boxed{
+\frac{dM}{dt}
+=
+a_M+v_{BM}\frac{B^{n_B}}{K_{BM}^{n_B}+B^{n_B}}-d_MM.
+}
+\]
+Using \(M=M_0m\), \(B=B_0b\), \(\varepsilon_M=d_B/d_M\),
+\(\eta_{BM}=v_{BM}/(d_MM_0)\), and
+\(\kappa_{BM}=K_{BM}/B_0\), the dimensionless equation is
+\[
+\boxed{
+\frac{dm}{d\tau}
+=
+\frac{1}{\varepsilon_M}
+\left[
+a_M^*
++\eta_{BM}\frac{b^{n_B}}
+{\kappa_{BM}^{n_B}+b^{n_B}}
+-m
+\right].
+}
+\]
+If \(M_0=a_M/d_M\), then \(a_M^*=1\).
+
+\subsection{Retinoic acid equation}
+
+\[
+\boxed{
+\frac{dr}{d\tau}
+=
+\frac{1}{\varepsilon_R}
+\left[
+\mu_R(\tau)-r-\lambda_Ccr
+\right],
+}
+\]
+where
+\[
+\varepsilon_R=\frac{d_B}{d_R},\qquad
+\lambda_C=\frac{k_{CR}C_0}{d_R},
+\]
+and
+\[
+\boxed{
+\mu_R(\tau)
+=
+\mu_0
++A_R\left[
+1+\cos\left(\frac{2\pi\tau}{T_R}-\phi\right)
+\right]
++\frac{D_R}{2}
+\left[
+\tanh(q(\tau-\tau_1))-\tanh(q(\tau-\tau_2))
+\right].
+}
+\]
+
+\subsection{CYP26A1 equation}
+
+\[
+\boxed{
+\frac{dc}{d\tau}
+=
+\frac{1}{\varepsilon_C}
+\left[
+a_C^*
++\eta_{RC}\frac{r}{\kappa_{RC}+r}
++\eta_{BC}\frac{b^{n_B}}{\kappa_{BC}^{n_B}+b^{n_B}}
+-c
+\right].
+}
+\]
+
+\section{Final Nondimensional System}
+
+\begin{align}
+\frac{db}{d\tau}
+&=
+w+\eta_{13}\frac{h_{13}^{n_H}}
+{\kappa_{13}^{n_H}+h_{13}^{n_H}}
+-b-\lambda_Ppb-\lambda_5\frac{h_5b}{\kappa_5+b},
+\\
+\frac{dp}{d\tau}
+&=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}{1+\rho_Bb+\rho_{13}h_{13}}
+-\delta_P(\theta_P)p
+\right],
+\\
+\frac{dh_5}{d\tau}
+&=
+\frac{1}{\varepsilon_5}
+\left[
+a_5^*+\eta_R\frac{r}{\kappa_R+r}
+-h_5-\eta_M\frac{mh_5}{\kappa_M+m}
+\right],
+\\
+\frac{dh_{13}}{d\tau}
+&=
+\frac{1}{\varepsilon_{13}}
+\left[
+a_{13}^*
++\eta_{B13}\frac{b^{n_B}}{\kappa_{B13}^{n_B}+b^{n_B}}
++\eta_{M13}\frac{m^{n_M}}{\kappa_{M13}^{n_M}+m^{n_M}}
+-h_{13}
+\right],
+\\
+\frac{dm}{d\tau}
+&=
+\frac{1}{\varepsilon_M}
+\left[
+a_M^*+\eta_{BM}\frac{b^{n_B}}
+{\kappa_{BM}^{n_B}+b^{n_B}}-m
+\right],
+\\
+\frac{dr}{d\tau}
+&=
+\frac{1}{\varepsilon_R}
+\left[\mu_R(\tau)-r-\lambda_Ccr\right],
+\\
+\frac{dc}{d\tau}
+&=
+\frac{1}{\varepsilon_C}
+\left[
+a_C^*+\eta_{RC}\frac{r}{\kappa_{RC}+r}
++\eta_{BC}\frac{b^{n_B}}{\kappa_{BC}^{n_B}+b^{n_B}}-c
+\right].
+\end{align}
+
+\section{Stemness Measures}
+
+The dynamic and equilibrium stemness indices are
+\[
+\boxed{
+S(\tau)=
+\frac{b(\tau)\left(1+\alpha_{13}h_{13}(\tau)\right)}
+{\left(1+p(\tau)\right)\left(1+\alpha_5h_5(\tau)\right)}
+}
+\]
+and
+\[
+\boxed{
+S^*=
+\frac{b^*\left(1+\alpha_{13}h_{13}^*\right)}
+{\left(1+p^*\right)\left(1+\alpha_5h_5^*\right)}.
+}
+\]
+Large values indicate proliferative, stem-like states; small values indicate
+differentiated states.
+
+\section{Expected Model Behavior}
+
+\begin{enumerate}
+\item \textbf{Normal tissue:} high APC, controlled \(\beta\)-catenin,
+moderate MYC and HOXA13, and low stemness.
+\item \textbf{APC-mutant tissue:} reduced APC functionality increases
+\(\beta\)-catenin, MYC, and HOXA13 while suppressing differentiation.
+\item \textbf{RA treatment:} RA induces HOXA5, enhances APC activity,
+suppresses \(\beta\)-catenin, and lowers stemness.
+\item \textbf{CYP-mediated resistance:} CYP26A1 accelerates RA degradation
+and reduces the effectiveness of RA-based therapies.
+\end{enumerate}
+
+\section{Dimensional Interpretation}
+
+Use the reference scales
+\[
+d_B=1~\mathrm{hr}^{-1},
+\]
+\[
+B_0=0.20,\quad P_0=1.00,\quad H_{5,0}=0.80,\quad
+H_{13,0}=0.30,\quad M_0=0.30,\quad R_0=0.60,\quad C_0=0.40.
+\]
+These reproduce the initial condition
+\[
+y_0=(0.20,1.00,0.80,0.30,0.30,0.60,0.40).
+\]
+Because \(d_B=1~\mathrm{hr}^{-1}\), one dimensionless time unit is one hour.
+The notes interpret the treatment as an in-vitro exposure after an untreated
+equilibration period. They contain both a \(40\)--\(88\) hour prose
+interpretation and parameter tables using \(t_2=80\); this source preserves
+that supplied record.
+
+\begin{table}[H]
+\centering
+\caption{Reference scales.}
+\begin{tabular}{lll}
+\toprule
+Quantity & Description & Value\\
+\midrule
+\(d_B\) & Reference degradation rate & \(1.00~\mathrm{hr}^{-1}\)\\
+\(B_0\) & \(\beta\)-catenin scale & 0.20\\
+\(P_0\) & APC scale & 1.00\\
+\(H_{5,0}\) & HOXA5 scale & 0.80\\
+\(H_{13,0}\) & HOXA13 scale & 0.30\\
+\(M_0\) & MYC scale & 0.30\\
+\(R_0\) & RA:RAR scale & 0.60\\
+\(C_0\) & CYP26A1 scale & 0.40\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{longtable}{lll}
+\caption{Recovered dimensional parameter values.}\\
+\toprule
+Parameter & Interpretation / units & Value\\
+\midrule
+\endfirsthead
+\toprule
+Parameter & Interpretation / units & Value\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\(d_B\) & \(\beta\)-catenin degradation \((\mathrm{hr}^{-1})\) & 1.000\\
+\(v_{13}\) & HOXA13 synthesis \((\mathrm{hr}^{-1})\) & 0.150\\
+\(K_{13}\) & HOXA13 activation constant & 0.165\\
+\(k_{PB}\) & APC inhibition coefficient \((\mathrm{hr}^{-1})\) & 1.600\\
+\(v_5\) & HOXA5 synthesis \((\mathrm{hr}^{-1})\) & 0.325\\
+\(K_5\) & \(\beta\)-catenin activation constant & 0.100\\
+\(\gamma_{P0}\) & Basal APC degradation \((\mathrm{hr}^{-1})\) & 1.000\\
+\(\gamma_{P1}\) & Enhanced APC degradation \((\mathrm{hr}^{-1})\) & 3.500\\
+\(\rho_5\) & HOXA5 repression coefficient & 1.375\\
+\(\rho_B\) & \(\beta\)-catenin repression coefficient & 5.500\\
+\(\rho_{13}\) & HOXA13 activation coefficient & 4.333\\
+\(d_5\) & HOXA5 degradation \((\mathrm{hr}^{-1})\) & 0.833\\
+\(a_5\) & Basal HOXA5 production \((\mathrm{hr}^{-1})\) & 0.100\\
+\(v_R\) & RA-induced HOXA5 synthesis \((\mathrm{hr}^{-1})\) & 1.667\\
+\(K_R\) & RA activation constant & 0.240\\
+\(v_M\) & MYC-induced HOXA5 synthesis \((\mathrm{hr}^{-1})\) & 1.667\\
+\(K_M\) & MYC activation constant & 0.150\\
+\(d_{13}\) & HOXA13 degradation \((\mathrm{hr}^{-1})\) & 1.000\\
+\(a_{13}\) & Basal HOXA13 synthesis \((\mathrm{hr}^{-1})\) & 0.054\\
+\(v_{B13}\) & \(\beta\)-catenin-induced HOXA13 synthesis & 0.285\\
+\(K_{B13}\) & \(\beta\)-catenin activation constant & 0.100\\
+\(v_{M13}\) & MYC-induced HOXA13 synthesis & 0.165\\
+\(K_{M13}\) & MYC activation constant & 0.150\\
+\(d_M\) & MYC degradation \((\mathrm{hr}^{-1})\) & 1.667\\
+\(a_M\) & Basal MYC synthesis \((\mathrm{hr}^{-1})\) & 0.090\\
+\(v_{BM}\) & \(\beta\)-catenin-induced MYC synthesis & 0.675\\
+\(K_{BM}\) & \(\beta\)-catenin activation constant & 0.100\\
+\(d_R\) & RA degradation \((\mathrm{hr}^{-1})\) & 2.500\\
+\(u_0\) & Basal RA production \((\mathrm{hr}^{-1})\) & 0.525\\
+\(A_d\) & Dietary RA input \((\mathrm{hr}^{-1})\) & 0.060\\
+\(D\) & ATRA treatment amplitude \((\mathrm{hr}^{-1})\) & 2.250\\
+\(T_d\) & Dietary RA period (hr) & 24\\
+\(q\) & Treatment transition rate \((\mathrm{hr}^{-1})\) & 0.300\\
+\(t_1,t_2\) & Treatment start/end (hr) & 40, 80\\
+\(k_{CR}\) & CYP-mediated RA degradation \((\mathrm{hr}^{-1})\) & 5.313\\
+\(d_C\) & CYP degradation \((\mathrm{hr}^{-1})\) & 1.250\\
+\(a_C\) & Basal CYP synthesis \((\mathrm{hr}^{-1})\) & 0.040\\
+\(v_{RC}\) & RA-induced CYP synthesis \((\mathrm{hr}^{-1})\) & 0.750\\
+\(K_{RC}\) & RA activation constant & 0.300\\
+\(v_{BC}\) & \(\beta\)-catenin-induced CYP synthesis & 0.750\\
+\(K_{BC}\) & \(\beta\)-catenin activation constant & 0.100\\
+\end{longtable}
+
+\begin{longtable}{lll}
+\caption{Dimensionless parameter values used in the simulations.}\\
+\toprule
+Parameter & Definition & Value\\
+\midrule
+\endfirsthead
+\toprule
+Parameter & Definition & Value\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\(\eta_{13}\) & \(v_{13}/(d_BB_0)\) & 0.75\\
+\(\kappa_{13}\) & \(K_{13}/H_{13,0}\) & 0.55\\
+\(\lambda_P\) & \(k_{PB}P_0/d_B\) & 1.60\\
+\(\lambda_5\) & \(v_5H_{5,0}/(d_BB_0)\) & 1.30\\
+\(\kappa_5\) & \(K_5/B_0\) & 0.50\\
+\(\varepsilon_P\) & \(d_B/\gamma_{P0}\) & 1.00\\
+\(\delta_{P1}\) & \(\gamma_{P1}/\gamma_{P0}\) & 3.50\\
+\(\varepsilon_5\) & \(d_B/d_5\) & 1.20\\
+\(\eta_R\) & \(v_R/(d_5H_{5,0})\) & 2.50\\
+\(\kappa_R\) & \(K_R/R_0\) & 0.40\\
+\(\eta_M\) & \(v_M/(d_5H_{5,0})\) & 2.50\\
+\(\kappa_M\) & \(K_M/M_0\) & 0.50\\
+\(\varepsilon_{13}\) & \(d_B/d_{13}\) & 1.00\\
+\(\eta_{B13}\) & \(v_{B13}/(d_{13}H_{13,0})\) & 0.95\\
+\(\kappa_{B13}\) & \(K_{B13}/B_0\) & 0.50\\
+\(\eta_{M13}\) & \(v_{M13}/(d_{13}H_{13,0})\) & 0.55\\
+\(\kappa_{M13}\) & \(K_{M13}/M_0\) & 0.50\\
+\(\varepsilon_M\) & \(d_B/d_M\) & 0.60\\
+\(\eta_{BM}\) & \(v_{BM}/(d_MM_0)\) & 1.35\\
+\(\kappa_{BM}\) & \(K_{BM}/B_0\) & 0.50\\
+\(\varepsilon_R\) & \(d_B/d_R\) & 0.40\\
+\(\mu_0\) & \(u_0/(d_RR_0)\) & 0.35\\
+\(A_R\) & \(A_d/(d_RR_0)\) & 0.04\\
+\(D_R\) & \(D/(d_RR_0)\) & 1.50\\
+\(T_R\) & \(d_BT_d\) & 24\\
+\(q_\tau\) & \(q/d_B\) & 0.30\\
+\(\tau_1,\tau_2\) & \(d_Bt_1,d_Bt_2\) & 40, 80\\
+\(\lambda_C\) & \(k_{CR}C_0/d_R\) & 0.85\\
+\(\varepsilon_C\) & \(d_B/d_C\) & 0.80\\
+\(\eta_{RC}\) & \(v_{RC}/(d_CC_0)\) & 1.50\\
+\(\kappa_{RC}\) & \(K_{RC}/R_0\) & 0.50\\
+\(\eta_{BC}\) & \(v_{BC}/(d_CC_0)\) & 1.50\\
+\(\kappa_{BC}\) & \(K_{BC}/B_0\) & 0.50\\
+\(W\) & WNT stimulus & 0.80, 1.00, 1.50, 2.00\\
+\(\Theta_P\) & APC reduction factor & 1.00, 0.75, 0.50, 0.25\\
+\(n_B,n_M,n_H\) & Hill coefficients & 2\\
+\(\alpha_5,\alpha_{13}\) & Stemness weights & 1\\
+\end{longtable}
+
+\section{Scientific Machine Learning Extensions}
+
+The deterministic model has the form
+\[
+\frac{dy}{d\tau}=f(y,\theta),
+\qquad
+y=(B,P,H_5,H_{13},M,R,C).
+\]
+
+\subsection{Project 1: Bayesian PINNs for Parameter Uncertainty}
+
+The inverse problem is
+\[
+p(\theta\mid D)\propto p(D\mid\theta)p(\theta).
+\]
+A biologically meaningful initial subset is
+\[
+\Theta=\{\eta_R,\eta_{BM},\eta_{B13},\lambda_C,\theta_P\}.
+\]
+The state network maps time to all seven states, and the loss combines data,
+physics, and prior contributions:
+\[
+\mathcal L=\mathcal L_{\mathrm{data}}
++\mathcal L_{\mathrm{physics}}+\mathcal L_{\mathrm{prior}}.
+\]
+Outputs are posterior distributions, credible intervals, and uncertainty
+bands.
+
+\subsection{Project 2: Hybrid Mechanistic--Neural Models}
+
+The general hybrid model is
+\[
+\frac{dy}{d\tau}
+=f_{\mathrm{known}}(y,\theta)+f_{\mathrm{NN}}(y).
+\]
+The supplied notes proposed an additive MYC correction
+\[
+\frac{dM}{d\tau}
+=
+\frac{1}{\varepsilon_M}
+\left[
+a_M+\eta_{BM}\frac{B^{n_B}}{\kappa_{BM}^{n_B}+B^{n_B}}-M
+\right]
++f_{\mathrm{NN}}(H_{13},R).
+\]
+The current repository additionally studies replacement hybrids in which a
+closed-form regulatory relationship itself is learned. For the MYC term,
+\[
+\boxed{
+\frac{dm}{d\tau}
+=
+\frac{1}{\varepsilon_M}
+\left[a_M^*+f_{\mathrm{MYC}}(b)-m\right].
+}
+\]
+For APC mutation,
+\[
+\boxed{
+\delta_{P,\mathrm{NN}}(\theta_P)
+=1+f_{\mathrm{APC}}(1-\theta_P),
+}
+\]
+\[
+\boxed{
+\frac{dp}{d\tau}
+=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}{1+\rho_Bb+\rho_{13}h_{13}}
+-\delta_{P,\mathrm{NN}}(\theta_P)p
+\right].
+}
+\]
+Small networks and function-magnitude regularization are used so the known
+mechanistic structure remains dominant and interpretable.
+
+\subsection{Project 3: Stochastic PINNs}
+
+The deterministic model can be replaced by
+\[
+dy=f(y,\theta)\,d\tau+G(y)\,dW_\tau.
+\]
+A first model adds stochasticity only to RA and MYC:
+\[
+dR=f_R(y,\theta)\,d\tau+\sigma_R\,dW_R,
+\qquad
+dM=f_M(y,\theta)\,d\tau+\sigma_M\,dW_M.
+\]
+A state-dependent extension learns
+\[
+\sigma_R=\sigma_{\mathrm{NN}}(R,C).
+\]
+Euler--Maruyama gives
+\[
+y_{n+1}=y_n+f(y_n,\theta)\Delta\tau+G(y_n)\Delta W_n,
+\qquad
+\Delta W_n\sim\mathcal N(0,\Delta\tau).
+\]
+The outputs are trajectory ensembles, variance bands, and
+\(\mathbb P(S>S_{\mathrm{crit}})\).
+
+\section{Expected Contributions and Manuscript Outline}
+
+The Bayesian project quantifies uncertainty, the hybrid project learns missing
+or uncertain regulation while preserving biological structure, and the
+stochastic project models cell-to-cell variability. Together they move the
+model toward uncertainty-aware and biologically interpretable prediction.
+
+The manuscript outline is:
+\begin{enumerate}
+\item Abstract (250 words maximum).
+\item Introduction covering colorectal-cancer biology and PINNs.
+\item Model schematic, assumptions, equations, and nondimensionalization.
+\item Numerical SciPy results with biological interpretation of transients.
+\item PINN algorithms, errors, convergence, sensitivity, identifiability, and
+Bayesian uncertainty.
+\item Discussion, limitations, biological significance, and future hybrid and
+stochastic directions. Gene-level regulation is stochastic, and hybrid models
+require real data to learn interactions absent from the reduced equations.
+\end{enumerate}
+
+\IfFileExists{references.bib}{
+  \bibliographystyle{unsrt}
+  \bibliography{references.bib}
+}{}
+
+\end{document}
