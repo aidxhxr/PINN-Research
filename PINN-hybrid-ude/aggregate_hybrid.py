@@ -132,7 +132,7 @@ def main(run_dir, ctrl_dir=None):
 
     # ---- H2: is the damage LOCAL to the learned term's equation? ----
     term_eq = {"ra_h5": "h5", "bm_myc": "m", "b_h13": "h13",
-               "bc_cyp": "c"}.get(term)
+               "bc_cyp": "c", "apc_mutation": "apc"}.get(term)
     print(f"\nH2 localisation test -- learned term sits in the d{term_eq} equation.")
     print("Prediction: recovery drops concentrate in that equation; other "
           "equations ~unchanged.\n")

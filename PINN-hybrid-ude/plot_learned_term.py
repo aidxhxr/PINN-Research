@@ -36,6 +36,9 @@ LABEL = {
                r"WNT $\to$ HOXA13"),
     "bc_cyp": (r"$b$  ($\beta$-catenin)", r"$\eta_{BC}\,h(b;\kappa_{BC})$",
                r"WNT $\to$ CYP26A1"),
+    "apc_mutation": (r"$1-\theta_P$  (APC functional loss)",
+                     r"$\delta_P(\theta_P)-1$",
+                     r"APC loss $\to$ excess APC degradation"),
 }
 
 

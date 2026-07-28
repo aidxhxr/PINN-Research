@@ -11,6 +11,7 @@ for d in "$HERE"/runs/*/; do
     *_control)   T=none ;;
     *_ra_h5|*_ra_h5_nc)   T=ra_h5 ;;
     *_bm_myc|*_bm_myc_nc) T=bm_myc ;;
+    *_apc_mutation_frozen) T=apc_mutation ;;
     *) continue ;;
   esac
   echo "=== $b  (HYBRID_TERM=$T) ==="
