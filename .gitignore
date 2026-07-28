@@ -1,5 +1,6 @@
 LOGS.md
 CLAUDE.md
+AGENTS.md
 PINN-inverse-solve/inverse_pinn_architecture.png
 __pycache__/
 *.aux
@@ -9,7 +10,7 @@ PINN-inverse-better/architecture.log
 /build.log
 /texput.log
 
-# Local agent working notes (see CLAUDE.md session log index)
+# Local agent working notes (see AGENTS.md; CLAUDE.md is the local legacy guide)
 notes/
 PINN-smaller/forward-pinn-train-hybrid/architecture.log
 
