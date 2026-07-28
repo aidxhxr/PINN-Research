@@ -156,6 +156,11 @@ HYBRID_TERMS = {
     "b_h13":  dict(inputs=["b"], replaces=["etaB13", "kappaB13"], eq="dh13"),
     # beta-catenin -> CYP26A1
     "bc_cyp": dict(inputs=["b"], replaces=["etaBC", "kappaBC"], eq="dc"),
+    # APC mutation severity -> excess APC degradation. The healthy baseline
+    # and mass-action dependence on APC remain mechanistic:
+    #   deltaP(thetaP) = 1 + f_NN(1-thetaP), degradation = deltaP * apc.
+    "apc_mutation": dict(inputs=["thetaP"], replaces=["deltaP1"], eq="dapc",
+                         input_kind="parameter"),
 }
 
 _ht = os.environ.get("HYBRID_TERM", "ra_h5").strip()
