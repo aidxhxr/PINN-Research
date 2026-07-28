@@ -141,6 +141,73 @@ class MechanisticNN(nn.Module):
         return self(t).cpu().numpy().ravel()
 
 
+class MonotoneLinear(nn.Module):
+    """Linear layer with non-negative effective weights."""
+
+    def __init__(self, in_features, out_features):
+        super().__init__()
+        self.raw_weight = nn.Parameter(torch.empty(
+            out_features, in_features, dtype=torch.get_default_dtype()))
+        self.bias = nn.Parameter(torch.empty(
+            out_features, dtype=torch.get_default_dtype()))
+        nn.init.normal_(self.raw_weight, mean=-2.0, std=0.2)
+        nn.init.normal_(self.bias, mean=0.0, std=0.05)
+        self.in_features = in_features
+
+    @property
+    def weight(self):
+        return F.softplus(self.raw_weight) / max(self.in_features, 1)
+
+    def forward(self, x):
+        return F.linear(x, self.weight, self.bias)
+
+
+class APCMutationNN(nn.Module):
+    """Monotone APC-loss -> excess-degradation relationship.
+
+    For u = 1-thetaP in [0,1],
+
+        f_APC(u) = u * softplus(g_monotone(u)).
+
+    Thus f_APC(0)=0 exactly, f_APC(u)>=0, and f_APC is non-decreasing. The
+    residual keeps the healthy baseline and APC state dependence explicit as
+    deltaP = 1 + f_APC(u), followed by deltaP * apc.
+    """
+
+    def __init__(self, n_in=1, width=5, depth=2, **_ignored):
+        super().__init__()
+        layers = [MonotoneLinear(n_in, width), nn.Tanh()]
+        for _ in range(depth - 1):
+            layers += [MonotoneLinear(width, width), nn.Tanh()]
+        layers.append(MonotoneLinear(width, 1))
+        self.net = nn.Sequential(*layers)
+        self.register_buffer("x_scale", torch.ones(
+            (), dtype=torch.get_default_dtype()))
+        self.register_buffer("x0", torch.ones(
+            (), dtype=torch.get_default_dtype()))
+        self.constraint = "anchored_monotone"
+
+    def forward(self, loss):
+        u = torch.clamp(loss, min=0.0, max=1.0)
+        rate = F.softplus(self.net(u))
+        return u * rate
+
+    def gate_lo(self, _x_lo):
+        return 0.0
+
+    def l2(self):
+        ws = [m.weight for m in self.net if isinstance(m, MonotoneLinear)]
+        n = sum(w.numel() for w in ws)
+        return sum((w**2).sum() for w in ws) / max(n, 1)
+
+    @torch.no_grad()
+    def curve(self, x_np, device=None):
+        t = torch.as_tensor(np.asarray(x_np, dtype=float).reshape(-1, 1),
+                            dtype=torch.get_default_dtype(),
+                            device=device or self.x_scale.device)
+        return self(t).cpu().numpy().ravel()
+
+
 def build_terms(term, refs_for_regime, device, *, width=5, depth=2,
                 constraint="anchored", act="tanh"):
     """Instantiate the learnable term(s) for a run.
