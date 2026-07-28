@@ -9,7 +9,8 @@ import torch
 from config import (BASELINE, REGIMES, CONDITIONS, DEVICE, VAR_NAMES,
                     UNKNOWN, INIT_GUESS, PARAM_RANGE, NOMINAL,
                     HYBRID_TERM, HYBRID_CONSTRAINT, HYBRID_ACT,
-                    HYBRID_WIDTH, HYBRID_DEPTH, HYBRID_WD)
+                    HYBRID_WIDTH, HYBRID_DEPTH, HYBRID_WD,
+                    HYBRID_STATE, HYBRID_FREEZE)
 from hybrid import build_terms, observed_range, true_term
 from model import ForwardPINN, InverseParams, time_derivatives
 from residual import physics_residual, physics_rhs
@@ -139,7 +140,16 @@ def _train_once(name, refs_for_regime, true_vals, *,
     nn_terms = build_terms(HYBRID_TERM, refs_for_regime, DEVICE,
                            width=HYBRID_WIDTH, depth=HYBRID_DEPTH,
                            constraint=HYBRID_CONSTRAINT, act=HYBRID_ACT)
-    term_params = [p for n in nn_terms.values() for p in n.parameters()]
+    if nn_terms and HYBRID_STATE:
+        state = torch.load(HYBRID_STATE, map_location=DEVICE, weights_only=True)
+        nn_terms[HYBRID_TERM].load_state_dict(state)
+        print(f"  [{tag}] loaded learned term from {HYBRID_STATE}")
+    if nn_terms and HYBRID_FREEZE:
+        for net_t in nn_terms.values():
+            net_t.requires_grad_(False)
+            net_t.eval()
+    term_params = ([] if HYBRID_FREEZE else
+                   [p for n in nn_terms.values() for p in n.parameters()])
 
     def term_l2():
         """L2 on NN weights, applied identically in all three stages (torch's
@@ -154,7 +164,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
         objective and does NOT transfer. Default 1e-8 keeps the penalty at ~5%
         of the Stage-3 residual.
         """
-        if not nn_terms:
+        if not nn_terms or HYBRID_FREEZE:
             return 0.0
         return HYBRID_WD * sum(n.l2() for n in nn_terms.values())
 
@@ -167,7 +177,8 @@ def _train_once(name, refs_for_regime, true_vals, *,
     print(f"  [{tag}] hybrid term={HYBRID_TERM} "
           f"({HYBRID_DEPTH}x{HYBRID_WIDTH} {HYBRID_ACT}, "
           f"constraint={HYBRID_CONSTRAINT}, wd={HYBRID_WD}) "
-          f"{n_term} weights | recovering {N_UNK} mechanistic params")
+          f"{n_term} trainable weights frozen={HYBRID_FREEZE} | "
+          f"recovering {N_UNK} mechanistic params")
 
     groups = [
         {"params": net_params,          "lr": lr},
@@ -527,6 +538,8 @@ def train_inverse(name, refs_for_regime, *,
                    "hybrid_term": HYBRID_TERM,
                    "hybrid_constraint": HYBRID_CONSTRAINT,
                    "hybrid_wd": HYBRID_WD,
+                   "hybrid_frozen": HYBRID_FREEZE,
+                   "hybrid_state": HYBRID_STATE or None,
                    "term_rmse": (term_score or {}).get("rmse"),
                    "term_nrmse": (term_score or {}).get("nrmse"),
                    "final_phys": best["fphys"]}, fh, indent=2)
