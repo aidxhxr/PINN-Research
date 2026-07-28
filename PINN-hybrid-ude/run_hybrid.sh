@@ -7,8 +7,9 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-VARIANT="${1:?usage: run_hybrid.sh <variant> [starts]}"
+VARIANT="${1:?usage: run_hybrid.sh <variant> [starts] [learned-term-checkpoint]}"
 STARTS="${2:-3}"
+TERM_STATE="${3:-}"
 TS="$(date +%Y%m%d_%H%M%S)"
 RUN_DIR="$HERE/runs/${TS}_${VARIANT}"
 mkdir -p "$RUN_DIR"
@@ -19,6 +20,8 @@ export PYTHONPATH="$HERE:${PYTHONPATH:-}"
 # ---- variant -> hybrid env -------------------------------------------------
 export HYBRID_CONSTRAINT="anchored"
 export HYBRID_WD="1e-8"
+export HYBRID_FREEZE="0"
+export HYBRID_STATE=""
 case "$VARIANT" in
   control)     export HYBRID_TERM="none" ;;
   ra_h5)       export HYBRID_TERM="ra_h5" ;;
@@ -27,6 +30,16 @@ case "$VARIANT" in
   ra_h5_wdhi)  export HYBRID_TERM="ra_h5"; export HYBRID_WD="1e-6" ;;
   bm_myc_nc)   export HYBRID_TERM="bm_myc"; export HYBRID_CONSTRAINT="none" ;;
   bm_myc)      export HYBRID_TERM="bm_myc" ;;
+  apc_mutation_frozen)
+    if [[ -z "$TERM_STATE" || ! -f "$TERM_STATE" ]]; then
+      echo "apc_mutation_frozen requires a calibration checkpoint" >&2
+      exit 2
+    fi
+    export HYBRID_TERM="apc_mutation"
+    export HYBRID_CONSTRAINT="anchored_monotone"
+    export HYBRID_FREEZE="1"
+    export HYBRID_STATE="$(cd "$(dirname "$TERM_STATE")" && pwd)/$(basename "$TERM_STATE")"
+    ;;
   *) echo "unknown variant: $VARIANT" >&2; exit 2 ;;
 esac
 
@@ -35,6 +48,8 @@ esac
   echo "HYBRID_TERM=$HYBRID_TERM"
   echo "HYBRID_CONSTRAINT=$HYBRID_CONSTRAINT"
   echo "HYBRID_WD=$HYBRID_WD"
+  echo "HYBRID_FREEZE=$HYBRID_FREEZE"
+  echo "HYBRID_STATE=$HYBRID_STATE"
   echo "starts=$STARTS"
   echo "started=$(date -Is)"
 } | tee "$RUN_DIR/variant.env"

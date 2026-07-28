@@ -46,6 +46,7 @@ VARIANTS = {
     "ra_h5_wdhi":  dict(term="ra_h5"),          # + HYBRID_WD=1e-6 (dominates: shows the units trap)
     "bm_myc":      dict(term="bm_myc"),         # H3 test: anchor actually BINDS here
     "bm_myc_nc":   dict(term="bm_myc"),        # + HYBRID_CONSTRAINT=none
+    "apc_mutation_frozen": dict(term="apc_mutation"),
 }
 
 
