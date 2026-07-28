@@ -1,0 +1,136 @@
+
+########## 20260726_214316_ra_h5  vs  20260726_195830_control ##########
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_214316_ra_h5
+variant=ra_h5  term=ra_h5  constraint=anchored  wd=1e-08
+control: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      19   34        18     +1       7.6%     0.70  anchor weak
+Early Adenoma               17   34        15     +2      12.6%     0.74  anchor weak
+Advanced Adenoma            11   34        11     +0      23.7%     0.76  anchor weak
+Severe APC Loss              6   34         7     -1      17.3%     0.76  anchor weak
+TOTAL                       53             51     +2
+
+H2 localisation test -- learned term sits in the dh5 equation.
+Prediction: recovery drops concentrate in that equation; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               3        2     +1
+dapc             6        6     +0
+dh5              6        1     +5  <-- learned term here
+dh13            13       15     -2
+dm              10       10     +0
+dr               4        4     +0
+dc              11       13     -2
+
+H2/H3 sharp test -- 'a5' is the basal-production term in dh5;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     37.4%       123.1%
+Early Adenoma              17.2%       114.0%
+Advanced Adenoma            8.9%        97.7%
+Severe APC Loss            13.4%       106.5%
+
+########## 20260726_233410_ra_h5_nc  vs  20260726_195830_control ##########
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc
+variant=ra_h5_nc  term=ra_h5  constraint=none  wd=1e-08
+control: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      18   34        18     +0       3.3%     1.00  anchor weak
+Early Adenoma               18   34        15     +3      10.9%     1.00  anchor weak
+Advanced Adenoma            10   34        11     -1      24.1%     1.00  anchor weak
+Severe APC Loss              7   34         7     +0      19.3%     1.00  anchor weak
+TOTAL                       53             51     +2
+
+H2 localisation test -- learned term sits in the dh5 equation.
+Prediction: recovery drops concentrate in that equation; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               3        2     +1
+dapc             6        6     +0
+dh5              6        1     +5  <-- learned term here
+dh13            13       15     -2
+dm              10       10     +0
+dr               4        4     +0
+dc              11       13     -2
+
+H2/H3 sharp test -- 'a5' is the basal-production term in dh5;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     12.1%       123.1%
+Early Adenoma               1.7%       114.0%
+Advanced Adenoma            1.7%        97.7%
+Severe APC Loss             2.2%       106.5%
+
+########## 20260727_012448_bm_myc  vs  20260726_195830_control ##########
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260727_012448_bm_myc
+variant=bm_myc  term=bm_myc  constraint=anchored  wd=1e-08
+control: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      13   34        16     -3       7.9%     0.22  anchor BINDS
+Early Adenoma               13   34        13     +0       9.5%     0.46  anchor BINDS
+Advanced Adenoma             9   34        12     -3       6.2%     0.56  anchor weak
+Severe APC Loss              8   34         7     +1       8.3%     0.49  anchor BINDS
+TOTAL                       43             48     -5
+
+H2 localisation test -- learned term sits in the dm equation.
+Prediction: recovery drops concentrate in that equation; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               3        2     +1
+dapc             6        6     +0
+dh5              4        3     +1
+dh13            13       15     -2
+dm               1        5     -4  <-- learned term here
+dr               4        4     +0
+dc              12       13     -1
+
+H2/H3 sharp test -- 'aM' is the basal-production term in dm;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     32.3%         0.4%
+Early Adenoma              52.1%         4.6%
+Advanced Adenoma           31.5%       118.1%
+Severe APC Loss            41.3%        51.6%
+
+########## 20260727_031545_bm_myc_nc  vs  20260726_195830_control ##########
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260727_031545_bm_myc_nc
+variant=bm_myc_nc  term=bm_myc  constraint=none  wd=1e-08
+control: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_195830_control
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      13   34        16     -3      11.1%     1.00  anchor weak
+Early Adenoma               14   34        13     +1       9.2%     1.00  anchor weak
+Advanced Adenoma             9   34        12     -3       8.0%     1.00  anchor weak
+Severe APC Loss              6   34         7     -1      13.2%     1.00  anchor weak
+TOTAL                       42             48     -6
+
+H2 localisation test -- learned term sits in the dm equation.
+Prediction: recovery drops concentrate in that equation; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               2        2     +0
+dapc             7        6     +1
+dh5              4        3     +1
+dh13            13       15     -2
+dm               1        5     -4  <-- learned term here
+dr               4        4     +0
+dc              11       13     -2
+
+H2/H3 sharp test -- 'aM' is the basal-production term in dm;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     51.9%         0.4%
+Early Adenoma              50.5%         4.6%
+Advanced Adenoma           27.3%       118.1%
+Severe APC Loss            38.4%        51.6%
