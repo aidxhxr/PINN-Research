@@ -1,0 +1,98 @@
+=== regime=Normal  variant=ra_h5_nc  hybrid_term=ra_h5  n_unknown=34  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'integral', 'activation': 'gelu', 'n_starts': 3} ===
+  [Norm#0] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+  [Norm#0] hybrid term=ra_h5 (2x5 tanh, constraint=none, wd=1e-08) 46 weights | recovering 34 mechanistic params
+    [Norm#0] Adam     1/2000  L=8.17e+00  Ld=5.41e-01  Lp=3.61e-04  Lic=3.81e-01  L2=2.15e-09  lp=9.86 | W=1.194(*0.80)  thetaP=0.599(*1.00)  <rel.err>=50% [1s]
+    [Norm#0] Adam   200/2000  L=5.67e-03  Ld=5.58e-03  Lp=8.51e-06  Lic=3.10e-07  L2=3.50e-09  lp=10.08 | W=0.963(*0.80)  thetaP=0.708(*1.00)  <rel.err>=56% [114s]
+    [Norm#0] Adam   400/2000  L=8.02e-04  Ld=7.90e-04  Lp=1.18e-06  Lic=2.42e-08  L2=3.15e-09  lp=10.34 | W=0.946(*0.80)  thetaP=0.713(*1.00)  <rel.err>=52% [227s]
+    [Norm#0] Adam   600/2000  L=4.88e-04  Ld=4.80e-04  Lp=6.92e-07  Lic=1.29e-08  L2=3.31e-09  lp=10.53 | W=0.930(*0.80)  thetaP=0.715(*1.00)  <rel.err>=50% [340s]
+    [Norm#0] Adam   800/2000  L=3.75e-04  Ld=3.69e-04  Lp=4.96e-07  Lic=5.35e-09  L2=3.48e-09  lp=10.86 | W=0.916(*0.80)  thetaP=0.717(*1.00)  <rel.err>=48% [453s]
+    [Norm#0] Adam  1000/2000  L=3.14e-04  Ld=3.10e-04  Lp=3.93e-07  Lic=4.62e-09  L2=3.60e-09  lp=11.35 | W=0.905(*0.80)  thetaP=0.719(*1.00)  <rel.err>=47% [566s]
+    [Norm#0] Adam  1200/2000  L=2.79e-04  Ld=2.75e-04  Lp=3.35e-07  Lic=4.16e-09  L2=3.69e-09  lp=11.97 | W=0.896(*0.80)  thetaP=0.721(*1.00)  <rel.err>=46% [679s]
+    [Norm#0] Adam  1400/2000  L=2.58e-04  Ld=2.54e-04  Lp=3.02e-07  Lic=3.87e-09  L2=3.75e-09  lp=12.71 | W=0.889(*0.80)  thetaP=0.723(*1.00)  <rel.err>=45% [792s]
+    [Norm#0] Adam  1600/2000  L=2.47e-04  Ld=2.44e-04  Lp=2.82e-07  Lic=3.71e-09  L2=3.78e-09  lp=13.54 | W=0.883(*0.80)  thetaP=0.724(*1.00)  <rel.err>=44% [906s]
+    [Norm#0] Adam  1800/2000  L=2.43e-04  Ld=2.39e-04  Lp=2.71e-07  Lic=3.65e-09  L2=3.80e-09  lp=14.45 | W=0.878(*0.80)  thetaP=0.726(*1.00)  <rel.err>=44% [1019s]
+    [Norm#0] Adam  2000/2000  L=2.42e-04  Ld=2.38e-04  Lp=2.65e-07  Lic=3.64e-09  L2=3.82e-09  lp=15.42 | W=0.874(*0.80)  thetaP=0.728(*1.00)  <rel.err>=43% [1132s]
+    [Norm#0] L-BFGS (150) ...
+    [Norm#0] LBFGS   50/150  L=9.34e-05 | W=0.797(*0.80)  thetaP=0.768(*1.00)  <rel.err>=59% [1470s]
+    [Norm#0] LBFGS  100/150  L=4.45e-05 | W=0.749(*0.80)  thetaP=0.790(*1.00)  <rel.err>=34% [1810s]
+    [Norm#0] LBFGS  150/150  L=2.75e-05 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2148s]
+    [Norm#0] param-refine (600, frozen, integral) ...
+    [Norm#0] refine   50/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2152s]
+    [Norm#0] refine  100/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2155s]
+    [Norm#0] refine  150/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2158s]
+    [Norm#0] refine  200/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2162s]
+    [Norm#0] refine  250/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2166s]
+    [Norm#0] refine  300/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2170s]
+    [Norm#0] refine  350/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2174s]
+    [Norm#0] refine  400/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2178s]
+    [Norm#0] refine  450/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2182s]
+    [Norm#0] refine  500/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2185s]
+    [Norm#0] refine  550/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2189s]
+    [Norm#0] refine  600/600  Lp+L2=4.48e-08  L2=4.12e-09  <f_NN>=1.421  under10%=18/34 | W=0.797(*0.80)  thetaP=0.793(*1.00)  <rel.err>=24% [2193s]
+  [Norm#0] done  under10%=18/34  phys=4.07e-08  W=0.797 thetaP=0.793  (2194s)
+  >> Normal start 0: under10%=18/34 phys=4.07e-08  (best so far under10%=18/34 phys=4.07e-08)
+  [Norm#1] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+  [Norm#1] hybrid term=ra_h5 (2x5 tanh, constraint=none, wd=1e-08) 46 weights | recovering 34 mechanistic params
+    [Norm#1] Adam     1/2000  L=8.16e+00  Ld=5.37e-01  Lp=3.98e-04  Lic=3.81e-01  L2=2.27e-09  lp=10.12 | W=1.608(*0.80)  thetaP=0.405(*1.00)  <rel.err>=56% [1s]
+    [Norm#1] Adam   200/2000  L=6.76e-03  Ld=6.61e-03  Lp=1.31e-05  Lic=7.68e-07  L2=4.02e-09  lp=10.45 | W=1.257(*0.80)  thetaP=0.539(*1.00)  <rel.err>=64% [111s]
+    [Norm#1] Adam   400/2000  L=1.12e-03  Ld=1.02e-03  Lp=1.60e-06  Lic=4.25e-06  L2=3.74e-09  lp=10.01 | W=1.204(*0.80)  thetaP=0.564(*1.00)  <rel.err>=62% [224s]
+    [Norm#1] Adam   600/2000  L=5.69e-04  Ld=5.60e-04  Lp=8.81e-07  Lic=1.26e-08  L2=3.81e-09  lp=9.52 | W=1.164(*0.80)  thetaP=0.569(*1.00)  <rel.err>=61% [337s]
+    [Norm#1] Adam   800/2000  L=4.30e-04  Ld=4.23e-04  Lp=6.81e-07  Lic=9.02e-09  L2=3.87e-09  lp=9.05 | W=1.129(*0.80)  thetaP=0.570(*1.00)  <rel.err>=59% [450s]
+    [Norm#1] Adam  1000/2000  L=3.56e-04  Ld=3.51e-04  Lp=5.62e-07  Lic=7.17e-09  L2=3.93e-09  lp=8.62 | W=1.100(*0.80)  thetaP=0.572(*1.00)  <rel.err>=58% [563s]
+    [Norm#1] Adam  1200/2000  L=3.12e-04  Ld=3.08e-04  Lp=4.84e-07  Lic=6.06e-09  L2=3.99e-09  lp=8.25 | W=1.076(*0.80)  thetaP=0.573(*1.00)  <rel.err>=57% [676s]
+    [Norm#1] Adam  1400/2000  L=2.86e-04  Ld=2.82e-04  Lp=4.31e-07  Lic=5.41e-09  L2=4.03e-09  lp=7.94 | W=1.057(*0.80)  thetaP=0.574(*1.00)  <rel.err>=56% [789s]
+    [Norm#1] Adam  1600/2000  L=2.72e-04  Ld=2.68e-04  Lp=3.96e-07  Lic=5.05e-09  L2=4.06e-09  lp=7.69 | W=1.042(*0.80)  thetaP=0.575(*1.00)  <rel.err>=56% [903s]
+    [Norm#1] Adam  1800/2000  L=2.66e-04  Ld=2.63e-04  Lp=3.72e-07  Lic=4.91e-09  L2=4.08e-09  lp=7.49 | W=1.029(*0.80)  thetaP=0.576(*1.00)  <rel.err>=55% [1016s]
+    [Norm#1] Adam  2000/2000  L=2.64e-04  Ld=2.62e-04  Lp=3.53e-07  Lic=4.88e-09  L2=4.09e-09  lp=7.36 | W=1.018(*0.80)  thetaP=0.576(*1.00)  <rel.err>=55% [1129s]
+    [Norm#1] L-BFGS (150) ...
+    [Norm#1] LBFGS   50/150  L=7.09e-05 | W=0.840(*0.80)  thetaP=0.609(*1.00)  <rel.err>=61% [1472s]
+    [Norm#1] LBFGS  100/150  L=3.93e-05 | W=0.780(*0.80)  thetaP=0.627(*1.00)  <rel.err>=55% [1814s]
+    [Norm#1] LBFGS  150/150  L=2.42e-05 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2154s]
+    [Norm#1] param-refine (600, frozen, integral) ...
+    [Norm#1] refine   50/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2157s]
+    [Norm#1] refine  100/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2160s]
+    [Norm#1] refine  150/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2163s]
+    [Norm#1] refine  200/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2166s]
+    [Norm#1] refine  250/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2170s]
+    [Norm#1] refine  300/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2174s]
+    [Norm#1] refine  350/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2178s]
+    [Norm#1] refine  400/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2182s]
+    [Norm#1] refine  450/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2186s]
+    [Norm#1] refine  500/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2190s]
+    [Norm#1] refine  550/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2194s]
+    [Norm#1] refine  600/600  Lp+L2=6.78e-08  L2=4.33e-09  <f_NN>=1.060  under10%=16/34 | W=0.786(*0.80)  thetaP=0.635(*1.00)  <rel.err>=42% [2197s]
+  [Norm#1] done  under10%=16/34  phys=6.35e-08  W=0.786 thetaP=0.635  (2198s)
+  >> Normal start 1: under10%=16/34 phys=6.35e-08  (best so far under10%=18/34 phys=4.07e-08)
+  [Norm#2] arch 4x256 act=gelu net 207,879x10cond  rel_w=True colloc=fixed res=integral
+  [Norm#2] hybrid term=ra_h5 (2x5 tanh, constraint=none, wd=1e-08) 46 weights | recovering 34 mechanistic params
+    [Norm#2] Adam     1/2000  L=8.17e+00  Ld=5.38e-01  Lp=5.01e-04  Lic=3.81e-01  L2=3.50e-09  lp=7.80 | W=1.283(*0.80)  thetaP=0.547(*1.00)  <rel.err>=53% [1s]
+    [Norm#2] Adam   200/2000  L=7.46e-03  Ld=7.15e-03  Lp=1.83e-05  Lic=8.36e-06  L2=4.41e-09  lp=7.79 | W=1.037(*0.80)  thetaP=0.651(*1.00)  <rel.err>=63% [110s]
+    [Norm#2] Adam   400/2000  L=8.98e-04  Ld=8.85e-04  Lp=1.66e-06  Lic=2.29e-08  L2=4.36e-09  lp=7.86 | W=1.012(*0.80)  thetaP=0.654(*1.00)  <rel.err>=59% [223s]
+    [Norm#2] Adam   600/2000  L=5.57e-04  Ld=5.09e-04  Lp=9.00e-07  Lic=2.07e-06  L2=4.50e-09  lp=7.85 | W=0.989(*0.80)  thetaP=0.657(*1.00)  <rel.err>=57% [336s]
+    [Norm#2] Adam   800/2000  L=3.79e-04  Ld=3.74e-04  Lp=6.53e-07  Lic=5.61e-09  L2=4.60e-09  lp=7.85 | W=0.969(*0.80)  thetaP=0.661(*1.00)  <rel.err>=56% [449s]
+    [Norm#2] Adam  1000/2000  L=3.05e-04  Ld=3.01e-04  Lp=5.30e-07  Lic=4.39e-09  L2=4.67e-09  lp=7.89 | W=0.952(*0.80)  thetaP=0.664(*1.00)  <rel.err>=55% [562s]
+    [Norm#2] Adam  1200/2000  L=2.62e-04  Ld=2.58e-04  Lp=4.60e-07  Lic=3.58e-09  L2=4.71e-09  lp=7.97 | W=0.939(*0.80)  thetaP=0.667(*1.00)  <rel.err>=54% [676s]
+    [Norm#2] Adam  1400/2000  L=2.36e-04  Ld=2.32e-04  Lp=4.17e-07  Lic=3.09e-09  L2=4.74e-09  lp=8.10 | W=0.928(*0.80)  thetaP=0.670(*1.00)  <rel.err>=53% [789s]
+    [Norm#2] Adam  1600/2000  L=2.22e-04  Ld=2.19e-04  Lp=3.92e-07  Lic=2.83e-09  L2=4.75e-09  lp=8.27 | W=0.920(*0.80)  thetaP=0.673(*1.00)  <rel.err>=52% [902s]
+    [Norm#2] Adam  1800/2000  L=2.16e-04  Ld=2.13e-04  Lp=3.78e-07  Lic=2.72e-09  L2=4.76e-09  lp=8.51 | W=0.913(*0.80)  thetaP=0.675(*1.00)  <rel.err>=51% [1015s]
+    [Norm#2] Adam  2000/2000  L=2.15e-04  Ld=2.12e-04  Lp=3.70e-07  Lic=2.71e-09  L2=4.77e-09  lp=8.82 | W=0.907(*0.80)  thetaP=0.677(*1.00)  <rel.err>=51% [1128s]
+    [Norm#2] L-BFGS (150) ...
+    [Norm#2] LBFGS   50/150  L=6.40e-05 | W=0.834(*0.80)  thetaP=0.704(*1.00)  <rel.err>=64% [1477s]
+    [Norm#2] LBFGS  100/150  L=3.92e-05 | W=0.778(*0.80)  thetaP=0.723(*1.00)  <rel.err>=54% [1818s]
+    [Norm#2] LBFGS  150/150  L=2.41e-05 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2157s]
+    [Norm#2] param-refine (600, frozen, integral) ...
+    [Norm#2] refine   50/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2160s]
+    [Norm#2] refine  100/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2164s]
+    [Norm#2] refine  150/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2167s]
+    [Norm#2] refine  200/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2171s]
+    [Norm#2] refine  250/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2175s]
+    [Norm#2] refine  300/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2178s]
+    [Norm#2] refine  350/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2182s]
+    [Norm#2] refine  400/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2186s]
+    [Norm#2] refine  450/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2190s]
+    [Norm#2] refine  500/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2194s]
+    [Norm#2] refine  550/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2198s]
+    [Norm#2] refine  600/600  Lp+L2=6.63e-08  L2=4.97e-09  <f_NN>=0.982  under10%=16/34 | W=0.782(*0.80)  thetaP=0.734(*1.00)  <rel.err>=37% [2202s]
+  [Norm#2] done  under10%=16/34  phys=6.13e-08  W=0.782 thetaP=0.734  (2202s)
+  >> Normal start 2: under10%=16/34 phys=6.13e-08  (best so far under10%=18/34 phys=4.07e-08)
+  [Normal] learned term ra_h5 over x in [0.142, 1.174]: RMSE=0.0498 (NRMSE=3.3%)  gate_lo=1.00  [anchor weak here]
