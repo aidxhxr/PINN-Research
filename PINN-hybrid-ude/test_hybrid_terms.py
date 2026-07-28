@@ -69,9 +69,10 @@ class HybridTermTests(unittest.TestCase):
         net = APCMutationNN(width=5, depth=2)
         x = torch.linspace(0.0, 1.0, 101).reshape(-1, 1)
         y = net(x)
-        self.assertEqual(float(y[0]), 0.0)
-        self.assertGreaterEqual(float(torch.min(y)), 0.0)
-        self.assertGreaterEqual(float(torch.min(torch.diff(y[:, 0]))), -1e-12)
+        self.assertEqual(float(y[0].detach()), 0.0)
+        self.assertGreaterEqual(float(torch.min(y).detach()), 0.0)
+        self.assertGreaterEqual(
+            float(torch.min(torch.diff(y[:, 0])).detach()), -1e-12)
         y.sum().backward()
         self.assertTrue(all(
             parameter.grad is not None
@@ -81,7 +82,8 @@ class HybridTermTests(unittest.TestCase):
     def test_existing_activation_network_retains_exact_zero_anchor(self):
         torch.manual_seed(7)
         net = MechanisticNN(x_scale=1.0, constraint="anchored")
-        self.assertEqual(float(net(torch.zeros(1, 1))[0, 0]), 0.0)
+        value = net(torch.zeros(1, 1))[0, 0].detach()
+        self.assertEqual(float(value), 0.0)
 
 
 if __name__ == "__main__":
