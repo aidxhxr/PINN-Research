@@ -1,0 +1,23 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc
+variant=ra_h5_nc  term=ra_h5  constraint=none  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      18   34       3.3%     1.00  anchor weak
+Early Adenoma               18   34      10.9%     1.00  anchor weak
+Advanced Adenoma            10   34      24.1%     1.00  anchor weak
+Severe APC Loss              7   34      19.3%     1.00  anchor weak
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+learned term 'ra_h5' -- functional identifiability
+regime                            range      RMSE    NRMSE
+Normal               [ 0.142, 1.174]    0.0498    3.3%
+Early Adenoma        [ 0.138, 1.036]    0.1567   10.9%
+Advanced Adenoma     [ 0.137, 0.970]    0.3399   24.1%
+Severe APC Loss      [ 0.136, 0.947]    0.2699   19.3%
+
+wrote /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260726_233410_ra_h5_nc/learned_term_ra_h5.png
