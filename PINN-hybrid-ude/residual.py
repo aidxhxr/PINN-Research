@@ -37,7 +37,6 @@ def physics_rhs(t, z, p, nn_terms=None):
     """
     nn_terms = nn_terms or {}
     b, apc, h5, h13, m, r, c = (z[:, i:i+1] for i in range(7))
-    dP  = 1.0 + p["deltaP1"] * (1.0 - p["thetaP"])
     muR = _ra_t(t, p)
     wnt = _pulse_t(t, p["DW"], p["qW"], p["tauW1"], p["tauW2"])
     myc = _pulse_t(t, p["DM"], p["qM"], p["tauM1"], p["tauM2"])
@@ -55,6 +54,13 @@ def physics_rhs(t, z, p, nn_terms=None):
                    lambda: p["etaBM"]*_hill_t(b, p["kappaBM"], p["nB"]), b)
     bc_cyp = _term("bc_cyp",
                    lambda: p["etaBC"]*_hill_t(b, p["kappaBC"], p["nB"]), b)
+    apc_loss = (1.0 - p["thetaP"]) + torch.zeros_like(apc)
+    apc_mutation = _term(
+        "apc_mutation",
+        lambda: p["deltaP1"] * apc_loss,
+        apc_loss,
+    )
+    dP = 1.0 + apc_mutation
 
     f0 = (p["W"] + wnt + p["eta13"]*_hill_t(h13, p["kappa13"], p["nH"])
           - b - p["lambdaP"]*apc*b
