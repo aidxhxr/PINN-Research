@@ -52,6 +52,10 @@ def true_term(term, x, p=None):
         return p["etaB13"] * _hill_np(x, p["kappaB13"], p["nB"])
     if term == "bc_cyp":
         return p["etaBC"] * _hill_np(x, p["kappaBC"], p["nB"])
+    if term == "apc_mutation":
+        # x is APC functional loss, 1-thetaP. This is the EXCESS over the
+        # healthy basal degradation coefficient 1, not the full deltaP.
+        return p["deltaP1"] * np.maximum(x, 0.0)
     raise KeyError(term)
 
 
@@ -220,6 +224,9 @@ def build_terms(term, refs_for_regime, device, *, width=5, depth=2,
     if not term:
         return {}
     spec = HYBRID_TERMS[term]
+    if spec.get("input_kind") == "parameter":
+        net = APCMutationNN(n_in=1, width=width, depth=depth).to(device)
+        return {term: net}
     idx = VAR_INDEX[spec["inputs"][0]]
     x_max = max(float(np.abs(y_ref[:, idx]).max())
                 for (_t, y_ref) in refs_for_regime.values())
@@ -236,6 +243,9 @@ def observed_range(term, refs_for_regime):
     never constrained it there.
     """
     spec = HYBRID_TERMS[term]
+    if spec.get("input_kind") == "parameter":
+        # Cross-severity calibration uses thetaP in [0.25, 1].
+        return 0.0, 0.75
     idx = VAR_INDEX[spec["inputs"][0]]
     lo = min(float(y_ref[:, idx].min()) for (_t, y_ref) in refs_for_regime.values())
     hi = max(float(y_ref[:, idx].max()) for (_t, y_ref) in refs_for_regime.values())
