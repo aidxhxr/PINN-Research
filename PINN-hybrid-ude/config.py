@@ -177,6 +177,12 @@ HYBRID_DEPTH = int(os.environ.get("HYBRID_DEPTH", "2"))
 # L2 on NN weights (MEAN squared weight; see MechanisticNN.l2 for why the
 # review's lambda in [0.1, 10] does NOT transfer to our loss scale).
 HYBRID_WD    = float(os.environ.get("HYBRID_WD", "1e-8"))
+# Optional frozen learned term. APC uses this for inverse validation after a
+# single cross-severity mutation function has been calibrated.
+HYBRID_STATE = os.environ.get("HYBRID_STATE", "").strip()
+HYBRID_FREEZE = os.environ.get("HYBRID_FREEZE", "0").strip().lower() in {
+    "1", "true", "yes", "on",
+}
 
 HYBRID_REPLACED = (set(HYBRID_TERMS[HYBRID_TERM]["replaces"])
                    if HYBRID_TERM else set())
