@@ -1,0 +1,12 @@
+
+run: runs/20260726_195830_control
+variant=control  term=None  constraint=anchored  wd=1e-06
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      18   36          -
+Early Adenoma               15   36          -
+Advanced Adenoma            12   36          -
+Severe APC Loss              8   36          -
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
