@@ -1,0 +1,23 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen
+variant=apc_mutation_frozen  term=apc_mutation  constraint=anchored_monotone  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      17   35       0.1%     0.00  anchor BINDS
+Early Adenoma               15   35       0.1%     0.00  anchor BINDS
+Advanced Adenoma            12   35       0.1%     0.00  anchor BINDS
+Severe APC Loss              9   35       0.1%     0.00  anchor BINDS
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+learned term 'apc_mutation' -- functional identifiability
+regime                            range      RMSE    NRMSE
+Normal               [ 0.000, 0.750]    0.0018    0.1%
+Early Adenoma        [ 0.000, 0.750]    0.0018    0.1%
+Advanced Adenoma     [ 0.000, 0.750]    0.0018    0.1%
+Severe APC Loss      [ 0.000, 0.750]    0.0018    0.1%
+
+wrote /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/learned_term_apc_mutation.png
