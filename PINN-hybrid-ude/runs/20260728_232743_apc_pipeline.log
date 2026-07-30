@@ -1,0 +1,148 @@
+[pipeline] started=2026-07-28T23:27:43+00:00
+[pipeline] calibration=/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_232743_apc_calibration
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+Generating cross-severity APC calibration trajectories
+  seed=42 adam     1/2000 L=9.478e-02 Lp=9.478e-02 elapsed=0.1s
+  seed=42 adam   200/2000 L=4.060e-02 Lp=4.060e-02 elapsed=9.5s
+  seed=42 adam   400/2000 L=2.959e-03 Lp=2.959e-03 elapsed=17.7s
+  seed=42 adam   600/2000 L=2.639e-05 Lp=2.639e-05 elapsed=25.8s
+  seed=42 adam   800/2000 L=6.741e-06 Lp=6.740e-06 elapsed=33.8s
+  seed=42 adam  1000/2000 L=6.723e-06 Lp=6.722e-06 elapsed=41.6s
+  seed=42 adam  1200/2000 L=6.723e-06 Lp=6.722e-06 elapsed=50.1s
+  seed=42 adam  1400/2000 L=6.723e-06 Lp=6.722e-06 elapsed=58.1s
+  seed=42 adam  1600/2000 L=6.723e-06 Lp=6.722e-06 elapsed=65.7s
+  seed=42 adam  1800/2000 L=6.723e-06 Lp=6.722e-06 elapsed=73.4s
+  seed=42 adam  2000/2000 L=6.723e-06 Lp=6.722e-06 elapsed=81.0s
+  seed=42 final physics=6.722e-06
+  seed=1042 adam     1/2000 L=9.651e-02 Lp=9.651e-02 elapsed=0.0s
+  seed=1042 adam   200/2000 L=4.074e-02 Lp=4.074e-02 elapsed=7.7s
+  seed=1042 adam   400/2000 L=2.830e-03 Lp=2.830e-03 elapsed=15.3s
+  seed=1042 adam   600/2000 L=2.581e-05 Lp=2.581e-05 elapsed=23.1s
+  seed=1042 adam   800/2000 L=6.747e-06 Lp=6.746e-06 elapsed=31.0s
+  seed=1042 adam  1000/2000 L=6.728e-06 Lp=6.727e-06 elapsed=38.9s
+  seed=1042 adam  1200/2000 L=6.728e-06 Lp=6.727e-06 elapsed=46.7s
+  seed=1042 adam  1400/2000 L=6.728e-06 Lp=6.727e-06 elapsed=54.2s
+  seed=1042 adam  1600/2000 L=6.728e-06 Lp=6.727e-06 elapsed=61.6s
+  seed=1042 adam  1800/2000 L=6.728e-06 Lp=6.727e-06 elapsed=68.9s
+  seed=1042 adam  2000/2000 L=6.728e-06 Lp=6.727e-06 elapsed=76.4s
+  seed=1042 final physics=6.727e-06
+  seed=2042 adam     1/2000 L=9.374e-02 Lp=9.374e-02 elapsed=0.0s
+  seed=2042 adam   200/2000 L=3.989e-02 Lp=3.989e-02 elapsed=7.7s
+  seed=2042 adam   400/2000 L=2.929e-03 Lp=2.929e-03 elapsed=15.6s
+  seed=2042 adam   600/2000 L=2.596e-05 Lp=2.596e-05 elapsed=23.4s
+  seed=2042 adam   800/2000 L=6.742e-06 Lp=6.741e-06 elapsed=31.0s
+  seed=2042 adam  1000/2000 L=6.724e-06 Lp=6.723e-06 elapsed=38.8s
+  seed=2042 adam  1200/2000 L=6.724e-06 Lp=6.723e-06 elapsed=46.5s
+  seed=2042 adam  1400/2000 L=6.724e-06 Lp=6.723e-06 elapsed=53.9s
+  seed=2042 adam  1600/2000 L=6.724e-06 Lp=6.723e-06 elapsed=61.5s
+  seed=2042 adam  1800/2000 L=6.724e-06 Lp=6.723e-06 elapsed=69.1s
+  seed=2042 adam  2000/2000 L=6.724e-06 Lp=6.723e-06 elapsed=76.5s
+  seed=2042 final physics=6.723e-06
+  seed=3042 adam     1/2000 L=9.624e-02 Lp=9.624e-02 elapsed=0.0s
+  seed=3042 adam   200/2000 L=4.133e-02 Lp=4.133e-02 elapsed=7.8s
+  seed=3042 adam   400/2000 L=3.104e-03 Lp=3.104e-03 elapsed=15.5s
+  seed=3042 adam   600/2000 L=2.942e-05 Lp=2.942e-05 elapsed=23.4s
+  seed=3042 adam   800/2000 L=6.746e-06 Lp=6.745e-06 elapsed=31.1s
+  seed=3042 adam  1000/2000 L=6.721e-06 Lp=6.720e-06 elapsed=38.9s
+  seed=3042 adam  1200/2000 L=6.721e-06 Lp=6.720e-06 elapsed=47.0s
+  seed=3042 adam  1400/2000 L=6.721e-06 Lp=6.720e-06 elapsed=55.8s
+  seed=3042 adam  1600/2000 L=6.721e-06 Lp=6.720e-06 elapsed=63.9s
+  seed=3042 adam  1800/2000 L=6.721e-06 Lp=6.720e-06 elapsed=72.6s
+  seed=3042 adam  2000/2000 L=6.721e-06 Lp=6.720e-06 elapsed=80.8s
+  seed=3042 final physics=6.720e-06
+  seed=4042 adam     1/2000 L=9.523e-02 Lp=9.523e-02 elapsed=0.0s
+  seed=4042 adam   200/2000 L=4.228e-02 Lp=4.228e-02 elapsed=9.1s
+  seed=4042 adam   400/2000 L=3.438e-03 Lp=3.438e-03 elapsed=18.7s
+  seed=4042 adam   600/2000 L=3.231e-05 Lp=3.231e-05 elapsed=27.8s
+  seed=4042 adam   800/2000 L=6.745e-06 Lp=6.744e-06 elapsed=36.0s
+  seed=4042 adam  1000/2000 L=6.719e-06 Lp=6.718e-06 elapsed=44.5s
+  seed=4042 adam  1200/2000 L=6.719e-06 Lp=6.718e-06 elapsed=53.0s
+  seed=4042 adam  1400/2000 L=6.719e-06 Lp=6.718e-06 elapsed=62.5s
+  seed=4042 adam  1600/2000 L=6.719e-06 Lp=6.718e-06 elapsed=72.1s
+  seed=4042 adam  1800/2000 L=6.719e-06 Lp=6.718e-06 elapsed=81.0s
+  seed=4042 adam  2000/2000 L=6.719e-06 Lp=6.717e-06 elapsed=90.0s
+  seed=4042 final physics=6.717e-06
+APC calibration complete: held-out NRMSE=0.12%, curve NRMSE=0.12%, anchor=0.000e+00, min increment=6.551e-03
+CHECKPOINT=/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_232743_apc_calibration/apc_mutation.pt
+[pipeline] frozen inverse checkpoint=/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_232743_apc_calibration/apc_mutation.pt
+variant=apc_mutation_frozen
+HYBRID_TERM=apc_mutation
+HYBRID_CONSTRAINT=anchored_monotone
+HYBRID_WD=1e-8
+HYBRID_FREEZE=1
+HYBRID_STATE=/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_232743_apc_calibration/apc_mutation.pt
+starts=3
+started=2026-07-28T23:34:50+00:00
+[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/refs.pkl
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/refs.pkl
+[run] variant=apc_mutation_frozen starts=3  4 regimes in parallel
+  launched Normal (pid 380944) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal.log
+  launched Early Adenoma (pid 380945) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma.log
+  launched Advanced Adenoma (pid 380946) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma.log
+  launched Severe APC Loss (pid 380947) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss.log
+[done] variant=apc_mutation_frozen  (fail=0)
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen
+variant=apc_mutation_frozen  term=apc_mutation  constraint=anchored_monotone  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      17   35       0.1%     0.00  anchor BINDS
+Early Adenoma               15   35       0.1%     0.00  anchor BINDS
+Advanced Adenoma            12   35       0.1%     0.00  anchor BINDS
+Severe APC Loss              9   35       0.1%     0.00  anchor BINDS
+TOTAL                       53     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+learned term 'apc_mutation' -- functional identifiability
+regime                            range      RMSE    NRMSE
+Normal               [ 0.000, 0.750]    0.0018    0.1%
+Early Adenoma        [ 0.000, 0.750]    0.0018    0.1%
+Advanced Adenoma     [ 0.000, 0.750]    0.0018    0.1%
+Severe APC Loss      [ 0.000, 0.750]    0.0018    0.1%
+
+wrote /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/learned_term_apc_mutation.png
+[pipeline] finished=2026-07-29T01:21:30+00:00
