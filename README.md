@@ -84,6 +84,41 @@ parameters** gives a well-posed system — cond(FIM) ≈ 10²–10³, zero null
 directions, all eight IDENT — showing precisely where the recoverable
 information lives.
 
+**4 — In a hybrid model, what breaks is the data, not the architecture.** In a
+hybrid / universal-differential-equation (UDE) model we hand one regulatory
+relationship to a small neural network and keep the rest mechanistic. The
+network is built with `f(0) = 0` — no regulator means no activation — and that
+constraint is meant to stop it absorbing a constant out of the equation's
+basal-production parameter. It doesn't. We tried five ways of imposing it,
+including the monotone-and-bounded construction the UDE literature recommends;
+all five leave the basal parameter **14–203 %** off.
+
+The reason is that **no regulator in this model ever gets near zero** under any
+of our conditions, so `f(0) = 0` is a constraint asserted where no data live.
+Adding two *depletion* protocols — a WNT knockdown and a retinoid-free diet —
+puts the anchor inside the observed range, and the same hybrid with the same
+seeds and budget improves by up to two orders of magnitude:
+
+| learned edge | functional error | basal-parameter error | equation parameters |
+|--------------|------------------|-----------------------|---------------------|
+| RA → HOXA5 | 12.8 % → **0.4 %** | 25.3 % → **0.4 %** | 3/8 → **8/8** |
+| RA → CYP26A1 | 1.0 % → **0.1 %** | 15.6 % → **0.7 %** | 6/8 → **8/8** |
+| β-catenin → MYC | 7.6 % → **0.5 %** | 49.0 % → **2.7 %** | 2/4 → **4/4** |
+
+The gain tracks *how completely* the regulator reaches zero: retinoic acid gets
+there exactly, β-catenin only to 0.013 because a feedback arm keeps producing
+it. A control arm adding the same number of extra experiments **without**
+reaching any anchor changes nothing (4.0 → 4.2 %), so the effect is
+anchor-visiting rather than extra data.
+
+Two further findings come from screening all **13** regulatory edges instead of
+three hand-picked ones. Edges where the network *multiplies* a state rather
+than adding to it have no constant to absorb, and recover **every** surviving
+parameter at 0.0–4.5 % with no special conditions. And in the highest-WNT
+regime, where the mechanistic fit is itself badly conditioned, the hybrid can
+*beat* it — so "the neural component always hurts identifiability" is not
+unconditional.
+
 ---
 
 ## Repository map
