@@ -244,9 +244,11 @@ def main(dirs):
         a.set_yticklabels([f"{t}  ({CLASS[term_class(t)]})" for t in labels],
                           fontsize=9)
         a.grid(axis="x", alpha=0.25, lw=0.6, zorder=0)
-        a.invert_yaxis()
         for s in ("top", "right"):
             a.spines[s].set_visible(False)
+    # ONCE, not per-axis: sharey=True means inverting both cancels out and the
+    # rows come back in bottom-up order with the 10% label thrown to the top.
+    axes[0].invert_yaxis()
 
     fig.suptitle("Neural-mechanistic edge atlas — every regulatory "
                  "relationship in the WNT-RA-HOX model, learned one at a time",
