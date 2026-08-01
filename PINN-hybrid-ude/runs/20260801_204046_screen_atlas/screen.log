@@ -13,3 +13,5 @@ screen: 12 terms x 4 regimes x 2 parameterisations, 2 starts (noise=0.0)
   Normal             b_h13      gated       fNRMSE=  9.9%  eq params 2/4 (ctrl 6/6)  basal_err=20.4% (ctrl 0.0%)  [1857s]
   Normal             b_h13      sc          fNRMSE=  4.0%  eq params 4/4 (ctrl 6/6)  basal_err=8.3% (ctrl 0.0%)  [2088s]
   Normal             bc_cyp     gated       fNRMSE=  3.3%  eq params 3/4 (ctrl 6/6)  basal_err=41.5% (ctrl 7.4%)  [2708s]
+  Normal             bc_cyp     sc          fNRMSE=  5.4%  eq params 3/4 (ctrl 6/6)  basal_err=70.1% (ctrl 7.4%)  [5152s]
+  Normal             rc_cyp     gated       fNRMSE=  4.4%  eq params 3/4 (ctrl 6/6)  basal_err=31.6% (ctrl 7.4%)  [5379s]
