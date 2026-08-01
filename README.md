@@ -134,6 +134,9 @@ unconditional.
 | `PINN-inverse-pinn-boost/` | The **integral-residual** PINN that breaks the derivative-bias ceiling |
 | `PINN-fisher-matrix/` | Full 36-parameter Fisher-information identifiability analysis |
 | `PINN-fisher-matrix-top8/` | Reduced 8-parameter well-posed contrast |
+| `PINN-bayesian/` | **Bayesian inverse** PINN — HMC over the parameters with the state nets frozen → posterior marginals |
+| `PINN-forward-bayesian/` | **Bayesian forward** PINN — HMC over the network weights → posterior-predictive trajectory band |
+| `PINN-hybrid-ude/` | **Neural-mechanistic hybrids (UDEs)** — 13 learnable regulatory edges, 5 constraint parameterisations, the equation-local edge screen, and the anchor-visiting experiment |
 | `network-diagram/` | The regulatory-network schematic (TikZ source + PDF) |
 
 ---
