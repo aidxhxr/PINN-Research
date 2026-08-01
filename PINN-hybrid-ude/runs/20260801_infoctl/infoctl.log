@@ -1,0 +1,12 @@
+=== information-matched control arm  2026-08-01T22:39:33+00:00
+  Severe APC Loss      wntPulse2  t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_infoctl/refs_info.pkl
+screen: 4 terms x 2 regimes x 1 parameterisations, 1 starts (noise=0.0)
+  Normal             dc         mechanistic                   eq params 6/6  phys=6.37e-09  [100s]
+  Normal             dh5        mechanistic                   eq params 6/6  phys=2.01e-08  [185s]
+  Normal             dm         mechanistic                   eq params 4/4  phys=1.16e-09  [281s]
+  Normal             bm_myc     gated       fNRMSE=  4.2%  eq params 1/2 (ctrl 4/4)  basal_err=20.0% (ctrl 0.0%)  [393s]
+  Normal             ra_h5      gated       fNRMSE=  1.7%  eq params 3/4 (ctrl 6/6)  basal_err=12.9% (ctrl 0.5%)  [607s]
+  Normal             bc_cyp     gated       fNRMSE=  4.4%  eq params 2/4 (ctrl 6/6)  basal_err=26.9% (ctrl 7.6%)  [719s]
+  Normal             rc_cyp     gated       fNRMSE=  1.3%  eq params 3/4 (ctrl 6/6)  basal_err=10.9% (ctrl 7.6%)  [827s]
+  Severe APC Loss    dc         mechanistic                   eq params 5/6  phys=1.46e-09  [995s]
