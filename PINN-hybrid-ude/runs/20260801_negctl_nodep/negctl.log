@@ -1,0 +1,33 @@
+===== NEGATIVE CONTROL ARM A: 10 conditions =====
+screen: 3 terms x 2 regimes x 1 parameterisations, 1 starts (noise=0.0)
+  Normal             db         mechanistic                   eq params 6/6  phys=6.80e-09  [90s]
+  Normal             dh13       mechanistic                   eq params 6/6  phys=4.38e-08  [179s]
+  Normal             dr         mechanistic                   eq params 2/2  phys=2.12e-08  [231s]
+  Normal             h13_b      gated       fNRMSE= 15.3%  eq params 1/4 (ctrl 6/6)  basal_err=13.4% (ctrl 0.2%)  [317s]
+  Normal             m_h13      gated       fNRMSE= 57.2%  eq params 0/4 (ctrl 6/6)  basal_err=12.8% (ctrl 7.0%)  [403s]
+  Normal             c_ra       gated       fNRMSE=  0.0%  eq params 1/1 (ctrl 2/2)  basal_err=nan% (ctrl nan%)  [485s]
+  Severe APC Loss    db         mechanistic                   eq params 1/6  phys=2.34e-08  [559s]
+  Severe APC Loss    dh13       mechanistic                   eq params 3/6  phys=3.13e-09  [628s]
+  Severe APC Loss    dr         mechanistic                   eq params 2/2  phys=1.55e-08  [676s]
+  Severe APC Loss    h13_b      gated       fNRMSE=171.4%  eq params 2/4 (ctrl 1/6)  basal_err=57.5% (ctrl 16.8%)  [758s]
+  Severe APC Loss    m_h13      gated       fNRMSE= 11.6%  eq params 2/4 (ctrl 3/6)  basal_err=95.6% (ctrl 28.4%)  [845s]
+  Severe APC Loss    c_ra       gated       fNRMSE=  0.1%  eq params 1/1 (ctrl 2/2)  basal_err=nan% (ctrl nan%)  [932s]
+
+wrote runs/20260801_negctl_nodep/screen.json  (932s)
+===== NEGATIVE CONTROL ARM B: 12 conditions =====
+screen: 3 terms x 2 regimes x 1 parameterisations, 1 starts (noise=0.0)
+  Normal             db         mechanistic                   eq params 6/6  phys=1.72e-07  [76s]
+  Normal             dh13       mechanistic                   eq params 6/6  phys=3.77e-08  [156s]
+  Normal             dr         mechanistic                   eq params 2/2  phys=4.28e-08  [215s]
+  Normal             h13_b      gated       fNRMSE=  0.4%  eq params 4/4 (ctrl 6/6)  basal_err=0.1% (ctrl 0.2%)  [318s]
+  Normal             m_h13      gated       fNRMSE= 22.4%  eq params 0/4 (ctrl 6/6)  basal_err=55.8% (ctrl 4.2%)  [418s]
+  Normal             c_ra       gated       fNRMSE=  0.0%  eq params 1/1 (ctrl 2/2)  basal_err=nan% (ctrl nan%)  [513s]
+  Severe APC Loss    db         mechanistic                   eq params 4/6  phys=1.16e-07  [587s]
+  Severe APC Loss    dh13       mechanistic                   eq params 6/6  phys=1.05e-08  [671s]
+  Severe APC Loss    dr         mechanistic                   eq params 2/2  phys=3.59e-08  [730s]
+  Severe APC Loss    h13_b      gated       fNRMSE= 11.7%  eq params 2/4 (ctrl 4/6)  basal_err=5.5% (ctrl 3.9%)  [831s]
+  Severe APC Loss    m_h13      gated       fNRMSE= 71.8%  eq params 2/4 (ctrl 6/6)  basal_err=2.5% (ctrl 3.9%)  [933s]
+  Severe APC Loss    c_ra       gated       fNRMSE=  0.3%  eq params 1/1 (ctrl 2/2)  basal_err=nan% (ctrl nan%)  [1025s]
+
+wrote runs/20260801_negctl_dep/screen.json  (1025s)
+NEGDONE

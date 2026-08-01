@@ -185,5 +185,32 @@
       "kappaM13": 0.17903546168588647
     },
     "ctrl_basal_err": 0.2842026862135456
+  },
+  {
+    "regime": "Severe APC Loss",
+    "term": "c_ra",
+    "param": "gated",
+    "eq": "dr",
+    "seed": 100,
+    "physics": 1.8965761196448006e-08,
+    "n_eq_params": 1,
+    "eq_under10": 1,
+    "param_err": {
+      "epsR": 0.0026105036368777312
+    },
+    "recovered": {
+      "epsR": 0.4010442014547511
+    },
+    "term_rmse": 0.0008566484858520052,
+    "term_nrmse": 0.0005115042807739888,
+    "x_lo": 0.4,
+    "x_hi": 2.4448499101636005,
+    "ctrl_eq_under10": 2,
+    "ctrl_n_eq_params": 2,
+    "ctrl_physics": 1.5534360710383905e-08,
+    "ctrl_param_err": {
+      "epsR": 0.016770010817819953,
+      "lambdaC": 1.127506271615593e-06
+    }
   }
 ]

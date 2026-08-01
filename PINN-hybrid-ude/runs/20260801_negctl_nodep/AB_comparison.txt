@@ -1,0 +1,17 @@
+
+A = 10cond   B = 12cond
+
+edge      regime            param    fNRMSE A        B    delta    basal A        B    delta    eq A    B
+---------------------------------------------------------------------------------------------------------
+c_ra      Normal            gated        0.0%     0.0%    +0.0%          -        -        -    1/1   1/1    (ctrl 1/1)
+c_ra      Severe APC Loss   gated        0.1%     0.3%    +0.2%          -        -        -    1/1   1/1    (ctrl 1/1)
+h13_b     Normal            gated       15.3%     0.4%   -14.8%      13.4%     0.1%   -13.2%    1/4   4/4    (ctrl 4/4)
+h13_b     Severe APC Loss   gated      171.4%    11.7%  -159.7%      57.5%     5.5%   -52.0%    2/4   2/4    (ctrl 0/2)
+m_h13     Normal            gated       57.2%    22.4%   -34.9%      12.8%    55.8%   +42.9%    0/4   0/4    (ctrl 4/4)
+m_h13     Severe APC Loss   gated       11.6%    71.8%   +60.3%      95.6%     2.5%   -93.1%    2/4   2/4    (ctrl 3/4)
+
+per-edge means over the regimes screened:
+edge       fNRMSE A        B    delta    basal A        B    delta    eq params A     B
+c_ra           0.0%     0.2%    +0.1%          -        -        -           2/2   2/2 
+h13_b         93.3%     6.1%   -87.3%      35.4%     2.8%   -32.6%           3/8   6/8 
+m_h13         34.4%    47.1%   +12.7%      54.2%    29.1%   -25.1%           2/8   2/8 
