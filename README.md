@@ -21,9 +21,9 @@ knobs that separate four clinical regimes:
 | Regime | Meaning |
 |--------|---------|
 | **Normal** | healthy tissue, low WNT |
-| **Early adenoma** | early lesion |
-| **Cancer-like** | elevated WNT |
-| **Strong APC-mutant** | saturated WNT, loss of APC control |
+| **Early Adenoma** | early lesion |
+| **Advanced Adenoma** | elevated WNT |
+| **Severe APC Loss** | saturated WNT, loss of APC control |
 
 The system has **36 kinetic parameters**. Recovering them from a handful of
 trajectories is a classically ill-posed inverse problem (condition number
@@ -59,7 +59,7 @@ raising the recovery count. Shrinking and regularizing the network did nothing
 conditions** — exogenous pulses that directly perturb the WNT and MYC nodes and
 light up the "dark" half of the network — lifted the classical ODE-fit recovery
 from a **18/17/13/13** baseline to **24/23/21/14** parameters under 10 % error
-(Normal / Early / Cancer / Strong).
+(Normal / Early Adenoma / Advanced Adenoma / Severe APC Loss).
 
 **2 — The PINN's autodiff-derivative ceiling is breakable.** The inverse PINN
 had a lower ceiling (~8/36) than the classical ODE-fit, which we traced to a
