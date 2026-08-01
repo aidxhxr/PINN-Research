@@ -1,0 +1,13 @@
+=== regime=Normal  variant=control  hybrid_term=None  n_unknown=36  knobs={'rel_weight': True, 'colloc_mode': 'fixed', 'residual_mode': 'integral', 'activation': 'gelu', 'n_starts': 3} ===
+  [Norm#0] arch 4x256 act=gelu net 207,879x12cond  rel_w=True colloc=fixed res=integral
+  [Norm#0] hybrid term=None param=gated (2x5 tanh, constraint=anchored, wd=1e-08) 0 trainable weights frozen=False | recovering 36 mechanistic params
+    [Norm#0] Adam     1/2000  L=8.64e+00  Ld=5.37e-01  Lp=3.14e-04  Lic=4.05e-01  L2=0.00e+00  lp=10.96 | W=1.194(*0.80)  thetaP=0.599(*1.00)  <rel.err>=50% [2s]
+    [Norm#0] Adam   200/2000  L=8.98e-03  Ld=8.82e-03  Lp=1.11e-05  Lic=1.01e-06  L2=0.00e+00  lp=12.20 | W=0.795(*0.80)  thetaP=0.707(*1.00)  <rel.err>=57% [175s]
+    [Norm#0] Adam   400/2000  L=1.00e-03  Ld=9.82e-04  Lp=1.51e-06  Lic=2.26e-08  L2=0.00e+00  lp=12.40 | W=0.764(*0.80)  thetaP=0.714(*1.00)  <rel.err>=52% [344s]
+    [Norm#0] Adam   600/2000  L=6.29e-04  Ld=6.16e-04  Lp=9.69e-07  Lic=2.89e-08  L2=0.00e+00  lp=12.24 | W=0.758(*0.80)  thetaP=0.717(*1.00)  <rel.err>=49% [487s]
+    [Norm#0] Adam   800/2000  L=4.83e-04  Ld=4.74e-04  Lp=7.17e-07  Lic=7.33e-09  L2=0.00e+00  lp=12.17 | W=0.756(*0.80)  thetaP=0.721(*1.00)  <rel.err>=48% [624s]
+    [Norm#0] Adam  1000/2000  L=3.98e-04  Ld=3.91e-04  Lp=5.71e-07  Lic=5.57e-09  L2=0.00e+00  lp=12.30 | W=0.755(*0.80)  thetaP=0.724(*1.00)  <rel.err>=47% [783s]
+    [Norm#0] Adam  1200/2000  L=3.46e-04  Ld=3.40e-04  Lp=4.90e-07  Lic=4.76e-09  L2=0.00e+00  lp=12.62 | W=0.754(*0.80)  thetaP=0.727(*1.00)  <rel.err>=47% [937s]
+    [Norm#0] Adam  1400/2000  L=3.15e-04  Ld=3.09e-04  Lp=4.45e-07  Lic=4.28e-09  L2=0.00e+00  lp=13.06 | W=0.754(*0.80)  thetaP=0.730(*1.00)  <rel.err>=47% [1073s]
+    [Norm#0] Adam  1600/2000  L=2.99e-04  Ld=2.93e-04  Lp=4.20e-07  Lic=4.03e-09  L2=0.00e+00  lp=13.53 | W=0.754(*0.80)  thetaP=0.732(*1.00)  <rel.err>=47% [1213s]
+    [Norm#0] Adam  1800/2000  L=2.92e-04  Ld=2.87e-04  Lp=4.07e-07  Lic=3.93e-09  L2=0.00e+00  lp=14.01 | W=0.753(*0.80)  thetaP=0.734(*1.00)  <rel.err>=47% [1363s]
