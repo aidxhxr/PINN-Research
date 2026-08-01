@@ -8,10 +8,11 @@ import torch
 
 from config import (BASELINE, REGIMES, CONDITIONS, DEVICE, VAR_NAMES,
                     UNKNOWN, INIT_GUESS, PARAM_RANGE, NOMINAL,
-                    HYBRID_TERM, HYBRID_CONSTRAINT, HYBRID_ACT,
+                    HYBRID_TERM, HYBRID_TERM_LIST, HYBRID_TERMS,
+                    HYBRID_CONSTRAINT, HYBRID_ACT,
                     HYBRID_WIDTH, HYBRID_DEPTH, HYBRID_WD,
-                    HYBRID_STATE, HYBRID_FREEZE)
-from hybrid import build_terms, observed_range, true_term
+                    HYBRID_STATE, HYBRID_FREEZE, HYBRID_PARAM)
+from hybrid import build_terms, observed_range, observed_points, true_term
 from model import ForwardPINN, InverseParams, time_derivatives
 from residual import physics_residual, physics_rhs
 
@@ -55,10 +56,13 @@ def _term_mean(nn_terms, refs_for_regime):
     silently (it would read as 'the hybrid hurt recovery')."""
     if not nn_terms:
         return "-"
-    from config import HYBRID_TERM
-    lo, hi = observed_range(HYBRID_TERM, refs_for_regime)
-    g = np.linspace(lo, hi, 200)
-    return f"{float(np.mean(nn_terms[HYBRID_TERM].curve(g, device=DEVICE))):.3f}"
+    out = []
+    for name, net_t in nn_terms.items():
+        x = observed_points(name, refs_for_regime, max_points=400) \
+            if HYBRID_TERMS[name].get("input_kind") != "parameter" else \
+            np.linspace(*observed_range(name, refs_for_regime), 200)
+        out.append(f"{float(np.mean(net_t.curve(x, device=DEVICE))):.3f}")
+    return "/".join(out)
 
 
 def _grad_norm(loss, params):
@@ -137,13 +141,22 @@ def _train_once(name, refs_for_regime, true_vals, *,
     # ForwardPINN init, so the hybrid and the mechanistic `control` would train
     # different state nets off the same seed and the hybrid-minus-control delta
     # (the entire deliverable) would be confounded by a re-randomisation.
-    nn_terms = build_terms(HYBRID_TERM, refs_for_regime, DEVICE,
+    nn_terms = build_terms(HYBRID_TERM_LIST, refs_for_regime, DEVICE,
                            width=HYBRID_WIDTH, depth=HYBRID_DEPTH,
-                           constraint=HYBRID_CONSTRAINT, act=HYBRID_ACT)
+                           constraint=HYBRID_CONSTRAINT, act=HYBRID_ACT,
+                           param=HYBRID_PARAM)
     if nn_terms and HYBRID_STATE:
-        state = torch.load(HYBRID_STATE, map_location=DEVICE, weights_only=True)
-        nn_terms[HYBRID_TERM].load_state_dict(state)
-        print(f"  [{tag}] loaded learned term from {HYBRID_STATE}")
+        # "<path>" for a single active term, or "term=<path>,term=<path>"
+        for chunk in HYBRID_STATE.split(","):
+            if "=" in chunk:
+                tname, path = chunk.split("=", 1)
+            else:
+                tname, path = HYBRID_TERM_LIST[0], chunk
+            state = torch.load(path.strip(), map_location=DEVICE,
+                               weights_only=True)
+            nn_terms[tname.strip()].load_state_dict(state)
+            print(f"  [{tag}] loaded learned term {tname.strip()} "
+                  f"from {path.strip()}")
     if nn_terms and HYBRID_FREEZE:
         for net_t in nn_terms.values():
             net_t.requires_grad_(False)
@@ -174,7 +187,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
     print(f"  [{tag}] arch {depth}x{width} act={activation} "
           f"net {n_net:,}x{len(conds)}cond  "
           f"rel_w={rel_weight} colloc={colloc_mode} res={residual_mode}")
-    print(f"  [{tag}] hybrid term={HYBRID_TERM} "
+    print(f"  [{tag}] hybrid term={HYBRID_TERM} param={HYBRID_PARAM} "
           f"({HYBRID_DEPTH}x{HYBRID_WIDTH} {HYBRID_ACT}, "
           f"constraint={HYBRID_CONSTRAINT}, wd={HYBRID_WD}) "
           f"{n_term} trainable weights frozen={HYBRID_FREEZE} | "
@@ -507,28 +520,48 @@ def train_inverse(name, refs_for_regime, *,
     # (arXiv:2510.14140 splits this from parametric identifiability; only the
     # synthetic-data setting lets us measure it at all.)
     term_score = None
-    if best["nn_terms"]:
-        net_t = best["nn_terms"][HYBRID_TERM]
+    term_scores = {}
+    for tname, net_t in (best["nn_terms"] or {}).items():
         torch.save(net_t.state_dict(),
-                   os.path.join(out_dir, f"{safe}_term_{HYBRID_TERM}.pt"))
-        lo, hi = observed_range(HYBRID_TERM, refs_for_regime)
-        grid = np.linspace(lo, hi, 400)
+                   os.path.join(out_dir, f"{safe}_term_{tname}.pt"))
+        p_true = {**BASELINE, **REGIMES[name]}
+        multi = len(HYBRID_TERMS[tname]["inputs"]) > 1
+        lo, hi = observed_range(tname, refs_for_regime)
+        # 1-D terms are scored on an even grid over the visited range (kept for
+        # comparability with the 2026-07 runs); the multivariate term is scored
+        # on the points the trajectories actually visit, since a rectangular
+        # grid would include states the system never reaches.
+        if multi:
+            grid = observed_points(tname, refs_for_regime)
+        else:
+            grid = np.linspace(lo, hi, 400)
         learned = net_t.curve(grid, device=DEVICE)
-        truth = true_term(HYBRID_TERM, grid, {**BASELINE, **REGIMES[name]})
+        truth = true_term(tname, grid, p_true)
         rmse = float(np.sqrt(np.mean((learned - truth)**2)))
         denom = float(np.sqrt(np.mean(truth**2))) or 1.0
         gate_lo = net_t.gate_lo(lo)
-        term_score = {"term": HYBRID_TERM, "r_lo": lo, "r_hi": hi,
-                      "rmse": rmse, "nrmse": rmse / denom,
-                      "gate_lo": gate_lo, "constraint": HYBRID_CONSTRAINT,
-                      "grid": grid.tolist(), "learned": learned.tolist(),
-                      "truth": truth.tolist()}
-        with open(os.path.join(out_dir, f"{safe}_term.json"), "w") as fh:
-            json.dump(term_score, fh)
-        print(f"  [{name}] learned term {HYBRID_TERM} over "
+        term_scores[tname] = {
+            "term": tname, "r_lo": lo, "r_hi": hi,
+            "rmse": rmse, "nrmse": rmse / denom,
+            "gate_lo": gate_lo, "constraint": HYBRID_CONSTRAINT,
+            "param": HYBRID_PARAM, "multi_input": multi,
+            "grid": (grid.tolist() if not multi else None),
+            "learned": (learned.tolist() if not multi else None),
+            "truth": (truth.tolist() if not multi else None)}
+        print(f"  [{name}] learned term {tname} over "
               f"x in [{lo:.3f}, {hi:.3f}]: RMSE={rmse:.4f} "
               f"(NRMSE={rmse/denom:.1%})  gate_lo={gate_lo:.2f}"
               f"{'  [anchor BINDS]' if gate_lo < 0.5 else '  [anchor weak here]'}")
+    if term_scores:
+        # single-term runs keep the flat <safe>_term.json schema the 2026-07
+        # aggregator and plotter already read; multi-term runs add a sidecar.
+        first = HYBRID_TERM_LIST[0]
+        term_score = term_scores[first]
+        with open(os.path.join(out_dir, f"{safe}_term.json"), "w") as fh:
+            json.dump(term_score, fh)
+        if len(term_scores) > 1:
+            with open(os.path.join(out_dir, f"{safe}_terms.json"), "w") as fh:
+                json.dump(term_scores, fh)
 
     with open(os.path.join(out_dir, f"{safe}_recovered.json"), "w") as fh:
         json.dump({"recovered": best["final"], "true": true_vals,
@@ -536,6 +569,8 @@ def train_inverse(name, refs_for_regime, *,
                    "n_under10pct": best["n_under"],
                    "n_unknown": N_UNK,
                    "hybrid_term": HYBRID_TERM,
+                   "hybrid_terms": HYBRID_TERM_LIST,
+                   "hybrid_param": HYBRID_PARAM,
                    "hybrid_constraint": HYBRID_CONSTRAINT,
                    "hybrid_wd": HYBRID_WD,
                    "hybrid_frozen": HYBRID_FREEZE,
