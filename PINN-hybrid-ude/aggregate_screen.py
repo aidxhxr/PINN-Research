@@ -17,6 +17,7 @@ and the experimental variable across both is the constraint set:
 usage: python3 aggregate_screen.py <screen_dir> [<screen_dir> ...]
 """
 import json
+import re
 import os
 import sys
 
@@ -43,11 +44,48 @@ def term_class(term):
     return "production"
 
 
+LOG_RE = re.compile(
+    r"^\s+(?P<regime>\S.*?)\s{2,}(?P<term>\S+)\s+(?P<param>\S+)\s+"
+    r"fNRMSE=\s*(?P<nrmse>[-\d.]+)%\s+eq params (?P<hy>\d+)/(?P<n>\d+) "
+    r"\(ctrl (?P<cn>\d+)/(?P<cnn>\d+)\)\s+basal_err=\s*(?P<be>[-\d.n]+)%?"
+    r"(?:\s+\(ctrl\s*(?P<cbe>[-\d.n]+)%\))?")
+
+
 def load(dirs):
+    """Rows from screen.json; falls back to parsing screen.log.
+
+    A 4-regime sweep runs for hours, and runs started before screen.json was
+    written incrementally only have the log -- which carries every number in
+    the tables below (it lacks x_lo/x_hi, so the anchor-visitation scatter is
+    simply skipped for those).
+    """
     rows = []
     for d in dirs:
-        with open(os.path.join(d, "screen.json")) as fh:
-            rows.extend(json.load(fh))
+        jf = os.path.join(d, "screen.json")
+        if os.path.exists(jf):
+            with open(jf) as fh:
+                rows.extend(json.load(fh))
+            continue
+        lf = os.path.join(d, "screen.log")
+        if not os.path.exists(lf):
+            print(f"[warn] neither screen.json nor screen.log in {d}")
+            continue
+        print(f"[note] {d}: no screen.json yet -- parsing screen.log")
+        for line in open(lf):
+            m = LOG_RE.match(line.rstrip("\n"))
+            if not m:
+                continue
+            g = m.groupdict()
+            row = dict(regime=g["regime"].strip(), term=g["term"],
+                       param=g["param"], term_nrmse=float(g["nrmse"]) / 100,
+                       eq_under10=int(g["hy"]), n_eq_params=int(g["n"]),
+                       ctrl_eq_under10=int(g["cn"]),
+                       ctrl_n_eq_params=int(g["cnn"]))
+            for key, src in (("basal_err", g["be"]), ("ctrl_basal_err",
+                                                      g["cbe"])):
+                if src not in (None, "nan"):
+                    row[key] = float(src) / 100
+            rows.append(row)
     return rows
 
 
@@ -84,16 +122,17 @@ def main(dirs):
             ct = [g["ctrl_eq_under10"] if g else 0 for g in got]
             npar = next(g["n_eq_params"] for g in got if g)
             nctl = next(g["ctrl_n_eq_params"] for g in got if g)
+            nreg = sum(1 for g in got if g)      # regimes actually screened
             summary[(term, param)] = dict(
                 nrmse=float(np.nanmean(nr)), hybrid=sum(hy), control=sum(ct),
-                n=npar * 4, nctl=nctl * 4,
+                n=npar * nreg, nctl=nctl * nreg, nreg=nreg,
                 basal=[g.get("basal_err") if g else None for g in got])
             cells = "/".join(f"{100*v:5.1f}" for v in nr)
             print(f"{term:<10s} {CLASS[term_class(term)]:<6s} "
                   f"{HYBRID_TERMS[term]['eq']:<5s} {param:<11s} "
                   f"{cells:>34s} {100*np.nanmean(nr):6.1f}% "
-                  f"{sum(hy):>13d}/{npar*4} vs {sum(ct):>3d}/{nctl*4} "
-                  f"({sum(hy)-sum(ct):+d} of the shared {npar*4})")
+                  f"{sum(hy):>13d}/{npar*nreg} vs {sum(ct):>3d}/{nctl*nreg} "
+                  f"({sum(hy)-sum(ct):+d})")
 
     # the basal-production compensation, the sharp test of the anchor
     print(f"\nbasal-production parameter error (the constant the network can "
@@ -117,7 +156,30 @@ def main(dirs):
               f" {ctrl:>10s}")
 
     # ---------------- figure ----------------------------------------------
-    labels = [t for t in terms if (t, params[0]) in summary]
+    # ---- the diagnostic: is the anchor a point the data ever visit? --------
+    # x_lo/x_hi is computable BEFORE any training, from reference trajectories
+    # alone, so if it predicts the basal-production damage it is a usable
+    # pre-flight check rather than a post-hoc explanation.
+    pts = [(r["x_lo"] / max(r["x_hi"], 1e-9), r["basal_err"], r["param"],
+            r["term"])
+           for r in rows if r.get("basal_err") is not None and "x_lo" in r]
+    if len(pts) >= 4:
+        xs = np.array([p[0] for p in pts])
+        ys = np.array([p[1] for p in pts])
+        with np.errstate(all="ignore"):
+            rho = float(np.corrcoef(xs, ys)[0, 1])
+        print(f"\nanchor-visitation diagnostic: corr(x_lo/x_hi, basal error) "
+              f"= {rho:+.2f} over {len(pts)} fits")
+        print(f"  x_lo/x_hi < 0.05 : mean basal err "
+              f"{100*np.mean(ys[xs < 0.05]) if (xs < 0.05).any() else float('nan'):.1f}%"
+              f"  (n={(xs < 0.05).sum()})")
+        print(f"  x_lo/x_hi >= 0.05: mean basal err "
+              f"{100*np.mean(ys[xs >= 0.05]) if (xs >= 0.05).any() else float('nan'):.1f}%"
+              f"  (n={(xs >= 0.05).sum()})")
+
+    # only edges that have a result under EVERY parameterisation shown, so the
+    # grouped bars never compare a full row against a half-finished one
+    labels = [t for t in terms if all((t, p) in summary for p in params)]
     y = np.arange(len(labels))
     h = 0.8 / max(len(params), 1)
     fig, axes = plt.subplots(1, 2, figsize=(13.5, 0.46 * len(labels) + 3.0),
@@ -148,8 +210,10 @@ def main(dirs):
                     va="center", ha="left" if v >= 0 else "right",
                     fontsize=7.5, color="#333")
     ax.axvline(0, color=C["ctrl"], lw=1.4, zorder=2)
+    nreg = max(summary[k]["nreg"] for k in summary)
     ax.set_xlabel("equation parameters within 10%:  hybrid $-$ mechanistic "
-                  "control\n(summed over the 4 regimes)")
+                  f"control\n(summed over {nreg} regime"
+                  f"{'s' if nreg > 1 else ''})")
     ax.set_title("B  What does hosting it cost the mechanism?", loc="left",
                  fontsize=11)
 
