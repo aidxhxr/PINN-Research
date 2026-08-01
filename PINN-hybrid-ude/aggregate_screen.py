@@ -119,9 +119,24 @@ def main(dirs):
                 continue
             nr = [g["term_nrmse"] if g else np.nan for g in got]
             hy = [g["eq_under10"] if g else 0 for g in got]
-            ct = [g["ctrl_eq_under10"] if g else 0 for g in got]
+            # The control fits ALL of the equation's parameters; the hybrid
+            # fits only those the network did not absorb. Counting the control
+            # over its own larger set would compare different denominators and
+            # inflate the apparent hybrid cost, so restrict it to the hybrid's
+            # surviving parameters wherever the per-parameter errors are on
+            # record (screen.json; log-parsed rows fall back to the raw count).
+            ct, nctl = [], next(g["ctrl_n_eq_params"] for g in got if g)
+            for g in got:
+                if not g:
+                    ct.append(0)
+                elif "ctrl_param_err" in g and "param_err" in g:
+                    shared = set(g["param_err"])
+                    ct.append(sum(1 for k, v in g["ctrl_param_err"].items()
+                                  if k in shared and v < 0.10))
+                    nctl = len(shared)
+                else:
+                    ct.append(g["ctrl_eq_under10"])
             npar = next(g["n_eq_params"] for g in got if g)
-            nctl = next(g["ctrl_n_eq_params"] for g in got if g)
             nreg = sum(1 for g in got if g)      # regimes actually screened
             summary[(term, param)] = dict(
                 nrmse=float(np.nanmean(nr)), hybrid=sum(hy), control=sum(ct),

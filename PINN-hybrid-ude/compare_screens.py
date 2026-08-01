@@ -25,6 +25,17 @@ def load(spec):
                        for r in json.load(fh)}
 
 
+def ctrl_shared(row):
+    """Control parameters within 10%, counted ONLY over the parameters the
+    hybrid still has -- the control fits the equation's full set, so its raw
+    count sits on a different denominator."""
+    if "ctrl_param_err" not in row or "param_err" not in row:
+        return row.get("ctrl_eq_under10")
+    shared = set(row["param_err"])
+    return sum(1 for k, v in row["ctrl_param_err"].items()
+               if k in shared and v < 0.10)
+
+
 def main(specs):
     arms = [load(s) for s in specs]
     keys = sorted(set(arms[0][1]) & set(arms[1][1]))
@@ -51,7 +62,8 @@ def main(specs):
               f"{100*dn:+7.1f}%   {fmt(ba)} {fmt(bb)} "
               f"{(f'{100*db:+7.1f}%' if db is not None else '       -'):>8s}   "
               f"{a['eq_under10']:>2d}/{a['n_eq_params']:<2d} "
-              f"{b['eq_under10']:>2d}/{b['n_eq_params']:<2d}")
+              f"{b['eq_under10']:>2d}/{b['n_eq_params']:<2d}"
+              f"   (ctrl {ctrl_shared(a)}/{ctrl_shared(b)})")
         agg.setdefault(term, []).append((a, b))
 
     print(f"\nper-edge means over the regimes screened:")
