@@ -11,7 +11,12 @@ VARIANT="${1:?usage: run_hybrid.sh <variant> [starts] [learned-term-checkpoint]}
 STARTS="${2:-3}"
 TERM_STATE="${3:-}"
 TS="$(date +%Y%m%d_%H%M%S)"
-RUN_DIR="$HERE/runs/${TS}_${VARIANT}"
+# HYBRID_DEPLETION=1 adds the two anchor-visiting conditions (wntKO, raKO), so
+# the reference data and the condition count differ -- the run dir is tagged so
+# a depletion run can never be scored against a 10-condition control.
+DEPTAG=""
+if [[ "${HYBRID_DEPLETION:-0}" == "1" ]]; then DEPTAG="_dep"; fi
+RUN_DIR="$HERE/runs/${TS}_${VARIANT}${DEPTAG}"
 mkdir -p "$RUN_DIR"
 
 export MPLBACKEND=Agg
@@ -40,16 +45,30 @@ case "$VARIANT" in
     export HYBRID_FREEZE="1"
     export HYBRID_STATE="$(cd "$(dirname "$TERM_STATE")" && pwd)/$(basename "$TERM_STATE")"
     ;;
+  # ---- generic form: <term>[+<term>...]__<param> --------------------------
+  # e.g.  bm_myc__sc            one edge, shape-constrained
+  #       ra_h5+bm_myc__sc      two edges learned at once
+  # Everything above is kept verbatim so the 2026-07 runs stay reproducible.
+  *__*)
+    TERMS="${VARIANT%__*}"
+    PARAM="${VARIANT##*__}"
+    export HYBRID_TERM="${TERMS//+/,}"
+    export HYBRID_PARAM="$PARAM"
+    export HYBRID_CONSTRAINT="$PARAM"
+    ;;
   *) echo "unknown variant: $VARIANT" >&2; exit 2 ;;
 esac
+export HYBRID_PARAM="${HYBRID_PARAM:-gated}"
 
 {
   echo "variant=$VARIANT"
   echo "HYBRID_TERM=$HYBRID_TERM"
+  echo "HYBRID_PARAM=$HYBRID_PARAM"
   echo "HYBRID_CONSTRAINT=$HYBRID_CONSTRAINT"
   echo "HYBRID_WD=$HYBRID_WD"
   echo "HYBRID_FREEZE=$HYBRID_FREEZE"
   echo "HYBRID_STATE=$HYBRID_STATE"
+  echo "HYBRID_DEPLETION=${HYBRID_DEPLETION:-0}"
   echo "starts=$STARTS"
   echo "started=$(date -Is)"
 } | tee "$RUN_DIR/variant.env"

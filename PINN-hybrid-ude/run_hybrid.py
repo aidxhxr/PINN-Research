@@ -26,7 +26,7 @@ import pickle
 import torch
 
 # NOTE: env must be set BEFORE config is imported (see run_hybrid.sh).
-from config import REGIMES, HYBRID_TERM, UNKNOWN
+from config import REGIMES, HYBRID_TERM, HYBRID_TERM_LIST, HYBRID_PARAM, UNKNOWN
 from reference import generate_references
 from training import train_inverse
 
@@ -50,10 +50,27 @@ VARIANTS = {
 }
 
 
+def expected_terms(variant):
+    """The term(s) the launcher must have exported for this variant.
+
+    Named variants above are the 2026-07 experiments, kept verbatim. Anything
+    else must use the generic `<term>[+<term>...]__<param>` form, whose terms
+    are read straight off the name -- so a typo in the launcher can never
+    silently train a different hybrid than the run directory claims.
+    """
+    if variant in VARIANTS:
+        t = VARIANTS[variant]["term"]
+        return [t] if t else []
+    if "__" not in variant:
+        raise SystemExit(f"unknown variant {variant!r}: use a named variant "
+                         f"{sorted(VARIANTS)} or <term>[+<term>]__<param>")
+    return variant.rsplit("__", 1)[0].split("+")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--regime", required=True, choices=list(REGIMES))
-    ap.add_argument("--variant", required=True, choices=list(VARIANTS))
+    ap.add_argument("--variant", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--starts", type=int, default=3)
     ap.add_argument("--threads", type=int, default=14)
@@ -64,12 +81,18 @@ def main():
     ap.add_argument("--refs", default=None)
     args = ap.parse_args()
 
-    want = VARIANTS[args.variant]["term"]
-    if HYBRID_TERM != want:
+    want = expected_terms(args.variant)
+    if HYBRID_TERM_LIST != want:
         raise SystemExit(
-            f"variant {args.variant!r} expects HYBRID_TERM={want!r} but config "
-            f"imported {HYBRID_TERM!r} -- the launcher must export it BEFORE "
-            f"python starts.")
+            f"variant {args.variant!r} expects HYBRID_TERM={','.join(want)!r} "
+            f"but config imported {HYBRID_TERM_LIST!r} -- the launcher must "
+            f"export it BEFORE python starts.")
+    if "__" in args.variant:
+        want_param = args.variant.rsplit("__", 1)[1]
+        if HYBRID_PARAM != want_param:
+            raise SystemExit(
+                f"variant {args.variant!r} expects HYBRID_PARAM="
+                f"{want_param!r} but config imported {HYBRID_PARAM!r}.")
 
     torch.set_num_threads(args.threads)
     os.makedirs(args.out, exist_ok=True)

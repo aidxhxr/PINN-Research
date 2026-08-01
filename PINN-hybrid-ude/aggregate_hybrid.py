@@ -72,8 +72,12 @@ def main(run_dir, ctrl_dir=None):
 
     any_d = next(iter(got.values()))
     term = any_d.get("hybrid_term")
+    terms = any_d.get("hybrid_terms") or ([term] if term else [])
+    if isinstance(terms, str):
+        terms = [terms]
     print(f"\nrun: {run_dir}")
-    print(f"variant={env.get('variant', '?')}  term={term}  "
+    print(f"variant={env.get('variant', '?')}  term={','.join(terms) or None}  "
+          f"param={any_d.get('hybrid_param', 'gated')}  "
           f"constraint={any_d.get('hybrid_constraint')}  "
           f"wd={any_d.get('hybrid_wd')}")
 
@@ -131,10 +135,12 @@ def main(run_dir, ctrl_dir=None):
         return
 
     # ---- H2: is the damage LOCAL to the learned term's equation? ----
-    term_eq = {"ra_h5": "h5", "bm_myc": "m", "b_h13": "h13",
-               "bc_cyp": "c", "apc_mutation": "apc"}.get(term)
-    print(f"\nH2 localisation test -- learned term sits in the d{term_eq} equation.")
-    print("Prediction: recovery drops concentrate in that equation; other "
+    from config import HYBRID_TERMS
+    host_eqs = {HYBRID_TERMS[t]["eq"].lstrip("d") for t in terms
+                if t in HYBRID_TERMS}
+    print(f"\nH2 localisation test -- learned term(s) sit in the "
+          f"{', '.join('d' + e for e in sorted(host_eqs))} equation(s).")
+    print("Prediction: recovery drops concentrate in those equations; other "
           "equations ~unchanged.\n")
     print(f"{'equation':<10s} {'hybrid':>7s} {'control':>8s} {'delta':>6s}   note")
     for eq in EQ:
@@ -146,12 +152,15 @@ def main(run_dir, ctrl_dir=None):
                     if k in got[r]["true"] and k in ctrl[r]["true"]]
             hn += count_under(got[r], keys)
             cn += count_under(ctrl[r], keys)
-        mark = "  <-- learned term here" if eq == term_eq else ""
+        mark = "  <-- learned term here" if eq in host_eqs else ""
         print(f"d{eq:<9s} {hn:>7d} {cn:>8d} {hn-cn:>+6d}{mark}")
 
     # ---- the specific compensation victim: the basal-production param ----
-    victim = {"h5": "a5", "h13": "a13", "m": "aM", "c": "aC"}.get(term_eq)
-    if victim:
+    victims = sorted({HYBRID_TERMS[t]["basal"] for t in terms
+                      if t in HYBRID_TERMS and HYBRID_TERMS[t].get("basal")})
+    for victim in victims:
+        term_eq = next(HYBRID_TERMS[t]["eq"].lstrip("d") for t in terms
+                       if HYBRID_TERMS[t].get("basal") == victim)
         print(f"\nH2/H3 sharp test -- '{victim}' is the basal-production term in "
               f"d{term_eq};\na constant offset trades freely between it and the "
               f"learned f_NN unless f(0)=0 is pinned.")
