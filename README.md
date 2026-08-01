@@ -154,6 +154,20 @@ bash run.sh            # writes runs/<timestamp>/train.log
 The Fisher-matrix analyses run on CPU (`solve_ivp` sensitivities); the PINN
 training uses CUDA if available.
 
+The hybrid folder also offers a much cheaper instrument. `run_hybrid.sh` trains
+the full four-regime model per variant (~2 GPU-hours), but `screen_terms.py`
+fits one equation at a time against reference trajectories, which is fast
+enough to sweep every edge and every constraint:
+
+```bash
+cd PINN-hybrid-ude
+python3 anchor_report.py                        # pre-flight: is each f(0)=0 anchor observed?
+python3 screen_terms.py --out runs/screen \
+        --terms all --params gated,sc           # the edge atlas
+bash run_hybrid.sh bm_myc__sc 3                 # one edge, full pipeline, 3 restarts
+bash run_queue_depletion.sh                     # the anchor-visiting arm
+```
+
 ---
 
 ## Tech stack
