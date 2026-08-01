@@ -1,0 +1,37 @@
+===== ARM A: 10 conditions (no depletion) =====
+screen: 4 terms x 2 regimes x 1 parameterisations, 1 starts (noise=0.0)
+  Normal             dc         mechanistic                   eq params 6/6  phys=6.18e-09  [74s]
+  Normal             dh5        mechanistic                   eq params 6/6  phys=1.97e-08  [139s]
+  Normal             dm         mechanistic                   eq params 4/4  phys=1.16e-09  [203s]
+  Normal             bm_myc     gated       fNRMSE=  4.0%  eq params 1/2 (ctrl 4/4)  basal_err=19.2% (ctrl 0.0%)  [284s]
+  Normal             ra_h5      gated       fNRMSE=  1.2%  eq params 3/4 (ctrl 6/6)  basal_err=17.0% (ctrl 0.5%)  [370s]
+  Normal             bc_cyp     gated       fNRMSE=  4.3%  eq params 2/4 (ctrl 6/6)  basal_err=24.6% (ctrl 7.4%)  [457s]
+  Normal             rc_cyp     gated       fNRMSE=  1.3%  eq params 3/4 (ctrl 6/6)  basal_err=10.9% (ctrl 7.4%)  [541s]
+  Severe APC Loss    dc         mechanistic                   eq params 5/6  phys=1.53e-09  [618s]
+  Severe APC Loss    dh5        mechanistic                   eq params 1/6  phys=1.92e-07  [714s]
+  Severe APC Loss    dm         mechanistic                   eq params 3/4  phys=8.53e-09  [951s]
+  Severe APC Loss    bm_myc     gated       fNRMSE= 11.2%  eq params 1/2 (ctrl 3/4)  basal_err=78.9% (ctrl 24.5%)  [1520s]
+  Severe APC Loss    ra_h5      gated       fNRMSE= 24.4%  eq params 0/4 (ctrl 1/6)  basal_err=33.5% (ctrl 41.9%)  [1869s]
+  Severe APC Loss    bc_cyp     gated       fNRMSE=  2.0%  eq params 3/4 (ctrl 5/6)  basal_err=30.0% (ctrl 42.2%)  [2100s]
+  Severe APC Loss    rc_cyp     gated       fNRMSE=  0.6%  eq params 3/4 (ctrl 5/6)  basal_err=20.3% (ctrl 42.2%)  [2178s]
+
+wrote /tmp/claude-13253/-home-29-aidahxr-PINN-Research/c550b71e-ce3b-4c0d-b8c1-88a54e6c7448/scratchpad/screen_nodep/screen.json  (2178s)
+===== ARM B: 12 conditions (+wntKO +raKO) =====
+screen: 4 terms x 2 regimes x 1 parameterisations, 1 starts (noise=0.0)
+  Normal             dc         mechanistic                   eq params 6/6  phys=1.18e-08  [77s]
+  Normal             dh5        mechanistic                   eq params 6/6  phys=2.39e-08  [157s]
+  Normal             dm         mechanistic                   eq params 4/4  phys=8.88e-08  [232s]
+  Normal             bm_myc     gated       fNRMSE=  0.6%  eq params 2/2 (ctrl 4/4)  basal_err=2.9% (ctrl 0.0%)  [321s]
+  Normal             ra_h5      gated       fNRMSE=  0.1%  eq params 4/4 (ctrl 6/6)  basal_err=0.1% (ctrl 0.1%)  [418s]
+  Normal             bc_cyp     gated       fNRMSE=  3.1%  eq params 3/4 (ctrl 6/6)  basal_err=25.5% (ctrl 0.0%)  [516s]
+  Normal             rc_cyp     gated       fNRMSE=  0.1%  eq params 4/4 (ctrl 6/6)  basal_err=1.1% (ctrl 0.0%)  [619s]
+  Severe APC Loss    dc         mechanistic                   eq params 6/6  phys=2.53e-08  [704s]
+  Severe APC Loss    dh5        mechanistic                   eq params 6/6  phys=2.97e-08  [782s]
+  Severe APC Loss    dm         mechanistic                   eq params 4/4  phys=1.67e-07  [850s]
+  Severe APC Loss    bm_myc     gated       fNRMSE=  0.4%  eq params 2/2 (ctrl 4/4)  basal_err=2.5% (ctrl 0.0%)  [945s]
+  Severe APC Loss    ra_h5      gated       fNRMSE=  0.7%  eq params 4/4 (ctrl 6/6)  basal_err=0.7% (ctrl 0.7%)  [1042s]
+  Severe APC Loss    bc_cyp     gated       fNRMSE=  4.1%  eq params 3/4 (ctrl 6/6)  basal_err=64.8% (ctrl 0.8%)  [1140s]
+  Severe APC Loss    rc_cyp     gated       fNRMSE=  0.1%  eq params 4/4 (ctrl 6/6)  basal_err=0.3% (ctrl 0.8%)  [1236s]
+
+wrote /tmp/claude-13253/-home-29-aidahxr-PINN-Research/c550b71e-ce3b-4c0d-b8c1-88a54e6c7448/scratchpad/screen_dep/screen.json  (1236s)
+ALLDONE

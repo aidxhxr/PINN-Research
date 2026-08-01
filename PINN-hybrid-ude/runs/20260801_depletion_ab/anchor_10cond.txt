@@ -1,0 +1,20 @@
+
+anchor visitation over 10 conditions (x_lo / x_hi per regime; 0.00 = the anchor is observed)
+
+edge       regulator         Normal  Early Adenom  Advanced Ade  Severe APC L   verdict
+ra_h5      r                  0.121         0.134         0.141         0.143   anchor NEVER visited
+bm_myc     b                  0.025         0.061         0.081         0.066   anchor NEVER visited
+b_h13      b                  0.025         0.061         0.081         0.066   anchor NEVER visited
+bc_cyp     b                  0.025         0.061         0.081         0.066   anchor NEVER visited
+rc_cyp     r                  0.121         0.134         0.141         0.143   anchor NEVER visited
+m_h13      m                  0.082         0.100         0.115         0.113   anchor NEVER visited
+h13_b      h13                0.167         0.193         0.189         0.186   anchor NEVER visited
+m_h5       m                  0.082         0.100         0.115         0.113   anchor NEVER visited
+h5_b       b                  0.025         0.061         0.081         0.066   anchor NEVER visited
+apc_b      apc                0.179         0.140         0.084         0.057   anchor NEVER visited
+c_ra       c                  0.181         0.171         0.166         0.164   anchor NEVER visited
+
+  < 0.01  the basal-production parameter of that equation is pinned by data
+  < 0.05  partial: expect a few percent of basal error
+  >= 0.05 f(0)=0 is asserted where no data live; expect the network to
+          absorb a constant out of the basal parameter (10-80%)
