@@ -1,0 +1,67 @@
+=== depletion queue  starts=3  2026-08-01T21:15:30+00:00
+[queue] START control  2026-08-01T21:15:30+00:00
+variant=control
+HYBRID_TERM=none
+HYBRID_PARAM=gated
+HYBRID_CONSTRAINT=anchored
+HYBRID_WD=1e-8
+HYBRID_FREEZE=0
+HYBRID_STATE=
+HYBRID_DEPLETION=1
+starts=3
+started=2026-08-01T21:15:30+00:00
+[prep] building reference trajectories -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep/refs.pkl
+  Normal               ctrl       t=[0, 150]  shape=(5000, 7)
+  Normal               noATRA     t=[0, 150]  shape=(5000, 7)
+  Normal               earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Normal               lateATRA   t=[0, 150]  shape=(5000, 7)
+  Normal               lowATRA    t=[0, 150]  shape=(5000, 7)
+  Normal               strongCirc t=[0, 150]  shape=(5000, 7)
+  Normal               wntPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntInhib   t=[0, 150]  shape=(5000, 7)
+  Normal               mycPulse   t=[0, 150]  shape=(5000, 7)
+  Normal               wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Normal               wntKO      t=[0, 150]  shape=(5000, 7)
+  Normal               raKO       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        ctrl       t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        noATRA     t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lateATRA   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        lowATRA    t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        strongCirc t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntInhib   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        mycPulse   t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        wntKO      t=[0, 150]  shape=(5000, 7)
+  Early Adenoma        raKO       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     ctrl       t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     noATRA     t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lateATRA   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     lowATRA    t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     strongCirc t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntInhib   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     mycPulse   t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     wntKO      t=[0, 150]  shape=(5000, 7)
+  Advanced Adenoma     raKO       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      ctrl       t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      noATRA     t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      earlyATRA  t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lateATRA   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      lowATRA    t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      strongCirc t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntInhib   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      mycPulse   t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntRAcombo t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      wntKO      t=[0, 150]  shape=(5000, 7)
+  Severe APC Loss      raKO       t=[0, 150]  shape=(5000, 7)
+wrote refs cache -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep/refs.pkl
+[run] variant=control starts=3  4 regimes in parallel
+  launched Normal (pid 3301031) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep/Normal.log
+  launched Early Adenoma (pid 3301032) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep/Early_Adenoma.log
+  launched Advanced Adenoma (pid 3301033) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep/Advanced_Adenoma.log
+  launched Severe APC Loss (pid 3301034) -> /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep/Severe_APC_Loss.log
