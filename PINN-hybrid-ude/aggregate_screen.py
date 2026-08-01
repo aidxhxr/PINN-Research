@@ -213,7 +213,10 @@ def main(dirs):
             ax.text(v + 0.6, yy, f"{v:.0f}", va="center", fontsize=7.5,
                     color="#333")
     ax.axvline(10, color=C["ctrl"], lw=1.2, ls="--", zorder=2)
-    ax.text(10.4, len(labels) - 0.35, "10%", fontsize=8, color=C["ctrl"])
+    # y is inverted below, so len(labels)-0.4 is the BOTTOM of the panel --
+    # keeps this label clear of the panel title
+    ax.text(10.5, len(labels) - 0.4, "10%", fontsize=8, color=C["ctrl"],
+            va="bottom")
     ax.set_xlabel("functional NRMSE of the learned term  (%, mean over regimes)")
     ax.set_title("A  Can the edge be learned?", loc="left", fontsize=11)
     ax.legend(frameon=False, fontsize=9, loc="lower right")
