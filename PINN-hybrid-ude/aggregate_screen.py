@@ -70,7 +70,11 @@ def load(dirs):
         if not os.path.exists(lf):
             print(f"[warn] neither screen.json nor screen.log in {d}")
             continue
-        print(f"[note] {d}: no screen.json yet -- parsing screen.log")
+        print(f"[note] {d}: no screen.json yet -- parsing screen.log. "
+              f"Log lines carry only the control's OWN count, so its column "
+              f"below sits on the equation's full parameter set while the "
+              f"hybrid's sits on the surviving one -- the delta is a lower "
+              f"bound, not a like-for-like difference.")
         for line in open(lf):
             m = LOG_RE.match(line.rstrip("\n"))
             if not m:
