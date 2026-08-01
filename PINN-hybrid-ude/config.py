@@ -137,9 +137,35 @@ DEPLETION_CONDITIONS = [
     # r decays to ~0, so the RA-driven terms are observed at their anchor.
     {"name": "raKO",  "forcing": {"mu0": 0.0, "AR": 0.0, "DR": 0.0}},
 ]
-if os.environ.get("HYBRID_DEPLETION", "0").strip().lower() in {"1", "true",
-                                                               "yes", "on"}:
+# INFORMATION-MATCHED control arm. The depletion pair adds two experiments, so
+# any gain could be "two more conditions help" rather than "the anchor is now
+# observed". These two are the same size of addition -- a new ATRA protocol and
+# a second WNT pulse, both in the style of the existing ten -- but they move
+# every regulator UP, never down, so no anchor gets any closer. Comparing
+# 12(depletion) against 12(info) instead of against 10 is what separates the
+# two explanations.
+#
+# (The first attempt at a control used edges whose anchors the depletion pair
+# barely moves. That failed: `h13_b`'s basal parameter is W, and wntKO is a
+# known multiplicative knockdown OF W, so W is identified outright by the
+# knockdown regardless of anchors -- the edge could not discriminate.)
+INFO_CONDITIONS = [
+    {"name": "midATRA",   "forcing": {"DR": 1.20, "tau1": 60.0, "tau2": 100.0}},
+    {"name": "wntPulse2", "forcing": {"DW": 0.50, "tauW1": 60.0,
+                                      "tauW2": 110.0}},
+]
+
+_dep = os.environ.get("HYBRID_DEPLETION", "0").strip().lower() in {
+    "1", "true", "yes", "on"}
+_info = os.environ.get("HYBRID_INFOCTL", "0").strip().lower() in {
+    "1", "true", "yes", "on"}
+if _dep and _info:
+    raise ValueError("HYBRID_DEPLETION and HYBRID_INFOCTL are alternative "
+                     "12-condition arms; set at most one")
+if _dep:
     CONDITIONS = CONDITIONS + DEPLETION_CONDITIONS
+elif _info:
+    CONDITIONS = CONDITIONS + INFO_CONDITIONS
 # NOTE (excite variant): earlier variants found that adding MORE RA-only
 # conditions helped only marginally (3/6/8 cond -> 5/5/7 of 36 for the PINN),
 # and the profile likelihood (runs/..._ident) showed why — all those conditions
