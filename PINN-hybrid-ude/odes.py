@@ -41,7 +41,7 @@ def _ode_rhs(tau, y, p):
     dP  = 1.0 + p["deltaP1"] * (1.0 - p["thetaP"])
     muR = _ra_input(tau, p)
 
-    db   = (p["W"] + _wnt_input(tau, p)
+    db   = (p.get("kW", 1.0)*p["W"] + _wnt_input(tau, p)
             + p["eta13"]*_hill(h13, p["kappa13"], p["nH"])
             - b - p["lambdaP"]*apc*b
             - p["lambda5"]*h5*b / (p["kappa5"] + b))

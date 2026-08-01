@@ -41,7 +41,8 @@ def true_term(term, x, p=None):
 
     Only meaningful because our data are synthetic from a known model; this is
     what makes `functional identifiability` (arXiv:2510.14140) measurable at
-    all.  `x` is a numpy array of the regulator state.
+    all.  `x` is a numpy array of the regulator state -- shape (n,) for the
+    single-input terms, (n, 3) for the multivariate `apc_prod` ratio.
     """
     p = dict(BASELINE) if p is None else p
     if term == "ra_h5":
@@ -52,6 +53,26 @@ def true_term(term, x, p=None):
         return p["etaB13"] * _hill_np(x, p["kappaB13"], p["nB"])
     if term == "bc_cyp":
         return p["etaBC"] * _hill_np(x, p["kappaBC"], p["nB"])
+    if term == "rc_cyp":
+        return p["etaRC"] * _hill_np(x, p["kappaRC"], 1)
+    if term == "m_h13":
+        return p["etaM13"] * _hill_np(x, p["kappaM13"], p["nM"])
+    if term == "h13_b":
+        return p["eta13"] * _hill_np(x, p["kappa13"], p["nH"])
+    # --- modulators inside a bilinear product: f(u) multiplies a second state
+    if term == "m_h5":          # etaM * m/(kappaM+m), multiplies h5
+        return p["etaM"] * _hill_np(x, p["kappaM"], 1)
+    if term == "h5_b":          # lambda5 * b/(kappa5+b), multiplies h5
+        return p["lambda5"] * _hill_np(x, p["kappa5"], 1)
+    if term == "apc_b":         # lambdaP * apc, multiplies b (mass action)
+        return p["lambdaP"] * np.maximum(x, 0.0)
+    if term == "c_ra":          # lambdaC * c, multiplies r (mass action)
+        return p["lambdaC"] * np.maximum(x, 0.0)
+    if term == "apc_prod":      # multivariate saturating RATIO, x is (n, 3)
+        x = np.atleast_2d(np.asarray(x, dtype=float))
+        h5, b, h13 = x[:, 0], x[:, 1], x[:, 2]
+        return ((1.0 + p["rho5"]*h5)
+                / (1.0 + p["rhoB"]*b + p["rho13"]*h13))
     if term == "apc_mutation":
         # x is APC functional loss, 1-thetaP. This is the EXCESS over the
         # healthy basal degradation coefficient 1, not the full deltaP.
@@ -148,13 +169,13 @@ class MechanisticNN(nn.Module):
 class MonotoneLinear(nn.Module):
     """Linear layer with non-negative effective weights."""
 
-    def __init__(self, in_features, out_features):
+    def __init__(self, in_features, out_features, raw_mean=-2.0, raw_std=0.2):
         super().__init__()
         self.raw_weight = nn.Parameter(torch.empty(
             out_features, in_features, dtype=torch.get_default_dtype()))
         self.bias = nn.Parameter(torch.empty(
             out_features, dtype=torch.get_default_dtype()))
-        nn.init.normal_(self.raw_weight, mean=-2.0, std=0.2)
+        nn.init.normal_(self.raw_weight, mean=raw_mean, std=raw_std)
         nn.init.normal_(self.bias, mean=0.0, std=0.05)
         self.in_features = in_features
 
@@ -212,35 +233,272 @@ class APCMutationNN(nn.Module):
         return self(t).cpu().numpy().ravel()
 
 
+class ShapeConstrainedNN(nn.Module):
+    """Monotone + exactly-anchored (+ optionally bounded) mechanism network.
+
+    This is the `sc` parameterisation, and the reason it exists is a measured
+    failure of the `gated` one (MechanisticNN above): the soft gate
+    1-exp(-x/x0) only pins f(0)=0 AT x=0, so wherever the trajectories keep the
+    regulator away from zero the network can still absorb a constant out of the
+    equation's basal-production parameter. That is exactly the damage the
+    bm_myc run recorded (aM error 32-52%, dm equation -4 recovered params).
+
+    Loman & Baker (arXiv:2510.14140, Fig. 6) tested precisely this on chemical
+    reaction networks: a UDE whose network is constrained MONOTONE + BOUNDED
+    "achieves parameter identifiability on par with the fully known model",
+    while non-negativity alone (their default, and ours until now) loses a
+    lot. They encode monotonicity by making every weight one-signed and every
+    activation monotone. We do the same, and add an EXACT anchor, which our
+    terms admit for free (no regulator => no activation).
+
+    Construction, for x >= 0 and per-input monotone signs s_i in {+1, -1}:
+
+        h(x)  = MLP_{W>=0, tanh}( s * x / x_scale )        monotone in each x_i
+        f(x)  = softplus(h(x)) - softplus(h(x_a))          unbounded
+              = u_max * (sig(h(x)) - sig(h(x_a))) / (1 - sig(h(x_a)))  bounded
+
+    with x_a the anchor point (0 for every activation term). Because h is
+    monotone increasing along +s and the anchor is the domain minimum along
+    that direction, f >= 0 holds automatically -- non-negativity, monotonicity
+    and f(x_a)=0 are all structural, none is a penalty.
+
+    `signs=None` (used by the multivariate apc_prod ratio, which is increasing
+    in h5 and decreasing in b/h13 and equals 1 at the origin rather than 0)
+    keeps monotonicity and non-negativity but drops the anchor.
+    """
+
+    def __init__(self, n_in=1, width=5, depth=2, x_scale=1.0, signs=(1,),
+                 anchor=0.0, u_max=None, act="tanh"):
+        super().__init__()
+        self.constraint = ("sc_bounded" if u_max is not None else "sc")
+        self.n_in = n_in
+        xs = np.atleast_1d(np.asarray(x_scale, dtype=float))
+        if xs.size == 1:
+            xs = np.repeat(xs, n_in)
+        self.register_buffer("x_scale", torch.as_tensor(
+            np.maximum(xs, 1e-3), dtype=torch.get_default_dtype()).reshape(1, -1))
+        self.register_buffer("signs", torch.as_tensor(
+            np.asarray(signs, dtype=float).reshape(1, -1),
+            dtype=torch.get_default_dtype()))
+        self.anchor = None if anchor is None else float(anchor)
+        if self.anchor is not None:
+            self.register_buffer("x_anchor", torch.full(
+                (1, n_in), self.anchor, dtype=torch.get_default_dtype()))
+        self.u_max = None if u_max is None else float(u_max)
+
+        Act = {"tanh": nn.Tanh, "softplus": nn.Softplus}[act]
+        layers = [MonotoneLinear(n_in, width, raw_mean=-0.5, raw_std=0.3),
+                  Act()]
+        for _ in range(depth - 1):
+            layers += [MonotoneLinear(width, width, raw_mean=-0.5, raw_std=0.3),
+                       Act()]
+        layers.append(MonotoneLinear(width, 1, raw_mean=-0.5, raw_std=0.3))
+        self.net = nn.Sequential(*layers)
+
+    def _h(self, x):
+        return self.net(self.signs * (x / self.x_scale))
+
+    def forward(self, x):
+        x = torch.clamp(x, min=0.0)
+        if x.shape[-1] != self.n_in:              # single-input convenience
+            x = x.reshape(-1, self.n_in)
+        h = self._h(x)
+        if self.anchor is None:
+            return (F.softplus(h) if self.u_max is None
+                    else self.u_max * torch.sigmoid(h))
+        ha = self._h(self.x_anchor.to(x.dtype))
+        if self.u_max is None:
+            return F.softplus(h) - F.softplus(ha)
+        sa = torch.sigmoid(ha)
+        return self.u_max * (torch.sigmoid(h) - sa) / torch.clamp(1.0 - sa,
+                                                                  min=1e-3)
+
+    def gate_lo(self, _x_lo):
+        """0.0 => the f(anchor)=0 constraint is EXACT (it always is here)."""
+        return 0.0 if self.anchor is not None else 1.0
+
+    def l2(self):
+        ws = [m.weight for m in self.net if isinstance(m, MonotoneLinear)]
+        n = sum(w.numel() for w in ws)
+        return sum((w**2).sum() for w in ws) / max(n, 1)
+
+    @torch.no_grad()
+    def curve(self, x_np, device=None):
+        a = np.asarray(x_np, dtype=float)
+        a = a.reshape(-1, self.n_in)
+        t = torch.as_tensor(a, dtype=torch.get_default_dtype(),
+                            device=device or self.x_scale.device)
+        return self(t).cpu().numpy().ravel()
+
+
+class AnchoredRateNN(nn.Module):
+    """Linear-anchored mechanism network:  f(x) = (x / x_scale) * rate(x).
+
+    This is the generalisation of the one construction in this repo that cost
+    the mechanism NOTHING. `APCMutationNN` (used for the calibrated APC term,
+    0.1% functional NRMSE and +1 parameters versus control) multiplies a
+    non-negative rate by the input itself; `MechanisticNN` multiplies it by a
+    soft gate 1-exp(-x/x0) with x0 = 0.1*x_max. Both give f(0)=0, so both were
+    described as "anchored" -- but they bound f very differently just above 0:
+
+        exponential gate:  f(x) <~ (x / x0)      * rate = (10 x / x_max) * rate
+        linear anchor:     f(x) <=  (x / x_max)  * rate
+
+    a factor of TEN. That gap is the whole compensation story. In dm, at the
+    lowest beta-catenin the trajectories reach (b=0.036, x_max=1.43), the gate
+    permits f(0.036) ~ 0.31*rate while the truth is 0.007 -- ample room to
+    absorb most of the basal production aM (true value 0.18), which is exactly
+    the 32-52% aM error the bm_myc run recorded. The linear anchor permits only
+    0.025*rate at the same point.
+
+    `mono=True` additionally makes the rate monotone via non-negative weights,
+    reproducing APCMutationNN exactly for a linear ground truth while still
+    allowing saturation (a decreasing rate is what makes a Hill saturate, so
+    monotone-rate is a strictly stronger assumption -- it is the ablation, not
+    the default).
+    """
+
+    def __init__(self, n_in=1, width=5, depth=2, x_scale=1.0, mono=False,
+                 act="tanh"):
+        super().__init__()
+        self.constraint = "linear_anchored" + ("_monotone" if mono else "")
+        self.n_in = n_in
+        self.mono = mono
+        xs = np.atleast_1d(np.asarray(x_scale, dtype=float))
+        self.register_buffer("x_scale", torch.as_tensor(
+            np.maximum(xs, 1e-3), dtype=torch.get_default_dtype()
+        ).reshape(1, -1))
+
+        Act = {"tanh": nn.Tanh, "gelu": nn.GELU}[act]
+        Lin = (lambda i, o: MonotoneLinear(i, o, raw_mean=-0.5, raw_std=0.3)) \
+            if mono else nn.Linear
+        layers = [Lin(n_in, width), Act()]
+        for _ in range(depth - 1):
+            layers += [Lin(width, width), Act()]
+        layers.append(Lin(width, 1))
+        self.net = nn.Sequential(*layers)
+        if not mono:
+            for m in self.net:
+                if isinstance(m, nn.Linear):
+                    nn.init.xavier_uniform_(m.weight)
+                    nn.init.zeros_(m.bias)
+
+    def forward(self, x):
+        x = torch.clamp(x, min=0.0)
+        if x.shape[-1] != self.n_in:
+            x = x.reshape(-1, self.n_in)
+        u = x / self.x_scale
+        return u * F.softplus(self.net(u))
+
+    def gate_lo(self, x_lo):
+        """The anchor's strength at the low end of the observed range: the
+        prefactor that multiplies the rate there. Directly comparable to
+        MechanisticNN.gate_lo, which reports 1-exp(-x_lo/x0) for the same x_lo,
+        so the two constructions can be put in one column."""
+        return float(max(x_lo, 0.0) / float(self.x_scale[0, 0]))
+
+    def l2(self):
+        ws = [m.weight for m in self.net
+              if isinstance(m, (nn.Linear, MonotoneLinear))]
+        n = sum(w.numel() for w in ws)
+        return sum((w**2).sum() for w in ws) / max(n, 1)
+
+    @torch.no_grad()
+    def curve(self, x_np, device=None):
+        a = np.asarray(x_np, dtype=float).reshape(-1, self.n_in)
+        t = torch.as_tensor(a, dtype=torch.get_default_dtype(),
+                            device=device or self.x_scale.device)
+        return self(t).cpu().numpy().ravel()
+
+
+def _regulator_scale(spec, refs_for_regime):
+    """Largest value each regulator input reaches across all conditions."""
+    out = []
+    for v in spec["inputs"]:
+        idx = VAR_INDEX[v]
+        out.append(max(float(np.abs(y_ref[:, idx]).max())
+                       for (_t, y_ref) in refs_for_regime.values()))
+    return np.maximum(np.asarray(out, dtype=float), 1e-3)
+
+
+def build_one_term(term, refs_for_regime, device, *, width=5, depth=2,
+                   constraint="anchored", act="tanh", param="gated"):
+    """Instantiate the network for a single term under one parameterisation.
+
+    `param` selects the constraint SET, which is the experimental variable of
+    the shape-constraint study:
+       gated       -> MechanisticNN: non-negative + soft f(0)=0 gate  (baseline)
+       sc          -> monotone + EXACT anchor + non-negative
+       sc_bounded  -> the above, plus the ORACLE saturation bound
+       lin         -> non-negative + LINEAR anchor f(x) = (x/x_max) * rate(x)
+       lin_mono    -> the above with a monotone rate (== APCMutationNN)
+    """
+    spec = HYBRID_TERMS[term]
+    if spec.get("input_kind") == "parameter" and param in ("gated",
+                                                           "lin_mono"):
+        return APCMutationNN(n_in=1, width=width, depth=depth).to(device)
+
+    n_in = len(spec["inputs"])
+    if spec.get("input_kind") == "parameter":
+        x_scale = np.array([1.0])
+    else:
+        x_scale = _regulator_scale(spec, refs_for_regime)
+
+    if param == "gated":
+        if n_in > 1:
+            raise ValueError(f"{term}: the gated parameterisation is "
+                             f"single-input only; use param=sc")
+        return MechanisticNN(n_in=1, width=width, depth=depth,
+                             x_scale=float(x_scale[0]), constraint=constraint,
+                             act=act).to(device)
+
+    if param in ("lin", "lin_mono"):
+        if spec.get("anchor") is None:
+            raise ValueError(f"{term}: no zero anchor, so the linear-anchored "
+                             f"parameterisation does not apply; use sc")
+        return AnchoredRateNN(n_in=n_in, width=width, depth=depth,
+                              x_scale=x_scale, mono=(param == "lin_mono"),
+                              act=("tanh" if act == "gelu" else act)
+                              ).to(device)
+
+    u_max = spec.get("u_max") if param == "sc_bounded" else None
+    return ShapeConstrainedNN(
+        n_in=n_in, width=width, depth=depth, x_scale=x_scale,
+        signs=spec.get("mono", (1,)*n_in), anchor=spec.get("anchor", 0.0),
+        u_max=u_max, act=("tanh" if act == "gelu" else act)).to(device)
+
+
 def build_terms(term, refs_for_regime, device, *, width=5, depth=2,
-                constraint="anchored", act="tanh"):
+                constraint="anchored", act="tanh", param="gated"):
     """Instantiate the learnable term(s) for a run.
 
-    ONE network shared across every experimental condition -- it is part of the
-    MECHANISM, exactly like the shared `InverseParams`, not a per-condition
-    state net.  `x_scale` is the largest value the regulator reaches across all
-    conditions, so the net always sees an order-1 input.
+    ONE network per term, shared across every experimental condition -- each is
+    part of the MECHANISM, exactly like the shared `InverseParams`, not a
+    per-condition state net.  `x_scale` is the largest value the regulator
+    reaches across all conditions, so the net always sees an order-1 input.
+
+    `term` may be a single name, or a list/tuple of names for the MULTI-TERM
+    hybrid (several regulatory edges handed to networks at once). Loman & Baker
+    found that generalising one function to a network "has little effect on the
+    identifiability of the other function"; our system is far sloppier
+    (cond(FIM) 1e7-1e17), so that is a claim worth testing here rather than
+    assuming.
     """
     if not term:
         return {}
-    spec = HYBRID_TERMS[term]
-    if spec.get("input_kind") == "parameter":
-        net = APCMutationNN(n_in=1, width=width, depth=depth).to(device)
-        return {term: net}
-    idx = VAR_INDEX[spec["inputs"][0]]
-    x_max = max(float(np.abs(y_ref[:, idx]).max())
-                for (_t, y_ref) in refs_for_regime.values())
-    net = MechanisticNN(n_in=1, width=width, depth=depth,
-                        x_scale=max(x_max, 1e-3), constraint=constraint,
-                        act=act).to(device)
-    return {term: net}
+    names = [term] if isinstance(term, str) else list(term)
+    return {t: build_one_term(t, refs_for_regime, device, width=width,
+                              depth=depth, constraint=constraint, act=act,
+                              param=param)
+            for t in names}
 
 
 def observed_range(term, refs_for_regime):
     """(lo, hi) span of the regulator over all conditions.
 
     Scoring the learned curve OUTSIDE this range is not a result -- the data
-    never constrained it there.
+    never constrained it there. For a multi-input term this is the span of the
+    FIRST input only; use `observed_points` to score those honestly.
     """
     spec = HYBRID_TERMS[term]
     if spec.get("input_kind") == "parameter":
@@ -250,3 +508,19 @@ def observed_range(term, refs_for_regime):
     lo = min(float(y_ref[:, idx].min()) for (_t, y_ref) in refs_for_regime.values())
     hi = max(float(y_ref[:, idx].max()) for (_t, y_ref) in refs_for_regime.values())
     return max(lo, 0.0), hi
+
+
+def observed_points(term, refs_for_regime, max_points=4000):
+    """The regulator values the trajectories ACTUALLY visit, shape (n, n_in).
+
+    For multi-input terms a rectangular grid would score the network in
+    combinations the system never reaches; the honest support is the visited
+    set itself.
+    """
+    spec = HYBRID_TERMS[term]
+    idx = [VAR_INDEX[v] for v in spec["inputs"]]
+    rows = [y_ref[:, idx] for (_t, y_ref) in refs_for_regime.values()]
+    x = np.concatenate(rows, axis=0)
+    if len(x) > max_points:
+        x = x[:: max(1, len(x) // max_points)]
+    return np.maximum(x, 0.0)

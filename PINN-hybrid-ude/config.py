@@ -28,6 +28,12 @@ BASELINE = dict(
     # pulse — NOT recovered.
     DW=0.0, qW=0.30, tauW1=40.0, tauW2=80.0,
     DM=0.0, qM=0.30, tauM1=40.0, tauM2=80.0,
+    # multiplicative knockdown of the constitutive WNT drive (siRNA / genetic
+    # knockout with a calibrated efficiency). 1.0 = wild type, i.e. every
+    # pre-2026-08 run is numerically untouched. Experimenter-set (known), like
+    # the pulse channels -- it scales the UNKNOWN W by a KNOWN factor, which is
+    # what a knockdown actually does.
+    kW=1.0,
 )
 
 REGIMES = {
@@ -105,6 +111,35 @@ CONDITIONS = [
     {"name": "wntRAcombo","forcing": {"DW": 0.80, "tauW1": 25.0, "tauW2": 200.0,
                                       "DR": 2.00, "tau1": 40.0, "tau2": 80.0}},
 ]
+
+# ----------------------------------------------------------------------
+# DEPLETION conditions (2026-08-01) — the information lever for LEARNED TERMS
+# ----------------------------------------------------------------------
+# Measured across the 10 conditions above, no regulator ever gets near zero:
+# min over all regimes/conditions is b=0.036 (Normal only; 0.20 in the high-WNT
+# regimes), r=0.136, m=0.187, c=0.400. Every learned activation term is built
+# with f(0)=0 -- but a constraint at a point the data never visit cannot stop
+# the network from carrying a constant there, and that constant comes straight
+# out of the equation's basal-production parameter (aM error 14-52% in every
+# bm_myc variant, under every anchor construction tried).
+#
+# The one hybrid term that cost the mechanism nothing (apc_mutation) was
+# calibrated on data that included thetaP=1, i.e. the anchor point ITSELF was
+# an observation. These two conditions give the state-driven terms the same
+# thing: drive the regulator down to (near) zero so the anchor is DATA, not
+# just architecture.
+DEPLETION_CONDITIONS = [
+    # WNT knockdown: kW scales the unknown constitutive drive W by a known
+    # efficiency, which is what an siRNA / inducible knockout does. Pushes b to
+    # ~0 in every regime, so f(b) is observed at its anchor.
+    {"name": "wntKO", "forcing": {"kW": 0.02}},
+    # retinoid-free protocol: no dietary RA, no circadian amplitude, no ATRA.
+    # r decays to ~0, so the RA-driven terms are observed at their anchor.
+    {"name": "raKO",  "forcing": {"mu0": 0.0, "AR": 0.0, "DR": 0.0}},
+]
+if os.environ.get("HYBRID_DEPLETION", "0").strip().lower() in {"1", "true",
+                                                               "yes", "on"}:
+    CONDITIONS = CONDITIONS + DEPLETION_CONDITIONS
 # NOTE (excite variant): earlier variants found that adding MORE RA-only
 # conditions helped only marginally (3/6/8 cond -> 5/5/7 of 36 for the PINN),
 # and the profile likelihood (runs/..._ident) showed why — all those conditions
@@ -131,6 +166,8 @@ FIXED = {
     "alpha13", "alpha5",
     # excite variant: the WNT/MYC input-channel protocol knobs are known
     "DW", "qW", "tauW1", "tauW2", "DM", "qM", "tauM1", "tauM2",
+    # depletion variant: the knockdown efficiency is set by the experimenter
+    "kW",
 }
 
 # ----------------------------------------------------------------------
@@ -143,30 +180,111 @@ FIXED = {
 #
 # Selected by env var so the 4 parallel regime processes (run_hybrid.sh) each
 # import a consistent config; "none" => the mechanistic control run.
+#
+# Per-entry metadata used by the shape-constrained (`sc`) parameterisation:
+#   mono   sign per input: +1 monotone increasing, -1 decreasing
+#   anchor input value at which f is pinned to 0 (None => no anchor)
+#   u_max  ORACLE upper bound for the `sc_bounded` ablation only. It is the
+#          true saturation asymptote, i.e. it leaks ground truth, exactly as in
+#          Loman & Baker's monotonic+bounded case (they use (v0, v+v0) and say
+#          so). Never used by the honest `sc` variant. None => no bound is
+#          claimed (the mass-action terms are linear, not saturating, so an
+#          "upper bound" there would just be the domain edge).
+#   factor state that MULTIPLIES the learned term (bilinear/modulator class)
 HYBRID_TERMS = {
+    # ---------------- production / activation edges (f enters additively) ----
     # RA -> HOXA5. The "single door": every RA-only condition reaches the
     # WNT/HOX/MYC sub-network through this one term (see the CONDITIONS note
     # above), which is why stacking RA protocols stopped helping. Highest-
     # leverage term to learn.
-    "ra_h5":  dict(inputs=["r"], replaces=["etaR", "kappaR"],   eq="dh5"),
+    "ra_h5":  dict(inputs=["r"], replaces=["etaR", "kappaR"],   eq="dh5",
+                   mono=(1,), anchor=0.0, u_max=2.50, basal="a5"),
     # beta-catenin -> MYC (the oncogenic edge; both params are in the Fisher
     # top-8 most-identifiable set, so this is the well-conditioned case)
-    "bm_myc": dict(inputs=["b"], replaces=["etaBM", "kappaBM"], eq="dm"),
+    "bm_myc": dict(inputs=["b"], replaces=["etaBM", "kappaBM"], eq="dm",
+                   mono=(1,), anchor=0.0, u_max=1.35, basal="aM"),
     # beta-catenin -> HOXA13
-    "b_h13":  dict(inputs=["b"], replaces=["etaB13", "kappaB13"], eq="dh13"),
+    "b_h13":  dict(inputs=["b"], replaces=["etaB13", "kappaB13"], eq="dh13",
+                   mono=(1,), anchor=0.0, u_max=0.95, basal="a13"),
     # beta-catenin -> CYP26A1
-    "bc_cyp": dict(inputs=["b"], replaces=["etaBC", "kappaBC"], eq="dc"),
+    "bc_cyp": dict(inputs=["b"], replaces=["etaBC", "kappaBC"], eq="dc",
+                   mono=(1,), anchor=0.0, u_max=1.50, basal="aC"),
+    # RA -> CYP26A1 (the feedback arm of the RA-CYP26 loop)
+    "rc_cyp": dict(inputs=["r"], replaces=["etaRC", "kappaRC"], eq="dc",
+                   mono=(1,), anchor=0.0, u_max=1.50, basal="aC"),
+    # MYC -> HOXA13
+    "m_h13":  dict(inputs=["m"], replaces=["etaM13", "kappaM13"], eq="dh13",
+                   mono=(1,), anchor=0.0, u_max=0.55, basal="a13"),
+    # HOXA13 -> beta-catenin: the positive feedback that closes the WNT loop
+    "h13_b":  dict(inputs=["h13"], replaces=["eta13", "kappa13"], eq="db",
+                   mono=(1,), anchor=0.0, u_max=0.75, basal="W"),
+
+    # ---------------- modulator edges: f(u) MULTIPLIES a second state --------
+    # A structurally different class from everything above: the network sits
+    # inside a bilinear product, so it never appears alone in the residual and
+    # cannot trade a constant with a basal-production parameter -- it can only
+    # trade a SCALE with the state it multiplies.
+    # MYC -| HOXA5   (etaM * m/(kappaM+m)) * h5
+    "m_h5":   dict(inputs=["m"], replaces=["etaM", "kappaM"], eq="dh5",
+                   mono=(1,), anchor=0.0, u_max=2.50, factor="h5"),
+    # HOXA5 -| beta-catenin  (lambda5 * b/(kappa5+b)) * h5
+    "h5_b":   dict(inputs=["b"], replaces=["lambda5", "kappa5"], eq="db",
+                   mono=(1,), anchor=0.0, u_max=1.30, factor="h5"),
+    # APC -| beta-catenin: mass action, (lambdaP * apc) * b -- LINEAR truth,
+    # so this also tests whether a saturating-capable net over-fits curvature
+    "apc_b":  dict(inputs=["apc"], replaces=["lambdaP"], eq="db",
+                   mono=(1,), anchor=0.0, u_max=None, factor="b"),
+    # CYP26A1 -| RA: mass action, (lambdaC * c) * r
+    "c_ra":   dict(inputs=["c"], replaces=["lambdaC"], eq="dr",
+                   mono=(1,), anchor=0.0, u_max=None, factor="r"),
+
+    # ---------------- multivariate edge --------------------------------------
+    # APC production ratio (1+rho5*h5)/(1+rhoB*b+rho13*h13): three inputs, not
+    # a Hill activation, increasing in h5 and decreasing in b and h13, and the
+    # ONE relationship in this model whose closed form the source spec and the
+    # config disagree about (rho5/rhoB/rho13) -- i.e. the only term with
+    # genuine model-form uncertainty rather than synthetic uncertainty.
+    # It equals 1 at the origin instead of 0, so it carries no zero-anchor.
+    "apc_prod": dict(inputs=["h5", "b", "h13"],
+                     replaces=["rho5", "rhoB", "rho13"], eq="dapc",
+                     mono=(1, -1, -1), anchor=None, u_max=3.0),
+
+    # ---------------- parameter-input edge ------------------------------------
     # APC mutation severity -> excess APC degradation. The healthy baseline
     # and mass-action dependence on APC remain mechanistic:
     #   deltaP(thetaP) = 1 + f_NN(1-thetaP), degradation = deltaP * apc.
     "apc_mutation": dict(inputs=["thetaP"], replaces=["deltaP1"], eq="dapc",
-                         input_kind="parameter"),
+                         input_kind="parameter",
+                         mono=(1,), anchor=0.0, u_max=3.50),
 }
 
+# HYBRID_TERM accepts a comma-separated LIST for the multi-term hybrid
+# (several regulatory edges learned simultaneously). HYBRID_TERM stays a
+# single string when exactly one term is active so every existing consumer and
+# every previous run directory keeps its meaning.
 _ht = os.environ.get("HYBRID_TERM", "ra_h5").strip()
-HYBRID_TERM = None if _ht in ("", "none", "None") else _ht
-if HYBRID_TERM is not None and HYBRID_TERM not in HYBRID_TERMS:
-    raise ValueError(f"HYBRID_TERM={HYBRID_TERM!r} not in {list(HYBRID_TERMS)}")
+HYBRID_TERM_LIST = [] if _ht in ("", "none", "None") else [
+    s.strip() for s in _ht.split(",") if s.strip()]
+for _t in HYBRID_TERM_LIST:
+    if _t not in HYBRID_TERMS:
+        raise ValueError(f"HYBRID_TERM={_t!r} not in {list(HYBRID_TERMS)}")
+HYBRID_TERM = HYBRID_TERM_LIST[0] if len(HYBRID_TERM_LIST) == 1 else (
+    HYBRID_TERM_LIST or None)
+
+# Constraint SET on the learned term(s) -- the experimental variable of the
+# shape-constraint study:
+#   gated       non-negative + soft f(0)=0 gate            (the 2026-07 baseline)
+#   sc          monotone + EXACT anchor + non-negative     (honest, no truth leak)
+#   sc_bounded  the above + the oracle saturation bound    (upper bound on gain)
+#   lin         monotone-free, but f(x) = (x/x_max) * rate(x): the anchor is
+#               LINEAR in x rather than exponential, which is a ~10x tighter
+#               bound on f just above zero and is the one thing the successful
+#               APC term had that the gated activation terms did not
+#   lin_mono    the above with a monotone rate (exactly APCMutationNN)
+HYBRID_PARAM = os.environ.get("HYBRID_PARAM", "gated").strip()
+_PARAMS = {"gated", "sc", "sc_bounded", "lin", "lin_mono"}
+if HYBRID_PARAM not in _PARAMS:
+    raise ValueError(f"HYBRID_PARAM={HYBRID_PARAM!r} not in {sorted(_PARAMS)}")
 
 # "anchored" pins f(0)=0 (kills the constant-offset degeneracy with the
 # equation's basal-production param); "none" is the ablation that re-opens it.
@@ -184,8 +302,8 @@ HYBRID_FREEZE = os.environ.get("HYBRID_FREEZE", "0").strip().lower() in {
     "1", "true", "yes", "on",
 }
 
-HYBRID_REPLACED = (set(HYBRID_TERMS[HYBRID_TERM]["replaces"])
-                   if HYBRID_TERM else set())
+HYBRID_REPLACED = {k for t in HYBRID_TERM_LIST
+                   for k in HYBRID_TERMS[t]["replaces"]}
 
 # Derived: everything else, kept in BASELINE order (W, thetaP lead).
 # 36 mechanistic unknowns, minus any the hybrid term absorbed (-> 34 for ra_h5).
