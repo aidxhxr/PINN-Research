@@ -1,0 +1,81 @@
+=== anchor dose-response  2026-08-02T03:40:27+00:00
+    starts=5 adam=3000 lbfgs=300 regimes=Severe APC Loss
+    launched arm=ra edge=ra_h5 pid=4180823
+    launched arm=wnt edge=bm_myc pid=4180826
+    launched arm=bcat edge=bm_myc pid=4180829
+=== arms finished (rc=0)  2026-08-02T07:43:34+00:00
+
+anchor dose-response — 18 cells from runs/20260802_dose_starts5
+
+  arm 'ra'  edge ra_h5  basal a5  regime Severe APC Loss
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.1434    19.4%    21.4%    26.8%    -5.5%     0/4     
+       0.3   0.0464     2.8%     0.8%     3.5%    -2.7%     4/4     
+       0.1   0.0159     3.2%     3.4%     3.5%    -0.1%     4/4     
+      0.03   0.0048     3.4%     3.3%     3.5%    -0.2%     4/4     
+      0.01   0.0016     3.3%     3.4%     3.5%    -0.0%     4/4     
+         0   0.0000     3.3%     3.3%     3.4%    -0.2%     4/4     
+
+  arm 'wnt'  edge bm_myc  basal aM  regime Severe APC Loss
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.0665     8.7%    61.1%    35.8%    25.3%     1/2     
+       0.3   0.0661     6.3%    43.7%    10.4%    33.3%     1/2     
+       0.1   0.0312     3.1%    21.0%     0.0%    21.0%     1/2     
+      0.03   0.0144     0.7%     4.3%     0.0%     4.3%     2/2     
+      0.01   0.0109     0.4%     2.5%     0.0%     2.5%     2/2     
+         0   0.0092     0.4%     2.6%     0.0%     2.6%     2/2     
+
+  arm 'bcat'  edge bm_myc  basal aM  regime Severe APC Loss
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.0665     8.7%    61.1%    35.8%    25.3%     1/2     
+       0.3   0.0619     5.5%    37.5%     0.3%    37.3%     1/2     
+       0.1   0.0161     0.9%     6.0%     0.0%     6.0%     2/2     
+      0.03   0.0045     0.2%     0.9%     0.0%     0.9%     2/2     
+      0.01   0.0015     0.2%     0.1%     0.0%     0.1%     2/2     
+         0   0.0000     0.2%     0.0%     0.0%    -0.0%     2/2     
+
+========================================================================
+  PRE-REGISTERED PREDICTIONS  (see PREREGISTERED.md)
+  primary = hybrid basal error;  excess = hybrid - control, reported alongside
+========================================================================
+
+  P1  basal error is monotone in anchor ratio (Spearman >= 0.8)
+        ra    Severe APC Loss    rho(hybrid)=+0.26  rho(excess)=-0.71  n=6  FAIL
+        wnt   Severe APC Loss    rho(hybrid)=+0.94  rho(excess)=+0.89  n=6  PASS
+        bcat  Severe APC Loss    rho(hybrid)=+1.00  rho(excess)=+0.94  n=6  PASS
+
+  P2  `ra` arm: basal error < 2% at k=0, and < 3% by k=0.03
+        Severe APC Loss    k=0     hybrid=  3.3% (excess -0.2%)  vs 2%  FAIL
+        Severe APC Loss    k=0.03  hybrid=  3.3% (excess -0.2%)  vs 3%  FAIL
+
+  P3  `wnt` arm plateaus: basal error never below 2% at any dose
+      (this is the falsifier -- if it collapses, the anchor account is wrong)
+        Severe APC Loss    best over all doses: k=0.01 hybrid=2.5% (excess +2.5%)  PASS
+
+  P4  `bcat` at k=0 (ratio 0) has basal error < 2%, and below the `wnt` arm's k=0
+        Severe APC Loss    bcat=  0.0% (excess -0.0%)  vs  wnt=  2.6% (excess +2.6%)  PASS
+
+  P5  `ra` and `bcat` lie on one curve vs achieved ratio (different equations, basal params, knockdowns)
+        Severe APC Loss    median basal-error gap at matched ratio = 3.3%  (n=5)  PASS
+
+  P6  `wnt` k=0 and `bcat` k=0.1 reach comparable ratios by different means; basal error within ~2.5x
+        Severe APC Loss    wnt k=0 (ratio 0.0092) basal=2.6%   bcat k=0.1 (ratio 0.0161) basal=6.0%   x2.3  PASS
+
+  [exploratory, NOT pre-registered]  basal error vs the anchor ratio itself
+        Severe APC Loss    basal_err / anchor_ratio: median 3.36x  range 0.18-21.35  (n=16)
+        a median near 1.0 would mean the training-free ratio PREDICTS the error,
+        not merely orders it. Treat as a hypothesis for the next pre-registration, not a result.
+
+  --------------------------------------------------------------------
+    P1  FAIL
+    P2  FAIL
+    P3  PASS
+    P4  PASS
+    P5  PASS
+    P6  PASS
+  --------------------------------------------------------------------
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  wrote runs/20260802_dose_starts5/dose_response.png
+=== DONE  2026-08-02T07:43:35+00:00
