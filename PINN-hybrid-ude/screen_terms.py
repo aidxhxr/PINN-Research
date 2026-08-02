@@ -41,7 +41,7 @@ import torch
 
 from config import (BASELINE, REGIMES, CONDITIONS, DEVICE, FIXED,
                     HYBRID_TERMS, INIT_GUESS, NOMINAL, PARAM_RANGE)
-from hybrid import build_one_term, observed_points, true_term
+from hybrid import build_one_term, observed_points, supports, true_term
 from model import InverseParams
 from residual import physics_rhs
 
@@ -243,6 +243,11 @@ def main():
         for term in terms:
             eq = HYBRID_TERMS[term]["eq"]
             for param in params_list:
+                ok, why = supports(term, param)
+                if not ok:
+                    print(f"  {regime:<18s} {term:<10s} {param:<11s} "
+                          f"SKIPPED — {why}", flush=True)
+                    continue
                 best = None
                 for s in range(args.starts):
                     r = fit_equation(eq, term, regime, refs[regime], conds,
