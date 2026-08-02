@@ -113,6 +113,8 @@ recorded in `notes/2026-07-28-myc-apc-hybrid.md`.
 | `PINN-bayesian/` | inverse Bayesian PINN/HMC experiments |
 | `PINN-forward-bayesian/` | forward posterior-predictive experiments |
 | `network-diagram/` | TikZ regulatory-network schematic |
+| `PINN/` | original notebooks; `run_sa_7ode.py` + `sa_results/` are the sensitivity analysis as numeric tables |
+| `research-paper/` | LaTeX write-up of everything except the UDE work |
 
 ## Recurring findings
 
