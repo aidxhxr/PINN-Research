@@ -138,6 +138,8 @@ unconditional.
 | `PINN-forward-bayesian/` | **Bayesian forward** PINN — HMC over the network weights → posterior-predictive trajectory band |
 | `PINN-hybrid-ude/` | **Neural-mechanistic hybrids (UDEs)** — 13 learnable regulatory edges, 5 constraint parameterisations, the equation-local edge screen, and the anchor-visiting experiment |
 | `network-diagram/` | The regulatory-network schematic (TikZ source + PDF) |
+| `PINN/` | The original notebooks + `run_sa_7ode.py`, the sensitivity analysis as citable CSV tables (`sa_results/`) |
+| `research-paper/` | The write-up of everything above (LaTeX + figures + PDF) |
 
 ---
 
