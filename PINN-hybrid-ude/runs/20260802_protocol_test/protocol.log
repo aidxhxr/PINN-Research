@@ -1,0 +1,66 @@
+=== protocol test queued  2026-08-01T23:58:48+00:00
+    waiting for DONE in runs/20260802_dose_response/dose.log
+    dose sweep finished, starting  2026-08-02T02:23:48+00:00
+    launched m_h13 pid=4003472  h13_b pid=4003473
+=== edges finished (rc=0)  2026-08-02T03:39:35+00:00
+
+prospective protocol test — 12 cells from runs/20260802_protocol_test
+
+  h13_b  Normal   (atlas 10-cond: 19.3% functional / 16.2% basal)
+    protocol    reaches    ratio    fNRMSE    basal     ctrl   eq params
+    none             no   0.1669     19.3%    16.2%     0.2%    1/4       (baseline)
+    mycKO            no   0.1191     20.0%    16.2%     1.0%    1/4       (NEAR-MISS)
+    hox13KO         yes   0.0000     19.2%    16.2%     1.0%    1/4       (prescribed)
+
+  h13_b  Severe APC Loss   (atlas 10-cond: 171.4% functional / 57.5% basal)
+    protocol    reaches    ratio    fNRMSE    basal     ctrl   eq params
+    none             no   0.1862    171.4%    57.5%    17.2%    2/4       (baseline)
+    mycKO            no   0.1117    165.8%    55.1%    13.5%    1/4       (NEAR-MISS)
+    hox13KO         yes   0.0000    160.6%    54.7%    11.7%    1/4       (prescribed)
+
+  m_h13  Normal   (atlas 10-cond: 57.2% functional / 12.8% basal)
+    protocol    reaches    ratio    fNRMSE    basal     ctrl   eq params
+    none             no   0.0816     57.2%    12.8%     0.0%    0/4       (baseline)
+    bcatKO           no   0.0786     24.9%    51.5%     1.1%    0/4       (NEAR-MISS)
+    mycKO           yes   0.0000     68.4%     0.1%     0.0%    1/4       (prescribed)
+
+  m_h13  Severe APC Loss   (atlas 10-cond: 11.6% functional / 95.6% basal)
+    protocol    reaches    ratio    fNRMSE    basal     ctrl   eq params
+    none             no   0.1132     11.6%    95.6%    28.1%    2/4       (baseline)
+    bcatKO           no   0.0679     24.3%    59.8%     4.8%    2/4       (NEAR-MISS)
+    mycKO           yes   0.0000     81.4%     0.0%     0.0%    2/4       (prescribed)
+
+========================================================================
+  PRE-REGISTERED PREDICTIONS  (see PREREGISTERED.md)
+========================================================================
+
+  Q1  `m_h13` basal `a13` < 3% under the prescribed `mycKO`
+        Normal               0.1%  PASS
+        Severe APC Loss      0.0%  PASS
+
+  Q2  `m_h13` under the NEAR-MISS `bcatKO` stays above 8% in >=1 regime
+      (falsifier: if the double knockout fixes it too, the table is measuring
+       perturbation size, not anchor visitation)
+        Normal              51.5%  (baseline 12.8%)
+        Severe APC Loss     59.8%  (baseline 95.6%)
+        max over regimes = 59.8%  PASS
+
+  Q3  `m_h13` equation-parameter count rises under `mycKO` and not under `bcatKO`
+        Normal             none=0/4  bcatKO=0/4  mycKO=1/4  PASS
+        Severe APC Loss    none=2/4  bcatKO=2/4  mycKO=2/4  FAIL
+
+  Q4  `m_h13` functional NRMSE < 20% in Normal under `mycKO` (from 57.2%)
+        Normal              68.4%  FAIL
+
+  Q5  `h13_b` basal `W` < 5% under `hox13KO`  (SECONDARY — confounded, see PREREGISTERED.md)
+        Normal              16.2%  FAIL
+        Severe APC Loss     54.7%  FAIL
+
+  --------------------------------------------------------------------
+    Q1  PASS
+    Q2  PASS
+    Q3  FAIL
+    Q4  FAIL
+    Q5  FAIL   (secondary, cannot carry the claim)
+  --------------------------------------------------------------------
+=== DONE  2026-08-02T03:39:35+00:00

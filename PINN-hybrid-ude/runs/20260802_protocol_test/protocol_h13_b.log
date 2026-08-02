@@ -1,0 +1,10 @@
+protocol test  edge=h13_b (eq db, basal W, regulator h13)
+  protocols: none, mycKO, hox13KO   2 regimes, 2 starts
+  Normal             none      ratio= 0.1669  fNRMSE=  19.3%  basal= 16.2% (ctrl   0.2%)  eq 1/4 (ctrl 6/6)  [628s]
+  Normal             mycKO     ratio= 0.1191  fNRMSE=  20.0%  basal= 16.2% (ctrl   1.0%)  eq 1/4 (ctrl 5/6)  [1064s]
+  Normal             hox13KO   ratio= 0.0000  fNRMSE=  19.2%  basal= 16.2% (ctrl   1.0%)  eq 1/4 (ctrl 5/6)  [1462s]
+  Severe APC Loss    none      ratio= 0.1862  fNRMSE= 171.4%  basal= 57.5% (ctrl  17.2%)  eq 2/4 (ctrl 0/6)  [2092s]
+  Severe APC Loss    mycKO     ratio= 0.1117  fNRMSE= 165.8%  basal= 55.1% (ctrl  13.5%)  eq 1/4 (ctrl 1/6)  [3154s]
+  Severe APC Loss    hox13KO   ratio= 0.0000  fNRMSE= 160.6%  basal= 54.7% (ctrl  11.7%)  eq 1/4 (ctrl 1/6)  [4360s]
+
+wrote runs/20260802_protocol_test/protocol_h13_b.json  (4360s)
