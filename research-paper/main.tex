@@ -1,0 +1,1966 @@
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage[numbers]{natbib}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\title{A Reduced WNT--RA--HOX Model for Colorectal Cancer Stemness}
+\author{Amir, Nate, PK}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Model Overview}
+
+This model describes the regulatory interactions among the WNT, HOX, and
+retinoic acid (RA) pathways in colorectal cancer. The model contains seven
+state variables representing key molecular components involved in stemness,
+differentiation, and treatment response:
+\[
+B(t)=\text{$\beta$-catenin}, \qquad
+P(t)=\text{APC}, \qquad
+H_5(t)=\text{HOXA5},
+\]
+\[
+H_{13}(t)=\text{HOXA13}, \qquad
+M(t)=\text{MYC}, \qquad
+R(t)=\text{RA}, \qquad
+C(t)=\text{CYP26A1}.
+\]
+
+The model is built around three major biological feedback loops. The first is
+a pro-stemness loop:
+\[
+\beta\text{-catenin}
+\longrightarrow
+\text{MYC}
+\longrightarrow
+\text{HOXA13}
+\longrightarrow
+\beta\text{-catenin}.
+\]
+The second is a differentiation loop:
+\[
+\text{RA}
+\longrightarrow
+\text{HOXA5}
+\longrightarrow
+\text{APC}
+\dashv
+\beta\text{-catenin}.
+\]
+The third is an RA homeostasis loop:
+\[
+\text{RA}
+\longrightarrow
+\text{CYP26A1}
+\dashv
+\text{RA}.
+\]
+
+Reduced APC functionality is used to represent APC-mutant colorectal cancer
+cells. APC loss weakens the suppression of $\beta$-catenin, leading to
+increased MYC and HOXA13 activity, reduced differentiation, and increased
+stemness.
+
+\section{Dimensional Model}
+
+The dimensional WNT--RA--HOX--CYP model is
+\begin{align}
+\frac{dB}{dt}
+&=
+a_BW
++
+v_{13}\frac{H_{13}^{n_H}}{K_{13}^{n_H}+H_{13}^{n_H}}
+-
+d_BB
+-
+k_{PB}PB
+-
+v_5\frac{H_5B}{K_5+B},
+\\
+\frac{dP}{dt}
+&=
+a_P
+\frac{1+\rho_5H_5}
+{1+\rho_BB+\rho_{13}H_{13}}
+-
+\Big(d_{P0}+d_{P1}(1-\Theta_P)\Big)P,
+\\
+\frac{dH_5}{dt}
+&=
+a_5
++
+v_R\frac{R}{K_R+R}
+-
+d_5H_5
+-
+v_M\frac{MH_5}{K_M+M},
+\\
+\frac{dH_{13}}{dt}
+&=
+a_{13}
++
+v_{B13}\frac{B^{n_B}}{K_{B13}^{n_B}+B^{n_B}}
++
+v_{M13}\frac{M^{n_M}}{K_{M13}^{n_M}+M^{n_M}}
+-
+d_{13}H_{13},
+\\
+\frac{dM}{dt}
+&=
+a_M
++
+v_{BM}\frac{B^{n_B}}{K_{BM}^{n_B}+B^{n_B}}
+-
+d_MM,
+\\
+\frac{dR}{dt}
+&=
+u_R(t)
+-
+d_RR
+-
+k_{CR}CR,
+\\
+\frac{dC}{dt}
+&=
+a_C
++
+v_{RC}\frac{R}{K_{RC}+R}
++
+v_{BC}\frac{B^{n_B}}{K_{BC}^{n_B}+B^{n_B}}
+-
+d_CC.
+\end{align}
+
+\[
+u_R(t)
+=
+u_0
++
+\frac{D}{2}
+\left[
+\tanh(q(t-t_1))
+-
+\tanh(q(t-t_2))
+\right].
+\]
+
+\section{Nondimensional Model}
+
+The resulting nondimensional system is
+\[
+b=\frac{B}{B_0},\quad
+p=\frac{P}{P_0},\quad
+h_5=\frac{H_5}{H_{50}},\quad
+h_{13}=\frac{H_{13}}{H_{130}},
+\]
+\[
+m=\frac{M}{M_0},\quad
+r=\frac{R}{R_0},\quad
+c=\frac{C}{C_0},\quad
+\tau=d_Bt.
+\]
+
+\begin{align}
+\frac{db}{d\tau}
+&=
+w
++
+\eta_{13}\frac{h_{13}^{n_H}}{\kappa_{13}^{n_H}+h_{13}^{n_H}}
+-
+b
+-
+\lambda_Ppb
+-
+\lambda_5\frac{h_5b}{\kappa_5+b},
+\\
+\frac{dp}{d\tau}
+&=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}
+{1+\rho_Bb+\rho_{13}h_{13}}
+-
+\delta_P(\theta_P)p
+\right],
+\\
+\frac{dh_5}{d\tau}
+&=
+\frac{1}{\varepsilon_5}
+\left[
+a_5
++
+\eta_R\frac{r}{\kappa_R+r}
+-
+h_5
+-
+\eta_M\frac{mh_5}{\kappa_M+m}
+\right],
+\\
+\frac{dh_{13}}{d\tau}
+&=
+\frac{1}{\varepsilon_{13}}
+\left[
+a_{13}
++
+\eta_{B13}\frac{b^{n_B}}{\kappa_{B13}^{n_B}+b^{n_B}}
++
+\eta_{M13}\frac{m^{n_M}}{\kappa_{M13}^{n_M}+m^{n_M}}
+-
+h_{13}
+\right],
+\\
+\frac{dm}{d\tau}
+&=
+\frac{1}{\varepsilon_M}
+\left[
+a_M
++
+\eta_{BM}\frac{b^{n_B}}{\kappa_{BM}^{n_B}+b^{n_B}}
+-
+m
+\right],
+\\
+\frac{dr}{d\tau}
+&=
+\frac{1}{\varepsilon_R}
+\left[
+\mu_R(\tau)
+-
+r
+-
+\lambda_Ccr
+\right],
+\\
+\frac{dc}{d\tau}
+&=
+\frac{1}{\varepsilon_C}
+\left[
+a_C
++
+\eta_{RC}\frac{r}{\kappa_{RC}+r}
++
+\eta_{BC}\frac{b^{n_B}}{\kappa_{BC}^{n_B}+b^{n_B}}
+-
+c
+\right].
+\end{align}
+
+\[
+\delta_P(\theta_P)=1+\delta_{P1}(1-\theta_P).
+\]
+
+\[
+S(\tau)
+=
+\frac{
+b(\tau)\left[1+\alpha_{13}h_{13}(\tau)\right]
+}
+{
+1+p(\tau)+\alpha_5h_5(\tau)
+}.
+\]
+where $\theta_P$ measures functional APC activity.
+
+The nondimensional treatment function is
+\begin{equation}
+\mu_R(\tau)
+=
+\mu_0
++
+\frac{D_R}{2}
+\left[
+\tanh\!\big(q(\tau-\tau_1)\big)
+-
+\tanh\!\big(q(\tau-\tau_2)\big)
+\right].
+\end{equation}
+
+\section{Expected Model Behavior}
+
+The model is designed to reproduce four key biological behaviors:
+
+\begin{enumerate}
+\item \textbf{Normal tissue:} high APC, controlled $\beta$-catenin, moderate MYC and HOXA13, and low stemness.
+
+\item \textbf{APC-mutant tissue:} reduced APC functionality increases $\beta$-catenin signaling, which elevates MYC and HOXA13 and suppresses differentiation.
+
+\item \textbf{RA treatment:} increased RA induces HOXA5, enhances APC activity, suppresses $\beta$-catenin signaling, and lowers stemness.
+
+\item \textbf{CYP-mediated resistance:} elevated CYP26A1 accelerates RA degradation, reducing the effectiveness of RA-based therapies.
+\end{enumerate}
+
+To quantify cellular phenotype, the stemness index is defined by
+\begin{equation}
+S(\tau)
+=
+\frac{
+b(\tau)\left[1+\alpha_{13}h_{13}(\tau)\right]
+}
+{
+1+p(\tau)+\alpha_5h_5(\tau)
+}.
+\end{equation}
+
+Large values of $S$ correspond to highly proliferative, stem-like states,
+whereas small values correspond to differentiated cellular states.
+
+
+
+\newpage
+
+\section{Dimensional and Nondimensional Model}
+
+We consider the seven dimensional variables
+\[
+B(t),\quad P(t),\quad H_5(t),\quad H_{13}(t),\quad M(t),\quad R(t),\quad C(t),
+\]
+where \(B\) denotes \(\beta\)-catenin, \(P\) denotes APC, \(H_5\) denotes HOXA5, \(H_{13}\) denotes HOXA13, \(M\) denotes MYC, \(R\) denotes retinoic acid, and \(C\) denotes CYP26A1.
+
+We introduce the dimensionless variables
+\[
+b=\frac{B}{B_0},\qquad
+p=\frac{P}{P_0},\qquad
+h_5=\frac{H_5}{H_{50}},\qquad
+h_{13}=\frac{H_{13}}{H_{130}},
+\]
+\[
+m=\frac{M}{M_0},\qquad
+r=\frac{R}{R_0},\qquad
+c=\frac{C}{C_0},
+\]
+and the dimensionless time
+\[
+\tau=d_B t.
+\]
+
+Thus,
+\[
+\frac{d}{dt}=d_B\frac{d}{d\tau}.
+\]
+
+\subsection{1. \(\beta\)-catenin equation}
+
+The dimensional equation is
+\[
+\frac{dB}{dt}
+=
+a_BW
++
+v_{13}
+\frac{H_{13}^{n_H}}
+{K_{13}^{n_H}+H_{13}^{n_H}}
+-
+d_BB
+-
+k_{PB}PB
+-
+v_5\frac{H_5B}{K_5+B}.
+\]
+
+Substitute
+\[
+B=B_0b,\qquad P=P_0p,\qquad H_5=H_{50}h_5,\qquad H_{13}=H_{130}h_{13}.
+\]
+
+Then
+\[
+d_BB_0\frac{db}{d\tau}
+=
+a_BW
++
+v_{13}
+\frac{H_{130}^{n_H}h_{13}^{n_H}}
+{K_{13}^{n_H}+H_{130}^{n_H}h_{13}^{n_H}}
+-
+d_BB_0b
+-
+k_{PB}P_0B_0pb
+-
+v_5
+\frac{H_{50}h_5B_0b}{K_5+B_0b}.
+\]
+
+Divide by \(d_BB_0\):
+\[
+\frac{db}{d\tau}
+=
+\frac{a_BW}{d_BB_0}
++
+\frac{v_{13}}{d_BB_0}
+\frac{h_{13}^{n_H}}
+{\left(\frac{K_{13}}{H_{130}}\right)^{n_H}+h_{13}^{n_H}}
+-
+b
+-
+\frac{k_{PB}P_0}{d_B}pb
+-
+\frac{v_5H_{50}}{d_BB_0}
+\frac{h_5b}{\frac{K_5}{B_0}+b}.
+\]
+
+Define
+\[
+w=\frac{a_BW}{d_BB_0},\qquad
+\eta_{13}=\frac{v_{13}}{d_BB_0},\qquad
+\kappa_{13}=\frac{K_{13}}{H_{130}},
+\]
+\[
+\lambda_P=\frac{k_{PB}P_0}{d_B},\qquad
+\lambda_5=\frac{v_5H_{50}}{d_BB_0},\qquad
+\kappa_5=\frac{K_5}{B_0}.
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{db}{d\tau}
+=
+w
++
+\eta_{13}
+\frac{h_{13}^{n_H}}
+{\kappa_{13}^{n_H}+h_{13}^{n_H}}
+-
+b
+-
+\lambda_Ppb
+-
+\lambda_5\frac{h_5b}{\kappa_5+b}.
+}
+\]
+
+\subsection{2. APC equation}
+
+The dimensional equation is
+\[
+\frac{dP}{dt}
+=
+a_P
+\frac{1+\rho_5H_5}
+{1+\rho_BB+\rho_{13}H_{13}}
+-
+\Big(\gamma_{P0}+\gamma_{P1}(1-\Theta_P)\Big)P.
+\]
+
+We use \(\gamma_{P0}\) and \(\gamma_{P1}\) for APC degradation rates to avoid confusion with the APC variable \(P\).
+
+Substitute
+\[
+P=P_0p,\qquad B=B_0b,\qquad H_5=H_{50}h_5,\qquad H_{13}=H_{130}h_{13}.
+\]
+
+Then
+\[
+d_BP_0\frac{dp}{d\tau}
+=
+a_P
+\frac{1+\rho_5H_{50}h_5}
+{1+\rho_BB_0b+\rho_{13}H_{130}h_{13}}
+-
+\Big(\gamma_{P0}+\gamma_{P1}(1-\Theta_P)\Big)P_0p.
+\]
+
+Divide by \(d_BP_0\):
+\[
+\frac{dp}{d\tau}
+=
+\frac{a_P}{d_BP_0}
+\frac{1+\rho_5H_{50}h_5}
+{1+\rho_BB_0b+\rho_{13}H_{130}h_{13}}
+-
+\frac{\gamma_{P0}+\gamma_{P1}(1-\Theta_P)}{d_B}p.
+\]
+
+Choose
+\[
+P_0=\frac{a_P}{\gamma_{P0}},
+\qquad
+\varepsilon_P=\frac{d_B}{\gamma_{P0}}.
+\]
+
+Then
+\[
+\frac{a_P}{d_BP_0}
+=
+\frac{\gamma_{P0}}{d_B}
+=
+\frac{1}{\varepsilon_P}.
+\]
+
+Define
+\[
+\rho_5^*=\rho_5H_{50},\qquad
+\rho_B^*=\rho_BB_0,\qquad
+\rho_{13}^*=\rho_{13}H_{130},
+\]
+and, for simplicity, relabel
+\[
+\rho_5^*\to \rho_5,\qquad
+\rho_B^*\to \rho_B,\qquad
+\rho_{13}^*\to \rho_{13}.
+\]
+
+Also define
+\[
+\delta_{P1}=\frac{\gamma_{P1}}{\gamma_{P0}},
+\qquad
+\theta_P=\Theta_P,
+\]
+so that
+\[
+\delta_P(\theta_P)=1+\delta_{P1}(1-\theta_P).
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{dp}{d\tau}
+=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}
+{1+\rho_Bb+\rho_{13}h_{13}}
+-
+\delta_P(\theta_P)p
+\right].
+}
+\]
+
+\subsection{3. HOXA5 equation}
+
+The dimensional equation is
+\[
+\frac{dH_5}{dt}
+=
+a_5
++
+v_R\frac{R}{K_R+R}
+-
+d_5H_5
+-
+v_M\frac{MH_5}{K_M+M}.
+\]
+
+Substitute
+\[
+H_5=H_{50}h_5,\qquad R=R_0r,\qquad M=M_0m.
+\]
+
+Then
+\[
+d_BH_{50}\frac{dh_5}{d\tau}
+=
+a_5
++
+v_R\frac{R_0r}{K_R+R_0r}
+-
+d_5H_{50}h_5
+-
+v_M\frac{M_0mH_{50}h_5}{K_M+M_0m}.
+\]
+
+Divide by \(d_BH_{50}\):
+\[
+\frac{dh_5}{d\tau}
+=
+\frac{a_5}{d_BH_{50}}
++
+\frac{v_R}{d_BH_{50}}
+\frac{r}{\frac{K_R}{R_0}+r}
+-
+\frac{d_5}{d_B}h_5
+-
+\frac{v_M}{d_B}
+\frac{mh_5}{\frac{K_M}{M_0}+m}.
+\]
+
+Choose
+\[
+H_{50}=\frac{a_5}{d_5},
+\qquad
+\varepsilon_5=\frac{d_B}{d_5}.
+\]
+
+Then
+\[
+\frac{a_5}{d_BH_{50}}=\frac{d_5}{d_B}=\frac{1}{\varepsilon_5}.
+\]
+
+Define
+\[
+\eta_R=\frac{v_R}{d_5H_{50}},
+\qquad
+\kappa_R=\frac{K_R}{R_0},
+\qquad
+\eta_M=\frac{v_M}{d_5},
+\qquad
+\kappa_M=\frac{K_M}{M_0}.
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{dh_5}{d\tau}
+=
+\frac{1}{\varepsilon_5}
+\left[
+1
++
+\eta_R\frac{r}{\kappa_R+r}
+-
+h_5
+-
+\eta_M\frac{mh_5}{\kappa_M+m}
+\right].
+}
+\]
+
+If one does not choose \(H_{50}=a_5/d_5\), the first term becomes a free dimensionless basal production parameter \(a_5^*\), giving
+\[
+\frac{dh_5}{d\tau}
+=
+\frac{1}{\varepsilon_5}
+\left[
+a_5^*
++
+\eta_R\frac{r}{\kappa_R+r}
+-
+h_5
+-
+\eta_M\frac{mh_5}{\kappa_M+m}
+\right].
+\]
+
+\subsection{4. HOXA13 equation}
+
+The dimensional equation is
+\[
+\frac{dH_{13}}{dt}
+=
+a_{13}
++
+v_{B13}
+\frac{B^{n_B}}
+{K_{B13}^{n_B}+B^{n_B}}
++
+v_{M13}
+\frac{M^{n_M}}
+{K_{M13}^{n_M}+M^{n_M}}
+-
+d_{13}H_{13}.
+\]
+
+Substitute
+\[
+H_{13}=H_{130}h_{13},\qquad B=B_0b,\qquad M=M_0m.
+\]
+
+Then
+\[
+d_BH_{130}\frac{dh_{13}}{d\tau}
+=
+a_{13}
++
+v_{B13}
+\frac{B_0^{n_B}b^{n_B}}
+{K_{B13}^{n_B}+B_0^{n_B}b^{n_B}}
++
+v_{M13}
+\frac{M_0^{n_M}m^{n_M}}
+{K_{M13}^{n_M}+M_0^{n_M}m^{n_M}}
+-
+d_{13}H_{130}h_{13}.
+\]
+
+Divide by \(d_BH_{130}\):
+\[
+\frac{dh_{13}}{d\tau}
+=
+\frac{a_{13}}{d_BH_{130}}
++
+\frac{v_{B13}}{d_BH_{130}}
+\frac{b^{n_B}}
+{\left(\frac{K_{B13}}{B_0}\right)^{n_B}+b^{n_B}}
++
+\frac{v_{M13}}{d_BH_{130}}
+\frac{m^{n_M}}
+{\left(\frac{K_{M13}}{M_0}\right)^{n_M}+m^{n_M}}
+-
+\frac{d_{13}}{d_B}h_{13}.
+\]
+
+Choose
+\[
+H_{130}=\frac{a_{13}}{d_{13}},
+\qquad
+\varepsilon_{13}=\frac{d_B}{d_{13}}.
+\]
+
+Define
+\[
+\eta_{B13}=\frac{v_{B13}}{d_{13}H_{130}},
+\qquad
+\kappa_{B13}=\frac{K_{B13}}{B_0},
+\]
+\[
+\eta_{M13}=\frac{v_{M13}}{d_{13}H_{130}},
+\qquad
+\kappa_{M13}=\frac{K_{M13}}{M_0}.
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{dh_{13}}{d\tau}
+=
+\frac{1}{\varepsilon_{13}}
+\left[
+1
++
+\eta_{B13}
+\frac{b^{n_B}}
+{\kappa_{B13}^{n_B}+b^{n_B}}
++
+\eta_{M13}
+\frac{m^{n_M}}
+{\kappa_{M13}^{n_M}+m^{n_M}}
+-
+h_{13}
+\right].
+}
+\]
+
+If one does not choose \(H_{130}=a_{13}/d_{13}\), the basal term becomes \(a_{13}^*\).
+
+\subsection{5. MYC equation}
+
+The dimensional equation is
+\[
+\frac{dM}{dt}
+=
+a_M
++
+v_{BM}
+\frac{B^{n_B}}
+{K_{BM}^{n_B}+B^{n_B}}
+-
+d_MM.
+\]
+
+Substitute
+\[
+M=M_0m,\qquad B=B_0b.
+\]
+
+Then
+\[
+d_BM_0\frac{dm}{d\tau}
+=
+a_M
++
+v_{BM}
+\frac{B_0^{n_B}b^{n_B}}
+{K_{BM}^{n_B}+B_0^{n_B}b^{n_B}}
+-
+d_MM_0m.
+\]
+
+Divide by \(d_BM_0\):
+\[
+\frac{dm}{d\tau}
+=
+\frac{a_M}{d_BM_0}
++
+\frac{v_{BM}}{d_BM_0}
+\frac{b^{n_B}}
+{\left(\frac{K_{BM}}{B_0}\right)^{n_B}+b^{n_B}}
+-
+\frac{d_M}{d_B}m.
+\]
+
+Choose
+\[
+M_0=\frac{a_M}{d_M},
+\qquad
+\varepsilon_M=\frac{d_B}{d_M}.
+\]
+
+Define
+\[
+\eta_{BM}=\frac{v_{BM}}{d_MM_0},
+\qquad
+\kappa_{BM}=\frac{K_{BM}}{B_0}.
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{dm}{d\tau}
+=
+\frac{1}{\varepsilon_M}
+\left[
+1
++
+\eta_{BM}
+\frac{b^{n_B}}
+{\kappa_{BM}^{n_B}+b^{n_B}}
+-
+m
+\right].
+}
+\]
+
+If one does not choose \(M_0=a_M/d_M\), the basal term becomes \(a_M^*\).
+
+\subsection{6. Retinoic acid equation}
+
+The dimensional equation is
+\[
+\frac{dR}{dt}
+=
+u_R(t)
+-
+d_RR
+-
+k_{CR}CR.
+\]
+
+The input is
+\[
+u_R(t)
+=
+u_0
++
+A_d
+\left[
+1+
+\cos\left(
+\frac{2\pi t}{T_d}-\phi
+\right)
+\right]
++
+\frac{D}{2}
+\left[
+\tanh(q(t-t_1))
+-
+\tanh(q(t-t_2))
+\right].
+\]
+
+Substitute
+\[
+R=R_0r,\qquad C=C_0c,\qquad \tau=d_Bt.
+\]
+
+Then
+\[
+d_BR_0\frac{dr}{d\tau}
+=
+u_R(t)
+-
+d_RR_0r
+-
+k_{CR}C_0cR_0r.
+\]
+
+Divide by \(d_BR_0\):
+\[
+\frac{dr}{d\tau}
+=
+\frac{u_R(t)}{d_BR_0}
+-
+\frac{d_R}{d_B}r
+-
+\frac{k_{CR}C_0}{d_B}cr.
+\]
+
+Define
+\[
+\varepsilon_R=\frac{d_B}{d_R},
+\qquad
+\lambda_C=\frac{k_{CR}C_0}{d_R},
+\qquad
+\mu_R(\tau)=\frac{u_R(t)}{d_RR_0}.
+\]
+
+Then
+\[
+\frac{u_R(t)}{d_BR_0}
+=
+\frac{1}{\varepsilon_R}\mu_R(\tau).
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{dr}{d\tau}
+=
+\frac{1}{\varepsilon_R}
+\left[
+\mu_R(\tau)
+-
+r
+-
+\lambda_Ccr
+\right].
+}
+\]
+
+Now define the nondimensional input parameters
+\[
+\mu_0=\frac{u_0}{d_RR_0},
+\qquad
+A_R=\frac{A_d}{d_RR_0},
+\qquad
+D_R=\frac{D}{d_RR_0},
+\]
+\[
+T_R=d_BT_d,
+\qquad
+q_R=\frac{q}{d_B},
+\qquad
+\tau_1=d_Bt_1,
+\qquad
+\tau_2=d_Bt_2.
+\]
+
+Therefore
+\[
+\boxed{
+\mu_R(\tau)
+=
+\mu_0
++
+A_R
+\left[
+1+
+\cos\left(
+\frac{2\pi \tau}{T_R}-\phi
+\right)
+\right]
++
+\frac{D_R}{2}
+\left[
+\tanh(q_R(\tau-\tau_1))
+-
+\tanh(q_R(\tau-\tau_2))
+\right].
+}
+\]
+
+For simplicity, we usually write \(q\) instead of \(q_R\) after nondimensionalization.
+
+\subsection{7. CYP26A1 equation}
+
+The dimensional equation is
+\[
+\frac{dC}{dt}
+=
+a_C
++
+v_{RC}\frac{R}{K_{RC}+R}
++
+v_{BC}
+\frac{B^{n_B}}
+{K_{BC}^{n_B}+B^{n_B}}
+-
+d_CC.
+\]
+
+Substitute
+\[
+C=C_0c,\qquad R=R_0r,\qquad B=B_0b.
+\]
+
+Then
+\[
+d_BC_0\frac{dc}{d\tau}
+=
+a_C
++
+v_{RC}\frac{R_0r}{K_{RC}+R_0r}
++
+v_{BC}
+\frac{B_0^{n_B}b^{n_B}}
+{K_{BC}^{n_B}+B_0^{n_B}b^{n_B}}
+-
+d_CC_0c.
+\]
+
+Divide by \(d_BC_0\):
+\[
+\frac{dc}{d\tau}
+=
+\frac{a_C}{d_BC_0}
++
+\frac{v_{RC}}{d_BC_0}
+\frac{r}{\frac{K_{RC}}{R_0}+r}
++
+\frac{v_{BC}}{d_BC_0}
+\frac{b^{n_B}}
+{\left(\frac{K_{BC}}{B_0}\right)^{n_B}+b^{n_B}}
+-
+\frac{d_C}{d_B}c.
+\]
+
+Define
+\[
+\varepsilon_C=\frac{d_B}{d_C},
+\qquad
+a_C^*=\frac{a_C}{d_CC_0},
+\]
+\[
+\eta_{RC}=\frac{v_{RC}}{d_CC_0},
+\qquad
+\kappa_{RC}=\frac{K_{RC}}{R_0},
+\]
+\[
+\eta_{BC}=\frac{v_{BC}}{d_CC_0},
+\qquad
+\kappa_{BC}=\frac{K_{BC}}{B_0}.
+\]
+
+The nondimensional equation is
+\[
+\boxed{
+\frac{dc}{d\tau}
+=
+\frac{1}{\varepsilon_C}
+\left[
+a_C^*
++
+\eta_{RC}\frac{r}{\kappa_{RC}+r}
++
+\eta_{BC}
+\frac{b^{n_B}}
+{\kappa_{BC}^{n_B}+b^{n_B}}
+-
+c
+\right].
+}
+\]
+
+If \(C_0=a_C/d_C\), then \(a_C^*=1\). In simulations we keep \(a_C^*\) as a free dimensionless basal CYP production parameter.
+
+\section{Final Nondimensional System}
+
+The complete nondimensional model is
+\[
+\boxed{
+\frac{db}{d\tau}
+=
+w
++
+\eta_{13}
+\frac{h_{13}^{n_H}}
+{\kappa_{13}^{n_H}+h_{13}^{n_H}}
+-
+b
+-
+\lambda_Ppb
+-
+\lambda_5\frac{h_5b}{\kappa_5+b}
+}
+\]
+
+\[
+\boxed{
+\frac{dp}{d\tau}
+=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}
+{1+\rho_Bb+\rho_{13}h_{13}}
+-
+\delta_P(\theta_P)p
+\right]
+}
+\]
+
+\[
+\boxed{
+\frac{dh_5}{d\tau}
+=
+\frac{1}{\varepsilon_5}
+\left[
+a_5^*
++
+\eta_R\frac{r}{\kappa_R+r}
+-
+h_5
+-
+\eta_M\frac{mh_5}{\kappa_M+m}
+\right]
+}
+\]
+
+\[
+\boxed{
+\frac{dh_{13}}{d\tau}
+=
+\frac{1}{\varepsilon_{13}}
+\left[
+a_{13}^*
++
+\eta_{B13}
+\frac{b^{n_B}}
+{\kappa_{B13}^{n_B}+b^{n_B}}
++
+\eta_{M13}
+\frac{m^{n_M}}
+{\kappa_{M13}^{n_M}+m^{n_M}}
+-
+h_{13}
+\right]
+}
+\]
+
+\[
+\boxed{
+\frac{dm}{d\tau}
+=
+\frac{1}{\varepsilon_M}
+\left[
+a_M^*
++
+\eta_{BM}
+\frac{b^{n_B}}
+{\kappa_{BM}^{n_B}+b^{n_B}}
+-
+m
+\right]
+}
+\]
+
+\[
+\boxed{
+\frac{dr}{d\tau}
+=
+\frac{1}{\varepsilon_R}
+\left[
+\mu_R(\tau)
+-
+r
+-
+\lambda_Ccr
+\right]
+}
+\]
+
+\[
+\boxed{
+\frac{dc}{d\tau}
+=
+\frac{1}{\varepsilon_C}
+\left[
+a_C^*
++
+\eta_{RC}\frac{r}{\kappa_{RC}+r}
++
+\eta_{BC}
+\frac{b^{n_B}}
+{\kappa_{BC}^{n_B}+b^{n_B}}
+-
+c
+\right].
+}
+\]
+
+The APC mutation function is
+\[
+\boxed{
+\delta_P(\theta_P)=1+\delta_{P1}(1-\theta_P).
+}
+\]
+
+Here,
+\[
+\theta_P=1
+\]
+corresponds to normal APC function, while
+\[
+0<\theta_P<1
+\]
+corresponds to partial APC loss or APC-mutant behavior.
+
+The nondimensional RA input is
+\[
+\boxed{
+\mu_R(\tau)
+=
+\mu_0
++
+A_R
+\left[
+1+
+\cos\left(
+\frac{2\pi \tau}{T_R}-\phi
+\right)
+\right]
++
+\frac{D_R}{2}
+\left[
+\tanh(q(\tau-\tau_1))
+-
+\tanh(q(\tau-\tau_2))
+\right].
+}
+\]
+
+\section{Stemness Measures}
+
+The dynamic stemness index is defined by
+\[
+\boxed{
+S(\tau)
+=
+\frac{
+b(\tau)\left(1+\alpha_{13}h_{13}(\tau)\right)
+}
+{
+\left(1+p(\tau)\right)
+\left(1+\alpha_5h_5(\tau)\right)
+}.
+}
+\]
+
+The equilibrium stemness index is
+\[
+\boxed{
+S^*
+=
+\frac{
+b^*\left(1+\alpha_{13}h_{13}^*\right)
+}
+{
+\left(1+p^*\right)
+\left(1+\alpha_5h_5^*\right)
+},
+}
+\]
+where
+\[
+(b^*,p^*,h_5^*,h_{13}^*,m^*,r^*,c^*)
+\]
+is the steady-state solution of the nondimensional system.
+ Next step is to do the following:
+  Solve the forward problem, sensitivity, bifurcation, implement PINNs, stochastic etc.
+
+
+\newpage
+
+\subsection{Dimensional Interpretation of the Dimensionless Model}
+
+The model was formulated and simulated in dimensionless form in order to compare
+the relative strengths of the regulatory interactions among WNT, HOX, RA, and
+CYP signaling. To provide a biologically interpretable dimensional realization of
+the simulations, we introduce the reference scales
+\[
+d_B=1\ \mathrm{hr}^{-1},
+\]
+and
+\[
+B_0=0.20,\quad
+P_0=1.00,\quad
+H_{5,0}=0.80,\quad
+H_{13,0}=0.30,\quad
+M_0=0.30,\quad
+R_0=0.60,\quad
+C_0=0.40.
+\]
+These values correspond to the initial conditions used in the numerical simulations:
+\[
+y_0=(0.20,\ 1.00,\ 0.80,\ 0.30,\ 0.30,\ 0.60,\ 0.40),
+\]
+where the state variables are ordered as
+\[
+(B,\ P,\ H_5,\ H_{13},\ M,\ R,\ C).
+\]
+
+With the reference degradation rate
+\[
+d_B=1~\mathrm{hr}^{-1},
+\]
+the dimensionless time variable is defined by
+\[
+\tau=d_Bt.
+\]
+Consequently, when the dimensional time \(t\) is expressed in hours, the numerical
+value of \(\tau\) is equal to the numerical value of \(t\). For example,
+\(\tau=40\) corresponds to \(t=40~\mathrm{hr}\), and \(\tau=88\) corresponds to
+\(t=88~\mathrm{hr}\). Thus, one dimensionless time unit represents one hour on
+the adopted biological time scale.
+
+The dimensional parameter values reported below are estimated values based on
+the selected reference scales and the dimensionless parameter set. They are
+chosen such that nondimensionalization reproduces exactly the parameter values
+used in the numerical simulations. Consequently, the dimensional and
+dimensionless formulations are mathematically equivalent, while the dimensional
+representation provides a biologically interpretable description of the model
+parameters and time scales.
+
+This interpretation is appropriate for an in vitro signaling model describing the
+regulation of the WNT, HOX, and retinoic acid pathways in colorectal cancer.
+To distinguish treatment-induced responses from the initial transient associated
+with the prescribed initial conditions, the model is first allowed to evolve under
+untreated conditions for 40 hours before ATRA administration. The treatment is
+then applied over the interval
+\[
+40 \leq t \leq 88~\mathrm{hr},
+\]
+which is equivalent to
+\[
+40 \leq \tau \leq 88.
+\]
+This corresponds to a 48-hour ATRA exposure following a 40-hour equilibration
+period. Such treatment durations are consistent with widely used in vitro protocols
+for investigating the effects of all-trans retinoic acid on colorectal cancer cell
+proliferation, differentiation, stemness, and signaling pathways
+\cite{ordonez2015hoxa5,facey2020retinoids,xu2022atra}. Accordingly, the treatment
+window should be interpreted as a controlled cell-culture exposure designed to
+study pathway dynamics rather than as a clinical treatment schedule.
+\begin{table}[ht]
+\centering
+\caption{Reference scales used to recover the dimensional parameter set from the
+dimensionless model. These scales preserve exactly the dimensionless parameter
+values employed in all numerical simulations.}
+\label{tab:reference_scales}
+\begin{tabular}{lll}
+\toprule
+Reference quantity & Description & Value \\
+\midrule
+$d_B$ & Reference degradation rate of $\beta$-catenin & $1.00~\mathrm{hr}^{-1}$\\
+$B_0$ & Reference $\beta$-catenin concentration & $0.20$\\
+$P_0$ & Reference APC concentration & $1.00$\\
+$H_{5,0}$ & Reference HOXA5 concentration & $0.80$\\
+$H_{13,0}$ & Reference HOXA13 concentration & $0.30$\\
+$M_0$ & Reference MYC concentration & $0.30$\\
+$R_0$ & Reference RA:RAR concentration & $0.60$\\
+$C_0$ & Reference CYP26A1 concentration & $0.40$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{longtable}{lll}
+\caption{Recovered dimensional parameter values. These values constitute one
+consistent dimensional realization of the dimensionless model and reproduce
+exactly the numerical simulations after nondimensionalization.}
+\label{tab:dimensional_parameters}
+\\
+
+\toprule
+Parameter & Biological interpretation / Units & Value\\
+\midrule
+\endfirsthead
+
+\caption[]{Recovered dimensional parameter values (continued).}\\
+\toprule
+Parameter & Biological interpretation / Units & Value\\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+$d_B$ & $\beta$-catenin degradation rate $(\mathrm{hr}^{-1})$ & 1.000\\
+$v_{13}$ & HOXA13 synthesis rate $(\mathrm{hr}^{-1})$ & 0.150\\
+$K_{13}$ & HOXA13 activation constant & 0.165\\
+$k_{PB}$ & APC inhibition coefficient $(\mathrm{hr}^{-1})$ & 1.600\\
+$v_5$ & HOXA5 synthesis rate $(\mathrm{hr}^{-1})$ & 0.325\\
+$K_5$ & $\beta$-catenin activation constant & 0.100\\
+$\gamma_{P0}$ & Basal APC degradation rate $(\mathrm{hr}^{-1})$ & 1.000\\
+$\gamma_{P1}$ & Enhanced APC degradation rate $(\mathrm{hr}^{-1})$ & 3.500\\
+$\rho_5$ & HOXA5 repression coefficient & 1.375\\
+$\rho_B$ & $\beta$-catenin repression coefficient & 5.500\\
+$\rho_{13}$ & HOXA13 activation coefficient & 4.333\\
+$d_5$ & HOXA5 degradation rate $(\mathrm{hr}^{-1})$ & 0.833\\
+$a_5$ & Basal HOXA5 production $(\mathrm{hr}^{-1})$ & 0.100\\
+$v_R$ & RA-induced HOXA5 synthesis $(\mathrm{hr}^{-1})$ & 1.667\\
+$K_R$ & RA activation constant & 0.240\\
+$v_M$ & MYC-induced HOXA5 synthesis $(\mathrm{hr}^{-1})$ & 1.667\\
+$K_M$ & MYC activation constant & 0.150\\
+$d_{13}$ & HOXA13 degradation rate $(\mathrm{hr}^{-1})$ & 1.000\\
+$a_{13}$ & Basal HOXA13 synthesis $(\mathrm{hr}^{-1})$ & 0.054\\
+$v_{B13}$ & $\beta$-catenin-induced HOXA13 synthesis $(\mathrm{hr}^{-1})$ & 0.285\\
+$K_{B13}$ & $\beta$-catenin activation constant & 0.100\\
+$v_{M13}$ & MYC-induced HOXA13 synthesis $(\mathrm{hr}^{-1})$ & 0.165\\
+$K_{M13}$ & MYC activation constant & 0.150\\
+$d_M$ & MYC degradation rate $(\mathrm{hr}^{-1})$ & 1.667\\
+$a_M$ & Basal MYC synthesis $(\mathrm{hr}^{-1})$ & 0.090\\
+$v_{BM}$ & $\beta$-catenin-induced MYC synthesis $(\mathrm{hr}^{-1})$ & 0.675\\
+$K_{BM}$ & $\beta$-catenin activation constant & 0.100\\
+$d_R$ & RA degradation rate $(\mathrm{hr}^{-1})$ & 2.500\\
+$u_0$ & Basal RA production $(\mathrm{hr}^{-1})$ & 0.525\\
+$A_d$ & Dietary RA input $(\mathrm{hr}^{-1})$ & 0.060\\
+$D$ & ATRA treatment amplitude $(\mathrm{hr}^{-1})$ & 2.250\\
+$T_d$ & Dietary RA period (hr) & 24\\
+$q$ & Treatment transition rate $(\mathrm{hr}^{-1})$ & 0.300\\
+$t_1$ & Treatment start time (hr) & 40\\
+$t_2$ & Treatment end time (hr) & 80\\
+$k_{CR}$ & CYP-mediated RA degradation $(\mathrm{hr}^{-1})$ & 5.313\\
+$d_C$ & CYP degradation rate $(\mathrm{hr}^{-1})$ & 1.250\\
+$a_C$ & Basal CYP synthesis $(\mathrm{hr}^{-1})$ & 0.040\\
+$v_{RC}$ & RA-induced CYP synthesis $(\mathrm{hr}^{-1})$ & 0.750\\
+$K_{RC}$ & RA activation constant & 0.300\\
+$v_{BC}$ & $\beta$-catenin-induced CYP synthesis $(\mathrm{hr}^{-1})$ & 0.750\\
+$K_{BC}$ & $\beta$-catenin activation constant & 0.100\\
+
+\end{longtable}
+
+\begin{longtable}{lll}
+\caption{Dimensionless parameter values used throughout the numerical simulations.}
+\label{tab:dimensionless_parameters}
+\\
+
+\toprule
+Parameter & Definition & Value\\
+\midrule
+\endfirsthead
+
+\caption[]{Dimensionless parameters (continued).}\\
+\toprule
+Parameter & Definition & Value\\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+$\eta_{13}$ & $\dfrac{v_{13}}{d_BB_0}$ & 0.75\\
+$\kappa_{13}$ & $\dfrac{K_{13}}{H_{13,0}}$ & 0.55\\
+$\lambda_P$ & $\dfrac{k_{PB}P_0}{d_B}$ & 1.60\\
+$\lambda_5$ & $\dfrac{v_5H_{5,0}}{d_BB_0}$ & 1.30\\
+$\kappa_5$ & $\dfrac{K_5}{B_0}$ & 0.50\\
+$\epsilon_P$ & $\dfrac{d_B}{\gamma_{P0}}$ & 1.00\\
+$\delta_{P1}$ & $\dfrac{\gamma_{P1}}{\gamma_{P0}}$ & 3.50\\
+$\epsilon_5$ & $\dfrac{d_B}{d_5}$ & 1.20\\
+$\eta_R$ & $\dfrac{v_R}{d_5H_{5,0}}$ & 2.50\\
+$\kappa_R$ & $\dfrac{K_R}{R_0}$ & 0.40\\
+$\eta_M$ & $\dfrac{v_M}{d_5H_{5,0}}$ & 2.50\\
+$\kappa_M$ & $\dfrac{K_M}{M_0}$ & 0.50\\
+$\epsilon_{13}$ & $\dfrac{d_B}{d_{13}}$ & 1.00\\
+$\eta_{B13}$ & $\dfrac{v_{B13}}{d_{13}H_{13,0}}$ & 0.95\\
+$\kappa_{B13}$ & $\dfrac{K_{B13}}{B_0}$ & 0.50\\
+$\eta_{M13}$ & $\dfrac{v_{M13}}{d_{13}H_{13,0}}$ & 0.55\\
+$\kappa_{M13}$ & $\dfrac{K_{M13}}{M_0}$ & 0.50\\
+$\epsilon_M$ & $\dfrac{d_B}{d_M}$ & 0.60\\
+$\eta_{BM}$ & $\dfrac{v_{BM}}{d_MM_0}$ & 1.35\\
+$\kappa_{BM}$ & $\dfrac{K_{BM}}{B_0}$ & 0.50\\
+$\epsilon_R$ & $\dfrac{d_B}{d_R}$ & 0.40\\
+$\mu_0$ & $\dfrac{u_0}{d_RR_0}$ & 0.35\\
+$A_R$ & $\dfrac{A_d}{d_RR_0}$ & 0.04\\
+$D_R$ & $\dfrac{D}{d_RR_0}$ & 1.50\\
+$T_R$ & $d_BT_d$ & 24\\
+$q_\tau$ & $\dfrac{q}{d_B}$ & 0.30\\
+$\tau_1,\tau_2$ & $d_Bt_1,\ d_Bt_2$ & 40, 80\\
+$\lambda_C$ & $\dfrac{k_{CR}C_0}{d_R}$ & 0.85\\
+$\epsilon_C$ & $\dfrac{d_B}{d_C}$ & 0.80\\
+$\eta_{RC}$ & $\dfrac{v_{RC}}{d_CC_0}$ & 1.50\\
+$\kappa_{RC}$ & $\dfrac{K_{RC}}{R_0}$ & 0.50\\
+$\eta_{BC}$ & $\dfrac{v_{BC}}{d_CC_0}$ & 1.50\\
+$\kappa_{BC}$ & $\dfrac{K_{BC}}{B_0}$ & 0.50\\
+
+$W$ & WNT stimulus & $0.80,\ 1.00,\ 1.50,\ 2.00$\\
+$\Theta_P$ & APC reduction factor & $1.00,\ 0.75,\ 0.50,\ 0.25$\\
+
+$n_B$ & Hill coefficient & 2\\
+$n_M$ & Hill coefficient & 2\\
+$n_H$ & Hill coefficient & 2\\
+$\alpha_5$ & Stemness weight & 1\\
+$\alpha_{13}$ & Stemness weight & 1\\
+
+\end{longtable}
+
+
+\subsection{Biological Interpretation of the Time Scale}
+
+The choice
+\[
+d_B=1\ \mathrm{hr}^{-1}
+\]
+places the model on an hourly signaling scale. This is reasonable for a reduced
+ODE model of pathway-level regulation in cultured colorectal cancer cells, because
+the variables represent effective pathway activities rather than direct measurements
+of tumor growth over clinical time. Under this scaling, the periodic RA forcing
+\[
+T_R=24
+\]
+corresponds to a 24-hour cycle, while the ATRA treatment window
+\[
+40\leq \tau \leq 80
+\]
+corresponds to a 40-hour exposure.
+
+This time scale is consistent with experimental studies in which ATRA and related
+retinoids are used to probe colorectal cancer cell differentiation, stemness, and
+signaling responses over short in vitro windows \cite{ordonez2015hoxa5,facey2020retinoids,xu2022atra}.
+In particular, Ordóñez-Morán et al. showed that HOXA5 counteracts intestinal
+stem-cell traits by inhibiting WNT signaling in colorectal cancer, and their
+supplementary results indicate that retinoids such as ATRA can induce HOXA5
+expression \cite{ordonez2015hoxa5}. Facey and Boman reviewed evidence that RA
+signaling is altered in colorectal cancer and that retinoids regulate colon stem-cell
+differentiation and colorectal cancer stemness \cite{facey2020retinoids}. Xu et al.
+further showed that ATRA suppresses colon cancer cell activity through regulation
+of the sonic hedgehog pathway \cite{xu2022atra}. These studies support the use of
+a short-term ATRA exposure window in the present model.
+
+Therefore, the simulated ATRA window should be interpreted as a cell-culture
+treatment exposure designed to study pathway response, not as a direct clinical
+treatment duration. The dimensionalization preserves the simulated dimensionless
+model while providing a biologically interpretable hourly time scale.
+
+
+\newpage
+\section{Scientific Machine Learning Extensions}
+
+The deterministic WNT--HOX--RA model provides a mechanistic framework for
+studying colorectal cancer signaling, stemness, and treatment response. The model
+has the general form
+\[
+\frac{dy}{d\tau}=f(y,\theta),
+\]
+where
+\[
+y=(B,P,H_5,H_{13},M,R,C)
+\]
+denotes the state vector consisting of $\beta$-catenin, APC, HOXA5, HOXA13,
+MYC, RA, and CYP26A1, and $\theta$ denotes the vector of model parameters.
+
+The following three projects extend the model using scientific machine learning.
+Each project preserves the biological structure of the mechanistic model while
+addressing a different limitation: parameter uncertainty, missing regulatory
+mechanisms, and biological stochasticity.
+
+\subsection{Project 1: Bayesian Physics-Informed Neural Networks for Parameter Uncertainty}
+
+The current inverse PINN framework estimates a single optimal value for each
+unknown parameter. However, biological parameters are uncertain because they are
+inferred from noisy and limited experimental observations. The goal of this project
+is to estimate probability distributions for selected model parameters rather than
+single point estimates.
+
+The Bayesian inverse problem is formulated as
+\[
+p(\theta\mid D)\propto p(D\mid \theta)p(\theta),
+\]
+where $D$ denotes the observed data, $p(D\mid \theta)$ is the likelihood, and
+$p(\theta)$ is the prior distribution.
+
+A suitable set of parameters to estimate is
+\[
+\Theta=
+\{\eta_R,\eta_{BM},\eta_{B13},\lambda_C,\theta_P\}.
+\]
+These parameters are biologically meaningful because they regulate RA-induced
+HOXA5 activation, $\beta$-catenin-induced MYC activation, $\beta$-catenin-induced
+HOXA13 activation, CYP-mediated RA degradation, and APC mutation severity.
+
+The neural network takes time as input and predicts all seven state variables:
+\[
+\tau \longmapsto
+(B(\tau),P(\tau),H_5(\tau),H_{13}(\tau),M(\tau),R(\tau),C(\tau)).
+\]
+A fully connected neural network with smooth activation functions such as
+$\tanh$ or Swish/SiLU may be used.
+
+The loss function has the form
+\[
+\mathcal L
+=
+\mathcal L_{\mathrm{data}}
++
+\mathcal L_{\mathrm{physics}}
++
+\mathcal L_{\mathrm{prior}}.
+\]
+Here, $\mathcal L_{\mathrm{data}}$ measures agreement with observations,
+$\mathcal L_{\mathrm{physics}}$ enforces the ODE residuals, and
+$\mathcal L_{\mathrm{prior}}$ incorporates prior biological information on the
+parameters.
+
+The main outputs of this project are posterior distributions, credible intervals,
+and uncertainty bands for model predictions. This allows one to answer the
+biological question: which parameters can be estimated confidently from available
+data, and which remain uncertain?
+
+\subsection{Project 2: Hybrid Mechanistic--Neural Model for Learning Missing Regulation}
+
+Mechanistic models encode known biological interactions, but some regulatory
+relationships are often incomplete or uncertain. The goal of this project is to
+preserve the known WNT--HOX--RA mechanisms while using a neural network to learn
+a missing regulatory contribution.
+
+The hybrid model is written as
+\[
+\frac{dy}{d\tau}
+=
+f_{\mathrm{known}}(y,\theta)
++
+f_{\mathrm{NN}}(y).
+\]
+The term $f_{\mathrm{known}}$ contains the mechanistic ODE model, while
+$f_{\mathrm{NN}}$ represents a small neural correction term.
+
+For this model, a biologically meaningful choice is to introduce the neural
+correction into the MYC equation:
+\[
+\frac{dM}{d\tau}
+=
+\frac{1}{\epsilon_M}
+\left[
+a_M+\eta_{BM}\frac{B^{n_B}}{\kappa_{BM}^{n_B}+B^{n_B}}-M
+\right]
++
+f_{\mathrm{NN}}(H_{13},R).
+\]
+Here, $f_{\mathrm{NN}}(H_{13},R)$ represents an unknown regulatory contribution
+from HOXA13 and RA to MYC dynamics. This is a useful candidate because HOXA13 and
+RA both influence proliferation and differentiation, but their combined indirect
+effect on MYC is not fully characterized.
+
+The neural network has the structure
+\[
+(H_{13},R)\longmapsto f_{\mathrm{NN}}(H_{13},R).
+\]
+A small network is preferred, for example four hidden layers with 32--64 neurons
+per layer and a smooth activation function such as Swish/SiLU. To preserve
+interpretability, the correction term should be regularized using
+\[
+\lambda_{\mathrm{NN}}\|f_{\mathrm{NN}}\|^2.
+\]
+The training loss is
+\[
+\mathcal L
+=
+\mathcal L_{\mathrm{data}}
++
+\mathcal L_{\mathrm{physics}}
++
+\lambda_{\mathrm{NN}}\|f_{\mathrm{NN}}\|^2.
+\]
+
+After training, the learned surface
+\[
+f_{\mathrm{NN}}(H_{13},R)
+\]
+should be plotted and interpreted biologically. This allows the model to generate
+new hypotheses about how HOXA13 and RA may jointly regulate MYC. The hybrid model
+should be compared against the original mechanistic model using trajectory error,
+parameter recovery, cross-validation, and information criteria such as AIC or BIC.
+
+\subsection{Project 3: Stochastic PINNs for Biological Variability}
+
+The deterministic model predicts the average behavior of the signaling network.
+However, gene regulation and treatment response are inherently variable due to
+transcriptional noise, heterogeneous drug uptake, and cell-to-cell variability.
+The goal of this project is to extend the model to include stochastic dynamics.
+
+The deterministic model
+\[
+\frac{dy}{d\tau}=f(y,\theta)
+\]
+is replaced by the stochastic differential equation
+\[
+dy=f(y,\theta)\,d\tau+G(y)\,dW_\tau,
+\]
+where $W_\tau$ is a Wiener process and $G(y)$ controls the strength of the noise.
+
+Noise should not be added to every equation initially. A biologically reasonable
+starting point is to introduce stochasticity into the RA and MYC equations:
+\[
+dR=f_R(y,\theta)\,d\tau+\sigma_R\,dW_R,
+\]
+\[
+dM=f_M(y,\theta)\,d\tau+\sigma_M\,dW_M.
+\]
+RA is a natural stochastic variable because it is influenced by dietary input,
+ATRA treatment, and CYP-mediated degradation. MYC is also a reasonable stochastic
+variable because transcriptional regulators often display strong cell-to-cell
+variability.
+
+The first objective is to estimate the constant noise intensities
+\[
+\sigma_R,\qquad \sigma_M.
+\]
+A more advanced extension is to allow RA noise to depend on RA and CYP levels:
+\[
+\sigma_R=\sigma_{\mathrm{NN}}(R,C),
+\]
+where
+\[
+(R,C)\longmapsto \sigma_{\mathrm{NN}}(R,C)
+\]
+is learned by a neural network. This would allow the model to test whether
+CYP26A1 activity increases or suppresses variability in RA signaling.
+
+Numerically, stochastic trajectories can be generated using the Euler--Maruyama
+method:
+\[
+y_{n+1}
+=
+y_n
++
+f(y_n,\theta)\Delta \tau
++
+G(y_n)\Delta W_n,
+\]
+where
+\[
+\Delta W_n\sim \mathcal N(0,\Delta \tau).
+\]
+
+The main outputs are ensembles of trajectories, mean responses, variance bands,
+and probabilistic stemness predictions. Instead of reporting only one stemness
+curve, this project estimates
+\[
+\mathbb P(S>S_{\mathrm{crit}}),
+\]
+the probability that the stemness index exceeds a biologically significant
+threshold.
+
+\subsection{Expected Contributions}
+
+These three projects form a coherent scientific machine learning program for the
+WNT--HOX--RA colorectal cancer model. Project 1 quantifies uncertainty in key
+biological parameters using Bayesian PINNs. Project 2 learns missing regulatory
+structure while preserving the mechanistic model. Project 3 introduces biological
+variability and enables probabilistic prediction of treatment response.
+
+Together, these extensions move the model from deterministic simulation toward an
+uncertainty-aware, data-driven, and biologically interpretable framework for
+studying colorectal cancer signaling and treatment response.
+
+
+\begin{align*}
+\frac{dB}{dt}
+&=
+a_BW
++
+v_{13}\frac{H_{13}^{n_H}}{K_{13}^{n_H}+H_{13}^{n_H}}
+-
+d_BB
+-
+k_{PB}PB
+-
+v_5\frac{H_5B}{K_5+B},
+\\[8pt]
+\frac{dP}{dt}
+&=
+a_P
+\frac{1+\rho_5H_5}
+{1+\rho_BB+\rho_{13}H_{13}}
+-
+\Big(d_{P0}+d_{P1}(1-\Theta_P)\Big)P,
+\\[8pt]
+\frac{dH_5}{dt}
+&=
+a_5
++
+v_R\frac{R}{K_R+R}
+-
+d_5H_5
+-
+v_M\frac{MH_5}{K_M+M},
+\\[8pt]
+\frac{dH_{13}}{dt}
+&=
+a_{13}
++
+v_{B13}\frac{B^{n_B}}{K_{B13}^{n_B}+B^{n_B}}
++
+v_{M13}\frac{M^{n_M}}{K_{M13}^{n_M}+M^{n_M}}
+-
+d_{13}H_{13},
+\\[8pt]
+\frac{dM}{dt}
+&=
+a_M
++
+v_{BM}\frac{B^{n_B}}{K_{BM}^{n_B}+B^{n_B}}
+-
+d_MM,
+\\[8pt]
+\frac{dR}{dt}
+&=
+u_0
++
+A_d
+\left[
+1+
+\cos\left(
+\frac{2\pi t}{T_d}-\phi
+\right)
+\right]
++
+\frac{D}{2}
+\bigg[
+\tanh(q(t-t_1))
+-
+\tanh(q(t-t_2))
+\bigg]
+-
+d_RR
+-
+k_{CR}CR,
+\\[8pt]
+\frac{dC}{dt}
+&=
+a_C
++
+v_{RC}\frac{R}{K_{RC}+R}
++
+v_{BC}\frac{B^{n_B}}{K_{BC}^{n_B}+B^{n_B}}
+-
+d_CC.
+\end{align*}
+
+\[
+u_R(t)
+=
+u_0
++
+\frac{D}{2}
+\left[
+\tanh(q(t-t_1))
+-
+\tanh(q(t-t_2))
+\right].
+\]
+
+
+\begin{align*}
+\frac{db}{d\tau}
+&=
+w
++
+\eta_{13}\frac{h_{13}^{n_H}}{\kappa_{13}^{n_H}+h_{13}^{n_H}}
+-
+b
+-
+\lambda_Ppb
+-
+\lambda_5\frac{h_5b}{\kappa_5+b},
+\\[8pt]
+\frac{dp}{d\tau}
+&=
+\frac{1}{\varepsilon_P}
+\left[
+\frac{1+\rho_5h_5}
+{1+\rho_Bb+\rho_{13}h_{13}}
+-
+\delta_P(\theta_P)p
+\right],
+\\[8pt]
+\frac{dh_5}{d\tau}
+&=
+\frac{1}{\varepsilon_5}
+\left[
+a_5
++
+\eta_R\frac{r}{\kappa_R+r}
+-
+h_5
+-
+\eta_M\frac{mh_5}{\kappa_M+m}
+\right],
+\\[8pt]
+\frac{dh_{13}}{d\tau}
+&=
+\frac{1}{\varepsilon_{13}}
+\left[
+a_{13}
++
+\eta_{B13}\frac{b^{n_B}}{\kappa_{B13}^{n_B}+b^{n_B}}
++
+\eta_{M13}\frac{m^{n_M}}{\kappa_{M13}^{n_M}+m^{n_M}}
+-
+h_{13}
+\right],
+\\[8pt]
+\frac{dm}{d\tau}
+&=
+\frac{1}{\varepsilon_M}
+\left[
+a_M
++
+\eta_{BM}\frac{b^{n_B}}{\kappa_{BM}^{n_B}+b^{n_B}}
+-
+m
+\right],
+\\[8pt]
+\frac{dr}{d\tau}
+&=
+\frac{1}{\varepsilon_R}
+\left[
+\mu_R(\tau)
+-
+r
+-
+\lambda_Ccr
+\right],
+\\[8pt]
+\frac{dc}{d\tau}
+&=
+\frac{1}{\varepsilon_C}
+\left[
+a_C
++
+\eta_{RC}\frac{r}{\kappa_{RC}+r}
++
+\eta_{BC}\frac{b^{n_B}}{\kappa_{BC}^{n_B}+b^{n_B}}
+-
+c
+\right].
+\end{align*}
+
+\[
+\delta_P(\theta_P)=1+\delta_{P1}(1-\theta_P).
+\]
+
+\[
+A_d \left[ 1 + \cos\left( \frac{2\pi t}{T_d} - \phi \right) \right]
+\]
+
+
+\newpage
+\abstract
+Reduced form... (250 words max)
+\\
+
+intro - summarize papers we have read; biology + PINN; then Amir, Nate, PK use A, B, C, D to do the techniques from the papers, discussions, etc. \\
+
+Then, modeling, schematic, assumptions \\
+Then equations, non-dimensionalization \\
+
+Numerical results; sci-py - talk about meaning of spikes or dips biologically \\
+
+PINN results; algorithm, why did we use PINN to approximate solution; advantages
+- errors, convergence, etc. \\
+
+also sensitivity, identifiability, bayesian PINN, etc. \\
+
+use first presentation for reference \\
+
+Last part - Discussion - restate what we talked about, discuss importance of our model, limitations of the model - and future direction (Hybrid Mechanistic, Stochastic Modeling)... must incorporate biological significance to these future methods.
+Modeling at gene level is stochastic in nature.
+Hybrid mechanistic - we don't know all interactions between things; modeling simplifies interactions and may miss things; learn behaviors from data. But we need real data instead of synthetic data; hard to get data from normal colon \cite{liu2022hybrid, yazdani2020systems} \\
+
+
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+
+\end{document}
+
