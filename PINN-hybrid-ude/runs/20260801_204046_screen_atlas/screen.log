@@ -25,3 +25,20 @@ screen: 12 terms x 4 regimes x 2 parameterisations, 2 starts (noise=0.0)
   Normal             h5_b       gated       fNRMSE=  0.7%  eq params 4/4 (ctrl 6/6)  basal_err=nan% (ctrl nan%)  [6897s]
   Normal             h5_b       sc          fNRMSE=  0.4%  eq params 4/4 (ctrl 6/6)  basal_err=nan% (ctrl nan%)  [7112s]
   Normal             apc_b      gated       fNRMSE=  1.1%  eq params 5/5 (ctrl 6/6)  basal_err=nan% (ctrl nan%)  [7652s]
+  Normal             apc_b      sc          fNRMSE=  1.2%  eq params 5/5 (ctrl 6/6)  basal_err=nan% (ctrl nan%)  [8260s]
+  Normal             c_ra       gated       fNRMSE=  0.0%  eq params 1/1 (ctrl 2/2)  basal_err=nan% (ctrl nan%)  [9448s]
+  Normal             c_ra       sc          fNRMSE=  0.1%  eq params 1/1 (ctrl 2/2)  basal_err=nan% (ctrl nan%)  [10254s]
+Traceback (most recent call last):
+  File "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/screen_terms.py", line 284, in <module>
+    f"({time.time()-t0:.0f}s)")
+^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/screen_terms.py", line 248, in main
+    r = fit_equation(eq, term, regime, refs[regime], conds,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/screen_terms.py", line 128, in fit_equation
+    nn_terms = ({term: build_one_term(term, refs_for_regime, DEVICE,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/hybrid.py", line 366, in build_one_term
+    self.mono = mono
+        ^^^^^^^^^^^^
+ValueError: apc_prod: the gated parameterisation is single-input only; use param=sc
