@@ -1,0 +1,15 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260801_211530_control_dep
+variant=control  term=None  param=gated  constraint=anchored  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      19   36          -
+Early Adenoma               18   36          -
+Advanced Adenoma            15   36          -
+Severe APC Loss             15   36          -
+TOTAL                       67     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+[plot_learned_term] no *_term.json -- mechanistic control run?
