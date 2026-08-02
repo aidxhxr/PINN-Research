@@ -1,0 +1,179 @@
+{
+  "generated": "2026-08-02T21:57:29",
+  "source_notebook": "PINN/sensitivity_analysis.ipynb",
+  "output_dir": "/home/29/aidahxr/PINN-Research/PINN/sa_results/original_box",
+  "thetap_max_clip": null,
+  "model": {
+    "n_states": 7,
+    "state_order": [
+      "b",
+      "apc",
+      "h5",
+      "h13",
+      "m",
+      "r",
+      "c"
+    ],
+    "Y0": [
+      0.2,
+      1.0,
+      0.8,
+      0.3,
+      0.3,
+      0.6,
+      0.4
+    ],
+    "TAU_SPAN": [
+      0.0,
+      150.0
+    ],
+    "stemness": "S = b*(1+alpha13*h13)/(1+apc+alpha5*h5)",
+    "alpha13": 1.0,
+    "alpha5": 1.0
+  },
+  "qoi": "time-averaged AUC over (0.0, 150.0): trapezoid(series, t) / (T1-T0)",
+  "solver": {
+    "method": "LSODA",
+    "rtol": 1e-07,
+    "atol": 1e-09,
+    "n_eval": 600
+  },
+  "outputs": [
+    "b-catenin",
+    "APC",
+    "HOXA5",
+    "HOXA13",
+    "MYC",
+    "RA",
+    "CYP26A1",
+    "Stemness"
+  ],
+  "parameters": [
+    {
+      "name": "thetaP",
+      "baseline": 1.0,
+      "lower": 0.7,
+      "upper": 1.3,
+      "box": "+/-30%"
+    },
+    {
+      "name": "DR",
+      "baseline": 1.5,
+      "lower": 1.0499999999999998,
+      "upper": 1.9500000000000002,
+      "box": "+/-30%"
+    },
+    {
+      "name": "AR",
+      "baseline": 0.04,
+      "lower": 0.027999999999999997,
+      "upper": 0.052000000000000005,
+      "box": "+/-30%"
+    },
+    {
+      "name": "etaR",
+      "baseline": 2.5,
+      "lower": 1.75,
+      "upper": 3.25,
+      "box": "+/-30%"
+    },
+    {
+      "name": "etaM",
+      "baseline": 2.5,
+      "lower": 1.75,
+      "upper": 3.25,
+      "box": "+/-30%"
+    },
+    {
+      "name": "eta13",
+      "baseline": 0.75,
+      "lower": 0.5249999999999999,
+      "upper": 0.9750000000000001,
+      "box": "+/-30%"
+    },
+    {
+      "name": "etaB13",
+      "baseline": 0.95,
+      "lower": 0.6649999999999999,
+      "upper": 1.2349999999999999,
+      "box": "+/-30%"
+    },
+    {
+      "name": "etaBM",
+      "baseline": 1.35,
+      "lower": 0.945,
+      "upper": 1.7550000000000001,
+      "box": "+/-30%"
+    },
+    {
+      "name": "etaBC",
+      "baseline": 1.5,
+      "lower": 1.0499999999999998,
+      "upper": 1.9500000000000002,
+      "box": "+/-30%"
+    },
+    {
+      "name": "lambdaC",
+      "baseline": 0.85,
+      "lower": 0.595,
+      "upper": 1.105,
+      "box": "+/-30%"
+    },
+    {
+      "name": "lambdaP",
+      "baseline": 1.6,
+      "lower": 1.1199999999999999,
+      "upper": 2.08,
+      "box": "+/-30%"
+    },
+    {
+      "name": "lambda5",
+      "baseline": 1.3,
+      "lower": 0.9099999999999999,
+      "upper": 1.6900000000000002,
+      "box": "+/-30%"
+    },
+    {
+      "name": "rhoB",
+      "baseline": 1.1,
+      "lower": 0.77,
+      "upper": 1.4300000000000002,
+      "box": "+/-30%"
+    },
+    {
+      "name": "rho13",
+      "baseline": 1.3,
+      "lower": 0.9099999999999999,
+      "upper": 1.6900000000000002,
+      "box": "+/-30%"
+    }
+  ],
+  "local": {
+    "method": "central difference",
+    "rel_step": 0.05,
+    "quantity": "normalized elasticity dY/dp * p/Y"
+  },
+  "morris": {
+    "N_MORRIS": 40,
+    "num_levels": 4,
+    "seed": 42,
+    "n_solves": 600,
+    "nonlinear_flag": "sigma > mu_star / 2",
+    "n_failed_solves": 0
+  },
+  "sobol": {
+    "N_SOBOL": 256,
+    "calc_second_order": false,
+    "seed": 42,
+    "n_solves": 4096,
+    "skipped": false,
+    "n_failed_solves": 0
+  },
+  "software": {
+    "python": "3.12.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "SALib": "1.5.2"
+  },
+  "artifact_note": "deltaP = 1 + deltaP1*(1-thetaP), deltaP1 = 3.5, so deltaP < 0 for thetaP > 1.2857143. In the unclipped +/-30% box thetaP reaches 1.30, APC decay reverses sign and the APC trajectory diverges (AUC ~6.4e3 at thetaP=1.30 vs 0.4734 at baseline), corrupting Morris/Sobol for the APC output. The clipped box removes this."
+}
