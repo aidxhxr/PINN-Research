@@ -34,6 +34,22 @@ BASELINE = dict(
     # the pulse channels -- it scales the UNKNOWN W by a KNOWN factor, which is
     # what a knockdown actually does.
     kW=1.0,
+    # multiplicative knockdown of the HOXA13 -> beta-catenin FEEDBACK arm (a
+    # HOXA13 siRNA / knockout). 1.0 = wild type, so every pre-2026-08 run is
+    # numerically untouched. This is the knob the 2026-08-01 A/B identified as
+    # missing: `kW` alone cannot drive b to its anchor because this feedback
+    # keeps producing beta-catenin no matter how hard WNT is knocked down
+    # (b floors at 0.013-0.02). Knocking BOTH arms is what reaches b = 0.
+    k13=1.0,
+    # multiplicative knockdowns of the four BASAL-PRODUCTION terms. 1.0 = wild
+    # type, so every earlier run is numerically untouched. These are what reach
+    # the anchors `kW`/`k13`/`raKO` cannot: `m` and `h13` are floored by their
+    # OWN basal production once their activators are silenced, so driving them
+    # to zero needs the basal term knocked down as well. Note the second use
+    # these have -- a KNOWN fraction `k` scaling an UNKNOWN basal `a` means two
+    # conditions observe `a` and `k*a`, which identifies `a` outright without
+    # any anchor or network constraint at all (config note, 2026-08-02).
+    ka5=1.0, ka13=1.0, kaM=1.0, kaC=1.0,
 )
 
 REGIMES = {
@@ -192,8 +208,8 @@ FIXED = {
     "alpha13", "alpha5",
     # excite variant: the WNT/MYC input-channel protocol knobs are known
     "DW", "qW", "tauW1", "tauW2", "DM", "qM", "tauM1", "tauM2",
-    # depletion variant: the knockdown efficiency is set by the experimenter
-    "kW",
+    # depletion variant: the knockdown efficiencies are set by the experimenter
+    "kW", "k13", "ka5", "ka13", "kaM", "kaC",
 }
 
 # ----------------------------------------------------------------------

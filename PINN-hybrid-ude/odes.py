@@ -42,22 +42,23 @@ def _ode_rhs(tau, y, p):
     muR = _ra_input(tau, p)
 
     db   = (p.get("kW", 1.0)*p["W"] + _wnt_input(tau, p)
-            + p["eta13"]*_hill(h13, p["kappa13"], p["nH"])
+            + p.get("k13", 1.0)*p["eta13"]*_hill(h13, p["kappa13"], p["nH"])
             - b - p["lambdaP"]*apc*b
             - p["lambda5"]*h5*b / (p["kappa5"] + b))
     dapc = (1/p["epsP"]) * (
             (1 + p["rho5"]*h5) / (1 + p["rhoB"]*b + p["rho13"]*h13) - dP*apc)
     dh5  = (1/p["eps5"]) * (
-            p["a5"] + p["etaR"]*_hill(r, p["kappaR"], 1)
+            p.get("ka5", 1.0)*p["a5"] + p["etaR"]*_hill(r, p["kappaR"], 1)
             - h5 - p["etaM"]*m*h5 / (p["kappaM"] + m))
     dh13 = (1/p["eps13"]) * (
-            p["a13"] + p["etaB13"]*_hill(b, p["kappaB13"], p["nB"])
+            p.get("ka13", 1.0)*p["a13"]
+            + p["etaB13"]*_hill(b, p["kappaB13"], p["nB"])
             + p["etaM13"]*_hill(m, p["kappaM13"], p["nM"]) - h13)
     dm   = (1/p["epsM"]) * (
-            p["aM"] + _myc_input(tau, p)
+            p.get("kaM", 1.0)*p["aM"] + _myc_input(tau, p)
             + p["etaBM"]*_hill(b, p["kappaBM"], p["nB"]) - m)
     dr   = (1/p["epsR"]) * (muR - r - p["lambdaC"]*c*r)
     dc   = (1/p["epsC"]) * (
-            p["aC"] + p["etaRC"]*_hill(r, p["kappaRC"], 1)
+            p.get("kaC", 1.0)*p["aC"] + p["etaRC"]*_hill(r, p["kappaRC"], 1)
             + p["etaBC"]*_hill(b, p["kappaBC"], p["nB"]) - c)
     return [db, dapc, dh5, dh13, dm, dr, dc]

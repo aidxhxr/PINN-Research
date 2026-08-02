@@ -87,21 +87,21 @@ def physics_rhs(t, z, p, nn_terms=None):
     )
     dP = 1.0 + apc_mutation
 
-    f0 = (p.get("kW", 1.0)*p["W"] + wnt + h13_b
+    f0 = (p.get("kW", 1.0)*p["W"] + wnt + p.get("k13", 1.0)*h13_b
           - b - apc_b*b
           - h5_b*h5)
     f1 = (1/p["epsP"]) * (apc_prod - dP*apc)
     f2 = (1/p["eps5"]) * (
-          p["a5"] + ra_h5
+          p.get("ka5", 1.0)*p["a5"] + ra_h5
           - h5 - m_h5*h5)
     f3 = (1/p["eps13"]) * (
-          p["a13"] + b_h13
+          p.get("ka13", 1.0)*p["a13"] + b_h13
           + m_h13 - h13)
     f4 = (1/p["epsM"]) * (
-          p["aM"] + myc + bm_myc - m)
+          p.get("kaM", 1.0)*p["aM"] + myc + bm_myc - m)
     f5 = (1/p["epsR"]) * (muR - r - c_ra*r)
     f6 = (1/p["epsC"]) * (
-          p["aC"] + rc_cyp
+          p.get("kaC", 1.0)*p["aC"] + rc_cyp
           + bc_cyp - c)
 
     return torch.cat([f0, f1, f2, f3, f4, f5, f6], dim=1)
