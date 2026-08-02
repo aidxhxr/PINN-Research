@@ -1,0 +1,16 @@
+dose-response  arm=bcat  edge=bm_myc (eq dm, basal aM, regulator b)
+  6 doses x 2 regimes, 2 starts, 11 conditions at every dose (noise=0.0)
+  Normal             k=1     ratio= 0.0250  fNRMSE=  1.7%  basal=  8.3% (ctrl   0.0%)  EXCESS=   8.3%  eq 2/2 (ctrl 4/4)  [802s]
+  Normal             k=0.3   ratio= 0.0250  fNRMSE=  0.8%  basal=  3.8% (ctrl   0.0%)  EXCESS=   3.8%  eq 2/2 (ctrl 4/4)  [1452s]
+  Normal             k=0.1   ratio= 0.0097  fNRMSE=  0.3%  basal=  1.1% (ctrl   0.0%)  EXCESS=   1.1%  eq 2/2 (ctrl 4/4)  [2142s]
+  Normal             k=0.03  ratio= 0.0029  fNRMSE=  0.1%  basal=  0.5% (ctrl   0.0%)  EXCESS=   0.5%  eq 2/2 (ctrl 4/4)  [3126s]
+  Normal             k=0.01  ratio= 0.0009  fNRMSE=  0.1%  basal=  0.2% (ctrl   0.0%)  EXCESS=   0.2%  eq 2/2 (ctrl 4/4)  [4082s]
+  Normal             k=0     ratio= 0.0000  fNRMSE=  0.1%  basal=  0.0% (ctrl   0.0%)  EXCESS=   0.0%  eq 2/2 (ctrl 4/4)  [4600s]
+  Severe APC Loss    k=1     ratio= 0.0665  fNRMSE= 11.6%  basal= 81.6% (ctrl  35.8%)  EXCESS=  45.8%  eq 1/2 (ctrl 3/4)  [5385s]
+  Severe APC Loss    k=0.3   ratio= 0.0619  fNRMSE=  7.0%  basal= 47.6% (ctrl   0.3%)  EXCESS=  47.3%  eq 1/2 (ctrl 4/4)  [5926s]
+  Severe APC Loss    k=0.1   ratio= 0.0161  fNRMSE=  0.5%  basal=  3.1% (ctrl   0.0%)  EXCESS=   3.1%  eq 2/2 (ctrl 4/4)  [6954s]
+  Severe APC Loss    k=0.03  ratio= 0.0045  fNRMSE=  0.2%  basal=  0.9% (ctrl   0.0%)  EXCESS=   0.9%  eq 2/2 (ctrl 4/4)  [8220s]
+  Severe APC Loss    k=0.01  ratio= 0.0015  fNRMSE=  0.2%  basal=  0.1% (ctrl   0.0%)  EXCESS=   0.1%  eq 2/2 (ctrl 4/4)  [8982s]
+  Severe APC Loss    k=0     ratio= 0.0000  fNRMSE=  0.2%  basal=  0.0% (ctrl   0.0%)  EXCESS=  -0.0%  eq 2/2 (ctrl 4/4)  [9744s]
+
+wrote runs/20260802_dose_response/dose_bcat_bm_myc.json  (9744s)

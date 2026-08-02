@@ -1,0 +1,16 @@
+dose-response  arm=ra  edge=ra_h5 (eq dh5, basal a5, regulator r)
+  6 doses x 2 regimes, 2 starts, 11 conditions at every dose (noise=0.0)
+  Normal             k=1     ratio= 0.1206  fNRMSE=  2.1%  basal= 15.4% (ctrl   0.5%)  EXCESS=  14.8%  eq 3/4 (ctrl 6/6)  [956s]
+  Normal             k=0.3   ratio= 0.0417  fNRMSE=  0.6%  basal=  3.9% (ctrl   0.0%)  EXCESS=   3.9%  eq 4/4 (ctrl 6/6)  [1685s]
+  Normal             k=0.1   ratio= 0.0142  fNRMSE=  0.1%  basal=  0.6% (ctrl   0.0%)  EXCESS=   0.6%  eq 4/4 (ctrl 6/6)  [2410s]
+  Normal             k=0.03  ratio= 0.0043  fNRMSE=  0.0%  basal=  0.2% (ctrl   0.0%)  EXCESS=   0.2%  eq 4/4 (ctrl 6/6)  [3788s]
+  Normal             k=0.01  ratio= 0.0014  fNRMSE=  0.0%  basal=  0.1% (ctrl   0.0%)  EXCESS=   0.0%  eq 4/4 (ctrl 6/6)  [4648s]
+  Normal             k=0     ratio= 0.0000  fNRMSE=  0.0%  basal=  0.0% (ctrl   0.0%)  EXCESS=  -0.0%  eq 4/4 (ctrl 6/6)  [5314s]
+  Severe APC Loss    k=1     ratio= 0.1434  fNRMSE= 24.3%  basal= 33.1% (ctrl  36.7%)  EXCESS=  -3.6%  eq 0/4 (ctrl 1/6)  [5873s]
+  Severe APC Loss    k=0.3   ratio= 0.0464  fNRMSE=  2.8%  basal=  0.8% (ctrl  31.3%)  EXCESS= -30.4%  eq 4/4 (ctrl 1/6)  [6911s]
+  Severe APC Loss    k=0.1   ratio= 0.0159  fNRMSE= 21.8%  basal= 23.4% (ctrl   3.5%)  EXCESS=  19.9%  eq 0/4 (ctrl 6/6)  [8035s]
+  Severe APC Loss    k=0.03  ratio= 0.0048  fNRMSE=  3.4%  basal=  3.3% (ctrl   3.5%)  EXCESS=  -0.2%  eq 4/4 (ctrl 6/6)  [8791s]
+  Severe APC Loss    k=0.01  ratio= 0.0016  fNRMSE=  3.3%  basal=  3.4% (ctrl   3.5%)  EXCESS=  -0.0%  eq 4/4 (ctrl 6/6)  [9490s]
+  Severe APC Loss    k=0     ratio= 0.0000  fNRMSE=  3.3%  basal=  3.3% (ctrl   3.5%)  EXCESS=  -0.2%  eq 4/4 (ctrl 6/6)  [10480s]
+
+wrote runs/20260802_dose_response/dose_ra_ra_h5.json  (10480s)
