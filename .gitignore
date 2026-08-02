@@ -26,3 +26,8 @@ presentation/build/
 # presentation-codex scratch: images/text extracted from the source PDF
 presentation-codex/tmp/
 presentation-codex/output/latex/*.log
+
+# research-paper build output -- .tex/.bib/figures and the final PDF are tracked
+research-paper/*.log
+research-paper/*.blg
+research-paper/*.bbl
