@@ -1,0 +1,66 @@
+7-ODE sensitivity analysis -> /home/29/aidahxr/PINN-Research/PINN/sa_results
+  params  (14): ['thetaP', 'DR', 'AR', 'etaR', 'etaM', 'eta13', 'etaB13', 'etaBM', 'etaBC', 'lambdaC', 'lambdaP', 'lambda5', 'rhoB', 'rho13']
+  outputs (8): ['b-catenin', 'APC', 'HOXA5', 'HOXA13', 'MYC', 'RA', 'CYP26A1', 'Stemness']
+  Morris N=40 levels=4 seed=42; Sobol N=256 second_order=False seed=42
+
+======================================================================
+BOX -> /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box
+  thetaP bounds: [0.7, 1.3]
+[local] central-difference elasticity ...
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box/baseline_outputs.csv
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box/local_elasticity.csv
+[Morris] 600 solves ...
+  morris 0/600  (0s)
+  morris 500/600  (27s)
+  morris done 600/600 in 32s (0 failed solves)
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box/morris_all.csv
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box/morris_overall_ranking.csv
+[Sobol] 4096 solves ...
+  sobol 0/4096  (0s)
+  sobol 500/4096  (25s)
+  sobol 1000/4096  (50s)
+  sobol 1500/4096  (75s)
+  sobol 2000/4096  (100s)
+  sobol 2500/4096  (124s)
+  sobol 3000/4096  (150s)
+  sobol 3500/4096  (176s)
+  sobol 4000/4096  (202s)
+  sobol done 4096/4096 in 207s (0 failed solves)
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box/sobol_all.csv
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/original_box/sa_config.json
+
+--- reproduction check (Stemness / thetaP vs stored figures) ---
+  Morris  mu*=1.2120 (ref 1.2120)  sigma=0.3596 (ref 0.3596)  MATCH=True
+  Sobol   S1=0.7496 (ref 0.7496)  ST=0.8082 (ref 0.8082)  MATCH=True
+
+======================================================================
+BOX -> /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap
+  thetaP bounds: [0.7, 1.0]
+[local] central-difference elasticity ...
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap/baseline_outputs.csv
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap/local_elasticity.csv
+[Morris] 600 solves ...
+  morris 0/600  (0s)
+  morris 500/600  (28s)
+  morris done 600/600 in 34s (0 failed solves)
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap/morris_all.csv
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap/morris_overall_ranking.csv
+[Sobol] 4096 solves ...
+  sobol 0/4096  (0s)
+  sobol 500/4096  (29s)
+  sobol 1000/4096  (59s)
+  sobol 1500/4096  (88s)
+  sobol 2000/4096  (117s)
+  sobol 2500/4096  (147s)
+  sobol 3000/4096  (175s)
+  sobol 3500/4096  (203s)
+  sobol 4000/4096  (231s)
+  sobol done 4096/4096 in 237s (0 failed solves)
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap/sobol_all.csv
+  wrote /home/29/aidahxr/PINN-Research/PINN/sa_results/clipped_thetap/sa_config.json
+
+--- reproduction check (Stemness / thetaP vs stored figures) ---
+  Morris  mu*=0.4478 (ref 1.2120)  sigma=0.1220 (ref 0.3596)  MATCH=False
+  Sobol   S1=0.1537 (ref 0.7496)  ST=0.1827 (ref 0.8082)  MATCH=False
+
+ALL DONE in 512s
