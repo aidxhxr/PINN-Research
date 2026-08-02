@@ -1,0 +1,138 @@
+\documentclass[tikz,border=12pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
+\usepackage{amsmath}
+
+\begin{document}
+
+\definecolor{wntgreen}{RGB}{180, 215, 160}
+\definecolor{prolifgreen}{RGB}{55, 105, 45}
+\definecolor{difforange}{RGB}{215, 130, 50}
+\definecolor{stembrown}{RGB}{60, 25, 20}
+\definecolor{arrowred}{RGB}{185, 40, 35}
+\definecolor{arrowgreen}{RGB}{60, 130, 50}
+
+\begin{tikzpicture}[
+    node distance=1.5cm and 1.8cm,
+    >=stealth,
+    box/.style={draw, rounded corners=8pt, inner sep=3.5pt, minimum height=0.55cm, font=\sffamily\small},
+    rectbox/.style={draw, rounded corners=3pt, inner sep=4.5pt, minimum height=0.55cm, font=\sffamily\small},
+    oval/.style={draw, ellipse, inner sep=3.5pt, minimum height=0.55cm, font=\sffamily\small},
+    cnum/.style={font=\sffamily\small\bfseries, fill=white, inner sep=1pt}
+]
+
+% ---------------- NODES PLACEMENT ----------------
+
+% Left Column: Retinol / RA Pathway
+\node[rectbox] (retinol) at (0, 7.8) {retinol};
+\node[oval] (ra1) at (0, 4.8) {RA};
+\node[oval] (ra2) at (0, 1.2) {RA};
+\node[font=\sffamily] at (0.8, 1.2) {$+$};
+\node[oval] (rar) at (1.6, 1.2) {RAR};
+\node[oval] (rarar) at (4.5, 1.2) {RA:RAR};
+
+% Top Header: Shifted to x = 4.3 so arrow 11 to beta-catenin is perfectly vertical
+\node[rectbox, fill=wntgreen, draw=black!80, font=\sffamily\bfseries, inner sep=5pt] (wnt) at (4.3, 9.2) {Wnt Signal};
+
+% Proliferation Box
+\node[rectbox, fill=prolifgreen, text=white, font=\sffamily\bfseries, inner sep=5pt] (prolif) at (6.8, 7.9) {Proliferation};
+
+% Row 1: HOXA13 & beta-catenin
+\node[box] (hoxa13) at (2.2, 7.0) {HOXA13};
+\node[font=\sffamily] at (3.3, 7.0) {$+$};
+\node[box] (bcatenin1) at (4.3, 7.0) {$\beta$-catenin};
+\node[box] (hoxa13bcat) at (8.5, 7.0) {HOXA13:$\beta$-catenin};
+
+% Row 2: beta-catenin & TCF
+\node[box] (bcatenin2) at (3.8, 4.8) {$\beta$-catenin};
+\node[font=\sffamily] at (5.0, 4.8) {$+$};
+\node[box] (tcf) at (6.0, 4.8) {TCF};
+\node[box] (bcat_tcf) at (9.2, 4.8) {$\beta$-catenin:TCF};
+
+% Row 3: MIZ1 & MYC
+\node[oval] (miz1) at (4.0, 3.0) {MIZ1};
+\node[font=\sffamily] at (5.0, 3.0) {$+$};
+\node[oval] (myc) at (6.0, 3.0) {MYC};
+\node[box] (miz1myc) at (9.2, 3.0) {MIZ1:MYC};
+
+% HOXA5
+\node[box] (hoxa5) at (6.8, 1.2) {HOXA5};
+
+% Bottom Outcomes
+\node[rectbox, fill=difforange, text=white, font=\sffamily\bfseries, inner sep=5pt] (diff) at (3.05, -0.5) {Differentiation};
+\node[rectbox, fill=stembrown, text=white, font=\sffamily\bfseries, inner sep=5pt] (stemness) at (8.3, 0.3) {Stemness};
+
+
+% ---------------- ARROWS & LABELS ----------------
+
+% Retinol -> RA -> RA + RAR
+\draw[->, thick] (retinol) -- (ra1);
+\draw[->, thick] (ra1) -- (ra2);
+
+% RA + RAR <-> RA:RAR (13)
+\draw[->, thick] ($(rar.east)+(0, 0.08)$) -- ($(rarar.west)+(0, 0.08)$);
+\draw[<-, thick] ($(rar.east)-(0, 0.08)$) -- ($(rarar.west)-(0, 0.08)$);
+\node[cnum] at ($(rar.east)!0.5!(rarar.west)+(0, -0.25)$) {13};
+
+% Reaction 10
+\draw[->, thick] ($(bcatenin1.east)+(0.4, 0.08)$) -- ($(hoxa13bcat.west)+(0, 0.08)$);
+\draw[<-, thick] ($(bcatenin1.east)+(0.4, -0.08)$) -- ($(hoxa13bcat.west)-(0, 0.08)$);
+\node[cnum] at ($(bcatenin1.east)!0.5!(hoxa13bcat.west)+(0, 0.08)$) {10};
+
+% Reaction 14
+\draw[->, thick] ($(tcf.east)+(0, 0.08)$) -- ($(bcat_tcf.west)+(0, 0.08)$);
+\draw[<-, thick] ($(tcf.east)-(0, 0.08)$) -- ($(bcat_tcf.west)-(0, 0.08)$);
+\node[cnum] at ($(tcf.east)!0.5!(bcat_tcf.west)+(0, 0.08)$) {14};
+
+% Reaction 5
+\draw[->, thick] ($(myc.east)+(0, 0.08)$) -- ($(miz1myc.west)+(0, 0.08)$);
+\draw[<-, thick] ($(myc.east)-(0, 0.08)$) -- ($(miz1myc.west)-(0, 0.08)$);
+\node[cnum] at ($(myc.east)!0.5!(miz1myc.west)+(0, -0.22)$) {5};
+
+% Upper Pathway
+\draw[->, thick, arrowgreen] ($(hoxa13.west)+(-0.8,0)$) -- (hoxa13.west);
+\node[cnum] at ($(hoxa13.west)+(-0.4, 0.3)$) {8};
+
+\draw[->, thick, arrowred] (hoxa13.south) -- ++(0, -0.6);
+\node[cnum] at ($(hoxa13.south)+(0.3, -0.3)$) {9};
+
+% Arrow 11: Vertically straight down to beta-catenin
+\draw[->, thick, arrowgreen] (wnt.south) -- (bcatenin1.north);
+\node[cnum] at ($(wnt.south)!0.5!(bcatenin1.north)+(0.35,0)$) {11};
+
+\draw[->, thick, arrowred] (bcatenin1.south) -- ++(0, -0.6);
+\node[cnum] at ($(bcatenin1.south)+(-0.35, -0.3)$) {12};
+
+\draw[->, thick, dashed] (hoxa13bcat) -- (bcat_tcf);
+
+% MIZ1 & MYC
+\draw[->, thick, arrowgreen] ($(miz1.west)+(-0.8,0)$) -- (miz1.west);
+\node[cnum] at ($(miz1.west)+(-0.4, -0.25)$) {3};
+
+\draw[->, thick, arrowred] (miz1.north) -- ++(0, 0.6);
+\node[cnum] at ($(miz1.north)+(0.35, 0.3)$) {4};
+
+% Green arrow 6 pointing down at MYC
+\draw[->, thick, arrowgreen] ($(myc.north)+(0, 0.8)$) -- (myc.north);
+\node[cnum] at ($(myc.north)+(0.35, 0.4)$) {6};
+
+% Red arrow 7 pointing down to HOXA5
+\draw[->, thick, arrowred] (myc.south) -- (hoxa5.north);
+\node[cnum] at ($(myc.south)!0.5!(hoxa5.north)+(0.35,0)$) {7};
+
+% Dotted black lines pointing with arrowheads to "1"
+\draw[->, thick, dashed] (miz1.east) .. controls (5.6, 2.8) and (5.8, 0.8) .. (6.8, 0.0);
+\draw[->, thick, dashed] (rarar.east) .. controls (5.5, 1.0) and (6.2, 0.2) .. (6.8, 0.0);
+
+% Arrow 1 shifted slightly to the right (at x = 7.1)
+\draw[->, thick, arrowgreen] (7.1, 0.0) -- ($(hoxa5.south)+(0.3, 0)$);
+\node[cnum] at (6.85, 0.2) {1};
+
+% Red dashed inhibition line from MIZ1:MYC to Arrow 2
+\draw[->, thick, dashed, arrowred] (miz1myc.south) -- (8.1, 1.2);
+
+% Arrow 2 from HOXA5 pointing right
+\draw[->, thick, arrowred] (hoxa5.east) -- (8.3, 1.2);
+\node[cnum] at (7.9, 0.9) {2};
+
+\end{tikzpicture}
+\end{document}
