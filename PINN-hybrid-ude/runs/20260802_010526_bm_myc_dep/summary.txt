@@ -1,0 +1,23 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260802_010526_bm_myc_dep
+variant=bm_myc  term=bm_myc  param=gated  constraint=anchored  wd=1e-08
+
+regime                under10%   of  termNRMSE  gate_lo
+Normal                      15   34       2.3%     0.14  anchor BINDS
+Early Adenoma               16   34       2.4%     0.14  anchor BINDS
+Advanced Adenoma            13   34       2.9%     0.13  anchor BINDS
+Severe APC Loss             13   34       2.7%     0.12  anchor BINDS
+TOTAL                       57     
+
+(pass a control run dir as argv[2] for the H2 localisation test)
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+learned term 'bm_myc' -- functional identifiability
+regime                            range      RMSE    NRMSE
+Normal               [ 0.021, 1.431]    0.0203    2.3%
+Early Adenoma        [ 0.028, 1.882]    0.0233    2.4%
+Advanced Adenoma     [ 0.033, 2.463]    0.0305    2.9%
+Severe APC Loss      [ 0.038, 3.009]    0.0299    2.7%
+
+wrote /home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260802_010526_bm_myc_dep/learned_term_bm_myc.png
