@@ -421,6 +421,27 @@ def _regulator_scale(spec, refs_for_regime):
     return np.maximum(np.asarray(out, dtype=float), 1e-3)
 
 
+def supports(term, param):
+    """Can `term` be built under parameterisation `param`? (reason if not)
+
+    Not every constraint set applies to every registry entry: `gated` is a
+    single-input construction, and the linear-anchored ones need an anchor to
+    be linear about. A sweep over terms x parameterisations must skip the
+    invalid cells rather than die on one -- the 2026-08-01 edge atlas lost
+    three of its four regimes to an unguarded `apc_prod`/`gated` pair after
+    2.8 GPU-hours.
+    """
+    spec = HYBRID_TERMS[term]
+    if spec.get("input_kind") == "parameter":
+        return True, ""
+    if param == "gated" and len(spec["inputs"]) > 1:
+        return False, (f"{term} has {len(spec['inputs'])} inputs and `gated` "
+                       f"is single-input only")
+    if param in ("lin", "lin_mono") and spec.get("anchor") is None:
+        return False, f"{term} has no zero anchor for `{param}` to be linear about"
+    return True, ""
+
+
 def build_one_term(term, refs_for_regime, device, *, width=5, depth=2,
                    constraint="anchored", act="tanh", param="gated"):
     """Instantiate the network for a single term under one parameterisation.
