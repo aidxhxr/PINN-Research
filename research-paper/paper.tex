@@ -16,7 +16,13 @@
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \onehalfspacing
 
-\newcommand{\bcat}{$\beta$-catenin}
+% Last-resort interword stretch. Applies only to paragraphs TeX would otherwise
+% set overfull, so it costs nothing elsewhere and keeps text inside the margins.
+\emergencystretch=2em
+
+% The zero-width space after the hyphen lets TeX hyphenate "catenin"; without it
+% the math shift blocks hyphenation and the word can only sit whole on a line.
+\newcommand{\bcat}{$\beta$-\hspace{0pt}catenin}
 % math-mode spelling, for use inside align/equation
 \newcommand{\mbcat}{\beta\text{-catenin}}
 \newcommand{\thP}{\theta_P}
@@ -800,6 +806,10 @@ confidence and the second-rank magnitudes should not be over-interpreted. The
 broad grouping into a leading cluster, a middle band, and a negligible tail is
 robust; a strict ordering within the leading cluster is not.
 
+Figure~\ref{fig:sa7} shows the two global screens for the stemness index, and
+Figure~\ref{fig:saheat} the full signed local-elasticity map from which the
+own-pathway structure above is read.
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.48\textwidth}
@@ -854,7 +864,9 @@ $\mathrm{MCsynth}$ (consensus score 0.999), $v_{16}$ (0.830), $k_{p5}$ (0.612),
 $\gamma_1$ (0.527), $k_{p6}$ (0.464), $k_{14}$ (0.408) and $k_8$ (0.351). The
 conservatism of the rule is visible in the near-ties: $v_{17}$ (consensus
 0.0341) is fixed while $k_{23}$ (0.0329) is kept, because $k_{23}$ clears the
-5\% bar under Morris even though its Sobol index is negligible.
+5\% bar under Morris even though its Sobol index is negligible. The full ranking
+and the threshold that separates the two groups are given in
+Figure~\ref{fig:sabig}.
 
 \begin{figure}[H]
     \centering
@@ -1007,6 +1019,7 @@ the fair summary for that species.
 \begin{table}[H]
 \centering
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrrrrrr}
 \toprule
 \textbf{Regime} & \bcat{} & APC & HOXA5 & HOXA13 & MYC & RA & CYP26A1 &
@@ -1051,7 +1064,8 @@ end of Adam training; the data term is essentially satisfied early and the
 optimizer spends the remainder of its budget enforcing the ODE. In the dense
 baseline the two terms remain the same order of magnitude throughout. This is
 the expected signature of a genuinely physics-driven solve versus a
-data-driven one.
+data-driven one. Figure~\ref{fig:forwardpinn} shows the reconstruction itself
+for the four core WNT--HOX species.
 
 \begin{figure}[H]
     \centering
@@ -1301,7 +1315,8 @@ is $+24$, but that comparison is not clean --- the baseline used 6 conditions
 and the integral run used 10 --- so it conflates this lever with the next one.
 The controlled comparison holds the conditions fixed at 10 and changes only the
 residual: \textbf{37 $\to$ 50, a gain of 13 parameters}, and that is the figure
-we stand behind for this lever.
+we stand behind for this lever. Figure~\ref{fig:recovbars} shows recovered
+against true values for the eight best-recovered parameters.
 
 \begin{figure}[H]
     \centering
@@ -1375,7 +1390,8 @@ Table~\ref{tab:inverse} collects the whole progression.
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{llcccccc}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lL{4.3cm}cccccc}
 \toprule
 \textbf{Method} & \textbf{Key change} & \textbf{cond.} &
 \textbf{Norm.} & \textbf{Early} & \textbf{Adv.} & \textbf{Severe} &
@@ -1486,7 +1502,7 @@ section is a practical, conditioning-based one.
 \subsection{An analytically exact degeneracy}
 
 The exception is a degeneracy visible by inspection. APC functionality and the
-excess-degradation coefficient enter the model only through
+coefficient of excess degradation enter the model only through
 \begin{equation}
 \delta_P(\thP) = 1 + \delta_{P1}(1-\thP),
 \end{equation}
@@ -1587,7 +1603,8 @@ which is part of the point --- the difficulty is generic.
 We note that the condition number is not monotone in WNT drive (Advanced
 Adenoma is the smallest at $1.9\times10^{7}$) and should not be read as a
 difficulty ranking. The count of near-degenerate pairs is the better-behaved
-statistic, and it is monotone.
+statistic, and it is monotone. Figure~\ref{fig:fimfull} collects the four
+diagnostics for the hardest regime.
 
 \begin{figure}[H]
     \centering
@@ -1609,7 +1626,8 @@ constrain should give a well-posed problem. We tested this by selecting the
 eight parameters with the lowest flat-subspace participation across all regimes
 --- $\lambda_C$, $\eta_{BM}$, $\kappa_{BM}$, $\kappa_{BC}$, $\eta_{BC}$,
 $\eta_{RC}$, $\kappa_{B13}$, $\kappa_R$ --- fixing the other 28 at their true
-values, and recomputing the Fisher matrix on identical data.
+values, and recomputing the Fisher matrix on identical data. The result is
+Table~\ref{tab:fimtop8}.
 
 \begin{table}[H]
 \centering
@@ -1637,7 +1655,8 @@ determine eight parameters comfortably in every regime, including the worst.
 The problem is that we were asking them to determine 36. Note also that the
 residual regime ordering survives even here: the condition number still climbs
 from 99.7 to 665.2 across the progression. The wall is attenuated, not
-eliminated, by reducing the parameter set.
+eliminated, by reducing the parameter set. Figure~\ref{fig:fimcontrast} places
+the full and reduced spectra side by side.
 
 \begin{figure}[H]
     \centering
@@ -1694,15 +1713,41 @@ four-regime profile-likelihood analysis, and the numbers above should be read
 as a single-regime corroboration of the Fisher result rather than an
 independent four-regime replication.
 
+All 36 profiles are reproduced in Figures~\ref{fig:profile}--\ref{fig:profile3},
+split across three pages for legibility.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\linewidth]{profile_likelihood_advanced.png}
-    \caption{Profile likelihood for the Advanced Adenoma regime. Each panel
-    scans one parameter while re-optimizing the other 35; the horizontal line
-    is the 95\% $\chi^2$ threshold. Narrow, sharply curved profiles are
-    identifiable parameters; flat or one-sided profiles indicate parameters the
-    data cannot pin down.}
+    \includegraphics[width=0.95\linewidth,
+                     height=0.72\textheight,
+                     keepaspectratio]{profile_likelihood_advanced_p1.png}
+    \caption{Profile likelihood for the Advanced Adenoma regime, parameters
+    1--12 of 36. Each panel scans one parameter while re-optimizing the other
+    35; the horizontal line is the 95\% $\chi^2$ threshold. Narrow, sharply
+    curved profiles are identifiable parameters; flat or one-sided profiles
+    indicate parameters the data cannot pin down. Continued in
+    Figures~\ref{fig:profile2} and~\ref{fig:profile3}.}
     \label{fig:profile}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth,
+                     height=0.72\textheight,
+                     keepaspectratio]{profile_likelihood_advanced_p2.png}
+    \caption{Profile likelihood for the Advanced Adenoma regime, parameters
+    13--24 of 36. Axes and thresholds as in Figure~\ref{fig:profile}.}
+    \label{fig:profile2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth,
+                     height=0.72\textheight,
+                     keepaspectratio]{profile_likelihood_advanced_p3.png}
+    \caption{Profile likelihood for the Advanced Adenoma regime, parameters
+    25--36 of 36. Axes and thresholds as in Figure~\ref{fig:profile}.}
+    \label{fig:profile3}
 \end{figure}
 
 \subsection{Consensus verdict}
@@ -1813,11 +1858,13 @@ $+332$.
 
 \begin{table}[H]
 \centering
+\small
+\setlength{\tabcolsep}{5pt}
 \begin{tabular}{lccccc}
 \toprule
-\textbf{Regime} & \textbf{ESS (median)} & \textbf{median $|z|$} &
-\textbf{max $|z|$} & \textbf{CI$_{95}$ covers truth} &
-\textbf{verdict reported} \\
+\textbf{Regime} & \textbf{median ESS} & \textbf{median $|z|$} &
+\textbf{max $|z|$} & \textbf{CI$_{95}$ coverage} &
+\textbf{reported verdict} \\
 \midrule
 Normal            & 3.4 & 38.4 & 784 & 1/36 & 36/36 IDENT \\
 Early Adenoma     & 5.6 & 29.0 & 466 & 0/36 & 36/36 IDENT \\
@@ -1838,9 +1885,11 @@ purely as \emph{shrinkage relative to the prior},
 \mathrm{shrink}_j = \frac{\mathrm{std}(s_j \mid \mathcal{D})}
 {\sigma_{\text{prior},j}},
 \qquad
-\text{IDENT if } \mathrm{shrink} < 0.30,\quad
-\text{WEAK if } 0.30 \le \mathrm{shrink} < 0.70,\quad
-\text{NON-IDENT otherwise},
+\begin{cases}
+\text{IDENT} & \mathrm{shrink} < 0.30,\\
+\text{WEAK} & 0.30 \le \mathrm{shrink} < 0.70,\\
+\text{NON-IDENT} & \text{otherwise},
+\end{cases}
 \label{eq:shrink}
 \end{equation}
 and these posteriors were \emph{tight but biased}, with
@@ -1952,10 +2001,13 @@ time.
 
 \begin{table}[H]
 \centering
+\small
+\setlength{\tabcolsep}{5pt}
 \begin{tabular}{lcccc}
 \toprule
-\textbf{Regime} & \textbf{predictive cov.} & \textbf{rel. predictive width} &
-\textbf{epistemic cov.} & \textbf{rel. epistemic width} \\
+\textbf{Regime} & \textbf{predictive} & \textbf{rel. predictive} &
+\textbf{epistemic} & \textbf{rel. epistemic} \\
+& \textbf{coverage} & \textbf{width} & \textbf{coverage} & \textbf{width} \\
 \midrule
 Normal           & 0.95 & 0.080 & 0.96 & 0.006 \\
 Early Adenoma    & 0.94 & 0.073 & 0.91 & 0.004 \\
@@ -1969,6 +2021,9 @@ widths are relative to state scale. Mean relative RMSE against the reference is
 0.001--0.002 in all regimes.}
 \label{tab:fwdbayes}
 \end{table}
+
+The separation between the two bands is visible directly in
+Figure~\ref{fig:fwdbands}.
 
 \begin{figure}[H]
     \centering
