@@ -4,6 +4,8 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \usepackage{subcaption}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{xcolor}
@@ -19,9 +21,8 @@
 \newcommand{\mbcat}{\beta\text{-catenin}}
 \newcommand{\thP}{\theta_P}
 
-\title{Physics-Informed Neural Networks for a Reduced WNT--HOX--Retinoic Acid
-Model of Colorectal Cancer: Forward Solution, Parameter Recovery, and the
-Limits of Identifiability}
+\title{A Reduced WNT--HOX--Retinoic Acid Model of Colorectal Cancer Stemness
+and Its Approximation by Physics-Informed Neural Networks}
 \author{Amirkhan Aidarkhan \and Nathaniel Kim \and Pascal Kataboh}
 \date{August 2026}
 
@@ -30,44 +31,52 @@ Limits of Identifiability}
 \maketitle
 
 \begin{abstract}
-Colorectal cancer initiation is driven by loss of APC function and the
-consequent deregulation of WNT/\bcat{} signaling, a process that retinoic acid
-(RA) signaling opposes through the HOX transcription factors. We formulate a
-reduced seven-state ordinary differential equation (ODE) model of the coupled
-WNT--RA--HOX network, nondimensionalize it to a system with 36 kinetic
-parameters, and use it as a testbed for physics-informed neural networks
-(PINNs) in both the forward and the inverse direction. Four parameter regimes
---- \emph{Normal}, \emph{Early Adenoma}, \emph{Advanced Adenoma}, and
-\emph{Severe APC Loss} --- reproduce the adenoma--carcinoma sequence by
-increasing WNT drive $W$ while decreasing APC functionality $\thP$.
-
-Three questions organize the work. First, \emph{can a PINN solve this system?}
-The model is forced by a fast circadian RA oscillation superimposed on a slow
-all-\emph{trans} retinoic acid (ATRA) treatment pulse, a two-timescale
-structure that defeats a standard multilayer perceptron through spectral bias.
-A multi-scale Fourier-feature time embedding removes the failure and reproduces
-the stiff \texttt{Radau} reference trajectories to sub-percent relative error.
-Second, \emph{which parameters matter?} A three-method global sensitivity
-analysis --- local elasticity, Morris elementary effects, and Sobol variance
-decomposition --- ranks parameters by influence on the concentration readouts
-and on a derived stemness index, and identifies a subset whose influence is
-negligible under every method. Third, and centrally, \emph{which parameters can
-actually be recovered from data?} Inverse recovery saturates well below the full
-parameter set, and we localize the cause. Part of the ceiling is an artifact of
-the PINN estimator: replacing the biased automatic-differentiation residual
-$\dot{z}-f(z)$ with a derivative-free integral (trapezoidal) residual roughly
-doubles the number of parameters recovered to within 10\% relative error. The
-remainder is a property of the experiment design, and only additional
-\emph{information} --- perturbation conditions that excite otherwise-dark parts
-of the network --- lifts it further. Underneath both sits a genuine wall: in
-high-WNT regimes \bcat{} saturates and $\thP$ becomes practically
-non-identifiable. We confirm this independently through the Fisher information
-matrix, Raue-style profile likelihood, and Hamiltonian Monte Carlo posteriors,
-and we report a cautionary calibration failure in which a na\"ively-summed
-physics likelihood produced confident but wrong posteriors. For models of this
-class the binding constraint is the information content of the experiment, not
-the expressiveness of the network.
+Colorectal cancer initiation follows loss of APC function and the consequent
+deregulation of WNT/\bcat{} signaling, which retinoic acid (RA) signaling
+opposes through the HOX transcription factors. We formulate a reduced
+seven-state ordinary differential equation (ODE) model of the coupled
+WNT--RA--HOX network, nondimensionalize it to 36 kinetic parameters, and define
+four regimes --- \emph{Normal}, \emph{Early Adenoma}, \emph{Advanced Adenoma},
+and \emph{Severe APC Loss} --- that reproduce the adenoma--carcinoma sequence by
+increasing WNT drive $W$ while decreasing APC functionality $\thP$. We then
+establish that this system admits an accurate physics-informed neural network
+(PINN) approximation in both directions. In the forward direction, a
+multi-scale Fourier-feature time embedding resolves the two-timescale retinoid
+forcing that defeats a standard multilayer perceptron through spectral bias, and
+reproduces stiff \texttt{Radau} reference trajectories to 1--3\% relative error
+in every regime, including from only 40 sparse observations. In the inverse
+direction, parameter recovery saturates well below the full set, and we separate
+two causes: replacing the biased automatic-differentiation residual with a
+derivative-free integral residual roughly doubles the number of parameters
+recovered to within 10\%, while the remaining ceiling is a property of the
+experiment and yields only to perturbations that excite otherwise-unobserved
+parts of the network. Global sensitivity analysis, Fisher information spectra,
+profile likelihood, and Hamiltonian Monte Carlo posteriors independently
+localize a genuine wall: in high-WNT regimes \bcat{} saturates and $\thP$
+becomes practically non-identifiable. For models of this class the binding
+constraint is the information content of the experiment, not the expressiveness
+of the network.
 \end{abstract}
+
+\paragraph{Keywords.} Physics-informed neural networks; inverse problems;
+parameter identifiability; systems biology; colorectal cancer;
+WNT/\bcat{} signaling; retinoic acid; uncertainty quantification.
+
+\paragraph{Highlights.}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item A reduced seven-state WNT--RA--HOX ODE model of colorectal cancer
+stemness is derived and nondimensionalized to 36 parameters over four disease
+regimes.
+\item A Fourier-feature PINN solves the model forward to 1--3\% error;
+spectral bias makes the embedding necessary, not optional.
+\item An integral (derivative-free) residual removes an estimator bias and
+roughly doubles inverse parameter recovery.
+\item Sensitivity analysis, Fisher information, profile likelihood, and
+Bayesian posteriors agree that \bcat{} saturation renders APC functionality
+non-identifiable at high WNT drive.
+\item Experimental information, not network capacity, is the binding
+constraint on parameter recovery.
+\end{itemize}
 
 \tableofcontents
 
@@ -129,7 +138,7 @@ developed in Section~\ref{sec:model} is the minimal ODE system carrying all
 three, with WNT drive $W$ and APC functionality $\thP$ as the two knobs that
 move the system along the adenoma--carcinoma sequence.
 
-\subsection{Why physics-informed neural networks}
+\subsection{Rationale for a physics-informed neural network approach}
 
 Mechanistic models of signaling pathways of this kind have a long
 history~\citep{lee2003wnt}, and the forward problem --- integrating the ODEs
@@ -169,12 +178,15 @@ superimposed on a treatment pulse spanning tens of time units, over a horizon
 of $150$. Fourier-feature embeddings are the standard
 remedy~\citep{tancik2020fourier}, and are what we adopt.
 
-\subsection{Contributions}
+\subsection{Scope and contributions}
 
-This paper reports the deterministic and Bayesian PINN work on the reduced
-WNT--RA--HOX model. It deliberately stops short of the neural-mechanistic
-hybrid (universal differential equation) extensions, which are the subject of
-separate work. Its contributions are:
+This paper has two objects: a new mechanistic model of the WNT--RA--HOX axis,
+and a demonstration that this model can be approximated by physics-informed
+neural networks in both the forward and the inverse direction, together with a
+characterization of where that approximation stops working and why. It
+deliberately stops short of the neural-mechanistic hybrid (universal
+differential equation) extensions, which are the subject of separate work. Its
+contributions are:
 
 \begin{enumerate}
 \item \textbf{A reduced seven-state WNT--RA--HOX model} of colorectal cancer
@@ -221,10 +233,10 @@ generic to Bayesian PINNs and, in our reading, not adequately flagged in the
 literature.
 \end{enumerate}
 
-\section{The mathematical model}
+\section{Model formulation}
 \label{sec:model}
 
-\subsection{Biological assumptions}
+\subsection{Biological assumptions and network topology}
 
 The model encodes the following assumptions, each drawn from the literature
 surveyed above. WNT signaling promotes \bcat{} accumulation. \bcat{} activates
@@ -247,7 +259,7 @@ numerically as well as biologically: a discontinuous dose would place a
 non-differentiable point inside the domain over which the PINN residual is
 differentiated.
 
-\subsection{Dimensional model}
+\subsection{Governing equations}
 
 Let $Y = [B(t), P(t), H_5(t), H_{13}(t), M(t), R(t), C(t)]$ denote the state
 vector, where $B$ is \bcat{}, $P$ is APC, $H_5$ is HOXA5, $H_{13}$ is HOXA13,
@@ -286,18 +298,79 @@ $M$ is MYC, $R$ is retinoic acid, and $C$ is CYP26A1. The dimensional model is
 \label{eq:dimC}
 \end{align}
 
-Every biological assumption above appears explicitly. In
-Eq.~\eqref{eq:dimB}, WNT signaling $W$ drives \bcat{} synthesis while APC
+\paragraph{Structure of the equations.}
+Despite their length, Eqs.~\eqref{eq:dimB}--\eqref{eq:dimC} are seven instances
+of a single elementary statement. Each is a mass balance for one species,
+\begin{equation}
+\underbrace{\frac{d(\text{species})}{dt}}_{\text{rate of change}}
+\;=\;
+\underbrace{\text{production}}_{\text{input}}
+\;-\;
+\underbrace{\text{loss}}_{\text{output}},
+\label{eq:balance}
+\end{equation}
+that is, \emph{rate = input $-$ output}: a species accumulates exactly as fast
+as it is made minus as fast as it is removed. Every term entering with a plus
+sign is a route of synthesis (basal expression, activation by an upstream
+regulator, or, for RA, external supply), and every term entering with a minus
+sign is a route of removal (spontaneous turnover, enzymatic degradation, or
+sequestration by a partner). All of the biology sits in two choices: which
+species appear in which term, and what functional form each term takes. We use
+Hill functions $x^{n}/(\kappa^{n}+x^{n})$ where the regulation is cooperative
+and transcriptional ($n_B = n_M = n_H = 2$), Michaelis--Menten saturation
+$x/(\kappa+x)$ where it represents an enzymatic or titration process, and
+mass-action products $xy$ where two species must physically meet. Each of these
+saturates, so no production term can grow without bound --- the biologically
+necessary property that concentrations remain finite. Table~\ref{tab:balance}
+reads the seven equations back in this form.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llL{5.4cm}L{4.0cm}}
+\toprule
+\textbf{State} & \textbf{Eq.} & \textbf{Input (production)} & \textbf{Output (loss)}\\
+\midrule
+$B$ (\bcat{})   & \eqref{eq:dimB}   & WNT drive; HOXA13 feedback
+                                    & turnover; APC-mediated degradation;
+                                      HOXA5 suppression \\
+$P$ (APC)       & \eqref{eq:dimP}   & expression, promoted by HOXA5 and
+                                      inhibited by \bcat{}/HOXA13
+                                    & turnover, accelerated by loss of APC
+                                      functionality $\Theta_P$ \\
+$H_5$ (HOXA5)   & \eqref{eq:dimH5}  & basal expression; RA induction
+                                    & turnover; MYC-mediated suppression \\
+$H_{13}$ (HOXA13) & \eqref{eq:dimH13} & basal expression; \bcat{} and MYC
+                                        induction
+                                    & turnover \\
+$M$ (MYC)       & \eqref{eq:dimM}   & basal expression; \bcat{} induction
+                                    & turnover \\
+$R$ (RA)        & \eqref{eq:dimR}   & basal supply; circadian dietary intake;
+                                      ATRA treatment pulse
+                                    & turnover; CYP26A1-mediated catabolism \\
+$C$ (CYP26A1)   & \eqref{eq:dimC}   & basal expression; RA and \bcat{}
+                                      induction
+                                    & turnover \\
+\bottomrule
+\end{tabular}
+\caption{Each governing equation as an input--output balance,
+Eq.~\eqref{eq:balance}. The columns list the source and sink terms of the
+corresponding equation in words; the pathway structure of
+Section~\ref{sec:model} is recovered by reading the table row by row.}
+\label{tab:balance}
+\end{table}
+
+Every biological assumption stated above appears explicitly in this bookkeeping.
+In Eq.~\eqref{eq:dimB}, WNT signaling $W$ drives \bcat{} synthesis while APC
 contributes to its degradation through the mass-action term $k_{PB}PB$,
-encoding the inverse relationship between the two. Activation terms are written
-as Hill functions where the regulation is cooperative and transcriptional
-($n_B = n_M = n_H = 2$) and as Michaelis--Menten saturation where it represents
-an enzymatic or titration process. In Eq.~\eqref{eq:dimP}, $\Theta_P$ is APC
+encoding the inverse relationship between the two: the two species must meet
+for degradation to occur, so the loss rate is proportional to the product of
+their concentrations. In Eq.~\eqref{eq:dimP}, $\Theta_P$ is APC
 functionality: at $\Theta_P = 1$ the excess degradation term vanishes and APC
 turns over at its baseline rate $d_{P0}$, while decreasing $\Theta_P$ raises
 the effective degradation rate and so models progressive loss of APC function.
 
-\subsection{Nondimensionalization}
+\subsection{Nondimensionalization and scaling}
 
 To reduce the number of independent parameters and improve the conditioning of
 both the forward solve and the training problem, we nondimensionalize. Each
@@ -343,6 +416,14 @@ a_C + \eta_{RC}\frac{r}{\kappa_{RC}+r}
 + \eta_{BC}\frac{b^{n_B}}{\kappa_{BC}^{n_B}+b^{n_B}} - c\right].
 \label{eq:ndc}
 \end{align}
+The balance structure of Eq.~\eqref{eq:balance} is preserved term by term:
+each bracket is still input minus output, with every linear loss term
+normalized to $-x$ by the choice of scaling, and the prefactor
+$1/\varepsilon_X$ is a pure timescale ratio saying how fast species $X$ relaxes
+relative to \bcat{}. Nondimensionalization has therefore not changed the model,
+only its units and its parameter count, which falls to the 36 dimensionless
+groups of Table~\ref{tab:params}.
+
 The APC degradation modifier is
 \begin{equation}
 \delta_P(\thP) = 1 + \delta_{P1}(1-\thP),
@@ -375,7 +456,7 @@ differentiating species do. It is not a state variable; it is a derived
 quantity tracked alongside the states because it is the aggregate the model
 exists to predict.
 
-\subsection{Parameters and regimes}
+\subsection{Parameter values and disease regimes}
 
 Table~\ref{tab:params} lists the dimensionless kinetic parameters and the
 forcing parameters at the baseline values used throughout. Initial conditions
@@ -488,7 +569,7 @@ In the saturated limit the trajectory becomes insensitive to how much APC
 functionality remains, so $\thP$ and $W$ become entangled in precisely the
 regimes of greatest clinical interest.
 
-\section{Reference solution}
+\section{Numerical reference solution}
 \label{sec:reference}
 
 Ground-truth trajectories are computed with SciPy's
@@ -538,7 +619,7 @@ practice in systems biology~\citep{saltelli2010variance}, and we apply the same
 suite twice: to the reduced seven-state model that is the subject of this paper,
 and to the full 27-state reaction network from which it descends.
 
-\subsection{Methods}
+\subsection{Sampling design and sensitivity measures}
 
 All three methods score the same class of quantity of interest: the
 time-averaged value of an output over the horizon,
@@ -578,7 +659,7 @@ Sobol is the most informative and the most expensive of the three.
 All sampling and index estimation use SALib~\citep{herman2017salib}, and every
 parameter is varied within a $\pm 30\%$ box around its baseline value.
 
-\subsection{The reduced seven-state model}
+\subsection{Sensitivity of the reduced seven-state model}
 
 For the reduced model we vary the 14 parameters that carry the regulatory
 couplings and the treatment: $\thP$, $D_R$, $A_R$, $\eta_R$, $\eta_M$,
@@ -751,7 +832,7 @@ robust; a strict ordering within the leading cluster is not.
     \label{fig:saheat}
 \end{figure}
 
-\subsection{The 27-state model}
+\subsection{Comparison with the parent 27-state network}
 
 The reduced model is a lumping of a considerably larger reaction network: 27
 states covering the retinoid block (including the binding proteins, receptors
@@ -809,7 +890,7 @@ finding. And the Sobol indices for the CYP26A1 readout are numerically
 meaningless because its baseline settles to $7.6\times10^{-6}$, so the variance
 ratio's denominator collapses; that row is excluded.
 
-\subsection{What the sensitivity analysis does and does not tell us}
+\subsection{Scope and limitations of the sensitivity analysis}
 
 The screen establishes that the model's outputs are strongly and
 interpretably sensitive to a modest number of parameters, and it identifies
@@ -825,7 +906,7 @@ parameters sit near the bottom of the sensitivity ranking and recover to within
 identifiability tells you whether its influence can be \emph{distinguished from
 that of the other parameters}, and it is the second question that governs
 recovery.
-\section{The forward PINN}
+\section{The forward problem: neural approximation of the model trajectories}
 \label{sec:forward}
 
 The forward problem is to produce $y(\tau)$ on $[0,T]$ given the parameters.
@@ -836,7 +917,7 @@ architecture can represent this system's dynamics at all --- a prerequisite for
 the inverse problem, where the same networks carry the state representation ---
 and it isolates the one architectural choice that the system genuinely forces.
 
-\subsection{Architecture}
+\subsection{Network architecture and time embedding}
 
 The state representation is a multilayer perceptron $z_\phi : \tau \mapsto
 \mathbb{R}^7$ of width 256 and depth 4 with GELU activations, Xavier-normal
@@ -865,7 +946,7 @@ $|B_k| \in [0.69, 7.16]$, i.e. implied periods from $21$ to $216$ time units.
 Sixteen features at $\sigma_F = 4$ therefore span both the treatment pulse and
 the circadian ripple, which is why this configuration suffices.
 
-\subsection{Loss and training}
+\subsection{Composite loss and training protocol}
 
 We report two variants. The \emph{dense-label baseline} fits 100 evenly spaced
 labeled points with loss weights $\lambda_{\text{data}} = 0.7$,
@@ -912,7 +993,7 @@ rate $10^{-3}$ with cosine annealing to $10^{-6}$, followed by 500 outer steps
 of L-BFGS~\citep{liu1989lbfgs} with strong-Wolfe line search, history size 50
 and up to 20 inner iterations per step. All computation is in float64.
 
-\subsection{Accuracy}
+\subsection{Accuracy against the reference solution}
 
 Table~\ref{tab:fwderr} reports the error of the trained networks against the
 Radau reference on a uniform grid of 6000 points spanning the full horizon. We
@@ -992,7 +1073,7 @@ data-driven one.
     \label{fig:forwardpinn}
 \end{figure}
 
-\subsection{Spectral bias: what happens without Fourier features}
+\subsection{Spectral bias and the necessity of the Fourier embedding}
 
 The Fourier embedding is not a refinement; without it the model does not solve
 the problem. A plain MLP taking $\tau$ directly as a scalar input (199,687
@@ -1020,7 +1101,7 @@ magnitude of the effect are unambiguous and consistent with the established
 theory, but a clean single-variable ablation at fixed $T$ was not run and we do
 not claim one.
 
-\subsection{Summary}
+\subsection{Summary of the forward results}
 
 The forward study supports a narrow but necessary claim. A Fourier-feature
 network of this size represents the seven-state system across all four regimes
@@ -1030,10 +1111,10 @@ mandatory rather than optional. Both facts carry directly into the inverse
 problem, where the same architecture supplies the state representation and the
 question shifts from whether the trajectory can be represented to whether the
 parameters that generated it can be recovered.
-\section{The inverse problem: recovering the parameters}
+\section{The inverse problem: parameter estimation from trajectory data}
 \label{sec:inverse}
 
-\subsection{Formulation and scoring}
+\subsection{Problem formulation and scoring criterion}
 
 The inverse problem is to recover $\theta \in \mathbb{R}^{36}$ from sparse noisy
 observations of the trajectory. In the PINN formulation the parameters become
@@ -1065,7 +1146,7 @@ consistently so that comparisons between methods are meaningful, and we report
 per-regime counts rather than a pooled figure because the regimes differ
 sharply in difficulty.
 
-\subsection{Stage 1: two parameters, one condition}
+\subsection{A two-parameter proof of concept}
 
 We first restricted the unknowns to $(W, \thP)$, the two parameters that define
 the regimes. From a single condition with 80 observations at 1\% noise, the
@@ -1102,7 +1183,7 @@ gives 4/8/7/7 parameters under 10\% and a mean relative error of 47\%. One
 condition does not constrain 36 parameters, which is unsurprising; the rest of
 this section is about what does.
 
-\subsection{Stage 2: more conditions, better conditioning}
+\subsection{Multiple experimental conditions and improved conditioning}
 
 We next added experimental conditions --- variations in the ATRA protocol
 ($D_R = 0$; early, late, low-dose windows; a strengthened circadian amplitude)
@@ -1130,7 +1211,7 @@ $W$ gets monotonically \emph{worse} ($35.1\% \to 38.1\% \to 39.0\%$). More
 experiments of the same kind are close to worthless. This observation motivates
 both remaining levers.
 
-\subsection{A negative result: the architecture is not the bottleneck}
+\subsection{A negative result: network capacity is not the limiting factor}
 
 Before pursuing those levers we tested the most obvious hypothesis --- that a
 network with 207,879 parameters per condition is simply too flexible, and
@@ -1154,7 +1235,7 @@ $0.613$ against a true value of $0.80$ while the physics loss remained flat at
 $4.5\times10^{-5}$ for all 500 steps. The optimizer was at a minimum of the
 residual. The minimum was simply not at the true parameters.
 
-\subsection{Diagnosis: gradient starvation and a biased derivative}
+\subsection{Diagnosis: gradient starvation and derivative bias}
 
 Two distinct mechanisms produce that outcome, and separating them is what makes
 the rest of the section possible.
@@ -1193,7 +1274,7 @@ $\theta$, because the residual is evaluated against a derivative that is
 systematically slightly wrong. No amount of better optimization fixes this; the
 objective itself is misplaced.
 
-\subsection{Lever 1: removing the derivative}
+\subsection{A derivative-free integral residual}
 \label{sec:integral}
 
 If the biased $\dot z_\phi$ is the problem, the remedy is an equivalent
@@ -1244,7 +1325,7 @@ of four changes, and we cannot apportion it among them. In particular we make
 no claim about the integral residual in isolation, and the SIREN
 variant~\citep{sitzmann2020siren} was never evaluated.
 
-\subsection{Lever 2: adding information of a different kind}
+\subsection{Parameter-exciting experimental conditions}
 
 The second lever follows from the observation that all our conditions perturbed
 the same input. We added two exogenous input channels that the base model does
@@ -1277,7 +1358,7 @@ number that open the same one.
 Even so, the wall holds where it matters most. In Severe APC Loss the count
 reaches only 14/36 and $\thP$ is off by 264\%.
 
-\subsection{The classical ODE-fit comparison}
+\subsection{Comparison with classical ODE-constrained optimization}
 \label{sec:odefit}
 
 Throughout we compare the PINN against a classical estimator on identical data:
@@ -1335,7 +1416,7 @@ from Normal to Severe APC Loss. No method reverses it. That invariance is what
 distinguishes a property of the problem from a property of the estimator, and
 it is the subject of Section~\ref{sec:ident}.
 
-\subsection{Which parameters recover}
+\subsection{Which parameters are recovered}
 
 Aggregating across 28 attempts (seven major runs times four regimes) gives a
 per-parameter reliability that is far more stable than any single run, and that
@@ -1382,7 +1463,7 @@ $\varepsilon_M$ sit at half a percent of the maximum sensitivity and recover to
 10--20\%. High sensitivity means a parameter moves the data; it says nothing
 about whether some \emph{other} parameter can move the data the same way. Only
 an identifiability analysis answers that.
-\section{Identifiability: three views of the same wall}
+\section{Identifiability analysis}
 \label{sec:ident}
 
 Section~\ref{sec:inverse} showed a recovery ceiling that no estimator crossed
@@ -1402,7 +1483,7 @@ wieland2021identifiability}. We did not run a symbolic structural
 identifiability analysis, so with one exception noted below every claim in this
 section is a practical, conditioning-based one.
 
-\subsection{One degeneracy is analytic}
+\subsection{An analytically exact degeneracy}
 
 The exception is a degeneracy visible by inspection. APC functionality and the
 excess-degradation coefficient enter the model only through
@@ -1422,7 +1503,7 @@ This is a modest observation, but it makes a useful calibration check: any
 identifiability diagnostic worth trusting should find it without being told. All
 three of ours do.
 
-\subsection{Fisher information}
+\subsection{Fisher information spectra}
 
 We compute the Fisher information matrix in log-parameter coordinates,
 \begin{equation}
@@ -1520,7 +1601,7 @@ statistic, and it is monotone.
     \label{fig:fimfull}
 \end{figure}
 
-\subsection{The well-posed contrast}
+\subsection{A well-posed reduced parameter set}
 
 If the difficulty is a property of the 36-parameter problem rather than of the
 model or the data, then restricting to the parameters the data actually
@@ -1576,7 +1657,7 @@ eliminated, by reducing the parameter set.
     \label{fig:fimcontrast}
 \end{figure}
 
-\subsection{Profile likelihood}
+\subsection{Profile-likelihood confidence intervals}
 
 The Fisher matrix is a local, quadratic approximation evaluated at the true
 parameters. Profile likelihood~\citep{raue2009identifiability} makes no such
@@ -1624,7 +1705,7 @@ independent four-regime replication.
     \label{fig:profile}
 \end{figure}
 
-\subsection{Summary of the verdict}
+\subsection{Consensus verdict}
 
 The evidence converges. An analytic argument shows that $\thP$ and
 $\delta_{P1}$ are determined only through their product. The Fisher matrix finds
@@ -1644,7 +1725,7 @@ conditioning failure created by the operating point, not a flaw in the model
 structure --- which is why the de-saturating $D_W = -0.7$ condition of
 Section~\ref{sec:inverse} improves matters (recovering $\thP$ to 0.9\% in the
 Normal regime) without eliminating the problem in the most extreme regime.
-\section{Bayesian PINNs: posteriors, and a calibration failure}
+\section{Bayesian inference and posterior calibration}
 \label{sec:bayes}
 
 Everything reported so far is a point estimate accompanied by an
@@ -1665,7 +1746,7 @@ posteriors that were simultaneously extremely confident and badly wrong, and
 the naive identifiability verdict computed from them declared all 36 parameters
 identifiable in all four regimes.
 
-\subsection{Sampler}
+\subsection{Sampler and priors}
 
 Both analyses use Hamiltonian Monte Carlo~\citep{neal2011mcmc}, which is the
 appropriate sampler here: gradients of the log posterior are available by
@@ -1693,7 +1774,7 @@ We note one limitation up front: each regime is sampled with a single chain, so
 no $\hat{R}$ diagnostic is available. Mixing is assessed by effective sample
 size alone, computed by Geyer's initial-monotone-sequence truncation.
 
-\subsection{The likelihood, and how we got it wrong}
+\subsection{Likelihood specification and a calibration failure}
 \label{sec:bayesfail}
 
 Because the state networks are frozen, the data term is constant in $\theta$
@@ -1770,7 +1851,7 @@ mixing and the intervals are calibrated; a physics likelihood summed over a
 dense collocation grid can manufacture arbitrarily small credible intervals
 around an arbitrarily wrong answer.
 
-\subsection{The corrected likelihood}
+\subsection{The corrected likelihood and its effect}
 
 The fix is to stop pretending that $2\times10^5$ correlated residual
 evaluations constitute $2\times10^5$ independent observations. We rescale the
@@ -1838,7 +1919,7 @@ Section~\ref{sec:inverse}. This is the honest headline for the Bayesian inverse
 work: it upgrades point estimates to intervals and exposes the calibration
 question, but it does not by itself recover more of the model.
 
-\subsection{Bayesian forward PINN}
+\subsection{Posterior-predictive uncertainty in the forward problem}
 
 The forward twin holds the parameters fixed and samples the network weights, so
 the posterior-predictive spread is uncertainty about the \emph{solution} given
@@ -1913,7 +1994,7 @@ quantities are the right thing to report.
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{What the results add up to}
+\subsection{Principal findings}
 
 Read as a whole, the experiments make one argument. For a model of this class,
 the quantity that limits parameter recovery is the information content of the
@@ -1943,7 +2024,7 @@ recovered $\thP$ to within 0.9\% in the regime where it had previously failed.
 Designing the perturbation to break a specific degeneracy is a different and
 more productive activity than collecting more data.
 
-\subsection{PINN-specific findings}
+\subsection{Methodological implications for physics-informed neural networks}
 
 Two findings concern the PINN formulation specifically, and we think both
 generalize beyond this model.
@@ -1991,7 +2072,7 @@ deviations. It did not, however, produce chains that pass our own mixing and
 coverage gate, so we report no Bayesian identifiability counts. We would rather
 report a gate that fails than a number that looks clean.
 
-\subsection{Biological reading}
+\subsection{Biological interpretation}
 
 Within the limits of an idealized model fitted to synthetic data, two results
 have biological content.
@@ -2047,7 +2128,7 @@ claim here is a practical one. And the 27-state sensitivity analysis
 mean-imputed roughly 8\% of failed solves, with a Morris nonlinearity flag that
 is saturated at that sample size and therefore uninformative.
 
-\subsection{Future work}
+\subsection{Outlook}
 
 The obvious next step follows from the finding that information is the binding
 constraint: rather than adding conditions and checking what improves, use the
@@ -2071,61 +2152,78 @@ extension raises its own identifiability questions --- in particular, whether a
 learned term absorbs parameters of the equation that hosts it --- and is the
 subject of separate work.
 
-\section{Conclusion}
+\section{Conclusions}
 \label{sec:conclusion}
 
-We built a reduced seven-state model of the WNT--RA--HOX axis in colorectal
-cancer, with 36 dimensionless parameters and four regimes spanning the
-adenoma--carcinoma sequence, and used it to study physics-informed neural
-networks in both directions.
+This paper makes two claims, one about a model and one about its approximation.
 
-In the forward direction, a Fourier-feature network reproduces the reference
-trajectories to 1--3\% across all regimes, and does so from 40 sparse random
-observations by leaning on the physics residual, at roughly $2.4\times$ the
-error of a dense-label fit using $2.5\times$ more data. The multi-timescale
-retinoid forcing makes the Fourier embedding mandatory: without it the network
-recovers under half the treatment-pulse amplitude and none of the circadian
-ripple.
-
-A three-method sensitivity analysis places APC functionality among the most
+\textbf{First, we developed a new ODE model of the WNT--RA--HOX axis in
+colorectal cancer.} The system couples seven states --- \bcat{}, APC, HOXA5,
+HOXA13, MYC, retinoic acid, and CYP26A1 --- through a single elementary
+principle, that each species accumulates at the rate at which it is produced
+minus the rate at which it is removed (Eq.~\eqref{eq:balance}). Reducing a
+27-state reaction network to these seven, and nondimensionalizing, yields 36
+dimensionless parameters and a forcing that superimposes circadian dietary
+retinoid intake on a smooth ATRA treatment pulse. Four regimes obtained by
+raising WNT drive $W$ and lowering APC functionality $\thP$ reproduce the
+adenoma--carcinoma sequence, and a derived stemness index provides a single
+scalar readout. The model behaves as a model of this system should: a
+three-method global sensitivity analysis places APC functionality among the most
 influential parameters --- dominant locally, and in a leading cluster of three
 when measured as a variance share --- gives each state an interpretable
-own-pathway driver, and shows the reduced model to be nearly additive, in
-contrast to the 27-state network it descends from, which is strongly
-interacting. It also cost us a lesson: the default proportional sampling box
-pushed one parameter past a sign change in the model and produced a variance
-share above one, and the ranking obtained before that was caught was
-plausible-looking and wrong. It also demonstrates that a-priori sensitivity does not predict
-recoverability: the most sensitive parameter in the model is among the least
-recoverable.
+own-pathway driver, and shows the reduced system to be nearly additive, in
+contrast to the strongly interacting network it descends from. Forward solutions
+predict a progressive and species-specific loss of ATRA responsiveness along the
+sequence, an emergent consequence of the network structure rather than an
+imposed assumption.
 
-In the inverse direction, recovery saturates well below the full parameter set,
-and we separate the causes. An estimator defect --- the bias in the
-automatic-differentiation residual --- costs 13 parameters and is fixed by an
+\textbf{Second, we established that this system can be approximated by neural
+networks in both directions.} In the forward direction the approximation is
+accurate and cheap in data: a Fourier-feature network reproduces the stiff
+\texttt{Radau} reference trajectories to 1--3\% relative error across all four
+regimes, and does so from 40 sparse random observations by leaning on the
+physics residual, at roughly $2.4\times$ the error of a dense-label fit that
+uses $2.5\times$ more data. The multi-timescale retinoid forcing makes the
+Fourier embedding mandatory rather than cosmetic: without it the network
+recovers under half the treatment-pulse amplitude and none of the circadian
+ripple. In the inverse direction the approximation also succeeds, but only up to
+a ceiling that we are able to decompose. An estimator defect --- the bias in the
+automatic-differentiation residual --- costs 13 parameters and is removed by an
 integral residual that never forms the derivative. An information deficit costs
 21 more and is addressed only by perturbations that reach the network through
-new channels; more experiments of the same kind are close to worthless.
-Underneath both lies a genuine wall, confirmed by an analytic argument, the
-Fisher information spectrum, profile likelihood, and Bayesian posterior
-coverage: as WNT drive increases, \bcat{} saturates, $\thP$ decouples from the
-observables, and the number of near-degenerate parameter pairs grows
+new channels; further experiments of the kind already performed are close to
+worthless.
+
+The residue is a genuine limit of the problem rather than of the method, and
+four independent analyses agree on where it lies. An analytic argument, the
+Fisher information spectrum, profile likelihood, and Bayesian posterior coverage
+all show that as WNT drive increases \bcat{} saturates, $\thP$ decouples from
+the observables, and the number of near-degenerate parameter pairs grows
 $0 \to 1 \to 6 \to 10$. Restricting to the eight best-constrained parameters
-gives a well-posed problem with condition number $10^2$--$10^3$ instead of
-$10^7$--$10^{19}$, which locates precisely where the recoverable information
-lives.
+gives a well-posed problem with condition number $10^{2}$--$10^{3}$ instead of
+$10^{7}$--$10^{19}$, which locates precisely where the recoverable information
+lives. The uncomfortable corollary is that the most influential parameter in the
+model is among the least recoverable, for the same reason in both cases.
 
-We also report a calibration failure that we believe is generic. A Bayesian
-PINN whose physics likelihood summed over a dense collocation grid produced
-posteriors that were extremely confident and badly wrong, and a width-based
-identifiability criterion certified all 36 parameters as identifiable in all
-four regimes. Posterior width is not evidence of identifiability unless the
-chain is mixing and the intervals are calibrated.
+Two cautions accompany these results, and we report them with the same weight as
+the successes. The default proportional sampling box of the sensitivity analysis
+pushed one parameter past a sign change in the model, producing a variance share
+above unity and a plausible-looking but incorrect ranking. And a Bayesian PINN
+whose physics likelihood summed over a dense collocation grid produced posteriors
+that were extremely confident and badly wrong, certifying all 36 parameters as
+identifiable in all four regimes; posterior width is not evidence of
+identifiability unless the chain is mixing and the intervals are calibrated. We
+believe the second failure mode is generic to Bayesian PINNs and inadequately
+flagged in the literature.
 
-The through-line is that for models of this class the binding constraint is the
-experiment, not the network. That conclusion was reached mostly by exhausting
-the alternatives, and we have tried to report the failures with the same care as
-the successes, because in this problem the failures carry most of the
-information.
+Taken together, the model of Section~\ref{sec:model} and the approximation
+results that follow it establish that a mechanistic description of WNT--RA--HOX
+signaling in colorectal cancer is tractable to physics-informed learning in both
+the forward and the inverse direction, and they identify the binding constraint
+on what such learning can deliver. That constraint is the information content of
+the experiment, not the expressiveness of the network --- which makes
+experimental design, rather than architecture search, the productive direction
+for work of this kind.
 
 \section*{Data and code availability}
 
