@@ -10,7 +10,6 @@
 \usepackage{xcolor}
 \usepackage{float}
 \usepackage{longtable}
-\usepackage{booktabs}
 
 \title{A Reduced WNT--RA--HOX Model for Colorectal Cancer Stemness}
 \author{Amir, Nate, PK}
@@ -1328,8 +1327,8 @@ which is equivalent to
 This corresponds to a 48-hour ATRA exposure following a 40-hour equilibration
 period. Such treatment durations are consistent with widely used in vitro protocols
 for investigating the effects of all-trans retinoic acid on colorectal cancer cell
-proliferation, differentiation, stemness, and signaling pathways
-\cite{ordonez2015hoxa5,facey2020retinoids,xu2022atra}. Accordingly, the treatment
+proliferation, differentiation, stemness, and signaling
+pathways~\cite{ordonezmoran2015hoxa5,facey2020retinoids,xu2022atra}. Accordingly, the treatment
 window should be interpreted as a controlled cell-culture exposure designed to
 study pathway dynamics rather than as a clinical treatment schedule.
 \begin{table}[ht]
@@ -1506,15 +1505,15 @@ corresponds to a 40-hour exposure.
 
 This time scale is consistent with experimental studies in which ATRA and related
 retinoids are used to probe colorectal cancer cell differentiation, stemness, and
-signaling responses over short in vitro windows \cite{ordonez2015hoxa5,facey2020retinoids,xu2022atra}.
+signaling responses over short in vitro windows~\cite{ordonezmoran2015hoxa5,facey2020retinoids,xu2022atra}.
 In particular, Ordóñez-Morán et al. showed that HOXA5 counteracts intestinal
 stem-cell traits by inhibiting WNT signaling in colorectal cancer, and their
 supplementary results indicate that retinoids such as ATRA can induce HOXA5
-expression \cite{ordonez2015hoxa5}. Facey and Boman reviewed evidence that RA
+expression~\cite{ordonezmoran2015hoxa5}. Facey and Boman reviewed evidence that RA
 signaling is altered in colorectal cancer and that retinoids regulate colon stem-cell
-differentiation and colorectal cancer stemness \cite{facey2020retinoids}. Xu et al.
+differentiation and colorectal cancer stemness~\cite{facey2020retinoids}. Xu et al.
 further showed that ATRA suppresses colon cancer cell activity through regulation
-of the sonic hedgehog pathway \cite{xu2022atra}. These studies support the use of
+of the sonic hedgehog pathway~\cite{xu2022atra}. These studies support the use of
 a short-term ATRA exposure window in the present model.
 
 Therefore, the simulated ATRA window should be interpreted as a cell-culture
@@ -1536,8 +1535,8 @@ where
 \[
 y=(B,P,H_5,H_{13},M,R,C)
 \]
-denotes the state vector consisting of $\beta$-catenin, APC, HOXA5, HOXA13,
-MYC, RA, and CYP26A1, and $\theta$ denotes the vector of model parameters.
+denotes the state vector of $\beta$-catenin, APC, HOXA5, HOXA13, MYC, RA, and
+CYP26A1, and $\theta$ denotes the vector of model parameters.
 
 The following three projects extend the model using scientific machine learning.
 Each project preserves the biological structure of the mechanistic model while
@@ -1936,31 +1935,31 @@ A_d \left[ 1 + \cos\left( \frac{2\pi t}{T_d} - \phi \right) \right]
 
 
 \newpage
-\abstract
-Reduced form... (250 words max)
-\\
+\begin{abstract}
+Reduced form\dots{} (250 words max)
+\end{abstract}
 
-intro - summarize papers we have read; biology + PINN; then Amir, Nate, PK use A, B, C, D to do the techniques from the papers, discussions, etc. \\
+intro - summarize papers we have read; biology + PINN; then Amir, Nate, PK use A, B, C, D to do the techniques from the papers, discussions, etc.
 
 Then, modeling, schematic, assumptions \\
-Then equations, non-dimensionalization \\
+Then equations, non-dimensionalization
 
-Numerical results; sci-py - talk about meaning of spikes or dips biologically \\
+Numerical results; sci-py - talk about meaning of spikes or dips biologically
 
 PINN results; algorithm, why did we use PINN to approximate solution; advantages
-- errors, convergence, etc. \\
+- errors, convergence, etc.
 
-also sensitivity, identifiability, bayesian PINN, etc. \\
+also sensitivity, identifiability, bayesian PINN, etc.
 
-use first presentation for reference \\
+use first presentation for reference
 
-Last part - Discussion - restate what we talked about, discuss importance of our model, limitations of the model - and future direction (Hybrid Mechanistic, Stochastic Modeling)... must incorporate biological significance to these future methods.
+Last part - Discussion - restate what we talked about, discuss importance of our model, limitations of the model - and future direction (Hybrid Mechanistic, Stochastic Modeling)\dots{} must incorporate biological significance to these future methods.
 Modeling at gene level is stochastic in nature.
-Hybrid mechanistic - we don't know all interactions between things; modeling simplifies interactions and may miss things; learn behaviors from data. But we need real data instead of synthetic data; hard to get data from normal colon \cite{liu2022hybrid, yazdani2020systems} \\
+Hybrid mechanistic - we don't know all interactions between things; modeling simplifies interactions and may miss things; learn behaviors from data. But we need real data instead of synthetic data; hard to get data from normal colon~\cite{liu2022hybrid,yazdani2020systems}
 
 
 \bibliographystyle{unsrt}
-\bibliography{references.bib}
+\bibliography{references}
 
 \end{document}
 
