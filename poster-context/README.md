@@ -33,7 +33,7 @@ chain is the methods story and stands alone cleanly.
 
 ## Files
 
-```
+```text
 poster-context/
 ├── README.md                     ← this file
 ├── 00-design-guidelines.md       ← size, layout, palette, fonts, figure rules
