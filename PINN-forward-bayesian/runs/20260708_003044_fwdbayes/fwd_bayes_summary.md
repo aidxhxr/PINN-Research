@@ -24,4 +24,3 @@ Forward B-PINN (Yang/Karniadakis 2020): HMC over the network WEIGHTS with the OD
 | c | 0.78 | 0.68 | 0.65 | 0.56 |
 
 _Reading: coverage near 0.95 = the band is calibrated; a state whose band is wide (high rel band width) but still tracks the truth is where the sparse data + physics leave the forward solve least pinned down._
-
