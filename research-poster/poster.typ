@@ -92,17 +92,17 @@
 // =====================================================================
 #place(top + left, block(width: W, height: 4.58in, fill: garnet)[
   #pad(x: MARGIN, y: 0.40in)[
-    #text(font: SERIF, size: 84pt, weight: 700, fill: white)[
-      Physics-Informed Neural Networks for a WNT–RA–HOX Model of Colorectal
-      Cancer Stemness
+    #text(font: SERIF, size: 76pt, weight: 700, fill: white)[
+      Physics-Informed Neural Networks and Neural-Mechanistic Hybrids for a
+      WNT–RA–HOX Model of Colorectal Cancer Stemness
     ]
     #v(14pt)
     #grid(columns: (1fr, auto), column-gutter: 0.8in,
       align: (left + horizon, right + horizon),
       [
         #text(size: 27pt, fill: rgb("#F4DEE3"))[
-          From a nondimensionalized 7-ODE model to sparse-data forward solves,
-          Bayesian identifiability, and neural-mechanistic hybrids.
+          From a nondimensionalized mechanistic 7-ODE model to sparse-data
+          forward solves, Bayesian identifiability, and learned terms.
         ]
       ],
       [
@@ -149,7 +149,7 @@
   #text(size: 24pt)[
     In the intestinal crypt, WNT signalling drives proliferation, retinoic acid
     drives differentiation, and the HOX genes arbitrate between them. Loss of
-    APC — the canonical adenoma-to-carcinoma driver — breaks that balance.
+    APC, the canonical adenoma-to-carcinoma driver, breaks that balance.
   ]
 
   #fig("assets/ready/schema.svg", w: 92%)
