@@ -24,4 +24,3 @@ Forward B-PINN (Yang/Karniadakis 2020): HMC over the network WEIGHTS with the OD
 | c | 0.95 | 0.97 | 0.95 | 0.97 |
 
 _Reading: 'pred cov (obs)' near 0.95 = the predictive band (reconstruction (+) noise sigma) is calibrated against the held-out noisy observations. 'epi cov (truth)' is the thin reconstruction-only band's coverage of the noise-free truth (~1.0 when the mean is well-pinned); a large 'rel pred band' flags states where the sparse data + physics leave the forward solve least pinned down._
-
