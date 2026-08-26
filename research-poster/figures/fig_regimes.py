@@ -27,13 +27,13 @@ for name in REGIMES:
     assert s.success
     sols[name] = (s.t, s.y.T)
 
-fig, axes = plt.subplots(1, 2, figsize=(10.4, 3.9))
-for ax, (idx, label) in zip(axes, [(0, "β-catenin  b(τ)"), (1, "APC  p(τ)")]):
+fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.6))
+for ax, (idx, label) in zip(axes, [(0, r"$\beta$-catenin   b($\tau$)"), (1, r"APC   p($\tau$)")]):
     for name, (t, y) in sols.items():
         ax.plot(t, y[:, idx], color=REGIME_COLORS[name], lw=2.4,
                 solid_capstyle="round", zorder=3)
-    ax.set_title(label, loc="left", fontsize=18, pad=8)
-    ax.set_xlabel("dimensionless time τ")
+    ax.set_title(label, loc="left", fontsize=27.4, pad=8)
+    ax.set_xlabel(r"dimensionless time $\tau$")
     ax.set_xlim(0, 150)
     style.clean(ax)
 
@@ -50,7 +50,7 @@ for i in range(1, len(ys)):
         ys[i] = ys[i-1] + 0.055
 for name, yy in zip(order, ys):
     axes[0].annotate(short[name], (150, ends[name]), xytext=(154, yy),
-                     color=REGIME_COLORS[name], fontsize=15, fontweight=600,
+                     color=REGIME_COLORS[name], fontsize=22.8, fontweight=600,
                      va="center", annotation_clip=False)
 axes[0].set_xlim(0, 150)
 axes[0].margins(x=0)
@@ -60,7 +60,7 @@ apc_ends = {n2: y[-1, 1] for n2, (_, y) in sols.items()}
 for name in ("Normal", "Severe APC Loss"):
     axes[1].annotate(short[name], (150, apc_ends[name]),
                      xytext=(154, apc_ends[name]), va="center",
-                     color=REGIME_COLORS[name], fontsize=15, fontweight=600,
+                     color=REGIME_COLORS[name], fontsize=22.8, fontweight=600,
                      annotation_clip=False)
 
 fig.get_layout_engine().set(rect=(0, 0, 0.94, 1))

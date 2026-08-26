@@ -37,13 +37,15 @@ def setup():
         if f.endswith(".ttf"):
             font_manager.fontManager.addfont(os.path.join(FONTS, f))
     plt.rcParams.update({
-        "font.family": "Inter",
-        "font.size": 15,
+        # Inter's latin subset has no Greek/arrows — DejaVu backfills them
+        "font.family": ["Inter", "DejaVu Sans"],
+        "mathtext.fontset": "dejavusans",
+        "font.size": 23,
         "text.color": INK,
         "axes.edgecolor": GRID,
         "axes.labelcolor": INK,
-        "axes.labelsize": 17,
-        "axes.titlesize": 19,
+        "axes.labelsize": 25,
+        "axes.titlesize": 27,
         "axes.titlecolor": INK,
         "axes.linewidth": 1.0,
         "axes.grid": True,
@@ -53,10 +55,10 @@ def setup():
         "grid.linestyle": "-",
         "xtick.color": INK2,
         "ytick.color": INK2,
-        "xtick.labelsize": 15,
-        "ytick.labelsize": 15,
+        "xtick.labelsize": 22,
+        "ytick.labelsize": 22,
         "legend.frameon": False,
-        "legend.fontsize": 15,
+        "legend.fontsize": 22,
         "figure.facecolor": SURFACE,
         "axes.facecolor": SURFACE,
         "svg.fonttype": "path",
