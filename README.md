@@ -203,5 +203,6 @@ pinned environment is in [`requirements-lock.txt`](requirements-lock.txt).
 
 ## Author
 
-Amirkhan Aidarkhan — research project, May–August 2026. Questions and
-collaboration welcome: <amirkhanaidarkhan06@gmail.com>.
+Amirkhan Aidarkhan (Swarthmore College) — research project, May–August 2026.
+Questions and collaboration welcome: <aaidark1@swarthmore.edu> ·
+<amirkhanaidarkhan06@gmail.com>.
