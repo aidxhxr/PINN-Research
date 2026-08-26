@@ -31,3 +31,6 @@ presentation-codex/output/latex/*.log
 research-paper/*.log
 research-paper/*.blg
 research-paper/*.bbl
+
+# example posters (reference material, not tracked)
+examples-posters/
