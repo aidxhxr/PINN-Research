@@ -28,8 +28,8 @@
 #let MONO = "IBM Plex Mono"
 
 #set page(width: W, height: H, margin: 0pt, fill: paper)
-#set text(font: SANS, fill: ink, size: 27pt, lang: "en")
-#set par(leading: 0.68em, spacing: 1.02em, justify: false)
+#set text(font: SANS, fill: ink, size: 28pt, lang: "en")
+#set par(leading: 0.72em, spacing: 1.08em, justify: false)
 
 // ---- building blocks -------------------------------------------------
 #let colhead(n, claim) = block(width: 100%, below: 16pt)[
@@ -44,17 +44,17 @@
   #line(length: 100%, stroke: 2.4pt + garnet)
 ]
 
-#let subhead(t) = block(above: 30pt, below: 16pt)[
-  #text(font: SERIF, size: 30pt, weight: 600, fill: garnet)[#t]
+#let subhead(t) = block(above: 32pt, below: 17pt)[
+  #text(font: SERIF, size: 31pt, weight: 600, fill: garnet)[#t]
 ]
 
 // the one-line implication that rides under every figure
-#let implic(t) = block(above: 9pt, below: 5pt, width: 100%)[
-  #text(size: 25pt, fill: ink)[#t]
+#let implic(t) = block(above: 10pt, below: 6pt, width: 100%)[
+  #text(size: 24pt, fill: ink)[#t]
 ]
 
-#let fine(t) = text(size: 23pt, fill: ink2)[#t]
-#let mono(t) = text(font: MONO, size: 27pt)[#t]
+#let fine(t) = text(size: 22pt, fill: ink2)[#t]
+#let mono(t) = text(font: MONO, size: 26pt)[#t]
 
 #let card(body, fill: white, stroke-c: none) = block(
   width: 100%, inset: 16pt, radius: 4pt, fill: fill,
@@ -89,8 +89,7 @@
     #grid(columns: (1fr, auto), column-gutter: 0.8in,
       align: (left + horizon, right + horizon),
       text(size: 28pt, fill: rgb("#F4DEE3"))[
-        A nondimensionalized 7-ODE model, sparse-data forward solves, Bayesian
-        identifiability, and learned terms.],
+        Sparse data PINNs · identifiability · experiment design],
       text(size: 31pt, weight: 600, fill: white)[
         Amirkhan Aidarkhan · Pascal Kataboh],
     )
@@ -106,206 +105,151 @@
 
 // ---------------- COLUMN 1 --------------------------------------------
 #place(top + left, dx: colx(0), dy: CTOP, block(width: COL, height: CH)[
-  #colhead("1", "Seven equations, 36 parameters.")
+  #colhead("1", "WNT–RA–HOX in seven states.")
 
   #card(fill: white, stroke-c: rule-c)[
+    #text(font: SERIF, size: 27pt, weight: 600, fill: garnet)[Abstract]
+    #v(6pt)
     #text(size: 27pt)[
-      WNT signalling drives proliferation in the intestinal crypt, retinoic acid
-      drives differentiation, and the HOX genes arbitrate. Loss of APC breaks
-      that balance. We nondimensionalize a 7-ODE model of this network, solve it
-      with a Fourier-feature PINN from 40 observations, invert it for the 36
-      parameters, and read the non-identifiability that remains off a Bayesian
-      posterior. Replacing one mechanistic term with a neural network returns
-      the problem in a sharper form: the constraint meant to protect the host
-      equation is imposed where the data never reach. One knockdown condition,
-      at a fixed budget, removes the error.
+      APC loss deregulates WNT/β-catenin signalling; retinoic acid counters it
+      through HOX. We study a nondimensional seven-state ODE system across four
+      disease regimes. A Fourier-feature PINN solves it from 40 observations;
+      an integral residual improves inverse recovery. Fisher and posterior
+      analyses expose the remaining high-WNT ambiguity. In a neural-mechanistic
+      hybrid, one targeted siRNA restores identifiability by making the data
+      visit the learned term's zero anchor.
     ]
   ]
 
   #fig("assets/ready/schema.pdf", w: 100%)
-  #implic[Green activates, red inhibits, dashed mediates. Seven species, one
-    constitutive WNT drive, one vitamin-A input.]
+  #implic[Green activates, red inhibits, blue mediates.]
 
-  #subhead[Nondimensionalization]
+  #subhead[Dimensionless system]
 
-  #text(size: 27pt)[Scale each species by its initial value and time by the
-    β-catenin turnover rate #mono[d#sub[B]] = 1 hr#super[−1]:]
+  #eq(size: 28pt)[$bold(y) = [b,p,h_5,h_13,m,r,c]^T, quad
+    X = X_0 x, quad tau = d_B t$]
 
-  #eq(size: 29pt)[$B = B_0 b, quad P = P_0 p, quad dots, quad tau = d_B t$]
+  #eq(size: 31pt)[$epsilon_x dot(x) = g_x(bold(y); theta) - x,
+    quad theta in RR^36$]
 
-  #text(size: 27pt)[Every loss term normalizes to $-x$, so each equation
-    collapses to one form with a pure timescale ratio in front:]
+  #eq(size: 26pt)[$dot(b) = W + eta_13 (h_13^n)/(kappa_13^n+h_13^n) - b
+    - lambda_P p b - lambda_5 (h_5 b)/(kappa_5+b)$]
 
-  #eq(size: 32pt)[$epsilon_X (d x) / (d tau) = "production" - x$]
-
-  #text(size: 27pt)[For β-catenin, in full:]
-
-  #eq(size: 29pt)[$(d b)/(d tau) = W + eta_13 (h_13^n)/(kappa_13^n + h_13^n)
-    - b - lambda_P p b - lambda_5 (h_5 b)/(kappa_5 + b)$]
-
-  #text(size: 23pt, fill: ink2)[The units and the count change, not the model.
-    The system is stiff: $epsilon_R = 0.40$, $epsilon_M = 0.60$.]
+  #eq(size: 26pt)[$epsilon_5 dot(h)_5 = a_5 + eta_R r/(kappa_R+r) - h_5
+    - eta_M (m h_5)/(kappa_M+m)$]
 
   #card(fill: rgb("#EFF4F8"))[
-    #text(size: 27pt, weight: 600)[The readout: the stemness index]
-    #eq(size: 31pt)[$S(tau) = (b (1 + alpha_13 h_13)) / ((1 + p)(1 + alpha_5 h_5))$]
-    #fine[Four regimes, Normal to Severe APC Loss, differ only in the WNT drive
-      #mono[W] (0.8 → 2.0) and APC functionality $theta_P$ (1.0 → 0.25).]
+    #eq(size: 30pt)[$S(tau) = (b (1 + alpha_13 h_13)) /
+      ((1 + p)(1 + alpha_5 h_5))$]
+    #fine[Normal → Severe APC Loss: $W = 0.8 → 2.0$;
+      $theta_P = 1.0 → 0.25$.]
   ]
 ])
 
 // ---------------- COLUMN 2 --------------------------------------------
 #place(top + left, dx: colx(1), dy: CTOP, block(width: COL, height: CH)[
-  #colhead("2", "One network solves it, then inverts it.")
+  #colhead("2", "Sparse trajectories, then inversion.")
 
   #fig("assets/ready/forward_arch.pdf", w: 66%)
-  #implic[The network proposes a trajectory, and automatic differentiation feeds
-    it back through the ODEs. The inverse network is the same graph with θ
-    trainable.]
+  #implic[Fourier features resolve fast forcing; θ is fixed forward and
+    trainable inverse.]
 
   #eq(size: 30pt)[$cal(L) = cal(L)_"data" + cal(L)_"phys" + 20 cal(L)_"ic"$]
-
-  #text(size: 27pt)[Time enters through a fixed random Fourier embedding, 16
-    modes at $sigma = 4$, then a 256-wide, 4-deep GELU network:]
 
   #eq(size: 28pt)[$gamma(tau) = [tau/T, space sin(2 pi tau/T B_k), space
     cos(2 pi tau/T B_k)]_(k=1)^(16)$]
 
   #fig("assets/fig_forward_fit.pdf", w: 100%)
-  #implic[Trained on 40 sparse observations plus the physics residual, the PINN
-    tracks the Radau reference in every regime. Without the embedding the same
-    network returns straight lines.]
+  #implic[40 samples plus the ODE residual; PINN predictions are dashed.]
 
   #card(fill: white, stroke-c: rule-c)[
     #grid(columns: (1fr, 1fr), column-gutter: 14pt,
-      tile("1.06%", "dense labels, grand mean rel-L2", c: blue),
-      tile("2.41%", "from 40 observations", c: orange),
+      tile("1.06%", "dense labels", c: blue),
+      tile("2.41%", "40 observations", c: orange),
     )
   ]
 
-  #subhead[Running it backwards]
-
-  #text(size: 27pt)[Freeing θ costs accuracy through gradient starvation and
-    autodiff derivative bias. A derivative-free integral residual removes the
-    second cause:]
+  #subhead[Integral inverse residual]
 
   #eq(size: 28pt)[$r_k = (z_(k+1) - z_k) - (Delta tau_k)/2 (f_k + f_(k+1))$]
 
   #fig("assets/fig_inv_recovery.pdf", w: 100%)
-  #implic[True against recovered, for three of the best-converging parameters.]
+  #implic[True (grey) and recovered (blue).]
 
   #card(fill: rgb("#EFF4F8"))[
-    #text(size: 25pt)[Parameters recovered under 10% error, four regimes:
-      #text(fill: ink, weight: 600, size: 25pt)[10/4/5/7 → 17/16/10/7], a total
-      of #text(fill: ink, weight: 600, size: 25pt)[37 → 50] of 144. Severe APC
-      Loss does not move. What is left there is structural.]
+    #text(size: 26pt, weight: 600)[Under 10% error]
+    #v(4pt)
+    #text(size: 28pt)[10/4/5/7 → 17/16/10/7]
+    #fine[Across regimes: 37 → 50 of 144 parameters.]
   ]
 ])
 
 // ---------------- COLUMN 3 --------------------------------------------
 #place(top + left, dx: colx(2), dy: CTOP, block(width: COL, height: CH)[
-  #colhead("3", "A posterior says what data cannot pin down.")
+  #colhead("3", "High WNT hides APC functionality.")
 
-  #text(size: 27pt)[
-    HMC over the 36 parameters with the state networks frozen, derivative-free
-    because the likelihood reuses the integral residual.
-  ]
+  #eq(size: 30pt)[$p(theta | cal(D)) prop exp(-cal(L)_"int"(theta)/(2 sigma^2))
+    p(theta)$]
 
   #fig("assets/fig_bayes_marginals.pdf", w: 100%)
-  #implic[#mono[W] stays tight in every regime. $theta_P$ reverts toward its
-    prior as the WNT drive rises. That is the high-WNT wall, stated as a
-    posterior width.]
+  #implic[$W$ stays tight; $theta_P$ broadens as WNT rises.]
 
   #fig("assets/fig_posterior.pdf", w: 100%)
-  #implic[The sampler rides a curved valley unprompted. The product
-    $delta_(P 1)(1 - theta_P)$ is 4.7× better constrained than $delta_(P 1)$
-    alone, and at the healthy truth $theta_P = 1$ it vanishes, so
-    $delta_(P 1)$ is free.]
+  #eq(size: 29pt)[$delta_P(theta_P) = 1 + delta_(P 1)(1-theta_P)$]
+  #implic[Only the product $delta_(P 1)(1-theta_P)$ stays constrained.]
 
   #fig("assets/fig_fim.pdf")
-  #implic[The Fisher information agrees from a third direction, degrading with
-    WNT drive.]
+  #implic[Independent Fisher analysis gives the same verdict.]
 
   #card(fill: rgb("#F6EDF0"), stroke-c: garnet)[
-    #text(font: SERIF, size: 27pt, weight: 600, fill: garnet)[
-      The first run said 36 of 36. It was an artifact.]
-    #v(4pt)
-    #text(size: 25pt)[The physics likelihood summed 210k residual terms against
-      a tiny σ, giving a pinpoint, biased posterior. Honest recovery is
-      19/20/11/8, and the run still fails its own sample-size and coverage
-      gates. We claim the geometry and the diagnosis, never the widths.]
+    #text(font: SERIF, size: 28pt, weight: 600, fill: garnet)[Calibration check]
+    #v(5pt)
+    #text(size: 27pt)[Recovery: *19/20/11/8*. Coverage: *13/36*.]
+    #fine[Interpret posterior geometry, not interval widths.]
   ]
-
-  #fig("assets/fig_bayes_miscal.pdf", w: 100%)
-  #implic[Severe APC Loss, the four worst parameters. Each truth sits outside
-    its own 95% interval, and coverage is 13 of 36.]
 ])
 
 // ---------------- COLUMN 4 --------------------------------------------
 #place(top + left, dx: colx(3), dy: CTOP, block(width: COL, height: CH)[
-  #colhead("4", "A constraint is only as good as the data that visit it.")
+  #colhead("4", "Visit the constraint.")
 
   #card(fill: white, stroke-c: rule-c)[
     #eq(size: 33pt)[$epsilon dot(x) = #text(fill: garnet)[$a$] + f_"NN" (u) - x$,
       #h(14pt) $f_"NN" (0) = 0$]
-    #fine[The anchor is meant to stop the network absorbing a constant out of
-      the basal-production parameter $a$.]
+    #fine[The zero anchor protects the basal parameter $a$.]
   ]
 
-  #text(size: 27pt)[
-    It does not. Across five parameterisations, including the monotone and
-    bounded one the literature recommends, the basal parameter comes out
-    #text(fill: red, weight: 600)[14 to 203%] wrong.
-  ]
+  #implic[Five parameterisations still leave $a$ #text(fill: red,
+    weight: 600)[14 to 203%] wrong.]
 
   #fig("assets/fig_support.pdf", w: 100%)
-  #implic[No regulator ever approaches zero, in any of 10 conditions or 4
-    regimes. The anchor is asserted at a point the data never visit.]
+  #implic[Ten conditions never approach the anchor.]
 
-  #subhead[The fix is an experiment]
+  #subhead[One targeted condition]
 
   #card(fill: white, stroke-c: rule-c)[
     #grid(columns: (1fr, 1fr), column-gutter: 14pt,
       [
-        #text(font: MONO, size: 23pt, fill: ink2)[misses the anchor]
+        #text(font: MONO, size: 23pt, fill: ink2)[misses anchor]
         #v(2pt)
         #text(size: 42pt, weight: 700, fill: orange)[2.2% / 1.5%]
       ],
       [
-        #text(font: MONO, size: 23pt, fill: ink2)[reaches it, one more siRNA]
+        #text(font: MONO, size: 23pt, fill: ink2)[+ one siRNA]
         #v(2pt)
         #text(size: 42pt, weight: 700, fill: blue)[0.0% / 0.0%]
       ])
     #v(6pt)
-    #fine[Normal / Severe APC Loss. Same edge, same parameter, same seeds,
-      eleven conditions in both arms.]
+    #fine[Normal / Severe APC Loss; eleven conditions per arm.]
   ]
 
   #fig("assets/fig_dose_compact.pdf", w: 100%)
-  #implic[Against the anchor ratio the arms collapse onto one curve. Against
-    dose they do not. The anchor is the governing variable.]
+  #implic[Error collapses by anchor ratio, not by dose.]
 
-  #card(fill: white, stroke-c: rule-c)[
-    #fine[Not shown: an information-matched control that gains nothing in 8 of 8
-      cells, and a prospective test at 95.6% → 0.0%. Restart noise is ±0.5 to
-      0.9 pp, on a single seed, so there are no error bars.]
-  ]
-
-  #v(6pt)
+  #v(12pt)
   #block(width: 100%, inset: 16pt, radius: 4pt, fill: garnet)[
-    #text(font: SERIF, size: 29pt, weight: 700, fill: white)[Takeaways]
-    #v(7pt)
-    #set text(size: 24pt, fill: rgb("#F7E9ED"))
-    #grid(columns: (auto, 1fr), column-gutter: 10pt, row-gutter: 7pt,
-      text(font: MONO, weight: 700, fill: white)[1],
-      [Nondimensionalization and Fourier features make a stiff 7-ODE system
-       solvable by a PINN from sparse data.],
-      text(font: MONO, weight: 700, fill: white)[2],
-      [Inverse recovery is limited by information, not architecture.],
-      text(font: MONO, weight: 700, fill: white)[3],
-      [A constraint on a learned term carries information only where the data
-       have support. The remedy is experiment design, computable in advance.],
-    )
+    #align(center)[#text(font: SERIF, size: 30pt, weight: 700, fill: white)[
+      Experiment design restores identifiability.]]
   ]
 ])
 
