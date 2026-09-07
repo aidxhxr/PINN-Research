@@ -1,0 +1,6 @@
+Part D beta=1.5, report D: {'turing_hopf': False, 'turing': True, 'det_positive_somewhere': True, 's_stable': False, 'minors': [0.00269, 0.01187, -0.00671], 'diag': [-0.03988, -0.3186, -0.45604]}
+Part D, v fast instead:   {'turing_hopf': False, 'turing': False, 'det_positive_somewhere': False, 's_stable': False, 'minors': [0.00269, 0.01187, -0.00671], 'diag': [-0.03988, -0.3186, -0.45604]}
+Part A beta=4, 14500-fold: {'turing_hopf': False, 'turing': False, 'det_positive_somewhere': False, 's_stable': np.True_, 'minors': [0.01189, 0.01189, 0.00119], 'diag': [-0.57983, -0.07481, -0.07481]}
+constructed 3868 eq [0.7261 0.254  0.0933] u/K1 1.1
+  engineer fast: {'turing_hopf': False, 'turing': True, 'det_positive_somewhere': True, 's_stable': False, 'minors': [0.02405, 0.01558, -0.01171], 'diag': [-0.28453, -0.42129, -0.07114]}
+  v fast:        {'turing_hopf': False, 'turing': False, 'det_positive_somewhere': False, 's_stable': False, 'minors': [0.02405, 0.01558, -0.01171], 'diag': [-0.28453, -0.42129, -0.07114]}
