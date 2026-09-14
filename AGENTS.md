@@ -24,6 +24,10 @@ session notes live in the git-ignored `notes/` directory when it is available.
 
 | session | purpose | run/log | started | status |
 |---|---|---|---|---|
+| `poster_first_dynamics` | Exported Normal noATRA/ATRA inverse-PINN fits, matched Radau references and errors from saved networks | `research-poster-latex/builds/20260914_183805_normal_export/export.log` | 2026-09-14 | complete / idle |
+| `poster_preview` | Serve both current poster PDFs and image previews at `http://localhost:8003/` through the SSH tunnel | `notes/poster-preview_20260914_172407/server.log` | 2026-09-14 | running |
+| `poster_b_hybrid` | Beta-catenin/HOXA5 plots added with plain axes and native ATRA arrows; title names physics-informed neural networks; PDF and source ZIP verified | `research-poster-latex-hybrid/builds/20260914_175211_pshcCg/build.log`; prior version in `poster-versions/20260914_174740_before_atra_plots/` | 2026-09-14 | complete / idle |
+| `poster_b_latex` | First poster: epsilonM error curve removed; eight-parameter Fisher block rewritten as methods and results; Bayesian plots enlarged; PDF/ZIP/live links verified | `research-poster-latex/builds/20260914_190110_59ULJ2/build.log`; snapshot in `poster-versions/20260914_190008_before_plain_fisher_block/` | 2026-09-14 | complete / idle |
 | `hybrid_ude` | Completed control → `ra_h5` → `ra_h5_nc` queue; shell remains open | `PINN-hybrid-ude/runs/queue.log` | 2026-07-26 | complete / idle |
 | `hybrid_bm` | Completed `bm_myc` → `bm_myc_nc` chain; shell remains open | `PINN-hybrid-ude/runs/chain_bm_myc.log` | 2026-07-26 | complete / idle |
 | `hybrid_apc` | Calibrated a shared monotone APC-loss neural degradation term; the frozen four-regime inverse PINN is now running (3 starts) | `PINN-hybrid-ude/runs/20260728_232743_apc_pipeline.log`; calibration in `runs/20260728_232743_apc_calibration/`; inverse in `runs/20260728_233450_apc_mutation_frozen/` | 2026-07-28 | calibration complete; inverse running |
@@ -115,6 +119,9 @@ recorded in `notes/2026-07-28-myc-apc-hybrid.md`.
 | `network-diagram/` | TikZ regulatory-network schematic |
 | `PINN/` | original notebooks; `run_sa_7ode.py` + `sa_results/` are the sensitivity analysis as numeric tables |
 | `research-paper/` | LaTeX write-up of everything except the UDE work |
+| `research-poster-latex/` | First poster: Normal treatment dynamics, inverse PINN fits, training errors, Fisher analysis and Bayesian marginals; Nathaniel Kim / Pascal Kataboh |
+| `research-poster-latex-hybrid/` | Revised advanced poster: model/math → PINNs and identifiability → neural–mechanistic hybrid; LuaLaTeX, PDF and source ZIP |
+| `poster-versions/` | Local dated snapshots of poster PDFs, sources and previews |
 
 ## Recurring findings
 
