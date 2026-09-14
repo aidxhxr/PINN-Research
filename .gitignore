@@ -34,3 +34,31 @@ research-paper/*.bbl
 
 # example posters (reference material, not tracked)
 examples-posters/
+
+# Package builds and local environments
+*.egg-info/
+/build/
+/dist/
+/.venv/
+/.pytest_cache/
+/.ruff_cache/
+*.py[cod]
+.ipynb_checkpoints/
+
+# New experiment outputs and local artifact stores
+/runs/
+/.artifact-store/
+/artifacts/receipts/
+/poster-versions/
+/poster-fable/
+/poster-fable.zip
+
+# Historical run artifacts are indexed in artifacts/catalog.json.
+# Existing baseline files remain tracked; ignored does not remove tracked files.
+**/runs/
+!/src/wnt_pinn/runs/
+!/src/wnt_pinn/runs/*.py
+
+# The ecology project has its own repository; retain the migration pointer.
+/new-theme/*
+!/new-theme/README.md

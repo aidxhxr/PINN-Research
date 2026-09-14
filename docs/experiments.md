@@ -1,0 +1,131 @@
+# Running experiments
+
+The versioned runner executes the active integral inverse PINN and hybrid
+trainers. It preserves the existing training stages and writes new runs below
+`runs/`. Historical scripts still use their original defaults. The untouched
+`PINN-inverse-solve/` baseline is outside this runner.
+
+The runner requires a POSIX system with tmux and process signals.
+
+Run jobs in tmux and record the session, purpose, output/log path, date and
+status in `AGENTS.md`. Start with the CPU execution check:
+
+```bash
+tmux new-session -s research-smoke
+python experiments/run.py configs/smoke_cpu.json
+```
+
+The returned directory contains `config.json`, `manifest.json`, per-regime logs,
+reference arrays, every-start metrics, checkpoints and the selected models.
+The smoke configuration has two conditions, a small network and six Adam
+epochs followed by one L-BFGS step. It checks execution, not model accuracy.
+
+## Configurations and resources
+
+Configurations are JSON. Missing settings receive documented defaults from
+`src/wnt_pinn/runs/config.py`; unknown keys and invalid values fail before a
+worker starts. The resolved configuration is saved with each run.
+
+| Profile | Purpose |
+| --- | --- |
+| `configs/smoke_cpu.json` | Small CPU execution check |
+| `configs/integral.json` | Four regimes, ten conditions, integral inverse PINN |
+| `configs/hybrid_myc.json` | Same protocol with learned beta-catenin to MYC activation |
+
+`resources.device` accepts `cpu`, `auto`, `cuda` or `cuda:N`. `threads` limits
+threads per worker; `concurrency` limits simultaneous regime workers. GPU
+workers share the selected device. GPU memory determines a safe concurrency.
+References are generated serially within each worker with Radau, using
+`rtol=1e-10` and `atol=1e-12`.
+
+The runner sets every supported hybrid environment value explicitly. Ambient
+`HYBRID_*` settings cannot change the experiment. It currently exposes the
+mechanistic control, RA to HOXA5, beta-catenin to MYC and APC mutation terms.
+Other exploratory terms continue to use their existing drivers.
+
+An optional `data.reference_cache` accepts an NPZ file with arrays named
+`<regime with underscores>__<condition>__t` and
+`<regime with underscores>__<condition>__y`. Arrays must span the configured
+horizon, have the configured reference point count, and use the seven-state
+order. Input paths are relative to the repository root or absolute. Pickled
+reference caches are not accepted by the new runner.
+
+## Seeds and comparisons
+
+`independent-seeds-v1` separates three random streams:
+
+| Stream | Seed rule |
+| --- | --- |
+| Observations | `seeds.data + condition index`, held fixed across starts |
+| Network and parameter initialization | `seeds.initialization + 1000 * start index` |
+| Collocation | `seeds.collocation + 1000 * start index` |
+
+Integral collocation uses a fixed grid and draws no random samples. Its seed
+is recorded so a protocol change cannot introduce an implicit stream later.
+Learned terms are still constructed after state networks. Start zero uses the
+original fixed biological parameter guess; subsequent starts jitter it.
+
+Every start records its seeds, observation hashes, physics loss, recovered
+parameters and the number within 10% of truth. The selected start has the
+lowest final physics loss; the first start wins a tie. Selection does not use
+known synthetic parameter errors. Condition order is part of the configuration
+because it affects initialization and observation seeds.
+
+Historical defaults couple observation and network seeds across starts. They
+are preserved when new seed arguments are omitted. Results produced by the
+new protocol must be labeled separately from historical published comparisons.
+The legacy drivers also accept `--device`, `--data-seed`, `--init-seed` and
+`--collocation-seed`; their shell launchers accept `PINN_DEVICE`, `PINN_THREADS`
+and `PINN_CONCURRENCY` and return failure if a child process fails.
+
+## Provenance
+
+A manifest records the resolved configuration hash, Git revision, tracked
+changes and their patch hash, source-file hashes and a source snapshot,
+installed distribution versions, Python/platform details, CPU count, resource
+settings, external input hashes, parent run ID, worker commands, logs,
+attempt timestamps, outcomes and output hashes. Per-regime effective settings
+also record device, CUDA device name when applicable, dtype, initial state,
+parameter values, condition forcing, unknown parameter order and solver settings.
+
+`source/` includes untracked Python source used by a run, so a dirty checkout
+does not lose its actual implementation. `dirty.diff` supplements that snapshot
+with tracked changes. These records support inspection; they do not create a
+portable environment lock or promise identical floating-point arithmetic on
+different devices.
+
+## Interruption and resume
+
+Send SIGINT or SIGTERM to the runner, or press Ctrl-C in its tmux pane. Workers
+finish the current Adam epoch, save a checkpoint and exit with a nonzero status.
+A forced kill can lose work since the last checkpoint. Checkpoint and reference
+cache writes use a durable journal; resume finishes an interrupted replacement
+only when its bytes match the recorded checksum. If a pending write is incomplete,
+a verified older checkpoint is retained. Changed committed bytes are refused. Resume with the same
+configuration and existing run directory:
+
+```bash
+python experiments/run.py configs/smoke_cpu.json --resume runs/<run-id>
+```
+
+Adam checkpoints contain every condition's state network, shared biological
+parameters, learned-term weights, Adam optimizer, cosine scheduler, adaptive
+physics weight, loss history and Python, NumPy, CPU/CUDA Torch and collocation
+RNG state. Completed starts and regimes are reused.
+
+L-BFGS and frozen-state refinement resume by replaying those stages from the
+saved end of Adam. Internal L-BFGS line-search history is not checkpointed.
+This can repeat computation; it is not continuation from an arbitrary closure.
+The end-of-Adam checkpoint is always written before those stages begin.
+
+Resume rejects a changed resolved configuration, source or input hash, Python/numerical package versions, effective device, missing
+saved outputs, or changed checkpoints/reference arrays. A lock prevents two
+writers from executing the same run. Workers inherit that lock, so killing
+the supervisor does not permit a second writer while its workers remain active. Changing architecture, training duration,
+resources or protocol requires a new run and optional `parent_run` reference.
+
+The runner's Python API is `load_config(path)` and
+`run_experiment(config_path, root=repository_path, resume=run_directory)`.
+It returns the run directory and raises `RunFailed` or `RunInterrupted` when
+execution does not complete. Call it from the main thread so signal handling
+can propagate interruption to workers.

@@ -1,0 +1,8 @@
+{
+  "name": "hybrid-myc-independent-seeds",
+  "pipeline": "hybrid",
+  "protocol": "independent-seeds-v1",
+  "hybrid": {"term": "bm_myc"},
+  "resources": {"device": "auto", "threads": 4, "concurrency": 1},
+  "seeds": {"data": 1042, "initialization": 2042, "collocation": 3042}
+}

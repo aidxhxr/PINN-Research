@@ -1,0 +1,7 @@
+{
+  "name": "integral-independent-seeds",
+  "pipeline": "integral",
+  "protocol": "independent-seeds-v1",
+  "resources": {"device": "auto", "threads": 4, "concurrency": 1},
+  "seeds": {"data": 1042, "initialization": 2042, "collocation": 3042}
+}
