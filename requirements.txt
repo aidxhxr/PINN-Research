@@ -1,0 +1,3 @@
+# Install from the repository root. Optional dependencies are declared in
+# pyproject.toml, for example: python -m pip install -e '.[ml,dev,publications]'
+-e .

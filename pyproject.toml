@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wnt-pinn-research"
+version = "0.1.0"
+description = "Reproducible inference for a seven-state WNT-RA-HOX research model"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Amirkhan Aidarkhan", email = "aaidark1@swarthmore.edu" },
+]
+keywords = ["PINN", "ODE", "identifiability", "scientific-machine-learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = ["numpy>=1.26", "scipy>=1.11"]
+
+[project.optional-dependencies]
+ml = ["torch>=2.2"]
+dev = ["pytest>=8", "ruff>=0.8", "build>=1.2"]
+publications = ["matplotlib>=3.8", "PyMuPDF>=1.24"]
+
+[project.scripts]
+wnt-pinn = "wnt_pinn.cli:main"
+
+[project.urls]
+Repository = "https://github.com/aidxhxr/PINN-Research"
+Issues = "https://github.com/aidxhxr/PINN-Research/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["wnt_pinn*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "legacy: checks the preserved experiment interfaces in an isolated process",
+    "integration: small CPU experiment interruption and restoration checks",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+include = ["src/wnt_pinn/**/*.py", "tests/**/*.py"]
+extend-exclude = ["tests/fixtures/**"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

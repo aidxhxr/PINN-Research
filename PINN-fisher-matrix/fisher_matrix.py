@@ -16,8 +16,8 @@ dynamics" (PLoS Comput Biol 2020, §S1 + Figs 6/S3/S6). The recipe there:
 We work in LOG-parameters (S_log[:,j] = p_j * dy/dp_j) so every one of the 36
 parameters, whose true values span 0.04..3.5, contributes on a common
 dimensionless footing; the diagonal of Cov_log is then each parameter's squared
-coefficient of variation (relative std). thetaP, being in (0,1), is left in
-natural units for its column (log is fine too since values are O(1)).
+coefficient of variation (relative std). All columns, including thetaP,
+use the same parameter-scaled sensitivities.
 
 Observation model matches recover_odefit.py: all 7 states are observed under all
 10 excitation conditions, sigma = 0.002. The FIM is assembled at the TRUE
@@ -37,11 +37,8 @@ from matplotlib.colors import TwoSlopeNorm
 from scipy.integrate import solve_ivp
 
 # --- single source of truth: pull the model from the excite folder ----------
-HERE = os.path.dirname(os.path.abspath(__file__))
-EXCITE = os.path.join(os.path.dirname(HERE), "PINN-inverse-multicond-excite")
-sys.path.insert(0, EXCITE)
-from config import BASELINE, REGIMES, CONDITIONS, UNKNOWN, Y0, VAR_NAMES  # noqa
-from odes import _ode_rhs                                                 # noqa
+from wnt_pinn.model.parameters import BASELINE, REGIMES, CONDITIONS, Y0, VAR_NAMES, UNKNOWN
+from wnt_pinn.model.numpy_rhs import _ode_rhs                                                 # noqa
 
 # ---- observation / sensitivity recipe --------------------------------------
 T       = 150.0     # horizon (active-dynamics window)
