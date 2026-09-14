@@ -24,6 +24,7 @@ import os
 import pickle
 
 import torch
+import training
 
 # NOTE: env must be set BEFORE config is imported (see run_hybrid.sh).
 from config import REGIMES, HYBRID_TERM, HYBRID_TERM_LIST, HYBRID_PARAM, UNKNOWN
@@ -74,6 +75,11 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--starts", type=int, default=3)
     ap.add_argument("--threads", type=int, default=14)
+    ap.add_argument("--device", default="auto", help="auto, cpu, cuda or cuda:N")
+    ap.add_argument("--data-seed", type=int, default=None,
+                    help="fix observations across starts; omitted retains historical seeds")
+    ap.add_argument("--init-seed", type=int, default=None)
+    ap.add_argument("--collocation-seed", type=int, default=None)
     ap.add_argument("--adam", type=int, default=2000)
     ap.add_argument("--lbfgs", type=int, default=150)
     ap.add_argument("--refine", type=int, default=600)
@@ -94,7 +100,13 @@ def main():
                 f"variant {args.variant!r} expects HYBRID_PARAM="
                 f"{want_param!r} but config imported {HYBRID_PARAM!r}.")
 
+    if args.threads < 1:
+        ap.error("--threads must be positive")
     torch.set_num_threads(args.threads)
+    if args.device != "auto":
+        training.DEVICE = torch.device(args.device)
+        if training.DEVICE.type == "cuda" and not torch.cuda.is_available():
+            ap.error("CUDA was requested but is unavailable")
     os.makedirs(args.out, exist_ok=True)
 
     knobs = dict(INTEGRAL, n_starts=args.starts)
@@ -117,7 +129,8 @@ def main():
         param_refine_steps=args.refine, param_refine_colloc=8_000,
         lr=1e-3, lr_param=5e-3, lam_data=1.0, lam_phys=1.0, lam_ic=20.0,
         adaptive_weights=True, seed=42, log_every=200,
-        out_dir=args.out, **knobs)
+        out_dir=args.out, data_seed=args.data_seed, init_seed=args.init_seed,
+        collocation_seed=args.collocation_seed, **knobs)
 
 
 if __name__ == "__main__":

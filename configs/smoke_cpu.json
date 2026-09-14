@@ -1,0 +1,20 @@
+{
+  "name": "smoke-cpu",
+  "pipeline": "integral",
+  "regimes": ["Normal"],
+  "conditions": ["ctrl", "noATRA"],
+  "network": {"width": 16, "depth": 2, "n_fourier": 2},
+  "data": {"T": 8.0, "reference_points": 48, "n_data": 12},
+  "training": {
+    "adam_epochs": 6,
+    "lbfgs_steps": 1,
+    "param_refine_steps": 0,
+    "n_colloc": 40,
+    "param_refine_colloc": 40,
+    "n_starts": 2,
+    "weight_every": 2,
+    "log_every": 1,
+    "checkpoint_every": 1
+  },
+  "resources": {"device": "cpu", "threads": 1, "concurrency": 1}
+}

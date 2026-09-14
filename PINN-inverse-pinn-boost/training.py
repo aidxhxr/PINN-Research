@@ -1,6 +1,7 @@
 import os
 import json
 import math
+import hashlib
 import time as wall
 
 import numpy as np
@@ -67,13 +68,19 @@ def _train_once(name, refs_for_regime, true_vals, *,
                 adaptive_weights, weight_every, weight_beta,
                 rel_weight, colloc_mode, residual_mode,
                 activation, siren_w0,
-                seed, init_jitter, log_every, tag):
-    torch.manual_seed(seed)
+                seed, init_jitter, log_every, tag,
+                data_seed=None, init_seed=None, collocation_seed=None,
+                checkpoint=None):
+    torch.manual_seed(seed if init_seed is None else init_seed)
+    collocation_generator = None
+    if collocation_seed is not None:
+        collocation_generator = torch.Generator(device=DEVICE)
+        collocation_generator.manual_seed(collocation_seed)
 
     # ---- initial parameter guess (jittered for starts > anchor) ----
     init_guess = dict(INIT_GUESS)
     if init_jitter > 0:
-        rng = np.random.default_rng(seed)
+        rng = np.random.default_rng(seed if init_seed is None else init_seed)
         for k in UNKNOWN:
             init_guess[k] = INIT_GUESS[k] * float(
                 np.exp(rng.normal(0.0, init_jitter)))
@@ -92,7 +99,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
                           out_scale=scale, activation=activation,
                           siren_w0=siren_w0).to(DEVICE)
         t_arr, y_arr, idx = sample_sparse(t_ref, y_ref, n_data,
-                                          noise_std, seed + ci)
+                                          noise_std, (seed if data_seed is None else data_seed) + ci)
         # per-variable relative weight (1/scale) applied to data + residual so
         # small-magnitude states (the "dark" b/h5/h13/m sub-network the excite
         # conditions illuminate) are not drowned out by beta-catenin / APC.
@@ -167,7 +174,8 @@ def _train_once(name, refs_for_regime, true_vals, *,
         if colloc_mode == "fixed":
             tc = c["t_fixed"]
         else:
-            tc = torch.rand(n_pts or n_colloc, 1, device=DEVICE) * T
+            tc = torch.rand(n_pts or n_colloc, 1, device=DEVICE,
+                            generator=collocation_generator) * T
         z, dz = time_derivatives(net, tc)
         r = physics_residual(tc, z, dz, pp) * w
         return (r**2).mean()
@@ -185,8 +193,21 @@ def _train_once(name, refs_for_regime, true_vals, *,
     t0 = wall.perf_counter()
     lam_phys_cur = float(lam_phys)
 
+    first_epoch = 1
+    complete = False
+    if checkpoint is not None:
+        saved = checkpoint.bind(conds=conds, params=params, optimizer=opt,
+                                scheduler=sched, generator=collocation_generator,
+                                terms={})
+        if saved is not None:
+            first_epoch = saved["epoch"] + 1
+            hist = saved["hist"]
+            lam_phys_cur = saved["lam_phys"]
+            complete = saved["stage"] == "complete"
+            print(f"    [{tag}] resume {saved['stage']} at Adam epoch {saved['epoch']}")
+
     # ---- Stage 1: Adam ----
-    for ep in range(1, adam_epochs + 1):
+    for ep in range(first_epoch, adam_epochs + 1):
         if adaptive_weights and (ep % weight_every == 0 or ep == 1):
             Ld_s = sum(data_ic_loss(c)[0] for c in conds)
             Lp_s = sum(physics_loss(c, n_colloc // 4) for c in conds)
@@ -229,8 +250,11 @@ def _train_once(name, refs_for_regime, true_vals, *,
                   f"Lic={Lic_t.item():.2e}  lp={lam_phys_cur:.2f} | {est} "
                   f"[{dt:.0f}s]")
 
+        if checkpoint is not None:
+            checkpoint.after_epoch(ep, adam_epochs, hist, lam_phys_cur)
+
     # ---- Stage 2: L-BFGS joint polish ----
-    if lbfgs_steps > 0:
+    if lbfgs_steps > 0 and not complete:
         print(f"    [{tag}] L-BFGS ({lbfgs_steps}) ...")
         lbfgs = torch.optim.LBFGS(
             net_params + list(params.parameters()),
@@ -253,6 +277,8 @@ def _train_once(name, refs_for_regime, true_vals, *,
                 tot.backward()
                 return tot
             loss = lbfgs.step(closure)
+            if checkpoint is not None:
+                checkpoint.check_interrupt()
             if step % 50 == 0 or step == lbfgs_steps:
                 cur = params.values()
                 dt = wall.perf_counter() - t0
@@ -267,7 +293,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
     # every condition. In INTEGRAL mode this is derivative-free gradient
     # matching — the frozen net's VALUES are exact, so the biased autodiff dz/dt
     # never enters and theta is recovered from the honest ODE constraint.
-    if param_refine_steps > 0:
+    if param_refine_steps > 0 and not complete:
         print(f"    [{tag}] param-refine ({param_refine_steps}, frozen, "
               f"{residual_mode}) ...")
         for p in net_params:
@@ -310,6 +336,8 @@ def _train_once(name, refs_for_regime, true_vals, *,
 
         for step in range(1, param_refine_steps + 1):
             loss = ref_opt.step(ref_closure)
+            if checkpoint is not None:
+                checkpoint.check_interrupt()
             if step % 50 == 0 or step == param_refine_steps:
                 cur = params.values()
                 dt = wall.perf_counter() - t0
@@ -335,6 +363,9 @@ def _train_once(name, refs_for_regime, true_vals, *,
     print(f"  [{tag}] done  under10%={nu}/36  phys={fphys:.2e}  "
           f"W={final['W']:.3f} thetaP={final['thetaP']:.3f}  "
           f"({wall.perf_counter()-t0:.0f}s)")
+
+    if checkpoint is not None:
+        checkpoint.save(adam_epochs, hist, lam_phys_cur, stage="complete")
 
     return dict(sols=sols, params=params, hist=hist, conds=conds,
                 final=final, fphys=fphys, n_under=nu, safe=safe)
@@ -368,7 +399,9 @@ def train_inverse(name, refs_for_regime, *,
                   init_jitter=0.15,
                   seed=42,
                   log_every=100,
-                  out_dir="."):
+                  out_dir=".",
+                  data_seed=None, init_seed=None, collocation_seed=None,
+                  run_state=None):
     """Multi-start inverse solve over MULTIPLE experimental conditions.
 
     One state network per condition (they see different trajectories under
@@ -385,7 +418,10 @@ def train_inverse(name, refs_for_regime, *,
     true_p = {**BASELINE, **REGIMES[name]}
     true_vals = {k: true_p[k] for k in UNKNOWN}
 
+    os.makedirs(out_dir, exist_ok=True)
     best = None
+    best_start = None
+    starts = []
     for s in range(n_starts):
         tag = f"{name[:4]}#{s}"
         res = _train_once(
@@ -404,9 +440,34 @@ def train_inverse(name, refs_for_regime, *,
             residual_mode=residual_mode, activation=activation,
             siren_w0=siren_w0,
             seed=seed + 1000 * s, init_jitter=(0.0 if s == 0 else init_jitter),
-            log_every=log_every, tag=tag)
+            log_every=log_every, tag=tag,
+            data_seed=data_seed,
+            init_seed=(None if init_seed is None else init_seed + 1000 * s),
+            collocation_seed=(None if collocation_seed is None else collocation_seed + 1000 * s),
+            checkpoint=(run_state.start(name, s) if run_state is not None else None))
+        if not math.isfinite(res["fphys"]):
+            raise FloatingPointError(f"Nonfinite physics loss in {name} start {s}")
         if best is None or res["fphys"] < best["fphys"]:
             best = res
+            best_start = s
+        observations = {}
+        for condition in res["conds"]:
+            digest = hashlib.sha256()
+            for key in ("t_arr", "y_arr", "idx"):
+                digest.update(np.ascontiguousarray(condition[key]).tobytes())
+            observations[condition["name"]] = digest.hexdigest()
+        starts.append({
+            "start": s,
+            "initialization_seed": seed + 1000 * s if init_seed is None else init_seed + 1000 * s,
+            "data_seed": seed + 1000 * s if data_seed is None else data_seed,
+            "collocation_seed": collocation_seed + 1000 * s if collocation_seed is not None else None,
+            "final_phys": res["fphys"], "n_under10pct": res["n_under"],
+            "n_unknown": len(UNKNOWN), "recovered": res["final"],
+            "observation_hashes": observations,
+        })
+        with open(os.path.join(out_dir, f"{res['safe']}_starts.json"), "w") as fh:
+            json.dump({"selection_rule": "minimum final physics residual; first start breaks ties",
+                       "selected_start": best_start, "starts": starts}, fh, indent=2)
         print(f"  >> {name} start {s}: under10%={res['n_under']}/36 "
               f"phys={res['fphys']:.2e}  (best so far "
               f"under10%={best['n_under']}/36 phys={best['fphys']:.2e})")
