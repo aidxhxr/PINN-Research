@@ -1,0 +1,36 @@
+{
+  "source_note": "notes/2026-08-01-hybrid-edge-atlas-and-anchor-visiting.md",
+  "source_note_sha256": "9c0c32bcd87f37199d89951f70895a130c9c578aeff17585408bbc21e8c9b7e0",
+  "section": "Result 1: five constraint parameterisations",
+  "status": "Historical transcription; complete five-form run mapping not recovered",
+  "regime": "Normal",
+  "equation": "MYC",
+  "starts": 1,
+  "rows": [
+    {
+      "form": "gated",
+      "basal_error_percent": 14.1,
+      "function_nrmse_percent": 3.0
+    },
+    {
+      "form": "sc",
+      "basal_error_percent": 24.0,
+      "function_nrmse_percent": 5.1
+    },
+    {
+      "form": "sc_bounded",
+      "basal_error_percent": 13.8,
+      "function_nrmse_percent": 2.9
+    },
+    {
+      "form": "lin",
+      "basal_error_percent": 22.8,
+      "function_nrmse_percent": 4.8
+    },
+    {
+      "form": "lin_mono",
+      "basal_error_percent": 202.8,
+      "function_nrmse_percent": 35.1
+    }
+  ]
+}

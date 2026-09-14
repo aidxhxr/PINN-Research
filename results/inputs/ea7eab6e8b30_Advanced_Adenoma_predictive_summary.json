@@ -1,0 +1,109 @@
+{
+  "regime": "Advanced_Adenoma",
+  "meta": {
+    "regime": "Advanced_Adenoma",
+    "n_data": 40,
+    "noise_std": 0.02,
+    "colloc": 800,
+    "net_dim": 10951,
+    "width": 64,
+    "depth": 3,
+    "warmup": 1000,
+    "draws": 1000,
+    "leapfrog": 40,
+    "sigma_w": 3.0,
+    "sigma_data": 0.019044957048983898,
+    "sigma_ic": 0.001124246895410549,
+    "sigma_phys": 0.0013152863121525978
+  },
+  "per_state": {
+    "b": {
+      "rmse": 0.0018846760781765183,
+      "rel_rmse": 0.0011580816936016768,
+      "coverage95_truth": 0.9645,
+      "coverage95": 0.9645,
+      "band_width": 0.007409624228884098,
+      "rel_band_width": 0.00455301060765861,
+      "pred_coverage_obs": 0.925,
+      "pred_band_width": 0.07875485028120309,
+      "rel_pred_band_width": 0.04839269275452648
+    },
+    "p": {
+      "rmse": 0.00048611169224767304,
+      "rel_rmse": 0.00048611169224767304,
+      "coverage95_truth": 0.985,
+      "coverage95": 0.985,
+      "band_width": 0.001812552573428344,
+      "rel_band_width": 0.001812552573428344,
+      "pred_coverage_obs": 0.925,
+      "pred_band_width": 0.07842030908159385,
+      "rel_pred_band_width": 0.07842030908159385
+    },
+    "$h_5$": {
+      "rmse": 0.0004718722496132526,
+      "rel_rmse": 0.000587550828740808,
+      "coverage95_truth": 0.939,
+      "coverage95": 0.939,
+      "band_width": 0.0018574784536793598,
+      "rel_band_width": 0.0023128357425595287,
+      "pred_coverage_obs": 0.975,
+      "pred_band_width": 0.07842144943419871,
+      "rel_pred_band_width": 0.0976463177139221
+    },
+    "$h_{13}$": {
+      "rmse": 0.0014797269359912034,
+      "rel_rmse": 0.00096284153222371,
+      "coverage95_truth": 0.966,
+      "coverage95": 0.966,
+      "band_width": 0.0070181946769739025,
+      "rel_band_width": 0.004566659666633255,
+      "pred_coverage_obs": 0.95,
+      "pred_band_width": 0.07871932206677136,
+      "rel_pred_band_width": 0.051221769929876045
+    },
+    "m": {
+      "rmse": 0.0008927251839925789,
+      "rel_rmse": 0.0006315573108444314,
+      "coverage95_truth": 0.9915,
+      "coverage95": 0.9915,
+      "band_width": 0.004363332660811299,
+      "rel_band_width": 0.003086834213925984,
+      "pred_coverage_obs": 0.95,
+      "pred_band_width": 0.07852445282676933,
+      "rel_pred_band_width": 0.055552025586428515
+    },
+    "r": {
+      "rmse": 0.00029839121458393256,
+      "rel_rmse": 0.00044940776097130575,
+      "coverage95_truth": 0.9365,
+      "coverage95": 0.9365,
+      "band_width": 0.0009627255744912962,
+      "rel_band_width": 0.0014499634161992002,
+      "pred_coverage_obs": 0.9,
+      "pred_band_width": 0.07840538758168802,
+      "rel_pred_band_width": 0.11808655201295322
+    },
+    "c": {
+      "rmse": 0.0016894464574302422,
+      "rel_rmse": 0.0007531593282791672,
+      "coverage95_truth": 0.956,
+      "coverage95": 0.956,
+      "band_width": 0.007024734209731987,
+      "rel_band_width": 0.003131643548377967,
+      "pred_coverage_obs": 0.975,
+      "pred_band_width": 0.07871936981069519,
+      "rel_pred_band_width": 0.03509328598632465
+    }
+  },
+  "overall": {
+    "mean_rel_rmse": 0.0007183871638441104,
+    "mean_coverage95": 0.9626428571428571,
+    "mean_rel_band_width": 0.0029876428241118413,
+    "mean_pred_coverage_obs": 0.942857142857143,
+    "mean_rel_pred_band_width": 0.06920185043794641
+  },
+  "ess_pred_beta": 195.22940330112198,
+  "ess_U": 3.85829406665389,
+  "accept": 0.8655545900428564,
+  "eps": 0.00020287612989896314
+}

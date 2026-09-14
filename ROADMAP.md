@@ -1,3 +1,9 @@
+> Historical narrative. This document preserves earlier interpretations and
+> is not the current result authority. Use [the research index](docs/research-index.md),
+> [registered results](results/registry.json), and current poster source notes.
+> Later checks corrected several claims, including structural-identifiability
+> language and the size of the matched inverse-recovery improvement.
+
 # PINN-Research — a chronological review
 
 The whole project is one long fight with a single enemy: **you cannot recover the parameters of a 7-ODE WNT–RA–HOX system from a handful of noisy trajectory samples** — it's ill-posed. Every folder is a new lever tried against that wall. Here's the story in order.
