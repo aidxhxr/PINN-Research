@@ -1,0 +1,39 @@
+{
+  "states": [
+    "b",
+    "h5"
+  ],
+  "regimes": [
+    "Normal",
+    "Early Adenoma",
+    "Advanced Adenoma",
+    "Severe APC Loss"
+  ],
+  "pulse": [
+    40.0,
+    88.0
+  ],
+  "grid": false,
+  "background": "white",
+  "arrow": "<->",
+  "label": "ATRA",
+  "label_position": "above",
+  "windows_inches": [
+    {
+      "state": "b",
+      "left": 2.7773826606875933,
+      "right": 4.621041853512706,
+      "y": 3.27
+    },
+    {
+      "state": "h5",
+      "left": 9.863947683109119,
+      "right": 11.70760687593423,
+      "y": 3.27
+    }
+  ],
+  "size_inches": [
+    14.6,
+    4.3
+  ]
+}

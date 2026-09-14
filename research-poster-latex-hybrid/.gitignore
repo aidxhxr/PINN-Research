@@ -1,0 +1,8 @@
+builds/
+archive/
+*.log
+*.aux
+*.out
+*.nav
+*.snm
+*.toc

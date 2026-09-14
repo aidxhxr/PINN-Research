@@ -1,0 +1,163 @@
+[
+  {
+    "regime": "Normal",
+    "n_obs": 14000,
+    "K": 36,
+    "sigma": 0.002,
+    "cond_number": 3.736772880402638e+19,
+    "eig_max": 7903759544.393377,
+    "eig_min": 2.1151297650024015e-10,
+    "n_null_directions": 1,
+    "n_ident": 13,
+    "n_weak": 22,
+    "n_nonident": 1,
+    "nonident_params": [
+      "deltaP1"
+    ],
+    "n_correlated_pairs": 0,
+    "top_correlated_pairs": []
+  },
+  {
+    "regime": "Early Adenoma",
+    "n_obs": 14000,
+    "K": 36,
+    "sigma": 0.002,
+    "cond_number": 78569077928307.4,
+    "eig_max": 2612071755.08064,
+    "eig_min": 3.324554422624253e-05,
+    "n_null_directions": 1,
+    "n_ident": 17,
+    "n_weak": 18,
+    "n_nonident": 1,
+    "nonident_params": [
+      "deltaP1"
+    ],
+    "n_correlated_pairs": 1,
+    "top_correlated_pairs": [
+      [
+        "thetaP",
+        "deltaP1",
+        1.0
+      ]
+    ]
+  },
+  {
+    "regime": "Advanced Adenoma",
+    "n_obs": 14000,
+    "K": 36,
+    "sigma": 0.002,
+    "cond_number": 18792545.870012112,
+    "eig_max": 1706568638.947082,
+    "eig_min": 0.0,
+    "n_null_directions": 1,
+    "n_ident": 14,
+    "n_weak": 20,
+    "n_nonident": 2,
+    "nonident_params": [
+      "thetaP",
+      "deltaP1"
+    ],
+    "n_correlated_pairs": 6,
+    "top_correlated_pairs": [
+      [
+        "thetaP",
+        "deltaP1",
+        1.0
+      ],
+      [
+        "aM",
+        "etaBM",
+        -1.0
+      ],
+      [
+        "etaR",
+        "etaM",
+        0.999
+      ],
+      [
+        "epsP",
+        "rho13",
+        -0.995
+      ],
+      [
+        "aC",
+        "etaBC",
+        -0.993
+      ],
+      [
+        "W",
+        "eta13",
+        -0.993
+      ]
+    ]
+  },
+  {
+    "regime": "Severe APC Loss",
+    "n_obs": 14000,
+    "K": 36,
+    "sigma": 0.002,
+    "cond_number": 178436985712596.56,
+    "eig_max": 2253057322.220421,
+    "eig_min": 1.2626627339745343e-05,
+    "n_null_directions": 1,
+    "n_ident": 14,
+    "n_weak": 21,
+    "n_nonident": 1,
+    "nonident_params": [
+      "thetaP"
+    ],
+    "n_correlated_pairs": 10,
+    "top_correlated_pairs": [
+      [
+        "aM",
+        "etaBM",
+        -1.0
+      ],
+      [
+        "thetaP",
+        "deltaP1",
+        1.0
+      ],
+      [
+        "etaR",
+        "etaM",
+        0.999
+      ],
+      [
+        "etaB13",
+        "kappaB13",
+        -0.999
+      ],
+      [
+        "aC",
+        "etaBC",
+        -0.998
+      ],
+      [
+        "epsP",
+        "rho13",
+        -0.998
+      ],
+      [
+        "W",
+        "eta13",
+        -0.998
+      ],
+      [
+        "epsP",
+        "rhoB",
+        -0.997
+      ],
+      [
+        "etaM13",
+        "kappaM13",
+        -0.996
+      ],
+      [
+        "rhoB",
+        "rho13",
+        0.993
+      ]
+    ]
+  }
+]
