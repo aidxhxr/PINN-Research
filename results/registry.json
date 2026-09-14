@@ -1,0 +1,1228 @@
+{
+  "schema_version": 1,
+  "registered_utc": "2026-09-14",
+  "scope": "Current README results and seven figures, both current posters, and overlapping manuscript/presentation results.",
+  "historical_provenance_policy": "Unknown original training revisions remain null. code_reference_revision identifies audited code, not a proven training revision. Upstream artifacts are optional for cached reproduction but checked when present.",
+  "results": [
+    {
+      "id": "forward_accuracy",
+      "title": "Dense supervised and sparse PINN state errors",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "forward_accuracy",
+      "inputs": [
+        {
+          "role": "dense",
+          "path": "research-poster-latex-hybrid/data/forward_dense.json",
+          "sha256": "0c88fb99cd3107f7b9e7b5067e2a2df8e1a3ea530a9c328ab7dc6a348760325e"
+        },
+        {
+          "role": "sparse",
+          "path": "research-poster-latex-hybrid/data/forward_sparse.json",
+          "sha256": "bc3036a23fe3b44977f4366fd6696c86f922fcba88afbffaf603621d8764ef2c"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json",
+          "sha256": "bc3036a23fe3b44977f4366fd6696c86f922fcba88afbffaf603621d8764ef2c",
+          "required": false
+        },
+        {
+          "path": "PINN-smaller/forward_pinn_train/runs/20260711_203325/forward_error_table.json",
+          "sha256": "0c88fb99cd3107f7b9e7b5067e2a2df8e1a3ea530a9c328ab7dc6a348760325e",
+          "required": false
+        }
+      ],
+      "metric_definition": "Mean of 28 saved state-wise relative L2 errors. Each error is norm(prediction-reference)/norm(reference). Multiply by 100 for percent.",
+      "denominator": "7 states times 4 regimes. Dense uses 100 labels; sparse uses 40 observation times.",
+      "limitations": [
+        "Aggregation is recomputed from saved per-state scores, not checkpoint predictions.",
+        "Training objectives differ. This is not an isolated data-size ablation."
+      ],
+      "used_by": [
+        "README.md",
+        "poster_second",
+        "paper"
+      ],
+      "expected": {
+        "dense": {
+          "mean_relative_l2_percent": 1.0553575206918095
+        },
+        "sparse": {
+          "mean_relative_l2_percent": 2.407376900961044
+        }
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['forward_accuracy'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "inverse_recovery",
+      "title": "Matched ten-condition inverse parameter recovery",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "inverse_recovery",
+      "inputs": [
+        {
+          "role": "recovery",
+          "path": "research-poster-latex-hybrid/data/inverse_recovery.json",
+          "sha256": "ff6eb3b522b713228c819e7a562e958e13a59f9e309cb4aa7b17d0418c1b46ce"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Cancer-like_recovered.json",
+          "sha256": "458f505b70874cddb79b47d98f07478d48f842d8b9f6770d247db79a95db2c88",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Early_adenoma_recovered.json",
+          "sha256": "0f66eb6c76322a7636ac8ec127f94c6628c0c22898f6a0b3e82b0b123dca64ab",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Normal_recovered.json",
+          "sha256": "b0f2cdffe092000fbfcdd866052890c77dd52fff16bca4b5bbbae14dd9a26401",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Strong_APC-mutant_recovered.json",
+          "sha256": "d733fa58da6846538476d0e5a192daa47bf7b972267f3239de5e55a62fadb29b",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Advanced_Adenoma_recovered.json",
+          "sha256": "eebf6bc1cb7058b57c56be155c1de8d732dea7ad36d74a12f6281e7a5a4f4b2b",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Early_Adenoma_recovered.json",
+          "sha256": "dbd354e1791a085f7f772bfda0eb582ad80103cfa0aa6dd394b08a687ad5248a",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_recovered.json",
+          "sha256": "90d9106c7d9bf4e09158fa8ddcbd5697a7bf5d0676bb0733bee04cf347d6c173",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Severe_APC_Loss_recovered.json",
+          "sha256": "43166d7f03d88f79e12564efb924ffc0904f3a322c3abb9259d8c3b4607d8d34",
+          "required": false
+        }
+      ],
+      "metric_definition": "Count parameters with abs(estimate-truth)/abs(truth) strictly below 0.1 per regime, then sum counts.",
+      "denominator": "36 parameters times 4 regimes = 144 pairs; ten conditions in both methods.",
+      "limitations": [
+        "Integral residual, relative weighting, fixed collocation and multiple starts changed together. This does not isolate the residual.",
+        "Point-estimate recovery on synthetic data does not establish structural identifiability or calibrated uncertainty."
+      ],
+      "used_by": [
+        "README.md",
+        "poster_first",
+        "poster_second",
+        "paper"
+      ],
+      "expected": {
+        "autodiff": {
+          "counts": [
+            16,
+            9,
+            6,
+            6
+          ],
+          "total": 37,
+          "denominator": 144
+        },
+        "integral": {
+          "counts": [
+            17,
+            16,
+            10,
+            7
+          ],
+          "total": 50,
+          "denominator": 144
+        }
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['inverse_recovery'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "hybrid_comparison",
+      "title": "Hybrid and control on common remaining parameters",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "hybrid_comparison",
+      "inputs": [
+        {
+          "role": "comparison",
+          "path": "research-poster-latex-hybrid/data/hybrid_comparison.json",
+          "sha256": "446a35803595788050c03771958c0554807e78e421b8f6969bdc4e78e4683209"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Advanced_Adenoma_recovered.json",
+          "sha256": "e9ed8a41fc0769c2f95c97ceac12e3bd8a8061206122500f5ff6aefe7101eb3d",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Early_Adenoma_recovered.json",
+          "sha256": "ed651533f3ff177b786096a8fac377295a570a53f6aec5b8ddc1238ce484200a",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Normal_recovered.json",
+          "sha256": "4c1abec09cb3d6ba2d4cf0153c9f961bc6dbaba94dfe3a66dcccfca68c3a08a1",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Severe_APC_Loss_recovered.json",
+          "sha256": "bee205963794f7d7f09235522b801df6ac71c2dff70d8897cd64f5eb79d0ffb0",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma_recovered.json",
+          "sha256": "573ceb41f7f6533aaeb917deffb4f4681549c80c204162f013712a3bd646bcb3",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma_term.json",
+          "sha256": "7b1d66153232eb7fa9da4934b4d2deb299f11090bb7cdc416680845d31d380fb",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma_recovered.json",
+          "sha256": "a019fdb9d905793e314dc1403779e86576d2df66129a35ee96daab316fa2bc38",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma_term.json",
+          "sha256": "151567a340e3c2a9037ac523642bccd57faf0d68fd69b1ecc17974f88a743eab",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Normal_recovered.json",
+          "sha256": "7b2c86eb85cb180867601437d89812aa3925aa20fc532680cc39ca9c1e42ec71",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Normal_term.json",
+          "sha256": "8234d6b9cfb5d3c38cea8ebf418c339f2f5aa7984d33f91cc28db75fa55c395a",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss_recovered.json",
+          "sha256": "572204f3689424419636746e6efb249d3cbb743aeb6eb9ef0fedda6700dcdf48",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss_term.json",
+          "sha256": "f375c81ca180e35bf1347b58b9065b6a5f4562009cf9ec32ae5d6b8a8e8499c5",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Advanced_Adenoma_recovered.json",
+          "sha256": "a872e7ffc8cd6c836103b3d165ca0ca7e4d891d14eac4c4b348950ae2e557cf7",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Advanced_Adenoma_term.json",
+          "sha256": "cfc1a8dd2477ae5c2e0a5838604a73c0f3ad6a79705ae166a9b927066205dbc6",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Early_Adenoma_recovered.json",
+          "sha256": "0a266b08eeee922f9a347e40d6d13d4f1b155f256d0a2495cf521dae0a63f445",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Early_Adenoma_term.json",
+          "sha256": "7cd6410d0fdea68c309bdad44b4b015bde9db7406dd489b38efbcacfa21fbc82",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Normal_recovered.json",
+          "sha256": "2f62e367bde9b285c997b829a0f106c5982bb575b4d9bb6051bad5507323cd51",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Normal_term.json",
+          "sha256": "c4a0ee93b480e9904fcb583d7824e6cd4ff3dbc5da3a1dcceaae35d34849f714",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Severe_APC_Loss_recovered.json",
+          "sha256": "247831b180a301a883cb820268f44b2d5628d82a74524daafa156365e105ecb1",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Severe_APC_Loss_term.json",
+          "sha256": "da638a7ceaf64ee95fe8652b08b26eeb6bebe62f3b0cb93f80a2bb5cf3acd1dd",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma_recovered.json",
+          "sha256": "d43be1cf17ac7803747a88867005bfdb054df91c58e668a95944792290d46616",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma_term.json",
+          "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma_recovered.json",
+          "sha256": "d546402dede05c8d3043dd8c8823f293f76092b96336032933aeadc207f6709b",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma_term.json",
+          "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal_recovered.json",
+          "sha256": "f306e565fe80ca75c347912f9afb8953ca49821af0853e1fed11a85d2502ef84",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal_term.json",
+          "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss_recovered.json",
+          "sha256": "b785f2e2fe2be07bcf4f08e8ecd1cdf56fcf6ddc8ad68785bc12a2e7a7c11387",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss_term.json",
+          "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
+          "required": false
+        }
+      ],
+      "metric_definition": "Intersect recovered keys per variant and regime, verify matching truth, and count errors strictly below 10%. Function NRMSE is RMS(learned-truth)/RMS(truth) on the observed-support grid.",
+      "denominator": "RA-HOXA5: 34 times 4 = 136. Beta-MYC: 34 times 4 = 136. APC loss: 35 times 4 = 140.",
+      "limitations": [
+        "RA/MYC functions are jointly fitted per regime. APC has additional mutation calibration data, then a frozen shared function; its 0.1195% NRMSE is one shared score.",
+        "Different terms and protocols are not an isolated joint-versus-frozen ablation.",
+        "Frozen-state refinement was effectively a no-op in these runs."
+      ],
+      "used_by": [
+        "README.md",
+        "poster_second"
+      ],
+      "expected": {
+        "ra_h5": {
+          "control": 51,
+          "hybrid": 53,
+          "denominator": 136
+        },
+        "bm_myc": {
+          "control": 48,
+          "hybrid": 43,
+          "denominator": 136
+        },
+        "apc_mutation": {
+          "control": 52,
+          "hybrid": 53,
+          "denominator": 140
+        }
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-hybrid-ude/training.py",
+        "research-poster-latex-hybrid/figures/make_figures.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['hybrid_comparison'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "fisher_information",
+      "title": "Full and conditional eight-parameter Fisher analysis",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "fisher_information",
+      "inputs": [
+        {
+          "role": "full_matrices",
+          "path": "research-poster-latex/data/fisher_matrices.npz",
+          "sha256": "a177214fcd2ecaff04771860a2e23c48b067dbc6e4562a5691c98833ad4b3a7f"
+        },
+        {
+          "role": "full_summary",
+          "path": "research-poster-latex/data/fim.json",
+          "sha256": "a5e7d459b95b2902af37614d4403ff88df406711b2a918baf8c98f8a994c4749"
+        },
+        {
+          "role": "reduced_summary",
+          "path": "research-poster-latex/data/fisher_top8.json",
+          "sha256": "ac803a0e20e9bf6938398a707b9c9e2ff43600af7e8660c4376717dfff0c3b97"
+        },
+        {
+          "role": "reduced_Normal",
+          "path": "results/inputs/1c114943c7a4_Normal_FIM.npy",
+          "sha256": "1c114943c7a43b11285f0a13d21a97bd9f176262366ad9b5c4bdd7d34062c6f0"
+        },
+        {
+          "role": "reduced_Early Adenoma",
+          "path": "results/inputs/8fe7d85c2ff2_Early_Adenoma_FIM.npy",
+          "sha256": "8fe7d85c2ff240351fcf627ea67a5a7510a37a72c559266b7f0911f0fae10642"
+        },
+        {
+          "role": "reduced_Advanced Adenoma",
+          "path": "results/inputs/b9cf6660f4f4_Advanced_Adenoma_FIM.npy",
+          "sha256": "b9cf6660f4f483f346286a158e68a025d2bb1cef66702b2354821bf0d5c5b572"
+        },
+        {
+          "role": "reduced_Severe APC Loss",
+          "path": "results/inputs/98ddeedbb775_Severe_APC_Loss_FIM.npy",
+          "sha256": "98ddeedbb775e5c7afdbf7a63edeed29524cacc873e572030c73e6cb4f830727"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Advanced_Adenoma_FIM.npy",
+          "sha256": "5e18c8785d3dedc6b2f90e070c7ff6f11ee317ff5ec98292392b79b60140a17f",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Early_Adenoma_FIM.npy",
+          "sha256": "ca654463ec3d63619ee4fd2860e5d9d16b7c069297a61d8ec90584a8c831d6dc",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Normal_FIM.npy",
+          "sha256": "fa6a57eb3f71478bd2df4a2910b82fc096b49876f46679018f9e58345ac5fb8b",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Severe_APC_Loss_FIM.npy",
+          "sha256": "eb58986490e776ea4484e7e11f922e0e6117d8adce765de2a2adf629f791084a",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Normal_FIM.npy",
+          "sha256": "1c114943c7a43b11285f0a13d21a97bd9f176262366ad9b5c4bdd7d34062c6f0",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Early_Adenoma_FIM.npy",
+          "sha256": "8fe7d85c2ff240351fcf627ea67a5a7510a37a72c559266b7f0911f0fae10642",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Advanced_Adenoma_FIM.npy",
+          "sha256": "b9cf6660f4f483f346286a158e68a025d2bb1cef66702b2354821bf0d5c5b572",
+          "required": false
+        },
+        {
+          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Severe_APC_Loss_FIM.npy",
+          "sha256": "98ddeedbb775e5c7afdbf7a63edeed29524cacc873e572030c73e6cb4f830727",
+          "required": false
+        }
+      ],
+      "metric_definition": "I=J^T J/sigma^2 in log-parameter coordinates, including thetaP. Diagonalize saved matrices. Null eigenvalues: <1. Nonidentifiable: null participation>0.5; weak: null participation>0.2 or soft participation>0.5; otherwise identifiable. Soft eigenvalues: <max(eigenvalue)*1e-4 excluding null.",
+      "denominator": "7 states times 10 conditions times 200 times = 14000 observations. Full dimension 36; reduced dimension 8; sigma=0.002.",
+      "limitations": [
+        "Local sensitivity at truth, not global or structural identifiability.",
+        "Reduced analysis fixes the other 28 parameters at truth and omits their uncertainty. Reduced-parameter PINN recovery has not been tested.",
+        "Eigen-direction counts and individual-parameter counts differ. Negative roundoff eigenvalues are clipped to zero; plots have a 1e-4 display floor."
+      ],
+      "used_by": [
+        "README.md",
+        "poster_first",
+        "poster_second",
+        "paper"
+      ],
+      "expected": {
+        "full": {
+          "Normal": {
+            "near_null_directions": 1,
+            "identifiable": 13,
+            "weak": 22,
+            "nonidentifiable": 1
+          },
+          "Early Adenoma": {
+            "near_null_directions": 1,
+            "identifiable": 17,
+            "weak": 18,
+            "nonidentifiable": 1
+          },
+          "Advanced Adenoma": {
+            "near_null_directions": 1,
+            "identifiable": 14,
+            "weak": 20,
+            "nonidentifiable": 2
+          },
+          "Severe APC Loss": {
+            "near_null_directions": 1,
+            "identifiable": 14,
+            "weak": 21,
+            "nonidentifiable": 1
+          }
+        },
+        "reduced": {
+          "Normal": {
+            "near_null_directions": 0,
+            "identifiable": 8,
+            "weak": 0,
+            "nonidentifiable": 0
+          },
+          "Early Adenoma": {
+            "near_null_directions": 0,
+            "identifiable": 8,
+            "weak": 0,
+            "nonidentifiable": 0
+          },
+          "Advanced Adenoma": {
+            "near_null_directions": 0,
+            "identifiable": 8,
+            "weak": 0,
+            "nonidentifiable": 0
+          },
+          "Severe APC Loss": {
+            "near_null_directions": 0,
+            "identifiable": 8,
+            "weak": 0,
+            "nonidentifiable": 0
+          }
+        }
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-fisher-matrix/fisher_matrix.py",
+        "PINN-fisher-matrix-top8/fisher_matrix.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['fisher_information'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "anchor_interventions",
+      "title": "MYC depletion and prospective HOXA13 screens",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "anchor_interventions",
+      "inputs": [
+        {
+          "role": "wnt",
+          "path": "research-poster-latex-hybrid/data/dose_wnt.json",
+          "sha256": "a3356f7f40ecb37db7667016cb652766d89f28ef6bb61263acfc910f6a5c1f3a"
+        },
+        {
+          "role": "bcat",
+          "path": "research-poster-latex-hybrid/data/dose_bcat.json",
+          "sha256": "347777be273da1d48913200b0d6c5f8dbd36db38cb45c736f0474aefae978615"
+        },
+        {
+          "role": "prospective",
+          "path": "research-poster-latex-hybrid/data/protocol_m_h13.json",
+          "sha256": "a1956e96d6a43bae07c75a2da465722f283fc3d5b206dc191724174c12bdf373"
+        },
+        {
+          "role": "counterexample",
+          "path": "research-poster-latex-hybrid/data/protocol_h13_b.json",
+          "sha256": "430af58b58c3ac4cb52b37276adb5bddbd3a71e6900c0c1effe3f03b44b50941"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-hybrid-ude/runs/20260802_dose_response/dose_bcat_bm_myc.json",
+          "sha256": "347777be273da1d48913200b0d6c5f8dbd36db38cb45c736f0474aefae978615",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260802_dose_response/dose_wnt_bm_myc.json",
+          "sha256": "a3356f7f40ecb37db7667016cb652766d89f28ef6bb61263acfc910f6a5c1f3a",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json",
+          "sha256": "430af58b58c3ac4cb52b37276adb5bddbd3a71e6900c0c1effe3f03b44b50941",
+          "required": false
+        },
+        {
+          "path": "PINN-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json",
+          "sha256": "a1956e96d6a43bae07c75a2da465722f283fc3d5b206dc191724174c12bdf373",
+          "required": false
+        }
+      ],
+      "metric_definition": "Convert saved per-parameter basal relative errors to percent and compare with the independent hybrid_basal_err field. Compare k=0 MYC doses; report prospective protocols and the failed W counterexample.",
+      "denominator": "MYC: 11 conditions per arm, two starts. Prospective: 10 baseline conditions, 11 with depletion. One host equation fitted to exact states.",
+      "limitations": [
+        "Parameters outside the fitted equation are fixed at truth.",
+        "Function recovery can worsen while basal recovery improves. Function NRMSE uses each design's observed support.",
+        "No noisy sparse state estimates or biological measurements were used. Model interventions are not validated laboratory protocols.",
+        "This report audits saved error dictionaries without deserializing the original fitted-parameter checkpoints."
+      ],
+      "used_by": [
+        "README.md",
+        "poster_second"
+      ],
+      "expected": {},
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-hybrid-ude/dose_response.py",
+        "PINN-hybrid-ude/protocol_test.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['anchor_interventions'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "hmc_diagnostics",
+      "title": "Inverse HMC coverage and sampling checks",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "hmc_diagnostics",
+      "inputs": [
+        {
+          "role": "presentation_normal_samples",
+          "path": "results/inputs/58f648b962eb_Normal_posterior_samples.npz",
+          "sha256": "58f648b962eb31b6ed7edd7c06fc71bfb91168ec571c81d81b6598708e9cadca"
+        },
+        {
+          "role": "presentation_normal_summary",
+          "path": "results/inputs/2e5431d9e404_Normal_posterior_summary.json",
+          "sha256": "2e5431d9e404767bf03dbdfb511172d0990f762f3c8794f2aa826e235421cf56"
+        },
+        {
+          "role": "presentation_severe_samples",
+          "path": "results/inputs/7dd1ed5407e5_Severe_APC_Loss_posterior_samples.npz",
+          "sha256": "7dd1ed5407e5a1a1b86eaaea6b0a3f7b95f57585583c272347f9dc4fa9b24b2c"
+        },
+        {
+          "role": "presentation_severe_summary",
+          "path": "results/inputs/e51a1dba95e4_Severe_APC_Loss_posterior_summary.json",
+          "sha256": "e51a1dba95e4267fd832505097dc83eeed01974eff63ccfd71ad53243b1d7d05"
+        },
+        {
+          "role": "hybrid_normal_samples",
+          "path": "results/inputs/9a9531ed4a83_Normal_posterior_samples.npz",
+          "sha256": "9a9531ed4a83ed7577f1be08c62034cebd78b6d0168d9c12f2093e7eeda9fcfe"
+        },
+        {
+          "role": "hybrid_normal_summary",
+          "path": "results/inputs/d43eb0aaba34_Normal_posterior_summary.json",
+          "sha256": "d43eb0aaba34312a0b4702b331880baf246f26822d9b292427901de58e355066"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-bayesian/runs/20260712_204532_bayes/Normal_posterior_samples.npz",
+          "sha256": "58f648b962eb31b6ed7edd7c06fc71bfb91168ec571c81d81b6598708e9cadca",
+          "required": false
+        },
+        {
+          "path": "PINN-bayesian/runs/20260712_204532_bayes/Normal_posterior_summary.json",
+          "sha256": "2e5431d9e404767bf03dbdfb511172d0990f762f3c8794f2aa826e235421cf56",
+          "required": false
+        },
+        {
+          "path": "PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_samples.npz",
+          "sha256": "7dd1ed5407e5a1a1b86eaaea6b0a3f7b95f57585583c272347f9dc4fa9b24b2c",
+          "required": false
+        },
+        {
+          "path": "PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_summary.json",
+          "sha256": "e51a1dba95e4267fd832505097dc83eeed01974eff63ccfd71ad53243b1d7d05",
+          "required": false
+        },
+        {
+          "path": "PINN-bayesian/runs/20260713_204442_bayes/Normal_posterior_samples.npz",
+          "sha256": "9a9531ed4a83ed7577f1be08c62034cebd78b6d0168d9c12f2093e7eeda9fcfe",
+          "required": false
+        },
+        {
+          "path": "PINN-bayesian/runs/20260713_204442_bayes/Normal_posterior_summary.json",
+          "sha256": "d43eb0aaba34312a0b4702b331880baf246f26822d9b292427901de58e355066",
+          "required": false
+        }
+      ],
+      "metric_definition": "Recompute 2.5/97.5 percentiles and truth coverage from constrained draws. Historical ESS sums raw log/logit autocorrelation until the first lag <0.05. Gates require median ESS>=200 and >=90% parameter coverage.",
+      "denominator": "36 parameters. Presentation Normal/Severe: 2000 draws each from 20260712_204532. Hybrid-poster Normal: 3000 draws from 20260713_204442.",
+      "limitations": [
+        "All shown inverse chains fail gates; interval widths are unreliable.",
+        "The posterior conditions on frozen state networks and omits state-network uncertainty.",
+        "The historical single-chain ESS is reproduced for audit, not endorsed as a modern multi-chain diagnostic. R-hat is unavailable.",
+        "Presentation code manually changes Normal coverage to 18/36. Samples and summaries give 19/36, used here and in the first poster."
+      ],
+      "used_by": [
+        "README.md",
+        "poster_first",
+        "poster_second",
+        "presentation"
+      ],
+      "expected": {
+        "presentation_normal": {
+          "covered_truth": 19,
+          "gate_pass": false,
+          "draws": 2000
+        },
+        "presentation_severe": {
+          "gate_pass": false,
+          "draws": 2000
+        },
+        "hybrid_normal": {
+          "gate_pass": false,
+          "draws": 3000
+        }
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-bayesian/bayesian_infer.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['hmc_diagnostics'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "bayesian_forward",
+      "title": "Forward Bayesian predictive coverage",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "bayesian_forward",
+      "inputs": [
+        {
+          "role": "Normal_predictive",
+          "path": "results/inputs/5231929a07a4_Normal_predictive.npz",
+          "sha256": "5231929a07a4c1aec67c34f182e3605ffbf2de55381e2c61fb51b1ad996c5bf5"
+        },
+        {
+          "role": "Normal_summary",
+          "path": "results/inputs/1402b665a6dd_Normal_predictive_summary.json",
+          "sha256": "1402b665a6dd47bc57c43607071d6624f5f4bd0eaeb1a8eb5370c382d779eed7"
+        },
+        {
+          "role": "Early Adenoma_predictive",
+          "path": "results/inputs/a264ced81536_Early_Adenoma_predictive.npz",
+          "sha256": "a264ced81536ff09e6e415308b6c1c2e8f9c35c43519b49ce69407df8b252f66"
+        },
+        {
+          "role": "Early Adenoma_summary",
+          "path": "results/inputs/c4d6317daa1a_Early_Adenoma_predictive_summary.json",
+          "sha256": "c4d6317daa1af37a3ced242f3c067a90e42e0a0ce9964c9906eb39c198ac7845"
+        },
+        {
+          "role": "Advanced Adenoma_predictive",
+          "path": "results/inputs/182f74d32443_Advanced_Adenoma_predictive.npz",
+          "sha256": "182f74d32443df2dd3920a7be964e5677df22c2d43eb7465c591b7e8a9063237"
+        },
+        {
+          "role": "Advanced Adenoma_summary",
+          "path": "results/inputs/ea7eab6e8b30_Advanced_Adenoma_predictive_summary.json",
+          "sha256": "ea7eab6e8b3093d7c1c2ca0ad519324b691b0cf28f758b623dcf3bf3eb0b0dc2"
+        },
+        {
+          "role": "Severe APC Loss_predictive",
+          "path": "results/inputs/8e4c06d5317b_Severe_APC_Loss_predictive.npz",
+          "sha256": "8e4c06d5317b39fe8308fcdc9050623f7e8c7579ac9e2d1e30a2be4565c96590"
+        },
+        {
+          "role": "Severe APC Loss_summary",
+          "path": "results/inputs/a45faee2edb3_Severe_APC_Loss_predictive_summary.json",
+          "sha256": "a45faee2edb35b092a3b91fbf797b5a8023668a7663282fa5b21eb2e7dce4765"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Normal_predictive.npz",
+          "sha256": "5231929a07a4c1aec67c34f182e3605ffbf2de55381e2c61fb51b1ad996c5bf5",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Normal_predictive_summary.json",
+          "sha256": "1402b665a6dd47bc57c43607071d6624f5f4bd0eaeb1a8eb5370c382d779eed7",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Early_Adenoma_predictive.npz",
+          "sha256": "a264ced81536ff09e6e415308b6c1c2e8f9c35c43519b49ce69407df8b252f66",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Early_Adenoma_predictive_summary.json",
+          "sha256": "c4d6317daa1af37a3ced242f3c067a90e42e0a0ce9964c9906eb39c198ac7845",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Advanced_Adenoma_predictive.npz",
+          "sha256": "182f74d32443df2dd3920a7be964e5677df22c2d43eb7465c591b7e8a9063237",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Advanced_Adenoma_predictive_summary.json",
+          "sha256": "ea7eab6e8b3093d7c1c2ca0ad519324b691b0cf28f758b623dcf3bf3eb0b0dc2",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Severe_APC_Loss_predictive.npz",
+          "sha256": "8e4c06d5317b39fe8308fcdc9050623f7e8c7579ac9e2d1e30a2be4565c96590",
+          "required": false
+        },
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Severe_APC_Loss_predictive_summary.json",
+          "sha256": "a45faee2edb35b092a3b91fbf797b5a8023668a7663282fa5b21eb2e7dce4765",
+          "required": false
+        }
+      ],
+      "metric_definition": "Recompute per-state RMSE and fraction of reference times inside saved latent-function 95% bands. Check summaries. Report saved energy ESS and beta-prediction ESS separately.",
+      "denominator": "7 states times 4 regimes, each on a saved 2000-time grid. Training uses 40 noisy observation times.",
+      "limitations": [
+        "Coverage of one synthetic trajectory is not repeated-experiment interval calibration.",
+        "ESS is taken from saved summaries because full weight-chain histories are unavailable with predictive exports.",
+        "Latent bands exclude observation noise; posterior predictive bands add observation noise."
+      ],
+      "used_by": [
+        "README.md",
+        "paper"
+      ],
+      "expected": {},
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-forward-bayesian/aggregate_forward.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['bayesian_forward'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "normal_treatment",
+      "title": "Normal MYC/APC treated and untreated PINN errors",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "normal_treatment",
+      "inputs": [
+        {
+          "role": "trajectories",
+          "path": "research-poster-latex/data/normal_treatment_comparison.npz",
+          "sha256": "2d9eb90761282949b8941ced17919a526ec3327c3421af4ea83e9caec2a057d7"
+        },
+        {
+          "role": "provenance",
+          "path": "research-poster-latex/data/normal_treatment_provenance.json",
+          "sha256": "8257126a368774e60f4acea9c9a380f2d585d0a6eb11afadb271172a96f90aa7"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_ctrl_net.pt",
+          "sha256": "e14c4ddae04fb9534c061741322d1496faa353cb5d60df2b6b31e268ba5e7ffb",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_noATRA_net.pt",
+          "sha256": "43603a92fdf8e6c38a4f9f9bfc07b3161b41e1eee9cba9bf39b5ef7f009a3cdf",
+          "required": false
+        }
+      ],
+      "metric_definition": "100*norm(PINN-Radau)/norm(Radau) per state over all 6000 saved times. Verify cached errors and DR=[0,1.5].",
+      "denominator": "2 conditions times 7 states. First poster displays MYC/APC. Both conditions belong to the same ten-condition inverse fit.",
+      "limitations": [
+        "Untreated changes only DR=0; circadian forcing remains active.",
+        "Scores use the complete horizon, not held-out support or oscillation-relative errors.",
+        "The original export evaluated checkpoints and Radau. Reproduction only reads saved arrays."
+      ],
+      "used_by": [
+        "poster_first"
+      ],
+      "expected": {
+        "noATRA": {
+          "m": 0.3106569599886611,
+          "p": 0.7469195383450298
+        },
+        "ctrl": {
+          "m": 0.40476336382079353,
+          "p": 0.5417232134981267
+        }
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "research-poster-latex/figures/normal_inference_plots.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['normal_treatment'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "training_diagnostics",
+      "title": "Saved Adam loss and selected parameter errors",
+      "kind": "numerical_result",
+      "status": "recomputed_saved_results",
+      "calculator": "training_diagnostics",
+      "inputs": [
+        {
+          "role": "history",
+          "path": "research-poster-latex/data/normal_inverse_history.json",
+          "sha256": "1e815abac345f62b54fcd04e5fbef559efe142652b384650b5faa570708d9850"
+        },
+        {
+          "role": "recovered",
+          "path": "research-poster-latex/data/normal_inverse_recovered.json",
+          "sha256": "90d9106c7d9bf4e09158fa8ddcbd5697a7bf5d0676bb0733bee04cf347d6c173"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_history.json",
+          "sha256": "1e815abac345f62b54fcd04e5fbef559efe142652b384650b5faa570708d9850",
+          "required": false
+        },
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_recovered.json",
+          "sha256": "90d9106c7d9bf4e09158fa8ddcbd5697a7bf5d0676bb0733bee04cf347d6c173",
+          "required": false
+        }
+      ],
+      "metric_definition": "Verify total=data+lambda_phys*physics+20*IC at each recorded epoch. Compute W/thetaP relative errors at those same epochs.",
+      "denominator": "11 actual Adam checkpoints from selected Normal start; losses average ten conditions.",
+      "limitations": [
+        "Lines connect saved checkpoints; no intermediate history is synthesized.",
+        "L-BFGS follows Adam and is included in final state fits, not these Adam histories.",
+        "Original histories retain all parameters including epsilonM; the poster shows only W/thetaP."
+      ],
+      "used_by": [
+        "poster_first"
+      ],
+      "expected": {
+        "saved_checkpoints": 11
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "research-poster-latex/figures/normal_inference_plots.py"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['training_diagnostics'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "constraint_screen",
+      "title": "Historical five-constraint MYC screen",
+      "kind": "numerical_result",
+      "status": "historical_transcription",
+      "calculator": "constraint_screen",
+      "inputs": [
+        {
+          "role": "transcription",
+          "path": "results/inputs/constraint_screen_transcription.json",
+          "sha256": "48a2bdeadb614321dbb9ce860a268535454f21c64bc7089fa71d35dc29b0dadb"
+        }
+      ],
+      "upstream": [],
+      "metric_definition": "Min/max of rounded basal-error percentages transcribed from the dated note. These are not newly calculated fit errors.",
+      "denominator": "Five forms, Normal regime, one start.",
+      "limitations": [
+        "Complete original five-form run mapping was not recovered. screen_atlas contains gated/sc cases, not all five forms.",
+        "The existing poster claim is preserved with its provenance gap and must not be presented as an independently reproduced fit result."
+      ],
+      "used_by": [
+        "poster_second"
+      ],
+      "expected": {
+        "min_reported_basal_error_percent": 13.8,
+        "max_reported_basal_error_percent": 202.8
+      },
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['constraint_screen'], output_dir)",
+        "script": "src/wnt_pinn/reporting/metrics.py"
+      }
+    },
+    {
+      "id": "figure_network",
+      "title": "README figure: network",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/network.png",
+          "sha256": "abc6b875cbb0665ff5fba4adced3e18126c57c4eb5f3c5c19e9dc88fe84a4d10"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "network-diagram/preview.png",
+          "sha256": "abc6b875cbb0665ff5fba4adced3e18126c57c4eb5f3c5c19e9dc88fe84a4d10",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "network-diagram/schematic-better.tex"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "TikZ source exists; exact historical rasterization invocation is not recorded.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_network'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    },
+    {
+      "id": "figure_forward_pinn",
+      "title": "README figure: forward pinn",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/forward_pinn.png",
+          "sha256": "3d6c6dedc814a76f93aaf2070a8e277ad7532a6ac9fc5c71e8307da3daa45781"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-smaller/forward-pinn-train-hybrid/pinn_forward_core_dynamics.png",
+          "sha256": "3d6c6dedc814a76f93aaf2070a8e277ad7532a6ac9fc5c71e8307da3daa45781",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-smaller/forward-pinn-train-hybrid/pinn_core_dynamics.py"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "Historical generator selects latest run by filesystem timestamp. Exact checkpoint mapping is not embedded in the PNG. Current poster curves have a separately pinned export.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_forward_pinn'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    },
+    {
+      "id": "figure_inverse_recovery_best8",
+      "title": "README figure: inverse recovery best8",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/inverse_recovery_best8.png",
+          "sha256": "98f79d8e261edd637e4c5e849de017f23d730753a1316d4b2f108c628aa83c22"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png",
+          "sha256": "98f79d8e261edd637e4c5e849de017f23d730753a1316d4b2f108c628aa83c22",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-inverse-pinn-boost/plotting.py"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "Selected eight parameters from a distinct replot snapshot, not the 20260711_203325_integral table source. The subset does not define the all-parameter denominator.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_inverse_recovery_best8'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    },
+    {
+      "id": "figure_fim_spectra",
+      "title": "README figure: fim spectra",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/fim_spectra.png",
+          "sha256": "086af655c36000a98cea76d4944312f751f912ad7ba6eab9e597a847f5f8e41c"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/cross_regime_spectra.png",
+          "sha256": "086af655c36000a98cea76d4944312f751f912ad7ba6eab9e597a847f5f8e41c",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-fisher-matrix/fisher_matrix.py"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "Historical rendering of registered full matrices. fisher_information generates a new spectrum from the arrays.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_fim_spectra'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    },
+    {
+      "id": "figure_bayesian_forward_bands",
+      "title": "README figure: bayesian forward bands",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/bayesian_forward_bands.png",
+          "sha256": "b69397a7e4c6489197538b9e78ae51743add7b58f6c5fc15b90ce3b064b5a573"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/fwd_beta_bands.png",
+          "sha256": "b69397a7e4c6489197538b9e78ae51743add7b58f6c5fc15b90ce3b064b5a573",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-forward-bayesian/aggregate_forward.py"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "Historical beta-catenin predictive bands; bayesian_forward audits saved arrays and coverage.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_bayesian_forward_bands'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    },
+    {
+      "id": "figure_hybrid_learned_term",
+      "title": "README figure: hybrid learned term",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/hybrid_learned_term.png",
+          "sha256": "9ecb0f4ff0604534078a32a8f348e7ad5e5fb3ff9672bd12978b6eddd054d56e"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-hybrid-ude/runs/20260802_041545_ra_h5_dep/learned_term_ra_h5.png",
+          "sha256": "9ecb0f4ff0604534078a32a8f348e7ad5e5fb3ff9672bd12978b6eddd054d56e",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-hybrid-ude/plot_learned_term.py"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "RA-to-HOXA5 joint hybrid with RA/WNT depletion. This differs from the beta-to-MYC joint-run metrics beside it in the README.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_hybrid_learned_term'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    },
+    {
+      "id": "figure_hybrid_dose_response",
+      "title": "README figure: hybrid dose response",
+      "kind": "figure_snapshot",
+      "status": "verified_asset_snapshot",
+      "inputs": [
+        {
+          "role": "figure",
+          "path": "docs/figures/hybrid_dose_response.png",
+          "sha256": "cea7b500830ae7c3728cfa4f5aa32f0343fc46c218b2c809f33ca1c949a03337"
+        }
+      ],
+      "upstream": [
+        {
+          "path": "PINN-hybrid-ude/runs/20260802_dose_response/dose_response.png",
+          "sha256": "cea7b500830ae7c3728cfa4f5aa32f0343fc46c218b2c809f33ca1c949a03337",
+          "required": false
+        }
+      ],
+      "original_training_git_revision": null,
+      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "source_code": [
+        "PINN-hybrid-ude/aggregate_dose.py"
+      ],
+      "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
+      "denominator": "Not a numerical metric.",
+      "limitations": [
+        "Equation-level dose screen, not a full inverse fit. anchor_interventions audits saved numbers.",
+        "A preserved asset is not a claim of numerical regeneration of the exact rendering."
+      ],
+      "used_by": [
+        "README.md"
+      ],
+      "reproduction": {
+        "python_api": "wnt_pinn.reporting.reproduce(root, ['figure_hybrid_dose_response'], output_dir)",
+        "script": "src/wnt_pinn/reporting/registry.py"
+      }
+    }
+  ]
+}

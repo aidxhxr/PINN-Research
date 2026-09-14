@@ -83,8 +83,10 @@ Its geometry, colors, labels, legend and edges are unchanged.
 ### Fisher and HMC diagnostics
 
 - Fisher counts are local eigenvector-participation classifications, not
-  estimates within 10% of truth. The source uses log-parameter coordinates
-  except for thetaP, with assumed observation noise sigma = 0.002.
+  estimates within 10% of truth. The implementation uses log-parameter
+  sensitivities for every parameter, including thetaP, with assumed
+  observation noise sigma = 0.002. An older code docstring incorrectly
+  described thetaP as an exception.
 - These counts do not deteriorate monotonically with WNT. The poster reports
   the actual table and the specific loss of APC-functional sensitivity.
 - Fig. 2 uses actual Normal-regime HMC samples and an iso-product guide.
@@ -147,7 +149,12 @@ Its geometry, colors, labels, legend and edges are unchanged.
   support; the shifted function can return to the zero anchor in the
   unobserved gap. It does not claim a nonzero global shift preserves f(0)=0.
 - The five-form constraint screen uses one start; the reported Normal basal
-  errors span 13.8–202.8%.
+  errors span 13.8–202.8%. This range is transcribed from the dated research
+  note. The complete original five-form run mapping has not been recovered;
+  the cited screen-atlas directory contains gated/sc cases and cannot verify
+  all five forms. A tracked transcription and source-note hash are in
+  `../results/inputs/constraint_screen_transcription.json`. This provenance
+  limit does not alter the existing poster's numbers.
 - The intervention screens use exact reference states, fit one host equation,
   and fix parameters outside that equation at truth. They use two starts
   (seeds 100 and 117), selecting the lower physics loss. They do not establish

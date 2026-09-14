@@ -1,3 +1,11 @@
+> Historical planning material from August 2026. Current poster content,
+> authors, results and limitations are documented in the
+> [first poster](../research-poster-latex/SOURCES.md),
+> [second poster](../research-poster-latex-hybrid/SOURCES.md), and
+> [result registry](../results/registry.json). Claims in this planning pack
+> can be superseded, including exact-zero recovery and laboratory-intervention
+> language. The original planning text is retained below.
+
 # poster-context — source material for the two research posters
 
 Context pack for building **two independent posters** from the PINN-Research
