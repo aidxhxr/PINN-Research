@@ -1,0 +1,52 @@
+  solved none
+  solved raKO
+  solved wntKO
+  solved bcatKO
+  solved hox5KO
+  solved mycKO
+  solved hox13KO
+  solved cypKO
+
+
+anchor ratio x_lo/x_hi per regulator, WORST over the 4 regimes
+(0.000 = the anchor is in the data; the A/B outcomes separate at 0.01)
+
+  protocol         apc         b         c       h13         m         r
+  none          0.1785    0.0812    0.1806    0.1926    0.1155    0.1434
+  raKO          0.1634    0.0812    0.1806    0.1926    0.1155    0.0000
+  wntKO         0.1741    0.0131    0.1806    0.1625    0.0794    0.1361
+  bcatKO        0.1707    0.0000    0.1806    0.1609    0.0786    0.1358
+  hox5KO        0.1508    0.0812    0.1806    0.1926    0.1155    0.0000
+  mycKO         0.1167    0.0000    0.1806    0.1191    0.0000    0.1358
+  hox13KO       0.0946    0.0000    0.1806    0.0000    0.0000    0.1358
+  cypKO         0.1785    0.0000    0.0000    0.1609    0.0786    0.0000
+
+
+CHEAPEST PROTOCOL THAT REACHES EACH EDGE'S ANCHOR
+
+  edge       class       regulator  basal    10-cond  cheapest that works    ratio
+  apc_b      modulator   apc        -         0.1785  NONE           0.0946  (best: hox13KO)
+  c_ra       modulator   c          -         0.1806  cypKO          0.0000
+  h5_b       modulator   b          -         0.0812  bcatKO         0.0000
+  m_h5       modulator   m          -         0.1155  mycKO          0.0000
+  b_h13      production  b          a13       0.0812  bcatKO         0.0000
+  bc_cyp     production  b          aC        0.0812  bcatKO         0.0000
+  bm_myc     production  b          aM        0.0812  bcatKO         0.0000
+  h13_b      production  h13        W         0.1926  NONE           0.0000  (best: hox13KO)
+  m_h13      production  m          a13       0.1155  mycKO          0.0000
+  ra_h5      production  r          a5        0.1434  raKO           0.0000
+  rc_cyp     production  r          aC        0.1434  raKO           0.0000
+
+  Reading it: a `production` edge whose anchor a protocol reaches should
+  recover its basal parameter to ~1% under that protocol (measured for
+  ra_h5, rc_cyp, bm_myc). A `modulator` edge has no basal parameter to
+  lose and is already free -- the anchor column is informational only.
+
+  No USABLE protocol in the ladder (unreached, or reached only
+  by one that deletes the basal parameter — see below):
+    apc_b      (modulator, regulator apc) — best is hox13KO at 0.0946
+    h13_b      (production, regulator h13) — best is hox13KO at 0.0000
+
+  REACHES the anchor but DELETES the basal parameter with it (rejected — measured
+  to be useless on `h13_b`, 16.2% basal error under all three protocols):
+    h13_b      hox13KO   sets kW = 0, and W is that edge's own basal parameter
