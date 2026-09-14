@@ -1,0 +1,40 @@
+name: Build posters
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  posters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install Python and LuaLaTeX dependencies
+        run: |
+          python -m pip install -e '.[publications]'
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-luatex texlive-latex-extra texlive-fonts-recommended fonts-texgyre
+      - name: Recompute the registered publication inputs
+        run: python -m wnt_pinn.cli reproduce --all
+      - name: Build and verify both posters
+        run: python -m wnt_pinn.cli publications build --id poster_first --id poster_second
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: posters
+          path: |
+            build/publications/**/poster.pdf
+            build/publications/**/poster-latex-source.zip
+            build/publications/**/verification.json
+            build/publications/**/build-manifest.json
+          if-no-files-found: error

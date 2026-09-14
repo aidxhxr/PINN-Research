@@ -43,6 +43,7 @@ examples-posters/
 /.pytest_cache/
 /.ruff_cache/
 *.py[cod]
+*.pt
 .ipynb_checkpoints/
 
 # New experiment outputs and local artifact stores
