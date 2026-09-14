@@ -1,208 +1,178 @@
-# Physics-Informed Neural Networks for a Cancer-Signaling Model
+# Physics-informed neural networks for a WNT–RA–HOX model
 
-**Scientific machine learning applied to colorectal-cancer biology: solving a
-7-equation gene-regulatory ODE system with neural networks, recovering its
-biological parameters from sparse noisy data, and proving — with three
-independent methods — exactly which parameters are and are not recoverable.**
+This repository studies state reconstruction, parameter recovery and learned
+regulatory terms in a model of colorectal cancer stemness. It contains forward
+and inverse physics-informed neural networks (PINNs), Fisher and Bayesian
+analyses, and neural–mechanistic hybrids. The experiments use synthetic data
+generated from the model.
+
+## Model
+
+Seven coupled ODEs describe β-catenin, APC, HOXA5, HOXA13, MYC, retinoic acid
+and CYP26A1. Retinoic-acid input includes circadian forcing and an ATRA pulse.
+The inverse problem has 36 unknown parameters. WNT drive `W` and APC
+functionality `θP` define four model regimes:
+
+| Regime | W | θP |
+|---|---:|---:|
+| Normal | 0.8 | 1.00 |
+| Early Adenoma | 1.0 | 0.75 |
+| Advanced Adenoma | 1.5 | 0.50 |
+| Severe APC Loss | 2.0 | 0.25 |
 
 ![WNT–RA–HOX regulatory network](docs/figures/network.png)
 
----
+The state order is `[b, p, h5, h13, m, r, c]`. Reference trajectories use
+SciPy's Radau solver over dimensionless time `[0, 150]`, with the default ATRA
+pulse on `[40, 88]`. Setting `DR=0` removes the pulse while retaining the
+circadian input.
 
-## At a glance
+## Forward and inverse PINNs
 
-| | |
-|---|---|
-| **Domain** | Systems biology — the WNT / retinoic-acid / HOX signaling axis in colorectal cancer |
-| **Model** | 7 coupled nonlinear ODEs, 36 kinetic parameters, 4 disease regimes (Normal → Severe APC Loss) |
-| **Methods** | Physics-informed neural networks (forward + inverse), Bayesian PINNs with HMC, Fisher-information & profile-likelihood identifiability, global sensitivity analysis, neural-mechanistic hybrids (UDEs) |
-| **Stack** | PyTorch · SciPy · NumPy · SALib · lmfit · Matplotlib · LaTeX/TikZ · CUDA |
-| **Scale** | 15 experiment folders, hundreds of GPU training runs, a 49-page write-up with 47 references |
-| **Key result** | Parameter recovery raised from **10/36 → 24/36** by diagnosing *why* the network fails, not by making it bigger |
+The forward PINN maps Fourier features of time to seven state trajectories.
+Training combines observation, initial-condition and ODE-residual losses.
+With 40 observation times, its mean relative L2 error is 2.41% across seven
+states and four regimes. A separate supervised network trained on 100 labels
+has 1.06% error; the two runs use different training objectives.
 
----
+![Forward PINN and Radau reference trajectories](docs/figures/forward_pinn.png)
 
-## What the project is about
+Solid curves show the reference solution; dashed curves show the PINN.
+The shaded interval marks ATRA treatment.
 
-Cancer models are written as differential equations with dozens of rate
-constants nobody can measure directly. The question this project answers is:
-**can a neural network trained on a handful of noisy measurements tell us what
-those constants are — and can it tell us honestly when it can't?**
+The inverse PINN fits one state network per experimental condition and shares
+the biological parameters across conditions. The following runs each use ten
+conditions, including WNT and MYC perturbations. Counts are parameters within
+10% of their true values.
 
-The biology reduces to a **7-state system** — β-catenin, APC, HOXA5, HOXA13,
-MYC, retinoic acid and CYP26A1 — driven by a circadian retinoic-acid rhythm and
-a drug (ATRA) pulse. Two knobs, WNT drive `W` and APC functionality `θP`,
-separate four clinical regimes from healthy tissue to severe APC loss.
-Recovering all 36 parameters from trajectories is a classically ill-posed
-inverse problem (condition number ≈ 10⁶), so the work is as much about
-*measuring* the ceiling as about pushing it.
+| Inverse PINN | Normal | Early | Advanced | Severe | Total / 144 |
+|---|---:|---:|---:|---:|---:|
+| Autodiff residual | 16 | 9 | 6 | 6 | 37 |
+| Integral residual | 17 | 16 | 10 | 7 | 50 |
 
----
+The integral implementation uses a trapezoidal residual, relative state
+weighting, fixed collocation and multiple starts. These changes were made
+together, so the comparison does not isolate the effect of the residual.
+Accurate trajectories can still accompany large parameter errors.
 
-## 1 · Forward problem — a neural network that solves the ODEs
+![Eight best-recovered parameters in an inverse-PINN run](docs/figures/inverse_recovery_best8.png)
 
-A Fourier-feature MLP is trained on **only 40 random observations** plus the
-physics residual and must fill in the rest of the trajectory itself. A plain MLP
-cannot represent the fast circadian and pulse modes (spectral bias — every
-curve collapses to a line); a multi-scale Fourier time embedding fixes it. The
-network is validated against a stiff `solve_ivp` Radau reference
-(`rtol = 1e-10`).
+The figure shows a selected subset of eight parameters; the table reports
+recovery over all 36.
 
-![Forward PINN vs reference ODE solver, four regimes](docs/figures/forward_pinn.png)
+## Identifiability and uncertainty
 
-*Dashed = PINN, solid = reference solver, in all four disease regimes. Grey
-band = ATRA treatment window.*
+Fisher information, profile likelihood and Bayesian sampling examine which
+parameter combinations the observations constrain. High WNT weakens
+sensitivity to APC functionality. Each full Fisher matrix has one near-null
+direction under the analysis threshold. An eight-parameter subset has no
+near-null directions and condition numbers of about 100–665 when the other
+28 parameters are fixed at truth. This is a local sensitivity result;
+PINN recovery of that subset has not been tested.
 
----
+![Fisher-information eigenvalue spectra across regimes](docs/figures/fim_spectra.png)
 
-## 2 · Inverse problem — recovering the 36 biological parameters
+The forward Bayesian model samples network weights with Hamiltonian Monte
+Carlo (HMC). The inverse model freezes the state networks and samples the
+36 biological parameters. The inverse HMC runs fail effective-sample-size and
+coverage checks, so their interval widths are unreliable.
 
-The inverse PINN learns the trajectories and the parameters jointly. Scaling
-from a 2-parameter proof of concept to the full set exposed a **hard ceiling of
-~8/36** parameters recovered to within 10 %. Rather than tune blindly, I traced
-the ceiling to two separate causes and fixed each:
+![Bayesian forward predictions for β-catenin](docs/figures/bayesian_forward_bands.png)
 
-| Lever | What was tried | Result (params under 10 % error, Normal / Early / Advanced / Severe) |
+Forward posterior bands for β-catenin. Coverage and sampling diagnostics are
+saved with each run.
+
+## Neural–mechanistic hybrids
+
+A small neural network replaces one regulatory term inside the ODE system.
+For β-catenin activation of MYC, the learned term has two hidden layers of
+five tanh units and satisfies `f(0)=0`. The remaining biological parameters
+and state networks are fitted jointly with it.
+
+MYC activation error is 6.2–9.5% NRMSE over the observed regulator ranges.
+On the 34 parameters shared by the hybrid and mechanistic control, recovery
+within 10% of truth falls from 48 to 43 out of 136 parameter–regime pairs.
+Function accuracy and parameter recovery therefore need separate evaluation.
+
+![Learned regulatory term compared with the true mechanism](docs/figures/hybrid_learned_term.png)
+
+An anchor at `f(0)=0` can leave basal production ambiguous when the data never
+approach zero. On the observed range, an offset in the learned function can
+compensate for an error in the basal term. In an equation-level MYC screen,
+adding HOXA13 feedback suppression to WNT depletion reduces Normal-regime
+basal error from 2.170% to 0.021%, with 11 conditions in each arm.
+
+![Basal-parameter error across depletion doses](docs/figures/hybrid_dose_response.png)
+
+These intervention screens fit one equation to exact states, with parameters
+outside that equation fixed at truth. Basal recovery can improve while
+function recovery worsens. Validation with noisy, sparse state estimates
+remains to be done.
+
+## Posters
+
+Both posters are 48 × 36 inches and include editable LuaLaTeX sources.
+
+| Poster | Authors | Files |
 |---|---|---|
-| Bigger / smaller / regularised networks | architecture sweep | **no change** (9/10/2/4) — architecture is not the bottleneck |
-| **Derivative-free residual** | replace the biased autodiff `dz/dt` with a trapezoidal integral residual | **10/4/5/7 → 17/16/10/7** (+24 total, ≈2×) |
-| **More informative experiments** | add conditions that perturb the WNT and MYC nodes directly | classical ODE-fit **18/17/13/13 → 24/23/21/14** |
+| PINN dynamics and parameter recovery | Nathaniel Kim · Pascal Kataboh | [PDF](research-poster-latex/poster.pdf) · [Sources and build instructions](research-poster-latex/) |
+| Neural–mechanistic hybrids | Amirkhan Aidarkhan · Pascal Kataboh | [PDF](research-poster-latex-hybrid/poster.pdf) · [Sources and build instructions](research-poster-latex-hybrid/) |
 
-![Inverse PINN — true vs recovered, eight best parameters](docs/figures/inverse_recovery_best8.png)
+The [first poster's source notes](research-poster-latex/SOURCES.md) and
+[second poster's source notes](research-poster-latex-hybrid/SOURCES.md)
+document the runs, metrics and limitations behind the reported results.
 
-*The eight best-recovered parameters across the four regimes; grey = truth,
-red = recovered.*
+## Repository layout
 
----
-
-## 3 · Uncertainty — Bayesian PINNs with Hamiltonian Monte Carlo
-
-Point estimates hide how confident the model should be. Two Bayesian variants
-replace them with posteriors:
-
-- **Bayesian forward PINN** — HMC over the network *weights* gives a calibrated
-  95 % predictive band around every trajectory (empirical coverage 0.93–0.97).
-- **Bayesian inverse PINN** — HMC over the 36 *parameters* gives a marginal per
-  parameter; a wide or prior-shaped marginal is an honest "not identifiable"
-  verdict rather than a confidently wrong number.
-
-![Bayesian forward PINN — posterior predictive bands for β-catenin](docs/figures/bayesian_forward_bands.png)
-
----
-
-## 4 · Identifiability — knowing what can't be known
-
-In high-WNT regimes β-catenin saturates and `θP` (APC functionality) stops
-influencing the data, so no method can recover it. I confirmed this from three
-independent directions rather than blaming the optimiser:
-
-- **Fisher Information Matrix** — one hard-null direction per regime; the
-  number of near-perfectly-correlated parameter pairs climbs 0 → 2 → 7 → 10 as
-  WNT drive rises.
-- **Profile likelihood** (Raue-style 95 % CIs → IDENT / WEAK / NON-IDENT).
-- **Bayesian posteriors** — the same parameters come back wide.
-
-Restricting to the **8 most-identifiable parameters** turns the problem
-well-posed (cond ≈ 10²–10³, zero null directions) — a clean demonstration of
-*where* the recoverable information lives.
-
-![FIM eigenvalue spectra across regimes](docs/figures/fim_spectra.png)
-
----
-
-## 5 · Neural-mechanistic hybrids — where the data fail, not the network
-
-In a universal-differential-equation (UDE) setup one regulatory relationship is
-handed to a small neural network while the rest stays mechanistic. The standard
-`f(0) = 0` constraint is supposed to stop the network from absorbing a constant
-out of the equation; **five different ways of imposing it all failed** (basal
-parameter 14–203 % off).
-
-The diagnosis: no regulator in the model ever approaches zero under normal
-conditions, so the constraint is asserted where there is no data. Designing two
-*depletion* experiments (a WNT knockdown and a retinoid-free protocol) that
-actually visit the anchor fixed it — same seeds, same budget:
-
-| learned edge | functional error | basal-parameter error | equation params recovered |
-|---|---|---|---|
-| RA → HOXA5 | 12.8 % → **0.4 %** | 25.3 % → **0.4 %** | 3/8 → **8/8** |
-| RA → CYP26A1 | 1.0 % → **0.1 %** | 15.6 % → **0.7 %** | 6/8 → **8/8** |
-| β-catenin → MYC | 7.6 % → **0.5 %** | 49.0 % → **2.7 %** | 2/4 → **4/4** |
-
-A control arm adding the same number of extra experiments *without* reaching
-the anchor changed nothing (4.0 → 4.2 %), a dose-response with the condition
-count held fixed showed the error tracks *how close the data get to zero*, and
-a training-free design table then **predicted the right protocol for edges it
-had never seen** (95.6 % → 0.0 % error).
-
-![Learned hybrid term vs truth](docs/figures/hybrid_learned_term.png)
-
-![Dose-response: basal error tracks anchor visitation](docs/figures/hybrid_dose_response.png)
-
----
-
-## Skills demonstrated
-
-- **Scientific ML** — PINNs, universal differential equations, Fourier-feature
-  networks, spectral-bias diagnosis, custom residual formulations, multi-start
-  and two-stage (Adam → L-BFGS) optimisation.
-- **Bayesian inference** — Hamiltonian Monte Carlo over network weights and
-  over physical parameters, calibration and coverage checks, ESS diagnostics.
-- **Inverse problems & identifiability** — Fisher information, profile
-  likelihood, Morris / Sobol global sensitivity, ill-posedness analysis.
-- **Experimental design** — pre-registered predictions, information-matched
-  control arms, dose-response with confounders held fixed, honest reporting of
-  failed predictions.
-- **Engineering** — reproducible timestamped runs, GPU training pipelines,
-  multi-hour unattended experiment queues managed under tmux, LaTeX paper
-  and presentation built from the repo's own outputs.
-
----
-
-## Repository map
-
-| Folder | What it is |
+| Directory | Contents |
 |---|---|
-| `PINN-smaller/forward-pinn-train-hybrid/` | Forward PINN — sparse-data solve (40 obs + IC + physics) |
-| `PINN-smaller/forward_pinn_train/` | Forward PINN — dense-label baseline |
-| `PINN-inverse-solve/` → `-better/` → `-multicond/` | The inverse chain: 2 → 36 params, multi-condition, the classical ODE-fit |
-| `PINN-inverse-multicond-excite/` | The **information lever** — WNT/MYC-exciting conditions |
-| `PINN-inverse-pinn-boost/` | The **integral-residual** PINN that breaks the derivative-bias ceiling |
-| `PINN-fisher-matrix/`, `-top8/` | Fisher-information identifiability (36-param and 8-param contrast) |
-| `PINN-bayesian/`, `PINN-forward-bayesian/` | Bayesian inverse and forward PINNs (HMC) |
-| `PINN-hybrid-ude/` | Neural-mechanistic hybrids — 13 learnable edges, edge screen, anchor-visiting experiments |
-| `PINN/` | Original notebooks + `run_sa_7ode.py` sensitivity analysis (CSV tables in `sa_results/`) |
-| `network-diagram/` | The regulatory-network schematic (TikZ) |
-| `docs/figures/` | The figures used on this page |
+| `PINN-smaller/forward-pinn-train-hybrid/` | Sparse-data forward PINN |
+| `PINN-smaller/forward_pinn_train/` | Supervised forward baseline |
+| `PINN-inverse-solve/` | Historical inverse baseline; preserved unchanged |
+| `PINN-inverse-multicond/` | Multi-condition inverse PINN and classical ODE fitting |
+| `PINN-inverse-multicond-excite/` | WNT and MYC perturbation experiments |
+| `PINN-inverse-pinn-boost/` | Integral-residual inverse PINN |
+| `PINN-fisher-matrix/`, `PINN-fisher-matrix-top8/` | Full and reduced Fisher analyses |
+| `PINN-bayesian/`, `PINN-forward-bayesian/` | Inverse and forward HMC experiments |
+| `PINN-hybrid-ude/` | Learned regulatory terms and intervention screens |
+| `PINN/` | Original notebooks and sensitivity-analysis tables |
+| `network-diagram/` | TikZ regulatory schematic |
+| `research-paper/` | LaTeX manuscript |
+| `docs/figures/` | Figures used in this README |
 
----
+## Running experiments
 
-## Running it
+The Python environment is recorded in
+[`requirements-lock.txt`](requirements-lock.txt). Training uses PyTorch and
+CUDA when available. Run experiments in tmux and record each session in
+[`AGENTS.md`](AGENTS.md) immediately after launch.
 
-Every experiment folder ships a `run.sh` that creates a timestamped
-`runs/<...>/` directory and streams a training log:
-
-```bash
-cd PINN-inverse-pinn-boost
-bash run.sh                     # writes runs/<timestamp>/train.log
-```
-
-The hybrid folder also has a fast per-equation screen:
+From the repository root, with the Python environment active, launch the
+integral inverse PINN with two starts per regime:
 
 ```bash
-cd PINN-hybrid-ude
-python3 anchor_report.py                                  # is each f(0)=0 anchor observed?
-python3 screen_terms.py --out runs/screen --terms all     # the edge atlas
-bash run_hybrid.sh bm_myc__sc 3                           # one edge, full pipeline, 3 restarts
+tmux new-session -d -s pinn_inverse -c "$PWD/PINN-inverse-pinn-boost"
+tmux send-keys -t pinn_inverse 'bash run_boost.sh integral 2' C-m
+tmux attach -t pinn_inverse
 ```
 
-Fisher-matrix analyses run on CPU; PINN training uses CUDA when available. A
-pinned environment is in [`requirements-lock.txt`](requirements-lock.txt).
+The runner creates `PINN-inverse-pinn-boost/runs/<timestamp>_integral/` with
+per-regime logs, checkpoints and a summary. It launches all four regimes in
+parallel; CPU thread allocation is set in `run_boost.sh`.
 
----
+For a MYC hybrid run with three starts, also from the repository root:
+
+```bash
+tmux new-session -d -s pinn_hybrid -c "$PWD/PINN-hybrid-ude"
+tmux send-keys -t pinn_hybrid 'bash run_hybrid.sh bm_myc 3' C-m
+tmux attach -t pinn_hybrid
+```
+
+In `PINN-hybrid-ude/`, `anchor_report.py` checks the regulator ranges covered
+by the reference data, and `screen_terms.py` fits individual equations.
+Its `--help` lists the available screening options.
 
 ## Author
 
-Amirkhan Aidarkhan (Swarthmore College) — research project, May–August 2026.
-Questions and collaboration welcome: <aaidark1@swarthmore.edu> ·
-<amirkhanaidarkhan06@gmail.com>.
+Amirkhan Aidarkhan, Swarthmore College.
+Contact: <aaidark1@swarthmore.edu> · <amirkhanaidarkhan06@gmail.com>.
