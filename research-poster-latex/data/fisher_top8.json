@@ -1,0 +1,78 @@
+{
+  "parameters": [
+    "lambdaC",
+    "etaBM",
+    "kappaBM",
+    "kappaBC",
+    "etaBC",
+    "etaRC",
+    "kappaB13",
+    "kappaR"
+  ],
+  "summaries": [
+    {
+      "regime": "Normal",
+      "n_obs": 14000,
+      "K": 8,
+      "sigma": 0.002,
+      "cond_number": 99.65520928256512,
+      "eig_max": 914428766.8191324,
+      "eig_min": 9175925.407234216,
+      "n_null_directions": 0,
+      "n_ident": 8,
+      "n_weak": 0,
+      "n_nonident": 0,
+      "nonident_params": [],
+      "n_correlated_pairs": 0,
+      "top_correlated_pairs": []
+    },
+    {
+      "regime": "Early Adenoma",
+      "n_obs": 14000,
+      "K": 8,
+      "sigma": 0.002,
+      "cond_number": 120.89897516773624,
+      "eig_max": 862400850.5621378,
+      "eig_min": 7133235.408866252,
+      "n_null_directions": 0,
+      "n_ident": 8,
+      "n_weak": 0,
+      "n_nonident": 0,
+      "nonident_params": [],
+      "n_correlated_pairs": 0,
+      "top_correlated_pairs": []
+    },
+    {
+      "regime": "Advanced Adenoma",
+      "n_obs": 14000,
+      "K": 8,
+      "sigma": 0.002,
+      "cond_number": 229.40605843735207,
+      "eig_max": 920368453.7449943,
+      "eig_min": 4011962.2821397083,
+      "n_null_directions": 0,
+      "n_ident": 8,
+      "n_weak": 0,
+      "n_nonident": 0,
+      "nonident_params": [],
+      "n_correlated_pairs": 0,
+      "top_correlated_pairs": []
+    },
+    {
+      "regime": "Severe APC Loss",
+      "n_obs": 14000,
+      "K": 8,
+      "sigma": 0.002,
+      "cond_number": 665.1967588828089,
+      "eig_max": 966537192.7198083,
+      "eig_min": 1453009.4739834536,
+      "n_null_directions": 0,
+      "n_ident": 8,
+      "n_weak": 0,
+      "n_nonident": 0,
+      "nonident_params": [],
+      "n_correlated_pairs": 0,
+      "top_correlated_pairs": []
+    }
+  ]
+}

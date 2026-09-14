@@ -1,0 +1,21 @@
+{
+  "pages": 1,
+  "size_inches": [
+    48.0,
+    36.0
+  ],
+  "visible_words": 953,
+  "fonts_embedded": true,
+  "overfull_boxes": 0,
+  "text_outside_page": [],
+  "text_inside_trim_margin": [],
+  "raster_images_on_page": 0,
+  "original_model_schematic_unchanged": true,
+  "column_heights": [
+    "POSTER-HEIGHT title: 204.185pt; limit 3.0in",
+    "POSTER-HEIGHT left: 2033.82721pt; limit \\BodyHeight ",
+    "POSTER-HEIGHT middle: 2030.07253pt; limit \\BodyHeight ",
+    "POSTER-HEIGHT right: 2030.82187pt; limit \\BodyHeight ",
+    "POSTER-HEIGHT footer: 128.08pt; limit 1.95in"
+  ]
+}

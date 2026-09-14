@@ -1,0 +1,103 @@
+{
+  "run": "PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546",
+  "checkpoint_sha256": {
+    "Normal": "01095fe210602da097440a43c6349f3c7995e2c68b93ddb0f749c98549f32247",
+    "Early Adenoma": "153a0b0d71b6bebedb96befd3374f7d945e12b570d9f9cdacb233384dd43450d",
+    "Advanced Adenoma": "3697f5a8539333be7300884d1d476724cff3c92e5534fcd736214f8bc9938d15",
+    "Severe APC Loss": "c5ce28b3cba51a878a3471402b1310ad3cf6d5ba0de482943e84280ea5af4c1a"
+  },
+  "state_order": [
+    "b",
+    "p",
+    "h5",
+    "h13",
+    "m",
+    "r",
+    "c"
+  ],
+  "reference": {
+    "solver": "Radau",
+    "rtol": 1e-10,
+    "atol": 1e-12
+  },
+  "t_span": [
+    0,
+    150
+  ],
+  "n_plot_points": 6000,
+  "n_training_observations": 40,
+  "pulse": [
+    40.0,
+    88.0
+  ],
+  "baseline": {
+    "W": 0.8,
+    "thetaP": 1.0,
+    "nB": 2,
+    "nM": 2,
+    "nH": 2,
+    "eta13": 0.75,
+    "kappa13": 0.55,
+    "lambdaP": 1.6,
+    "lambda5": 1.3,
+    "kappa5": 0.5,
+    "epsP": 1.0,
+    "rho5": 1.1,
+    "rhoB": 1.1,
+    "rho13": 1.3,
+    "deltaP1": 3.5,
+    "eps5": 1.2,
+    "a5": 0.15,
+    "etaR": 2.5,
+    "kappaR": 0.4,
+    "etaM": 2.5,
+    "kappaM": 0.5,
+    "eps13": 1.0,
+    "a13": 0.18,
+    "etaB13": 0.95,
+    "kappaB13": 0.5,
+    "etaM13": 0.55,
+    "kappaM13": 0.5,
+    "epsM": 0.6,
+    "aM": 0.18,
+    "etaBM": 1.35,
+    "kappaBM": 0.5,
+    "epsR": 0.4,
+    "lambdaC": 0.85,
+    "epsC": 0.8,
+    "aC": 0.08,
+    "etaRC": 1.5,
+    "kappaRC": 0.5,
+    "etaBC": 1.5,
+    "kappaBC": 0.5,
+    "mu0": 0.35,
+    "AR": 0.04,
+    "TR": 24.0,
+    "phi": 0.0,
+    "DR": 1.5,
+    "q": 0.3,
+    "tau1": 40.0,
+    "tau2": 88.0,
+    "alpha13": 1.0,
+    "alpha5": 1.0
+  },
+  "regimes": {
+    "Normal": {
+      "W": 0.8,
+      "thetaP": 1.0
+    },
+    "Early Adenoma": {
+      "W": 1.0,
+      "thetaP": 0.75
+    },
+    "Advanced Adenoma": {
+      "W": 1.5,
+      "thetaP": 0.5
+    },
+    "Severe APC Loss": {
+      "W": 2.0,
+      "thetaP": 0.25
+    }
+  },
+  "trained_during_export": false
+}
