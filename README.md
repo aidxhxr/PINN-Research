@@ -94,7 +94,10 @@ On the 34 parameters shared by the hybrid and mechanistic control, recovery
 within 10% of truth falls from 48 to 43 out of 136 parameter–regime pairs.
 Function accuracy and parameter recovery therefore need separate evaluation.
 
-![Learned regulatory term compared with the true mechanism](docs/figures/hybrid_learned_term.png)
+![RA to HOXA5 hybrid with depletion conditions](docs/figures/hybrid_learned_term.png)
+
+This separate RA-to-HOXA5 example uses RA and WNT depletion conditions.
+The MYC comparison above uses the joint hybrid runs recorded in the result registry.
 
 An anchor at `f(0)=0` can leave basal production ambiguous when the data never
 approach zero. On the observed range, an offset in the learned function can
@@ -124,53 +127,57 @@ document the runs, metrics and limitations behind the reported results.
 
 ## Repository layout
 
-| Directory | Contents |
+| Path | Contents |
 |---|---|
-| `PINN-smaller/forward-pinn-train-hybrid/` | Sparse-data forward PINN |
-| `PINN-smaller/forward_pinn_train/` | Supervised forward baseline |
-| `PINN-inverse-solve/` | Historical inverse baseline; preserved unchanged |
-| `PINN-inverse-multicond/` | Multi-condition inverse PINN and classical ODE fitting |
-| `PINN-inverse-multicond-excite/` | WNT and MYC perturbation experiments |
-| `PINN-inverse-pinn-boost/` | Integral-residual inverse PINN |
-| `PINN-fisher-matrix/`, `PINN-fisher-matrix-top8/` | Full and reduced Fisher analyses |
-| `PINN-bayesian/`, `PINN-forward-bayesian/` | Inverse and forward HMC experiments |
-| `PINN-hybrid-ude/` | Learned regulatory terms and intervention screens |
-| `PINN/` | Original notebooks and sensitivity-analysis tables |
-| `network-diagram/` | TikZ regulatory schematic |
-| `research-paper/` | LaTeX manuscript |
-| `docs/figures/` | Figures used in this README |
+| `src/wnt_pinn/` | Shared equations and networks, experiment runner, reporting and artifact tools |
+| `configs/` | Validated experiment profiles, including a small CPU example |
+| `tests/` | Numerical parity, parameter scoring, archive integrity and resume checks |
+| `results/registry.json` | Source hashes, metrics and limitations for reported results |
+| `artifacts/catalog.json` | Inventory of preserved checkpoints and run outputs |
+| `publications/catalog.json` | Build recipes and result dependencies for papers, posters and slides |
+| `docs/` | Installation, model, experiment and reproduction guides |
+| `PINN-*/` | Active compatibility entrypoints and historical experiments |
 
-## Running experiments
+The [research index](docs/research-index.md) identifies supported and historical
+work. The [model guide](docs/model.md) documents numerical conventions.
+`PINN-inverse-solve/` is the preserved historical baseline.
 
-The Python environment is recorded in
-[`requirements-lock.txt`](requirements-lock.txt). Training uses PyTorch and
-CUDA when available. Run experiments in tmux and record each session in
-[`AGENTS.md`](AGENTS.md) immediately after launch.
+## Install and reproduce
 
-From the repository root, with the Python environment active, launch the
-integral inverse PINN with two starts per regime:
+From the repository root, create an environment and install the CPU research
+tools. GPU setup and the TeX toolchain are described in the
+[installation guide](docs/installation.md).
 
 ```bash
-tmux new-session -d -s pinn_inverse -c "$PWD/PINN-inverse-pinn-boost"
-tmux send-keys -t pinn_inverse 'bash run_boost.sh integral 2' C-m
-tmux attach -t pinn_inverse
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e '.[ml,dev,publications]'
+make check
+wnt-pinn reproduce --all
 ```
 
-The runner creates `PINN-inverse-pinn-boost/runs/<timestamp>_integral/` with
-per-regime logs, checkpoints and a summary. It launches all four regimes in
-parallel; CPU thread allocation is set in `run_boost.sh`.
+Reproduction recomputes registered saved results and writes reports with input
+hashes. It does not retrain the models. The
+[reproduction guide](docs/reproduction.md) distinguishes metric checks, original
+figure snapshots, and the one historical result transcribed from research notes.
 
-For a MYC hybrid run with three starts, also from the repository root:
+Launch new training in tmux and record the session in [AGENTS.md](AGENTS.md):
 
 ```bash
-tmux new-session -d -s pinn_hybrid -c "$PWD/PINN-hybrid-ude"
-tmux send-keys -t pinn_hybrid 'bash run_hybrid.sh bm_myc 3' C-m
-tmux attach -t pinn_hybrid
+tmux new-session -d -s pinn_smoke -c "$PWD"
+tmux send-keys -t pinn_smoke '.venv/bin/wnt-pinn run configs/smoke_cpu.json' C-m
+tmux attach -t pinn_smoke
 ```
 
-In `PINN-hybrid-ude/`, `anchor_report.py` checks the regulator ranges covered
-by the reference data, and `screen_terms.py` fits individual equations.
-Its `--help` lists the available screening options.
+The [experiment guide](docs/experiments.md) covers full configurations, independent
+seeds, resource limits, run manifests and resume. New runs use timestamped
+subdirectories of `runs/`.
+
+`make posters` builds both posters in isolated directories using saved arrays.
+The reviewed PDFs remain available through the links above. See the
+[artifact guide](docs/artifacts.md) for restoring archived research files and
+[contribution guide](CONTRIBUTING.md) for checks and review requirements.
 
 ## Author
 
