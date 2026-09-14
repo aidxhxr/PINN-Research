@@ -1,0 +1,50 @@
+[
+  {
+    "regime": "normal",
+    "parameter": "etaBM",
+    "draws": 2000,
+    "truth": 1.35,
+    "mean": 1.3493004080551874,
+    "ess": 12.097717655655625
+  },
+  {
+    "regime": "normal",
+    "parameter": "kappaBM",
+    "draws": 2000,
+    "truth": 0.5,
+    "mean": 0.49968642973175775,
+    "ess": 6.607727571871967
+  },
+  {
+    "regime": "normal",
+    "parameter": "kappaR",
+    "draws": 2000,
+    "truth": 0.4,
+    "mean": 0.50261709516326,
+    "ess": 4.915780109853474
+  },
+  {
+    "regime": "severe",
+    "parameter": "etaBM",
+    "draws": 2000,
+    "truth": 1.35,
+    "mean": 1.1556867564803015,
+    "ess": 3.490470463286847
+  },
+  {
+    "regime": "severe",
+    "parameter": "aM",
+    "draws": 2000,
+    "truth": 0.18,
+    "mean": 0.3660370079383915,
+    "ess": 3.968642165953547
+  },
+  {
+    "regime": "severe",
+    "parameter": "lambdaP",
+    "draws": 2000,
+    "truth": 1.6,
+    "mean": 0.24047112114449137,
+    "ess": 6.248098909622075
+  }
+]

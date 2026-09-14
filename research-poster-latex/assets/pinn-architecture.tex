@@ -1,0 +1,87 @@
+% Editable vector schematic of the integral inverse PINN; neuron counts abbreviated.
+% Architecture checked against PINN-inverse-pinn-boost/model.py and training.py.
+\begingroup
+\begin{tikzpicture}[x=1in,y=1in,
+  font=\fontsize{24}{29}\selectfont,
+  connection/.style={line width=.85pt,draw=Garnet!26},
+  flow/.style={-{Stealth[length=8pt,width=7pt]},line width=1.7pt,draw=Ink!70},
+  neuron/.style={circle,minimum size=14pt,inner sep=0pt,
+    draw=Garnet,line width=1.3pt,fill=Garnet!75},
+  state/.style={circle,minimum size=14pt,inner sep=0pt,
+    draw=DataBlue,line width=1.3pt,fill=DataBlue!18},
+  loss/.style={rounded corners=8pt,minimum width=2.55in,
+    minimum height=.80in,align=center,inner sep=5pt,line width=1.4pt}]
+\path[use as bounding box] (0,0) rectangle (14.6,4.45);
+
+% A prominent, fully connected neural network, with four hidden layers.
+\filldraw[rounded corners=12pt,fill=Garnet!4,draw=Garnet!20,line width=1pt]
+  (3.50,.94) rectangle (8.55,4.42);
+\node[font=\bfseries\fontsize{30}{36}\selectfont,text=Garnet]
+  at (6.025,4.05) {NEURAL NETWORK};
+\node[font=\fontsize{24}{29}\selectfont] at (6.025,1.15)
+  {4 hidden layers $\times$ 256\enspace\textbullet\enspace GELU};
+\foreach \layer/\x in {1/4.05,2/5.35,3/6.65,4/7.95}{
+  \foreach \j/\y in {1/3.47,2/3.03,3/2.59,4/1.70}
+    \coordinate (h-\layer-\j) at (\x,\y);
+}
+\foreach \layer/\next in {1/2,2/3,3/4}
+  \foreach \i in {1,...,4}
+    \foreach \j in {1,...,4}
+      \draw[connection] (h-\layer-\i) -- (h-\next-\j);
+
+% Time is lifted to a fixed bank of 33 Fourier features.
+\node at (.48,3.22) {Time};
+\node[circle,draw=Ink!65,line width=1.6pt,minimum size=.48in,
+  inner sep=0pt,font=\fontsize{30}{36}\selectfont] (time) at (.48,2.70) {$\tau$};
+\filldraw[rounded corners=8pt,fill=PaleBlue,draw=DataBlue!45,line width=1.4pt]
+  (1.24,1.70) rectangle (3.17,3.67);
+\node[font=\bfseries\fontsize{25}{30}\selectfont] at (2.205,3.25) {Fourier};
+\node[font=\fontsize{34}{40}\selectfont,text=DataBlue] at (2.205,2.70) {$\gamma(s)$};
+\node at (2.205,2.08) {33 inputs};
+\node at (2.205,1.18) {$s=\tau/T$};
+\draw[flow] (time.east) -- (1.20,2.70);
+\foreach \j in {1,...,4}
+  \draw[connection,draw=DataBlue!45] (3.17,2.70) -- (h-1-\j);
+
+% Seven outputs retain the model's canonical state order.
+\node[font=\bfseries\fontsize{26}{32}\selectfont] at (9.94,4.05) {7 states};
+\foreach \j/\y in {1/3.57,2/3.22,3/2.87,4/2.52,5/2.17,6/1.82,7/1.47}
+  \coordinate (out-\j) at (9.50,\y);
+\foreach \i in {1,...,4}
+  \foreach \j in {1,...,7}
+    \draw[connection,draw=DataBlue!38] (h-4-\i) -- (out-\j);
+\draw[draw=Ink!45,line width=1.1pt] (10.95,1.34) -- (10.95,3.58);
+\foreach \j/\label in {1/b,2/p,3/h_5,4/h_{13},5/m,6/r,7/c}{
+  \draw[draw=Ink!35,line width=1.0pt] (out-\j) -- (10.95,0 |- out-\j);
+  \node[state] at (out-\j) {};
+  \node[anchor=west,fill=white,inner xsep=5pt,inner ysep=0pt]
+    at ([xshift=.18in]out-\j) {$\widehat{\label}$};
+}
+\foreach \layer in {1,...,4}{
+  \foreach \j in {1,...,4}
+    \node[neuron] at (h-\layer-\j) {};
+  \node[text=Garnet,font=\fontsize{26}{29}\selectfont]
+    at (h-\layer-1 |- 0,2.16) {$\vdots$};
+}
+
+% Predictions feed all three forward losses; their sum trains the weights.
+\node[loss,draw=DataBlue!60,fill=PaleBlue] (data) at (12.60,3.50)
+  {\textbf{Data fit}\\$\mathcal L_{\rm data}$};
+\node[loss,draw=Muted!55,fill=Paper] (initial) at (12.60,2.42)
+  {\textbf{Initial state}\\$20\mathcal L_{\rm IC}$};
+\node[loss,draw=Garnet!65,fill=Garnet!7] (physics) at (12.60,1.34)
+  {\textbf{Integral ODE}\\$\lambda_{\rm phys}\mathcal L_{\rm phys}$};
+\foreach \name/\y in {data/3.50,initial/2.42,physics/1.34}{
+  \draw[flow] (10.95,\y) -- (\name.west);
+  \draw[draw=Garnet!65,line width=1.5pt] (\name.east) -- (14.23,\y);
+}
+\draw[draw=Garnet!65,line width=1.5pt] (14.23,3.50) -- (14.23,.47);
+\node[circle,draw=Garnet,fill=white,inner sep=2pt,
+  font=\fontsize{24}{29}\selectfont] (sum) at (14.23,.47) {$\Sigma$};
+\draw[flow,draw=Garnet] (sum.west) -- (6.025,.47) -- (6.025,.91);
+\node[fill=white,inner sep=4pt,font=\fontsize{24}{29}\selectfont,text=Garnet]
+  at (10.00,.47) {Backpropagation\enspace\textbullet\enspace Adam $\to$ L-BFGS};
+\node[font=\fontsize{25}{31}\selectfont] at (2.91,.47)
+  {$\mathcal L=\mathcal L_{\rm data}+\lambda_{\rm phys}\mathcal L_{\rm phys}+20\mathcal L_{\rm IC}$};
+\end{tikzpicture}%
+\endgroup

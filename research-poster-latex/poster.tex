@@ -1,0 +1,309 @@
+% !TeX program = lualatex
+% Poster B: poster-fable's research content, typeset natively in three columns.
+% The original regulatory schematic is included unchanged.
+\documentclass[final]{beamer}
+\usepackage[size=custom,width=121.92,height=91.44,scale=1.0]{beamerposter}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta}
+\usefonttheme{professionalfonts}
+\defaultfontfeatures{Ligatures=TeX}
+\setsansfont{TeX Gyre Heros}
+\setmainfont{TeX Gyre Pagella}
+\newfontfamily\Display{TeX Gyre Pagella}
+\definecolor{Ink}{HTML}{152A3A}
+\definecolor{Muted}{HTML}{596570}
+\definecolor{Garnet}{HTML}{78253B}
+\definecolor{Paper}{HTML}{F5F3EF}
+\definecolor{Rule}{HTML}{D4CDC7}
+\definecolor{PaleBlue}{HTML}{ECF2F6}
+\definecolor{DataBlue}{HTML}{1F77B4}
+\definecolor{DataOrange}{HTML}{FF7F0E}
+\definecolor{DataRed}{HTML}{CC3333}
+\setbeamercolor{normal text}{fg=Ink,bg=Paper}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\hypersetup{pdftitle={Physics-informed neural networks: dynamics and parameter recovery for a WNT-RA-HOX model of colorectal cancer stemness},
+ pdfauthor={Nathaniel Kim; Pascal Kataboh},colorlinks=true,urlcolor=Ink}
+\title{Physics-informed neural networks: dynamics and parameter recovery for a WNT-RA-HOX model of colorectal cancer stemness}
+\newlength{\Margin}\setlength{\Margin}{1.1in}
+\newlength{\Gutter}\setlength{\Gutter}{.75in}
+\newlength{\LeftWidth}\setlength{\LeftWidth}{15.1in}
+\newlength{\MiddleWidth}\setlength{\MiddleWidth}{14.6in}
+\newlength{\RightWidth}\setlength{\RightWidth}{14.6in}
+\newlength{\LiveWidth}\setlength{\LiveWidth}{45.8in}
+\newlength{\BodyTop}\setlength{\BodyTop}{4.6in}
+\newlength{\BodyHeight}\setlength{\BodyHeight}{28.15in}
+\newlength{\FooterTop}\setlength{\FooterTop}{33.1in}
+\newcommand{\BodyFont}{\fontsize{28}{36}\selectfont}
+\newcommand{\CaptionFont}{\fontsize{24}{31}\selectfont}
+\newcommand{\TableFont}{\fontsize{26}{34}\selectfont}
+\newcommand{\SectionTitle}[2]{%
+  \noindent\begingroup\setlength{\fboxsep}{16pt}%
+  \colorbox{Garnet}{\parbox{\dimexpr\linewidth-32pt\relax}{%
+    \Display\bfseries\color{white}\fontsize{35}{43}\selectfont
+    #1\enspace #2}}%
+  \endgroup\par\vspace{16pt}}
+\newcommand{\Subhead}[1]{\par\vspace{18pt}%
+  {\Display\bfseries\color{Garnet}\fontsize{33}{40}\selectfont #1\par}%
+  \vspace{6pt}{\color{Rule}\hrule height 1pt}\vspace{12pt}}
+\newcommand{\Caption}[1]{\par\vspace{7pt}{\CaptionFont #1\par}}
+\newsavebox{\MathBox}
+\newcommand{\Equation}[2]{\par\vspace{9pt}\begingroup
+  \fontsize{32}{42}\selectfont
+  \sbox{\MathBox}{$\displaystyle #2$}%
+  \ifdim\wd\MathBox>\dimexpr\linewidth-68pt\relax
+    \PackageError{poster}{Equation #1 is too wide}{Break the equation into aligned lines.}
+  \fi
+  \noindent\makebox[\linewidth]{\usebox{\MathBox}}\llap{\CaptionFont(#1)}%
+  \par\endgroup\vspace{8pt}}
+\newcommand{\Note}[1]{\par\vspace{12pt}\begingroup\setlength{\fboxsep}{17pt}%
+  \colorbox{PaleBlue}{\parbox{\dimexpr\linewidth-34pt\relax}{\BodyFont #1}}%
+  \endgroup\par}
+\newcommand{\PanelStart}[1]{%
+  \begin{minipage}[t]{#1}\BodyFont\raggedright
+  \setlength{\parindent}{0pt}\setlength{\parskip}{5pt}%
+  \setlength{\abovedisplayskip}{8pt}\setlength{\belowdisplayskip}{8pt}%
+  \setlength{\abovedisplayshortskip}{0pt}\setlength{\belowdisplayshortskip}{6pt}}
+\newcommand{\PanelEnd}{\end{minipage}}
+\newsavebox{\TitleBox}\newsavebox{\LeftColumn}
+\newsavebox{\MiddleColumn}\newsavebox{\RightColumn}\newsavebox{\FooterBox}
+\newcommand{\CheckHeight}[3]{%
+  \typeout{POSTER-HEIGHT #1: \the\dimexpr\ht#2+\dp#2\relax; limit #3}%
+  \ifdim\dimexpr\ht#2+\dp#2\relax>#3\relax
+    \PackageError{poster}{#1 exceeds its allotted height}{Shorten content or adjust layout.}
+  \fi}
+\begin{document}
+\input{assets/tables.tex}
+\sbox{\TitleBox}{\begin{minipage}{\LiveWidth}\centering\color{white}
+  {\Display\bfseries\fontsize{76}{88}\selectfont
+  Physics-informed neural networks: dynamics and parameter recovery\\
+  for a WNT–RA–HOX model of colorectal cancer stemness\par}
+  \vspace{22pt}
+  {\fontsize{31}{39}\selectfont
+  Nathaniel Kim\enspace\textperiodcentered\enspace Pascal Kataboh\par}
+\end{minipage}}
+
+% ==================== 1. MODEL ====================
+\sbox{\LeftColumn}{\PanelStart{\LeftWidth}
+\SectionTitle{01}{Model \& formulation}
+\textbf{From signaling to stemness.}
+Seven ODEs connect WNT, APC and retinoic-acid regulation.
+We study dynamics, parameter recovery and uncertainty.
+\par\vspace{13pt}
+\begin{minipage}[c]{8.1in}
+  \includegraphics[width=\linewidth]{assets/model-original.pdf}
+\end{minipage}\hfill
+\begin{minipage}[c]{6.55in}
+{\Display\bfseries\fontsize{29}{37}\selectfont Disease regimes\par}
+\vspace{10pt}
+{\fontsize{25}{33}\selectfont\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{9pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
+\toprule
+Regime & $W$ & $\theta_P$\\
+\midrule
+Normal & 0.8 & 1.00\\
+Early & 1.0 & 0.75\\
+Advanced & 1.5 & 0.50\\
+Severe APC loss & 2.0 & 0.25\\
+\bottomrule
+\end{tabular*}\par}
+\Caption{$W$: WNT drive.\\$\theta_P$: APC functionality.}
+\vspace{19pt}
+{\Display\bfseries\fontsize{29}{37}\selectfont Seven states\par}
+\Caption{$\mathbf z=(b,p,h_5,h_{13},m,r,c)$\\
+$b$: $\beta$-catenin;\enspace $p$: APC\\
+$h_5,h_{13}$: HOXA5, HOXA13\\
+$m$: MYC;\enspace $r$: RA;\enspace $c$: CYP26A1}
+\end{minipage}
+\Caption{\textbf{Fig. 1.} Regulatory network. Green: activation; red: inhibition;
+blue dashed: mediation. Early and Advanced denote adenoma.}
+
+\Subhead{Nondimensionalization}
+Scale concentrations by characteristic values and time by
+$\beta$-catenin turnover, $d_B=1\,\mathrm{h}^{-1}$:
+\Equation{1}{X=X_\ast x,\qquad \tau=d_Bt,\qquad
+\varepsilon_X=\frac{d_B}{d_X}.}
+\Caption{Hill activation: $H_n(u;\kappa)=u^n/(\kappa^n+u^n)$.
+A dot below denotes $d/d\tau$.}
+\par\vspace{9pt}
+\Equation{2}{
+\begin{aligned}
+\dot b &=
+ W+\eta_{13}H_{n_H}(h_{13};\kappa_{13})
+ -b-\lambda_Ppb-\lambda_5\frac{h_5b}{\kappa_5+b},
+ \\[4pt]
+\varepsilon_P\dot p &=
+ \frac{1+\rho_5h_5}{1+\rho_Bb+\rho_{13}h_{13}}-D_P(\theta_P)p,
+ \\[4pt]
+\varepsilon_5\dot h_5 &=
+ a_5+\eta_RH_1(r;\kappa_R)-h_5-\eta_M\frac{mh_5}{\kappa_M+m},
+ \\[4pt]
+\varepsilon_{13}\dot h_{13} &=
+ a_{13}+\eta_{B13}H_{n_B}(b;\kappa_{B13})
+ +\eta_{M13}H_{n_M}(m;\kappa_{M13})-h_{13},
+ \\[4pt]
+\varepsilon_M\dot m &=
+ a_M+\eta_{BM}H_{n_B}(b;\kappa_{BM})-m,
+ \\[4pt]
+\varepsilon_R\dot r &= \mu_R(\tau)-r-\lambda_Ccr,
+ \\[4pt]
+\varepsilon_C\dot c &=
+ a_C+\eta_{RC}H_1(r;\kappa_{RC})+\eta_{BC}H_{n_B}(b;\kappa_{BC})-c .
+\end{aligned}}
+
+\Subhead{APC loss and retinoid forcing}
+\Equation{3}{\begin{aligned}
+D_P(\theta_P)&=1+\delta_{P1}(1-\theta_P),\\[8pt]
+\mu_R(\tau)&=\mu_0+A_R\!\left[1+\cos\!\left(\frac{2\pi\tau}{T_R}-\varphi\right)\right]\\[8pt]
+&\quad+\frac{D_R}{2}
+\left[\tanh q(\tau-\tau_1)-\tanh q(\tau-\tau_2)\right].
+\end{aligned}}
+\Caption{Reference: Radau on $\tau\in[0,150]$; ATRA pulse $[40,88]$.
+Relative timescales $\varepsilon_R=0.40$, $\varepsilon_M=0.60$ produce mild stiffness.}
+
+\Note{\textbf{Derived readout: stemness}
+\[
+S(\tau)=\frac{b(1+\alpha_{13}h_{13})}{(1+p)(1+\alpha_5h_5)},
+\qquad \alpha_5=\alpha_{13}=1.
+\]
+\CaptionFont Higher $S$ represents greater stemness in this model.}
+\PanelEnd}
+
+% ==================== 2. DYNAMICS AND PINNs ====================
+\sbox{\MiddleColumn}{\PanelStart{\MiddleWidth}
+\SectionTitle{02}{Dynamics \& PINN reconstruction}
+\textbf{Normal regime:} $W=0.8$, $\theta_P=1$; MYC and APC share each axis.
+\par\vspace{10pt}\noindent\input{assets/normal_reference-window.tex}\par
+\Caption{\textbf{Fig. 2.} Radau solutions; baseline circadian forcing
+$A_R=0.04$ in both panels.}
+
+\par\vspace{15pt}
+\noindent\input{assets/pinn-architecture.tex}\par
+\Equation{4}{\mathbf r_k=\widehat{\mathbf z}_{k+1}-\widehat{\mathbf z}_k
+-\frac{\Delta\tau_k}{2}\big(\mathbf F_k+\mathbf F_{k+1}\big).}
+\Caption{Ten state networks share 36 parameters; 150 times/condition ($\sigma=0.002$).
+Relative state weights; adaptive $\lambda_{\rm phys}$; two starts.\textsuperscript{1,2}}
+\par\vspace{9pt}\noindent\input{assets/normal_pinn-window.tex}\par
+\Caption{\textbf{Fig. 3.} Saved inverse-PINN fits (dashed) and Radau (solid).
+Relative $L^2$ errors, MYC/APC: untreated \UntreatedMYCError/\UntreatedAPCError\%;
+treated \TreatedMYCError/\TreatedAPCError\%.}
+
+\par\vspace{12pt}\includegraphics[width=\linewidth]{assets/normal_training.pdf}
+\Caption{\textbf{Fig. 4.} Saved Adam checkpoints from the selected Normal run;
+losses average ten conditions. Final fits also include L-BFGS.}
+
+\par\vspace{10pt}
+{\Display\bfseries\fontsize{30}{38}\selectfont Parameters within 10\% of truth\par}
+\vspace{7pt}
+{\TableFont\renewcommand{\arraystretch}{1.10}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
+\toprule
+Method & Normal & Early & Advanced & Severe & Total\\
+\midrule
+Autodiff & 16 & 9 & 6 & 6 & \AutodiffTotal\\
+Integral & 17 & 16 & 10 & 7 & \IntegralTotal\\
+\bottomrule
+\end{tabular*}\par}
+\Caption{\textbf{Table 1.} Ten conditions per method: 37 $\to$ 50 of 144 parameter--regime pairs.
+The gain belongs to the integral implementation as a whole.}
+\PanelEnd}
+
+% ==================== 3. DIAGNOSTICS AND UDEs ====================
+\sbox{\RightColumn}{\PanelStart{\RightWidth}
+\SectionTitle{03}{Identifiability \& Bayesian uncertainty}
+\Subhead{Fisher information and parameter recovery}
+Local sensitivities at truth: 7 states, 10 conditions and 200 times.
+\Equation{5}{\mathcal I=\sigma^{-2}J^{\mathsf T}J,\qquad
+J_{ki}=\frac{\partial y_k}{\partial\log\theta_i},\qquad \sigma=0.002.}
+\par\vspace{8pt}\noindent\hfill
+\includegraphics[width=14.0in]{assets/fisher.pdf}\hfill\null
+\Caption{\textbf{Fig. 5.} Severe-regime
+$C_{ij}=\mathcal I_{ij}/\sqrt{\mathcal I_{ii}\mathcal I_{jj}}$:
+$|C_{ij}|\approx1$ signals overlapping sensitivities.
+Each regime has \textbf{one near-null direction} ($\lambda<1$); plotting floor $10^{-4}$.}
+
+\Subhead{Bayesian parameter distributions}
+Frozen-state HMC samples all 36 parameters using the integral likelihood.\textsuperscript{3}
+\par\vspace{8pt}\includegraphics[width=\linewidth]{assets/presentation_marginals.pdf}
+\Caption{\textbf{Fig. 6.} Presentation marginals (2000 draws/regime): narrow distributions can miss truth.}
+\Caption{\textbf{Calibration limit.} HMC fails effective-sample-size and coverage
+checks; interval widths are unreliable.}
+
+\Subhead{Fisher analysis of eight parameters}
+We varied eight parameters and fixed the other 28 at their true values:
+\par\vspace{4pt}
+{\centering\fontsize{30}{38}\selectfont
+$\lambda_C,\ \eta_{BM},\ \kappa_{BM},\ \kappa_{BC},\
+\eta_{BC},\ \eta_{RC},\ \kappa_{B13},\ \kappa_R$\par}
+\par\vspace{8pt}
+{\TableFont\renewcommand{\arraystretch}{1.10}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+Fisher result & Normal & Early & Advanced & Severe\\
+\midrule
+\ReducedFisherRows
+\bottomrule
+\end{tabular*}\par}
+\Caption{\textbf{Table 2.} The observations match the full Fisher analysis above.
+PINN recovery of these eight parameters has not been tested.}
+\PanelEnd}
+
+\sbox{\FooterBox}{\begin{minipage}{\LiveWidth}
+{\color{Rule}\hrule height 1.5pt}\vspace{13pt}
+\begin{minipage}[t]{.34\linewidth}
+{\bfseries\fontsize{24}{31}\selectfont Scope and next step\par}\vspace{4pt}
+{\fontsize{23}{30}\selectfont
+Synthetic-data study. Treatment changes only $D_R$; all other forcing is retained.
+Fisher diagnostics are local; HMC intervals are uncalibrated.
+Next: reduced-parameter PINN fits and validation across noise and sampling levels.\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{.63\linewidth}
+{\bfseries\fontsize{24}{31}\selectfont Key references\par}\vspace{4pt}
+{\fontsize{22}{29}\selectfont
+[1] M. Raissi, P. Perdikaris and G. E. Karniadakis. Physics-informed neural networks.
+\textit{J. Comput. Phys.} 378, 686–707 (2019).
+\href{https://doi.org/10.1016/j.jcp.2018.10.045}{doi:10.1016/j.jcp.2018.10.045}.\par
+[2] A. Yazdani et al. Systems biology informed deep learning.
+\textit{PLoS Comput. Biol.} 16, e1007575 (2020).
+\href{https://doi.org/10.1371/journal.pcbi.1007575}{doi:10.1371/journal.pcbi.1007575}.\par
+[3] L. Yang, X. Meng and G. E. Karniadakis. B-PINNs.
+\textit{J. Comput. Phys.} 425, 109913 (2021).
+\href{https://doi.org/10.1016/j.jcp.2020.109913}{doi:10.1016/j.jcp.2020.109913}.\par}
+\end{minipage}
+\end{minipage}}
+\typeout{MEASURE left=\the\dimexpr\ht\LeftColumn+\dp\LeftColumn\relax}
+\typeout{MEASURE middle=\the\dimexpr\ht\MiddleColumn+\dp\MiddleColumn\relax}
+\typeout{MEASURE right=\the\dimexpr\ht\RightColumn+\dp\RightColumn\relax}
+\CheckHeight{title}{\TitleBox}{3.0in}
+\CheckHeight{left}{\LeftColumn}{\BodyHeight}
+\CheckHeight{middle}{\MiddleColumn}{\BodyHeight}
+\CheckHeight{right}{\RightColumn}{\BodyHeight}
+\CheckHeight{footer}{\FooterBox}{1.95in}
+
+\begin{frame}[plain,t]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[Garnet] (current page.north west) rectangle
+  ([yshift=-4.20in]current page.north east);
+\node[anchor=north west,inner sep=0pt] at
+  ([xshift=\Margin,yshift=-1.02in]current page.north west) {\usebox{\TitleBox}};
+\fill[white] ([xshift=.92in,yshift=-4.40in]current page.north west) rectangle
+  ([xshift=\dimexpr\Margin+\LeftWidth+.18in\relax,yshift=-32.80in]current page.north west);
+\fill[white] ([xshift=\dimexpr\Margin+\LeftWidth+\Gutter-.18in\relax,yshift=-4.40in]current page.north west) rectangle
+  ([xshift=\dimexpr\Margin+\LeftWidth+\Gutter+\MiddleWidth+.18in\relax,yshift=-32.80in]current page.north west);
+\fill[white] ([xshift=\dimexpr\Margin+\LeftWidth+\Gutter+\MiddleWidth+\Gutter-.18in\relax,yshift=-4.40in]current page.north west) rectangle
+  ([xshift=-.92in,yshift=-32.80in]current page.north east);
+\node[anchor=north west,inner sep=0pt] at
+  ([xshift=\Margin,yshift=-\BodyTop]current page.north west) {\usebox{\LeftColumn}};
+\node[anchor=north west,inner sep=0pt] at
+  ([xshift=\dimexpr\Margin+\LeftWidth+\Gutter\relax,yshift=-\BodyTop]current page.north west) {\usebox{\MiddleColumn}};
+\node[anchor=north west,inner sep=0pt] at
+  ([xshift=\dimexpr\Margin+\LeftWidth+\Gutter+\MiddleWidth+\Gutter\relax,yshift=-\BodyTop]current page.north west) {\usebox{\RightColumn}};
+\node[anchor=north west,inner sep=0pt] at
+  ([xshift=\Margin,yshift=-\FooterTop]current page.north west) {\usebox{\FooterBox}};
+\end{tikzpicture}
+\end{frame}
+\end{document}

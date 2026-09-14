@@ -1,0 +1,26 @@
+{
+  "source_run": "PINN-bayesian/runs/20260712_204532_bayes",
+  "presentation_source_map": "presentation/sync_figures.sh",
+  "draws_per_regime": 2000,
+  "selection": {
+    "Normal": [
+      "etaBM",
+      "kappaBM",
+      "kappaR"
+    ],
+    "Severe_APC_Loss": [
+      "etaBM",
+      "aM",
+      "lambdaP"
+    ]
+  },
+  "source_sha256": {
+    "PINN-bayesian/runs/20260712_204532_bayes/Normal_posterior_samples.npz": "58f648b962eb31b6ed7edd7c06fc71bfb91168ec571c81d81b6598708e9cadca",
+    "PINN-bayesian/runs/20260712_204532_bayes/Normal_posterior_summary.json": "2e5431d9e404767bf03dbdfb511172d0990f762f3c8794f2aa826e235421cf56",
+    "presentation/assets/figures/normal_top8_marginals.png": "3afbae31cb8a984902ab3e227e634ec895bf6d7111695379ed6f4d52c1e295f2",
+    "PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_samples.npz": "7dd1ed5407e5a1a1b86eaaea6b0a3f7b95f57585583c272347f9dc4fa9b24b2c",
+    "PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_summary.json": "e51a1dba95e4267fd832505097dc83eeed01974eff63ccfd71ad53243b1d7d05",
+    "presentation/assets/figures/severe_worst8_marginals.png": "68e36a22b09c643131da9c314bbb821dad6941fec2be9909eea879773a220ece"
+  },
+  "limits": "Frozen-state HMC of all 36 parameters; selected displayed marginals, not a restricted-parameter Bayesian fit. ESS and coverage gates fail; interval widths are uncalibrated."
+}

@@ -1,0 +1,23 @@
+{
+  "condition_order": [
+    "noATRA",
+    "ctrl"
+  ],
+  "DR": [
+    0.0,
+    1.5
+  ],
+  "states": [
+    "m",
+    "p"
+  ],
+  "normal_only": true,
+  "grid": false,
+  "background": "white",
+  "ATRA_arrow": {
+    "left": 9.746116743471582,
+    "right": 11.67304761904762,
+    "y": 3.3289999999999997
+  },
+  "inset": false
+}

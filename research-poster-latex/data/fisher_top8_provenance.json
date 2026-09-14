@@ -1,0 +1,30 @@
+{
+  "source_run": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8",
+  "parameters": [
+    "lambdaC",
+    "etaBM",
+    "kappaBM",
+    "kappaBC",
+    "etaBC",
+    "etaRC",
+    "kappaB13",
+    "kappaR"
+  ],
+  "selection": "Lowest flat-subspace participation, worst case across all four full-model regimes",
+  "other_parameters": "28 held fixed at true regime values",
+  "observation_model": {
+    "n_states": 7,
+    "n_conditions": 10,
+    "n_time": 200,
+    "sigma": 0.002,
+    "parameterization": "log parameters"
+  },
+  "limits": "Local Fisher diagnostic evaluated at truth; no reduced-parameter PINN recovery experiment was performed for this poster.",
+  "source_sha256": {
+    "PINN-fisher-matrix-top8/fisher_matrix.py": "c85fb3526744f013b94db2b9eb57c82c6865a2665a17a9f0a54a1b8d72c8f546",
+    "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Normal_fim_summary.json": "f88df45160fa100c8ea469a055c0f9b5f4a7a5ef60c4ea4919f55865272a5337",
+    "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Early_Adenoma_fim_summary.json": "2e5c2f03fb3e5883be982c0d257f25fd014950a900c52048c5c2d952000639a8",
+    "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Advanced_Adenoma_fim_summary.json": "f58b4d2f5209aa2c7ce73ee224e3ccf95b738e63cfe7f3ee9d88df8dfcf567df",
+    "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Severe_APC_Loss_fim_summary.json": "93cde7cf43e9e11bf049585e73ff160261eb6c0a4735493f3310e1508c6ecf0e"
+  }
+}
