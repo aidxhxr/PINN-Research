@@ -1,4 +1,4 @@
-# PINN-Research — agent guide
+# PINN-Research: agent guide
 
 Repository root: `/home/29/aidahxr/PINN-Research`
 Primary branch: `main`
@@ -24,13 +24,15 @@ session notes live in the git-ignored `notes/` directory when it is available.
 
 | session | purpose | run/log | started | status |
 |---|---|---|---|---|
+| `research_reporting_validate` | Registry verification, numerical reproduction and cached poster figure builds | `notes/research-reporting-validation.log`; `notes/research-reporting-adapter-check.log` | 2026-09-14 | complete / idle |
+| `repo_organization` | Package, numerical parity, run resume, artifact restoration and publication validation | `notes/organization_20260914_193541/` | 2026-09-14 | complete / idle |
 | `poster_first_dynamics` | Exported Normal noATRA/ATRA inverse-PINN fits, matched Radau references and errors from saved networks | `research-poster-latex/builds/20260914_183805_normal_export/export.log` | 2026-09-14 | complete / idle |
 | `poster_preview` | Serve both current poster PDFs and image previews at `http://localhost:8003/` through the SSH tunnel | `notes/poster-preview_20260914_172407/server.log` | 2026-09-14 | running |
 | `poster_b_hybrid` | Beta-catenin/HOXA5 plots added with plain axes and native ATRA arrows; title names physics-informed neural networks; PDF and source ZIP verified | `research-poster-latex-hybrid/builds/20260914_175211_pshcCg/build.log`; prior version in `poster-versions/20260914_174740_before_atra_plots/` | 2026-09-14 | complete / idle |
 | `poster_b_latex` | First poster: epsilonM error curve removed; eight-parameter Fisher block rewritten as methods and results; Bayesian plots enlarged; PDF/ZIP/live links verified | `research-poster-latex/builds/20260914_190110_59ULJ2/build.log`; snapshot in `poster-versions/20260914_190008_before_plain_fisher_block/` | 2026-09-14 | complete / idle |
-| `hybrid_ude` | Completed control → `ra_h5` → `ra_h5_nc` queue; shell remains open | `PINN-hybrid-ude/runs/queue.log` | 2026-07-26 | complete / idle |
-| `hybrid_bm` | Completed `bm_myc` → `bm_myc_nc` chain; shell remains open | `PINN-hybrid-ude/runs/chain_bm_myc.log` | 2026-07-26 | complete / idle |
-| `hybrid_apc` | Calibrated a shared monotone APC-loss neural degradation term; the frozen four-regime inverse PINN is now running (3 starts) | `PINN-hybrid-ude/runs/20260728_232743_apc_pipeline.log`; calibration in `runs/20260728_232743_apc_calibration/`; inverse in `runs/20260728_233450_apc_mutation_frozen/` | 2026-07-28 | calibration complete; inverse running |
+| `hybrid_ude` | Completed control, `ra_h5` and `ra_h5_nc` queue; session closed | `PINN-hybrid-ude/runs/queue.log` | 2026-07-26 | complete / idle |
+| `hybrid_bm` | Completed `bm_myc` and `bm_myc_nc` chain; session closed | `PINN-hybrid-ude/runs/chain_bm_myc.log` | 2026-07-26 | complete / idle |
+| `hybrid_apc` | Calibrated a shared monotone APC-loss neural degradation term; completed the frozen four-regime inverse PINN (3 starts); session closed | `PINN-hybrid-ude/runs/20260728_232743_apc_pipeline.log`; calibration in `runs/20260728_232743_apc_calibration/`; inverse in `runs/20260728_233450_apc_mutation_frozen/` | 2026-07-28 | complete / session closed |
 
 ## Source-of-truth model
 
@@ -42,8 +44,9 @@ model with state order:
 ```
 
 These are beta-catenin, APC, HOXA5, HOXA13, MYC, retinoic acid, and CYP26A1.
-The canonical numerical implementation is repeated in each experiment folder
-through `config.py`, `odes.py`, and `residual.py`.
+The maintained equations and parameter definitions are in `src/wnt_pinn/model/`.
+Active integral, hybrid and inverse Bayesian modules import shared implementations;
+historical experiment folders retain their recorded configurations.
 
 - Initial state: `[0.20, 1.00, 0.80, 0.30, 0.30, 0.60, 0.40]`.
 - Four regimes: `Normal`, `Early Adenoma`, `Advanced Adenoma`, and
@@ -96,11 +99,11 @@ Completed hybrid results at commit `6c0e70f`:
   compensation.
 - APC mutation calibration: held-out and full-curve functional NRMSE `0.12%`;
   the learned term has an exact healthy anchor and is strictly increasing.
-  The frozen inverse run is active in `hybrid_apc`.
+  The completed frozen inverse run is included in the hybrid result registry.
 - The `f(0)=0` anchor helps only when observed regulator values approach zero.
 
 The current MYC/APC implementation decision and APC two-stage protocol are
-recorded in `notes/2026-07-28-myc-apc-hybrid.md`.
+recorded in tracked `docs/decisions/`, with historical working notes in `notes/`.
 
 ## Repository map
 
@@ -129,8 +132,9 @@ recorded in `notes/2026-07-28-myc-apc-hybrid.md`.
   correct parameters.
 - More informative perturbations outperform larger or differently regularized
   state networks.
-- The integral residual removes the biased autodiff-derivative ceiling and
-  approximately doubles inverse-PINN recovery.
+- The matched ten-condition inverse comparison recovers 37 versus 50 of 144
+  parameter-regime pairs. Integral residuals, weighting, collocation and starts
+  differ together, so the gain is attributed to the full implementation.
 - High WNT saturates beta-catenin and makes `thetaP` practically
   non-identifiable. FIM, profile likelihood, point recovery, and Bayesian runs
   all expose this wall.
@@ -140,8 +144,10 @@ recorded in `notes/2026-07-28-myc-apc-hybrid.md`.
 
 ## Running experiments
 
-Each experiment must write to a new timestamped directory below its own
-`runs/` folder. A standard durable launch is:
+New maintained experiments write to timestamped directories below root `runs/`
+through `wnt-pinn run configs/<profile>.json`. Historical launchers retain their
+experiment-local `runs/` paths. See `docs/experiments.md` for manifest and resume
+rules. A standard durable launch is:
 
 ```bash
 tmux new-session -d -s <session> -n run
