@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: >-
+  Cite this repository when using its code. Include the Git commit and the
+  result or run identifier. Cite the associated publication separately when
+  using a published result.
+type: software
+title: "Physics-informed neural networks for a WNT-RA-HOX model"
+authors:
+  - family-names: Aidarkhan
+    given-names: Amirkhan
+    affiliation: Swarthmore College
+    email: aaidark1@swarthmore.edu
+repository-code: "https://github.com/aidxhxr/PINN-Research"
+url: "https://github.com/aidxhxr/PINN-Research"
+abstract: >-
+  Forward and inverse physics-informed neural networks, local identifiability
+  analyses, Bayesian experiments, and neural-mechanistic hybrids for a
+  seven-state WNT-RA-HOX model. The research uses synthetic data.
+keywords:
+  - physics-informed neural networks
+  - ordinary differential equations
+  - identifiability
+  - scientific machine learning
