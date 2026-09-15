@@ -34,7 +34,7 @@ def trajectory_pair(data, out, *, fitted):
         ax.grid(False)
         ax.spines[["top","right"]].set_visible(False)
         pos=ax.get_position()
-        title = r"No treatment: $D_R=0$" if ci==0 else r"ATRA treatment: $D_R=1.5$"
+        title = "No treatment" if ci==0 else "ATRA treatment"
         fig.text(pos.x0, .915, title, fontsize=27, va="center")
     axes[0].set_ylabel("concentration", fontsize=24, labelpad=8)
     fig.text(.535,.18,r"dimensionless time $\tau$",ha="center",va="center",fontsize=23)

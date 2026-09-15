@@ -1,10 +1,10 @@
 # First poster — PINN dynamics, parameter recovery and uncertainty
 
 Editable LuaLaTeX poster, one landscape page, **48 × 36 inches**.
-Authors: **Nathaniel Kim · Pascal Kataboh**.
+Authors: **Nathaniel Kim · Pascal K. Kataboh**.
 
 1. **Model and formulation:** unchanged regulatory schematic, seven ODEs,
-   nondimensionalization, forcing, disease regimes and stemness readout.
+   nondimensionalization, disease regimes and the cosine RA-input plot.
 2. **Dynamics and PINN reconstruction:** Normal MYC/APC overlaid, untreated
    (`DR=0`) first and treated (`DR=1.5`) second; the corresponding saved inverse
    PINN fits, neural-network diagram, training losses and parameter errors.
@@ -21,6 +21,8 @@ focus. Previous versions are preserved in `poster-versions/` in the repository.
 - `poster.tex`: editable source; `poster-latex-source.zip`: PDF plus all sources
   and numerical data required to regenerate the included figures.
 - `assets/model-original.pdf`: original regulatory network, unchanged.
+- `assets/ra-forcing.pdf`: baseline plus cosine RA input, using the saved
+  untreated parameters; replaces the derived stemness index.
 - `assets/pinn-architecture.tex`: native vector network and integral-loss diagram.
 - `assets/normal_reference.pdf`, `normal_pinn.pdf`: Normal treatment comparisons.
   Their `*-window.tex` wrappers place editable double-headed ATRA arrows at
@@ -58,12 +60,17 @@ Torch or the research repository for ordinary poster builds.
 Untreated dynamics retain the baseline circadian forcing (`AR=0.04`). Both
 MYC and APC use the same concentration axis at their original amplitudes.
 The plots show the full trajectories without oscillation insets.
+Treatment panels are labeled “No treatment” and “ATRA treatment”; dose values
+are retained in the source data. The existing title is retained for discussion.
 
 The displayed networks are the **150-time-per-condition integral inverse PINN**
 trained on ten conditions with additive noise sigma=0.002. They replace the
 previous poster's separate 40-observation forward-PINN example. The Adam loss
 and parameter-error plots are saved checkpoints, while the final state fits
 also include L-BFGS. Reported state errors use the full [0,150] interval.
+The initial-condition multiplier 20 is a heuristic training weight that
+emphasizes the known initial state; no optimality claim or weight ablation
+is made.
 
 Fisher results are local to truth. The reduced eight-parameter analysis fixes
 28 parameters at truth and does not demonstrate reduced-parameter PINN recovery.

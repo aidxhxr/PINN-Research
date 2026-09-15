@@ -39,6 +39,25 @@ def save(fig, name):
     fig.savefig(OUT / f"{name}.png", dpi=110)
     plt.close(fig)
 
+def ra_forcing():
+    """Plot the untreated RA input from the displayed runs' saved parameters."""
+    p = read("normal_treatment_provenance.json")["parameters"]["noATRA"]
+    t = np.linspace(0, 150, 1501)
+    forcing = p["mu0"] + p["AR"] * (1 + np.cos(2*np.pi*t/p["TR"] - p["phi"]))
+    fig, ax = plt.subplots(figsize=(15.1, 2.35))
+    fig.subplots_adjust(left=.09, right=.98, bottom=.36, top=.70)
+    ax.plot(t, forcing, color=BLUE, lw=2.6)
+    ax.set(xlim=(0, 150), ylim=(.34, .44), xticks=[0, 50, 100, 150],
+           yticks=[.35, .39, .43], xlabel=r"dimensionless time $\tau$",
+           ylabel=r"$\mu_R(\tau)$")
+    ax.tick_params(labelsize=22, length=4)
+    ax.grid(False)
+    fig.text(.09, .88, "RA forcing: baseline + cosine input", fontsize=25,
+             color=INK, va="center")
+    fig.text(.98, .88, r"$A_R=0.04,\quad T_R=24$", fontsize=24,
+             color=INK, va="center", ha="right")
+    save(fig, "ra-forcing")
+
 def forward():
     make_forward(DATA, OUT, [("m", r"MYC $m(\tau)$"), ("p", r"APC $p(\tau)$")], height=5.7)
 
@@ -166,6 +185,6 @@ def tables():
     (OUT/"numerical_audit.txt").write_text("\n".join(audit)+"\n")
 
 if __name__ == "__main__":
-    for make in [normal_inference, fisher, tables]:
+    for make in [ra_forcing, normal_inference, fisher, tables]:
         make()
         print(f"generated {make.__name__}", flush=True)
