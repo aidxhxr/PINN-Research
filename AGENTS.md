@@ -124,7 +124,7 @@ recorded in tracked `docs/decisions/`, with historical working notes in `notes/`
 | `network-diagram/` | TikZ regulatory-network schematic |
 | `PINN/` | original notebooks; `run_sa_7ode.py` + `sa_results/` are the sensitivity analysis as numeric tables |
 | `research-paper/` | LaTeX write-up of everything except the UDE work |
-| `research-poster-latex/` | First poster: Normal treatment dynamics, inverse PINN fits, training errors, Fisher analysis and Bayesian marginals; Nathaniel Kim / Pascal Kataboh |
+| `research-poster-latex/` | First poster: Normal treatment dynamics, inverse PINN fits, training errors, Fisher analysis and Bayesian marginals; Nathaniel Kim / Pascal K. Kataboh |
 | `research-poster-latex-hybrid/` | Revised advanced poster: model/math → PINNs and identifiability → neural–mechanistic hybrid; LuaLaTeX, PDF and source ZIP |
 | `poster-versions/` | Local dated snapshots of poster PDFs, sources and previews |
 

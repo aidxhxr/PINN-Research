@@ -12,6 +12,7 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 |---|---|
 | Regulatory schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
 | Model, state order and forcing | `PINN-inverse-pinn-boost/config.py`, `odes.py`; root `AGENTS.md` |
+| Baseline/cosine RA-input plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved parameters in `data/normal_treatment_provenance.json`, `parameters.noATRA` |
 | Normal Radau and PINN curves, Figs. 2–3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_{noATRA,ctrl}_net.pt`; exported to `data/normal_treatment_comparison.npz` |
 | Network and training recipe | `PINN-inverse-pinn-boost/model.py`, `training.py`, `run_boost.py`, same run's `Normal.log` |
 | Training diagnostics, Fig. 4 | same run's `Normal_history.json`, `Normal_recovered.json`; copied into `data/normal_inverse_*.json` |
@@ -31,6 +32,13 @@ The original regulatory schematic SHA-256 remains
 - Both panels use Normal parameters W=0.8 and thetaP=1. Only DR changes:
   noATRA has DR=0 and ctrl has DR=1.5. Baseline AR=0.04, period TR=24,
   mu0=0.35 and all other parameters remain identical. Pulse endpoints are 40/88.
+- The column-one RA forcing plot evaluates mu0 + AR*(1+cos(2*pi*t/TR-phi)):
+  mu0=0.35, AR=0.04, TR=24, phi=0, so the range is 0.35–0.43. It shows the
+  untreated input, including the baseline, rather than the RA state r(t).
+  The additive treatment term is plotted on the companion hybrid poster.
+- In column one, thetaP is described as APC functioning. “Severe” abbreviates
+  the unchanged Severe APC Loss regime (thetaP=0.25). Treatment comparison
+  titles omit numeric dose labels; the underlying data and parameters are unchanged.
 - References use Radau, rtol=1e-10, atol=1e-12, 6000 evaluation times over
   [0,150]. Checkpoints and source-code hashes, exact parameters and exported
   relative L2 errors are in `data/normal_treatment_provenance.json`.
@@ -57,6 +65,11 @@ The original regulatory schematic SHA-256 remains
   run. Lines connect recorded samples; no intermediate history is synthesized.
   The loss curves are Ldata, lambda_phys*Lphys and 20*LIC, averaged over all ten
   conditions. Their sum is checked against the saved total loss.
+- The IC multiplier is the recorded lam_ic=20 in `run_boost.py` and the
+  training provenance. It emphasizes matching the known initial state.
+  The forward trainer describes the same default as a “strong anchor on the
+  initial condition.” This is a heuristic weight, not a biological constant;
+  no ablation or claim that 20 is optimal is supported by these results.
 - Selected parameter curves show 100*abs(estimate-truth)/abs(truth) for W and
   thetaP at the same Adam checkpoints. They are not the final L-BFGS estimates.
   L-BFGS follows Adam and is included in the final state fits in Fig. 3.

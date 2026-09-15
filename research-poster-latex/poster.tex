@@ -26,7 +26,7 @@
 \setbeamertemplate{headline}{}
 \setbeamertemplate{footline}{}
 \hypersetup{pdftitle={Physics-informed neural networks: dynamics and parameter recovery for a WNT-RA-HOX model of colorectal cancer stemness},
- pdfauthor={Nathaniel Kim; Pascal Kataboh},colorlinks=true,urlcolor=Ink}
+ pdfauthor={Nathaniel Kim; Pascal K. Kataboh},colorlinks=true,urlcolor=Ink}
 \title{Physics-informed neural networks: dynamics and parameter recovery for a WNT-RA-HOX model of colorectal cancer stemness}
 \newlength{\Margin}\setlength{\Margin}{1.1in}
 \newlength{\Gutter}\setlength{\Gutter}{.75in}
@@ -83,7 +83,7 @@
   for a WNT–RA–HOX model of colorectal cancer stemness\par}
   \vspace{22pt}
   {\fontsize{31}{39}\selectfont
-  Nathaniel Kim\enspace\textperiodcentered\enspace Pascal Kataboh\par}
+  Nathaniel Kim\enspace\textperiodcentered\enspace Pascal K. Kataboh\par}
 \end{minipage}}
 
 % ==================== 1. MODEL ====================
@@ -108,10 +108,10 @@ Regime & $W$ & $\theta_P$\\
 Normal & 0.8 & 1.00\\
 Early & 1.0 & 0.75\\
 Advanced & 1.5 & 0.50\\
-Severe APC loss & 2.0 & 0.25\\
+Severe & 2.0 & 0.25\\
 \bottomrule
 \end{tabular*}\par}
-\Caption{$W$: WNT drive.\\$\theta_P$: APC functionality.}
+\Caption{$W$: WNT drive.\\$\theta_P$: APC functioning.}
 \vspace{19pt}
 {\Display\bfseries\fontsize{29}{37}\selectfont Seven states\par}
 \Caption{$\mathbf z=(b,p,h_5,h_{13},m,r,c)$\\
@@ -155,7 +155,7 @@ A dot below denotes $d/d\tau$.}
  a_C+\eta_{RC}H_1(r;\kappa_{RC})+\eta_{BC}H_{n_B}(b;\kappa_{BC})-c .
 \end{aligned}}
 
-\Subhead{APC loss and retinoid forcing}
+\Subhead{APC functioning and retinoid forcing}
 \Equation{3}{\begin{aligned}
 D_P(\theta_P)&=1+\delta_{P1}(1-\theta_P),\\[8pt]
 \mu_R(\tau)&=\mu_0+A_R\!\left[1+\cos\!\left(\frac{2\pi\tau}{T_R}-\varphi\right)\right]\\[8pt]
@@ -165,12 +165,7 @@ D_P(\theta_P)&=1+\delta_{P1}(1-\theta_P),\\[8pt]
 \Caption{Reference: Radau on $\tau\in[0,150]$; ATRA pulse $[40,88]$.
 Relative timescales $\varepsilon_R=0.40$, $\varepsilon_M=0.60$ produce mild stiffness.}
 
-\Note{\textbf{Derived readout: stemness}
-\[
-S(\tau)=\frac{b(1+\alpha_{13}h_{13})}{(1+p)(1+\alpha_5h_5)},
-\qquad \alpha_5=\alpha_{13}=1.
-\]
-\CaptionFont Higher $S$ represents greater stemness in this model.}
+\par\vspace{2pt}\includegraphics[width=\linewidth]{assets/ra-forcing.pdf}
 \PanelEnd}
 
 % ==================== 2. DYNAMICS AND PINNs ====================
@@ -181,22 +176,23 @@ S(\tau)=\frac{b(1+\alpha_{13}h_{13})}{(1+p)(1+\alpha_5h_5)},
 \Caption{\textbf{Fig. 2.} Radau solutions; baseline circadian forcing
 $A_R=0.04$ in both panels.}
 
-\par\vspace{15pt}
+\par\vspace{7pt}
 \noindent\input{assets/pinn-architecture.tex}\par
 \Equation{4}{\mathbf r_k=\widehat{\mathbf z}_{k+1}-\widehat{\mathbf z}_k
 -\frac{\Delta\tau_k}{2}\big(\mathbf F_k+\mathbf F_{k+1}\big).}
-\Caption{Ten state networks share 36 parameters; 150 times/condition ($\sigma=0.002$).
-Relative state weights; adaptive $\lambda_{\rm phys}$; two starts.\textsuperscript{1,2}}
-\par\vspace{9pt}\noindent\input{assets/normal_pinn-window.tex}\par
+\Caption{Ten networks share 36 parameters; 150 times/condition ($\sigma=0.002$).\\
+Relative state weights; adaptive $\lambda_{\rm phys}$; two starts.\textsuperscript{1,2}\\
+IC weight 20: heuristic emphasis on the known initial state.}
+\par\vspace{2pt}\noindent\input{assets/normal_pinn-window.tex}\par
 \Caption{\textbf{Fig. 3.} Saved inverse-PINN fits (dashed) and Radau (solid).
 Relative $L^2$ errors, MYC/APC: untreated \UntreatedMYCError/\UntreatedAPCError\%;
 treated \TreatedMYCError/\TreatedAPCError\%.}
 
-\par\vspace{12pt}\includegraphics[width=\linewidth]{assets/normal_training.pdf}
+\par\vspace{4pt}\includegraphics[width=\linewidth]{assets/normal_training.pdf}
 \Caption{\textbf{Fig. 4.} Saved Adam checkpoints from the selected Normal run;
 losses average ten conditions. Final fits also include L-BFGS.}
 
-\par\vspace{10pt}
+\par\vspace{2pt}
 {\Display\bfseries\fontsize{30}{38}\selectfont Parameters within 10\% of truth\par}
 \vspace{7pt}
 {\TableFont\renewcommand{\arraystretch}{1.10}
