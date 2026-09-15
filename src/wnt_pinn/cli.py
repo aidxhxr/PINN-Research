@@ -81,7 +81,13 @@ def main(argv=None):
             resume = args.resume
             if resume is not None and not resume.is_absolute():
                 resume = root / resume
-            output = run_experiment(config, root=root, resume=resume)
+            if json.loads(config.read_text()).get('pipeline') == 'population_extension':
+                from .population.study import run_study
+                if resume is not None:
+                    raise ValueError('Population studies use fresh timestamped runs; resume is unsupported.')
+                output = run_study(config, root=root)
+            else:
+                output = run_experiment(config, root=root, resume=resume)
             receipt = {'ok': True, 'run_directory': str(output)}
         elif args.command == 'artifacts':
             from . import artifacts

@@ -24,10 +24,11 @@ session notes live in the git-ignored `notes/` directory when it is available.
 
 | session | purpose | run/log | started | status |
 |---|---|---|---|---|
+| `population_extension` | SciPy 14-state reproduction: 202 matched comparisons, 160 LHS samples, 14 figure pairs, six-page meeting brief; five scientific tests and BDF/Radau checks pass | `runs/20260915_213018_population_extension_5128/`; `extension/results/`; `notes/population_extension_20260915_212214/` | 2026-09-15 | complete / idle |
 | `research_reporting_validate` | Registry verification, numerical reproduction and cached poster figure builds | `notes/research-reporting-validation.log`; `notes/research-reporting-adapter-check.log` | 2026-09-14 | complete / idle |
 | `repo_organization` | Package, numerical parity, run resume, artifact restoration and publication validation | `notes/organization_20260914_193541/` | 2026-09-14 | complete / idle |
 | `poster_first_dynamics` | Exported Normal noATRA/ATRA inverse-PINN fits, matched Radau references and errors from saved networks | `research-poster-latex/builds/20260914_183805_normal_export/export.log` | 2026-09-14 | complete / idle |
-| `poster_preview` | Serve both current poster PDFs and image previews at `http://localhost:8003/` through the SSH tunnel | `notes/poster-preview_20260914_172407/server.log` | 2026-09-14 | running |
+| `poster_preview` | Serve both posters plus `/extension_plots/` and the meeting explanation at `/extenstion_report/html` on `http://localhost:8003/` through the SSH tunnel | `notes/poster-preview_20260914_172407/server.log`; extension HTML in `extension/web/` | 2026-09-14 | running |
 | `poster_b_hybrid` | Beta-catenin/HOXA5 plots added with plain axes and native ATRA arrows; title names physics-informed neural networks; PDF and source ZIP verified | `research-poster-latex-hybrid/builds/20260914_175211_pshcCg/build.log`; prior version in `poster-versions/20260914_174740_before_atra_plots/` | 2026-09-14 | complete / idle |
 | `poster_b_latex` | First poster: epsilonM error curve removed; eight-parameter Fisher block rewritten as methods and results; Bayesian plots enlarged; PDF/ZIP/live links verified | `research-poster-latex/builds/20260914_190110_59ULJ2/build.log`; snapshot in `poster-versions/20260914_190008_before_plain_fisher_block/` | 2026-09-14 | complete / idle |
 | `hybrid_ude` | Completed control, `ra_h5` and `ra_h5_nc` queue; session closed | `PINN-hybrid-ude/runs/queue.log` | 2026-07-26 | complete / idle |
@@ -109,6 +110,7 @@ recorded in tracked `docs/decisions/`, with historical working notes in `notes/`
 
 | path | purpose |
 |---|---|
+| `extension/` | Supplied 14-state population-model PDF, documented SciPy reproduction entry point, meeting brief, plots and numerical discrepancy audit; implementation in `src/wnt_pinn/population/` |
 | `PINN-smaller/forward_pinn_train/` | supervised forward interpolation baseline |
 | `PINN-smaller/forward-pinn-train-hybrid/` | sparse-data forward PINN |
 | `PINN-inverse-solve/` | historical inverse baseline; do not edit |

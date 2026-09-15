@@ -20,6 +20,8 @@ def test_integrity_failure_has_nonzero_cli_exit(tmp_path, monkeypatch):
 def test_resume_is_relative_to_explicit_root(tmp_path, monkeypatch):
     from wnt_pinn import runs
     root = root_fixture(tmp_path)
+    (root / 'configs').mkdir()
+    (root / 'configs/check.json').write_text('{"pipeline": "integral"}\n')
     captured = {}
     def execute(config, **kwargs):
         captured.update(config=config, **kwargs)

@@ -1,0 +1,16 @@
+{
+  "pipeline": "population_extension",
+  "workers": 4,
+  "lhs_samples": 160,
+  "seed": 20260915,
+  "solver": {
+    "method": "BDF",
+    "rtol": 1e-9,
+    "atol": 1e-11,
+    "max_step": 0.5,
+    "dt": 0.125,
+    "precondition_hours": 720.0,
+    "horizon": 168.0,
+    "beta_clock": "literal"
+  }
+}
