@@ -8,8 +8,8 @@ preserved locally in `../poster-versions/20260907_155254_approved/`.
 The revised reading order is:
 
 1. **Model and formulation:** original schematic, disease regimes,
-   nondimensionalization, all seven ODEs, APC/retinoid forcing and stemness.
-   This column is retained intact.
+   nondimensionalization, all seven ODEs, APC functioning and retinoid forcing.
+   The additive ATRA treatment-pulse plot replaces the derived stemness index.
 2. **PINNs and identifiability:** Fourier features, network architecture,
    forward loss and accuracy, inverse integral residual, recovery benchmark,
    Bayesian geometry and local Fisher classification.
@@ -33,6 +33,8 @@ functions rather than an illustrative curve.
 - `assets/pinn-architecture.tex`: editable vector PINN diagram: Fourier features,
   four hidden layers, seven state outputs and the three losses with backpropagation.
 - `assets/model-original.pdf`: original regulatory schematic, unchanged.
+- `assets/atra-treatment.pdf`: smooth additive ATRA pulse from the saved
+  trajectory parameters, with the treatment window at times 40–88.
 - `assets/posterior.pdf`: compact Normal-regime HMC geometry.
 - `assets/learned-myc.pdf`: actual learned and true MYC-activation curves.
 - `assets/tables.tex`: native LaTeX tables generated from numerical data.
@@ -45,7 +47,10 @@ functions rather than an illustrative curve.
 
 All equations, tables, headings and highlighted text are editable LaTeX.
 Fonts are standard TeX Gyre Pagella and Heros. Body text is 28 pt, captions
-24 pt and tables 24–26 pt. Authors remain Amirkhan Aidarkhan and Pascal Kataboh.
+24 pt and tables 24–26 pt. Authors: Amirkhan Aidarkhan and Pascal K. Kataboh.
+The current title is retained for discussion. The initial-condition multiplier
+20 is explained as a heuristic weight that emphasizes the known initial state;
+no optimality claim or weight ablation is made.
 
 ## Compile
 

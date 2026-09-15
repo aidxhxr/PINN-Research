@@ -14,7 +14,8 @@ No model training, resampling or ODE solving was performed.
 |---|---|
 | Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf`, also `poster-fable/assets/ready/schema.pdf` |
 | Equations, state order, forcing, regimes | `PINN-hybrid-ude/odes.py`, `config.py`, `residual.py`; root `AGENTS.md` |
-| Nondimensionalization and stemness | `research-paper/paper.tex`, equations ndb–ndc and stemness |
+| Nondimensionalization | `research-paper/paper.tex`, equations ndb–ndc |
+| Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
 | Fourier network and forward losses | `PINN-smaller/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `research-paper/paper.tex` |
 | Beta-catenin/HOXA5 trajectories, Fig. 2 | `data/forward_trajectories.npz`; checkpoints in `PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546/`; `figures/forward_plot.py` |
 | Dense forward accuracy | `PINN-smaller/forward_pinn_train/runs/20260711_203325/forward_error_table.json` |
@@ -51,11 +52,22 @@ Its geometry, colors, labels, legend and edges are unchanged.
 - The disease labels Early/Advanced abbreviate Early/Advanced Adenoma.
   Severe means Severe APC Loss. The reference trajectory horizon is 150 and
   the base ATRA pulse is [40,88].
+- The derived stemness index has been removed. Its replacement plot evaluates
+  the additive treatment term DR/2*(tanh(q*(t-tau1))-tanh(q*(t-tau2))), with
+  DR=1.5, q=0.3, tau1=40, tau2=88, from the saved baseline. This is the
+  treatment contribution to muR, not the RA state or the total RA forcing.
+  The companion first poster shows baseline plus cosine input. The column-one
+  heading and thetaP description use “APC functioning”; the disease table
+  abbreviates the Severe APC Loss regime as “Severe.”
 
 ## Corrections and numerical meaning
 
 ### Forward and inverse PINNs
 
+- The forward trainer sets lam_ic=20 and comments “strong anchor on the
+  initial condition” (`PINN-smaller/forward-pinn-train-hybrid/training.py`).
+  The poster explains this as a heuristic weight emphasizing the known initial
+  state. No ablation or optimality claim for 20 is supported by these results.
 - Forward errors are the grand mean relative L2 across seven states and four
   regimes, read directly from the saved JSON. Dense supervised: 1.0554%
   (displayed 1.06%); sparse forward PINN: 2.4074% (2.41%). The two formulations

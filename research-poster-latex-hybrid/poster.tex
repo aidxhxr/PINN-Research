@@ -26,7 +26,7 @@
 \setbeamertemplate{headline}{}
 \setbeamertemplate{footline}{}
 \hypersetup{pdftitle={Neural-mechanistic hybrids and physics-informed neural networks for a WNT-RA-HOX model of colorectal cancer stemness},
- pdfauthor={Amirkhan Aidarkhan; Pascal Kataboh},colorlinks=true,urlcolor=Ink}
+ pdfauthor={Amirkhan Aidarkhan; Pascal K. Kataboh},colorlinks=true,urlcolor=Ink}
 \title{Neural-mechanistic hybrids and physics-informed neural networks for a WNT-RA-HOX model of colorectal cancer stemness}
 \newlength{\Margin}\setlength{\Margin}{1.1in}
 \newlength{\Gutter}\setlength{\Gutter}{.75in}
@@ -83,7 +83,7 @@
   for a WNT–RA–HOX model of colorectal cancer stemness\par}
   \vspace{22pt}
   {\fontsize{31}{39}\selectfont
-  Amirkhan Aidarkhan\enspace\textperiodcentered\enspace Pascal Kataboh\par}
+  Amirkhan Aidarkhan\enspace\textperiodcentered\enspace Pascal K. Kataboh\par}
 \end{minipage}}
 
 % ==================== 1. MODEL ====================
@@ -108,10 +108,10 @@ Regime & $W$ & $\theta_P$\\
 Normal & 0.8 & 1.00\\
 Early & 1.0 & 0.75\\
 Advanced & 1.5 & 0.50\\
-Severe APC loss & 2.0 & 0.25\\
+Severe & 2.0 & 0.25\\
 \bottomrule
 \end{tabular*}\par}
-\Caption{$W$: WNT drive.\\$\theta_P$: APC functionality.}
+\Caption{$W$: WNT drive.\\$\theta_P$: APC functioning.}
 \vspace{19pt}
 {\Display\bfseries\fontsize{29}{37}\selectfont Seven states\par}
 \Caption{$\mathbf z=(b,p,h_5,h_{13},m,r,c)$\\
@@ -155,7 +155,7 @@ A dot below denotes $d/d\tau$.}
  a_C+\eta_{RC}H_1(r;\kappa_{RC})+\eta_{BC}H_{n_B}(b;\kappa_{BC})-c .
 \end{aligned}}
 
-\Subhead{APC loss and retinoid forcing}
+\Subhead{APC functioning and retinoid forcing}
 \Equation{3}{\begin{aligned}
 D_P(\theta_P)&=1+\delta_{P1}(1-\theta_P),\\[8pt]
 \mu_R(\tau)&=\mu_0+A_R\!\left[1+\cos\!\left(\frac{2\pi\tau}{T_R}-\varphi\right)\right]\\[8pt]
@@ -165,12 +165,7 @@ D_P(\theta_P)&=1+\delta_{P1}(1-\theta_P),\\[8pt]
 \Caption{Reference: Radau on $\tau\in[0,150]$; ATRA pulse $[40,88]$.
 Relative timescales $\varepsilon_R=0.40$, $\varepsilon_M=0.60$ produce mild stiffness.}
 
-\Note{\textbf{Derived readout: stemness}
-\[
-S(\tau)=\frac{b(1+\alpha_{13}h_{13})}{(1+p)(1+\alpha_5h_5)},
-\qquad \alpha_5=\alpha_{13}=1.
-\]
-\CaptionFont Higher $S$ represents greater stemness in this model.}
+\par\vspace{2pt}\includegraphics[width=\linewidth]{assets/atra-treatment.pdf}
 \PanelEnd}
 
 % ==================== 2. PINNs ====================
@@ -182,7 +177,7 @@ and the ATRA pulse.\textsuperscript{1}
 \Equation{4}{\mathcal L_{\rm phys}=\frac{1}{N_c}\sum_k
 \left\|\partial_\tau\widehat{\mathbf z}_k-
 \mathbf F(\tau_k,\widehat{\mathbf z}_k;\boldsymbol\theta)\right\|^2.}
-\Caption{Data and initial-state losses are squared errors; physics derivatives use automatic differentiation.}
+\Caption{Squared data/IC losses; autodiff physics. IC weight 20 heuristically emphasizes the initial state.}
 \par\vspace{10pt}\noindent\input{assets/forward-window.tex}\par
 \Caption{\textbf{Fig. 2.} $\beta$-catenin and HOXA5, all four regimes.
 Solid: Radau; dashed: PINN (40 observations).}

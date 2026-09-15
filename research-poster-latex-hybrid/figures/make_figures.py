@@ -37,6 +37,26 @@ def save(fig, name):
     fig.savefig(OUT / f"{name}.png", dpi=110)
     plt.close(fig)
 
+def atra_treatment():
+    """Plot the additive ATRA pulse from the displayed runs' saved parameters."""
+    p = read("forward_trajectories_provenance.json")["baseline"]
+    t = np.linspace(0, 150, 1501)
+    treatment = .5*p["DR"] * (np.tanh(p["q"]*(t-p["tau1"]))
+                              - np.tanh(p["q"]*(t-p["tau2"])))
+    fig, ax = plt.subplots(figsize=(15.1, 2.35))
+    fig.subplots_adjust(left=.09, right=.98, bottom=.36, top=.70)
+    ax.plot(t, treatment, color="#78253B", lw=2.6)
+    ax.set(xlim=(0, 150), ylim=(-.08, 1.65), xticks=[0, 40, 88, 150],
+           yticks=[0, .75, 1.5], xlabel=r"dimensionless time $\tau$",
+           ylabel="RA input")
+    ax.tick_params(labelsize=22, length=4)
+    ax.grid(False)
+    fig.text(.09, .88, "ATRA treatment: additive pulse", fontsize=25,
+             color=INK, va="center")
+    fig.text(.98, .88, r"Treatment window: $40\leq\tau\leq88$", fontsize=24,
+             color=INK, va="center", ha="right")
+    save(fig, "atra-treatment")
+
 def forward():
     make_forward(DATA, OUT, [("b", r"$\beta$-catenin $b(\tau)$"), ("h5", r"HOXA5 $h_5(\tau)$")], height=4.3)
 
@@ -190,6 +210,6 @@ def tables():
     (OUT/"numerical_audit.txt").write_text("\n".join(audit)+"\n")
 
 if __name__ == "__main__":
-    for make in [forward, posterior, learned_myc, tables]:
+    for make in [atra_treatment, forward, posterior, learned_myc, tables]:
         make()
         print(f"generated {make.__name__}", flush=True)
