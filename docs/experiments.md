@@ -104,6 +104,22 @@ configuration checks execution and speed, not converged parameter recovery.
 The [recorded GPU comparison](performance/2026-09-19-kernel-smoke.md) includes
 per-run measurements and the limits of the observed speedups.
 
+To isolate the final reduction change against its previous implementation,
+run this command in a recorded tmux session:
+
+```bash
+PYTHONPATH=src python3 experiments/benchmark_reduction.py \
+  --out runs/<new-timestamp>_reduction/comparison.json
+```
+
+The script compares 1,024, 8,000 and 40,001 collocation points in float64,
+reverses implementation order over six repeats, verifies values and gradients,
+and profiles forward kernel counts. It measures the reduction alone with
+preallocated outputs, then the actual loss forward and forward/backward with
+their normal allocations. Synchronized host timings include dispatch;
+CUDA graph replay timings isolate device work. The maintained trainers do not
+use CUDA graphs, so the latter timings do not predict training speed.
+
 An optional `data.reference_cache` accepts an NPZ file with arrays named
 `<regime with underscores>__<condition>__t` and
 `<regime with underscores>__<condition>__y`. Arrays must span the configured
