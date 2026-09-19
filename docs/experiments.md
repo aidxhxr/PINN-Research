@@ -119,6 +119,8 @@ preallocated outputs, then the actual loss forward and forward/backward with
 their normal allocations. Synchronized host timings include dispatch;
 CUDA graph replay timings isolate device work. The maintained trainers do not
 use CUDA graphs, so the latter timings do not predict training speed.
+The [recorded reduction comparison](performance/2026-09-19-fused-reduction.md)
+includes the matched eager/Triton training smoke and numerical checks.
 
 An optional `data.reference_cache` accepts an NPZ file with arrays named
 `<regime with underscores>__<condition>__t` and
