@@ -24,6 +24,7 @@ session notes live in the git-ignored `notes/` directory when it is available.
 
 | session | purpose | run/log | started | status |
 |---|---|---|---|---|
+| `kernel_reduction` | Fused final reduction; 51 checks and four matched runs pass; GPU reduction 2.21x at 8,000 points, no training speedup | `runs/20260919_232844_fused_reduction/`; `docs/performance/2026-09-19-fused-reduction.md`; `notes/fused-reduction_20260919_232844/` | 2026-09-19 | complete / idle |
 | `kernel_smoke` | Optional float64 Triton/compiled physics loss; 75 checks and 10 matched runs pass; full-workload Triton 1.003x, small compiled 1.442x steady; default eager retained | `runs/20260919_153746_kernel_comparison/summary.md`; `notes/kernel-smoke_20260919_152936/` | 2026-09-19 | complete / idle |
 | `commit_validation` | Pre-push checks: 89 tests and eight subtests, lint, result reproduction and wheel/sdist builds pass; poster PDFs, previews and archives verified | `notes/commit-validation_20260915_224147/` | 2026-09-15 | complete / idle |
 | `population_extension` | SciPy 14-state reproduction: 202 matched comparisons, 160 LHS samples, 14 figure pairs, six-page meeting brief; five scientific tests and BDF/Radau checks pass | `runs/20260915_213018_population_extension_5128/`; `extension/results/`; `notes/population_extension_20260915_212214/` | 2026-09-15 | complete / idle |

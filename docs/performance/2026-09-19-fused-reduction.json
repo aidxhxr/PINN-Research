@@ -1,0 +1,1004 @@
+{
+  "date": "2026-09-19",
+  "run_directory": "runs/20260919_232844_fused_reduction/20260919_233341_final",
+  "microbenchmark": {
+    "torch": "2.12.0+cu130",
+    "triton": "3.7.0",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "dtype": "float64",
+    "seed": 2042,
+    "deterministic_algorithms": true,
+    "fill_uninitialized_memory": true,
+    "repeats": 6,
+    "iterations": 64,
+    "graph_calls": 32,
+    "git_revision": "18999d1ab05805b2166acb90f6033b88ea2adab5",
+    "source_sha256": {
+      "experiments/benchmark_reduction.py": "ce3268e7fee402e4c845785440dc395dbe9220185f7ce5e51652e075b2a4450d",
+      "src/wnt_pinn/kernels/trapezoid_triton.py": "93e9884e4352b184e35dda8a1241af34eb5c1e9183cd99bf40077d26881c430d"
+    },
+    "forward_cuda_kernels_at_8000": {
+      "previous": [
+        "void at::native::vectorized_elementwise_kernel<2, at::native::FillFunctor<double>, std::array<char*, 1ul> >(int, at::native::FillFunctor<double>, std::array<char*, 1ul>)",
+        "_forward",
+        "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<double, at::native::func_wrapper_t<double, at::native::sum_functor<double, double, double>::operator()(at::TensorIterator&)::{lambda(double, double)#1}>, unsigned int, double, 4, 4> >(at::native::ReduceOp<double, at::native::func_wrapper_t<double, at::native::sum_functor<double, double, double>::operator()(at::TensorIterator&)::{lambda(double, double)#1}>, unsigned int, double, 4, 4>)",
+        "void at::native::vectorized_elementwise_kernel<2, at::native::BUnaryFunctor<double, double, double, at::native::binary_internal::MulFunctor<double> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<double, double, double, at::native::binary_internal::MulFunctor<double> >, std::array<char*, 2ul>)"
+      ],
+      "fused": [
+        "void at::native::vectorized_elementwise_kernel<2, at::native::FillFunctor<double>, std::array<char*, 1ul> >(int, at::native::FillFunctor<double>, std::array<char*, 1ul>)",
+        "_forward",
+        "_reduce_partials"
+      ]
+    },
+    "records": [
+      {
+        "n_colloc": 1024,
+        "mode": "reduction_preallocated",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              17.20309364827699,
+              15.686968708905624,
+              15.178796957115992,
+              17.26581240291125,
+              15.324156265705824,
+              15.951984323692159
+            ],
+            "cuda_graph_us": [
+              2.9397967737168074,
+              2.888296963647008,
+              2.8872499242424965,
+              2.8887030202895403,
+              2.885703230276704,
+              2.8889374807476997
+            ],
+            "median_host_us": 15.819476516298892,
+            "median_cuda_graph_us": 2.888499991968274
+          },
+          "fused": {
+            "host_us": [
+              16.008937564038206,
+              15.091078012119397,
+              15.148656075325562,
+              15.735890656287665,
+              16.68714071456634,
+              15.166906223385013
+            ],
+            "cuda_graph_us": [
+              1.3700468698516488,
+              1.3466562377288938,
+              1.3460781192407012,
+              1.3488905970007181,
+              1.3478749897331,
+              1.3468593824654818
+            ],
+            "median_host_us": 15.451398439836339,
+            "median_cuda_graph_us": 1.3473671860992908
+          }
+        },
+        "speedup": {
+          "host_us": 1.0238216675271012,
+          "cuda_graph_us": 2.143810552734816
+        }
+      },
+      {
+        "n_colloc": 1024,
+        "mode": "loss_forward",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              111.11848425571225,
+              106.57734378582973,
+              107.14715631365834,
+              111.52281240356388,
+              122.08853127049224,
+              111.001421828405
+            ],
+            "cuda_graph_us": [
+              5.55924978107214,
+              5.459359381347895,
+              5.461593624204397,
+              5.460422020405531,
+              5.455874837934971,
+              5.457218736410141
+            ],
+            "median_host_us": 111.05995304205862,
+            "median_cuda_graph_us": 5.459890700876713
+          },
+          "fused": {
+            "host_us": [
+              110.79737487307284,
+              111.02943767582474,
+              110.62337489420315,
+              112.50414058849856,
+              107.9440155535849,
+              110.02470318999258
+            ],
+            "cuda_graph_us": [
+              3.9006874430924654,
+              3.8458125200122595,
+              3.846890525892377,
+              3.846671897917986,
+              3.846999956294894,
+              3.8470469880849123
+            ],
+            "median_host_us": 110.710374883638,
+            "median_cuda_graph_us": 3.8469452410936356
+          }
+        },
+        "speedup": {
+          "host_us": 1.0031575916781788,
+          "cuda_graph_us": 1.4192795474584239
+        }
+      },
+      {
+        "n_colloc": 1024,
+        "mode": "loss_forward_backward",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              375.74492193925835,
+              372.9427812686481,
+              382.86203130155627,
+              392.64885936063365,
+              390.2903124526347,
+              381.62910936989647
+            ],
+            "cuda_graph_us": [
+              11.932328343391418,
+              11.778797022998333,
+              11.779765598475933,
+              11.778750456869602,
+              11.778718791902065,
+              11.77889108657837
+            ],
+            "median_host_us": 382.24557033572637,
+            "median_cuda_graph_us": 11.778844054788351
+          },
+          "fused": {
+            "host_us": [
+              390.3874687694042,
+              388.998187645484,
+              396.73812511864526,
+              399.23560939314484,
+              392.37560940819094,
+              391.9530938674143
+            ],
+            "cuda_graph_us": [
+              10.312437079846859,
+              10.171234607696533,
+              10.16873400658369,
+              10.170109570026398,
+              10.173218324780464,
+              10.171734727919102
+            ],
+            "median_host_us": 392.1643516378026,
+            "median_cuda_graph_us": 10.171484667807817
+          }
+        },
+        "speedup": {
+          "host_us": 0.9747075906806616,
+          "cuda_graph_us": 1.1580260344950168
+        }
+      },
+      {
+        "n_colloc": 8000,
+        "mode": "reduction_preallocated",
+        "max_absolute_difference": 2.168404344971009e-19,
+        "samples": {
+          "previous": {
+            "host_us": [
+              15.296906212824979,
+              16.423343595306505,
+              15.242734434650629,
+              15.885687389527448,
+              14.625296898884699,
+              14.901296935931896
+            ],
+            "cuda_graph_us": [
+              3.4418751019984484,
+              3.398203058168292,
+              3.3965781331062317,
+              3.3959844149649143,
+              3.3967967610806227,
+              3.395265666767955
+            ],
+            "median_host_us": 15.269820323737804,
+            "median_cuda_graph_us": 3.396687447093427
+          },
+          "fused": {
+            "host_us": [
+              15.229437622110709,
+              15.122140666790074,
+              15.747500128782121,
+              14.552046877724933,
+              14.647953094026889,
+              14.26851554242603
+            ],
+            "cuda_graph_us": [
+              1.5578593593090773,
+              1.5387812163680792,
+              1.5395312802866101,
+              1.53920310549438,
+              1.539546879939735,
+              1.5396561939269304
+            ],
+            "median_host_us": 14.885046880408481,
+            "median_cuda_graph_us": 1.5395390801131725
+          }
+        },
+        "speedup": {
+          "host_us": 1.0258496628476028,
+          "cuda_graph_us": 2.2063015424355026
+        }
+      },
+      {
+        "n_colloc": 8000,
+        "mode": "loss_forward",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              107.99273445627477,
+              106.44662506820168,
+              110.34403132725856,
+              108.37282820830296,
+              108.02906263052137,
+              103.21439071958594
+            ],
+            "cuda_graph_us": [
+              6.803437601774931,
+              6.729249842464924,
+              6.72934390604496,
+              6.7282188683748245,
+              6.728953216224909,
+              6.7277029156684875
+            ],
+            "median_host_us": 108.01089854339807,
+            "median_cuda_graph_us": 6.729101529344916
+          },
+          "fused": {
+            "host_us": [
+              111.53039054079272,
+              111.37801561744709,
+              111.65934370183095,
+              104.08701564301737,
+              113.53128115842992,
+              105.17184387026646
+            ],
+            "cuda_graph_us": [
+              4.985515493899584,
+              4.932062700390816,
+              4.932312294840813,
+              4.9354685470461845,
+              4.932656418532133,
+              4.9312966875731945
+            ],
+            "median_host_us": 111.4542030791199,
+            "median_cuda_graph_us": 4.932484356686473
+          }
+        },
+        "speedup": {
+          "host_us": 0.9691056555913151,
+          "cuda_graph_us": 1.364241838947335
+        }
+      },
+      {
+        "n_colloc": 8000,
+        "mode": "loss_forward_backward",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              387.0614689276408,
+              378.8503750001837,
+              413.66568734702014,
+              397.71679689692974,
+              375.8523907890776,
+              384.708953106383
+            ],
+            "cuda_graph_us": [
+              14.783843420445919,
+              14.621765352785587,
+              14.622687362134457,
+              14.619468711316586,
+              14.62468784302473,
+              14.625312760472298
+            ],
+            "median_host_us": 385.8852110170119,
+            "median_cuda_graph_us": 14.623687602579594
+          },
+          "fused": {
+            "host_us": [
+              365.2424843494373,
+              391.6038281204237,
+              389.84301568234514,
+              378.07468743267236,
+              376.65284366994456,
+              372.46498436616093
+            ],
+            "cuda_graph_us": [
+              12.94768787920475,
+              12.803968973457813,
+              12.803937308490276,
+              12.804250232875347,
+              12.804843485355377,
+              12.805015780031681
+            ],
+            "median_host_us": 377.36376555130846,
+            "median_cuda_graph_us": 12.804546859115362
+          }
+        },
+        "speedup": {
+          "host_us": 1.0225815148236452,
+          "cuda_graph_us": 1.1420699040332858
+        }
+      },
+      {
+        "n_colloc": 40001,
+        "mode": "reduction_preallocated",
+        "max_absolute_difference": 2.168404344971009e-19,
+        "samples": {
+          "previous": {
+            "host_us": [
+              20.79284377032309,
+              20.500062419159804,
+              20.350437580418657,
+              20.043843733219546,
+              19.68639071492362,
+              20.849703105341177
+            ],
+            "cuda_graph_us": [
+              3.965765703469515,
+              3.9206095971167088,
+              3.9163436740636826,
+              3.917031455785036,
+              3.918624948710203,
+              3.9189220406115055
+            ],
+            "median_host_us": 20.42524999978923,
+            "median_cuda_graph_us": 3.9187734946608543
+          },
+          "fused": {
+            "host_us": [
+              18.040828081211657,
+              16.682156228853273,
+              16.607515590294497,
+              15.93395313648216,
+              16.388609537898446,
+              16.07685953786131
+            ],
+            "cuda_graph_us": [
+              2.368687419220805,
+              2.344421809539199,
+              2.3430469445884228,
+              2.344468841329217,
+              2.342562424018979,
+              2.342281164601445
+            ],
+            "median_host_us": 16.49806256409647,
+            "median_cuda_graph_us": 2.343734377063811
+          }
+        },
+        "speedup": {
+          "host_us": 1.2380393103999503,
+          "cuda_graph_us": 1.6720211697241156
+        }
+      },
+      {
+        "n_colloc": 40001,
+        "mode": "loss_forward",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              119.85350010945695,
+              128.43459376199462,
+              127.87454670615261,
+              137.02706246476737,
+              127.12389070657082,
+              132.7022187069815
+            ],
+            "cuda_graph_us": [
+              10.413093492388725,
+              10.343249887228012,
+              10.346640832722187,
+              10.349656455218792,
+              10.354109108448029,
+              10.352562181651592
+            ],
+            "median_host_us": 128.15457023407362,
+            "median_cuda_graph_us": 10.351109318435192
+          },
+          "fused": {
+            "host_us": [
+              125.85729700731463,
+              115.64451551748789,
+              124.2742969225219,
+              123.16635934439546,
+              120.7093907851231,
+              120.2991875288717
+            ],
+            "cuda_graph_us": [
+              8.78432858735323,
+              8.725234307348728,
+              8.727812208235264,
+              8.725656196475029,
+              8.727015927433968,
+              8.725905790925026
+            ],
+            "median_host_us": 121.93787506475928,
+            "median_cuda_graph_us": 8.726460859179497
+          }
+        },
+        "speedup": {
+          "host_us": 1.050982479119082,
+          "cuda_graph_us": 1.1861749551705951
+        }
+      },
+      {
+        "n_colloc": 40001,
+        "mode": "loss_forward_backward",
+        "max_absolute_difference": 0.0,
+        "samples": {
+          "previous": {
+            "host_us": [
+              483.50378119721427,
+              453.0348280695762,
+              471.6508281035203,
+              471.0739999609359,
+              481.53104694392823,
+              468.6918750849145
+            ],
+            "cuda_graph_us": [
+              27.696875855326653,
+              27.561141178011894,
+              27.56313979625702,
+              27.572156861424446,
+              27.573078870773315,
+              27.573514729738235
+            ],
+            "median_host_us": 471.3624140322281,
+            "median_cuda_graph_us": 27.57261786609888
+          },
+          "fused": {
+            "host_us": [
+              556.7933906149847,
+              461.28920303090126,
+              451.6626563599857,
+              472.64450017792115,
+              469.35959380789427,
+              455.97346888825996
+            ],
+            "cuda_graph_us": [
+              24.040421470999718,
+              23.905687034130096,
+              23.919297382235527,
+              23.924171924591064,
+              23.92842248082161,
+              23.936843499541283
+            ],
+            "median_host_us": 465.32439841939777,
+            "median_cuda_graph_us": 23.926297202706337
+          }
+        },
+        "speedup": {
+          "host_us": 1.0129759274032055,
+          "cuda_graph_us": 1.1523980343678129
+        }
+      }
+    ]
+  },
+  "training": {
+    "config": {
+      "schema_version": 1,
+      "protocol": "independent-seeds-v1",
+      "name": "kernel-smoke",
+      "pipeline": "hybrid",
+      "regimes": [
+        "Normal"
+      ],
+      "conditions": [
+        "ctrl",
+        "noATRA"
+      ],
+      "parent_run": null,
+      "network": {
+        "width": 256,
+        "depth": 4,
+        "n_fourier": 16,
+        "fourier_sigma": 4.0
+      },
+      "data": {
+        "T": 150.0,
+        "reference_points": 1000,
+        "n_data": 150,
+        "noise_std": 0.002,
+        "reference_cache": null
+      },
+      "training": {
+        "adam_epochs": 60,
+        "lbfgs_steps": 2,
+        "param_refine_steps": 1,
+        "n_colloc": 1024,
+        "param_refine_colloc": 1024,
+        "lr": 0.001,
+        "lr_param": 0.005,
+        "lam_data": 1.0,
+        "lam_phys": 1.0,
+        "lam_ic": 20.0,
+        "adaptive_weights": true,
+        "weight_every": 20,
+        "weight_beta": 0.1,
+        "n_starts": 1,
+        "init_jitter": 0.15,
+        "log_every": 20,
+        "checkpoint_every": 60,
+        "physics_backend": "triton"
+      },
+      "seeds": {
+        "data": 1042,
+        "initialization": 2042,
+        "collocation": 3042
+      },
+      "resources": {
+        "device": "cuda",
+        "threads": 4,
+        "concurrency": 1
+      },
+      "hybrid": {
+        "term": "bm_myc",
+        "constraint": "anchored",
+        "param": "gated",
+        "width": 5,
+        "depth": 2,
+        "weight_decay": 1e-08,
+        "freeze": false,
+        "state": null
+      }
+    },
+    "repeats": 2,
+    "results": {
+      "eager": {
+        "steady_adam_ms_per_epoch": 27.042323470086558,
+        "adam_seconds": 2.151911401000689,
+        "lbfgs_seconds": 1.3357624819982448,
+        "refine_seconds": 0.42408089650416514,
+        "training_seconds": 3.9117547795030987,
+        "first_adam_seconds": 0.5621291495044716,
+        "process_wall_seconds": 10.969938225003716,
+        "first_run_training_seconds": 4.001545510996948,
+        "repeat_training_seconds": [
+          3.8219640480092494
+        ],
+        "final_physics_losses": [
+          1.668110366159585e-05,
+          1.668110366159585e-05
+        ],
+        "max_parameter_relative_difference": 0.0,
+        "observations_identical": true,
+        "closure_counts": [
+          {
+            "lbfgs_closures": 43,
+            "refine_closures": 23
+          },
+          {
+            "lbfgs_closures": 43,
+            "refine_closures": 23
+          }
+        ],
+        "steady_adam_speedup": 1.0,
+        "training_speedup_including_first_call": 1.0
+      },
+      "triton": {
+        "steady_adam_ms_per_epoch": 28.004782260104548,
+        "adam_seconds": 3.360276307503227,
+        "lbfgs_seconds": 1.494946617502137,
+        "refine_seconds": 0.4180593704950297,
+        "training_seconds": 5.273282295500394,
+        "first_adam_seconds": 1.715886378500727,
+        "process_wall_seconds": 12.569753971503815,
+        "first_run_training_seconds": 5.931859460994019,
+        "repeat_training_seconds": [
+          4.614705130006769
+        ],
+        "final_physics_losses": [
+          1.6681103661595853e-05,
+          1.6681103661595853e-05
+        ],
+        "max_parameter_relative_difference": 0.0,
+        "observations_identical": true,
+        "closure_counts": [
+          {
+            "lbfgs_closures": 43,
+            "refine_closures": 23
+          },
+          {
+            "lbfgs_closures": 43,
+            "refine_closures": 23
+          }
+        ],
+        "steady_adam_speedup": 0.9656323416094149,
+        "training_speedup_including_first_call": 0.7418064424202997
+      }
+    },
+    "runs": [
+      {
+        "backend": "eager",
+        "repeat": 0,
+        "directory": "runs/20260919_233348_kernel-eager-r0_7e2dc242",
+        "process_wall_seconds": 11.123713841006975,
+        "start": {
+          "start": 0,
+          "initialization_seed": 2042,
+          "data_seed": 1042,
+          "collocation_seed": 3042,
+          "final_phys": 1.668110366159585e-05,
+          "n_under10pct": 2,
+          "n_unknown": 34,
+          "recovered": {
+            "W": 0.5242759757598663,
+            "thetaP": 0.7577280545911811,
+            "eta13": 0.5300779473496328,
+            "kappa13": 0.611454871657446,
+            "lambdaP": 0.6888225192731448,
+            "lambda5": 0.7506087425539796,
+            "kappa5": 1.200330133022753,
+            "epsP": 4.908123136851644,
+            "rho5": 2.2425472590953164,
+            "rhoB": 1.2277656141902047,
+            "rho13": 1.1142784321504529,
+            "deltaP1": 1.7837768516346895,
+            "eps5": 11.870390562954322,
+            "a5": 0.1538512349646052,
+            "etaR": 2.5916703282897013,
+            "kappaR": 1.095742129336585,
+            "etaM": 2.051778765258751,
+            "kappaM": 1.0160404117168067,
+            "eps13": 7.12102425916183,
+            "a13": 0.24573165106828998,
+            "etaB13": 1.4591439744519368,
+            "kappaB13": 0.7638354789329542,
+            "etaM13": 0.7261322235901727,
+            "kappaM13": 0.8132196594465039,
+            "epsM": 23.796707918378186,
+            "aM": 0.8464894187825123,
+            "epsR": 60.73741001496182,
+            "lambdaC": 0.5535416109697371,
+            "epsC": 2.723196159091607,
+            "aC": 0.09425687298628392,
+            "etaRC": 1.1422412631216374,
+            "kappaRC": 1.2126959438535663,
+            "etaBC": 2.807502772560377,
+            "kappaBC": 0.7752950298184805
+          },
+          "observation_hashes": {
+            "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+            "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+          },
+          "physics_backend": "eager",
+          "timings": {
+            "adam_epochs": 60,
+            "warmup_epochs": 10,
+            "lbfgs_closures": 43,
+            "refine_closures": 23,
+            "adam_seconds": 2.1743347059964435,
+            "lbfgs_seconds": 1.3802254170004744,
+            "refine_seconds": 0.44698538800003007,
+            "training_seconds": 4.001545510996948,
+            "first_adam_seconds": 0.5875045150023652,
+            "steady_adam_epochs": 50,
+            "steady_adam_seconds": 1.3359403810027288,
+            "steady_adam_ms_per_epoch": 26.718807620054577
+          }
+        }
+      },
+      {
+        "backend": "triton",
+        "repeat": 0,
+        "directory": "runs/20260919_233400_kernel-triton-r0_2f7a0d71",
+        "process_wall_seconds": 13.359903352000401,
+        "start": {
+          "start": 0,
+          "initialization_seed": 2042,
+          "data_seed": 1042,
+          "collocation_seed": 3042,
+          "final_phys": 1.6681103661595853e-05,
+          "n_under10pct": 2,
+          "n_unknown": 34,
+          "recovered": {
+            "W": 0.5242759757598663,
+            "thetaP": 0.7577280545911811,
+            "eta13": 0.5300779473496328,
+            "kappa13": 0.611454871657446,
+            "lambdaP": 0.6888225192731448,
+            "lambda5": 0.7506087425539796,
+            "kappa5": 1.200330133022753,
+            "epsP": 4.908123136851644,
+            "rho5": 2.2425472590953164,
+            "rhoB": 1.2277656141902047,
+            "rho13": 1.1142784321504529,
+            "deltaP1": 1.7837768516346895,
+            "eps5": 11.870390562954322,
+            "a5": 0.1538512349646052,
+            "etaR": 2.5916703282897013,
+            "kappaR": 1.095742129336585,
+            "etaM": 2.051778765258751,
+            "kappaM": 1.0160404117168067,
+            "eps13": 7.12102425916183,
+            "a13": 0.24573165106828998,
+            "etaB13": 1.4591439744519368,
+            "kappaB13": 0.7638354789329542,
+            "etaM13": 0.7261322235901727,
+            "kappaM13": 0.8132196594465039,
+            "epsM": 23.796707918378186,
+            "aM": 0.8464894187825123,
+            "epsR": 60.73741001496182,
+            "lambdaC": 0.5535416109697371,
+            "epsC": 2.723196159091607,
+            "aC": 0.09425687298628392,
+            "etaRC": 1.1422412631216374,
+            "kappaRC": 1.2126959438535663,
+            "etaBC": 2.807502772560377,
+            "kappaBC": 0.7752950298184805
+          },
+          "observation_hashes": {
+            "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+            "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+          },
+          "physics_backend": "triton",
+          "timings": {
+            "adam_epochs": 60,
+            "warmup_epochs": 10,
+            "lbfgs_closures": 43,
+            "refine_closures": 23,
+            "adam_seconds": 3.9108033509983215,
+            "lbfgs_seconds": 1.5978507840045495,
+            "refine_seconds": 0.42320532599114813,
+            "training_seconds": 5.931859460994019,
+            "first_adam_seconds": 2.2586986899987096,
+            "steady_adam_epochs": 50,
+            "steady_adam_seconds": 1.4119526540016523,
+            "steady_adam_ms_per_epoch": 28.239053080033045
+          }
+        }
+      },
+      {
+        "backend": "triton",
+        "repeat": 1,
+        "directory": "runs/20260919_233413_kernel-triton-r1_9db5d070",
+        "process_wall_seconds": 11.779604591007228,
+        "start": {
+          "start": 0,
+          "initialization_seed": 2042,
+          "data_seed": 1042,
+          "collocation_seed": 3042,
+          "final_phys": 1.6681103661595853e-05,
+          "n_under10pct": 2,
+          "n_unknown": 34,
+          "recovered": {
+            "W": 0.5242759757598663,
+            "thetaP": 0.7577280545911811,
+            "eta13": 0.5300779473496328,
+            "kappa13": 0.611454871657446,
+            "lambdaP": 0.6888225192731448,
+            "lambda5": 0.7506087425539796,
+            "kappa5": 1.200330133022753,
+            "epsP": 4.908123136851644,
+            "rho5": 2.2425472590953164,
+            "rhoB": 1.2277656141902047,
+            "rho13": 1.1142784321504529,
+            "deltaP1": 1.7837768516346895,
+            "eps5": 11.870390562954322,
+            "a5": 0.1538512349646052,
+            "etaR": 2.5916703282897013,
+            "kappaR": 1.095742129336585,
+            "etaM": 2.051778765258751,
+            "kappaM": 1.0160404117168067,
+            "eps13": 7.12102425916183,
+            "a13": 0.24573165106828998,
+            "etaB13": 1.4591439744519368,
+            "kappaB13": 0.7638354789329542,
+            "etaM13": 0.7261322235901727,
+            "kappaM13": 0.8132196594465039,
+            "epsM": 23.796707918378186,
+            "aM": 0.8464894187825123,
+            "epsR": 60.73741001496182,
+            "lambdaC": 0.5535416109697371,
+            "epsC": 2.723196159091607,
+            "aC": 0.09425687298628392,
+            "etaRC": 1.1422412631216374,
+            "kappaRC": 1.2126959438535663,
+            "etaBC": 2.807502772560377,
+            "kappaBC": 0.7752950298184805
+          },
+          "observation_hashes": {
+            "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+            "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+          },
+          "physics_backend": "triton",
+          "timings": {
+            "adam_epochs": 60,
+            "warmup_epochs": 10,
+            "lbfgs_closures": 43,
+            "refine_closures": 23,
+            "adam_seconds": 2.8097492640081327,
+            "lbfgs_seconds": 1.3920424509997247,
+            "refine_seconds": 0.4129134149989113,
+            "training_seconds": 4.614705130006769,
+            "first_adam_seconds": 1.1730740670027444,
+            "steady_adam_epochs": 50,
+            "steady_adam_seconds": 1.3885255720088026,
+            "steady_adam_ms_per_epoch": 27.77051144017605
+          }
+        }
+      },
+      {
+        "backend": "eager",
+        "repeat": 1,
+        "directory": "runs/20260919_233425_kernel-eager-r1_92e4de9e",
+        "process_wall_seconds": 10.816162609000457,
+        "start": {
+          "start": 0,
+          "initialization_seed": 2042,
+          "data_seed": 1042,
+          "collocation_seed": 3042,
+          "final_phys": 1.668110366159585e-05,
+          "n_under10pct": 2,
+          "n_unknown": 34,
+          "recovered": {
+            "W": 0.5242759757598663,
+            "thetaP": 0.7577280545911811,
+            "eta13": 0.5300779473496328,
+            "kappa13": 0.611454871657446,
+            "lambdaP": 0.6888225192731448,
+            "lambda5": 0.7506087425539796,
+            "kappa5": 1.200330133022753,
+            "epsP": 4.908123136851644,
+            "rho5": 2.2425472590953164,
+            "rhoB": 1.2277656141902047,
+            "rho13": 1.1142784321504529,
+            "deltaP1": 1.7837768516346895,
+            "eps5": 11.870390562954322,
+            "a5": 0.1538512349646052,
+            "etaR": 2.5916703282897013,
+            "kappaR": 1.095742129336585,
+            "etaM": 2.051778765258751,
+            "kappaM": 1.0160404117168067,
+            "eps13": 7.12102425916183,
+            "a13": 0.24573165106828998,
+            "etaB13": 1.4591439744519368,
+            "kappaB13": 0.7638354789329542,
+            "etaM13": 0.7261322235901727,
+            "kappaM13": 0.8132196594465039,
+            "epsM": 23.796707918378186,
+            "aM": 0.8464894187825123,
+            "epsR": 60.73741001496182,
+            "lambdaC": 0.5535416109697371,
+            "epsC": 2.723196159091607,
+            "aC": 0.09425687298628392,
+            "etaRC": 1.1422412631216374,
+            "kappaRC": 1.2126959438535663,
+            "etaBC": 2.807502772560377,
+            "kappaBC": 0.7752950298184805
+          },
+          "observation_hashes": {
+            "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+            "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+          },
+          "physics_backend": "eager",
+          "timings": {
+            "adam_epochs": 60,
+            "warmup_epochs": 10,
+            "lbfgs_closures": 43,
+            "refine_closures": 23,
+            "adam_seconds": 2.129488096004934,
+            "lbfgs_seconds": 1.2912995469960151,
+            "refine_seconds": 0.4011764050083002,
+            "training_seconds": 3.8219640480092494,
+            "first_adam_seconds": 0.5367537840065779,
+            "steady_adam_epochs": 50,
+            "steady_adam_seconds": 1.368291966005927,
+            "steady_adam_ms_per_epoch": 27.36583932011854
+          }
+        }
+      }
+    ]
+  },
+  "validation": {
+    "kernel_checks_passed": 51,
+    "matched_training_runs_completed": 4,
+    "scientific_configs_equal": true,
+    "source_snapshots_verified_and_equal": true,
+    "references_equal": true,
+    "observations_equal": true,
+    "lbfgs_closures": 43,
+    "refine_closures": 23,
+    "max_checkpoint_absolute_difference": 0.0,
+    "max_checkpoint_relative_norm_difference": 0.0,
+    "max_final_physics_loss_relative_difference": 2.0311196775412072e-16,
+    "max_recovered_parameter_relative_difference": 0.0,
+    "test_log": "runs/20260919_232844_fused_reduction/20260919_233252_buffer_reuse/kernel-tests.log",
+    "test_log_sha256": "62355d1bd771b5dfdab0a5ecb001df5d552823a24cacc011e297160bc2f38ddd",
+    "training_manifests": [
+      {
+        "directory": "runs/20260919_233348_kernel-eager-r0_7e2dc242",
+        "status": "complete",
+        "manifest_sha256": "c8a9c33c4193a32e84005047d02bdfd07e0077e04db404a01763830c61a97cd8"
+      },
+      {
+        "directory": "runs/20260919_233400_kernel-triton-r0_2f7a0d71",
+        "status": "complete",
+        "manifest_sha256": "72b6d3bc19352fa6dd2a12fd95fffd5009a18adae8aba0202032658bffb02caf"
+      },
+      {
+        "directory": "runs/20260919_233413_kernel-triton-r1_9db5d070",
+        "status": "complete",
+        "manifest_sha256": "d7e09d6d835c93d9313c12b44b529fad1f6b5a864741ca18dc7392d618aee2e1"
+      },
+      {
+        "directory": "runs/20260919_233425_kernel-eager-r1_92e4de9e",
+        "status": "complete",
+        "manifest_sha256": "07f2ce1e9bfa48eb18d688af039d9ee4062ab608ae55d6c1cd4265d908849677"
+      }
+    ],
+    "training_source_hashes": {
+      "PINN-hybrid-ude/aggregate.py": "dfcd53b978501e23d230bac20246702ea500b82ce06a134fb47cb3a793acd86a",
+      "PINN-hybrid-ude/aggregate_dose.py": "c1a251bad4131ba53a5e1e9468a23fc800fc17cb0bdea4a24ef9cc2cb4ba3d11",
+      "PINN-hybrid-ude/aggregate_hybrid.py": "738a11bc7cd7148dcfc136d9d7a503202bdff0c8d164dd423ab7d0a7423b34e2",
+      "PINN-hybrid-ude/aggregate_protocol.py": "c14348019f9cdc7c190e6b004a17b65dcb9d07a02b937063cbb0e062fd629803",
+      "PINN-hybrid-ude/aggregate_screen.py": "192c76ea3989cd24c5efcbcab07c108e751420eed8878fa6840acd32f65d2e94",
+      "PINN-hybrid-ude/anchor_doses.py": "f9b93032af322e56b16af73e54ffc5c02d1431ef1a3877b4db9eb878e4ec3a1f",
+      "PINN-hybrid-ude/anchor_reach.py": "230a80dd5de764b8d18f82fc4e1647c6105ee75bb59d65d9a795ac7e14137192",
+      "PINN-hybrid-ude/anchor_report.py": "8fe93287de88356b3dfde081966e3199746940c2c3218834523991864c991f34",
+      "PINN-hybrid-ude/calibrate_apc_mutation.py": "6933b46d729314a922abf76a6ed34984e3c1f816bf364ee4ac82fbbcbbc0f465",
+      "PINN-hybrid-ude/compare_screens.py": "9af678f5ed3b9dce8eb711dd80742e811ad358a8f9fe41426008a50a4cf7244b",
+      "PINN-hybrid-ude/config.py": "96b07476a63a007bfdbf27f316876dd2623515872c4e59db1b15f3e3650a2406",
+      "PINN-hybrid-ude/dose_response.py": "c99b928c8e15531a2a6e1d23a1f40f8e39ae16ea1a6427b6137649a3648943b6",
+      "PINN-hybrid-ude/hybrid.py": "00ace79ab7d3c170430a5a8e0031b36de3934ce9ee7d014793b3b6d72ace5aa0",
+      "PINN-hybrid-ude/identifiability.py": "126ae478f0877eb3eaeb6d7cec02b33441ee4d04bc6bb852befc09e3f3a67728",
+      "PINN-hybrid-ude/main.py": "5c5859eaacf4ca0c5bf077d5f074a4b40f259ebfd9051e78b3d4e9d06423ca76",
+      "PINN-hybrid-ude/metrics.py": "8e315e5dcf62c9b3714fa9eb32e904f3fb500d6224081c37f164cb374f9f6cb5",
+      "PINN-hybrid-ude/model.py": "60c86348ea824f5332ed20c77fe9011d4c73867c5ebb98e417fc1cf77031995c",
+      "PINN-hybrid-ude/odes.py": "13b5ce2d52e2f775afe279f3eeff9710aee2cf77dd30ae776365d21d448b7ed4",
+      "PINN-hybrid-ude/pinn_core_dynamics.py": "2489a0e28f7d9a581b7de13fc439b6799d68dc4f0074cdb6d919a8e0c6b326f6",
+      "PINN-hybrid-ude/plot_error.py": "b556bcfd289ef4fa0f81142d9bb51f00b3bd8d8d92f4d63219c147b390bb305b",
+      "PINN-hybrid-ude/plot_learned_term.py": "8639ec731bf0607d614e100ee17593273c93413a197213188b5a51c01fcefb74",
+      "PINN-hybrid-ude/plotting.py": "37be868c734f84836f89109dbe8abe7fafbc7955739a9d5e30e1d44bb6098250",
+      "PINN-hybrid-ude/prep_refs.py": "d9e7cb1eb00c4f2d2326e3317ee9f601a598cb1daf9fdb7726b40041acc0d150",
+      "PINN-hybrid-ude/profile_identifiability.py": "0d58f275d9e4b068640fc2cc81a00eb7735e6e9f260763433275b22dc8a85d08",
+      "PINN-hybrid-ude/protocol_test.py": "9bb12a42af13e697c26a8acd0d8523496c5f58ba0a38fa50148b58b0b82d7aa4",
+      "PINN-hybrid-ude/recover_odefit.py": "dc8d126d1b82fc6af27c4809e471de46592ecd0669828f91abef3b764170db21",
+      "PINN-hybrid-ude/reference.py": "3306957f0fe8df4dedd06f2e279e0d8320e8a76ba7376334c892d8f0192ca0b6",
+      "PINN-hybrid-ude/regen_plots.py": "0fda87bcf19e7e3e1e929c52dfa2c7549c0bfb41ea91350fe2e504457603ebba",
+      "PINN-hybrid-ude/residual.py": "02ac2a24e1f2c9779f66219ae9cb2147521e4674f14d99eaf38a7340f5d6023f",
+      "PINN-hybrid-ude/run_boost.py": "3fcdf7c23eb152fa4cd45a35d6eb2b68ace4af74bc7bdbef5f40a65d04e7f968",
+      "PINN-hybrid-ude/run_hybrid.py": "069cd57af4d6f8e95bc95c395fd0c409ed5e8a34807bc5250ecfe3530c55d594",
+      "PINN-hybrid-ude/screen_terms.py": "b78a02e4f6952fdf083958b8b9c8e8bee46722d1177728f1a81db6a1a3233d28",
+      "PINN-hybrid-ude/test_hybrid_terms.py": "db8ed60bbc7406fe0fda5d1f7803d4f047edf8cca29e94c10aab05ea0877e67b",
+      "PINN-hybrid-ude/training.py": "fc5f750c7d832cfde4f4e6f5043dc9f2bd676730784a08988b91a355cc26a87a",
+      "experiments/run.py": "530e52b1534b8d71003db1e952cff6936166323dd479bd94bc5c4645cda752a3",
+      "src/wnt_pinn/__init__.py": "2d4289f132aef552b0ef485a5fd2b6b510473dd20980191d52930be31ff4f0b9",
+      "src/wnt_pinn/kernels/__init__.py": "62c8f4f61ff6603a9d3d4b4b907adbec3162a41eb1a1a501297d3707cd6a3932",
+      "src/wnt_pinn/kernels/integral.py": "63179bd432e2349ce4898ca41d64615aec42f666b6e83299e0adeb5c7e880e3e",
+      "src/wnt_pinn/kernels/timing.py": "b7fa9d0b738258db86d2ea504b5225629f3a411d4e28eb69d27adee980adade0",
+      "src/wnt_pinn/kernels/trapezoid_triton.py": "93e9884e4352b184e35dda8a1241af34eb5c1e9183cd99bf40077d26881c430d",
+      "src/wnt_pinn/model/__init__.py": "02d2ec8406d5c244d8e4e4cbe23ec4d907c83240b84d0a569235ad81f62a0f4f",
+      "src/wnt_pinn/model/hybrid_rhs.py": "a2a75c01ebf328ddc9519c47fb83205de70bf389daa0dba46ed8700f6577a9e8",
+      "src/wnt_pinn/model/integral_rhs.py": "fdec46f15ee8187ca4390ba78b46c567d5d34350bf42d39135ac5a8f96ea1944",
+      "src/wnt_pinn/model/numpy_rhs.py": "ad7cae085fe10038694ca796bffef745dc9adafd918bb2a16c02918a17802318",
+      "src/wnt_pinn/model/parameters.py": "694e122d08d08f1916e2d7756ba06d3979d5b18b33ed2f2517b6386a47f82b7a",
+      "src/wnt_pinn/networks/__init__.py": "e3e02e39c841d85443c8588c0b368d5b5c4eb7c37f916d294097421bedc45fe7",
+      "src/wnt_pinn/networks/state.py": "e7d0ef60442f89017cf2d7fab58ad1f6a152455822e58a61b2db5fae27391bd1",
+      "src/wnt_pinn/runs/__init__.py": "1b0c420214a3dbf830155f349c6ad36d7c7584ac87c0b94d96fbabfc45cff64e",
+      "src/wnt_pinn/runs/checkpoint.py": "00e0c46dad5959b65605794e4822a34b26a1bccef3170809e86b72a0cb18c775",
+      "src/wnt_pinn/runs/config.py": "ba26b0c72cacf5f82144ec1b1f65fe13f1a51ad5d94db7c5385f32d11b13c788",
+      "src/wnt_pinn/runs/integrity.py": "ad6b7f1a792460ab5bd365cecfbc1e9e143fb5eda1e0ae131b61adcd3e109b3c",
+      "src/wnt_pinn/runs/runner.py": "07533bfe40ca30a15c3c775f52e3929702417aa1d383301cc47ff57bab39ba4a",
+      "src/wnt_pinn/runs/worker.py": "b24bb9d74bf6e1d797613b5445a0fab1595a61bfd77de4f23c4c1da5ee4d47f7"
+    }
+  }
+}
