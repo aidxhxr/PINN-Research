@@ -30,7 +30,7 @@ def test_backend_validation_and_default():
         make_integral_loss(physics_rhs, "typo")
 
 
-@pytest.mark.parametrize("n", [2, 37, 1025, 8000])
+@pytest.mark.parametrize("n", [2, 37, 1025, 8000, 40001])
 @pytest.mark.parametrize("dtype", [torch.float32, torch.float64])
 def test_triton_loss_and_backward(n, dtype):
     kernel = cuda_kernel()
@@ -52,6 +52,43 @@ def test_triton_loss_and_backward(n, dtype):
     actual_grads = torch.autograd.grad(actual * multiplier, (z, f))
     for got, wanted in zip(actual_grads, reference_grads):
         torch.testing.assert_close(got, wanted, rtol=tolerance, atol=tolerance)
+
+
+@pytest.mark.parametrize("parts_count", [1, 219, 1024, 1025, 4097])
+@pytest.mark.parametrize("dtype", [torch.float32, torch.float64])
+@pytest.mark.parametrize("in_place", [False, True])
+def test_final_reduction_masks_tiles_and_is_repeatable(parts_count, dtype, in_place):
+    cuda_kernel()
+    import triton
+
+    from wnt_pinn.kernels.trapezoid_triton import _reduce_partials
+
+    generator = torch.Generator(device="cuda").manual_seed(81)
+    parts = torch.rand(parts_count, generator=generator, device="cuda", dtype=dtype)
+    # Counts need not fill the final 256-element residual block.
+    count = max(1, parts_count * 256 - 17)
+    tile = min(1024, triton.next_power_of_2(parts_count))
+    outputs = []
+    for _ in range(3):
+        working = parts.clone() if in_place else parts
+        output = working[0] if in_place else torch.empty((), device="cuda", dtype=dtype)
+        _reduce_partials[(1,)](working, output, parts_count, count, tile, enable_fp_fusion=False)
+        outputs.append(output)
+    tolerance = 2e-6 if dtype == torch.float32 else 2e-13
+    torch.testing.assert_close(outputs[0], parts.sum() / count, rtol=tolerance, atol=0)
+    for output in outputs[1:]:
+        torch.testing.assert_close(output, outputs[0], rtol=0, atol=0)
+
+
+def test_final_reduction_retains_tiny_float64_values():
+    cuda_kernel()
+    from wnt_pinn.kernels.trapezoid_triton import _reduce_partials
+
+    parts = torch.full((1025,), 1e-290, device="cuda", dtype=torch.float64)
+    output = torch.empty((), device="cuda", dtype=torch.float64)
+    _reduce_partials[(1,)](parts, output, 1025, 262400, 1024, enable_fp_fusion=False)
+    assert output.item() > 0
+    torch.testing.assert_close(output, parts.sum() / 262400, rtol=2e-13, atol=0)
 
 
 def test_triton_gradcheck_and_double_backward():

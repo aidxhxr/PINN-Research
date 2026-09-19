@@ -58,6 +58,12 @@ mixed precision or change to the biological equations. The kernel uses
 deterministic reductions and no atomic gradient accumulation. Higher-order
 gradients use a differentiable PyTorch backward fallback.
 
+The final block sums and normalization share one additional Triton kernel.
+It reuses the temporary partial-sum buffer for its scalar output. The custom
+loss forward uses two calculation kernels, plus one buffer initialization in
+PyTorch's deterministic mode. Its reduction tile is capped at 1,024 values and
+loops over larger arrays while retaining the input dtype.
+
 `compiled` applies `torch.compile` to the original RHS and integral loss,
 including active learned mechanisms. It uses dynamic row counts and disables
 CUDA graphs to accommodate L-BFGS closures. The state networks and optimizer
