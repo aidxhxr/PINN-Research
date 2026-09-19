@@ -1,0 +1,1342 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-19",
+  "implementation_commit": "fa09cda865621a375fc357de53ccb8f46cc8f2ef",
+  "collection_note": "Measurements preceded the commits; all recorded training-source hashes match the implementation commit.",
+  "environment": {
+    "torch": "2.12.0+cu130",
+    "triton": "3.7.0",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "dtype": "float64"
+  },
+  "limitations": [
+    "Shared GPU",
+    "Two repetitions per backend",
+    "Short training; not converged recovery",
+    "Compiled backend not benchmarked at ten conditions"
+  ],
+  "source_sha256": {
+    "PINN-hybrid-ude/aggregate.py": "dfcd53b978501e23d230bac20246702ea500b82ce06a134fb47cb3a793acd86a",
+    "PINN-hybrid-ude/aggregate_dose.py": "c1a251bad4131ba53a5e1e9468a23fc800fc17cb0bdea4a24ef9cc2cb4ba3d11",
+    "PINN-hybrid-ude/aggregate_hybrid.py": "738a11bc7cd7148dcfc136d9d7a503202bdff0c8d164dd423ab7d0a7423b34e2",
+    "PINN-hybrid-ude/aggregate_protocol.py": "c14348019f9cdc7c190e6b004a17b65dcb9d07a02b937063cbb0e062fd629803",
+    "PINN-hybrid-ude/aggregate_screen.py": "192c76ea3989cd24c5efcbcab07c108e751420eed8878fa6840acd32f65d2e94",
+    "PINN-hybrid-ude/anchor_doses.py": "f9b93032af322e56b16af73e54ffc5c02d1431ef1a3877b4db9eb878e4ec3a1f",
+    "PINN-hybrid-ude/anchor_reach.py": "230a80dd5de764b8d18f82fc4e1647c6105ee75bb59d65d9a795ac7e14137192",
+    "PINN-hybrid-ude/anchor_report.py": "8fe93287de88356b3dfde081966e3199746940c2c3218834523991864c991f34",
+    "PINN-hybrid-ude/calibrate_apc_mutation.py": "6933b46d729314a922abf76a6ed34984e3c1f816bf364ee4ac82fbbcbbc0f465",
+    "PINN-hybrid-ude/compare_screens.py": "9af678f5ed3b9dce8eb711dd80742e811ad358a8f9fe41426008a50a4cf7244b",
+    "PINN-hybrid-ude/config.py": "96b07476a63a007bfdbf27f316876dd2623515872c4e59db1b15f3e3650a2406",
+    "PINN-hybrid-ude/dose_response.py": "c99b928c8e15531a2a6e1d23a1f40f8e39ae16ea1a6427b6137649a3648943b6",
+    "PINN-hybrid-ude/hybrid.py": "00ace79ab7d3c170430a5a8e0031b36de3934ce9ee7d014793b3b6d72ace5aa0",
+    "PINN-hybrid-ude/identifiability.py": "126ae478f0877eb3eaeb6d7cec02b33441ee4d04bc6bb852befc09e3f3a67728",
+    "PINN-hybrid-ude/main.py": "5c5859eaacf4ca0c5bf077d5f074a4b40f259ebfd9051e78b3d4e9d06423ca76",
+    "PINN-hybrid-ude/metrics.py": "8e315e5dcf62c9b3714fa9eb32e904f3fb500d6224081c37f164cb374f9f6cb5",
+    "PINN-hybrid-ude/model.py": "60c86348ea824f5332ed20c77fe9011d4c73867c5ebb98e417fc1cf77031995c",
+    "PINN-hybrid-ude/odes.py": "13b5ce2d52e2f775afe279f3eeff9710aee2cf77dd30ae776365d21d448b7ed4",
+    "PINN-hybrid-ude/pinn_core_dynamics.py": "2489a0e28f7d9a581b7de13fc439b6799d68dc4f0074cdb6d919a8e0c6b326f6",
+    "PINN-hybrid-ude/plot_error.py": "b556bcfd289ef4fa0f81142d9bb51f00b3bd8d8d92f4d63219c147b390bb305b",
+    "PINN-hybrid-ude/plot_learned_term.py": "8639ec731bf0607d614e100ee17593273c93413a197213188b5a51c01fcefb74",
+    "PINN-hybrid-ude/plotting.py": "37be868c734f84836f89109dbe8abe7fafbc7955739a9d5e30e1d44bb6098250",
+    "PINN-hybrid-ude/prep_refs.py": "d9e7cb1eb00c4f2d2326e3317ee9f601a598cb1daf9fdb7726b40041acc0d150",
+    "PINN-hybrid-ude/profile_identifiability.py": "0d58f275d9e4b068640fc2cc81a00eb7735e6e9f260763433275b22dc8a85d08",
+    "PINN-hybrid-ude/protocol_test.py": "9bb12a42af13e697c26a8acd0d8523496c5f58ba0a38fa50148b58b0b82d7aa4",
+    "PINN-hybrid-ude/recover_odefit.py": "dc8d126d1b82fc6af27c4809e471de46592ecd0669828f91abef3b764170db21",
+    "PINN-hybrid-ude/reference.py": "3306957f0fe8df4dedd06f2e279e0d8320e8a76ba7376334c892d8f0192ca0b6",
+    "PINN-hybrid-ude/regen_plots.py": "0fda87bcf19e7e3e1e929c52dfa2c7549c0bfb41ea91350fe2e504457603ebba",
+    "PINN-hybrid-ude/residual.py": "02ac2a24e1f2c9779f66219ae9cb2147521e4674f14d99eaf38a7340f5d6023f",
+    "PINN-hybrid-ude/run_boost.py": "3fcdf7c23eb152fa4cd45a35d6eb2b68ace4af74bc7bdbef5f40a65d04e7f968",
+    "PINN-hybrid-ude/run_hybrid.py": "069cd57af4d6f8e95bc95c395fd0c409ed5e8a34807bc5250ecfe3530c55d594",
+    "PINN-hybrid-ude/screen_terms.py": "b78a02e4f6952fdf083958b8b9c8e8bee46722d1177728f1a81db6a1a3233d28",
+    "PINN-hybrid-ude/test_hybrid_terms.py": "db8ed60bbc7406fe0fda5d1f7803d4f047edf8cca29e94c10aab05ea0877e67b",
+    "PINN-hybrid-ude/training.py": "fc5f750c7d832cfde4f4e6f5043dc9f2bd676730784a08988b91a355cc26a87a",
+    "experiments/run.py": "530e52b1534b8d71003db1e952cff6936166323dd479bd94bc5c4645cda752a3",
+    "src/wnt_pinn/__init__.py": "2d4289f132aef552b0ef485a5fd2b6b510473dd20980191d52930be31ff4f0b9",
+    "src/wnt_pinn/kernels/__init__.py": "62c8f4f61ff6603a9d3d4b4b907adbec3162a41eb1a1a501297d3707cd6a3932",
+    "src/wnt_pinn/kernels/integral.py": "63179bd432e2349ce4898ca41d64615aec42f666b6e83299e0adeb5c7e880e3e",
+    "src/wnt_pinn/kernels/timing.py": "b7fa9d0b738258db86d2ea504b5225629f3a411d4e28eb69d27adee980adade0",
+    "src/wnt_pinn/kernels/trapezoid_triton.py": "a37d091463eaf87c047353597e516e3df7ebad26a0729946918b78dd090affd8",
+    "src/wnt_pinn/model/__init__.py": "02d2ec8406d5c244d8e4e4cbe23ec4d907c83240b84d0a569235ad81f62a0f4f",
+    "src/wnt_pinn/model/hybrid_rhs.py": "a2a75c01ebf328ddc9519c47fb83205de70bf389daa0dba46ed8700f6577a9e8",
+    "src/wnt_pinn/model/integral_rhs.py": "fdec46f15ee8187ca4390ba78b46c567d5d34350bf42d39135ac5a8f96ea1944",
+    "src/wnt_pinn/model/numpy_rhs.py": "ad7cae085fe10038694ca796bffef745dc9adafd918bb2a16c02918a17802318",
+    "src/wnt_pinn/model/parameters.py": "694e122d08d08f1916e2d7756ba06d3979d5b18b33ed2f2517b6386a47f82b7a",
+    "src/wnt_pinn/networks/__init__.py": "e3e02e39c841d85443c8588c0b368d5b5c4eb7c37f916d294097421bedc45fe7",
+    "src/wnt_pinn/networks/state.py": "e7d0ef60442f89017cf2d7fab58ad1f6a152455822e58a61b2db5fae27391bd1",
+    "src/wnt_pinn/runs/__init__.py": "1b0c420214a3dbf830155f349c6ad36d7c7584ac87c0b94d96fbabfc45cff64e",
+    "src/wnt_pinn/runs/checkpoint.py": "00e0c46dad5959b65605794e4822a34b26a1bccef3170809e86b72a0cb18c775",
+    "src/wnt_pinn/runs/config.py": "ba26b0c72cacf5f82144ec1b1f65fe13f1a51ad5d94db7c5385f32d11b13c788",
+    "src/wnt_pinn/runs/integrity.py": "ad6b7f1a792460ab5bd365cecfbc1e9e143fb5eda1e0ae131b61adcd3e109b3c",
+    "src/wnt_pinn/runs/runner.py": "07533bfe40ca30a15c3c775f52e3929702417aa1d383301cc47ff57bab39ba4a",
+    "src/wnt_pinn/runs/worker.py": "b24bb9d74bf6e1d797613b5445a0fab1595a61bfd77de4f23c4c1da5ee4d47f7"
+  },
+  "workloads": {
+    "small": {
+      "config": {
+        "schema_version": 1,
+        "protocol": "independent-seeds-v1",
+        "name": "kernel-smoke",
+        "pipeline": "hybrid",
+        "regimes": [
+          "Normal"
+        ],
+        "conditions": [
+          "ctrl",
+          "noATRA"
+        ],
+        "parent_run": null,
+        "network": {
+          "width": 256,
+          "depth": 4,
+          "n_fourier": 16,
+          "fourier_sigma": 4.0
+        },
+        "data": {
+          "T": 150.0,
+          "reference_points": 1000,
+          "n_data": 150,
+          "noise_std": 0.002,
+          "reference_cache": null
+        },
+        "training": {
+          "adam_epochs": 60,
+          "lbfgs_steps": 2,
+          "param_refine_steps": 1,
+          "n_colloc": 1024,
+          "param_refine_colloc": 1024,
+          "lr": 0.001,
+          "lr_param": 0.005,
+          "lam_data": 1.0,
+          "lam_phys": 1.0,
+          "lam_ic": 20.0,
+          "adaptive_weights": true,
+          "weight_every": 20,
+          "weight_beta": 0.1,
+          "n_starts": 1,
+          "init_jitter": 0.15,
+          "log_every": 20,
+          "checkpoint_every": 60,
+          "physics_backend": "triton"
+        },
+        "seeds": {
+          "data": 1042,
+          "initialization": 2042,
+          "collocation": 3042
+        },
+        "resources": {
+          "device": "cuda",
+          "threads": 4,
+          "concurrency": 1
+        },
+        "hybrid": {
+          "term": "bm_myc",
+          "constraint": "anchored",
+          "param": "gated",
+          "width": 5,
+          "depth": 2,
+          "weight_decay": 1e-08,
+          "freeze": false,
+          "state": null
+        }
+      },
+      "repeats": 2,
+      "results": {
+        "eager": {
+          "steady_adam_ms_per_epoch": 28.012323799921433,
+          "adam_seconds": 2.229799089494918,
+          "lbfgs_seconds": 1.3561768535073497,
+          "refine_seconds": 0.4343078960009734,
+          "training_seconds": 4.020283839003241,
+          "first_adam_seconds": 0.573579237498052,
+          "process_wall_seconds": 11.052309579506982,
+          "first_run_training_seconds": 4.2020472699950915,
+          "repeat_training_seconds": [
+            3.838520408011391
+          ],
+          "final_physics_losses": [
+            1.668110366159585e-05,
+            1.668110366159585e-05
+          ],
+          "max_parameter_relative_difference": 0.0,
+          "observations_identical": true,
+          "closure_counts": [
+            {
+              "lbfgs_closures": 43,
+              "refine_closures": 23
+            },
+            {
+              "lbfgs_closures": 43,
+              "refine_closures": 23
+            }
+          ],
+          "steady_adam_speedup": 1.0,
+          "training_speedup_including_first_call": 1.0
+        },
+        "triton": {
+          "steady_adam_ms_per_epoch": 26.533712279924657,
+          "adam_seconds": 3.102346472493082,
+          "lbfgs_seconds": 1.4484567809995497,
+          "refine_seconds": 0.41368458900251426,
+          "training_seconds": 4.964487842495146,
+          "first_adam_seconds": 1.5504933244883432,
+          "process_wall_seconds": 11.895485258006374,
+          "first_run_training_seconds": 5.529912853991846,
+          "repeat_training_seconds": [
+            4.399062830998446
+          ],
+          "final_physics_losses": [
+            1.6681103661595853e-05,
+            1.6681103661595853e-05
+          ],
+          "max_parameter_relative_difference": 0.0,
+          "observations_identical": true,
+          "closure_counts": [
+            {
+              "lbfgs_closures": 43,
+              "refine_closures": 23
+            },
+            {
+              "lbfgs_closures": 43,
+              "refine_closures": 23
+            }
+          ],
+          "steady_adam_speedup": 1.0557257689537656,
+          "training_speedup_including_first_call": 0.8098083763223904
+        },
+        "compiled": {
+          "steady_adam_ms_per_epoch": 19.429472050105687,
+          "adam_seconds": 21.651285991501936,
+          "lbfgs_seconds": 9.67090801250015,
+          "refine_seconds": 5.292655300501792,
+          "training_seconds": 36.61484930450388,
+          "first_adam_seconds": 20.517882683998323,
+          "process_wall_seconds": 45.290308857001946,
+          "first_run_training_seconds": 62.46346161401016,
+          "repeat_training_seconds": [
+            10.766236994997598
+          ],
+          "final_physics_losses": [
+            1.6681103653237972e-05,
+            1.6681103653237972e-05
+          ],
+          "max_parameter_relative_difference": 1.197596681297202e-09,
+          "observations_identical": true,
+          "closure_counts": [
+            {
+              "lbfgs_closures": 43,
+              "refine_closures": 23
+            },
+            {
+              "lbfgs_closures": 43,
+              "refine_closures": 23
+            }
+          ],
+          "steady_adam_speedup": 1.4417439510287187,
+          "training_speedup_including_first_call": 0.10979927311919098
+        }
+      },
+      "runs": [
+        {
+          "backend": "eager",
+          "repeat": 0,
+          "process_wall_seconds": 11.41736175501137,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.668110366159585e-05,
+            "n_under10pct": 2,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.5242759757598663,
+              "thetaP": 0.7577280545911811,
+              "eta13": 0.5300779473496328,
+              "kappa13": 0.611454871657446,
+              "lambdaP": 0.6888225192731448,
+              "lambda5": 0.7506087425539796,
+              "kappa5": 1.200330133022753,
+              "epsP": 4.908123136851644,
+              "rho5": 2.2425472590953164,
+              "rhoB": 1.2277656141902047,
+              "rho13": 1.1142784321504529,
+              "deltaP1": 1.7837768516346895,
+              "eps5": 11.870390562954322,
+              "a5": 0.1538512349646052,
+              "etaR": 2.5916703282897013,
+              "kappaR": 1.095742129336585,
+              "etaM": 2.051778765258751,
+              "kappaM": 1.0160404117168067,
+              "eps13": 7.12102425916183,
+              "a13": 0.24573165106828998,
+              "etaB13": 1.4591439744519368,
+              "kappaB13": 0.7638354789329542,
+              "etaM13": 0.7261322235901727,
+              "kappaM13": 0.8132196594465039,
+              "epsM": 23.796707918378186,
+              "aM": 0.8464894187825123,
+              "epsR": 60.73741001496182,
+              "lambdaC": 0.5535416109697371,
+              "epsC": 2.723196159091607,
+              "aC": 0.09425687298628392,
+              "etaRC": 1.1422412631216374,
+              "kappaRC": 1.2126959438535663,
+              "etaBC": 2.807502772560377,
+              "kappaBC": 0.7752950298184805
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+            },
+            "physics_backend": "eager",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 43,
+              "refine_closures": 23,
+              "adam_seconds": 2.338763593987096,
+              "lbfgs_seconds": 1.4145154440047918,
+              "refine_seconds": 0.4487682320032036,
+              "training_seconds": 4.2020472699950915,
+              "first_adam_seconds": 0.6040436049952405,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 1.490569506000611,
+              "steady_adam_ms_per_epoch": 29.81139012001222
+            }
+          },
+          "run_id": "20260919_153818_kernel-eager-r0_de1dd82a"
+        },
+        {
+          "backend": "triton",
+          "repeat": 0,
+          "process_wall_seconds": 12.613819671008969,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.6681103661595853e-05,
+            "n_under10pct": 2,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.5242759757598663,
+              "thetaP": 0.7577280545911811,
+              "eta13": 0.5300779473496328,
+              "kappa13": 0.611454871657446,
+              "lambdaP": 0.6888225192731448,
+              "lambda5": 0.7506087425539796,
+              "kappa5": 1.200330133022753,
+              "epsP": 4.908123136851644,
+              "rho5": 2.2425472590953164,
+              "rhoB": 1.2277656141902047,
+              "rho13": 1.1142784321504529,
+              "deltaP1": 1.7837768516346895,
+              "eps5": 11.870390562954322,
+              "a5": 0.1538512349646052,
+              "etaR": 2.5916703282897013,
+              "kappaR": 1.095742129336585,
+              "etaM": 2.051778765258751,
+              "kappaM": 1.0160404117168067,
+              "eps13": 7.12102425916183,
+              "a13": 0.24573165106828998,
+              "etaB13": 1.4591439744519368,
+              "kappaB13": 0.7638354789329542,
+              "etaM13": 0.7261322235901727,
+              "kappaM13": 0.8132196594465039,
+              "epsM": 23.796707918378186,
+              "aM": 0.8464894187825123,
+              "epsR": 60.73741001496182,
+              "lambdaC": 0.5535416109697371,
+              "epsC": 2.723196159091607,
+              "aC": 0.09425687298628392,
+              "etaRC": 1.1422412631216374,
+              "kappaRC": 1.2126959438535663,
+              "etaBC": 2.807502772560377,
+              "kappaBC": 0.7752950298184805
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+            },
+            "physics_backend": "triton",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 43,
+              "refine_closures": 23,
+              "adam_seconds": 3.5828291429934325,
+              "lbfgs_seconds": 1.5355995080026332,
+              "refine_seconds": 0.4114842029957799,
+              "training_seconds": 5.529912853991846,
+              "first_adam_seconds": 2.033782585989684,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 1.326417603995651,
+              "steady_adam_ms_per_epoch": 26.52835207991302
+            }
+          },
+          "run_id": "20260919_153830_kernel-triton-r0_d146c234"
+        },
+        {
+          "backend": "compiled",
+          "repeat": 0,
+          "process_wall_seconds": 71.1637583529955,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.6681103653237972e-05,
+            "n_under10pct": 2,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.5242759756508172,
+              "thetaP": 0.757728054648579,
+              "eta13": 0.5300779475410459,
+              "kappa13": 0.6114548720361619,
+              "lambdaP": 0.6888225190805368,
+              "lambda5": 0.7506087424464304,
+              "kappa5": 1.2003301328549976,
+              "epsP": 4.908123139206002,
+              "rho5": 2.2425472595992457,
+              "rhoB": 1.2277656138964574,
+              "rho13": 1.1142784315269867,
+              "deltaP1": 1.7837768508814478,
+              "eps5": 11.87039057269391,
+              "a5": 0.15385123494546127,
+              "etaR": 2.5916703278138526,
+              "kappaR": 1.095742129618197,
+              "etaM": 2.0517787646553507,
+              "kappaM": 1.0160404118981952,
+              "eps13": 7.121024265842171,
+              "a13": 0.24573165108192252,
+              "etaB13": 1.4591439745809014,
+              "kappaB13": 0.7638354788814431,
+              "etaM13": 0.7261322235727606,
+              "kappaM13": 0.813219659413834,
+              "epsM": 23.796707944446812,
+              "aM": 0.846489418592461,
+              "epsR": 60.73741008770074,
+              "lambdaC": 0.5535416107370952,
+              "epsC": 2.723196159397634,
+              "aC": 0.0942568729808148,
+              "etaRC": 1.1422412625281348,
+              "kappaRC": 1.2126959442809808,
+              "etaBC": 2.807502773143396,
+              "kappaBC": 0.7752950298631475
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+            },
+            "physics_backend": "compiled",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 43,
+              "refine_closures": 23,
+              "adam_seconds": 36.41545606900763,
+              "lbfgs_seconds": 16.947411931003444,
+              "refine_seconds": 9.10059361399908,
+              "training_seconds": 62.46346161401016,
+              "first_adam_seconds": 35.30669334900449,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 0.9495931150013348,
+              "steady_adam_ms_per_epoch": 18.991862300026696
+            }
+          },
+          "run_id": "20260919_153843_kernel-compiled-r0_3bd932d3"
+        },
+        {
+          "backend": "compiled",
+          "repeat": 1,
+          "process_wall_seconds": 19.41685936100839,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.6681103653237972e-05,
+            "n_under10pct": 2,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.5242759756508172,
+              "thetaP": 0.757728054648579,
+              "eta13": 0.5300779475410459,
+              "kappa13": 0.6114548720361619,
+              "lambdaP": 0.6888225190805368,
+              "lambda5": 0.7506087424464304,
+              "kappa5": 1.2003301328549976,
+              "epsP": 4.908123139206002,
+              "rho5": 2.2425472595992457,
+              "rhoB": 1.2277656138964574,
+              "rho13": 1.1142784315269867,
+              "deltaP1": 1.7837768508814478,
+              "eps5": 11.87039057269391,
+              "a5": 0.15385123494546127,
+              "etaR": 2.5916703278138526,
+              "kappaR": 1.095742129618197,
+              "etaM": 2.0517787646553507,
+              "kappaM": 1.0160404118981952,
+              "eps13": 7.121024265842171,
+              "a13": 0.24573165108192252,
+              "etaB13": 1.4591439745809014,
+              "kappaB13": 0.7638354788814431,
+              "etaM13": 0.7261322235727606,
+              "kappaM13": 0.813219659413834,
+              "epsM": 23.796707944446812,
+              "aM": 0.846489418592461,
+              "epsR": 60.73741008770074,
+              "lambdaC": 0.5535416107370952,
+              "epsC": 2.723196159397634,
+              "aC": 0.0942568729808148,
+              "etaRC": 1.1422412625281348,
+              "kappaRC": 1.2126959442809808,
+              "etaBC": 2.807502773143396,
+              "kappaBC": 0.7752950298631475
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+            },
+            "physics_backend": "compiled",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 43,
+              "refine_closures": 23,
+              "adam_seconds": 6.88711591399624,
+              "lbfgs_seconds": 2.3944040939968545,
+              "refine_seconds": 1.4847169870045036,
+              "training_seconds": 10.766236994997598,
+              "first_adam_seconds": 5.729072018992156,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 0.9933540900092339,
+              "steady_adam_ms_per_epoch": 19.86708180018468
+            }
+          },
+          "run_id": "20260919_153954_kernel-compiled-r1_a701629c"
+        },
+        {
+          "backend": "triton",
+          "repeat": 1,
+          "process_wall_seconds": 11.17715084500378,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.6681103661595853e-05,
+            "n_under10pct": 2,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.5242759757598663,
+              "thetaP": 0.7577280545911811,
+              "eta13": 0.5300779473496328,
+              "kappa13": 0.611454871657446,
+              "lambdaP": 0.6888225192731448,
+              "lambda5": 0.7506087425539796,
+              "kappa5": 1.200330133022753,
+              "epsP": 4.908123136851644,
+              "rho5": 2.2425472590953164,
+              "rhoB": 1.2277656141902047,
+              "rho13": 1.1142784321504529,
+              "deltaP1": 1.7837768516346895,
+              "eps5": 11.870390562954322,
+              "a5": 0.1538512349646052,
+              "etaR": 2.5916703282897013,
+              "kappaR": 1.095742129336585,
+              "etaM": 2.051778765258751,
+              "kappaM": 1.0160404117168067,
+              "eps13": 7.12102425916183,
+              "a13": 0.24573165106828998,
+              "etaB13": 1.4591439744519368,
+              "kappaB13": 0.7638354789329542,
+              "etaM13": 0.7261322235901727,
+              "kappaM13": 0.8132196594465039,
+              "epsM": 23.796707918378186,
+              "aM": 0.8464894187825123,
+              "epsR": 60.73741001496182,
+              "lambdaC": 0.5535416109697371,
+              "epsC": 2.723196159091607,
+              "aC": 0.09425687298628392,
+              "etaRC": 1.1422412631216374,
+              "kappaRC": 1.2126959438535663,
+              "etaBC": 2.807502772560377,
+              "kappaBC": 0.7752950298184805
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+            },
+            "physics_backend": "triton",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 43,
+              "refine_closures": 23,
+              "adam_seconds": 2.621863801992731,
+              "lbfgs_seconds": 1.361314053996466,
+              "refine_seconds": 0.4158849750092486,
+              "training_seconds": 4.399062830998446,
+              "first_adam_seconds": 1.0672040629870025,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 1.3269536239968147,
+              "steady_adam_ms_per_epoch": 26.539072479936294
+            }
+          },
+          "run_id": "20260919_154013_kernel-triton-r1_ecadaa11"
+        },
+        {
+          "backend": "eager",
+          "repeat": 1,
+          "process_wall_seconds": 10.687257404002594,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.668110366159585e-05,
+            "n_under10pct": 2,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.5242759757598663,
+              "thetaP": 0.7577280545911811,
+              "eta13": 0.5300779473496328,
+              "kappa13": 0.611454871657446,
+              "lambdaP": 0.6888225192731448,
+              "lambda5": 0.7506087425539796,
+              "kappa5": 1.200330133022753,
+              "epsP": 4.908123136851644,
+              "rho5": 2.2425472590953164,
+              "rhoB": 1.2277656141902047,
+              "rho13": 1.1142784321504529,
+              "deltaP1": 1.7837768516346895,
+              "eps5": 11.870390562954322,
+              "a5": 0.1538512349646052,
+              "etaR": 2.5916703282897013,
+              "kappaR": 1.095742129336585,
+              "etaM": 2.051778765258751,
+              "kappaM": 1.0160404117168067,
+              "eps13": 7.12102425916183,
+              "a13": 0.24573165106828998,
+              "etaB13": 1.4591439744519368,
+              "kappaB13": 0.7638354789329542,
+              "etaM13": 0.7261322235901727,
+              "kappaM13": 0.8132196594465039,
+              "epsM": 23.796707918378186,
+              "aM": 0.8464894187825123,
+              "epsR": 60.73741001496182,
+              "lambdaC": 0.5535416109697371,
+              "epsC": 2.723196159091607,
+              "aC": 0.09425687298628392,
+              "etaRC": 1.1422412631216374,
+              "kappaRC": 1.2126959438535663,
+              "etaBC": 2.807502772560377,
+              "kappaBC": 0.7752950298184805
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20"
+            },
+            "physics_backend": "eager",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 43,
+              "refine_closures": 23,
+              "adam_seconds": 2.12083458500274,
+              "lbfgs_seconds": 1.2978382630099077,
+              "refine_seconds": 0.41984755999874324,
+              "training_seconds": 3.838520408011391,
+              "first_adam_seconds": 0.5431148700008634,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 1.3106628739915323,
+              "steady_adam_ms_per_epoch": 26.213257479830645
+            }
+          },
+          "run_id": "20260919_154024_kernel-eager-r1_2c231f64"
+        }
+      ]
+    },
+    "full": {
+      "config": {
+        "schema_version": 1,
+        "protocol": "independent-seeds-v1",
+        "name": "kernel-smoke-full",
+        "pipeline": "hybrid",
+        "regimes": [
+          "Normal"
+        ],
+        "conditions": [
+          "ctrl",
+          "noATRA",
+          "earlyATRA",
+          "lateATRA",
+          "lowATRA",
+          "strongCirc",
+          "wntPulse",
+          "wntInhib",
+          "mycPulse",
+          "wntRAcombo"
+        ],
+        "parent_run": null,
+        "network": {
+          "width": 256,
+          "depth": 4,
+          "n_fourier": 16,
+          "fourier_sigma": 4.0
+        },
+        "data": {
+          "T": 150.0,
+          "reference_points": 1000,
+          "n_data": 150,
+          "noise_std": 0.002,
+          "reference_cache": null
+        },
+        "training": {
+          "adam_epochs": 60,
+          "lbfgs_steps": 2,
+          "param_refine_steps": 1,
+          "n_colloc": 8000,
+          "param_refine_colloc": 8000,
+          "lr": 0.001,
+          "lr_param": 0.005,
+          "lam_data": 1.0,
+          "lam_phys": 1.0,
+          "lam_ic": 20.0,
+          "adaptive_weights": true,
+          "weight_every": 20,
+          "weight_beta": 0.1,
+          "n_starts": 1,
+          "init_jitter": 0.15,
+          "log_every": 20,
+          "checkpoint_every": 60,
+          "physics_backend": "triton"
+        },
+        "seeds": {
+          "data": 1042,
+          "initialization": 2042,
+          "collocation": 3042
+        },
+        "resources": {
+          "device": "cuda",
+          "threads": 4,
+          "concurrency": 1
+        },
+        "hybrid": {
+          "term": "bm_myc",
+          "constraint": "anchored",
+          "param": "gated",
+          "width": 5,
+          "depth": 2,
+          "weight_decay": 1e-08,
+          "freeze": false,
+          "state": null
+        }
+      },
+      "repeats": 2,
+      "results": {
+        "eager": {
+          "steady_adam_ms_per_epoch": 141.55789969998295,
+          "adam_seconds": 9.017170367995277,
+          "lbfgs_seconds": 5.319719029503176,
+          "refine_seconds": 0.08675996000238229,
+          "training_seconds": 14.423649357500835,
+          "first_adam_seconds": 0.7386781189998146,
+          "process_wall_seconds": 27.427381264998985,
+          "first_run_training_seconds": 14.347360539002693,
+          "repeat_training_seconds": [
+            14.499938175998977
+          ],
+          "final_physics_losses": [
+            1.0883487779927827e-05,
+            1.0883487779927827e-05
+          ],
+          "max_parameter_relative_difference": 0.0,
+          "observations_identical": true,
+          "closure_counts": [
+            {
+              "lbfgs_closures": 44,
+              "refine_closures": 1
+            },
+            {
+              "lbfgs_closures": 44,
+              "refine_closures": 1
+            }
+          ],
+          "steady_adam_speedup": 1.0,
+          "training_speedup_including_first_call": 1.0
+        },
+        "triton": {
+          "steady_adam_ms_per_epoch": 141.1498215800384,
+          "adam_seconds": 10.016986673501378,
+          "lbfgs_seconds": 5.732801187499717,
+          "refine_seconds": 0.08811035699909553,
+          "training_seconds": 15.837898218000191,
+          "first_adam_seconds": 1.7605759950020001,
+          "process_wall_seconds": 28.77437808951072,
+          "first_run_training_seconds": 16.369766315998277,
+          "repeat_training_seconds": [
+            15.306030120002106
+          ],
+          "final_physics_losses": [
+            1.0883487779956335e-05,
+            1.0883487779956335e-05
+          ],
+          "max_parameter_relative_difference": 1.1897019332392544e-12,
+          "observations_identical": true,
+          "closure_counts": [
+            {
+              "lbfgs_closures": 44,
+              "refine_closures": 1
+            },
+            {
+              "lbfgs_closures": 44,
+              "refine_closures": 1
+            }
+          ],
+          "steady_adam_speedup": 1.00289109908448,
+          "training_speedup_including_first_call": 0.9107047639129272
+        }
+      },
+      "runs": [
+        {
+          "backend": "eager",
+          "repeat": 0,
+          "process_wall_seconds": 27.371256729995366,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.0883487779927827e-05,
+            "n_under10pct": 3,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.4605852648254466,
+              "thetaP": 0.7644926912363389,
+              "eta13": 0.8131350530255335,
+              "kappa13": 0.8716788733485996,
+              "lambdaP": 1.1583531507022862,
+              "lambda5": 1.1377857572270573,
+              "kappa5": 1.0348855007766602,
+              "epsP": 3.3981153821572536,
+              "rho5": 3.125410654079864,
+              "rhoB": 1.2628141379846445,
+              "rho13": 1.3334786751394823,
+              "deltaP1": 1.6572936080355087,
+              "eps5": 2.6520898901924834,
+              "a5": 0.18423420348049574,
+              "etaR": 3.432091587797435,
+              "kappaR": 0.7014547144327836,
+              "etaM": 3.702055560854612,
+              "kappaM": 0.693518108833164,
+              "eps13": 1.7932921994862774,
+              "a13": 0.21997776684889905,
+              "etaB13": 1.2053941850562337,
+              "kappaB13": 0.8928206924419752,
+              "etaM13": 0.7008950294178237,
+              "kappaM13": 0.8960195180954388,
+              "epsM": 1.5644068707311423,
+              "aM": 0.23083714643144354,
+              "epsR": 106.07210778284104,
+              "lambdaC": 2.2273053193104335,
+              "epsC": 1.806438160761189,
+              "aC": 0.09318366225045069,
+              "etaRC": 1.4807587277911574,
+              "kappaRC": 1.0682793744872114,
+              "etaBC": 1.9262488485301454,
+              "kappaBC": 0.8952708997505333
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20",
+              "earlyATRA": "dd6abbb050f08acb57457ce034a501740119c0f4993f9db8ea5045fef2f73148",
+              "lateATRA": "bc6864368b9834e054fb2d3731361fa250e2d1d98e7b1922140c4e4588d52aff",
+              "lowATRA": "2cb71f9db1f9acf78982cec8b95b6e2779f302515ea7a8a1e340e78c9f04890f",
+              "strongCirc": "3eec4004cc0474f850f5fdecac02b065e614557b777bfc8daa6558c4ef1ecff4",
+              "wntPulse": "ef041df9db0d6113cdd17a02489d67434def6f0206de04c6c5abbb9b426ccbef",
+              "wntInhib": "216c8e15986392a743120b501e79a3cce7721cb79bad4c8ed43a5a60614ac410",
+              "mycPulse": "ecd9d512d3ee9845e15a85f6bd580fa41b2f44dff3941f3868a85945d0287013",
+              "wntRAcombo": "13fa35e37b53158b2eee5f0e4d01149ad85158908d2358b7c0d16c8d3f03ed8b"
+            },
+            "physics_backend": "eager",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 44,
+              "refine_closures": 1,
+              "adam_seconds": 8.993039969995152,
+              "lbfgs_seconds": 5.268416470004013,
+              "refine_seconds": 0.08590409900352824,
+              "training_seconds": 14.347360539002693,
+              "first_adam_seconds": 0.7503354049986228,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 7.0394668509979965,
+              "steady_adam_ms_per_epoch": 140.78933701995993
+            }
+          },
+          "run_id": "20260919_154105_kernel-eager-r0_89c57689"
+        },
+        {
+          "backend": "triton",
+          "repeat": 0,
+          "process_wall_seconds": 29.352693663007813,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.0883487779956335e-05,
+            "n_under10pct": 3,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.4605852648254299,
+              "thetaP": 0.7644926912363184,
+              "eta13": 0.8131350530255952,
+              "kappa13": 0.8716788733485947,
+              "lambdaP": 1.158353150702753,
+              "lambda5": 1.137785757227295,
+              "kappa5": 1.0348855007765156,
+              "epsP": 3.3981153821566568,
+              "rho5": 3.1254106540797575,
+              "rhoB": 1.26281413798465,
+              "rho13": 1.3334786751394858,
+              "deltaP1": 1.657293608035816,
+              "eps5": 2.652089890192187,
+              "a5": 0.1842342034805029,
+              "etaR": 3.432091587798226,
+              "kappaR": 0.7014547144326738,
+              "etaM": 3.7020555608542427,
+              "kappaM": 0.6935181088331971,
+              "eps13": 1.7932921994862268,
+              "a13": 0.21997776684889297,
+              "etaB13": 1.2053941850561734,
+              "kappaB13": 0.8928206924420412,
+              "etaM13": 0.7008950294177878,
+              "kappaM13": 0.8960195180954814,
+              "epsM": 1.564406870729281,
+              "aM": 0.23083714643135114,
+              "epsR": 106.07210778274064,
+              "lambdaC": 2.2273053193102563,
+              "epsC": 1.8064381607607114,
+              "aC": 0.09318366225044761,
+              "etaRC": 1.4807587277910574,
+              "kappaRC": 1.0682793744872747,
+              "etaBC": 1.9262488485295646,
+              "kappaBC": 0.8952708997508576
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20",
+              "earlyATRA": "dd6abbb050f08acb57457ce034a501740119c0f4993f9db8ea5045fef2f73148",
+              "lateATRA": "bc6864368b9834e054fb2d3731361fa250e2d1d98e7b1922140c4e4588d52aff",
+              "lowATRA": "2cb71f9db1f9acf78982cec8b95b6e2779f302515ea7a8a1e340e78c9f04890f",
+              "strongCirc": "3eec4004cc0474f850f5fdecac02b065e614557b777bfc8daa6558c4ef1ecff4",
+              "wntPulse": "ef041df9db0d6113cdd17a02489d67434def6f0206de04c6c5abbb9b426ccbef",
+              "wntInhib": "216c8e15986392a743120b501e79a3cce7721cb79bad4c8ed43a5a60614ac410",
+              "mycPulse": "ecd9d512d3ee9845e15a85f6bd580fa41b2f44dff3941f3868a85945d0287013",
+              "wntRAcombo": "13fa35e37b53158b2eee5f0e4d01149ad85158908d2358b7c0d16c8d3f03ed8b"
+            },
+            "physics_backend": "triton",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 44,
+              "refine_closures": 1,
+              "adam_seconds": 10.453375425000559,
+              "lbfgs_seconds": 5.82786393200513,
+              "refine_seconds": 0.08852695899258833,
+              "training_seconds": 16.369766315998277,
+              "first_adam_seconds": 2.227200798006379,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 7.030421410003328,
+              "steady_adam_ms_per_epoch": 140.60842820006656
+            }
+          },
+          "run_id": "20260919_154132_kernel-triton-r0_087d1b49"
+        },
+        {
+          "backend": "triton",
+          "repeat": 1,
+          "process_wall_seconds": 28.196062516013626,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.0883487779956335e-05,
+            "n_under10pct": 3,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.4605852648254299,
+              "thetaP": 0.7644926912363184,
+              "eta13": 0.8131350530255952,
+              "kappa13": 0.8716788733485947,
+              "lambdaP": 1.158353150702753,
+              "lambda5": 1.137785757227295,
+              "kappa5": 1.0348855007765156,
+              "epsP": 3.3981153821566568,
+              "rho5": 3.1254106540797575,
+              "rhoB": 1.26281413798465,
+              "rho13": 1.3334786751394858,
+              "deltaP1": 1.657293608035816,
+              "eps5": 2.652089890192187,
+              "a5": 0.1842342034805029,
+              "etaR": 3.432091587798226,
+              "kappaR": 0.7014547144326738,
+              "etaM": 3.7020555608542427,
+              "kappaM": 0.6935181088331971,
+              "eps13": 1.7932921994862268,
+              "a13": 0.21997776684889297,
+              "etaB13": 1.2053941850561734,
+              "kappaB13": 0.8928206924420412,
+              "etaM13": 0.7008950294177878,
+              "kappaM13": 0.8960195180954814,
+              "epsM": 1.564406870729281,
+              "aM": 0.23083714643135114,
+              "epsR": 106.07210778274064,
+              "lambdaC": 2.2273053193102563,
+              "epsC": 1.8064381607607114,
+              "aC": 0.09318366225044761,
+              "etaRC": 1.4807587277910574,
+              "kappaRC": 1.0682793744872747,
+              "etaBC": 1.9262488485295646,
+              "kappaBC": 0.8952708997508576
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20",
+              "earlyATRA": "dd6abbb050f08acb57457ce034a501740119c0f4993f9db8ea5045fef2f73148",
+              "lateATRA": "bc6864368b9834e054fb2d3731361fa250e2d1d98e7b1922140c4e4588d52aff",
+              "lowATRA": "2cb71f9db1f9acf78982cec8b95b6e2779f302515ea7a8a1e340e78c9f04890f",
+              "strongCirc": "3eec4004cc0474f850f5fdecac02b065e614557b777bfc8daa6558c4ef1ecff4",
+              "wntPulse": "ef041df9db0d6113cdd17a02489d67434def6f0206de04c6c5abbb9b426ccbef",
+              "wntInhib": "216c8e15986392a743120b501e79a3cce7721cb79bad4c8ed43a5a60614ac410",
+              "mycPulse": "ecd9d512d3ee9845e15a85f6bd580fa41b2f44dff3941f3868a85945d0287013",
+              "wntRAcombo": "13fa35e37b53158b2eee5f0e4d01149ad85158908d2358b7c0d16c8d3f03ed8b"
+            },
+            "physics_backend": "triton",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 44,
+              "refine_closures": 1,
+              "adam_seconds": 9.580597922002198,
+              "lbfgs_seconds": 5.637738442994305,
+              "refine_seconds": 0.08769375500560272,
+              "training_seconds": 15.306030120002106,
+              "first_adam_seconds": 1.2939511919976212,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 7.084560748000513,
+              "steady_adam_ms_per_epoch": 141.69121496001026
+            }
+          },
+          "run_id": "20260919_154201_kernel-triton-r1_85473b12"
+        },
+        {
+          "backend": "eager",
+          "repeat": 1,
+          "process_wall_seconds": 27.483505800002604,
+          "start": {
+            "start": 0,
+            "initialization_seed": 2042,
+            "data_seed": 1042,
+            "collocation_seed": 3042,
+            "final_phys": 1.0883487779927827e-05,
+            "n_under10pct": 3,
+            "n_unknown": 34,
+            "recovered": {
+              "W": 0.4605852648254466,
+              "thetaP": 0.7644926912363389,
+              "eta13": 0.8131350530255335,
+              "kappa13": 0.8716788733485996,
+              "lambdaP": 1.1583531507022862,
+              "lambda5": 1.1377857572270573,
+              "kappa5": 1.0348855007766602,
+              "epsP": 3.3981153821572536,
+              "rho5": 3.125410654079864,
+              "rhoB": 1.2628141379846445,
+              "rho13": 1.3334786751394823,
+              "deltaP1": 1.6572936080355087,
+              "eps5": 2.6520898901924834,
+              "a5": 0.18423420348049574,
+              "etaR": 3.432091587797435,
+              "kappaR": 0.7014547144327836,
+              "etaM": 3.702055560854612,
+              "kappaM": 0.693518108833164,
+              "eps13": 1.7932921994862774,
+              "a13": 0.21997776684889905,
+              "etaB13": 1.2053941850562337,
+              "kappaB13": 0.8928206924419752,
+              "etaM13": 0.7008950294178237,
+              "kappaM13": 0.8960195180954388,
+              "epsM": 1.5644068707311423,
+              "aM": 0.23083714643144354,
+              "epsR": 106.07210778284104,
+              "lambdaC": 2.2273053193104335,
+              "epsC": 1.806438160761189,
+              "aC": 0.09318366225045069,
+              "etaRC": 1.4807587277911574,
+              "kappaRC": 1.0682793744872114,
+              "etaBC": 1.9262488485301454,
+              "kappaBC": 0.8952708997505333
+            },
+            "observation_hashes": {
+              "ctrl": "744e87d4f23afcc60d3ea84504ad42406b7b616d33edc991c5434d20d5f48aba",
+              "noATRA": "9fc60425030d37713f0c6becad1aefa13bfe103f1bbd29458f765d350ab1dc20",
+              "earlyATRA": "dd6abbb050f08acb57457ce034a501740119c0f4993f9db8ea5045fef2f73148",
+              "lateATRA": "bc6864368b9834e054fb2d3731361fa250e2d1d98e7b1922140c4e4588d52aff",
+              "lowATRA": "2cb71f9db1f9acf78982cec8b95b6e2779f302515ea7a8a1e340e78c9f04890f",
+              "strongCirc": "3eec4004cc0474f850f5fdecac02b065e614557b777bfc8daa6558c4ef1ecff4",
+              "wntPulse": "ef041df9db0d6113cdd17a02489d67434def6f0206de04c6c5abbb9b426ccbef",
+              "wntInhib": "216c8e15986392a743120b501e79a3cce7721cb79bad4c8ed43a5a60614ac410",
+              "mycPulse": "ecd9d512d3ee9845e15a85f6bd580fa41b2f44dff3941f3868a85945d0287013",
+              "wntRAcombo": "13fa35e37b53158b2eee5f0e4d01149ad85158908d2358b7c0d16c8d3f03ed8b"
+            },
+            "physics_backend": "eager",
+            "timings": {
+              "adam_epochs": 60,
+              "warmup_epochs": 10,
+              "lbfgs_closures": 44,
+              "refine_closures": 1,
+              "adam_seconds": 9.041300765995402,
+              "lbfgs_seconds": 5.371021589002339,
+              "refine_seconds": 0.08761582100123633,
+              "training_seconds": 14.499938175998977,
+              "first_adam_seconds": 0.7270208330010064,
+              "steady_adam_epochs": 50,
+              "steady_adam_seconds": 7.116323119000299,
+              "steady_adam_ms_per_epoch": 142.32646238000598
+            }
+          },
+          "run_id": "20260919_154230_kernel-eager-r1_f7593a95"
+        }
+      ]
+    }
+  },
+  "training_parity": {
+    "small": [
+      {
+        "backend": "eager",
+        "repeat": 0,
+        "max_checkpoint_abs_difference": 0.0,
+        "max_checkpoint_relative_norm_difference": 0.0,
+        "physics_loss_relative_difference": 0.0,
+        "parameter_relative_difference": 0.0,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "triton",
+        "repeat": 0,
+        "max_checkpoint_abs_difference": 0.0,
+        "max_checkpoint_relative_norm_difference": 0.0,
+        "physics_loss_relative_difference": 2.0311196775412072e-16,
+        "parameter_relative_difference": 0.0,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "compiled",
+        "repeat": 0,
+        "max_checkpoint_abs_difference": 1.1975966884847367e-09,
+        "max_checkpoint_relative_norm_difference": 5.847353317854354e-09,
+        "physics_loss_relative_difference": 5.010386331755425e-10,
+        "parameter_relative_difference": 1.197596681297202e-09,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "compiled",
+        "repeat": 1,
+        "max_checkpoint_abs_difference": 1.1975966884847367e-09,
+        "max_checkpoint_relative_norm_difference": 5.847353317854354e-09,
+        "physics_loss_relative_difference": 5.010386331755425e-10,
+        "parameter_relative_difference": 1.197596681297202e-09,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "triton",
+        "repeat": 1,
+        "max_checkpoint_abs_difference": 0.0,
+        "max_checkpoint_relative_norm_difference": 0.0,
+        "physics_loss_relative_difference": 2.0311196775412072e-16,
+        "parameter_relative_difference": 0.0,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "eager",
+        "repeat": 1,
+        "max_checkpoint_abs_difference": 0.0,
+        "max_checkpoint_relative_norm_difference": 0.0,
+        "physics_loss_relative_difference": 0.0,
+        "parameter_relative_difference": 0.0,
+        "observations_references_configs_and_sources_match": true
+      }
+    ],
+    "full": [
+      {
+        "backend": "eager",
+        "repeat": 0,
+        "max_checkpoint_abs_difference": 0.0,
+        "max_checkpoint_relative_norm_difference": 0.0,
+        "physics_loss_relative_difference": 0.0,
+        "parameter_relative_difference": 0.0,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "triton",
+        "repeat": 0,
+        "max_checkpoint_abs_difference": 1.1896039708858552e-12,
+        "max_checkpoint_relative_norm_difference": 5.2242589412038676e-12,
+        "physics_loss_relative_difference": 2.619357089311656e-12,
+        "parameter_relative_difference": 1.1897019332392544e-12,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "triton",
+        "repeat": 1,
+        "max_checkpoint_abs_difference": 1.1896039708858552e-12,
+        "max_checkpoint_relative_norm_difference": 5.2242589412038676e-12,
+        "physics_loss_relative_difference": 2.619357089311656e-12,
+        "parameter_relative_difference": 1.1897019332392544e-12,
+        "observations_references_configs_and_sources_match": true
+      },
+      {
+        "backend": "eager",
+        "repeat": 1,
+        "max_checkpoint_abs_difference": 0.0,
+        "max_checkpoint_relative_norm_difference": 0.0,
+        "physics_loss_relative_difference": 0.0,
+        "parameter_relative_difference": 0.0,
+        "observations_references_configs_and_sources_match": true
+      }
+    ]
+  },
+  "microbenchmark": {
+    "torch": "2.12.0+cu130",
+    "triton": "3.7.0",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "dtype": "float64",
+    "records": [
+      {
+        "n_colloc": 1024,
+        "name": "residual_eager",
+        "forward_backward_ms": [
+          0.5132066333317198,
+          0.4540248337434605,
+          0.43670436668132123,
+          0.4756453335479212,
+          0.46253213319384184
+        ],
+        "median_ms": 0.46253213319384184
+      },
+      {
+        "n_colloc": 1024,
+        "name": "residual_triton",
+        "forward_backward_ms": [
+          0.5528532667085528,
+          0.6056969335380321,
+          0.43652996682794765,
+          0.4245130000830007,
+          0.4522423667367548
+        ],
+        "median_ms": 0.4522423667367548
+      },
+      {
+        "n_colloc": 1024,
+        "name": "physics_eager",
+        "forward_backward_ms": [
+          5.567007333350678,
+          5.244726099772379,
+          5.202595466592659,
+          5.124729000090156,
+          5.317764833550124
+        ],
+        "median_ms": 5.244726099772379
+      },
+      {
+        "n_colloc": 1024,
+        "name": "physics_triton",
+        "forward_backward_ms": [
+          5.696288300290083,
+          5.543649333412759,
+          5.29370243360366,
+          5.395301466342062,
+          5.365968166734092
+        ],
+        "median_ms": 5.395301466342062
+      },
+      {
+        "n_colloc": 1024,
+        "name": "physics_compiled",
+        "forward_backward_ms": [
+          1.150730033017074,
+          1.2766166003226924,
+          1.1436333666400362,
+          1.1667007667711005,
+          1.1721239003236406
+        ],
+        "median_ms": 1.1667007667711005
+      },
+      {
+        "n_colloc": 8000,
+        "name": "residual_eager",
+        "forward_backward_ms": [
+          0.5397278000600636,
+          0.5042101334159573,
+          0.5592358332554189,
+          0.5386400667096799,
+          0.5544096668018028
+        ],
+        "median_ms": 0.5397278000600636
+      },
+      {
+        "n_colloc": 8000,
+        "name": "residual_triton",
+        "forward_backward_ms": [
+          0.4666935667046346,
+          0.49336239996288594,
+          0.505367100413423,
+          0.4334308667845714,
+          0.43098663348549354
+        ],
+        "median_ms": 0.4666935667046346
+      },
+      {
+        "n_colloc": 8000,
+        "name": "physics_eager",
+        "forward_backward_ms": [
+          6.605839366481329,
+          6.747166900216446,
+          7.236775299922253,
+          7.34616599996419,
+          7.820570666808635
+        ],
+        "median_ms": 7.236775299922253
+      },
+      {
+        "n_colloc": 8000,
+        "name": "physics_triton",
+        "forward_backward_ms": [
+          7.754123133296768,
+          7.519945166617011,
+          7.610965733571599,
+          7.272939633306426,
+          6.728909533315648
+        ],
+        "median_ms": 7.519945166617011
+      },
+      {
+        "n_colloc": 8000,
+        "name": "physics_compiled",
+        "forward_backward_ms": [
+          1.9359771332043845,
+          1.6174215668191512,
+          1.5918771663564257,
+          1.5900053670823884,
+          1.5921552000994172
+        ],
+        "median_ms": 1.5921552000994172
+      }
+    ]
+  }
+}

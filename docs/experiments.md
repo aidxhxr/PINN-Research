@@ -95,6 +95,9 @@ includes setup, references, evaluation and output files. GPU sharing and
 compilation overhead can outweigh a kernel speedup in a short run. This smoke
 configuration checks execution and speed, not converged parameter recovery.
 
+The [recorded GPU comparison](performance/2026-09-19-kernel-smoke.md) includes
+per-run measurements and the limits of the observed speedups.
+
 An optional `data.reference_cache` accepts an NPZ file with arrays named
 `<regime with underscores>__<condition>__t` and
 `<regime with underscores>__<condition>__y`. Arrays must span the configured
