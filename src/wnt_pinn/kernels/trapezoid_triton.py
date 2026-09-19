@@ -29,6 +29,20 @@ def _forward(Z, F, DT, W, PARTS, N: tl.constexpr, BLOCK: tl.constexpr):
 
 
 @triton.jit
+def _reduce_partials(PARTS, LOSS, N_PARTS: tl.constexpr, COUNT: tl.constexpr,
+                     BLOCK: tl.constexpr):
+    """Reduce block sums and normalize in one deterministic CUDA launch."""
+    offsets = tl.arange(0, BLOCK)
+    total = tl.full((BLOCK,), 0, PARTS.dtype.element_ty)
+    # Cap the tile size so large collocation grids do not require an
+    # unbounded power-of-two vector or excessive registers in one program.
+    for start in range(0, N_PARTS, BLOCK):
+        values = tl.load(PARTS + start + offsets, start + offsets < N_PARTS, other=0)
+        total = total + values
+    tl.store(LOSS, tl.sum(total, axis=0) / COUNT)
+
+
+@triton.jit
 def _backward(Z, F, DT, W, GRAD, GZ, GF, N: tl.constexpr, BLOCK: tl.constexpr):
     index = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
     valid = index < N * 7
@@ -71,8 +85,14 @@ def _loss_op(z: torch.Tensor, f: torch.Tensor, dt: torch.Tensor,
     parts = torch.empty((blocks,), dtype=z.dtype, device=z.device)
     wrap_triton(_forward)[(blocks,)](
         z, f, dt, weight, parts, z.shape[0], 256, enable_fp_fusion=False)
-    # A second deterministic reduction avoids nondeterministic atomic adds.
-    return parts.sum() / count
+    # The single reduction program loads every partial before storing its
+    # result, so its output can reuse the first element. This also avoids an
+    # extra allocation/fill launch under PyTorch's deterministic memory mode.
+    loss = parts[0]
+    tile = min(1024, triton.next_power_of_2(blocks))
+    wrap_triton(_reduce_partials)[(1,)](
+        parts, loss, blocks, count, tile, enable_fp_fusion=False)
+    return loss
 
 
 def _setup_context(ctx, inputs, output):
