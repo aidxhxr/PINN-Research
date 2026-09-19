@@ -16,6 +16,7 @@ from config import (BASELINE, REGIMES, CONDITIONS, DEVICE, VAR_NAMES,
 from hybrid import build_terms, observed_range, observed_points, true_term
 from model import ForwardPINN, InverseParams, time_derivatives
 from residual import physics_residual, physics_rhs
+from wnt_pinn.kernels.integral import make_integral_loss
 
 N_UNK = len(UNKNOWN)
 
@@ -92,7 +93,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
                 activation, siren_w0,
                 seed, init_jitter, log_every, tag,
                 data_seed=None, init_seed=None, collocation_seed=None,
-                checkpoint=None):
+                checkpoint=None, physics_backend="eager"):
     torch.manual_seed(seed if init_seed is None else init_seed)
     collocation_generator = None
     if collocation_seed is not None:
@@ -226,6 +227,11 @@ def _train_once(name, refs_for_regime, true_vals, *,
     hist = dict(epoch=[], loss=[], Ld=[], Lp=[], Lic=[],
                 lam_phys=[], **{k: [] for k in UNKNOWN})
 
+    if residual_mode != "integral" and physics_backend != "eager":
+        raise ValueError("Optimized physics backends require residual_mode=integral")
+    integral_loss = make_integral_loss(
+        lambda t, z, p: physics_rhs(t, z, p, nn_terms), physics_backend)
+
     def physics_params(forcing):
         return {**BASELINE, **params.dict(), **forcing}
 
@@ -250,10 +256,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
             if n_pts is not None and n_pts < tc.shape[0]:
                 tc = tc[:: tc.shape[0] // n_pts]    # strided => stays sorted
             z = net(tc)
-            f = physics_rhs(tc, z, pp, nn_terms)
-            dt = tc[1:] - tc[:-1]
-            r = ((z[1:] - z[:-1]) - 0.5 * dt * (f[1:] + f[:-1])) * w
-            return (r**2).mean()
+            return integral_loss(tc, z, pp, w)
         if colloc_mode == "fixed":
             tc = c["t_fixed"]
         else:
@@ -415,11 +418,10 @@ def _train_once(name, refs_for_regime, true_vals, *,
                 kind, tc, z, aux, w, forcing = item
                 pp = physics_params(forcing)
                 if kind == "int":
-                    f = physics_rhs(tc, z, pp, nn_terms)
-                    r = ((z[1:] - z[:-1]) - 0.5 * aux * (f[1:] + f[:-1])) * w
+                    Lp_t = Lp_t + integral_loss(tc, z, pp, w, dt=aux)
                 else:
                     r = (aux - physics_rhs(tc, z, pp, nn_terms)) * w
-                Lp_t = Lp_t + (r**2).mean()
+                    Lp_t = Lp_t + (r**2).mean()
             Lp_t = Lp_t / len(colloc) + term_l2()
             Lp_t.backward()
             return Lp_t
@@ -496,7 +498,7 @@ def train_inverse(name, refs_for_regime, *,
                   log_every=100,
                   out_dir=".",
                   data_seed=None, init_seed=None, collocation_seed=None,
-                  run_state=None):
+                  run_state=None, physics_backend="eager"):
     """Multi-start inverse solve over MULTIPLE experimental conditions.
 
     One state network per condition (they see different trajectories under
@@ -539,7 +541,8 @@ def train_inverse(name, refs_for_regime, *,
             data_seed=data_seed,
             init_seed=(None if init_seed is None else init_seed + 1000 * s),
             collocation_seed=(None if collocation_seed is None else collocation_seed + 1000 * s),
-            checkpoint=(run_state.start(name, s) if run_state is not None else None))
+            checkpoint=(run_state.start(name, s) if run_state is not None else None),
+            physics_backend=physics_backend)
         if not math.isfinite(res["fphys"]):
             raise FloatingPointError(f"Nonfinite physics loss in {name} start {s}")
         if best is None or res["fphys"] < best["fphys"]:
@@ -559,6 +562,7 @@ def train_inverse(name, refs_for_regime, *,
             "final_phys": res["fphys"], "n_under10pct": res["n_under"],
             "n_unknown": len(UNKNOWN), "recovered": res["final"],
             "observation_hashes": observations,
+            "physics_backend": physics_backend,
         })
         with open(os.path.join(out_dir, f"{res['safe']}_starts.json"), "w") as fh:
             json.dump({"selection_rule": "minimum final physics residual; first start breaks ties",

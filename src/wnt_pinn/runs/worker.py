@@ -92,6 +92,7 @@ def run_worker(config_path, directory, root, regime, *, resume=False):
         "reference_solver": {"method": "Radau", "rtol": 1e-10, "atol": 1e-12},
         "reference_source": external or "generated and cached",
         "reference_sha256": sha256(cache),
+        "physics_backend": cfg["training"]["physics_backend"],
         "cuda_device_name": torch.cuda.get_device_name(legacy_config.DEVICE) if device.startswith("cuda") else None,
     }
     effective_path = directory / f"{safe}_effective.json"

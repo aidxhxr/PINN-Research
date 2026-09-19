@@ -27,7 +27,8 @@ DEFAULTS = {
                  "lam_data": 1.0, "lam_phys": 1.0, "lam_ic": 20.0,
                  "adaptive_weights": True, "weight_every": 200,
                  "weight_beta": 0.1, "n_starts": 2, "init_jitter": 0.15,
-                 "log_every": 200, "checkpoint_every": 100},
+                 "log_every": 200, "checkpoint_every": 100,
+                 "physics_backend": "eager"},
     "seeds": {"data": 1042, "initialization": 2042, "collocation": 3042},
     "resources": {"device": "cpu", "threads": 1, "concurrency": 1},
     "hybrid": {"term": "none", "constraint": "anchored", "param": "gated",
@@ -90,6 +91,10 @@ def validate_config(value: dict) -> dict:
     if cache is not None and not isinstance(cache, str):
         raise ValueError("data.reference_cache must be a path to an NPZ file or null")
     tr = cfg["training"]
+    if tr["physics_backend"] not in {"eager", "triton", "compiled"}:
+        raise ValueError("training.physics_backend must be eager, triton or compiled")
+    if tr["physics_backend"] == "triton" and cfg["resources"]["device"] == "cpu":
+        raise ValueError("The triton physics backend requires a CUDA device")
     for key in ("adam_epochs", "weight_every", "n_starts", "log_every", "checkpoint_every"):
         _number(tr[key], f"training.{key}", minimum=1, integer=True)
     for key in ("n_colloc", "param_refine_colloc"):

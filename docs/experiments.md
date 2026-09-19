@@ -43,6 +43,27 @@ The runner sets every supported hybrid environment value explicitly. Ambient
 mechanistic control, RA to HOXA5, beta-catenin to MYC and APC mutation terms.
 Other exploratory terms continue to use their existing drivers.
 
+### Optional physics kernels
+
+`training.physics_backend` selects `eager` (the default), `triton`, or
+`compiled` in either maintained integral or hybrid pipeline. `triton` fuses
+the seven-state trapezoidal residual, weighting and squared-error reduction,
+with a custom backward for states and RHS values. It requires CUDA,
+PyTorch >= 2.6 and Triton; install the `kernels` extra in a compatible CUDA
+environment. Imports remain lazy for ordinary CPU runs. Collocation intervals
+and state weights must be fixed. Float64 remains float64; there is no implicit
+mixed precision or change to the biological equations. The kernel uses
+deterministic reductions and no atomic gradient accumulation. Higher-order
+gradients use a differentiable PyTorch backward fallback.
+
+`compiled` applies `torch.compile` to the original RHS and integral loss,
+including active learned mechanisms. It uses dynamic row counts and disables
+CUDA graphs to accommodate L-BFGS closures. The state networks and optimizer
+remain unchanged. Its compilation-variant budget is scoped to 128 to cover
+multiple protocols and training stages; final scoring uses eager PyTorch.
+Both optimized backends require the integral residual;
+ordinary derivative-residual runs retain the eager path.
+
 An optional `data.reference_cache` accepts an NPZ file with arrays named
 `<regime with underscores>__<condition>__t` and
 `<regime with underscores>__<condition>__y`. Arrays must span the configured

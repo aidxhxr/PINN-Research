@@ -60,7 +60,7 @@ def _source_hashes(root, pipeline):
     folder = root / ("PINN-inverse-pinn-boost" if pipeline == "integral" else "PINN-hybrid-ude")
     package = root / "src" / "wnt_pinn"
     sources = list(folder.glob("*.py"))
-    for component in ("runs", "model", "networks"):
+    for component in ("runs", "model", "networks", "kernels"):
         sources.extend((package / component).rglob("*.py"))
     sources.extend([package / "__init__.py", root / "experiments" / "run.py"])
     sources = sorted(set(path for path in sources if path.is_file()))
