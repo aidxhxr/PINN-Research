@@ -17,6 +17,7 @@ from hybrid import build_terms, observed_range, observed_points, true_term
 from model import ForwardPINN, InverseParams, time_derivatives
 from residual import physics_residual, physics_rhs
 from wnt_pinn.kernels.integral import make_integral_loss
+from wnt_pinn.kernels.timing import TrainingTimer
 
 N_UNK = len(UNKNOWN)
 
@@ -292,6 +293,8 @@ def _train_once(name, refs_for_regime, true_vals, *,
             complete = saved["stage"] == "complete"
             print(f"    [{tag}] resume {saved['stage']} at Adam epoch {saved['epoch']}")
 
+    timer = TrainingTimer(DEVICE)
+    timer.mark("adam_start")
     # ---- Stage 1: Adam ----
     for ep in range(first_epoch, adam_epochs + 1):
         if adaptive_weights and (ep % weight_every == 0 or ep == 1):
@@ -341,7 +344,9 @@ def _train_once(name, refs_for_regime, true_vals, *,
 
         if checkpoint is not None:
             checkpoint.after_epoch(ep, adam_epochs, hist, lam_phys_cur)
+        timer.after_adam()
 
+    timer.mark("adam_end")
     # ---- Stage 2: L-BFGS joint polish ----
     if lbfgs_steps > 0 and not complete:
         print(f"    [{tag}] L-BFGS ({lbfgs_steps}) ...")
@@ -352,6 +357,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
 
         for step in range(1, lbfgs_steps + 1):
             def closure():
+                timer.closures["lbfgs"] += 1
                 lbfgs.zero_grad()
                 Ld_t = Lic_t = Lp_t = 0.0
                 for c in conds:
@@ -375,6 +381,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
                       f"L={float(loss.detach()):.2e} | {_fmt_est(cur, true_vals)}"
                       f" [{dt:.0f}s]")
 
+    timer.mark("lbfgs_end")
     # ---- Stage 3: parameter refinement on FROZEN nets ----
     # The flexible state nets win the race to drive the residual down, starving
     # the parameter gradient. Freeze the (now data-pinned) nets and optimise
@@ -412,6 +419,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
             history_size=50, line_search_fn="strong_wolfe")
 
         def ref_closure():
+            timer.closures["refine"] += 1
             ref_opt.zero_grad()
             Lp_t = 0.0
             for item in colloc:
@@ -442,6 +450,9 @@ def _train_once(name, refs_for_regime, true_vals, *,
                       f"<f_NN>={fmean}  under10%={nu}/{N_UNK} | "
                       f"{_fmt_est(cur, true_vals)} [{dt:.0f}s]")
 
+    timer.mark("refine_end")
+    timings = timer.result()
+    print(f"    [{tag}] timing backend={physics_backend} {json.dumps(timings)}")
     # ---- evaluate ----
     sols = {}
     with torch.no_grad():
@@ -464,7 +475,7 @@ def _train_once(name, refs_for_regime, true_vals, *,
         checkpoint.save(adam_epochs, hist, lam_phys_cur, stage="complete")
 
     return dict(sols=sols, params=params, hist=hist, conds=conds,
-                final=final, fphys=fphys, n_under=nu, safe=safe,
+                timings=timings, final=final, fphys=fphys, n_under=nu, safe=safe,
                 nn_terms=nn_terms)
 
 
@@ -562,7 +573,7 @@ def train_inverse(name, refs_for_regime, *,
             "final_phys": res["fphys"], "n_under10pct": res["n_under"],
             "n_unknown": len(UNKNOWN), "recovered": res["final"],
             "observation_hashes": observations,
-            "physics_backend": physics_backend,
+            "physics_backend": physics_backend, "timings": res["timings"],
         })
         with open(os.path.join(out_dir, f"{res['safe']}_starts.json"), "w") as fh:
             json.dump({"selection_rule": "minimum final physics residual; first start breaks ties",

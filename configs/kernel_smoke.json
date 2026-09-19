@@ -1,0 +1,22 @@
+{
+  "name": "kernel-smoke",
+  "pipeline": "hybrid",
+  "regimes": ["Normal"],
+  "conditions": ["ctrl", "noATRA"],
+  "network": {"width": 256, "depth": 4, "n_fourier": 16},
+  "data": {"T": 150.0, "reference_points": 1000, "n_data": 150},
+  "training": {
+    "adam_epochs": 60,
+    "lbfgs_steps": 2,
+    "param_refine_steps": 1,
+    "n_colloc": 1024,
+    "param_refine_colloc": 1024,
+    "n_starts": 1,
+    "weight_every": 20,
+    "log_every": 20,
+    "checkpoint_every": 60,
+    "physics_backend": "triton"
+  },
+  "hybrid": {"term": "bm_myc"},
+  "resources": {"device": "cuda", "threads": 4, "concurrency": 1}
+}

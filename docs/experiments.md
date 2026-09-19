@@ -31,6 +31,8 @@ worker starts. The resolved configuration is saved with each run.
 | `configs/smoke_cpu.json` | Small CPU execution check |
 | `configs/integral.json` | Four regimes, ten conditions, integral inverse PINN |
 | `configs/hybrid_myc.json` | Same protocol with learned beta-catenin to MYC activation |
+| `configs/kernel_smoke.json` | GPU performance smoke check: optional Triton integral loss, MYC hybrid, two conditions |
+| `configs/kernel_smoke_full.json` | Same short GPU training with all ten conditions and 8,000 collocation points |
 
 `resources.device` accepts `cpu`, `auto`, `cuda` or `cuda:N`. `threads` limits
 threads per worker; `concurrency` limits simultaneous regime workers. GPU
@@ -63,6 +65,35 @@ remain unchanged. Its compilation-variant budget is scoped to 128 to cover
 multiple protocols and training stages; final scoring uses eager PyTorch.
 Both optimized backends require the integral residual;
 ordinary derivative-residual runs retain the eager path.
+
+For a matched smoke comparison, launch this command in a recorded tmux session:
+
+```bash
+PYTHONPATH=src python3 experiments/benchmark_kernels.py \
+  --out runs/<new-timestamp>_kernel_comparison --repeats 2
+```
+
+Use `--config configs/kernel_smoke_full.json --backends eager triton --skip-micro`
+to compare the custom kernel at the usual condition count and collocation size.
+The full-workload profile retains the usual 4-by-256 state networks; only the
+training duration and reference sampling resolution are shortened.
+
+The script runs the same configuration with each backend through the versioned
+runner, reversing their order on alternate repeats. All data, initialization
+and collocation seeds match. Each child gets a new timestamped run directory
+with its normal manifest and checkpoints. The comparison saves every timing,
+observation hash, parameter comparison and closure count in `comparison.json`,
+plus `report.md`. A separate process measures forward-plus-backward loss time
+and exports a baseline physics profile. Compiler caches live inside the
+comparison directory; training and microbenchmarks have separate caches.
+
+Per-start `timings` in `*_starts.json` record synchronized stage boundaries,
+the first Adam epoch, and steady Adam time after ten epochs. Compilation or
+cache loading is included in first-call and total time. Checkpoint writes are
+included in training-stage measurements; process wall time additionally
+includes setup, references, evaluation and output files. GPU sharing and
+compilation overhead can outweigh a kernel speedup in a short run. This smoke
+configuration checks execution and speed, not converged parameter recovery.
 
 An optional `data.reference_cache` accepts an NPZ file with arrays named
 `<regime with underscores>__<condition>__t` and
