@@ -24,6 +24,7 @@ session notes live in the git-ignored `notes/` directory when it is available.
 
 | session | purpose | run/log | started | status |
 |---|---|---|---|---|
+| `kernel_smoke` | Optional float64 Triton/compiled physics loss; 75 checks and 10 matched runs pass; full-workload Triton 1.003x, small compiled 1.442x steady; default eager retained | `runs/20260919_153746_kernel_comparison/summary.md`; `notes/kernel-smoke_20260919_152936/` | 2026-09-19 | complete / idle |
 | `commit_validation` | Pre-push checks: 89 tests and eight subtests, lint, result reproduction and wheel/sdist builds pass; poster PDFs, previews and archives verified | `notes/commit-validation_20260915_224147/` | 2026-09-15 | complete / idle |
 | `population_extension` | SciPy 14-state reproduction: 202 matched comparisons, 160 LHS samples, 14 figure pairs, six-page meeting brief; five scientific tests and BDF/Radau checks pass | `runs/20260915_213018_population_extension_5128/`; `extension/results/`; `notes/population_extension_20260915_212214/` | 2026-09-15 | complete / idle |
 | `poster_professor_updates` | Both posters: stemness index replaced by RA/cosine and ATRA plots; IC weight explained; APC wording, dose labels and author corrected; PDFs, ZIPs and live previews verified | `notes/poster-professor-updates_20260915_211836/`; snapshot in `poster-versions/20260915_211836_before_professor_feedback/` | 2026-09-15 | complete / idle |
