@@ -24,6 +24,7 @@ dependencies = ["numpy>=1.26", "scipy>=1.11"]
 
 [project.optional-dependencies]
 ml = ["torch>=2.2"]
+kernels = ["torch>=2.6", "triton>=3.2; sys_platform == 'linux'"]
 dev = ["pytest>=8", "ruff>=0.8", "build>=1.2"]
 publications = ["matplotlib>=3.8", "PyMuPDF>=1.24"]
 
