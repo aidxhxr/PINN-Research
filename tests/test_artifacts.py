@@ -385,3 +385,30 @@ def test_inventory_does_not_treat_run_infrastructure_source_as_an_artifact(repos
     source.write_text("RUN_INFRASTRUCTURE = True\n")
     subprocess.run(["git", "add", str(source)], cwd=repository, check=True)
     assert artifacts.inventory(repository)["files"] == 3
+
+
+def test_github_history_downloads_moved_artifact_from_its_history_path(repository, monkeypatch):
+    # After a folder move the catalog path is the new location while the pinned
+    # history revision still holds the file at git_path.
+    path = repository / artifacts.CATALOG_PATH
+    catalog = json.loads(path.read_text())
+    entry = next(e for e in catalog["files"] if e["path"] == "experiment/runs/001/model.pt")
+    entry["git_path"], entry["path"] = entry["path"], "relocated/runs/001/model.pt"
+    path.write_text(json.dumps(catalog))
+    contents = (repository / "experiment/runs/001/model.pt").read_bytes()
+    requested = []
+
+    def download(url, timeout):
+        requested.append(url)
+        return io.BytesIO(contents)
+
+    monkeypatch.setattr(artifacts, "urlopen", download)
+    artifacts.restore(repository, "github-history", ["relocated"])
+    revision = catalog["history_source"]["revision"]
+    assert requested == [f"https://raw.githubusercontent.com/aidxhxr/PINN-Research/{revision}/"
+                         "experiment/runs/001/model.pt"]
+    assert (repository / "relocated/runs/001/model.pt").read_bytes() == contents
+    entry["git_path"] = "../escape"
+    path.write_text(json.dumps(catalog))
+    with pytest.raises(ValueError, match="inside its root"):
+        artifacts.verify(repository)

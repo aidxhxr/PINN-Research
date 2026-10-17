@@ -69,6 +69,8 @@ def _validate_catalog(catalog):
         revision = entry.get("git_revision")
         if revision is not None and (not isinstance(revision, str) or not _GIT_COMMIT.fullmatch(revision)):
             raise ValueError(f"Invalid immutable source revision for {path}")
+        if "git_path" in entry:
+            _relative(entry["git_path"])
         if "object" in entry:
             _relative(entry["object"])
         if "shard" in entry:
@@ -526,7 +528,9 @@ def restore(root, destination, selected=None):
         return {"status": "ok", "files": len(expected), **dict(counts)}
     location = str(destination)
     if location == "github-history":
-        urls = {name: _remote_url(_history_base_url(catalog, entry), name)
+        # A moved file keeps its pre-move location in git_path, which is where the
+        # pinned history revision stores it.
+        urls = {name: _remote_url(_history_base_url(catalog, entry), entry.get("git_path", name))
                 for name, entry in wanted.items()}
         for entry in wanted.values():
             url = urls[entry["path"]]
