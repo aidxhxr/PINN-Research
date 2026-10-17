@@ -30,7 +30,7 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 | `PINN-inverse-solve/` | Protected historical inverse baseline. Do not edit. |
 | `PINN-inverse-multicond/` | Six-condition inverse and classical ODE-fit experiments |
 | `PINN-inverse-multicond-excite/` | Ten-condition WNT/MYC excitation comparison; original autodiff source for 37/144 |
-| `PINN-inverse-better/`, `PINN-inverse-better-copy/`, `PINN-inverse-multicond-better/` | Earlier optimization and identifiability attempts; retain for historical comparison |
+| `PINN-inverse-better/`, `PINN-inverse-multicond-better/` | Earlier optimization and identifiability attempts; retain for historical comparison |
 | `PINN-forward/`, `PINN/` | Early implementations, notebooks, and sensitivity-analysis tables |
 | `PINN-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
 | `ROADMAP.md` | Chronological historical narrative, with superseded interpretations |
