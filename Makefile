@@ -15,7 +15,7 @@ test:
 	$(PYTHON) -m pytest
 
 lint:
-	$(PYTHON) -m ruff check src/wnt_pinn tests
+	$(PYTHON) -m ruff check src/wnt_pinn tests scripts
 
 check: lint test
 

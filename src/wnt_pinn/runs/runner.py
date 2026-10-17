@@ -62,7 +62,7 @@ def _source_hashes(root, pipeline):
     sources = list(folder.glob("*.py"))
     for component in ("runs", "model", "networks", "kernels"):
         sources.extend((package / component).rglob("*.py"))
-    sources.extend([package / "__init__.py", root / "experiments" / "run.py"])
+    sources.extend([package / "__init__.py", root / "scripts" / "run.py"])
     sources = sorted(set(path for path in sources if path.is_file()))
     return {str(path.relative_to(root)): sha256(path) for path in sources}
 

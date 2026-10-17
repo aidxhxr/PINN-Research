@@ -1,6 +1,6 @@
 """Matched GPU smoke training through the versioned runner; launch in tmux.
 
-Example: PYTHONPATH=src python3 experiments/benchmark_kernels.py --out runs/<new-dir>
+Example: PYTHONPATH=src python3 scripts/benchmark_kernels.py --out runs/<new-dir>
 The comparison keeps the scientific configuration and all three seeds fixed.
 Backends are interleaved in reversed order on alternate repeats. This is a
 short execution/performance study, not evidence of converged inverse recovery.

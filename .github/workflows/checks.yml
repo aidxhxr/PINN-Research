@@ -43,7 +43,7 @@ jobs:
           python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
           python -m pip install -e '.[ml,dev,publications]'
       - name: Check maintained Python code
-        run: python -m ruff check src/wnt_pinn tests
+        run: python -m ruff check src/wnt_pinn tests scripts
       - name: Check equations, saved interfaces, and run infrastructure
         run: python -m pytest
       - name: Recompute registered results from saved inputs

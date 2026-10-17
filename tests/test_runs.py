@@ -73,7 +73,7 @@ def test_shell_launcher_propagates_worker_failure(tmp_path, folder, launcher, va
 
 
 def _command(config, resume=None):
-    command = [sys.executable, str(ROOT / "experiments" / "run.py"), str(config), "--root", str(ROOT)]
+    command = [sys.executable, str(ROOT / "scripts" / "run.py"), str(config), "--root", str(ROOT)]
     if resume:
         command += ["--resume", str(resume)]
     return command

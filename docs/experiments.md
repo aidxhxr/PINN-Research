@@ -13,7 +13,7 @@ check:
 
 ```bash
 tmux new-session -s research-smoke
-python experiments/run.py configs/smoke_cpu.json
+python scripts/run.py configs/smoke_cpu.json
 ```
 
 The returned directory contains `config.json`, `manifest.json`, per-regime logs,
@@ -76,7 +76,7 @@ ordinary derivative-residual runs retain the eager path.
 For a matched smoke comparison, launch this command in a recorded tmux session:
 
 ```bash
-PYTHONPATH=src python3 experiments/benchmark_kernels.py \
+PYTHONPATH=src python3 scripts/benchmark_kernels.py \
   --out runs/<new-timestamp>_kernel_comparison --repeats 2
 ```
 
@@ -109,7 +109,7 @@ To isolate the final reduction change against its previous implementation,
 run this command in a recorded tmux session:
 
 ```bash
-PYTHONPATH=src python3 experiments/benchmark_reduction.py \
+PYTHONPATH=src python3 scripts/benchmark_reduction.py \
   --out runs/<new-timestamp>_reduction/comparison.json
 ```
 
@@ -185,7 +185,7 @@ a verified older checkpoint is retained. Changed committed bytes are refused. Re
 configuration and existing run directory:
 
 ```bash
-python experiments/run.py configs/smoke_cpu.json --resume runs/<run-id>
+python scripts/run.py configs/smoke_cpu.json --resume runs/<run-id>
 ```
 
 Adam checkpoints contain every condition's state network, shared biological
