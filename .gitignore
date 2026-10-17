@@ -15,6 +15,7 @@ notes/
 
 # Local-only material: third-party papers, personal drafts, snapshots
 /private/
+research-paper-final/cover_letter.tex
 PINN-smaller/forward-pinn-train-hybrid/architecture.log
 
 # macOS finder junk
@@ -36,9 +37,6 @@ research-paper/*.log
 research-paper/*.blg
 research-paper/*.bbl
 
-# example posters (reference material, not tracked)
-examples-posters/
-
 # Package builds and local environments
 *.egg-info/
 /build/
@@ -54,9 +52,6 @@ examples-posters/
 /runs/
 /.artifact-store/
 /artifacts/receipts/
-/poster-versions/
-/poster-fable/
-/poster-fable.zip
 
 # Historical run artifacts are indexed in artifacts/catalog.json.
 # Existing baseline files remain tracked; ignored does not remove tracked files.

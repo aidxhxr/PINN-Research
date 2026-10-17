@@ -34,7 +34,6 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 | `PINN-forward/`, `PINN/` | Early implementations, notebooks, and sensitivity-analysis tables |
 | `PINN-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
 | `ROADMAP.md` | Chronological historical narrative, with superseded interpretations |
-| `poster-context/` | August planning material, superseded by current poster source notes |
 | [Ecology project](https://github.com/aidxhxr/ecosystem-engineer-model) | Separate ecology research topic; outside the WNT package and result registry |
 
 New experiments go in fresh timestamped directories. An old folder's presence
@@ -53,7 +52,6 @@ the dated note exists, but its complete original run mapping is unavailable.
 | `research-poster/`, `research-poster-v1/` | Earlier publication versions |
 | `network-diagram/` | TikZ regulatory network source and reviewed PDF |
 | `docs/figures/` | Seven README figure snapshots with original-asset hashes |
-| `poster-versions/`, `poster-fable/` | Local proof archives and earlier draft, where available |
 
 [`publications/catalog.json`](../publications/catalog.json) defines the build
 inputs, commands, outputs, result IDs and validation scope for the supported

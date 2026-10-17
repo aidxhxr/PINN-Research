@@ -57,7 +57,6 @@ The current comparison version is also served at
 - `data/hybrid_comparison.json`: original learned curves and recovered/true
   parameter dictionaries for the matched-parameter comparisons.
 - `SOURCES.md`: provenance, numerical interpretation and corrections.
-- `PRESERVED_VERSION.md`: location of the saved approved version.
 
 All equations, tables, headings and captions are editable LaTeX.
 Fonts are standard TeX Gyre Pagella and Heros. Body text is 28 pt, captions
