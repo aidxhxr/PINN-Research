@@ -1,0 +1,191 @@
+\section*{Supporting information}
+\addcontentsline{toc}{section}{Supporting information}
+
+
+\begin{figure}[h]
+\centering
+\fig{figS1_design_sensitivity.pdf}
+\caption{\textbf{S1 Fig. How the information budget depends on the design.} From
+the per-condition sensitivities of the benchmark design at the truth. (A)
+CRLB-expected number of the 34 regular parameters recovered within 10\% against
+the observation-noise standard deviation (all seven states observed; dashed,
+the benchmark's $\sigma=0.002$). (B) The same at $\sigma=0.002$ when only a
+subset of states is observed. (C) Bound on $\thP$ ($\dP$ known) when one of the
+ten base conditions is left out, relative to the full design: only the
+sustained WNT-inhibition step matters.}
+\label{fig:S1}
+\end{figure}
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{\textbf{S1 Table. Parameters.} The 36 kinetic parameters, unknown in
+every inverse problem, with their baseline values, and the known forcing
+parameters. Initial state $(b,p,h_5,h_{13},m,r,c)=(0.20, 1.00, 0.80, 0.30, 0.30,
+0.60, 0.40)$. $W$ and $\thP$ take the regime values of Table~\ref{tab:regimes}.}
+\label{tab:params}
+\begin{tabular}{ll}
+\toprule
+equation & parameters (value) \\
+\midrule
+$b$ & $W$ (regime), $\eta_{13}$ 0.75, $\kappa_{13}$ 0.55, $\lambda_P$ 1.60, $\lambda_5$ 1.30, $\kappa_5$ 0.50 \\
+$p$ & $\thP$ (regime), $\varepsilon_P$ 1.00, $\rho_5$ 1.10, $\rho_B$ 1.10, $\rho_{13}$ 1.30, $\dP$ 3.50 \\
+$h_5$ & $\varepsilon_5$ 1.20, $a_5$ 0.15, $\eta_R$ 2.50, $\kappa_R$ 0.40, $\eta_M$ 2.50, $\kappa_M$ 0.50 \\
+$h_{13}$ & $\varepsilon_{13}$ 1.00, $a_{13}$ 0.18, $\eta_{B13}$ 0.95, $\kappa_{B13}$ 0.50, $\eta_{M13}$ 0.55, $\kappa_{M13}$ 0.50 \\
+$m$ & $\varepsilon_M$ 0.60, $a_M$ 0.18, $\eta_{BM}$ 1.35, $\kappa_{BM}$ 0.50 \\
+$r$ & $\varepsilon_R$ 0.40, $\lambda_C$ 0.85 \\
+$c$ & $\varepsilon_C$ 0.80, $a_C$ 0.08, $\eta_{RC}$ 1.50, $\kappa_{RC}$ 0.50, $\eta_{BC}$ 1.50, $\kappa_{BC}$ 0.50 \\
+forcing (known) & $\mu_0$ 0.35, $A_R$ 0.04, $T_R$ 24, $\varphi$ 0, $D_R$ 1.50, $q$ 0.30, $(\tau_1,\tau_2)$ (40, 88) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{\textbf{S2 Table. The thirteen learnable edges.} A production edge has a
+basal parameter beside the learned function and is exposed to the compensation
+identity, Eq~\eqref{eq:compensation}; a modulator edge multiplies a state and is
+not.}
+\label{tab:edges}
+\begin{tabular}{llllll}
+\toprule
+edge & class & equation & input & replaces & basal \\
+\midrule
+\texttt{ra\_h5} & production & $h_5$ & $r$ & $\eta_R H_1(r;\kappa_R)$ & $a_5$ \\
+\texttt{bm\_myc} & production & $m$ & $b$ & $\eta_{BM}H_2(b;\kappa_{BM})$ & $a_M$ \\
+\texttt{b\_h13} & production & $h_{13}$ & $b$ & $\eta_{B13}H_2(b;\kappa_{B13})$ & $a_{13}$ \\
+\texttt{m\_h13} & production & $h_{13}$ & $m$ & $\eta_{M13}H_2(m;\kappa_{M13})$ & $a_{13}$ \\
+\texttt{bc\_cyp} & production & $c$ & $b$ & $\eta_{BC}H_2(b;\kappa_{BC})$ & $a_C$ \\
+\texttt{rc\_cyp} & production & $c$ & $r$ & $\eta_{RC}H_1(r;\kappa_{RC})$ & $a_C$ \\
+\texttt{h13\_b} & production & $b$ & $h_{13}$ & $\eta_{13}H_2(h_{13};\kappa_{13})$ & $W$ \\
+\texttt{m\_h5} & modulator & $h_5$ & $m$ & $\eta_M m/(\kappa_M+m)$, times $h_5$ & -- \\
+\texttt{h5\_b} & modulator & $b$ & $b$ & $\lambda_5/(\kappa_5+b)$, times $h_5 b$ & -- \\
+\texttt{apc\_b} & modulator & $b$ & $p$ & $\lambda_P$, times $p\,b$ & -- \\
+\texttt{c\_ra} & modulator & $r$ & $c$ & $\lambda_C$, times $c\,r$ & -- \\
+\texttt{apc\_prod} & ratio & $p$ & $(h_5,b,h_{13})$ & APC production ratio & -- \\
+\texttt{apc\_mutation} & parameter & $p$ & $1-\thP$ & $\dP(1-\thP)$ & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{\textbf{S3 Table. Full-pipeline confirmation.} Full inverse PINN with
+two depletion conditions added to the ten, three restarts, counts over the 34
+shared parameters, each hybrid against its own mechanistic control on the same
+twelve conditions. Upper blocks: retinoid-free medium plus the single WNT
+knockdown ($k_W=0.02$); lower block: retinoid-free medium plus the \bcat{}
+double knockdown ($k_W=k_{13}=0$). gate$_{\text{lo}}$ is the gated network's
+gate at the lowest observed input (0: the anchor binds). Runs
+\runid{PINN-hybrid-ude/runs/20260802\_041545\_ra\_h5\_dep},
+\runid{20260802\_010526\_bm\_myc\_dep}, control \runid{20260801\_211530\_control\_dep};
+double knockdown \runid{20260921\_184115\_bm\_myc\_depb}, control
+\runid{20260921\_172342\_control\_depb}.}
+\label{tab:fullscale}
+\begin{tabular}{llcccc}
+\toprule
+hybrid & regime & recovered (control) & term NRMSE & basal error (control) & gate$_{\text{lo}}$ \\
+\midrule
+RA$\to$HOXA5 & Normal & 18 (18) & 11.6\% & 13.0\% (1.7\%) & 0.00 \\
+ & Early & 20 (17) & 9.6\% & 4.7\% (14.0\%) & 0.00 \\
+ & Advanced & 18 (14) & 9.5\% & 2.4\% (19.5\%) & 0.00 \\
+ & Severe & 18 (14) & 9.6\% & 3.8\% (17.9\%) & 0.00 \\
+\bcat{}$\to$MYC, single KD & Normal & 15 (17) & 2.3\% & 10.3\% (0.4\%) & 0.14 \\
+ & Early & 16 (16) & 2.4\% & 11.7\% (0.2\%) & 0.14 \\
+ & Advanced & 13 (13) & 2.9\% & 17.4\% (0.4\%) & 0.13 \\
+ & Severe & 13 (13) & 2.7\% & 16.4\% (0.5\%) & 0.12 \\
+\midrule
+\bcat{}$\to$MYC, double KD & Normal & 18 (19) & 1.8\% & 1.4\% (0.3\%) & 0.00 \\
+ & Early & 16 (17) & 1.2\% & 0.6\% (0.2\%) & 0.00 \\
+ & Advanced & 13 (15) & 4.4\% & 0.6\% (0.2\%) & 0.00 \\
+ & Severe & 11 (11) & 4.2\% & 0.7\% (0.3\%) & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{\textbf{S4 Table. The design table.} Anchor ratio of each regulator,
+worst over the four regimes, under each protocol added to the ten base
+conditions, ordered by laboratory cost; computed from reference trajectories
+without training. \texttt{mycKO} is the \bcat{} double knockdown plus silencing
+of basal MYC transcription ($k_{aM}=0$); \texttt{hox13KO} adds $k_{a13}=0$ and
+therefore also contains $k_W=0$. APC never falls below 9.5\% of its range: its
+production numerator $1+\rho_5h_5$ is bounded below by one. Run
+\runid{PINN-hybrid-ude/runs/20260802\_anchor\_reach}.}
+\label{tab:reach}
+\begin{tabular}{lcccccc}
+\toprule
+protocol & $\rho_{p}$ (APC) & $\rho_b$ & $\rho_c$ & $\rho_{h_{13}}$ & $\rho_m$ & $\rho_r$ \\
+\midrule
+ten base conditions & 0.179 & 0.081 & 0.181 & 0.193 & 0.116 & 0.143 \\
+retinoid-free medium & 0.163 & 0.081 & 0.181 & 0.193 & 0.116 & \textbf{0.000} \\
+WNT knockout ($k_W=0$) & 0.174 & 0.013 & 0.181 & 0.163 & 0.079 & 0.136 \\
+\bcat{} double KD ($k_W=k_{13}=0$) & 0.171 & \textbf{0.000} & 0.181 & 0.161 & 0.079 & 0.136 \\
+\texttt{mycKO} & 0.117 & \textbf{0.000} & 0.181 & 0.119 & \textbf{0.000} & 0.136 \\
+\texttt{hox13KO} & 0.095 & \textbf{0.000} & 0.181 & \textbf{0.000} & \textbf{0.000} & 0.136 \\
+\texttt{cypKO} & 0.179 & \textbf{0.000} & \textbf{0.000} & 0.161 & 0.079 & \textbf{0.000} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{S1 Text. Pre-registered predictions and their scoring}
+
+\paragraph{Dose-response (registered before any fit)} P1: within each arm and
+regime, the excess basal error (hybrid minus control) is monotone in achieved
+anchor ratio (Spearman $\ge 0.8$). P2: the retinoid arm falls below 2\% at $k=0$
+and below 3\% by $k=0.03$. P3: the single-knockdown arm never falls below 2\% at
+any dose (the registered falsifier: a collapse would mean knockdown depth, not
+anchor visitation, is doing the work). P4: the double-knockdown arm at $k=0$ is
+below 2\% and below the single-knockdown arm at $k=0$. P5: the retinoid and
+double-knockdown arms lie on one curve against ratio. P6: matched ratios reached
+by different means give errors within a factor of about 2. Scoring with the best
+available data (Normal two restarts, Severe five): P1 fails (four of six
+arm--regime cells pass at $\rho_s=0.94$--$1.00$; \texttt{wnt}/Normal $+0.58$ and
+\texttt{ra}/Severe $+0.26$ fail); P2 passes in Normal (0.0\%, 0.2\%) and fails in
+Severe (3.3\% against a mechanistic-control floor of 3.4\%); P3 fails in Normal
+(1.3\%) and passes in Severe (2.5\%); P4, P5 and P6 pass in both regimes (P5 gap
+0.4 and 3.3 points; P6 $\times2.0$, $\times2.3$). Three of six pass in both
+regimes. With two rather than five restarts in Severe, P3 and P5 also failed
+there because of one bad optimum at $k=0.1$ (23.4\% between neighbours at 0.8\%
+and 3.3\%), which five restarts removed.
+
+\paragraph{Prospective test (registered before any fit)} Q1: \texttt{m\_h13}
+basal error below 3\% under the prescribed protocol (\texttt{mycKO}). Q2: under
+the near-miss \texttt{bcatKO} it stays above 8\% in at least one regime (the
+falsifier). Q3: the equation-parameter count rises under \texttt{mycKO} and not
+under \texttt{bcatKO}. Q4: the functional error under \texttt{mycKO} falls below
+20\% in Normal. Q5 (secondary, flagged in advance as confounded): \texttt{h13\_b}
+basal error below 5\% under \texttt{hox13KO}. Scoring: Q1 passes in both regimes;
+Q2 passes; Q3 passes in Normal and fails in Severe; Q4 fails (68.4\%); Q5 fails
+in both regimes. Two of five pass.
+
+\subsection*{S2 Text. Training and computational details}
+
+\paragraph{Inverse PINN} One state network per condition (Methods); 150
+observations per condition with Gaussian noise of standard deviation 0.002, plus
+the initial condition (weight 20); 8000 collocation points; Adam ($10^{-3}$ for
+the networks, $5\times10^{-3}$ for the log-parameters, 2000 epochs, cosine
+schedule), then 150 L-BFGS steps and 600 parameter-refinement steps with the
+networks frozen; adaptive loss weights. Parameters are initialised at
+$1.5\times$ truth with $W=1.2$, $\thP=0.6$ in every regime.
+
+\paragraph{SGN-PINN} Head features as in Eq~\eqref{eq:head}; 3000-point
+residual grid; initial-condition weight $\lambda_0=100$; Levenberg--Marquardt
+damping initialised at $10^{-3}$, divided by 3 on acceptance and multiplied by 5
+on rejection, ridge $10^{-10}$ times the mean data-block curvature on the head
+blocks; a level of the $\lambda$ schedule ends after the iteration budget, a
+relative decrease below $10^{-7}$, or eight consecutive rejections. All linear
+algebra in double precision on the GPU.
+
+\paragraph{Hybrid term and screen} $2\times5$ tanh network, Glorot-uniform, final
+bias zero, $L^2$ penalty $10^{-8}$ on the mean squared weight, trained jointly.
+Screen: stride-8 reference grid, 3000 Adam steps at $5\times10^{-3}$, 300 L-BFGS
+iterations with strong-Wolfe line search, restart seeds $100+17s$, lowest
+residual kept.
+
+\paragraph{Fisher information} Central differences with step $10^{-4}$ in
+log-parameters on Radau solutions (rtol $10^{-10}$, atol $10^{-12}$), at the
+150 observation times of each condition of the benchmark dataset;
+$\sigma=0.002$. The design-comparison bounds for $\thP$
+(Section~\ref{sec:res-thetaP}) use 200 uniformly spaced times per condition.

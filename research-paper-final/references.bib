@@ -1,0 +1,942 @@
+% ============================================================================
+%  Bibliography: PINNs applied to a WNT / retinoic-acid / HOX ODE model
+%  of colorectal cancer.
+% ============================================================================
+
+% ---------------------------------------------------------------------------
+%  METHODS / MACHINE LEARNING
+% ---------------------------------------------------------------------------
+
+@article{raissi2019pinn,
+  author  = {Raissi, Maziar and Perdikaris, Paris and Karniadakis, George E.},
+  title   = {Physics-informed neural networks: A deep learning framework for
+             solving forward and inverse problems involving nonlinear partial
+             differential equations},
+  journal = {Journal of Computational Physics},
+  volume  = {378},
+  pages   = {686--707},
+  year    = {2019},
+  doi     = {10.1016/j.jcp.2018.10.045}
+}
+
+@article{karniadakis2021piml,
+  author  = {Karniadakis, George Em and Kevrekidis, Ioannis G. and Lu, Lu and
+             Perdikaris, Paris and Wang, Sifan and Yang, Liu},
+  title   = {Physics-informed machine learning},
+  journal = {Nature Reviews Physics},
+  volume  = {3},
+  number  = {6},
+  pages   = {422--440},
+  year    = {2021},
+  doi     = {10.1038/s42254-021-00314-5}
+}
+
+@article{lu2021deepxde,
+  author  = {Lu, Lu and Meng, Xuhui and Mao, Zhiping and Karniadakis, George Em},
+  title   = {{DeepXDE}: A deep learning library for solving differential equations},
+  journal = {SIAM Review},
+  volume  = {63},
+  number  = {1},
+  pages   = {208--228},
+  year    = {2021},
+  doi     = {10.1137/19M1274067}
+}
+
+@article{wang2021gradient,
+  author  = {Wang, Sifan and Teng, Yujun and Perdikaris, Paris},
+  title   = {Understanding and mitigating gradient flow pathologies in
+             physics-informed neural networks},
+  journal = {SIAM Journal on Scientific Computing},
+  volume  = {43},
+  number  = {5},
+  pages   = {A3055--A3081},
+  year    = {2021},
+  doi     = {10.1137/20M1318043}
+}
+
+@article{wang2022ntk,
+  author  = {Wang, Sifan and Yu, Xinling and Perdikaris, Paris},
+  title   = {When and why {PINN}s fail to train: A neural tangent kernel
+             perspective},
+  journal = {Journal of Computational Physics},
+  volume  = {449},
+  pages   = {110768},
+  year    = {2022},
+  doi     = {10.1016/j.jcp.2021.110768}
+}
+
+@inproceedings{krishnapriyan2021failure,
+  author    = {Krishnapriyan, Aditi S. and Gholami, Amir and Zhe, Shandian and
+               Kirby, Robert M. and Mahoney, Michael W.},
+  title     = {Characterizing possible failure modes in physics-informed neural
+               networks},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {34},
+  pages     = {26548--26560},
+  publisher = {Curran Associates, Inc.},
+  year      = {2021}
+}
+
+@inproceedings{tancik2020fourier,
+  author    = {Tancik, Matthew and Srinivasan, Pratul P. and Mildenhall, Ben and
+               Fridovich-Keil, Sara and Raghavan, Nithin and Singhal, Utkarsh and
+               Ramamoorthi, Ravi and Barron, Jonathan T. and Ng, Ren},
+  title     = {Fourier features let networks learn high frequency functions in
+               low dimensional domains},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {33},
+  pages     = {7537--7547},
+  publisher = {Curran Associates, Inc.},
+  year      = {2020}
+}
+
+@inproceedings{rahaman2019spectral,
+  author    = {Rahaman, Nasim and Baratin, Aristide and Arpit, Devansh and
+               Draxler, Felix and Lin, Min and Hamprecht, Fred A. and
+               Bengio, Yoshua and Courville, Aaron},
+  title     = {On the spectral bias of neural networks},
+  booktitle = {Proceedings of the 36th International Conference on Machine
+               Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {97},
+  pages     = {5301--5310},
+  publisher = {PMLR},
+  year      = {2019}
+}
+
+@inproceedings{sitzmann2020siren,
+  author    = {Sitzmann, Vincent and Martel, Julien N. P. and
+               Bergman, Alexander W. and Lindell, David B. and
+               Wetzstein, Gordon},
+  title     = {Implicit neural representations with periodic activation functions},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {33},
+  pages     = {7462--7473},
+  publisher = {Curran Associates, Inc.},
+  year      = {2020},
+  note      = {{SIREN}}
+}
+
+@article{ji2021stiffpinn,
+  author  = {Ji, Weiqi and Qiu, Weilun and Shi, Zhiyu and Pan, Shaowu and
+             Deng, Sili},
+  title   = {{Stiff-PINN}: {P}hysics-informed neural network for stiff chemical
+             kinetics},
+  journal = {The Journal of Physical Chemistry A},
+  volume  = {125},
+  number  = {36},
+  pages   = {8098--8106},
+  year    = {2021},
+  doi     = {10.1021/acs.jpca.1c05102}
+}
+
+@article{yazdani2020systems,
+  author  = {Yazdani, Alireza and Lu, Lu and Raissi, Maziar and
+             Karniadakis, George Em},
+  title   = {Systems biology informed deep learning for inferring parameters and
+             hidden dynamics},
+  journal = {PLoS Computational Biology},
+  volume  = {16},
+  number  = {11},
+  pages   = {e1007575},
+  year    = {2020},
+  doi     = {10.1371/journal.pcbi.1007575}
+}
+
+@incollection{daneker2023identifiability,
+  author    = {Daneker, Mitchell and Zhang, Zhen and Karniadakis, George Em and
+               Lu, Lu},
+  title     = {Systems biology: {I}dentifiability analysis and parameter
+               identification via systems-biology-informed neural networks},
+  booktitle = {Computational Modeling of Signaling Networks},
+  editor    = {Nguyen, Lan K.},
+  series    = {Methods in Molecular Biology},
+  volume    = {2634},
+  pages     = {87--105},
+  publisher = {Humana},
+  address   = {New York, NY},
+  year      = {2023},
+  doi       = {10.1007/978-1-0716-3008-2_4}
+}
+
+@article{yang2021bpinns,
+  author  = {Yang, Liu and Meng, Xuhui and Karniadakis, George Em},
+  title   = {{B-PINNs}: {B}ayesian physics-informed neural networks for forward
+             and inverse {PDE} problems with noisy data},
+  journal = {Journal of Computational Physics},
+  volume  = {425},
+  pages   = {109913},
+  year    = {2021},
+  doi     = {10.1016/j.jcp.2020.109913}
+}
+
+@incollection{neal2011mcmc,
+  author    = {Neal, Radford M.},
+  title     = {{MCMC} using {H}amiltonian dynamics},
+  booktitle = {Handbook of {M}arkov Chain {M}onte {C}arlo},
+  editor    = {Brooks, Steve and Gelman, Andrew and Jones, Galin L. and
+               Meng, Xiao-Li},
+  chapter   = {5},
+  pages     = {113--162},
+  publisher = {Chapman and Hall/CRC},
+  year      = {2011},
+  doi       = {10.1201/b10905-6}
+}
+
+@article{hoffman2014nuts,
+  author  = {Hoffman, Matthew D. and Gelman, Andrew},
+  title   = {The No-{U}-Turn Sampler: {A}daptively setting path lengths in
+             {H}amiltonian {M}onte {C}arlo},
+  journal = {Journal of Machine Learning Research},
+  volume  = {15},
+  number  = {47},
+  pages   = {1593--1623},
+  year    = {2014}
+}
+
+@inproceedings{kingma2015adam,
+  author        = {Kingma, Diederik P. and Ba, Jimmy},
+  title         = {{A}dam: {A} method for stochastic optimization},
+  booktitle     = {3rd International Conference on Learning Representations
+                   ({ICLR})},
+  address       = {San Diego, CA, USA},
+  year          = {2015},
+  eprint        = {1412.6980},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG}
+}
+
+@article{liu1989lbfgs,
+  author  = {Liu, Dong C. and Nocedal, Jorge},
+  title   = {On the limited memory {BFGS} method for large scale optimization},
+  journal = {Mathematical Programming},
+  volume  = {45},
+  number  = {1--3},
+  pages   = {503--528},
+  year    = {1989},
+  doi     = {10.1007/BF01589116}
+}
+
+@article{maddu2022dirichlet,
+  author  = {Maddu, Suryanarayana and Sturm, Dominik and M{\"u}ller, Christian L.
+             and Sbalzarini, Ivo F.},
+  title   = {Inverse {D}irichlet weighting enables reliable training of physics
+             informed neural networks},
+  journal = {Machine Learning: Science and Technology},
+  volume  = {3},
+  number  = {1},
+  pages   = {015026},
+  year    = {2022},
+  doi     = {10.1088/2632-2153/ac3712}
+}
+
+@inproceedings{paszke2019pytorch,
+  author        = {Paszke, Adam and Gross, Sam and Massa, Francisco and
+                   Lerer, Adam and Bradbury, James and Chanan, Gregory and
+                   Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and
+                   Antiga, Luca and Desmaison, Alban and K{\"o}pf, Andreas and
+                   Yang, Edward and DeVito, Zachary and Raison, Martin and
+                   Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit
+                   and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+  title         = {{PyTorch}: An imperative style, high-performance deep learning
+                   library},
+  booktitle     = {Advances in Neural Information Processing Systems},
+  volume        = {32},
+  pages         = {8024--8035},
+  publisher     = {Curran Associates, Inc.},
+  year          = {2019}
+}
+
+@article{virtanen2020scipy,
+  author  = {Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E. and
+             Haberland, Matt and Reddy, Tyler and Cournapeau, David and others},
+  title   = {{SciPy} 1.0: fundamental algorithms for scientific computing in
+             {Python}},
+  journal = {Nature Methods},
+  volume  = {17},
+  number  = {3},
+  pages   = {261--272},
+  year    = {2020},
+  doi     = {10.1038/s41592-019-0686-2}
+}
+
+% ---------------------------------------------------------------------------
+%  SENSITIVITY ANALYSIS / IDENTIFIABILITY
+% ---------------------------------------------------------------------------
+
+@article{morris1991factorial,
+  author  = {Morris, Max D.},
+  title   = {Factorial sampling plans for preliminary computational experiments},
+  journal = {Technometrics},
+  volume  = {33},
+  number  = {2},
+  pages   = {161--174},
+  year    = {1991},
+  doi     = {10.1080/00401706.1991.10484804}
+}
+
+@article{campolongo2007screening,
+  author  = {Campolongo, Francesca and Cariboni, Jessica and Saltelli, Andrea},
+  title   = {An effective screening design for sensitivity analysis of large
+             models},
+  journal = {Environmental Modelling \& Software},
+  volume  = {22},
+  number  = {10},
+  pages   = {1509--1518},
+  year    = {2007},
+  doi     = {10.1016/j.envsoft.2006.10.004}
+}
+
+@article{sobol2001global,
+  author  = {Sobol', I. M.},
+  title   = {Global sensitivity indices for nonlinear mathematical models and
+             their {M}onte {C}arlo estimates},
+  journal = {Mathematics and Computers in Simulation},
+  volume  = {55},
+  number  = {1--3},
+  pages   = {271--280},
+  year    = {2001},
+  doi     = {10.1016/S0378-4754(00)00270-6}
+}
+
+@article{saltelli2010variance,
+  author  = {Saltelli, Andrea and Annoni, Paola and Azzini, Ivano and
+             Campolongo, Francesca and Ratto, Marco and Tarantola, Stefano},
+  title   = {Variance based sensitivity analysis of model output. {D}esign and
+             estimator for the total sensitivity index},
+  journal = {Computer Physics Communications},
+  volume  = {181},
+  number  = {2},
+  pages   = {259--270},
+  year    = {2010},
+  doi     = {10.1016/j.cpc.2009.09.018}
+}
+
+@article{herman2017salib,
+  author  = {Herman, Jon and Usher, Will},
+  title   = {{SALib}: An open-source {P}ython library for sensitivity analysis},
+  journal = {Journal of Open Source Software},
+  volume  = {2},
+  number  = {9},
+  pages   = {97},
+  year    = {2017},
+  doi     = {10.21105/joss.00097}
+}
+
+@article{raue2009identifiability,
+  author  = {Raue, Andreas and Kreutz, Clemens and Maiwald, Thomas and
+             Bachmann, Julie and Schilling, Marcel and Klingm{\"u}ller, Ursula
+             and Timmer, Jens},
+  title   = {Structural and practical identifiability analysis of partially
+             observed dynamical models by exploiting the profile likelihood},
+  journal = {Bioinformatics},
+  volume  = {25},
+  number  = {15},
+  pages   = {1923--1929},
+  year    = {2009},
+  doi     = {10.1093/bioinformatics/btp358}
+}
+
+@article{wieland2021identifiability,
+  author  = {Wieland, Franz-Georg and Hauber, Adrian L. and
+             Rosenblatt, Marcus and T{\"o}nsing, Christian and Timmer, Jens},
+  title   = {On structural and practical identifiability},
+  journal = {Current Opinion in Systems Biology},
+  volume  = {25},
+  pages   = {60--69},
+  year    = {2021},
+  doi     = {10.1016/j.coisb.2021.03.005}
+}
+
+@article{gutenkunst2007sloppy,
+  author  = {Gutenkunst, Ryan N. and Waterfall, Joshua J. and Casey, Fergal P.
+             and Brown, Kevin S. and Myers, Christopher R. and Sethna, James P.},
+  title   = {Universally sloppy parameter sensitivities in systems biology models},
+  journal = {PLoS Computational Biology},
+  volume  = {3},
+  number  = {10},
+  pages   = {e189},
+  year    = {2007},
+  doi     = {10.1371/journal.pcbi.0030189}
+}
+
+@article{transtrum2011geometry,
+  author  = {Transtrum, Mark K. and Machta, Benjamin B. and Sethna, James P.},
+  title   = {Geometry of nonlinear least squares with applications to sloppy
+             models and optimization},
+  journal = {Physical Review E},
+  volume  = {83},
+  number  = {3},
+  pages   = {036701},
+  year    = {2011},
+  doi     = {10.1103/PhysRevE.83.036701}
+}
+
+@article{engl2009inverse,
+  author  = {Engl, Heinz W. and Flamm, Christoph and K{\"u}gler, Philipp and
+             Lu, James and M{\"u}ller, Stefan and Schuster, Peter},
+  title   = {Inverse problems in systems biology},
+  journal = {Inverse Problems},
+  volume  = {25},
+  number  = {12},
+  pages   = {123014},
+  year    = {2009},
+  doi     = {10.1088/0266-5611/25/12/123014}
+}
+
+@article{chis2011structural,
+  author  = {Chis, Oana-Teodora and Banga, Julio R. and Balsa-Canto, Eva},
+  title   = {Structural identifiability of systems biology models: A critical
+             comparison of methods},
+  journal = {PLoS ONE},
+  volume  = {6},
+  number  = {11},
+  pages   = {e27755},
+  year    = {2011},
+  doi     = {10.1371/journal.pone.0027755}
+}
+
+@article{villaverde2016structural,
+  author  = {Villaverde, Alejandro F. and Barreiro, Antonio and
+             Papachristodoulou, Antonis},
+  title   = {Structural identifiability of dynamic systems biology models},
+  journal = {PLoS Computational Biology},
+  volume  = {12},
+  number  = {10},
+  pages   = {e1005153},
+  year    = {2016},
+  doi     = {10.1371/journal.pcbi.1005153}
+}
+
+% ---------------------------------------------------------------------------
+%  BIOLOGY
+% ---------------------------------------------------------------------------
+
+@article{fearon1990genetic,
+  author  = {Fearon, Eric R. and Vogelstein, Bert},
+  title   = {A genetic model for colorectal tumorigenesis},
+  journal = {Cell},
+  volume  = {61},
+  number  = {5},
+  pages   = {759--767},
+  year    = {1990},
+  doi     = {10.1016/0092-8674(90)90186-I}
+}
+
+@article{clevers2012wnt,
+  author  = {Clevers, Hans and Nusse, Roel},
+  title   = {{W}nt/$\beta$-catenin signaling and disease},
+  journal = {Cell},
+  volume  = {149},
+  number  = {6},
+  pages   = {1192--1205},
+  year    = {2012},
+  doi     = {10.1016/j.cell.2012.05.012}
+}
+
+@article{korinek1997tcf,
+  author  = {Korinek, Vladimir and Barker, Nick and Morin, Patrice J. and
+             van Wichen, Danielle and de Weger, Roel and Kinzler, Kenneth W. and
+             Vogelstein, Bert and Clevers, Hans},
+  title   = {Constitutive transcriptional activation by a $\beta$-catenin-{T}cf
+             complex in {APC}$^{-/-}$ colon carcinoma},
+  journal = {Science},
+  volume  = {275},
+  number  = {5307},
+  pages   = {1784--1787},
+  year    = {1997},
+  doi     = {10.1126/science.275.5307.1784}
+}
+
+@article{he1998myc,
+  author  = {He, Tong-Chuan and Sparks, Andrew B. and Rago, Carlo and
+             Hermeking, Heiko and Zawel, Leigh and da Costa, Luis T. and
+             Morin, Patrice J. and Vogelstein, Bert and Kinzler, Kenneth W.},
+  title   = {Identification of c-{MYC} as a target of the {APC} pathway},
+  journal = {Science},
+  volume  = {281},
+  number  = {5382},
+  pages   = {1509--1512},
+  year    = {1998},
+  doi     = {10.1126/science.281.5382.1509}
+}
+
+@article{ordonezmoran2015hoxa5,
+  author  = {Ord{\'o}{\~n}ez-Mor{\'a}n, Paloma and Dafflon, Caroline and
+             Imajo, Masamichi and Nishida, Eisuke and Huelsken, Joerg},
+  title   = {{HOXA5} counteracts stem cell traits by inhibiting {W}nt signaling
+             in colorectal cancer},
+  journal = {Cancer Cell},
+  volume  = {28},
+  number  = {6},
+  pages   = {815--829},
+  year    = {2015},
+  doi     = {10.1016/j.ccell.2015.11.001}
+}
+
+@article{bhatlekar2014hox,
+  author  = {Bhatlekar, Seema and Fields, Jeremy Z. and Boman, Bruce M.},
+  title   = {{HOX} genes and their role in the development of human cancers},
+  journal = {Journal of Molecular Medicine},
+  volume  = {92},
+  number  = {8},
+  pages   = {811--823},
+  year    = {2014},
+  doi     = {10.1007/s00109-014-1181-y}
+}
+
+@article{rhinn2012retinoic,
+  author  = {Rhinn, Muriel and Doll{\'e}, Pascal},
+  title   = {Retinoic acid signalling during development},
+  journal = {Development},
+  volume  = {139},
+  number  = {5},
+  pages   = {843--858},
+  year    = {2012},
+  doi     = {10.1242/dev.065938}
+}
+
+@article{white1996cyp26a1,
+  author  = {White, Jay A. and Guo, Yu-Dong and Baetz, Kristin and
+             Beckett-Jones, Bev and Bonasoro, Jill and Hsu, Kevin E. and
+             Dilworth, F. Jeffrey and Jones, Glenville and Petkovich, Martin},
+  title   = {Identification of the retinoic acid-inducible
+             all-trans-retinoic acid 4-hydroxylase},
+  journal = {Journal of Biological Chemistry},
+  volume  = {271},
+  number  = {47},
+  pages   = {29922--29927},
+  year    = {1996},
+  doi     = {10.1074/jbc.271.47.29922}
+}
+
+@article{lee2003wnt,
+  author  = {Lee, Ethan and Salic, Adrian and Kr{\"u}ger, Roland and
+             Heinrich, Reinhart and Kirschner, Marc W.},
+  title   = {The roles of {APC} and {A}xin derived from experimental and
+             theoretical analysis of the {W}nt pathway},
+  journal = {PLoS Biology},
+  volume  = {1},
+  number  = {1},
+  pages   = {e10},
+  year    = {2003},
+  doi     = {10.1371/journal.pbio.0000010}
+}
+
+@article{degos2001atra,
+  author  = {Degos, Laurent and Wang, Zhen Yi},
+  title   = {All trans retinoic acid in acute promyelocytic leukemia},
+  journal = {Oncogene},
+  volume  = {20},
+  number  = {49},
+  pages   = {7140--7145},
+  year    = {2001},
+  doi     = {10.1038/sj.onc.1204763}
+}
+
+@article{nusse2017wnt,
+  author  = {Nusse, Roel and Clevers, Hans},
+  title   = {{W}nt/$\beta$-catenin signaling, disease, and emerging therapeutic
+             modalities},
+  journal = {Cell},
+  volume  = {169},
+  number  = {6},
+  pages   = {985--999},
+  year    = {2017},
+  doi     = {10.1016/j.cell.2017.05.016}
+}
+
+@article{kinzler1996hereditary,
+  author  = {Kinzler, Kenneth W. and Vogelstein, Bert},
+  title   = {Lessons from hereditary colorectal cancer},
+  journal = {Cell},
+  volume  = {87},
+  number  = {2},
+  pages   = {159--170},
+  year    = {1996},
+  doi     = {10.1016/S0092-8674(00)81333-1}
+}
+
+% ---------------------------------------------------------------------------
+%  NEURAL-MECHANISTIC HYBRIDS / UDEs (future work)
+% ---------------------------------------------------------------------------
+
+@article{velioglu2025pinn,
+  author  = {Velioglu, Mehmet and Zhai, Song and Rupprecht, Sophia and
+             Mitsos, Alexander and Jupke, Andreas and Dahmen, Manuel},
+  title   = {Physics-informed neural networks for dynamic process operations
+             with limited physical knowledge and data},
+  journal = {Computers \& Chemical Engineering},
+  volume  = {192},
+  pages   = {108899},
+  year    = {2025},
+  doi     = {10.1016/j.compchemeng.2024.108899}
+}
+
+@article{faure2023hybrid,
+  author  = {Faure, L{\'e}on and Mollet, Bastien and Liebermeister, Wolfram and
+             Faulon, Jean-Loup},
+  title   = {A neural-mechanistic hybrid approach improving the predictive power
+             of genome-scale metabolic models},
+  journal = {Nature Communications},
+  volume  = {14},
+  pages   = {4669},
+  year    = {2023},
+  doi     = {10.1038/s41467-023-40380-0}
+}
+
+@article{liu2022hybrid,
+  author  = {Liu, Fei and Heiner, Monika and Gilbert, David},
+  title   = {Hybrid modelling of biological systems: current progress and future
+             prospects},
+  journal = {Briefings in Bioinformatics},
+  volume  = {23},
+  number  = {3},
+  pages   = {bbac081},
+  year    = {2022},
+  doi     = {10.1093/bib/bbac081}
+}
+
+@incollection{facey2020retinoids,
+  author    = {Facey, Caroline O. B. and Boman, Bruce M.},
+  title     = {Retinoids in treatment of colorectal cancer},
+  booktitle = {Colorectal Cancer},
+  editor    = {Vannelli, Alberto},
+  publisher = {IntechOpen},
+  address   = {London},
+  year      = {2020},
+  doi       = {10.5772/intechopen.93699}
+}
+
+@article{xu2022atra,
+  author  = {Xu, Yu and Sun, Hongzhi},
+  title   = {Involvement of hedgehog signaling in all-trans retinoic
+             acid-mediated suppression of colon cancer},
+  journal = {American Journal of Translational Research},
+  volume  = {14},
+  number  = {9},
+  pages   = {6536--6549},
+  year    = {2022}
+}
+
+% ---------------------------------------------------------------------------
+%  ADDED FOR THE arXiv PAPER (2026-09-21): UDEs / hybrid identifiability /
+%  experimental design / persistence of excitation.
+%  Every entry below was checked against its primary record; see
+%  BIB_VERIFICATION.md in this directory for the URL used for each.
+% ---------------------------------------------------------------------------
+
+@article{rackauckas2020ude,
+  author        = {Rackauckas, Christopher and Ma, Yingbo and Martensen, Julius and
+                   Warner, Collin and Zubov, Kirill and Supekar, Rohit and
+                   Skinner, Dominic and Ramadhan, Ali and Edelman, Alan},
+  title         = {Universal differential equations for scientific machine learning},
+  journal       = {arXiv preprint},
+  year          = {2020},
+  eprint        = {2001.04385},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2001.04385},
+  note          = {arXiv:2001.04385}
+}
+
+@article{loman2025identifiability,
+  author        = {Loman, Torkel E. and Baker, Ruth E.},
+  title         = {Functional and parametric identifiability for universal
+                   differential equations applied to chemical reaction networks},
+  journal       = {arXiv preprint},
+  year          = {2025},
+  eprint        = {2510.14140},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2510.14140},
+  note          = {arXiv:2510.14140}
+}
+
+@article{loman2026structural,
+  author        = {Loman, Torkel E. and Browning, Alexander P. and Baker, Ruth E.},
+  title         = {Structural functional identifiability and model discovery in
+                   differential equation models},
+  journal       = {arXiv preprint},
+  year          = {2026},
+  eprint        = {2606.30289},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2606.30289},
+  note          = {arXiv:2606.30289}
+}
+
+@article{philipps2025ude,
+  author  = {Philipps, Maren and Schmid, Nina and Hasenauer, Jan},
+  title   = {Current state and open problems in universal differential equations
+             for systems biology},
+  journal = {npj Systems Biology and Applications},
+  volume  = {11},
+  number  = {1},
+  pages   = {101},
+  year    = {2025},
+  doi     = {10.1038/s41540-025-00550-w}
+}
+
+@article{giampiccolo2024hnode,
+  author  = {Giampiccolo, Stefano and Reali, Federico and Fochesato, Anna and
+             Iacca, Giovanni and Marchetti, Luca},
+  title   = {Robust parameter estimation and identifiability analysis with hybrid
+             neural ordinary differential equations in computational biology},
+  journal = {npj Systems Biology and Applications},
+  volume  = {10},
+  number  = {1},
+  pages   = {139},
+  year    = {2024},
+  doi     = {10.1038/s41540-024-00460-3}
+}
+
+@article{plate2024oed,
+  author        = {Plate, Christoph and Martensen, Carl Julius and Sager, Sebastian},
+  title         = {Optimal experimental design for universal differential equations},
+  journal       = {arXiv preprint},
+  year          = {2024},
+  eprint        = {2408.07143},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2408.07143},
+  note          = {arXiv:2408.07143}
+}
+
+@article{wang2006learning,
+  author  = {Wang, Cong and Hill, David J.},
+  title   = {Learning from neural control},
+  journal = {IEEE Transactions on Neural Networks},
+  volume  = {17},
+  number  = {1},
+  pages   = {130--146},
+  year    = {2006},
+  doi     = {10.1109/TNN.2005.860843}
+}
+
+@inproceedings{chen2018neuralode,
+  author    = {Chen, Ricky T. Q. and Rubanova, Yulia and Bettencourt, Jesse and
+               Duvenaud, David K.},
+  title     = {Neural ordinary differential equations},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {31},
+  editor    = {Bengio, S. and Wallach, H. and Larochelle, H. and Grauman, K. and
+               Cesa-Bianchi, N. and Garnett, R.},
+  publisher = {Curran Associates, Inc.},
+  year      = {2018},
+  note      = {arXiv:1806.07366}
+}
+
+@article{kreutz2009design,
+  author  = {Kreutz, Clemens and Timmer, Jens},
+  title   = {Systems biology: experimental design},
+  journal = {FEBS Journal},
+  volume  = {276},
+  number  = {4},
+  pages   = {923--942},
+  year    = {2009},
+  doi     = {10.1111/j.1742-4658.2008.06843.x}
+}
+
+@article{raue2013lessons,
+  author  = {Raue, Andreas and Schilling, Marcel and Bachmann, Julie and
+             Matteson, Andrew and Schelke, Max and Kaschek, Daniel and Hug, Sabine
+             and Kreutz, Clemens and Harms, Brian D. and Theis, Fabian J. and
+             Klingm{\"u}ller, Ursula and Timmer, Jens},
+  title   = {Lessons learned from quantitative dynamical modeling in systems biology},
+  journal = {PLoS ONE},
+  volume  = {8},
+  number  = {9},
+  pages   = {e74335},
+  year    = {2013},
+  doi     = {10.1371/journal.pone.0074335}
+}
+
+@article{kreutz2013profile,
+  author  = {Kreutz, Clemens and Raue, Andreas and Kaschek, Daniel and Timmer, Jens},
+  title   = {Profile likelihood in systems biology},
+  journal = {FEBS Journal},
+  volume  = {280},
+  number  = {11},
+  pages   = {2564--2571},
+  year    = {2013},
+  doi     = {10.1111/febs.12276}
+}
+
+@book{atkinson2007optimum,
+  author    = {Atkinson, Anthony C. and Donev, Alexander N. and Tobias, Randall D.},
+  title     = {Optimum Experimental Designs, with {SAS}},
+  series    = {Oxford Statistical Science Series},
+  volume    = {34},
+  publisher = {Oxford University Press},
+  address   = {Oxford},
+  year      = {2007},
+  doi       = {10.1093/oso/9780199296590.001.0001},
+  isbn      = {978-0-19-929659-0}
+}
+
+@book{walter1997identification,
+  author    = {Walter, {\'E}ric and Pronzato, Luc},
+  title     = {Identification of Parametric Models from Experimental Data},
+  series    = {Communications and Control Engineering},
+  publisher = {Springer},
+  address   = {London},
+  year      = {1997},
+  isbn      = {3-540-76119-5}
+}
+
+@article{lin2025perturbode,
+  author        = {Lin, Zaikang and Chang, Sei and Zweig, Aaron and Kang, Minseo and
+                   Theis, Fabian J. and Azizi, Elham and Knowles, David A.},
+  title         = {Interpretable neural {ODEs} for gene regulatory network discovery
+                   under perturbations},
+  journal       = {arXiv preprint},
+  year          = {2025},
+  eprint        = {2501.02409},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2501.02409},
+  note          = {arXiv:2501.02409 ({PerturbODE})}
+}
+
+@article{yang2026mpineuralode,
+  author        = {Yang, Lake and Malpica-Morales, Antonio and
+                   Papadakis Wood, Frank Ioannis and Kalliadasis, Serafim},
+  title         = {{MPINeuralODE}: Multiple-initial-condition physics-informed neural
+                   {ODEs} for globally consistent dynamical system learning},
+  journal       = {arXiv preprint},
+  year          = {2026},
+  eprint        = {2605.13305},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2605.13305},
+  note          = {arXiv:2605.13305}
+}
+
+@article{villaverde2019observability,
+  author  = {Villaverde, Alejandro F. and Tsiantis, Nikolaos and Banga, Julio R.},
+  title   = {Full observability and estimation of unknown inputs, states and
+             parameters of nonlinear biological models},
+  journal = {Journal of The Royal Society Interface},
+  volume  = {16},
+  number  = {156},
+  pages   = {20190043},
+  year    = {2019},
+  doi     = {10.1098/rsif.2019.0043}
+}
+
+@book{sastry1989adaptive,
+  author    = {Sastry, Shankar and Bodson, Marc},
+  title     = {Adaptive Control: Stability, Convergence, and Robustness},
+  series    = {Prentice-Hall Advanced Reference Series},
+  publisher = {Prentice-Hall},
+  address   = {Englewood Cliffs, NJ},
+  year      = {1989},
+  isbn      = {0-13-004326-5}
+}
+
+% ---- companion manuscript (added 2026-09-21) ----
+@unpublished{aidarkhan2026pinn,
+  author = {Aidarkhan, Amirkhan and Kim, Nathaniel and Kataboh, Pascal K.},
+  title  = {A reduced {WNT}--{HOX}--retinoic acid model of colorectal cancer stemness and its approximation by physics-informed neural networks},
+  note   = {Manuscript in preparation},
+  year   = {2026}
+}
+
+
+% ---- added 2026-10-17 (DOIs fetched from doi.org) ----
+@article{lagergren2020binns, title={Biologically-informed neural networks guide mechanistic modeling from sparse experimental data}, volume={16}, DOI={10.1371/journal.pcbi.1008462}, number={12}, journal={PLOS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={Lagergren, John H. and Nardini, John T. and Baker, Ruth E. and Simpson, Matthew J. and Flores, Kevin B.}, editor={Lavrik, Inna}, year={2020}, month=Dec, pages={e1008462} }
+
+@article{ahmadi2024aiaristotle, title={AI-Aristotle: A physics-informed framework for systems biology gray-box identification}, volume={20}, DOI={10.1371/journal.pcbi.1011916}, number={3}, journal={PLOS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={Ahmadi Daryakenari, Nazanin and De Florio, Mario and Shukla, Khemraj and Karniadakis, George Em}, editor={Fariselli, Piero}, year={2024}, month=Mar, pages={e1011916} }
+
+@article{derooij2025ude, title={Physiology-informed regularisation enables training of universal differential equation systems for biological applications}, volume={21}, DOI={10.1371/journal.pcbi.1012198}, number={1}, journal={PLOS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={de Rooij, Max and Erdős, Balázs and van Riel, Natal A. W. and O’Donovan, Shauna D.}, editor={Dutt, Varun}, year={2025}, month=Jan, pages={e1012198} }
+
+@article{simpson2023pwa, title={Profile-Wise Analysis: A profile likelihood-based workflow for identifiability analysis, estimation, and prediction with mechanistic mathematical models}, volume={19}, DOI={10.1371/journal.pcbi.1011515}, number={9}, journal={PLOS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={Simpson, Matthew J. and Maclaren, Oliver J.}, editor={Maini, Philip K}, year={2023}, month=Sept, pages={e1011515} }
+
+@article{schmid2025ude, title={Assessment of uncertainty quantification in universal differential equations}, volume={383}, DOI={10.1098/rsta.2024.0444}, number={2293}, journal={Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences}, publisher={The Royal Society}, author={Schmid, Nina and Fernandes del Pozo, David and Waegeman, Willem and Hasenauer, Jan}, year={2025}, month=Apr }
+
+@article{levenberg1944method, title={A method for the solution of certain non-linear problems in least squares}, volume={2}, DOI={10.1090/qam/10666}, number={2}, journal={Quarterly of Applied Mathematics}, publisher={American Mathematical Society (AMS)}, author={Levenberg, Kenneth}, year={1944}, month=July, pages={164–168} }
+
+@article{marquardt1963algorithm, title={An Algorithm for Least-Squares Estimation of Nonlinear Parameters}, volume={11}, DOI={10.1137/0111030}, number={2}, journal={Journal of the Society for Industrial and Applied Mathematics}, publisher={Society for Industrial & Applied Mathematics (SIAM)}, author={Marquardt, Donald W.}, year={1963}, month=June, pages={431–441} }
+
+@article{golub1973differentiation, title={The Differentiation of Pseudo-Inverses and Nonlinear Least Squares Problems Whose Variables Separate}, volume={10}, DOI={10.1137/0710036}, number={2}, journal={SIAM Journal on Numerical Analysis}, publisher={Society for Industrial & Applied Mathematics (SIAM)}, author={Golub, G. H. and Pereyra, V.}, year={1973}, month=Apr, pages={413–432} }
+
+@article{golub2003separable, title={Separable nonlinear least squares: the variable projection method and its applications}, volume={19}, DOI={10.1088/0266-5611/19/2/201}, number={2}, journal={Inverse Problems}, publisher={IOP Publishing}, author={Golub, Gene and Pereyra, Victor}, year={2003}, month=Feb, pages={R1–R26} }
+
+@article{kaufman1975varpro, title={A variable projection method for solving separable nonlinear least squares problems}, volume={15}, DOI={10.1007/bf01932995}, number={1}, journal={BIT}, publisher={Springer Science and Business Media LLC}, author={Kaufman, Linda}, year={1975}, month=Mar, pages={49–57} }
+
+@article{oleary2013varpro, title={Variable projection for nonlinear least squares problems}, volume={54}, DOI={10.1007/s10589-012-9492-9}, number={3}, journal={Computational Optimization and Applications}, publisher={Springer Science and Business Media LLC}, author={O’Leary, Dianne P. and Rust, Bert W.}, year={2012}, month=Aug, pages={579–593} }
+
+@article{newman2021varpro, title={Train Like a (Var)Pro: Efficient Training of Neural Networks with Variable Projection}, volume={3}, DOI={10.1137/20m1359511}, number={4}, journal={SIAM Journal on Mathematics of Data Science}, publisher={Society for Industrial & Applied Mathematics (SIAM)}, author={Newman, Elizabeth and Ruthotto, Lars and Hart, Joseph and van Bloemen Waanders, Bart}, year={2021}, month=Jan, pages={1041–1066} }
+
+@article{hagan1994lm, title={Training feedforward networks with the Marquardt algorithm}, volume={5}, DOI={10.1109/72.329697}, number={6}, journal={IEEE Transactions on Neural Networks}, publisher={Institute of Electrical and Electronics Engineers (IEEE)}, author={Hagan, M.T. and Menhaj, M.B.}, year={1994}, pages={989–993} }
+
+@article{schraudolph2002curvature, title={Fast Curvature Matrix-Vector Products for Second-Order Gradient Descent}, volume={14}, DOI={10.1162/08997660260028683}, number={7}, journal={Neural Computation}, publisher={MIT Press}, author={Schraudolph, Nicol N.}, year={2002}, month=July, pages={1723–1738} }
+
+@misc{muller2023ngd,
+  doi = {10.48550/ARXIV.2302.13163},
+  url = {https://arxiv.org/abs/2302.13163},
+  author = {Müller, Johannes and Zeinhofer, Marius},
+  keywords = {Machine Learning (cs.LG), Numerical Analysis (math.NA), FOS: Computer and information sciences, FOS: Computer and information sciences, FOS: Mathematics, FOS: Mathematics},
+  title = {Achieving High Accuracy with PINNs via Energy Natural Gradients},
+  publisher = {arXiv},
+  year = {2023},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@misc{jnini2024gauss,
+  doi = {10.48550/ARXIV.2402.10680},
+  url = {https://arxiv.org/abs/2402.10680},
+  author = {Jnini, Anas and Vella, Flavio and Zeinhofer, Marius},
+  keywords = {Optimization and Control (math.OC), Computational Physics (physics.comp-ph), FOS: Mathematics, FOS: Mathematics, FOS: Physical sciences, FOS: Physical sciences},
+  title = {Gauss-Newton Natural Gradient Descent for Physics-Informed Computational Fluid Dynamics},
+  publisher = {arXiv},
+  year = {2024},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@article{wang2021eigenvector, title={On the eigenvector bias of Fourier feature networks: From regression to solving multi-scale PDEs with physics-informed neural networks}, volume={384}, DOI={10.1016/j.cma.2021.113938}, journal={Computer Methods in Applied Mechanics and Engineering}, publisher={Elsevier BV}, author={Wang, Sifan and Wang, Hanwen and Perdikaris, Paris}, year={2021}, month=Oct, pages={113938} }
+
+@article{huang2006elm, title={Extreme learning machine: Theory and applications}, volume={70}, DOI={10.1016/j.neucom.2005.12.126}, number={1-3}, journal={Neurocomputing}, publisher={Elsevier BV}, author={Huang, Guang-Bin and Zhu, Qin-Yu and Siew, Chee-Kheong}, year={2006}, month=Dec, pages={489–501} }
+
+@article{dong2021local, title={Local extreme learning machines and domain decomposition for solving linear and nonlinear partial differential equations}, volume={387}, DOI={10.1016/j.cma.2021.114129}, journal={Computer Methods in Applied Mechanics and Engineering}, publisher={Elsevier BV}, author={Dong, Suchuan and Li, Zongwei}, year={2021}, month=Dec, pages={114129} }
+
+@article{dong2023inverse, title={A method for computing inverse parametric PDE problems with random-weight neural networks}, volume={489}, DOI={10.1016/j.jcp.2023.112263}, journal={Journal of Computational Physics}, publisher={Elsevier BV}, author={Dong, Suchuan and Wang, Yiran}, year={2023}, month=Sept, pages={112263} }
+
+@article{bandara2009oed, title={Optimal Experimental Design for Parameter Estimation of a Cell Signaling Model}, volume={5}, DOI={10.1371/journal.pcbi.1000558}, number={11}, journal={PLoS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={Bandara, Samuel and Schlöder, Johannes P. and Eils, Roland and Bock, Hans Georg and Meyer, Tobias}, editor={Stelling, Jorg}, year={2009}, month=Nov, pages={e1000558} }
+
+@article{apgar2010sloppy, title={Sloppy models, parameter uncertainty, and the role of experimental design}, volume={6}, DOI={10.1039/b918098b}, number={10}, journal={Molecular BioSystems}, publisher={Oxford University Press (OUP)}, author={Apgar, Joshua F and Witmer, David K and White, Forest M and Tidor, Bruce}, year={2010}, month=June, pages={1890–1900} }
+
+@article{transtrum2012oed, title={Optimal experiment selection for parameter estimation in biological differential equation models}, volume={13}, DOI={10.1186/1471-2105-13-181}, number={1}, journal={BMC Bioinformatics}, publisher={Springer Science and Business Media LLC}, author={Transtrum, Mark K and Qiu, Peng}, year={2012}, month=July }
+
+@article{liepe2013maximizing, title={Maximizing the Information Content of Experiments in Systems Biology}, volume={9}, DOI={10.1371/journal.pcbi.1002888}, number={1}, journal={PLoS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={Liepe, Juliane and Filippi, Sarah and Komorowski, Michał and Stumpf, Michael P. H.}, editor={Rzhetsky, Andrey}, year={2013}, month=Jan, pages={e1002888} }
+
+@article{steiert2012oed, title={Experimental Design for Parameter Estimation of Gene Regulatory Networks}, volume={7}, DOI={10.1371/journal.pone.0040052}, number={7}, journal={PLoS ONE}, publisher={Public Library of Science (PLoS)}, author={Steiert, Bernhard and Raue, Andreas and Timmer, Jens and Kreutz, Clemens}, editor={Ma’ayan, Avi}, year={2012}, month=July, pages={e40052} }
+
+@article{hass2019benchmark, title={Benchmark problems for dynamic modeling of intracellular processes}, volume={35}, DOI={10.1093/bioinformatics/btz020}, number={17}, journal={Bioinformatics}, publisher={Oxford University Press (OUP)}, author={Hass, Helge and Loos, Carolin and Raimúndez-Álvarez, Elba and Timmer, Jens and Hasenauer, Jan and Kreutz, Clemens}, editor={Stegle, Oliver}, year={2019}, month=Jan, pages={3073–3082} }
+
+@article{frohlich2017scalable, title={Scalable Parameter Estimation for Genome-Scale Biochemical Reaction Networks}, volume={13}, DOI={10.1371/journal.pcbi.1005331}, number={1}, journal={PLOS Computational Biology}, publisher={Public Library of Science (PLoS)}, author={Fröhlich, Fabian and Kaltenbacher, Barbara and Theis, Fabian J. and Hasenauer, Jan}, editor={Stelling, Jorg}, year={2017}, month=Jan, pages={e1005331} }
+
+@article{villaverde2019benchmark, title={Observability and Structural Identifiability of Nonlinear Biological Systems}, volume={2019}, DOI={10.1155/2019/8497093}, number={1}, journal={Complexity}, publisher={Wiley}, author={Villaverde, Alejandro F.}, editor={Scarpiniti, Michele}, year={2019}, month=Jan }
+
+@article{ashyraliyev2009parameter, title={Systems biology: parameter estimation for biochemical models}, volume={276}, DOI={10.1111/j.1742-4658.2008.06844.x}, number={4}, journal={The FEBS Journal}, publisher={Wiley}, author={Ashyraliyev, Maksat and Fomekong‐Nanfack, Yves and Kaandorp, Jaap A. and Blom, Joke G.}, year={2009}, month=Jan, pages={886–902} }
+
+@article{raue2010identifiability, title={Identifiability and observability analysis for experimental design in nonlinear dynamical models}, volume={20}, DOI={10.1063/1.3528102}, number={4}, journal={Chaos: An Interdisciplinary Journal of Nonlinear Science}, publisher={AIP Publishing}, author={Raue, A. and Becker, V. and Klingmüller, U. and Timmer, J.}, year={2010}, month=Dec }
+
+@article{simpson2020practical, title={Practical parameter identifiability for spatio-temporal models of cell invasion}, volume={17}, DOI={10.1098/rsif.2020.0055}, number={164}, journal={Journal of The Royal Society Interface}, publisher={The Royal Society}, author={Simpson, Matthew J. and Baker, Ruth E. and Vittadello, Sean T. and Maclaren, Oliver J.}, year={2020}, month=Mar, pages={20200055} }
+
+@article{transtrum2015perspective, title={Perspective: Sloppiness and emergent theories in physics, biology, and beyond}, volume={143}, DOI={10.1063/1.4923066}, number={1}, journal={The Journal of Chemical Physics}, publisher={AIP Publishing}, author={Transtrum, Mark K. and Machta, Benjamin B. and Brown, Kevin S. and Daniels, Bryan C. and Myers, Christopher R. and Sethna, James P.}, year={2015}, month=July }
+
+@article{cuomo2022scientific, title={Scientific Machine Learning Through Physics–Informed Neural Networks: Where we are and What’s Next}, volume={92}, DOI={10.1007/s10915-022-01939-z}, number={3}, journal={Journal of Scientific Computing}, publisher={Springer Science and Business Media LLC}, author={Cuomo, Salvatore and Di Cola, Vincenzo Schiano and Giampaolo, Fabio and Rozza, Gianluigi and Raissi, Maziar and Piccialli, Francesco}, year={2022}, month=July }
+
+@article{rao1945information,
+  author={Rao, C. Radhakrishna},
+  title={Information and the accuracy attainable in the estimation of statistical parameters},
+  journal={Bulletin of the Calcutta Mathematical Society},
+  volume={37}, pages={81--91}, year={1945}}
+
+@book{cramer1946mathematical,
+  author={Cram{\'e}r, Harald},
+  title={Mathematical Methods of Statistics},
+  publisher={Princeton University Press}, address={Princeton, NJ}, year={1946}}
+
+@inproceedings{rahimi2007random,
+  author={Rahimi, Ali and Recht, Benjamin},
+  title={Random features for large-scale kernel machines},
+  booktitle={Advances in Neural Information Processing Systems 20},
+  pages={1177--1184}, year={2007}}

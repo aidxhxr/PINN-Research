@@ -1,0 +1,44 @@
+\begin{abstract}
+\noindent
+Physics-informed neural networks (PINNs) and neural--mechanistic hybrid models
+estimate the parameters of signalling models, and their failures are
+attributed either to the estimator or to non-identifiability.
+They call for opposite remedies and are rarely told apart. The Cram\'er--Rao bound of the experiment performed separates
+them. We carry this accounting through a
+seven-state model of WNT, retinoic acid and HOX signalling in colorectal cancer,
+from healthy crypt to severe APC loss. Three inverse PINN formulations recover 2--21 of 34
+parameters per regime, but the bound says an efficient estimator would recover
+132.5 of 136 regime--parameter pairs, a converged maximum-likelihood fit
+attains it on independent datasets where the data are informative, and the PINNs' errors are 10--92
+times the bound at the median: an estimator gap. A Schur-complement
+Gauss--Newton PINN, which freezes the network's features so that the problem
+becomes separable with a block-arrowhead structure, closes the gap wherever its
+continuation converges (both low-WNT regimes on two datasets), there matching
+the classical estimator and reporting its own precision. Where the bound itself
+is wide no estimator helps: APC functionality, the parameter that defines the
+disease stage, loses three orders of magnitude of precision (the identifiable
+product it enters, thirty-fold) as \bcat{} saturates, and one WNT knockdown restores it while information-matched
+conditions do not. A learned regulatory term opens an analogous gap: its
+constraint $f(0)=0$ is informative only if a condition drives the regulator to
+zero, so the host equation's basal rate is lost under every network
+parameterisation tried. A Fisher analysis of the hybrid equation, a
+fixed-effort dose-response and a prospective test of a training-free design
+table show that a knockdown visiting the anchor, in a condition that still
+contains the basal term, removes most of the loss. The first diagnostic should be the design's information budget.
+\end{abstract}
+
+\section*{Author summary}
+Mathematical models of cell signalling are only as useful as the numbers that go
+into them, and those numbers, rates of production and degradation, are usually
+estimated from experiments. Machine-learning methods that combine neural
+networks with the model's equations promise to do this from sparse data, but
+when an estimate comes out wrong it is hard to know why: was the method too
+weak, or did the experiment simply not contain the information? We show that a
+classical quantity from statistics, the Cram\'er--Rao bound, answers this
+question before any network is trained, and we use it to work through a model of
+the signalling network that goes awry in colorectal cancer. For most parameters
+the information was there and a better solver, which we develop, recovers them.
+For the parameter that marks the stage of the disease, and for parameters that
+sit next to a term learned by a network, the information was missing, and only a
+different experiment, a targeted knockdown, brought it back. The bound tells an
+experimentalist which of the two to change.

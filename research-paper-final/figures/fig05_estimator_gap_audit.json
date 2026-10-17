@@ -1,0 +1,100 @@
+{
+ "estimators": [
+  "PINN (autodiff)",
+  "PINN (weighted)",
+  "PINN (integral)",
+  "SGN-PINN",
+  "MLE",
+  "MLE (4 starts)"
+ ],
+ "A": {
+  "Normal/PINN (autodiff)/seed42": 14,
+  "Normal/PINN (weighted)/seed42": 21,
+  "Normal/PINN (integral)/seed42": 17,
+  "Normal/PINN (integral)/seed7": 18,
+  "Normal/SGN-PINN/seed42": 34,
+  "Normal/SGN-PINN/seed7": 34,
+  "Normal/MLE/seed42": 34,
+  "Normal/MLE/seed7": 34,
+  "Normal/MLE (4 starts)/seed42": 34,
+  "Normal/MLE (4 starts)/seed7": 34,
+  "Normal/CRLB": 34.0,
+  "Early Adenoma/PINN (autodiff)/seed42": 10,
+  "Early Adenoma/PINN (weighted)/seed42": 19,
+  "Early Adenoma/PINN (integral)/seed42": 15,
+  "Early Adenoma/PINN (integral)/seed7": 16,
+  "Early Adenoma/SGN-PINN/seed42": 34,
+  "Early Adenoma/SGN-PINN/seed7": 34,
+  "Early Adenoma/MLE/seed42": 34,
+  "Early Adenoma/MLE/seed7": 34,
+  "Early Adenoma/MLE (4 starts)/seed42": 34,
+  "Early Adenoma/MLE (4 starts)/seed7": 34,
+  "Early Adenoma/CRLB": 33.99999999999997,
+  "Advanced Adenoma/PINN (autodiff)/seed42": 7,
+  "Advanced Adenoma/PINN (weighted)/seed42": 10,
+  "Advanced Adenoma/PINN (integral)/seed42": 10,
+  "Advanced Adenoma/PINN (integral)/seed7": 13,
+  "Advanced Adenoma/SGN-PINN/seed42": 28,
+  "Advanced Adenoma/SGN-PINN/seed7": 33,
+  "Advanced Adenoma/MLE/seed42": 34,
+  "Advanced Adenoma/MLE/seed7": 33,
+  "Advanced Adenoma/MLE (4 starts)/seed42": 34,
+  "Advanced Adenoma/MLE (4 starts)/seed7": 33,
+  "Advanced Adenoma/CRLB": 33.43974429737217,
+  "Severe APC Loss/PINN (autodiff)/seed42": 2,
+  "Severe APC Loss/PINN (weighted)/seed42": 10,
+  "Severe APC Loss/PINN (integral)/seed42": 7,
+  "Severe APC Loss/PINN (integral)/seed7": 9,
+  "Severe APC Loss/SGN-PINN/seed42": 24,
+  "Severe APC Loss/SGN-PINN/seed7": 30,
+  "Severe APC Loss/MLE/seed42": 34,
+  "Severe APC Loss/MLE/seed7": 31,
+  "Severe APC Loss/MLE (4 starts)/seed42": 34,
+  "Severe APC Loss/MLE (4 starts)/seed7": 31,
+  "Severe APC Loss/CRLB": 31.063046626464626
+ },
+ "B": {
+  "PINN (integral)": {
+   "n": 272,
+   "median_ratio": 23.93167814180929
+  },
+  "MLE": {
+   "n": 272,
+   "median_ratio": 0.5447698794400062
+  }
+ },
+ "C": {
+  "Normal": {
+   "PINN (autodiff)": 43.84338265952531,
+   "PINN (weighted)": 16.59123938242457,
+   "PINN (integral)": 35.08007101193638,
+   "SGN-PINN": 0.6150859543170601,
+   "MLE": 0.6235825168211054,
+   "MLE (4 starts)": 0.6236725356770847
+  },
+  "Early Adenoma": {
+   "PINN (autodiff)": 91.52307371311878,
+   "PINN (weighted)": 22.029934738300092,
+   "PINN (integral)": 27.09746053114918,
+   "SGN-PINN": 0.6064493861038049,
+   "MLE": 0.6024502575546443,
+   "MLE (4 starts)": 0.6024502575546443
+  },
+  "Advanced Adenoma": {
+   "PINN (autodiff)": 62.51447883354019,
+   "PINN (weighted)": 21.132094536234973,
+   "PINN (integral)": 19.268616849542237,
+   "SGN-PINN": 1.2661391699100746,
+   "MLE": 0.4809376352348576,
+   "MLE (4 starts)": 0.4806115162854617
+  },
+  "Severe APC Loss": {
+   "PINN (autodiff)": 42.9865886176047,
+   "PINN (weighted)": 10.38411562832353,
+   "PINN (integral)": 13.069497775125253,
+   "SGN-PINN": 1.5747080353295233,
+   "MLE": 0.4914536800292767,
+   "MLE (4 starts)": 0.4947440121914046
+  }
+ }
+}

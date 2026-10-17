@@ -1,0 +1,106 @@
+\section{Introduction}
+\label{sec:intro}
+
+Mechanistic differential-equation models of signalling are useful in proportion
+to what their parameters mean. In a model of the colonic crypt, a rate constant
+for APC-dependent degradation of \bcat{} is not a fitting coefficient: it is the
+quantity that separates a healthy crypt from an adenoma, and estimating it from
+data is the point of the
+exercise~\citep{fearon1990genetic,kinzler1996hereditary,clevers2012wnt}.
+Two machine-learning ideas have changed how such estimates are attempted.
+Physics-informed neural networks (PINNs) recover parameters by training a
+network to fit the data while satisfying the differential
+equations~\citep{raissi2019pinn,karniadakis2021piml}, and have been applied to
+systems-biology inverse problems from sparse, noisy
+measurements~\citep{yazdani2020systems,lagergren2020binns,daneker2023identifiability,ahmadi2024aiaristotle}.
+Universal differential equations and neural--mechanistic hybrids keep the
+trusted parts of a model and learn the untrusted part, typically one regulatory
+law, with a small embedded
+network~\citep{rackauckas2020ude,philipps2025ude,giampiccolo2024hnode,derooij2025ude}.
+
+Both literatures report parameter recovery the same way: a table of estimates,
+a count of how many fall within some tolerance of the truth on synthetic data,
+and, for the ones that do not, an attribution. The attribution is usually one of
+two kinds. Either the parameter is ``non-identifiable''~\citep{raue2009identifiability,wieland2021identifiability},
+or the estimator struggled: PINN training is known to be stiff, to balance its
+loss terms badly, and to stall~\citep{wang2021gradient,wang2022ntk,krishnapriyan2021failure},
+and in hybrid models the over-parameterised network component is reported to
+have ``consistently hindered parameter identifiability''~\citep{philipps2025ude}. The two
+attributions call for opposite remedies. An estimator failure is fixed by a
+better estimator; an information failure is fixed only by a better experiment,
+and no amount of estimator engineering will touch it. Yet the two are routinely
+diagnosed by inspection, and an improvement in the count from a new architecture
+is indistinguishable, in such a table, from an improvement that a new
+experimental condition would have given for free.
+
+This paper argues that the question \emph{estimator or experiment?} has a
+quantitative answer that costs one sensitivity computation, and that asking it systematically
+changes the conclusions one draws. The answer is the Cram\'er--Rao lower bound
+(CRLB)~\citep{rao1945information,cramer1946mathematical} of the experiment
+actually performed: the Fisher information of the design at the true parameters,
+inverted. It says, before any estimator is trained, how precisely every
+parameter \emph{can} be known from these data. It is local and asymptotic, so we
+verify it empirically; but where it holds it splits every recovery failure into
+two parts that we call the \emph{estimator gap}, the distance between what an
+estimator achieves and what the bound permits, and the \emph{information gap},
+the parameters the bound itself declares unknowable. The first is closed by
+numerics, the second only by design~\citep{kreutz2009design,bandara2009oed,apgar2010sloppy}.
+
+We carry this accounting through a single model at increasing levels of
+difficulty, from the forward problem to the inverse problem to the hybrid one.
+The model is a reduced seven-state description of the WNT, retinoic acid (RA)
+and HOX antagonism in the colonic crypt with 36 kinetic parameters, studied in
+four regimes from a healthy crypt to severe APC loss and observed under a
+ten-condition design of retinoid and WNT/MYC perturbations (Fig~\ref{fig:design}).
+Four findings organise the paper.
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=0.3ex,topsep=0.4ex]
+\item \emph{The PINN's recovery shortfall is an estimator gap.} The best of
+three matched PINN variants recovers 21, 19, 10 and 10 of the 34 regularly
+behaved parameters in the four regimes, a count that reads like a hard limit of
+the data. The bound says otherwise: an efficient estimator would recover 132.5
+of the 136 regime--parameter pairs outside one structural degeneracy, a
+converged maximum-likelihood fit attains the bound's standard deviations on
+independent datasets where the data are informative and never does worse, and
+on the benchmark data, given a few starts, it recovers every one of them.
+\item \emph{The estimator gap of a PINN can be closed without leaving the PINN
+framework.} Freezing the network's hidden features and optimising only its
+output layer together with the parameters turns the inverse problem into a
+separable least-squares problem whose Gauss--Newton matrix is block-arrowhead.
+A Schur-complement Gauss--Newton PINN (SGN-PINN) built on this matches the
+classical estimator parameter by parameter wherever its continuation converges,
+which on two datasets includes both low-WNT regimes and, on the held-out one,
+Advanced Adenoma, and it reports an estimate of its own Cram\'er--Rao precision
+as a by-product; where the continuation stalls, its physics residual says so.
+\item \emph{The parameter that defines disease stage is the one the design does
+not inform.} APC functionality $\thP$ enters only through a product with a
+degradation constant; with that structural degeneracy removed, its bound still
+widens from 0.04\% to 57\% relative standard deviation (that of the identifiable
+product it enters, thirty-fold) as WNT drive saturates \bcat{}. No estimator can recover what the bound withholds; one added WNT
+knockdown restores it, and two added conditions that perturb without leaving
+the saturated plateau do not.
+\item \emph{A learned regulatory term creates an information gap of its own.}
+When a flexible network replaces a production term $a+f(u)$, the constraint
+$f(0)=0$ that is meant to separate the basal rate $a$ from the learned function
+carries information only if the experiment drives the regulator $u$ near zero,
+which no condition of a conventional design does. The basal rate is then lost
+under every network parameterisation we tried. A Fisher-information analysis of
+the hybrid equation, consistent with fits run before it, shows that two added
+conditions that do not visit the anchor leave the loss unchanged while a
+depletion knockdown that visits it removes most of the loss; and a
+training-free design table built on the idea predicted the right knockdown
+prospectively, including one informative failure that the Fisher analysis
+explains.
+\end{enumerate}
+
+The thread through these findings is that a recovery count, by itself, does not
+say whether to change the estimator or the experiment, and the bound does. The
+same yardstick that exonerates the data in the first two findings
+indicts them in the last two, and in both cases it names the remedy: a solver
+where the gap is numerical, a perturbation that visits the region in which the
+parameter acts where the gap is informational. We frame the latter as a
+partial-persistence-of-excitation
+condition~\citep{wang2006learning,sastry1989adaptive} applied to a model
+constraint rather than to an estimate. All data are synthetic, so that truth
+is known and every claim can be checked; the limitations this imposes are
+discussed in Section~\ref{sec:discussion}.

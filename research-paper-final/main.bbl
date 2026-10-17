@@ -1,0 +1,433 @@
+\begin{thebibliography}{54}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Fearon and Vogelstein(1990)]{fearon1990genetic}
+Eric~R. Fearon and Bert Vogelstein.
+\newblock A genetic model for colorectal tumorigenesis.
+\newblock \emph{Cell}, 61\penalty0 (5):\penalty0 759--767, 1990.
+\newblock \doi{10.1016/0092-8674(90)90186-I}.
+
+\bibitem[Kinzler and Vogelstein(1996)]{kinzler1996hereditary}
+Kenneth~W. Kinzler and Bert Vogelstein.
+\newblock Lessons from hereditary colorectal cancer.
+\newblock \emph{Cell}, 87\penalty0 (2):\penalty0 159--170, 1996.
+\newblock \doi{10.1016/S0092-8674(00)81333-1}.
+
+\bibitem[Clevers and Nusse(2012)]{clevers2012wnt}
+Hans Clevers and Roel Nusse.
+\newblock {W}nt/$\beta$-catenin signaling and disease.
+\newblock \emph{Cell}, 149\penalty0 (6):\penalty0 1192--1205, 2012.
+\newblock \doi{10.1016/j.cell.2012.05.012}.
+
+\bibitem[Raissi et~al.(2019)Raissi, Perdikaris, and
+  Karniadakis]{raissi2019pinn}
+Maziar Raissi, Paris Perdikaris, and George~E. Karniadakis.
+\newblock Physics-informed neural networks: A deep learning framework for
+  solving forward and inverse problems involving nonlinear partial differential
+  equations.
+\newblock \emph{Journal of Computational Physics}, 378:\penalty0 686--707,
+  2019.
+\newblock \doi{10.1016/j.jcp.2018.10.045}.
+
+\bibitem[Karniadakis et~al.(2021)Karniadakis, Kevrekidis, Lu, Perdikaris, Wang,
+  and Yang]{karniadakis2021piml}
+George~Em Karniadakis, Ioannis~G. Kevrekidis, Lu~Lu, Paris Perdikaris, Sifan
+  Wang, and Liu Yang.
+\newblock Physics-informed machine learning.
+\newblock \emph{Nature Reviews Physics}, 3\penalty0 (6):\penalty0 422--440,
+  2021.
+\newblock \doi{10.1038/s42254-021-00314-5}.
+
+\bibitem[Yazdani et~al.(2020)Yazdani, Lu, Raissi, and
+  Karniadakis]{yazdani2020systems}
+Alireza Yazdani, Lu~Lu, Maziar Raissi, and George~Em Karniadakis.
+\newblock Systems biology informed deep learning for inferring parameters and
+  hidden dynamics.
+\newblock \emph{PLoS Computational Biology}, 16\penalty0 (11):\penalty0
+  e1007575, 2020.
+\newblock \doi{10.1371/journal.pcbi.1007575}.
+
+\bibitem[Lagergren et~al.(2020)Lagergren, Nardini, Baker, Simpson, and
+  Flores]{lagergren2020binns}
+John~H. Lagergren, John~T. Nardini, Ruth~E. Baker, Matthew~J. Simpson, and
+  Kevin~B. Flores.
+\newblock Biologically-informed neural networks guide mechanistic modeling from
+  sparse experimental data.
+\newblock \emph{PLOS Computational Biology}, 16\penalty0 (12):\penalty0
+  e1008462, December 2020.
+\newblock \doi{10.1371/journal.pcbi.1008462}.
+
+\bibitem[Daneker et~al.(2023)Daneker, Zhang, Karniadakis, and
+  Lu]{daneker2023identifiability}
+Mitchell Daneker, Zhen Zhang, George~Em Karniadakis, and Lu~Lu.
+\newblock Systems biology: {I}dentifiability analysis and parameter
+  identification via systems-biology-informed neural networks.
+\newblock In Lan~K. Nguyen, editor, \emph{Computational Modeling of Signaling
+  Networks}, volume 2634 of \emph{Methods in Molecular Biology}, pages 87--105.
+  Humana, New York, NY, 2023.
+\newblock \doi{10.1007/978-1-0716-3008-2_4}.
+
+\bibitem[Ahmadi~Daryakenari et~al.(2024)Ahmadi~Daryakenari, De~Florio, Shukla,
+  and Karniadakis]{ahmadi2024aiaristotle}
+Nazanin Ahmadi~Daryakenari, Mario De~Florio, Khemraj Shukla, and George~Em
+  Karniadakis.
+\newblock Ai-aristotle: A physics-informed framework for systems biology
+  gray-box identification.
+\newblock \emph{PLOS Computational Biology}, 20\penalty0 (3):\penalty0
+  e1011916, March 2024.
+\newblock \doi{10.1371/journal.pcbi.1011916}.
+
+\bibitem[Rackauckas et~al.(2020)Rackauckas, Ma, Martensen, Warner, Zubov,
+  Supekar, Skinner, Ramadhan, and Edelman]{rackauckas2020ude}
+Christopher Rackauckas, Yingbo Ma, Julius Martensen, Collin Warner, Kirill
+  Zubov, Rohit Supekar, Dominic Skinner, Ali Ramadhan, and Alan Edelman.
+\newblock Universal differential equations for scientific machine learning.
+\newblock \emph{arXiv preprint}, 2020.
+\newblock \doi{10.48550/arXiv.2001.04385}.
+\newblock arXiv:2001.04385.
+
+\bibitem[Philipps et~al.(2025)Philipps, Schmid, and Hasenauer]{philipps2025ude}
+Maren Philipps, Nina Schmid, and Jan Hasenauer.
+\newblock Current state and open problems in universal differential equations
+  for systems biology.
+\newblock \emph{npj Systems Biology and Applications}, 11\penalty0
+  (1):\penalty0 101, 2025.
+\newblock \doi{10.1038/s41540-025-00550-w}.
+
+\bibitem[Giampiccolo et~al.(2024)Giampiccolo, Reali, Fochesato, Iacca, and
+  Marchetti]{giampiccolo2024hnode}
+Stefano Giampiccolo, Federico Reali, Anna Fochesato, Giovanni Iacca, and Luca
+  Marchetti.
+\newblock Robust parameter estimation and identifiability analysis with hybrid
+  neural ordinary differential equations in computational biology.
+\newblock \emph{npj Systems Biology and Applications}, 10\penalty0
+  (1):\penalty0 139, 2024.
+\newblock \doi{10.1038/s41540-024-00460-3}.
+
+\bibitem[de~Rooij et~al.(2025)de~Rooij, Erdős, van Riel, and
+  O’Donovan]{derooij2025ude}
+Max de~Rooij, Balázs Erdős, Natal A.~W. van Riel, and Shauna~D. O’Donovan.
+\newblock Physiology-informed regularisation enables training of universal
+  differential equation systems for biological applications.
+\newblock \emph{PLOS Computational Biology}, 21\penalty0 (1):\penalty0
+  e1012198, January 2025.
+\newblock \doi{10.1371/journal.pcbi.1012198}.
+
+\bibitem[Raue et~al.(2009)Raue, Kreutz, Maiwald, Bachmann, Schilling,
+  Klingm{\"u}ller, and Timmer]{raue2009identifiability}
+Andreas Raue, Clemens Kreutz, Thomas Maiwald, Julie Bachmann, Marcel Schilling,
+  Ursula Klingm{\"u}ller, and Jens Timmer.
+\newblock Structural and practical identifiability analysis of partially
+  observed dynamical models by exploiting the profile likelihood.
+\newblock \emph{Bioinformatics}, 25\penalty0 (15):\penalty0 1923--1929, 2009.
+\newblock \doi{10.1093/bioinformatics/btp358}.
+
+\bibitem[Wieland et~al.(2021)Wieland, Hauber, Rosenblatt, T{\"o}nsing, and
+  Timmer]{wieland2021identifiability}
+Franz-Georg Wieland, Adrian~L. Hauber, Marcus Rosenblatt, Christian
+  T{\"o}nsing, and Jens Timmer.
+\newblock On structural and practical identifiability.
+\newblock \emph{Current Opinion in Systems Biology}, 25:\penalty0 60--69, 2021.
+\newblock \doi{10.1016/j.coisb.2021.03.005}.
+
+\bibitem[Wang et~al.(2021{\natexlab{a}})Wang, Teng, and
+  Perdikaris]{wang2021gradient}
+Sifan Wang, Yujun Teng, and Paris Perdikaris.
+\newblock Understanding and mitigating gradient flow pathologies in
+  physics-informed neural networks.
+\newblock \emph{SIAM Journal on Scientific Computing}, 43\penalty0
+  (5):\penalty0 A3055--A3081, 2021{\natexlab{a}}.
+\newblock \doi{10.1137/20M1318043}.
+
+\bibitem[Wang et~al.(2022)Wang, Yu, and Perdikaris]{wang2022ntk}
+Sifan Wang, Xinling Yu, and Paris Perdikaris.
+\newblock When and why {PINN}s fail to train: A neural tangent kernel
+  perspective.
+\newblock \emph{Journal of Computational Physics}, 449:\penalty0 110768, 2022.
+\newblock \doi{10.1016/j.jcp.2021.110768}.
+
+\bibitem[Krishnapriyan et~al.(2021)Krishnapriyan, Gholami, Zhe, Kirby, and
+  Mahoney]{krishnapriyan2021failure}
+Aditi~S. Krishnapriyan, Amir Gholami, Shandian Zhe, Robert~M. Kirby, and
+  Michael~W. Mahoney.
+\newblock Characterizing possible failure modes in physics-informed neural
+  networks.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~34, pages 26548--26560. Curran Associates, Inc., 2021.
+
+\bibitem[Rao(1945)]{rao1945information}
+C.~Radhakrishna Rao.
+\newblock Information and the accuracy attainable in the estimation of
+  statistical parameters.
+\newblock \emph{Bulletin of the Calcutta Mathematical Society}, 37:\penalty0
+  81--91, 1945.
+
+\bibitem[Cram{\'e}r(1946)]{cramer1946mathematical}
+Harald Cram{\'e}r.
+\newblock \emph{Mathematical Methods of Statistics}.
+\newblock Princeton University Press, Princeton, NJ, 1946.
+
+\bibitem[Kreutz and Timmer(2009)]{kreutz2009design}
+Clemens Kreutz and Jens Timmer.
+\newblock Systems biology: experimental design.
+\newblock \emph{FEBS Journal}, 276\penalty0 (4):\penalty0 923--942, 2009.
+\newblock \doi{10.1111/j.1742-4658.2008.06843.x}.
+
+\bibitem[Bandara et~al.(2009)Bandara, Schlöder, Eils, Bock, and
+  Meyer]{bandara2009oed}
+Samuel Bandara, Johannes~P. Schlöder, Roland Eils, Hans~Georg Bock, and Tobias
+  Meyer.
+\newblock Optimal experimental design for parameter estimation of a cell
+  signaling model.
+\newblock \emph{PLoS Computational Biology}, 5\penalty0 (11):\penalty0
+  e1000558, November 2009.
+\newblock \doi{10.1371/journal.pcbi.1000558}.
+
+\bibitem[Apgar et~al.(2010)Apgar, Witmer, White, and Tidor]{apgar2010sloppy}
+Joshua~F Apgar, David~K Witmer, Forest~M White, and Bruce Tidor.
+\newblock Sloppy models, parameter uncertainty, and the role of experimental
+  design.
+\newblock \emph{Molecular BioSystems}, 6\penalty0 (10):\penalty0 1890–1900,
+  2010.
+\newblock \doi{10.1039/b918098b}.
+
+\bibitem[Wang and Hill(2006)]{wang2006learning}
+Cong Wang and David~J. Hill.
+\newblock Learning from neural control.
+\newblock \emph{IEEE Transactions on Neural Networks}, 17\penalty0
+  (1):\penalty0 130--146, 2006.
+\newblock \doi{10.1109/TNN.2005.860843}.
+
+\bibitem[Sastry and Bodson(1989)]{sastry1989adaptive}
+Shankar Sastry and Marc Bodson.
+\newblock \emph{Adaptive Control: Stability, Convergence, and Robustness}.
+\newblock Prentice-Hall Advanced Reference Series. Prentice-Hall, Englewood
+  Cliffs, NJ, 1989.
+\newblock ISBN 0-13-004326-5.
+
+\bibitem[Loman and Baker(2025)]{loman2025identifiability}
+Torkel~E. Loman and Ruth~E. Baker.
+\newblock Functional and parametric identifiability for universal differential
+  equations applied to chemical reaction networks.
+\newblock \emph{arXiv preprint}, 2025.
+\newblock \doi{10.48550/arXiv.2510.14140}.
+\newblock arXiv:2510.14140.
+
+\bibitem[Kreutz et~al.(2013)Kreutz, Raue, Kaschek, and
+  Timmer]{kreutz2013profile}
+Clemens Kreutz, Andreas Raue, Daniel Kaschek, and Jens Timmer.
+\newblock Profile likelihood in systems biology.
+\newblock \emph{FEBS Journal}, 280\penalty0 (11):\penalty0 2564--2571, 2013.
+\newblock \doi{10.1111/febs.12276}.
+
+\bibitem[Simpson and Maclaren(2023)]{simpson2023pwa}
+Matthew~J. Simpson and Oliver~J. Maclaren.
+\newblock Profile-wise analysis: A profile likelihood-based workflow for
+  identifiability analysis, estimation, and prediction with mechanistic
+  mathematical models.
+\newblock \emph{PLOS Computational Biology}, 19\penalty0 (9):\penalty0
+  e1011515, 2023.
+\newblock \doi{10.1371/journal.pcbi.1011515}.
+
+\bibitem[Golub and Pereyra(1973)]{golub1973differentiation}
+G.~H. Golub and V.~Pereyra.
+\newblock The differentiation of pseudo-inverses and nonlinear least squares
+  problems whose variables separate.
+\newblock \emph{SIAM Journal on Numerical Analysis}, 10\penalty0 (2):\penalty0
+  413–432, April 1973.
+\newblock \doi{10.1137/0710036}.
+
+\bibitem[Golub and Pereyra(2003)]{golub2003separable}
+Gene Golub and Victor Pereyra.
+\newblock Separable nonlinear least squares: the variable projection method and
+  its applications.
+\newblock \emph{Inverse Problems}, 19\penalty0 (2):\penalty0 R1–R26, February
+  2003.
+\newblock \doi{10.1088/0266-5611/19/2/201}.
+
+\bibitem[O’Leary and Rust(2012)]{oleary2013varpro}
+Dianne~P. O’Leary and Bert~W. Rust.
+\newblock Variable projection for nonlinear least squares problems.
+\newblock \emph{Computational Optimization and Applications}, 54\penalty0
+  (3):\penalty0 579–593, August 2012.
+\newblock \doi{10.1007/s10589-012-9492-9}.
+
+\bibitem[Huang et~al.(2006)Huang, Zhu, and Siew]{huang2006elm}
+Guang-Bin Huang, Qin-Yu Zhu, and Chee-Kheong Siew.
+\newblock Extreme learning machine: Theory and applications.
+\newblock \emph{Neurocomputing}, 70\penalty0 (1-3):\penalty0 489–501,
+  December 2006.
+\newblock \doi{10.1016/j.neucom.2005.12.126}.
+
+\bibitem[Dong and Li(2021)]{dong2021local}
+Suchuan Dong and Zongwei Li.
+\newblock Local extreme learning machines and domain decomposition for solving
+  linear and nonlinear partial differential equations.
+\newblock \emph{Computer Methods in Applied Mechanics and Engineering},
+  387:\penalty0 114129, December 2021.
+\newblock \doi{10.1016/j.cma.2021.114129}.
+
+\bibitem[Dong and Wang(2023)]{dong2023inverse}
+Suchuan Dong and Yiran Wang.
+\newblock A method for computing inverse parametric pde problems with
+  random-weight neural networks.
+\newblock \emph{Journal of Computational Physics}, 489:\penalty0 112263, 2023.
+\newblock \doi{10.1016/j.jcp.2023.112263}.
+
+\bibitem[Müller and Zeinhofer(2023)]{muller2023ngd}
+Johannes Müller and Marius Zeinhofer.
+\newblock Achieving high accuracy with pinns via energy natural gradients,
+  2023.
+\newblock URL \url{https://arxiv.org/abs/2302.13163}.
+
+\bibitem[Jnini et~al.(2024)Jnini, Vella, and Zeinhofer]{jnini2024gauss}
+Anas Jnini, Flavio Vella, and Marius Zeinhofer.
+\newblock Gauss-newton natural gradient descent for physics-informed
+  computational fluid dynamics, 2024.
+\newblock URL \url{https://arxiv.org/abs/2402.10680}.
+
+\bibitem[Transtrum et~al.(2015)Transtrum, Machta, Brown, Daniels, Myers, and
+  Sethna]{transtrum2015perspective}
+Mark~K. Transtrum, Benjamin~B. Machta, Kevin~S. Brown, Bryan~C. Daniels,
+  Christopher~R. Myers, and James~P. Sethna.
+\newblock Perspective: Sloppiness and emergent theories in physics, biology,
+  and beyond.
+\newblock \emph{The Journal of Chemical Physics}, 143\penalty0 (1), 2015.
+\newblock \doi{10.1063/1.4923066}.
+
+\bibitem[Plate et~al.(2024)Plate, Martensen, and Sager]{plate2024oed}
+Christoph Plate, Carl~Julius Martensen, and Sebastian Sager.
+\newblock Optimal experimental design for universal differential equations.
+\newblock \emph{arXiv preprint}, 2024.
+\newblock \doi{10.48550/arXiv.2408.07143}.
+\newblock arXiv:2408.07143.
+
+\bibitem[Transtrum and Qiu(2012)]{transtrum2012oed}
+Mark~K Transtrum and Peng Qiu.
+\newblock Optimal experiment selection for parameter estimation in biological
+  differential equation models.
+\newblock \emph{BMC Bioinformatics}, 13\penalty0 (1), 2012.
+\newblock \doi{10.1186/1471-2105-13-181}.
+
+\bibitem[Liepe et~al.(2013)Liepe, Filippi, Komorowski, and
+  Stumpf]{liepe2013maximizing}
+Juliane Liepe, Sarah Filippi, Michał Komorowski, and Michael P.~H. Stumpf.
+\newblock Maximizing the information content of experiments in systems biology.
+\newblock \emph{PLoS Computational Biology}, 9\penalty0 (1):\penalty0 e1002888,
+  January 2013.
+\newblock \doi{10.1371/journal.pcbi.1002888}.
+
+\bibitem[Villaverde et~al.(2016)Villaverde, Barreiro, and
+  Papachristodoulou]{villaverde2016structural}
+Alejandro~F. Villaverde, Antonio Barreiro, and Antonis Papachristodoulou.
+\newblock Structural identifiability of dynamic systems biology models.
+\newblock \emph{PLoS Computational Biology}, 12\penalty0 (10):\penalty0
+  e1005153, 2016.
+\newblock \doi{10.1371/journal.pcbi.1005153}.
+
+\bibitem[Chis et~al.(2011)Chis, Banga, and Balsa-Canto]{chis2011structural}
+Oana-Teodora Chis, Julio~R. Banga, and Eva Balsa-Canto.
+\newblock Structural identifiability of systems biology models: A critical
+  comparison of methods.
+\newblock \emph{PLoS ONE}, 6\penalty0 (11):\penalty0 e27755, 2011.
+\newblock \doi{10.1371/journal.pone.0027755}.
+
+\bibitem[Nusse and Clevers(2017)]{nusse2017wnt}
+Roel Nusse and Hans Clevers.
+\newblock {W}nt/$\beta$-catenin signaling, disease, and emerging therapeutic
+  modalities.
+\newblock \emph{Cell}, 169\penalty0 (6):\penalty0 985--999, 2017.
+\newblock \doi{10.1016/j.cell.2017.05.016}.
+
+\bibitem[Ord{\'o}{\~n}ez-Mor{\'a}n et~al.(2015)Ord{\'o}{\~n}ez-Mor{\'a}n,
+  Dafflon, Imajo, Nishida, and Huelsken]{ordonezmoran2015hoxa5}
+Paloma Ord{\'o}{\~n}ez-Mor{\'a}n, Caroline Dafflon, Masamichi Imajo, Eisuke
+  Nishida, and Joerg Huelsken.
+\newblock {HOXA5} counteracts stem cell traits by inhibiting {W}nt signaling in
+  colorectal cancer.
+\newblock \emph{Cancer Cell}, 28\penalty0 (6):\penalty0 815--829, 2015.
+\newblock \doi{10.1016/j.ccell.2015.11.001}.
+
+\bibitem[Bhatlekar et~al.(2014)Bhatlekar, Fields, and Boman]{bhatlekar2014hox}
+Seema Bhatlekar, Jeremy~Z. Fields, and Bruce~M. Boman.
+\newblock {HOX} genes and their role in the development of human cancers.
+\newblock \emph{Journal of Molecular Medicine}, 92\penalty0 (8):\penalty0
+  811--823, 2014.
+\newblock \doi{10.1007/s00109-014-1181-y}.
+
+\bibitem[Rhinn and Doll{\'e}(2012)]{rhinn2012retinoic}
+Muriel Rhinn and Pascal Doll{\'e}.
+\newblock Retinoic acid signalling during development.
+\newblock \emph{Development}, 139\penalty0 (5):\penalty0 843--858, 2012.
+\newblock \doi{10.1242/dev.065938}.
+
+\bibitem[Virtanen et~al.(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy,
+  Cournapeau, et~al.]{virtanen2020scipy}
+Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
+  David Cournapeau, et~al.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in
+  {Python}.
+\newblock \emph{Nature Methods}, 17\penalty0 (3):\penalty0 261--272, 2020.
+\newblock \doi{10.1038/s41592-019-0686-2}.
+
+\bibitem[Tancik et~al.(2020)Tancik, Srinivasan, Mildenhall, Fridovich-Keil,
+  Raghavan, Singhal, Ramamoorthi, Barron, and Ng]{tancik2020fourier}
+Matthew Tancik, Pratul~P. Srinivasan, Ben Mildenhall, Sara Fridovich-Keil,
+  Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan~T. Barron, and
+  Ren Ng.
+\newblock Fourier features let networks learn high frequency functions in low
+  dimensional domains.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 7537--7547. Curran Associates, Inc., 2020.
+
+\bibitem[Wang et~al.(2021{\natexlab{b}})Wang, Wang, and
+  Perdikaris]{wang2021eigenvector}
+Sifan Wang, Hanwen Wang, and Paris Perdikaris.
+\newblock On the eigenvector bias of fourier feature networks: From regression
+  to solving multi-scale pdes with physics-informed neural networks.
+\newblock \emph{Computer Methods in Applied Mechanics and Engineering},
+  384:\penalty0 113938, October 2021{\natexlab{b}}.
+\newblock \doi{10.1016/j.cma.2021.113938}.
+
+\bibitem[Rahaman et~al.(2019)Rahaman, Baratin, Arpit, Draxler, Lin, Hamprecht,
+  Bengio, and Courville]{rahaman2019spectral}
+Nasim Rahaman, Aristide Baratin, Devansh Arpit, Felix Draxler, Min Lin, Fred~A.
+  Hamprecht, Yoshua Bengio, and Aaron Courville.
+\newblock On the spectral bias of neural networks.
+\newblock In \emph{Proceedings of the 36th International Conference on Machine
+  Learning}, volume~97 of \emph{Proceedings of Machine Learning Research},
+  pages 5301--5310. PMLR, 2019.
+
+\bibitem[Kingma and Ba(2015)]{kingma2015adam}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock {A}dam: {A} method for stochastic optimization.
+\newblock In \emph{3rd International Conference on Learning Representations
+  ({ICLR})}, San Diego, CA, USA, 2015.
+
+\bibitem[Liu and Nocedal(1989)]{liu1989lbfgs}
+Dong~C. Liu and Jorge Nocedal.
+\newblock On the limited memory {BFGS} method for large scale optimization.
+\newblock \emph{Mathematical Programming}, 45\penalty0 (1--3):\penalty0
+  503--528, 1989.
+\newblock \doi{10.1007/BF01589116}.
+
+\bibitem[Levenberg(1944)]{levenberg1944method}
+Kenneth Levenberg.
+\newblock A method for the solution of certain non-linear problems in least
+  squares.
+\newblock \emph{Quarterly of Applied Mathematics}, 2\penalty0 (2):\penalty0
+  164–168, 1944.
+\newblock \doi{10.1090/qam/10666}.
+
+\bibitem[Marquardt(1963)]{marquardt1963algorithm}
+Donald~W. Marquardt.
+\newblock An algorithm for least-squares estimation of nonlinear parameters.
+\newblock \emph{Journal of the Society for Industrial and Applied Mathematics},
+  11\penalty0 (2):\penalty0 431–441, 1963.
+\newblock \doi{10.1137/0111030}.
+
+\end{thebibliography}

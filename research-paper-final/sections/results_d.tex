@@ -1,0 +1,339 @@
+% ---------------------------------------------------------------------------
+% Results, part D: the learned term (hybrid models).
+% ---------------------------------------------------------------------------
+\subsection{A learned regulatory term opens an information gap of its own}
+\label{sec:res-hybrid}
+
+A neural--mechanistic hybrid replaces one closed-form regulation with a small
+network and keeps the rest of the model; for the \bcat{}$\to$MYC induction,
+$\eta_{BM}H_2(b;\kappa_{BM})$ becomes a network $\fnn(b)$ beside the basal
+production rate $a_M$ (Eq~\eqref{eq:myc-hybrid}). Run through the full PINN
+pipeline under the ten base conditions, the hybrid learns the function well
+(normalised RMSE 6--10\% in the four regimes) and loses the basal rate beside
+it: $a_M$ is 32.3\% and 52.1\% off in the two low-WNT regimes, where the
+mechanistic model recovers it to 0.4\% and 4.6\% (Fig~\ref{fig:learned}A;
+run \runid{20260727\_012448\_bm\_myc}). The RA$\to$HOXA5 hybrid loses $a_5$ by
+9--37\% (\runid{20260726\_214316\_ra\_h5}). Is this an estimator gap or an
+information gap?
+
+The arithmetic suggests the latter. On the observed support, for any constant
+$c$,
+\begin{equation}
+a + \fnn(u) = (a + c) + \big[\fnn(u) - c\big],
+\label{eq:compensation}
+\end{equation}
+and the bracket is a function the network represents as well as $\fnn$
+wherever the regulator $u$ is bounded away from zero. A constraint $f(0)=0$ (the
+\emph{anchor}) removes the constant from the model at one point; it removes it
+from the fit only if the data visit that point. In the base design they do not.
+The lowest \bcat{} level across all conditions and regimes is 0.036, an anchor
+ratio (Eq~\eqref{eq:ratio}) of 0.025--0.081; in the two high-WNT regimes the
+lowest value, 0.20, is the initial condition itself, so what little support
+near the anchor exists there is set by the choice of initial state, not by the
+dynamics. The lowest RA level is 0.136. In the Early Adenoma fit the learned MYC
+activation satisfies $\fnn(0)=0$ exactly, but over the observed range
+($b\ge0.11$) it sits a near-constant 0.094 above the true Hill function, and
+$a_M$ is low by the same 0.094 ($\hat a_M=0.086$ against 0.18;
+Fig~\ref{fig:learned}A). The identity is close to automatic for any fit that
+reproduces the production flux with the correct timescale; what is informative
+is that the offset is nearly constant across the support. Across the sixteen
+equation-local fits of four network parameterisations in four regimes (below)
+the mean offset equals the basal deficit to within 0.005
+(Fig~\ref{fig:learned}B). In the full pipeline it holds in Early Adenoma and
+approximately in Normal (offset 0.067 against a deficit of 0.058), and not in
+the two high-WNT regimes; there, and in Normal, the fit also inflates the MYC
+timescale $\varepsilon_M$ (0.69--0.72 against 0.60). This is the
+constant-offset form of the degeneracy that Loman and Baker construct for a
+linear-rate term~\citep{loman2025identifiability}, and it is consistent with an
+instance reported in the literature, a learned nuclear-export term recovered
+by symbolic regression as $3.96\times10^{-4}x+0.8$ against a true
+$6.17\times10^{-2}x$~\citep{philipps2025ude}.
+
+If the gap were an estimator gap, a better-shaped network would close it.
+Loman and Baker found that monotone, bounded networks bring parametric
+identifiability on a par with the fully known model in a linear-pathway
+model~\citep{loman2025identifiability}. To test this at scale we used an
+equation-local screen (Methods): only the equation that hosts the learned edge
+is fitted, from exact states, by the network and, from the same seeds and
+budget, by the mechanistic control. Because the states are exact, the screen
+has no measurement noise; its errors are those of the optimisation and of the
+model class, and its absolute values bound the full pipeline from below. Across
+the seven production edges of the model (S2~Table), a monotone network with an
+exact anchor (\texttt{sc}) sometimes halves the basal error of the
+non-monotone gated network (\texttt{gated}) and sometimes quadruples it;
+averaged over regimes, the gated network leaves the basal parameter 16--50\%
+off and the monotone one 14--74\%, against 7--25\% for the mechanistic control
+(Fig~\ref{fig:learned}C). In the two low-WNT regimes, where the control
+recovers all fourteen basal parameters to below 7.5\%, the two networks recover
+4 of 28. In the two high-WNT regimes the control degrades as well (all 14 of
+its failures are there), and the comparison is between two failures. For the
+MYC edge all five parameterisations were run in all regimes
+(Fig~\ref{fig:learned}D): where the control recovers $a_M$ to 0.0--0.1\%, the
+gated, monotone and linear-anchor networks leave it 6.5--38\% off, the
+monotone-rate form 200--400\% off (it fails through the timescale, which it
+inflates to 1.2--18.3), and the bounded form 10.5--17.9\%, although it is handed
+the true asymptote; in the two high-WNT regimes the bounded form (8.4\%,
+18.5\%) beats a control that has itself degraded (15.6\%, 35.6\%). No network
+parameterisation closes the gap where the control is sound. Restart noise is
+large away from the anchor: the same MYC-edge cell (Advanced Adenoma, gated)
+reads 68.3\% in the two-restart atlas and 18.9\% in the three-restart
+five-form run, so cells are compared within an experiment, not across.
+Modulator edges, where the network \emph{multiplies} a state ($f(u)\cdot y$)
+and there is no additive constant to absorb, behave differently: CYP26A1$\dashv$RA
+and HOXA5$\dashv$\bcat{} are learned to 0.0--1.7\% functional error with every
+surviving equation parameter recovered in the low-WNT regimes (run
+\runid{20260801\_204046\_screen\_atlas}).
+
+\begin{figure}[tbp]
+\centering
+\fig{fig08_learned_term.pdf}
+\caption{\textbf{A learned term loses its host's basal rate.} (A) Full-pipeline
+\bcat{}$\to$MYC hybrid, Early Adenoma, ten base conditions: the learned
+activation (dashed) obeys $\fnn(0)=0$ but no data lie below $b=0.11$ (grey band,
+data support); over the support it sits 0.094 above the true Hill term (solid),
+and the basal rate $a_M$ is low by the same amount; dotted, the true term
+shifted by the basal deficit. (B) Compensation identity,
+Eq~\eqref{eq:compensation}: mean offset of the learned function over the support
+against the basal deficit, for the equation-local fits of four network
+parameterisations (filled) and the full pipeline (open, which departs from the
+identity in the two high-WNT regimes, where the fit also inflates the MYC
+timescale); dashed, $y=x$. (C) Basal-parameter error of the seven production
+edges under the gated and the monotone (\texttt{sc}) network and the
+mechanistic control (open), ten base conditions, two restarts; Normal values
+are from the run log at 0.1\% precision and a reported 0.0\% is drawn at
+0.05\%. (D) Basal error of $a_M$ under all five network parameterisations and
+the mechanistic control (three restarts; a separate run from C).}
+\label{fig:learned}
+\end{figure}
+
+\subsection{The Fisher information of a learned term}
+\label{sec:res-hfim}
+
+The screen has no measurement noise, so its Fisher information is formally
+infinite. To ask the same question of it that Fig~\ref{fig:info} asked of the
+mechanistic model, we treat the residual of the hosting equation as noisy with
+an arbitrary scale $\sigma_r$ and compute $\Gamma$, the CRLB of the basal parameter
+per unit $\sigma_r$, with the learned term represented by the screen's own
+network, fitted to the true regulation and profiled out (Methods). $\Gamma$ is then
+a measure of how well the design conditions the basal parameter against
+everything the network can do; we report it relative to the same quantity for
+the mechanistic control, $\Gamma_{\text{net}}/\Gamma_{\text{mech}}$, the information lost
+to the network. For a network that is not observed near its anchor the
+network block is nearly rank-deficient, and the absolute value of $\Gamma$ depends on
+the numerical rank assigned to it, by a factor of 17 to 5000 between relative
+tolerances $10^{-6}$ and $10^{-10}$; the size of the base-design loss is
+therefore not determined, while its ordering, the design factors where the
+anchor is visited, and every rank correlation below (which move by at most 0.04)
+are. We quote values at tolerance $10^{-8}$. Against Monte Carlo refits of the MYC edge it is
+calibrated where the anchor is visited (empirical and predicted standard
+deviation within 3\% for the network and 1\% for an anchored cubic). Where it is
+not visited, the bound at tolerance $10^{-8}$ overstates the empirical scatter of
+a Levenberg--Marquardt refit 23-fold, and a tolerance of $10^{-5}$ brings it to
+within 12\%; the size of the base-design loss quoted below is therefore an
+upper estimate, and only orderings and ratios are used in what follows.
+
+Three results (Fig~\ref{fig:hfim}). First, under the base design the network
+loses a factor of 56 to $4\times10^5$ in basal-rate precision relative to the
+mechanistic control of the same equation, and the loss is a property of the
+network's flexibility on the unobserved interval: an anchored cubic, which
+cannot bend freely between $u=0$ and $\min u$, is within a factor of four of the
+control. Second, two
+information-matched conditions change $\Gamma$ by a factor 0.90--0.99 for the
+network and the mechanistic control alike (0.64--0.99 across all
+representations), whereas a depletion pair that reaches the anchor of the
+RA-driven edges shrinks it by a factor of $1.8$--$6.1\times10^{-4}$ and brings the network
+to 1.0--1.4 times its control (Fig~\ref{fig:hfim}A); for the mechanistic
+control the same pair helps three- to twentyfold. Depletion does not add general
+information, it removes the loss that the network introduced. For the
+\bcat{}$\to$MYC edge, the double knockdown that takes \bcat{} to zero brings the
+network to its control in every regime, while the single WNT knockdown, which
+leaves \bcat{} at 1.3\% of its range, leaves a loss of 65--210. Within each dose
+arm, $\Gamma$ falls monotonically with the achieved anchor ratio (Spearman $\ge0.99$
+in all six arm--regime series, Fig~\ref{fig:hfim}B), but the arms do not
+collapse onto one curve: at matched $\rho\approx0.016$ in Severe APC Loss the
+loss is 3.5 for the retinoid arm and 230 for the \bcat{} arm. The anchor ratio
+orders designs within an arm; the bound weighs them across arms.
+
+Third, the bound is consistent with the fits, which were all run before it was
+computed. Over 116 distinct screen fits (atlas, depletion and
+information-matched comparisons, dose-response, prospective test), the rank
+correlation between $\Gamma$ and the measured basal error is $+0.79$, against $+0.55$
+for the anchor ratio alone (Fig~\ref{fig:hfim}C). The correlation is carried by
+design changes: within the base design, where edges differ in equations rather
+than in what the data visit, it is $+0.32$ ($n=56$); and the mechanistic $\Gamma$
+correlates with the controls' errors about as well ($+0.80$), so $\Gamma$ measures
+the conditioning of the equation as much as the network's loss. The cells share
+edges and regimes, so we give no $p$-value. One discordance is instructive.
+Under the single-knockdown depletion pair the bound predicts a similar
+residual loss for the \bcat{}$\to$MYC and \bcat{}$\to$CYP26A1 edges (65--210 and
+23--142), yet the fit improved the former thirty-fold and the latter not at all
+(below): the bound ranks designs, not individual fits.
+
+Two edges show what the bound adds to the anchor ratio. For MYC$\to$HOXA13,
+neither the depletion pairs nor a \bcat{} double knockout lowers the loss below
+$2.6\times10^3$ in any regime, although the latter cuts the MYC level; only a
+protocol that also silences basal MYC transcription (\texttt{mycKO}: the
+\bcat{} double knockout plus $k_{aM}=0$) brings it to 1.01 in all four regimes.
+For HOXA13$\to$\bcat{}, whose basal parameter is $W$ itself, every protocol
+that drives HOXA13 to zero leaves the loss unchanged ($6.5\times10^4$ to
+$7.7\times10^5$): HOXA13 can only be silenced by first removing \bcat{}, whose
+production is $k_WW+k_{13}\eta_{13}H_2(h_{13})$, so the conditions that visit
+the anchor set $k_W=0$ and delete $W$ from their own equations. The bound is
+consistent with the second clause of the design rule that the prospective test
+below arrived at empirically. It also points to a remedy the rule missed: the
+\emph{partial} WNT knockdown $k_W=0.02$, which does not reach the anchor
+($\rho=0.16$), brings the loss for $W$ to 1.6--2.0, because two conditions that
+observe $W$ and $0.02\,W$ with a known knockdown efficiency identify $W$ with no
+anchor at all.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig09_hybrid_fisher.pdf}
+\caption{\textbf{The Fisher information of a learned term.} Cram\'er--Rao bound
+of the basal parameter of each production edge in the equation-local problem,
+per unit residual noise, with the learned term represented by the screen's
+gated network and profiled out; training-free. (A) Bound under an added design
+relative to the base design, per regime (points): two information-matched
+conditions (open), two depletion conditions with the single WNT knockdown
+(circles) or the \bcat{} double knockout (squares); grey bars, the same factor
+for the mechanistic control. (B) Information lost to the network,
+$\Gamma_{\text{net}}/\Gamma_{\text{mech}}$, along the three dose arms of
+Fig~\ref{fig:dose} (solid, Normal; dashed and open, Severe APC Loss; ratio zero
+drawn at $2\times10^{-5}$). (C) Bound against the measured basal error of 116
+distinct screen fits, coloured by experiment.}
+\label{fig:hfim}
+\end{figure}
+
+\subsection{Designs that visit the anchor restore the basal rate}
+\label{sec:res-dose}
+
+The fits that the bound summarises are, in order of stringency, as follows.
+Adding the depletion pair (the WNT knockdown $k_W=0.02$ and a retinoid-free
+medium, which drives RA to zero exactly) to the ten base conditions takes the
+basal error of the two RA-driven edges from 10.9--33.5\% to 0.09--1.1\%, and
+the RA$\to$HOXA5 edge in Severe APC Loss from no equation parameter recovered
+to all four (Fig~\ref{fig:depletion}A). The MYC edge, whose regulator only
+approaches the anchor, improves up to thirty-fold but stops at 2.5--2.9\%; the
+\bcat{}$\to$CYP26A1 edge does not improve (24.6\%$\to$25.5\% in Normal,
+30.0\%$\to$64.8\% in Severe). Adding instead the information-matched pair, two
+conditions of the same size and style that leave every anchor ratio unchanged,
+changes the basal error by a factor of 0.76--1.54 in both directions and the
+equation parameters recovered from 16 to 15 of 28, whereas the depletion pair
+cuts it 7- to 200-fold on three of the four edges (not on
+\bcat{}$\to$CYP26A1) and recovers 26 of 28 (Fig~\ref{fig:depletion}B). These
+two comparisons used one restart, and away from the anchor single cells move by
+tens of points between restarts; the replicated contrast is the next one.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig10_depletion.pdf}
+\caption{\textbf{Visiting the anchor, not adding data, restores the basal rate.}
+Equation-local screen, gated network, one restart. (A) Basal error under the
+ten base conditions (orange) and with two depletion conditions added (blue),
+for four production edges in Normal (circles) and Severe APC Loss (diamonds);
+grey, mechanistic control on the same twelve conditions; anchor ratios before
+and after below each edge. (B) Ratio of the basal error to its base-design value
+with two information-matched conditions (open orange) and with two depletion
+conditions (blue).}
+\label{fig:depletion}
+\end{figure}
+
+\paragraph{At fixed experimental effort} Depletion and information-matched
+conditions differ in what they reach and also in how strongly they perturb. A
+dose-response with the number of conditions fixed separates the two
+(Fig~\ref{fig:dose}A,B). At every dose the design is the ten base conditions
+plus one graded depletion of depth $k\in\{1,0.3,0.1,0.03,0.01,0\}$, so no dose
+has more data than another and $k=1$ is each arm's own null. The three arms are
+graded retinoid restriction (scoring $a_5$); a graded WNT knockdown alone
+(scoring $a_M$), under which \bcat{} plateaus at 1.3\% of its range because the
+HOXA13 feedback keeps producing it; and the same knockdown applied to both
+sources of \bcat{} ($k_W=k_{13}=k$), which reaches zero. The last two score the
+same edge, equation and parameter with the same seeds, budget and number of
+conditions, and at $k=0$ differ by one knockdown. Replicated with five restarts
+from three disjoint seed sets, the single knockdown leaves $a_M$ at 1.45\%
+(range 1.33--1.52) in Normal and 2.25\% (1.79--2.63) in Severe APC Loss; the
+double knockdown at 0.003\% (0.001--0.008) and 0.002\% (0.001--0.003), 500- and
+1100-fold lower, against a seed spread of 0.2 and 0.8 points. The single
+knockdown at $k=0$ removes the WNT drive completely, and the mechanistic control
+is then at 0.0\%; \bcat{}, still produced through the HOXA13 feedback, stops at
+1.3\% of its range, and the network's basal error stops with it. Against dose the arms separate. Against the
+achieved anchor ratio the two \bcat{} arms line up (at matched ratio they agree
+within a factor of about two) and the single-knockdown arm sits at its ratio
+floor, but the retinoid arm does not join them in Severe APC Loss: there it
+stays near 3\% down to ratio zero, at parity with its mechanistic control (3.4\%),
+whose own information about $a_5$ is limited in that regime. The anchor ratio
+orders doses within an arm; how much a given ratio is worth differs between
+edges, as the Fisher analysis predicted (Fig~\ref{fig:hfim}B). From its own null
+dose, the MYC edge in Severe APC Loss goes from 61\% to 0.001\%. The monotone
+exact-anchor network behaves the same way (retinoid arm 22.8\%$\to$0.0\% in
+Normal; double knockdown 70.3\%$\to$0.0\% in Severe; single knockdown stops at
+1.8\% and 2.4\%).
+
+Six predictions for this experiment were registered before it was run (S1~Text).
+As registered, with two restarts in Severe APC Loss, two of the six passed in
+both regimes; rerunning Severe with five restarts, which removed one bad
+optimum, three pass. The failures include the registered falsifier in Normal:
+we had predicted that the single knockdown would never fall below 2\%, and it
+reached 1.3\%; at matched anchor ratio the two \bcat{} arms agree to within a
+factor of 2.0 (Normal) and 2.3 (Severe), which is what the anchor account
+predicts, while at ratio zero the double knockdown is three orders of magnitude
+lower.
+
+With state estimation in the loop, the full pipeline confirms the contrast. With
+the double knockdown and the retinoid-free medium added, the MYC basal error
+falls from 10.3/11.7/17.4/16.4\% under the single knockdown to
+1.4/0.6/0.6/0.7\% across the regimes, against a mechanistic control of
+0.2--0.3\% on the same twelve conditions; the hybrid recovers 58 of 136 shared
+regime--parameter pairs against the control's 62, three of the four lost pairs
+in the MYC equation (S3~Table). One further knockdown turns a 10--17\% error
+into one within about a point of the fully mechanistic fit; the full-pipeline errors
+are larger than the screen's, as expected from state-estimation error.
+
+\paragraph{A prospective test} Because the anchor ratio needs only reference
+trajectories, it can be tabulated for a ladder of candidate protocols ordered by
+laboratory cost before any fit (S4~Table), naming for each learned edge the
+cheapest protocol that puts its anchor in the data. The table was tested on the
+two production edges with the largest functional error in the atlas, MYC$\to$HOXA13
+and HOXA13$\to$\bcat{}, neither of which had been run under any depletion, each
+in three arms: the base design; a \emph{near-miss}, a larger perturbation than
+any in the base design that leaves the edge's anchor ratio far from zero; and
+the prescribed protocol (Fig~\ref{fig:dose}C). For MYC$\to$HOXA13 the prescribed
+protocol (\texttt{mycKO}) took the basal error from 12.8\% to 0.1\% in Normal
+and from 95.6\% to 0.05\% in Severe APC Loss, while the near-miss, the \bcat{}
+double knockout, which moves the anchor ratio from 0.082 to 0.079 (Normal) and
+0.113 to 0.068 (Severe), left it at 51.5\% and 59.8\%, in Normal worse than
+doing nothing. For HOXA13$\to$\bcat{} the registered prediction failed: the
+basal error did not move under any arm (16.2\% in all three in Normal, 57.5\%
+to 54.7\% in Severe). The protocol that reaches its anchor, a HOXA13 knockout
+($k_{a13}=0$ on top of \texttt{mycKO}), necessarily includes $k_W=0$ and so
+deletes the parameter it was meant to identify. The design rule therefore has
+two clauses, \emph{reach the anchor, with a condition that still contains the
+basal term}; the second was formulated after this failure, and the Fisher
+analysis above is consistent with it. Of the five registered predictions, the two
+that carry the claim passed (the prescribed arm below 3\%; the near-miss above
+8\%), and three failed (S1~Text). The prescribed protocol also made the
+\emph{functional} error of the MYC$\to$HOXA13 network worse (57\%$\to$68\% in
+Normal, 12\%$\to$81\% in Severe) while it fixed the parameter: enlarging the
+support towards zero exposes the network to inputs on which it was never
+constrained, so functional and parametric identifiability moved in opposite
+directions, the distinction Loman and Baker draw~\citep{loman2025identifiability}
+made concrete.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig11_dose_protocol.pdf}
+\caption{\textbf{Reaching the anchor, not perturbing harder, restores the basal
+rate.} (A, B) Dose-response with eleven conditions at every dose: network
+basal-parameter error (filled) and mechanistic control (open, small) against
+the achieved anchor ratio $\rho$ (A) and against the knockdown dose $k$ (B), for
+graded retinoid restriction ($a_5$), graded WNT knockdown ($a_M$) and graded
+knockdown of both \bcat{} sources ($a_M$). Normal two restarts; Severe five
+restarts, two-restart values faint; squares with bars at $k=0$, mean and range
+over three disjoint seed sets of five restarts. (C) Prospective test: basal
+error under the base design, under a near-miss that does not reach the anchor
+(open) and under the prescribed protocol, for MYC$\to$HOXA13 (top, basal
+$a_{13}$) and HOXA13$\to$\bcat{} (bottom, basal $W$; the HOXA13 knockout,
+labelled h13KO, reaches the anchor but deletes $W$, red); grey, mechanistic
+control; anchor ratio below each arm.}
+\label{fig:dose}
+\end{figure}

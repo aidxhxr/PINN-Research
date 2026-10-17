@@ -1,0 +1,189 @@
+% ---------------------------------------------------------------------------
+% Results, part B: the bound is attained; the estimator gap; SGN-PINN.
+% ---------------------------------------------------------------------------
+\subsection{The bound is attained}
+\label{sec:res-mc}
+
+A Cram\'er--Rao bound is a statement about a hypothetical efficient estimator
+in the asymptotic limit; it becomes a yardstick only if some estimator actually
+attains it on this problem. We tested this directly. For each regime, 24
+independent datasets (data seeds 101--124, the same design and noise level)
+were fitted by the exact maximum-likelihood estimator with $\dP$ known, started
+at the truth so that the question is statistical rather than one of finding the
+basin (Methods). In the two low-WNT regimes the bound is attained: the
+empirical standard deviation of every log-parameter across datasets matches
+its CRLB, from $2\times10^{-4}$ to $10^{-2}$ (Fig~\ref{fig:mc}A), the standardised
+errors are standard normal (variance 1.03 and 1.13; Fig~\ref{fig:mc}B), the
+nominal 95\% intervals $\pm1.96\,s_j$ cover the truth in 95\% and 92\% of cases
+(Fig~\ref{fig:mc}C), and twice the drop in cost from the truth to the estimate
+follows $\chi^2_{35}$ (mean 36.3 and 33.1; Fig~\ref{fig:mc}D). In the two high-WNT
+regimes the estimates scatter less than the bound (variance 0.88 and 0.70,
+coverage 95\% and 97\%) and the likelihood-ratio statistic falls short of
+$\chi^2_{35}$ (mean 31.9 and 31.0). This is not a failure to converge: restarting
+a fit from its own estimate with stricter stopping rules moves it by less than
+$10^{-10}$, and tightening the solver moved the likelihood-ratio statistic by
+only one to two units. It is the non-asymptotic regime of a weakly informed
+likelihood: along the sloppiest directions the log-likelihood is far from
+quadratic over the scale of the noise, the estimator is biased there, and its
+scatter can fall below a bound that holds for unbiased estimators (the weakest
+parameter, $\thP$ in Severe APC Loss, scatters by 33\% against a bound of
+57\%). The bound is therefore
+attained where the data are informative and conservative where they are not;
+in neither case does a converged estimator do worse than it, which is what a
+yardstick for estimator performance requires.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig04_attained.pdf}
+\caption{\textbf{The Cram\'er--Rao bound is attained where the data are informative.} Exact maximum-likelihood
+estimates ($\dP$ known, started at the truth) on 24 independent datasets per
+regime. (A) Empirical standard deviation of each log-parameter across datasets
+against its CRLB; grey band, the 95\% sampling interval of a standard deviation
+estimated from 24 draws. (B) Standardised errors $(\hat x_j-x_j)/s_j$ pooled
+over parameters and datasets, against the standard normal density (dashed). (C)
+Coverage of the nominal 95\% interval $\hat x_j\pm1.96\,s_j$ per parameter
+(points) and its mean (bar). (D) Twice the cost decrease from the truth to the
+estimate against $\chi^2_{35}$ quantiles. All fits use LSODA at relative
+tolerance $10^{-11}$ (Methods).}
+\label{fig:mc}
+\end{figure}
+
+\subsection{Physics-informed estimators leave an estimator gap}
+\label{sec:res-gap}
+
+With the yardstick established, the inverse PINN can be placed against it.
+Fig~\ref{fig:gap}A compares, on the benchmark data and on an independent
+replicate dataset, three PINN variants (each trained once from the common
+starting guess) with the classical fit and the bound: the standard formulation
+with an automatic-differentiation residual, the same with relative state
+weights and a fixed collocation grid, and the same with the derivative-free
+integral residual of Eq~\eqref{eq:integral} (Methods). On the benchmark data the
+autodiff PINN recovers 14, 10, 7 and 2 of the 34 regular parameters, with
+median errors 43 to 92 times the bound. Relative state weights and a fixed
+collocation grid lift this to 21, 19, 10 and 10 (10 to 22 times the bound).
+Replacing the residual by the integral form on top of them gives 17, 15, 10
+and 7 (13 to 33 times), so on these data, at one start each, the
+derivative-free residual adds nothing to the weighting. No formulation comes
+near the bound (Fig~\ref{fig:gap}A,C).
+The integral-residual PINN, the starting point of the SGN-PINN below,
+recovers 17, 15, 10 and 7 of the 34 regular
+parameters in the four regimes on the benchmark data (18, 16, 13 and 9 on the
+replicate), with median relative errors of 8.5\%, 12.2\%, 15.6\% and 30.6\%. On
+the same data the converged classical fit recovers all 34 in every regime, and
+the CRLB-expected count is 34.0, 34.0, 33.4 and 31.1. Its errors sit at or below
+the bound: the median ratio of error to CRLB standard deviation is 1.11, 0.60,
+0.21 and 0.42 (an efficient estimator would show 0.67, the median of
+$|\mathcal{N}(0,1)|$; values below it in the high-WNT regimes are the
+non-asymptotic shrinkage of Section~\ref{sec:res-mc}), whereas the integral PINN's errors
+are 13 to 35 times the bound at the median over both datasets (Fig~\ref{fig:gap}B,C). The
+shortfall is not concentrated in the poorly informed parameters: parameters
+that the design pins to $10^{-3}$ are recovered by the PINN to $10^{-1}$. This
+is an estimator gap in the plainest sense: the information is in the data, a
+classical estimator extracts it, and the PINN does not.
+
+The classical fit needs care too. From the common starting guess, the
+relative-weighted fit reaches the global minimum in every regime, but in Early
+Adenoma only after 536 objective evaluations, beyond the cap of 400 used
+elsewhere; the unit-weight fit from the same guess converges to a genuine local minimum
+(restarting from it with stricter stopping moves it by $10^{-5}$) at a cost 18
+times that of the global one (19 of 34 recovered). Every jittered start
+reaches the global minimum, and selecting among four starts by cost, which
+needs no knowledge of the truth, recovers the bound's count on both datasets
+(on the replicate 34, 34, 33 and 31, or 132 against a CRLB-expected 132.5). A few starts are cheap insurance against a likelihood with more
+than one basin.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig05_estimator_gap.pdf}
+\caption{\textbf{The estimator gap.} (A) Parameters recovered within 10\% (of the
+34 outside the degenerate $(\thP,\dP)$ pair) per regime, for PINNs with the
+automatic-differentiation residual, with relative weights and fixed
+collocation, and with the integral residual (one start each), the SGN-PINN
+(Section~\ref{sec:res-sgn}), the converged classical fit from the common start
+and the best of four starts; bars, benchmark data (seed 42); diamonds,
+replicate dataset (seed 7; the autodiff and weighted PINN variants were run on
+the benchmark data only); hatched, the CRLB-expected count. (B) Absolute
+log-error of every regular parameter against its CRLB standard deviation for
+the integral PINN and the classical fit, both datasets; solid line, error equal
+to the bound; dotted, 10 and 100 times the bound; dashed, 10\% error. (C) Median
+ratio of error to bound along the estimator ladder, per regime (both datasets
+where available); dashed, an
+efficient estimator.}
+\label{fig:gap}
+\end{figure}
+
+\subsection{Closing the estimator gap: a Schur-complement Gauss--Newton PINN}
+\label{sec:res-sgn}
+
+Where does the PINN lose the information? Not in the representation, which
+reaches a few percent (Section~\ref{sec:res-forward}), and not in the objective,
+whose large-$\lambda$ limit is the classical one; in the optimisation. A
+first-order method on a loss whose curvature spans eight orders of magnitude
+(Fig~\ref{fig:info}A) moves the well-informed directions quickly and the rest
+barely, and the network absorbs what the parameters do not explain. The
+SGN-PINN (Methods, Eqs~\eqref{eq:head}--\eqref{eq:schur}) freezes the trained
+PINN's hidden features, adds fixed random Fourier features and decaying
+exponentials, and optimises only the linear output layer of each condition
+together with $\theta$. The inverse problem then becomes a separable nonlinear
+least-squares problem whose Gauss--Newton matrix is block-arrowhead
+(Fig~\ref{fig:sgn}A), so a full Levenberg--Marquardt step in all
+$5.6\times10^4$ unknowns costs ten block factorisations and a $36\times36$
+solve. The physics weight $\lambda$ is continued upward from $10^{-2}$, where the
+heads mostly fit the data, to $10^3$, where the trajectories must solve the
+ODE. Two schedules are run from the integral PINN's estimate, and the reported
+one is chosen by the shooting misfit of the ODE solution at its parameters,
+which needs no knowledge of the truth. The feature basis and the schedules
+were chosen on the benchmark dataset; the replicate dataset is held out.
+
+On the held-out dataset the SGN-PINN recovers 34, 34, 33 and 30 of the 34
+regular parameters, with median errors of 0.11\%, 0.20\%, 1.1\% and 1.5\%
+(Fig~\ref{fig:gap}A). In Normal, Early and Advanced the continuation converges:
+the count rises within the first few iterations at small $\lambda$ and holds as
+the physics residual is driven down by three orders of magnitude
+(Fig~\ref{fig:sgn}B), and parameter by parameter its errors coincide with those
+of the classical fit on the same data (rank correlation of absolute log-errors 0.99--1.00;
+Fig~\ref{fig:sgn}C). In Severe APC Loss the physics residual stalls at
+$1.3\times10^4$, the trajectory is not an ODE solution, and although 30 of 34
+parameters are within 10\% their errors no longer track the classical fit's.
+On the benchmark dataset the method converges in Normal and Early (34 and 34)
+and stalls in the two high-WNT regimes (28 and 24; residuals $7\times10^3$ and
+$1.5\times10^4$). The SGN-PINN therefore reaches the classical estimate from
+inside the PINN framework when its continuation converges, and the physics
+residual, which needs no truth, says whether it has. In the cases where one
+schedule converged to a trajectory far from an ODE solution (physics residual
+above $10^5$), the shooting misfit was 0.5--19\% higher and the truth-free
+selection discarded it.
+
+The SGN-PINN also returns, as a by-product of its last step, the inverse of the
+Schur complement. Its square root tracks the CRLB of the design over three
+orders of magnitude, at 1.2 to 1.6 times the bound at the median across regimes
+and datasets (Fig~\ref{fig:sgn}D); the excess is expected, because the
+relative-weighted objective is itself less efficient than the bound by 7--47\%
+(Methods) and the Gauss--Newton curvature at finite $\lambda$ is not exactly the
+Fisher information. In an unconverged fit the estimate can be badly wrong (one
+parameter in the benchmark Severe fit is reported 2500 times too precise), so
+the self-reported precision is only as good as the convergence check that
+accompanies it. The method costs 15--27 minutes per regime (both schedules) on one GPU on top
+of the PINN it starts from, against 40--43 minutes for that PINN, 2--26 minutes
+for one start of the classical fit and under four minutes for the bound itself
+(Fig~\ref{fig:sgn}E; all measured on a shared node under load). Its contribution is not speed: it shows that the
+estimator gap of a PINN can be closed without abandoning the network
+representation of the trajectory, which is what one needs when part of the
+dynamics is itself learned, as in the hybrid models below.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig06_sgn.pdf}
+\caption{\textbf{The Schur-complement Gauss--Newton PINN.} (A) Structure of its
+Gauss--Newton matrix: dense blocks for the network heads of the ten conditions,
+coupled only through the 36 parameters, so each step reduces to the $36\times36$
+Schur complement, which is also the profiled curvature that yields standard
+errors. (B) Physics residual (top) and parameters within 10\% of 36 (bottom)
+along the continuation in $\lambda$ (vertical lines) on the held-out dataset,
+per regime, for the schedule chosen by shooting misfit. (C) Absolute log-error
+of every regular parameter, SGN-PINN against the classical fit on the same data.
+(D) The SGN-PINN's own standard errors against the CRLB of the design. (E)
+Measured wall-clock time per regime (range over regimes and datasets; the node
+was shared, so times are indicative).}
+\label{fig:sgn}
+\end{figure}

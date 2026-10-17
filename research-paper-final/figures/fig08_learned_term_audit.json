@@ -1,0 +1,731 @@
+{
+ "figure": "fig08_learned_term",
+ "panels": {
+  "A_curves": {
+   "source": "PINN-hybrid-ude/runs/20260727_012448_bm_myc",
+   "cache_checked": "research-poster-latex-hybrid/data/hybrid_comparison.json",
+   "regime_shown": "Early Adenoma",
+   "per_regime": {
+    "Normal": {
+     "lo": 0.03570005909587279,
+     "hi": 1.4305596295479166,
+     "aM_hat": 0.12194035505860312,
+     "aM": 0.18,
+     "epsM_hat": 0.7221579731122144,
+     "epsM": 0.6,
+     "dA": 0.05805964494139687,
+     "off_mean": 0.06691445283402304,
+     "off_sd": 0.01624811936081988,
+     "nrmse": 0.07893443779010406
+    },
+    "Early Adenoma": {
+     "lo": 0.11475790386787844,
+     "hi": 1.882413879352422,
+     "aM_hat": 0.0861804841760685,
+     "aM": 0.18,
+     "epsM_hat": 0.5933414144325918,
+     "epsM": 0.6,
+     "dA": 0.0938195158239315,
+     "off_mean": 0.09438628033040629,
+     "off_sd": 0.008113666431402784,
+     "nrmse": 0.09519554821213701
+    },
+    "Advanced Adenoma": {
+     "lo": 0.2,
+     "hi": 2.462694900707722,
+     "aM_hat": 0.23662601474841416,
+     "aM": 0.18,
+     "epsM_hat": 0.6977581061008742,
+     "epsM": 0.6,
+     "dA": -0.056626014748414166,
+     "off_mean": -0.030253985446473442,
+     "off_sd": 0.059999231014863756,
+     "nrmse": 0.0615088456684357
+    },
+    "Severe APC Loss": {
+     "lo": 0.2,
+     "hi": 3.009226745457106,
+     "aM_hat": 0.25439748951962254,
+     "aM": 0.18,
+     "epsM_hat": 0.6946228415724597,
+     "epsM": 0.6,
+     "dA": -0.07439748951962255,
+     "off_mean": -0.021795210783736647,
+     "off_sd": 0.09198159628132382,
+     "nrmse": 0.08314007643807957
+    }
+   }
+  },
+  "A_identity": {
+   "source": "PINN-hybrid-ude/runs/20260921_screen_5form",
+   "points_screen": {
+    "Normal/gated": {
+     "basal": 6.481389221417613,
+     "ctrl": 0.014726028368830833,
+     "nrmse": 1.3580423287098977,
+     "aM_hat": 0.1683334994014483,
+     "epsM_hat": 0.5986000970557098,
+     "dA": 0.011666500598551705,
+     "off_mean": 0.011624378273829459,
+     "off_sd": 0.0007733629202598565,
+     "seed": 117
+    },
+    "Normal/sc": {
+     "basal": 8.433148233652304,
+     "ctrl": 0.014726028368830833,
+     "nrmse": 1.766856185714703,
+     "aM_hat": 0.16482033317942585,
+     "epsM_hat": 0.5978064550403113,
+     "dA": 0.015179666820574145,
+     "off_mean": 0.015212746965714946,
+     "off_sd": 0.0010806804118497389,
+     "seed": 117
+    },
+    "Normal/sc_bounded": {
+     "basal": 10.495373200371699,
+     "ctrl": 0.014726028368830833,
+     "nrmse": 2.2029834648777658,
+     "aM_hat": 0.16110832823933094,
+     "epsM_hat": 0.5956037347582337,
+     "dA": 0.018891671760669054,
+     "off_mean": 0.0195182706958878,
+     "off_sd": 0.0020540405175226307,
+     "seed": 100
+    },
+    "Normal/lin": {
+     "basal": 6.989587085442846,
+     "ctrl": 0.014726028368830833,
+     "nrmse": 1.46523750695435,
+     "aM_hat": 0.16741874324620287,
+     "epsM_hat": 0.5974993710466281,
+     "dA": 0.012581256753797121,
+     "off_mean": 0.012729156272913253,
+     "off_sd": 0.0010430188204738565,
+     "seed": 100
+    },
+    "Early Adenoma/gated": {
+     "basal": 33.38082147015457,
+     "ctrl": 0.1476689524030412,
+     "nrmse": 5.64678502143602,
+     "aM_hat": 0.11991452135372176,
+     "epsM_hat": 0.5963923170982118,
+     "dA": 0.06008547864627824,
+     "off_mean": 0.059602922959722554,
+     "off_sd": 0.0011992873817110285,
+     "seed": 134
+    },
+    "Early Adenoma/sc": {
+     "basal": 30.657197422186055,
+     "ctrl": 0.1476689524030412,
+     "nrmse": 5.186681980303613,
+     "aM_hat": 0.1248170446400651,
+     "epsM_hat": 0.599003303976408,
+     "dA": 0.05518295535993489,
+     "off_mean": 0.055584372884040105,
+     "off_sd": 0.0008785083187440326,
+     "seed": 100
+    },
+    "Early Adenoma/sc_bounded": {
+     "basal": 17.890474751216264,
+     "ctrl": 0.1476689524030412,
+     "nrmse": 3.0268345849707683,
+     "aM_hat": 0.14779714544781072,
+     "epsM_hat": 0.5982465191020853,
+     "dA": 0.03220285455218927,
+     "off_mean": 0.032371582688389224,
+     "off_sd": 0.00042301770068173906,
+     "seed": 134
+    },
+    "Early Adenoma/lin": {
+     "basal": 37.98114530449512,
+     "ctrl": 0.1476689524030412,
+     "nrmse": 6.42571157622456,
+     "aM_hat": 0.11163393845190878,
+     "epsM_hat": 0.5989854807937862,
+     "dA": 0.06836606154809122,
+     "off_mean": 0.06865680480416281,
+     "off_sd": 0.0009372314795113272,
+     "seed": 134
+    },
+    "Advanced Adenoma/gated": {
+     "basal": 18.855655181531095,
+     "ctrl": 15.639429837035232,
+     "nrmse": 2.809160904937171,
+     "aM_hat": 0.14605982067324402,
+     "epsM_hat": 0.5979223527463394,
+     "dA": 0.03394017932675597,
+     "off_mean": 0.035225633389311194,
+     "off_sd": 0.004656710158516997,
+     "seed": 134
+    },
+    "Advanced Adenoma/sc": {
+     "basal": 66.16685115998388,
+     "ctrl": 15.639429837035232,
+     "nrmse": 9.848629831783537,
+     "aM_hat": 0.060899667912029026,
+     "epsM_hat": 0.6010114967898129,
+     "dA": 0.11910033208797097,
+     "off_mean": 0.12144308916411817,
+     "off_sd": 0.006356445782313641,
+     "seed": 134
+    },
+    "Advanced Adenoma/sc_bounded": {
+     "basal": 8.42357370580195,
+     "ctrl": 15.639429837035232,
+     "nrmse": 1.2593836370432105,
+     "aM_hat": 0.16483756732955648,
+     "epsM_hat": 0.5981892050542688,
+     "dA": 0.01516243267044351,
+     "off_mean": 0.016547271922839044,
+     "off_sd": 0.0049115722667169865,
+     "seed": 100
+    },
+    "Advanced Adenoma/lin": {
+     "basal": 92.10326265796795,
+     "ctrl": 15.639429837035232,
+     "nrmse": 13.70513489752923,
+     "aM_hat": 0.0142141272156577,
+     "epsM_hat": 0.6003267836778629,
+     "dA": 0.1657858727843423,
+     "off_mean": 0.1678929835918214,
+     "off_sd": 0.005921686920670039,
+     "seed": 134
+    },
+    "Severe APC Loss/gated": {
+     "basal": 57.94312600218829,
+     "ctrl": 35.564608233305556,
+     "nrmse": 8.230590541377829,
+     "aM_hat": 0.07570237319606107,
+     "epsM_hat": 0.6011785892995757,
+     "dA": 0.10429762680393892,
+     "off_mean": 0.10871127707504458,
+     "off_sd": 0.010439086201776748,
+     "seed": 134
+    },
+    "Severe APC Loss/sc": {
+     "basal": 39.022434385245795,
+     "ctrl": 35.564608233305556,
+     "nrmse": 5.543954700532645,
+     "aM_hat": 0.10975961810655756,
+     "epsM_hat": 0.5939278636347937,
+     "dA": 0.07024038189344244,
+     "off_mean": 0.07315183582749267,
+     "off_sd": 0.012384985260646433,
+     "seed": 100
+    },
+    "Severe APC Loss/sc_bounded": {
+     "basal": 18.51358992760743,
+     "ctrl": 35.564608233305556,
+     "nrmse": 2.6226613960829273,
+     "aM_hat": 0.21332446186969337,
+     "epsM_hat": 0.6038400495742823,
+     "dA": -0.03332446186969337,
+     "off_mean": -0.028967784330167782,
+     "off_sd": 0.009378562344175122,
+     "seed": 100
+    },
+    "Severe APC Loss/lin": {
+     "basal": 69.57470119792914,
+     "ctrl": 35.564608233305556,
+     "nrmse": 9.882374858576819,
+     "aM_hat": 0.05476553784372753,
+     "epsM_hat": 0.6015903548717083,
+     "dA": 0.12523446215627246,
+     "off_mean": 0.12984788338580075,
+     "off_sd": 0.011307871834953392,
+     "seed": 134
+    }
+   },
+   "points_full_pipeline": {
+    "Normal": {
+     "lo": 0.03570005909587279,
+     "hi": 1.4305596295479166,
+     "aM_hat": 0.12194035505860312,
+     "aM": 0.18,
+     "epsM_hat": 0.7221579731122144,
+     "epsM": 0.6,
+     "dA": 0.05805964494139687,
+     "off_mean": 0.06691445283402304,
+     "off_sd": 0.01624811936081988,
+     "nrmse": 0.07893443779010406
+    },
+    "Early Adenoma": {
+     "lo": 0.11475790386787844,
+     "hi": 1.882413879352422,
+     "aM_hat": 0.0861804841760685,
+     "aM": 0.18,
+     "epsM_hat": 0.5933414144325918,
+     "epsM": 0.6,
+     "dA": 0.0938195158239315,
+     "off_mean": 0.09438628033040629,
+     "off_sd": 0.008113666431402784,
+     "nrmse": 0.09519554821213701
+    },
+    "Advanced Adenoma": {
+     "lo": 0.2,
+     "hi": 2.462694900707722,
+     "aM_hat": 0.23662601474841416,
+     "aM": 0.18,
+     "epsM_hat": 0.6977581061008742,
+     "epsM": 0.6,
+     "dA": -0.056626014748414166,
+     "off_mean": -0.030253985446473442,
+     "off_sd": 0.059999231014863756,
+     "nrmse": 0.0615088456684357
+    },
+    "Severe APC Loss": {
+     "lo": 0.2,
+     "hi": 3.009226745457106,
+     "aM_hat": 0.25439748951962254,
+     "aM": 0.18,
+     "epsM_hat": 0.6946228415724597,
+     "epsM": 0.6,
+     "dA": -0.07439748951962255,
+     "off_mean": -0.021795210783736647,
+     "off_sd": 0.09198159628132382,
+     "nrmse": 0.08314007643807957
+    }
+   },
+   "excluded_lin_mono": {
+    "Normal": {
+     "dA": -0.36281545427877165,
+     "off_mean": -0.20381313782844146,
+     "epsM_hat": 18.26659548219896
+    },
+    "Early Adenoma": {
+     "dA": -0.7286621027420142,
+     "off_mean": -0.5709911172107922,
+     "epsM_hat": 10.59381864582779
+    },
+    "Advanced Adenoma": {
+     "dA": -0.9633543153598774,
+     "off_mean": -0.8393675806276818,
+     "epsM_hat": 1.6303626668844593
+    },
+    "Severe APC Loss": {
+     "dA": -1.1254699836994708,
+     "off_mean": -0.9891553993199761,
+     "epsM_hat": 1.2088643935053518
+    }
+   },
+   "note": "lin_mono excluded: eps_M is inflated (1.2-18.3 vs 0.6), so the deficit is not carried by a_M alone."
+  },
+  "B_atlas": {
+   "sources": {
+    "Normal": "PINN-hybrid-ude/runs/20260801_204046_screen_atlas/screen.log",
+    "others": "PINN-hybrid-ude/runs/20260802_screen_atlas_rest/screen.json",
+    "cross_check": "PINN-hybrid-ude/runs/20260921_aggregations/atlas_4regime.txt"
+   },
+   "cells": {
+    "Normal/ra_h5/gated": {
+     "basal": 17.0,
+     "ctrl": 0.5,
+     "fnrmse": 1.2,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/ra_h5/sc": {
+     "basal": 24.2,
+     "ctrl": 0.5,
+     "fnrmse": 3.5,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/rc_cyp/gated": {
+     "basal": 31.6,
+     "ctrl": 7.4,
+     "fnrmse": 4.4,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/rc_cyp/sc": {
+     "basal": 50.7,
+     "ctrl": 7.4,
+     "fnrmse": 7.2,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/bc_cyp/gated": {
+     "basal": 41.5,
+     "ctrl": 7.4,
+     "fnrmse": 3.3,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/bc_cyp/sc": {
+     "basal": 70.1,
+     "ctrl": 7.4,
+     "fnrmse": 5.4,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/bm_myc/gated": {
+     "basal": 6.5,
+     "ctrl": 0.0,
+     "fnrmse": 1.4,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/bm_myc/sc": {
+     "basal": 8.4,
+     "ctrl": 0.0,
+     "fnrmse": 1.8,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/b_h13/gated": {
+     "basal": 20.4,
+     "ctrl": 0.0,
+     "fnrmse": 9.9,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/b_h13/sc": {
+     "basal": 8.3,
+     "ctrl": 0.0,
+     "fnrmse": 4.0,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/m_h13/gated": {
+     "basal": 12.8,
+     "ctrl": 0.0,
+     "fnrmse": 57.2,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/m_h13/sc": {
+     "basal": 27.3,
+     "ctrl": 0.0,
+     "fnrmse": 82.7,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/h13_b/gated": {
+     "basal": 16.2,
+     "ctrl": 0.2,
+     "fnrmse": 19.3,
+     "precision": "0.1 % (log)"
+    },
+    "Normal/h13_b/sc": {
+     "basal": 12.9,
+     "ctrl": 0.2,
+     "fnrmse": 17.0,
+     "precision": "0.1 % (log)"
+    },
+    "Early Adenoma/ra_h5/gated": {
+     "basal": 25.943037757034347,
+     "ctrl": 0.3336143601798495,
+     "fnrmse": 3.7548112039135635,
+     "precision": "full"
+    },
+    "Early Adenoma/ra_h5/sc": {
+     "basal": 16.694508346983365,
+     "ctrl": 0.3336143601798495,
+     "fnrmse": 2.8310709301461117,
+     "precision": "full"
+    },
+    "Early Adenoma/rc_cyp/gated": {
+     "basal": 2.850940059182395,
+     "ctrl": 0.1784217300793839,
+     "fnrmse": 0.5209965066019191,
+     "precision": "full"
+    },
+    "Early Adenoma/rc_cyp/sc": {
+     "basal": 115.36467758796593,
+     "ctrl": 0.1784217300793839,
+     "fnrmse": 16.2184784351513,
+     "precision": "full"
+    },
+    "Early Adenoma/bc_cyp/gated": {
+     "basal": 50.7562180933779,
+     "ctrl": 0.1784217300793839,
+     "fnrmse": 3.477414187256672,
+     "precision": "full"
+    },
+    "Early Adenoma/bc_cyp/sc": {
+     "basal": 99.99918943851115,
+     "ctrl": 0.1784217300793839,
+     "fnrmse": 6.8243338889347065,
+     "precision": "full"
+    },
+    "Early Adenoma/bm_myc/gated": {
+     "basal": 48.22264904091572,
+     "ctrl": 0.1476689524030412,
+     "fnrmse": 8.16019594459852,
+     "precision": "full"
+    },
+    "Early Adenoma/bm_myc/sc": {
+     "basal": 30.657197422186055,
+     "ctrl": 0.1476689524030412,
+     "fnrmse": 5.186681980303613,
+     "precision": "full"
+    },
+    "Early Adenoma/b_h13/gated": {
+     "basal": 38.30607206124405,
+     "ctrl": 0.7125492962386762,
+     "fnrmse": 8.190165411965262,
+     "precision": "full"
+    },
+    "Early Adenoma/b_h13/sc": {
+     "basal": 34.927826870389865,
+     "ctrl": 0.7125492962386762,
+     "fnrmse": 10.481150365568121,
+     "precision": "full"
+    },
+    "Early Adenoma/m_h13/gated": {
+     "basal": 10.637970905359621,
+     "ctrl": 0.7125492962386762,
+     "fnrmse": 66.18065712499268,
+     "precision": "full"
+    },
+    "Early Adenoma/m_h13/sc": {
+     "basal": 25.93637922782883,
+     "ctrl": 0.7125492962386762,
+     "fnrmse": 86.8702435875438,
+     "precision": "full"
+    },
+    "Early Adenoma/h13_b/gated": {
+     "basal": 23.961293648451452,
+     "ctrl": 0.008959827708610035,
+     "fnrmse": 37.352970787008864,
+     "precision": "full"
+    },
+    "Early Adenoma/h13_b/sc": {
+     "basal": 11.981804343848001,
+     "ctrl": 0.008959827708610035,
+     "fnrmse": 19.083286795778236,
+     "precision": "full"
+    },
+    "Advanced Adenoma/ra_h5/gated": {
+     "basal": 4.769589397793521,
+     "ctrl": 35.57454168379173,
+     "fnrmse": 4.059208039854364,
+     "precision": "full"
+    },
+    "Advanced Adenoma/ra_h5/sc": {
+     "basal": 20.90022070984245,
+     "ctrl": 35.57454168379173,
+     "fnrmse": 7.9867790353068,
+     "precision": "full"
+    },
+    "Advanced Adenoma/rc_cyp/gated": {
+     "basal": 11.178358532639225,
+     "ctrl": 50.047801514401456,
+     "fnrmse": 3.76047798067169,
+     "precision": "full"
+    },
+    "Advanced Adenoma/rc_cyp/sc": {
+     "basal": 99.43501584985368,
+     "ctrl": 50.047801514401456,
+     "fnrmse": 11.72695185710396,
+     "precision": "full"
+    },
+    "Advanced Adenoma/bc_cyp/gated": {
+     "basal": 49.329199680668076,
+     "ctrl": 50.047801514401456,
+     "fnrmse": 3.065176580062404,
+     "precision": "full"
+    },
+    "Advanced Adenoma/bc_cyp/sc": {
+     "basal": 94.95536627767699,
+     "ctrl": 50.047801514401456,
+     "fnrmse": 5.983421961169883,
+     "precision": "full"
+    },
+    "Advanced Adenoma/bm_myc/gated": {
+     "basal": 68.28390958491394,
+     "ctrl": 15.639429837035232,
+     "fnrmse": 10.163515437702548,
+     "precision": "full"
+    },
+    "Advanced Adenoma/bm_myc/sc": {
+     "basal": 51.83072514497131,
+     "ctrl": 15.639429837035232,
+     "fnrmse": 7.714577407573111,
+     "precision": "full"
+    },
+    "Advanced Adenoma/b_h13/gated": {
+     "basal": 34.945933790489704,
+     "ctrl": 11.335796699204991,
+     "fnrmse": 7.901004520858295,
+     "precision": "full"
+    },
+    "Advanced Adenoma/b_h13/sc": {
+     "basal": 93.95888036173162,
+     "ctrl": 11.335796699204991,
+     "fnrmse": 14.584395049803833,
+     "precision": "full"
+    },
+    "Advanced Adenoma/m_h13/gated": {
+     "basal": 66.66813786870236,
+     "ctrl": 11.335796699204991,
+     "fnrmse": 78.10050128894923,
+     "precision": "full"
+    },
+    "Advanced Adenoma/m_h13/sc": {
+     "basal": 51.53280620322369,
+     "ctrl": 11.335796699204991,
+     "fnrmse": 80.45288185136751,
+     "precision": "full"
+    },
+    "Advanced Adenoma/h13_b/gated": {
+     "basal": 51.630823260892015,
+     "ctrl": 11.79276710842938,
+     "fnrmse": 116.5291761447242,
+     "precision": "full"
+    },
+    "Advanced Adenoma/h13_b/sc": {
+     "basal": 10.14794903100899,
+     "ctrl": 11.79276710842938,
+     "fnrmse": 22.348174339216097,
+     "precision": "full"
+    },
+    "Severe APC Loss/ra_h5/gated": {
+     "basal": 33.52624310934515,
+     "ctrl": 36.312435062130355,
+     "fnrmse": 24.448091563960645,
+     "precision": "full"
+    },
+    "Severe APC Loss/ra_h5/sc": {
+     "basal": 19.68128403563237,
+     "ctrl": 36.312435062130355,
+     "fnrmse": 7.51898410456227,
+     "precision": "full"
+    },
+    "Severe APC Loss/rc_cyp/gated": {
+     "basal": 20.32255298853017,
+     "ctrl": 42.22649831100265,
+     "fnrmse": 0.5795372580943983,
+     "precision": "full"
+    },
+    "Severe APC Loss/rc_cyp/sc": {
+     "basal": 30.005550795471574,
+     "ctrl": 42.22649831100265,
+     "fnrmse": 10.484070745327031,
+     "precision": "full"
+    },
+    "Severe APC Loss/bc_cyp/gated": {
+     "basal": 33.71415694371298,
+     "ctrl": 42.22649831100265,
+     "fnrmse": 2.0082844190449536,
+     "precision": "full"
+    },
+    "Severe APC Loss/bc_cyp/sc": {
+     "basal": 21.247806647877663,
+     "ctrl": 42.22649831100265,
+     "fnrmse": 1.1091665972867326,
+     "precision": "full"
+    },
+    "Severe APC Loss/bm_myc/gated": {
+     "basal": 78.86598521042603,
+     "ctrl": 35.564608233305556,
+     "fnrmse": 11.197202454398191,
+     "precision": "full"
+    },
+    "Severe APC Loss/bm_myc/sc": {
+     "basal": 39.022434385245795,
+     "ctrl": 35.564608233305556,
+     "fnrmse": 5.543954700532645,
+     "precision": "full"
+    },
+    "Severe APC Loss/b_h13/gated": {
+     "basal": 37.67939153379555,
+     "ctrl": 28.050340459305783,
+     "fnrmse": 0.47920199693989046,
+     "precision": "full"
+    },
+    "Severe APC Loss/b_h13/sc": {
+     "basal": 99.33523366179007,
+     "ctrl": 28.050340459305783,
+     "fnrmse": 21.60124940960812,
+     "precision": "full"
+    },
+    "Severe APC Loss/m_h13/gated": {
+     "basal": 95.56356503833423,
+     "ctrl": 28.050340459305783,
+     "fnrmse": 11.56069293036081,
+     "precision": "full"
+    },
+    "Severe APC Loss/m_h13/sc": {
+     "basal": 12.715454044666059,
+     "ctrl": 28.050340459305783,
+     "fnrmse": 74.4267274658359,
+     "precision": "full"
+    },
+    "Severe APC Loss/h13_b/gated": {
+     "basal": 57.497997858331196,
+     "ctrl": 17.197915930243923,
+     "fnrmse": 171.430512682026,
+     "precision": "full"
+    },
+    "Severe APC Loss/h13_b/sc": {
+     "basal": 20.87392111060229,
+     "ctrl": 17.197915930243923,
+     "fnrmse": 49.25758588649402,
+     "precision": "full"
+    }
+   },
+   "floor_pct": 0.05,
+   "cells_under_10pct": {
+    "gated": 3,
+    "sc": 2
+   },
+   "control_cells_under_10pct": 14
+  },
+  "C_five_form": {
+   "source": "PINN-hybrid-ude/runs/20260921_screen_5form/screen.json",
+   "cross_check": "PINN-hybrid-ude/runs/20260921_aggregations/screen_5form.txt",
+   "basal_err_pct": {
+    "Normal/gated": 6.481389221417613,
+    "Normal/sc": 8.433148233652304,
+    "Normal/sc_bounded": 10.495373200371699,
+    "Normal/lin": 6.989587085442846,
+    "Normal/lin_mono": 201.5641412659843,
+    "Early Adenoma/gated": 33.38082147015457,
+    "Early Adenoma/sc": 30.657197422186055,
+    "Early Adenoma/sc_bounded": 17.890474751216264,
+    "Early Adenoma/lin": 37.98114530449512,
+    "Early Adenoma/lin_mono": 404.812279301119,
+    "Advanced Adenoma/gated": 18.855655181531095,
+    "Advanced Adenoma/sc": 66.16685115998388,
+    "Advanced Adenoma/sc_bounded": 8.42357370580195,
+    "Advanced Adenoma/lin": 92.10326265796795,
+    "Advanced Adenoma/lin_mono": 535.1968418665986,
+    "Severe APC Loss/gated": 57.94312600218829,
+    "Severe APC Loss/sc": 39.022434385245795,
+    "Severe APC Loss/sc_bounded": 18.51358992760743,
+    "Severe APC Loss/lin": 69.57470119792914,
+    "Severe APC Loss/lin_mono": 625.2611020552615
+   },
+   "control_basal_err_pct": {
+    "Normal": 0.014726028368830833,
+    "Early Adenoma": 0.1476689524030412,
+    "Advanced Adenoma": 15.639429837035232,
+    "Severe APC Loss": 35.564608233305556
+   }
+  },
+  "discrepancy_atlas_vs_five_form_bm_myc": {
+   "Normal": {
+    "atlas_gated": 6.5,
+    "five_gated": 6.481389221417613,
+    "atlas_sc": 8.4,
+    "five_sc": 8.433148233652304,
+    "atlas_ctrl": 0.0,
+    "five_ctrl": 0.014726028368830833
+   },
+   "Early Adenoma": {
+    "atlas_gated": 48.22264904091572,
+    "five_gated": 33.38082147015457,
+    "atlas_sc": 30.657197422186055,
+    "five_sc": 30.657197422186055,
+    "atlas_ctrl": 0.1476689524030412,
+    "five_ctrl": 0.1476689524030412
+   },
+   "Advanced Adenoma": {
+    "atlas_gated": 68.28390958491394,
+    "five_gated": 18.855655181531095,
+    "atlas_sc": 51.83072514497131,
+    "five_sc": 66.16685115998388,
+    "atlas_ctrl": 15.639429837035232,
+    "five_ctrl": 15.639429837035232
+   },
+   "Severe APC Loss": {
+    "atlas_gated": 78.86598521042603,
+    "five_gated": 57.94312600218829,
+    "atlas_sc": 39.022434385245795,
+    "five_sc": 39.022434385245795,
+    "atlas_ctrl": 35.564608233305556,
+    "five_ctrl": 35.564608233305556
+   }
+  }
+ }
+}

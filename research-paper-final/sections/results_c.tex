@@ -1,0 +1,87 @@
+% ---------------------------------------------------------------------------
+% Results, part C: an information gap in the mechanistic model (thetaP).
+% ---------------------------------------------------------------------------
+\subsection{An information gap: APC functionality on the \texorpdfstring{\bcat{}}{beta-catenin} plateau}
+\label{sec:res-thetaP}
+
+Setting the estimator gap aside, what remains is what the bound itself
+withholds.
+In Severe APC Loss four parameters have CRLB standard deviations above 15\%
+(Fig~\ref{fig:info}C), and the widest belongs to the parameter that defines the
+disease stage. With $\dP$ known, so that the structural degeneracy is removed
+and nothing else, the bound on $\thP$ widens from 0.04\% in Normal to 0.23\%,
+7.2\% and 57\% across the regimes, a factor of 1600. Part of the trend is a
+coordinate effect: the quantity the APC equation actually contains is the
+excess degradation $\kappa_P=\dP(1-\thP)$, whose relative precision is
+$\thP/(1-\thP)$ times that of $\thP$, and its bound widens from 0.69\% (Early)
+to 7.2\% and 19\%. The trend survives the change of coordinates at a third of
+the magnitude, and it has a mechanism. As WNT drive rises, APC falls (time
+average 0.48 in Normal, 0.076 in Severe) and the APC-dependent removal of
+\bcat{}, $\lambda_P p b$, falls from 33\% to 9\% of total \bcat{} turnover; the
+observables then respond only weakly to the APC branch, whose only free knob is
+$\thP$, and the log-sensitivity of \bcat{} to $\thP$ falls 24-fold
+(Fig~\ref{fig:thetaP}C). Since this is information the data lack, the
+estimators of the previous sections should not recover $\thP$ in Severe APC
+Loss to better than the bound, and they do not: across 24 independent datasets
+the converged maximum-likelihood estimate of $\thP$ scatters by 33\% (against a
+bound of 57\%, the non-asymptotic shrinkage of Section~\ref{sec:res-mc}), far
+too much to stage the disease from data of this kind.
+
+The bound also says what would close the gap, and what would not. Removing one
+base condition at a time (S1~Fig) shows that the sustained WNT-inhibition step
+carries most of the design's information on $\thP$: dropping it inflates the
+bound 2.8-, 6.3- and 2.4-fold in the first three regimes, while dropping any
+one of the other nine conditions changes it by at most 17\%. It matters least in
+Severe APC Loss ($\times1.25$), because a step of $-0.7$ against a drive of $2.0$ does not lower
+\bcat{} much. Adding one condition that is informative in general but does not
+lower \bcat{}, a further ATRA protocol or a second WNT pulse, narrows the bound
+by 2--4.3\%. Adding one WNT knockdown narrows it in proportion to how far the
+knockdown lowers \bcat{}: by a factor of 4 at $k_W=0.5$, 22 at $k_W=0.1$ and 33
+at $k_W=0$ in Severe APC Loss (Fig~\ref{fig:thetaP}A; these design comparisons
+use 200 uniformly spaced observations per condition, so their absolute values
+differ slightly from the benchmark design's). With the two-condition pairs on the
+150-point benchmark design, the bound on $\thP$ in Severe APC Loss is 57\% under
+the base design, 53\% with the two information-matched conditions and 1.8\% with
+the depletion pair, and the number of parameters with a bound below 5\% goes from
+25 to 25 and to all 35, respectively; in Advanced Adenoma the bound goes from
+7.2\% to 6.9\% and to 0.42\%.
+
+These are local bounds, so the comparison was repeated by fit, with the same
+converged maximum-likelihood estimator used throughout (36 free parameters, four
+starts, the best kept by cost) under the base design, the base design plus the
+two information-matched conditions, and the base design plus the depletion pair
+(a WNT knockdown $k_W=0.02$ and a retinoid-free medium). Because $\thP$ alone is
+tied to $\dP$, the scored quantity is the identifiable product $\kappa_P$
+(Fig~\ref{fig:thetaP}B). On this one dataset the fitted errors in $\kappa_P$ are
+0.35\%, 2.2\% and 5.1\% (Early, Advanced, Severe) under the base design, each
+inside its bound (0.69\%, 7.2\% and 19\%); 0.23\%, 2.6\% and 2.7\% with the
+information-matched pair, whose bounds (0.64\%, 6.9\% and 18\%) are barely
+narrower; and 0.20\%, 0.29\% and 0.25\% with the depletion pair, whose bounds
+fall to 0.35\%, 0.42\% and 0.61\%. A single dataset is one draw from the
+distribution the bound describes, and here the draws fall inside it in every
+cell; it is the bound, not the draw, that says the depletion pair is worth a
+factor of 20--30 in the high-WNT regimes and the information-matched pair almost
+nothing. The selection among four starts mattered once: in Early Adenoma the
+common starting guess converges to a local minimum under the base and
+information-matched designs, and the cost picks the global one.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig07_thetaP.pdf}
+\caption{\textbf{APC functionality is an information gap, and a WNT knockdown
+closes it.} (A) Cram\'er--Rao relative standard deviation of $\thP$ with $\dP$
+known and 34 other parameters free, per regime, for designs ordered from fewer
+conditions (retinoid-only; base without the WNT-inhibition step), through the
+base design and the base design plus one information-matched condition, to the
+base design plus one WNT knockdown of residual strength $k_W$ (and a \bcat{}
+double knockout); 200 uniformly spaced observations per condition. (B)
+Converged maximum-likelihood fits of all 36 parameters (best of four starts by
+cost) under the base design, with two added information-matched conditions and
+with two added depletion conditions (WNT knockdown $k_W=0.02$, retinoid-free
+medium), benchmark data: error in the identifiable product $\dP(1-\thP)$ (left;
+zero by construction in Normal), and its Cram\'er--Rao bound on the 150-point
+benchmark design for each design (right, bars) with the fitted errors (ticks). (C) Log-sensitivity of
+\bcat{} to $\thP$ under the control protocol: it falls 24-fold from Normal to
+Severe APC Loss.}
+\label{fig:thetaP}
+\end{figure}

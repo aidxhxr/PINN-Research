@@ -1,0 +1,624 @@
+{
+ "figure": "fig11_dose_protocol",
+ "units": "percent",
+ "sources": {
+  "Normal": "PINN-hybrid-ude/runs/20260802_dose_response",
+  "Severe_main": "PINN-hybrid-ude/runs/20260802_dose_starts5",
+  "Severe_faint_2start": "PINN-hybrid-ude/runs/20260802_dose_response",
+  "seeds": "PINN-hybrid-ude/runs/20260921_dose_seeds",
+  "protocol": "PINN-hybrid-ude/runs/20260802_protocol_test"
+ },
+ "dose_cells": [
+  {
+   "regime": "Normal",
+   "arm": "ra",
+   "dose": 0.0,
+   "anchor_ratio": 0.0,
+   "hybrid_basal_err_pct": 0.0017817411599082198,
+   "ctrl_basal_err_pct": 0.017749249600740313,
+   "term_nrmse_pct": 0.02467134085897126,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "ra",
+   "dose": 0.01,
+   "anchor_ratio": 0.0014317028990366999,
+   "hybrid_basal_err_pct": 0.06549008042489035,
+   "ctrl_basal_err_pct": 0.017006006332957273,
+   "term_nrmse_pct": 0.03201552861706403,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "ra",
+   "dose": 0.03,
+   "anchor_ratio": 0.004284855562219645,
+   "hybrid_basal_err_pct": 0.1885974008713672,
+   "ctrl_basal_err_pct": 0.015459937841392584,
+   "term_nrmse_pct": 0.04482930460305662,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "ra",
+   "dose": 0.1,
+   "anchor_ratio": 0.014170498624280076,
+   "hybrid_basal_err_pct": 0.5886484034805702,
+   "ctrl_basal_err_pct": 0.008244029588303874,
+   "term_nrmse_pct": 0.10087181689412733,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "ra",
+   "dose": 0.3,
+   "anchor_ratio": 0.04170071829521651,
+   "hybrid_basal_err_pct": 3.897320044786786,
+   "ctrl_basal_err_pct": 0.0335475994495497,
+   "term_nrmse_pct": 0.6434656353136821,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "ra",
+   "dose": 1.0,
+   "anchor_ratio": 0.12062210480768117,
+   "hybrid_basal_err_pct": 15.354769798776887,
+   "ctrl_basal_err_pct": 0.54342272583278,
+   "term_nrmse_pct": 2.066022543729884,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "bcat",
+   "dose": 0.0,
+   "anchor_ratio": 0.0,
+   "hybrid_basal_err_pct": 0.02118633164439116,
+   "ctrl_basal_err_pct": 0.016591795790934137,
+   "term_nrmse_pct": 0.1283455164101415,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "bcat",
+   "dose": 0.01,
+   "anchor_ratio": 0.0009488826810614228,
+   "hybrid_basal_err_pct": 0.1907722724422196,
+   "ctrl_basal_err_pct": 0.016382661295132824,
+   "term_nrmse_pct": 0.12358988782181768,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "bcat",
+   "dose": 0.03,
+   "anchor_ratio": 0.002856847994739965,
+   "hybrid_basal_err_pct": 0.49098642006240345,
+   "ctrl_basal_err_pct": 0.015948196330556948,
+   "term_nrmse_pct": 0.14540379863870184,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "bcat",
+   "dose": 0.1,
+   "anchor_ratio": 0.009661951117658184,
+   "hybrid_basal_err_pct": 1.112080340669992,
+   "ctrl_basal_err_pct": 0.014273080995657545,
+   "term_nrmse_pct": 0.2505728591243056,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "bcat",
+   "dose": 0.3,
+   "anchor_ratio": 0.024955310046848356,
+   "hybrid_basal_err_pct": 3.7998150635681753,
+   "ctrl_basal_err_pct": 0.008743836782167577,
+   "term_nrmse_pct": 0.8335218061352747,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "bcat",
+   "dose": 1.0,
+   "anchor_ratio": 0.024955310046848356,
+   "hybrid_basal_err_pct": 8.29569959972357,
+   "ctrl_basal_err_pct": 0.016157241229648577,
+   "term_nrmse_pct": 1.746225457362511,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "wnt",
+   "dose": 0.0,
+   "anchor_ratio": 0.013141724220728047,
+   "hybrid_basal_err_pct": 2.1700037289003946,
+   "ctrl_basal_err_pct": 0.012463258962971032,
+   "term_nrmse_pct": 0.48469509964841306,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "wnt",
+   "dose": 0.01,
+   "anchor_ratio": 0.014044591141435967,
+   "hybrid_basal_err_pct": 1.3103197349399742,
+   "ctrl_basal_err_pct": 0.012241081530547001,
+   "term_nrmse_pct": 0.2863139521106692,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "wnt",
+   "dose": 0.03,
+   "anchor_ratio": 0.015870139298159048,
+   "hybrid_basal_err_pct": 1.2901647171146957,
+   "ctrl_basal_err_pct": 0.011798930449536454,
+   "term_nrmse_pct": 0.2803278636237704,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "wnt",
+   "dose": 0.1,
+   "anchor_ratio": 0.022491300250946016,
+   "hybrid_basal_err_pct": 1.981227954210173,
+   "ctrl_basal_err_pct": 0.010157774105996732,
+   "term_nrmse_pct": 0.43339183928729674,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "wnt",
+   "dose": 0.3,
+   "anchor_ratio": 0.024955310046848356,
+   "hybrid_basal_err_pct": 6.852131470391303,
+   "ctrl_basal_err_pct": 0.005995462933986821,
+   "term_nrmse_pct": 1.496090445540388,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Normal",
+   "arm": "wnt",
+   "dose": 1.0,
+   "anchor_ratio": 0.024955310046848356,
+   "hybrid_basal_err_pct": 8.29569959972357,
+   "ctrl_basal_err_pct": 0.016157241229648577,
+   "term_nrmse_pct": 1.746225457362511,
+   "starts": 2,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_response"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "ra",
+   "dose": 0.0,
+   "anchor_ratio": 0.0,
+   "hybrid_basal_err_pct": 3.2892205896699798,
+   "ctrl_basal_err_pct": 3.449990473527509,
+   "term_nrmse_pct": 3.3218841331034294,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "ra",
+   "dose": 0.01,
+   "anchor_ratio": 0.0016117954143358235,
+   "hybrid_basal_err_pct": 3.440831260514458,
+   "ctrl_basal_err_pct": 3.4545009872308428,
+   "term_nrmse_pct": 3.3293020301657297,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "ra",
+   "dose": 0.03,
+   "anchor_ratio": 0.004819940485956447,
+   "hybrid_basal_err_pct": 3.2975774503436472,
+   "ctrl_basal_err_pct": 3.4626216958329277,
+   "term_nrmse_pct": 3.3703129741128457,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "ra",
+   "dose": 0.1,
+   "anchor_ratio": 0.01589589651317315,
+   "hybrid_basal_err_pct": 3.4008997475177827,
+   "ctrl_basal_err_pct": 3.486049617782039,
+   "term_nrmse_pct": 3.1516774111796715,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "ra",
+   "dose": 0.3,
+   "anchor_ratio": 0.04642974722955274,
+   "hybrid_basal_err_pct": 0.8434242009451125,
+   "ctrl_basal_err_pct": 3.510106560051407,
+   "term_nrmse_pct": 2.839180239977472,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "ra",
+   "dose": 1.0,
+   "anchor_ratio": 0.14336287707476295,
+   "hybrid_basal_err_pct": 21.351953066284235,
+   "ctrl_basal_err_pct": 26.81122486632472,
+   "term_nrmse_pct": 19.39921162941915,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "bcat",
+   "dose": 0.0,
+   "anchor_ratio": 0.0,
+   "hybrid_basal_err_pct": 0.0009133591267258052,
+   "ctrl_basal_err_pct": 0.010528659992998915,
+   "term_nrmse_pct": 0.17032736013436528,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "bcat",
+   "dose": 0.01,
+   "anchor_ratio": 0.0014794167201101604,
+   "hybrid_basal_err_pct": 0.13436320365986212,
+   "ctrl_basal_err_pct": 0.009717930316627882,
+   "term_nrmse_pct": 0.1531418396190904,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "bcat",
+   "dose": 0.03,
+   "anchor_ratio": 0.0045016854573871395,
+   "hybrid_basal_err_pct": 0.8871621740935236,
+   "ctrl_basal_err_pct": 0.006581916180198938,
+   "term_nrmse_pct": 0.18295893277047215,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "bcat",
+   "dose": 0.1,
+   "anchor_ratio": 0.01605224411009561,
+   "hybrid_basal_err_pct": 6.009092763393169,
+   "ctrl_basal_err_pct": 0.005320224065910903,
+   "term_nrmse_pct": 0.9018455734315296,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "bcat",
+   "dose": 0.3,
+   "anchor_ratio": 0.061905457972177516,
+   "hybrid_basal_err_pct": 37.505267318807675,
+   "ctrl_basal_err_pct": 0.2549969501277863,
+   "term_nrmse_pct": 5.537428652913122,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "bcat",
+   "dose": 1.0,
+   "anchor_ratio": 0.06646225655874255,
+   "hybrid_basal_err_pct": 61.05650191358121,
+   "ctrl_basal_err_pct": 35.80513758732811,
+   "term_nrmse_pct": 8.669989043808608,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "wnt",
+   "dose": 0.0,
+   "anchor_ratio": 0.009201603733493222,
+   "hybrid_basal_err_pct": 2.6324146881301824,
+   "ctrl_basal_err_pct": 0.0018181264998467445,
+   "term_nrmse_pct": 0.43108223167809,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "wnt",
+   "dose": 0.01,
+   "anchor_ratio": 0.01087856970645966,
+   "hybrid_basal_err_pct": 2.4949994746013995,
+   "ctrl_basal_err_pct": 0.001648534708249056,
+   "term_nrmse_pct": 0.39656597347648437,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "wnt",
+   "dose": 0.03,
+   "anchor_ratio": 0.01444544427064561,
+   "hybrid_basal_err_pct": 4.2913380919594,
+   "ctrl_basal_err_pct": 0.005992076445736504,
+   "term_nrmse_pct": 0.6526677539937604,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "wnt",
+   "dose": 0.1,
+   "anchor_ratio": 0.03116744392487594,
+   "hybrid_basal_err_pct": 21.020756814120496,
+   "ctrl_basal_err_pct": 0.023289116875053258,
+   "term_nrmse_pct": 3.109501655064,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "wnt",
+   "dose": 0.3,
+   "anchor_ratio": 0.06612229418853564,
+   "hybrid_basal_err_pct": 43.69327116266331,
+   "ctrl_basal_err_pct": 10.356272950107817,
+   "term_nrmse_pct": 6.334528027190575,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  },
+  {
+   "regime": "Severe APC Loss",
+   "arm": "wnt",
+   "dose": 1.0,
+   "anchor_ratio": 0.06646225655874255,
+   "hybrid_basal_err_pct": 61.05650191358121,
+   "ctrl_basal_err_pct": 35.80513758732811,
+   "term_nrmse_pct": 8.669989043808608,
+   "starts": 5,
+   "source": "PINN-hybrid-ude/runs/20260802_dose_starts5"
+  }
+ ],
+ "severe_2start_cells": {
+  "ra/k=0.0": 3.2892205896699798,
+  "ra/k=0.01": 3.440831260514458,
+  "ra/k=0.03": 3.2975774503436472,
+  "ra/k=0.1": 23.35176706040689,
+  "ra/k=0.3": 0.8434242009451125,
+  "ra/k=1.0": 33.09194878997687,
+  "wnt/k=0.0": 1.5495320461817053,
+  "wnt/k=0.01": 2.039969907216971,
+  "wnt/k=0.03": 4.507984395834012,
+  "wnt/k=0.1": 21.020756814120496,
+  "wnt/k=0.3": 70.45148737487051,
+  "wnt/k=1.0": 81.598540892078,
+  "bcat/k=0.0": 0.0061871243730983305,
+  "bcat/k=0.01": 0.13436320365986212,
+  "bcat/k=0.03": 0.8871621740935236,
+  "bcat/k=0.1": 3.103693745268927,
+  "bcat/k=0.3": 47.58992333911414,
+  "bcat/k=1.0": 81.598540892078
+ },
+ "seed_replicates_k0": {
+  "wnt/Normal": {
+   "values": [
+    1.5204658416511272,
+    1.3322969817588608,
+    1.4959035691123705
+   ],
+   "mean": 1.4495554641741195,
+   "lo": 1.3322969817588608,
+   "hi": 1.5204658416511272,
+   "ratio": 0.013141724220728047
+  },
+  "wnt/Severe APC Loss": {
+   "values": [
+    2.6324146881301824,
+    2.319972334937205,
+    1.7927205922833405
+   ],
+   "mean": 2.2483692051169095,
+   "lo": 1.7927205922833405,
+   "hi": 2.6324146881301824,
+   "ratio": 0.009201603733493222
+  },
+  "bcat/Normal": {
+   "values": [
+    0.008295678347514717,
+    0.0010418867470780087,
+    0.000671575703813253
+   ],
+   "mean": 0.003336380266135327,
+   "lo": 0.000671575703813253,
+   "hi": 0.008295678347514717,
+   "ratio": 0.0
+  },
+  "bcat/Severe APC Loss": {
+   "values": [
+    0.0009133591267258052,
+    0.0033332013606168776,
+    0.0014739952773932007
+   ],
+   "mean": 0.0019068519215786279,
+   "lo": 0.0009133591267258052,
+   "hi": 0.0033332013606168776,
+   "ratio": 0.0
+  }
+ },
+ "protocol_cells": [
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "protocol": "none",
+   "anchor_ratio": 0.08155610371410246,
+   "hybrid_basal_err_pct": 12.844118128980428,
+   "ctrl_basal_err_pct": 0.02424307796209144,
+   "term_nrmse_pct": 57.245110194005086,
+   "n_conditions": 10,
+   "hybrid_eq_under10": "0/4"
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "protocol": "bcatKO",
+   "anchor_ratio": 0.07856708440532191,
+   "hybrid_basal_err_pct": 51.5156482972076,
+   "ctrl_basal_err_pct": 1.0642907042436127,
+   "term_nrmse_pct": 24.904110116444777,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "0/4"
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "protocol": "mycKO",
+   "anchor_ratio": 4.05099537299083e-110,
+   "hybrid_basal_err_pct": 0.11122939612495047,
+   "ctrl_basal_err_pct": 0.007781616130045047,
+   "term_nrmse_pct": 68.3757421864618,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "1/4"
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "protocol": "none",
+   "anchor_ratio": 0.11323079608294628,
+   "hybrid_basal_err_pct": 95.56356503833423,
+   "ctrl_basal_err_pct": 28.050340459305783,
+   "term_nrmse_pct": 11.56069293036081,
+   "n_conditions": 10,
+   "hybrid_eq_under10": "2/4"
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "protocol": "bcatKO",
+   "anchor_ratio": 0.06793847764976778,
+   "hybrid_basal_err_pct": 59.84273958564739,
+   "ctrl_basal_err_pct": 4.820164761237394,
+   "term_nrmse_pct": 24.3414234060321,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "2/4"
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "protocol": "mycKO",
+   "anchor_ratio": 3.571197250373579e-110,
+   "hybrid_basal_err_pct": 0.04874468802364603,
+   "ctrl_basal_err_pct": 0.008174568129179187,
+   "term_nrmse_pct": 81.37921684369736,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "2/4"
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "protocol": "none",
+   "anchor_ratio": 0.16688245513469455,
+   "hybrid_basal_err_pct": 16.248330236065186,
+   "ctrl_basal_err_pct": 0.18506278865718095,
+   "term_nrmse_pct": 19.295830153487604,
+   "n_conditions": 10,
+   "hybrid_eq_under10": "1/4"
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "protocol": "mycKO",
+   "anchor_ratio": 0.11909969430903221,
+   "hybrid_basal_err_pct": 16.23356947417341,
+   "ctrl_basal_err_pct": 0.9557738862526755,
+   "term_nrmse_pct": 19.989646617432253,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "1/4"
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "protocol": "hox13KO",
+   "anchor_ratio": 1.9500777178632022e-66,
+   "hybrid_basal_err_pct": 16.233496298573304,
+   "ctrl_basal_err_pct": 0.9551057349882763,
+   "term_nrmse_pct": 19.21367406538708,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "1/4"
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "protocol": "none",
+   "anchor_ratio": 0.18617115638238252,
+   "hybrid_basal_err_pct": 57.497997858331196,
+   "ctrl_basal_err_pct": 17.197915930243923,
+   "term_nrmse_pct": 171.430512682026,
+   "n_conditions": 10,
+   "hybrid_eq_under10": "2/4"
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "protocol": "mycKO",
+   "anchor_ratio": 0.11170269382942953,
+   "hybrid_basal_err_pct": 55.11291905608182,
+   "ctrl_basal_err_pct": 13.543400259695805,
+   "term_nrmse_pct": 165.79293072804947,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "1/4"
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "protocol": "hox13KO",
+   "anchor_ratio": 1.84656173325056e-66,
+   "hybrid_basal_err_pct": 54.65419883386933,
+   "ctrl_basal_err_pct": 11.658636443011773,
+   "term_nrmse_pct": 160.62700273192644,
+   "n_conditions": 11,
+   "hybrid_eq_under10": "1/4"
+  }
+ ],
+ "k0_hybrid_basal_err_pct": {
+  "Normal/ra": 0.0017817411599082198,
+  "Normal/wnt": 2.1700037289003946,
+  "Normal/bcat": 0.02118633164439116,
+  "Severe APC Loss/ra": 3.2892205896699798,
+  "Severe APC Loss/wnt": 2.6324146881301824,
+  "Severe APC Loss/bcat": 0.0009133591267258052
+ },
+ "floors": {
+  "ratio_0_drawn_at": 0.00012,
+  "dose_0_drawn_at": 0.003,
+  "y_floor_pct": 0.0003,
+  "floored_points": "none below the floor (min 0.0009 % = bcat Severe k=0)"
+ },
+ "notes": "Severe 5-start k=0 equals seed base 100 of the seed study (same run settings). Normal wnt k=0: 2.17 % (2 starts) vs 1.33-1.52 % (5 starts, three seed bases)."
+}

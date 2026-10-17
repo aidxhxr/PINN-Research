@@ -1,0 +1,1475 @@
+{
+ "source": "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20261017_hybrid_fim",
+ "A": {
+  "ra_h5/info": {
+   "net_factor": [
+    0.9203757638872417,
+    0.9136695367859415,
+    0.9078875132779706,
+    0.8995123804887257
+   ],
+   "mech_factor": [
+    0.9204596685083158,
+    0.9229165053717546,
+    0.9229919242745019,
+    0.925477194877177
+   ]
+  },
+  "ra_h5/dep": {
+   "net_factor": [
+    0.0006137699792482785,
+    0.0003968931446461193,
+    0.0003727179378159463,
+    0.0003837582817796287
+   ],
+   "mech_factor": [
+    0.26132976511915745,
+    0.3063539455818106,
+    0.23886944708884564,
+    0.2562130201988891
+   ]
+  },
+  "ra_h5/depb": {
+   "net_factor": [
+    0.0006084856725751001,
+    0.00038297347654871655,
+    0.0003557831756576802,
+    0.00035737623528141486
+   ],
+   "mech_factor": [
+    0.25919466779439687,
+    0.29686567829710525,
+    0.22872305944167395,
+    0.2411951541591447
+   ]
+  },
+  "rc_cyp/info": {
+   "net_factor": [
+    0.9238911324094204,
+    0.9163537275969225,
+    0.9094447691206878,
+    0.9023290600135181
+   ],
+   "mech_factor": [
+    0.9263277373912877,
+    0.9282593854346035,
+    0.9198243492709366,
+    0.9176156593352066
+   ]
+  },
+  "rc_cyp/dep": {
+   "net_factor": [
+    0.0005939343994885001,
+    0.00029020983628282374,
+    0.00019938619841810648,
+    0.00018128645161805715
+   ],
+   "mech_factor": [
+    0.2626159251382729,
+    0.23127453675786536,
+    0.05594642851886899,
+    0.047805199132874225
+   ]
+  },
+  "rc_cyp/depb": {
+   "net_factor": [
+    0.0005944911564116562,
+    0.00029006159019536327,
+    0.00020028044873546906,
+    0.0001861873628523744
+   ],
+   "mech_factor": [
+    0.26313553870488354,
+    0.23237977987980848,
+    0.05692681595849599,
+    0.05021339593847503
+   ]
+  },
+  "bm_myc/info": {
+   "net_factor": [
+    0.9736701148968878,
+    0.9880968191472868,
+    0.9423900621800364,
+    0.9325865959287496
+   ],
+   "mech_factor": [
+    0.9973338844684161,
+    0.9897399751091851,
+    0.9120690942109468,
+    0.9106061991268085
+   ]
+  },
+  "bm_myc/dep": {
+   "net_factor": [
+    0.06704820415343772,
+    0.0024926587745439555,
+    1.722650128998062e-05,
+    5.897724079100809e-06
+   ],
+   "mech_factor": [
+    0.2183362375748219,
+    0.10065487081609584,
+    0.015229708787249245,
+    0.015108419571398964
+   ]
+  },
+  "bm_myc/depb": {
+   "net_factor": [
+    0.001036857900153192,
+    1.65388151160675e-05,
+    7.761464420345217e-08,
+    4.001815687759466e-08
+   ],
+   "mech_factor": [
+    0.21542848998403918,
+    0.09776455047189872,
+    0.014193315870863152,
+    0.011428258150357827
+   ]
+  },
+  "bc_cyp/info": {
+   "net_factor": [
+    0.9615551612470055,
+    0.9698938918662732,
+    0.9037030340391703,
+    0.8964635280478456
+   ],
+   "mech_factor": [
+    0.9263277373912877,
+    0.9282593854346035,
+    0.9198243492709366,
+    0.9176156593352066
+   ]
+  },
+  "bc_cyp/dep": {
+   "net_factor": [
+    0.10814952591757385,
+    0.006121351992409129,
+    8.729576490009796e-05,
+    2.5820563954799476e-05
+   ],
+   "mech_factor": [
+    0.2626159251382729,
+    0.23127453675786536,
+    0.05594642851886899,
+    0.047805199132874225
+   ]
+  },
+  "bc_cyp/depb": {
+   "net_factor": [
+    0.008235364830062186,
+    0.00021112923986611493,
+    1.0935227030042859e-06,
+    4.0426886343338204e-07
+   ],
+   "mech_factor": [
+    0.26313553870488354,
+    0.23237977987980848,
+    0.05692681595849599,
+    0.05021339593847503
+   ]
+  },
+  "b_h13/info": {
+   "net_factor": [
+    0.9609618654195204,
+    0.9835146748355189,
+    0.9370060310543096,
+    0.9280149035007423
+   ],
+   "mech_factor": [
+    0.969942515802393,
+    0.9825562981028747,
+    0.9352577929282543,
+    0.9385418907216118
+   ]
+  },
+  "b_h13/dep": {
+   "net_factor": [
+    0.08854382197638225,
+    0.006388548430959541,
+    4.6047183025932526e-05,
+    1.2355229043883861e-05
+   ],
+   "mech_factor": [
+    0.7334863569110553,
+    0.4249213387652658,
+    0.2228499893080416,
+    0.17116727139208818
+   ]
+  },
+  "b_h13/depb": {
+   "net_factor": [
+    0.03438633672013389,
+    0.0014178301068484298,
+    3.288910808364416e-05,
+    1.0726764171651872e-05
+   ],
+   "mech_factor": [
+    0.7141641883017205,
+    0.40689091305218883,
+    0.20685507238955864,
+    0.16121975394590984
+   ]
+  },
+  "m_h13/info": {
+   "net_factor": [
+    0.9673996907374042,
+    0.9844009956854497,
+    0.9629929841117184,
+    0.9559369600615559
+   ],
+   "mech_factor": [
+    0.969942515802393,
+    0.9825562981028747,
+    0.9352577929282543,
+    0.9385418907216118
+   ]
+  },
+  "m_h13/dep": {
+   "net_factor": [
+    0.5104780421059913,
+    0.08275841185959798,
+    0.02312513302525668,
+    0.007679491206040166
+   ],
+   "mech_factor": [
+    0.7334863569110553,
+    0.4249213387652658,
+    0.2228499893080416,
+    0.17116727139208818
+   ]
+  },
+  "m_h13/depb": {
+   "net_factor": [
+    0.5652927761270772,
+    0.09795170241328499,
+    0.02345663961271294,
+    0.007712885677450047
+   ],
+   "mech_factor": [
+    0.7141641883017205,
+    0.40689091305218883,
+    0.20685507238955864,
+    0.16121975394590984
+   ]
+  },
+  "h13_b/info": {
+   "net_factor": [
+    0.9108192659668108,
+    0.9712888293325791,
+    0.9269889820770678,
+    0.9323262637347356
+   ],
+   "mech_factor": [
+    0.9486513785630173,
+    0.9683485160471411,
+    0.9540565149264145,
+    0.9572216511544159
+   ]
+  },
+  "h13_b/dep": {
+   "net_factor": [
+    8.629606832741993e-06,
+    9.772571339368922e-06,
+    4.418248313370685e-06,
+    6.199824732635128e-07
+   ],
+   "mech_factor": [
+    0.30429051565856535,
+    0.28136139823804324,
+    0.16830665678948242,
+    0.11342876610408531
+   ]
+  },
+  "h13_b/depb": {
+   "net_factor": [
+    0.8863034193670462,
+    0.9508419567685366,
+    0.9603742283394006,
+    0.8565657958163032
+   ],
+   "mech_factor": [
+    0.8120309525419905,
+    0.8602350781642011,
+    0.6201276760410285,
+    0.43811522800913194
+   ]
+  }
+ },
+ "B": {
+  "ra/Normal": {
+   "rho": [
+    0.12062210480768096,
+    0.04170071829521658,
+    0.014170498624280064,
+    0.004284855562219642,
+    0.00143170289903669,
+    2e-05
+   ],
+   "loss": [
+    447.4360019990827,
+    38.352517944942456,
+    11.068519386175288,
+    5.206423825765283,
+    2.2980292840256937,
+    1.0387757385456209
+   ]
+  },
+  "ra/Severe APC Loss": {
+   "rho": [
+    0.14336287707476245,
+    0.046429747229552634,
+    0.015895896513173104,
+    0.00481994048595644,
+    0.0016117954143358146,
+    2e-05
+   ],
+   "loss": [
+    713.954451479193,
+    18.67263333724979,
+    3.521307172557236,
+    1.7255464011345183,
+    1.1394285552073165,
+    1.0245808195378114
+   ]
+  },
+  "wnt/Normal": {
+   "rho": [
+    0.024955310046848346,
+    0.024955310046848346,
+    0.022491300250946016,
+    0.01587013929815905,
+    0.01404459114143597,
+    0.013141724220728053
+   ],
+   "loss": [
+    212.07812378779516,
+    307.2977386553264,
+    245.60369802657334,
+    78.3979978580397,
+    55.24178040428653,
+    46.151233176067294
+   ]
+  },
+  "wnt/Severe APC Loss": {
+   "rho": [
+    0.06646225655874255,
+    0.06612229418853567,
+    0.031167443924875946,
+    0.014445444270645614,
+    0.01087856970645966,
+    0.009201603733493227
+   ],
+   "loss": [
+    294999.18037851184,
+    5307.8416493262,
+    682.6514253666624,
+    138.84327275115893,
+    86.92120533652644,
+    62.153317382018315
+   ]
+  },
+  "bcat/Normal": {
+   "rho": [
+    0.024955310046848346,
+    0.024955310046848346,
+    0.009661951117658187,
+    0.0028568479947399653,
+    0.000948882681061423,
+    2e-05
+   ],
+   "loss": [
+    212.07812378779516,
+    368.23192912410514,
+    23.378543201332985,
+    8.2436542103904,
+    4.417381847420636,
+    1.0270090396533087
+   ]
+  },
+  "bcat/Severe APC Loss": {
+   "rho": [
+    0.06646225655874255,
+    0.0619054579721775,
+    0.01605224411009561,
+    0.00450168545738714,
+    0.0014794167201101606,
+    2e-05
+   ],
+   "loss": [
+    294999.18037851184,
+    14482.30074750753,
+    229.93126269307407,
+    29.661238829475717,
+    8.560534815877766,
+    1.0043519946001935
+   ]
+  }
+ },
+ "B_stats": {
+  "within_arm_spearman": {
+   "ra/Normal": 1.0,
+   "ra/Severe APC Loss": 1.0,
+   "wnt/Normal": 0.9856107606091624,
+   "wnt/Severe APC Loss": 1.0,
+   "bcat/Normal": 0.9856107606091624,
+   "bcat/Severe APC Loss": 1.0
+  },
+  "pooled_lossfactor_vs_rho_spearman": 0.876329844288579,
+  "pooled_n": 36,
+  "loglog_slope": 1.7519446594809502,
+  "loglog_resid_sd": 2.05258544252079
+ },
+ "C": [
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 2729.501573649549,
+   "err_pct": 17.0
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 5132.8352346327365,
+   "err_pct": 24.2
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 162.9358286025881,
+   "err_pct": 6.5
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 241.55393930016672,
+   "err_pct": 8.4
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 280.4738495557838,
+   "err_pct": 20.4
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 305.3823728806091,
+   "err_pct": 8.3
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 781.8577497970109,
+   "err_pct": 41.5
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 861.8157265681984,
+   "err_pct": 70.1
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 7601.649727913088,
+   "err_pct": 31.6
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 7591.763407086103,
+   "err_pct": 50.7
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 26341.987931600357,
+   "err_pct": 12.8
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 472965.94693711185,
+   "err_pct": 27.3
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 43891.11513778053,
+   "err_pct": 16.2
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 109455.49789761158,
+   "err_pct": 12.9
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 5160.632470065509,
+   "err_pct": 25.943037757034347
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 5256.542289715131,
+   "err_pct": 16.694508346983365
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 10222.05737519098,
+   "err_pct": 48.22264904091572
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 7617.070138923781,
+   "err_pct": 30.657197422186055
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 7668.5684310537035,
+   "err_pct": 38.30607206124405
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 9920.431250337419,
+   "err_pct": 34.927826870389865
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 35772.80856927655,
+   "err_pct": 50.7562180933779
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 30399.51251904652,
+   "err_pct": 99.99918943851115
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 16397.225928243082,
+   "err_pct": 2.850940059182395
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 8800.813285328084,
+   "err_pct": 115.36467758796593
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 120456.55155722477,
+   "err_pct": 10.637970905359621
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 554027.5111792255,
+   "err_pct": 25.93637922782883
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 98520.81856734293,
+   "err_pct": 23.961293648451452
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Early Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 849665.9783007902,
+   "err_pct": 11.981804343848001
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 6751.43811284426,
+   "err_pct": 4.769589397793521
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 5273.674406158554,
+   "err_pct": 20.90022070984245
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 2179974.763989004,
+   "err_pct": 68.28390958491394
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 14728294.088606,
+   "err_pct": 51.83072514497131
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 1345000.8222813827,
+   "err_pct": 34.945933790489704
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 837796.5681221776,
+   "err_pct": 93.95888036173162
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 6058390.820907759,
+   "err_pct": 49.329199680668076
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 49714834.70666782,
+   "err_pct": 94.95536627767699
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 24691.97344530716,
+   "err_pct": 11.178358532639225
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 5465.4435235156025,
+   "err_pct": 99.43501584985368
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 905494.7697158714,
+   "err_pct": 66.66813786870236
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 72652140.71255372,
+   "err_pct": 51.53280620322369
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 416888.58108363993,
+   "err_pct": 51.630823260892015
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Advanced Adenoma",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 4358026.25291268,
+   "err_pct": 10.14794903100899
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 7378.69339474081,
+   "err_pct": 33.52624310934515
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 7332.274969639916,
+   "err_pct": 19.68128403563237
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 4229046.859376075,
+   "err_pct": 78.86598521042603
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 19064489.499489967,
+   "err_pct": 39.022434385245795
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 4647231.582250486,
+   "err_pct": 37.67939153379555
+  },
+  {
+   "edge": "b_h13",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 9584251.72367081,
+   "err_pct": 99.33523366179007
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 16063736.157836368,
+   "err_pct": 33.71415694371298
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 15172812.962953823,
+   "err_pct": 21.247806647877663
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 27616.080337768326,
+   "err_pct": 20.32255298853017
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 23280.95058050897,
+   "err_pct": 30.005550795471574
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 3279694.542935945,
+   "err_pct": 95.56356503833423
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 163287106.60447377,
+   "err_pct": 12.715454044666059
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "gated",
+   "source": "atlas",
+   "S": 3147150.2275861846,
+   "err_pct": 57.497997858331196
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "design": "base10",
+   "form": "sc",
+   "source": "atlas",
+   "S": 4005143.815177421,
+   "err_pct": 20.87392111060229
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 10.924554700055863,
+   "err_pct": 2.901671507645877
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 1.6752861242170272,
+   "err_pct": 0.09038048335737367
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Normal",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 84.5575449755278,
+   "err_pct": 25.504551894315515
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Normal",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 4.51488126626998,
+   "err_pct": 1.1072963351588423
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 24.94175149418793,
+   "err_pct": 2.522904899170814
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 2.8316346989444288,
+   "err_pct": 0.7274658481386717
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 414.7747268164388,
+   "err_pct": 64.84680943608898
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "dep",
+   "form": "gated",
+   "source": "AB",
+   "S": 5.006421212033217,
+   "err_pct": 0.31201946680022363
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 158.64574695630156,
+   "err_pct": 20.00525234890496
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 2512.167095879132,
+   "err_pct": 12.945292906728486
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Normal",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 751.7993546782857,
+   "err_pct": 26.885511622914336
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Normal",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 7023.096775301386,
+   "err_pct": 10.906083543319387
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 3943952.414608703,
+   "err_pct": 82.48523432307813
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 6637.226060399743,
+   "err_pct": 33.352277209891334
+  },
+  {
+   "edge": "bc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 14400553.589683734,
+   "err_pct": 46.080081240644425
+  },
+  {
+   "edge": "rc_cyp",
+   "regime": "Severe APC Loss",
+   "design": "info",
+   "form": "gated",
+   "source": "infoctl",
+   "S": 24918.79181243629,
+   "err_pct": 20.83747988168733
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dose_ra_k1",
+   "form": "gated",
+   "source": "dose",
+   "S": 2693.616057698465,
+   "err_pct": 15.354769798776887
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dose_ra_k0.3",
+   "form": "gated",
+   "source": "dose",
+   "S": 96.39681657396926,
+   "err_pct": 3.897320044786786
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dose_ra_k0.1",
+   "form": "gated",
+   "source": "dose",
+   "S": 21.577778078794452,
+   "err_pct": 0.5886484034805702
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dose_ra_k0.03",
+   "form": "gated",
+   "source": "dose",
+   "S": 9.509566257813622,
+   "err_pct": 0.1885974008713672
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dose_ra_k0.01",
+   "form": "gated",
+   "source": "dose",
+   "S": 4.12977892268636,
+   "err_pct": 0.06549008042489035
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Normal",
+   "design": "dose_ra_k0",
+   "form": "gated",
+   "source": "dose",
+   "S": 1.8524142502463383,
+   "err_pct": 0.0017817411599082198
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dose_ra_k1",
+   "form": "gated",
+   "source": "dose5",
+   "S": 7165.349745689462,
+   "err_pct": 21.351953066284235
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dose_ra_k0.3",
+   "form": "gated",
+   "source": "dose5",
+   "S": 151.27711635982126,
+   "err_pct": 0.8434242009451125
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dose_ra_k0.1",
+   "form": "gated",
+   "source": "dose5",
+   "S": 27.90849688207321,
+   "err_pct": 3.4008997475177827
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dose_ra_k0.03",
+   "form": "gated",
+   "source": "dose5",
+   "S": 13.6223774380617,
+   "err_pct": 3.2975774503436472
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dose_ra_k0.01",
+   "form": "gated",
+   "source": "dose5",
+   "S": 8.987362515835164,
+   "err_pct": 3.440831260514458
+  },
+  {
+   "edge": "ra_h5",
+   "regime": "Severe APC Loss",
+   "design": "dose_ra_k0",
+   "form": "gated",
+   "source": "dose5",
+   "S": 8.078233022747616,
+   "err_pct": 3.2892205896699798
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_wnt_k1",
+   "form": "gated",
+   "source": "dose",
+   "S": 161.66609684908886,
+   "err_pct": 8.29569959972357
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_wnt_k0.3",
+   "form": "gated",
+   "source": "dose",
+   "S": 61.579870696620674,
+   "err_pct": 6.852131470391303
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_wnt_k0.1",
+   "form": "gated",
+   "source": "dose",
+   "S": 41.749063814115736,
+   "err_pct": 1.981227954210173
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_wnt_k0.03",
+   "form": "gated",
+   "source": "dose",
+   "S": 13.09731153563108,
+   "err_pct": 1.2901647171146957
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_wnt_k0.01",
+   "form": "gated",
+   "source": "dose",
+   "S": 9.197846951668494,
+   "err_pct": 1.3103197349399742
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_wnt_k0",
+   "form": "gated",
+   "source": "dose",
+   "S": 7.673468070294935,
+   "err_pct": 2.1700037289003946
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_wnt_k1",
+   "form": "gated",
+   "source": "dose5",
+   "S": 4139005.6758709135,
+   "err_pct": 61.05650191358121
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_wnt_k0.3",
+   "form": "gated",
+   "source": "dose5",
+   "S": 47034.34525942451,
+   "err_pct": 43.69327116266331
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_wnt_k0.1",
+   "form": "gated",
+   "source": "dose5",
+   "S": 573.4409953553281,
+   "err_pct": 21.020756814120496
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_wnt_k0.03",
+   "form": "gated",
+   "source": "dose5",
+   "S": 35.60105695118627,
+   "err_pct": 4.2913380919594
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_wnt_k0.01",
+   "form": "gated",
+   "source": "dose5",
+   "S": 17.594375141640707,
+   "err_pct": 2.4949994746013995
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_wnt_k0",
+   "form": "gated",
+   "source": "dose5",
+   "S": 11.646766647881,
+   "err_pct": 2.6324146881301824
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_bcat_k1",
+   "form": "gated",
+   "source": "dose",
+   "S": 161.66609684908886,
+   "err_pct": 8.29569959972357
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_bcat_k0.3",
+   "form": "gated",
+   "source": "dose",
+   "S": 64.56926850766423,
+   "err_pct": 3.7998150635681753
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_bcat_k0.1",
+   "form": "gated",
+   "source": "dose",
+   "S": 3.866823443718839,
+   "err_pct": 1.112080340669992
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_bcat_k0.03",
+   "form": "gated",
+   "source": "dose",
+   "S": 1.357078846420941,
+   "err_pct": 0.49098642006240345
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_bcat_k0.01",
+   "form": "gated",
+   "source": "dose",
+   "S": 0.7267804276684929,
+   "err_pct": 0.1907722724422196
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Normal",
+   "design": "dose_bcat_k0",
+   "form": "gated",
+   "source": "dose",
+   "S": 0.1689429411836739,
+   "err_pct": 0.02118633164439116
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_bcat_k1",
+   "form": "gated",
+   "source": "dose5",
+   "S": 4139005.6758709135,
+   "err_pct": 61.05650191358121
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_bcat_k0.3",
+   "form": "gated",
+   "source": "dose5",
+   "S": 28786.02124954155,
+   "err_pct": 37.505267318807675
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_bcat_k0.1",
+   "form": "gated",
+   "source": "dose5",
+   "S": 61.53860927616066,
+   "err_pct": 6.009092763393169
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_bcat_k0.03",
+   "form": "gated",
+   "source": "dose5",
+   "S": 5.049763993265815,
+   "err_pct": 0.8871621740935236
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_bcat_k0.01",
+   "form": "gated",
+   "source": "dose5",
+   "S": 1.4438013222732602,
+   "err_pct": 0.13436320365986212
+  },
+  {
+   "edge": "bm_myc",
+   "regime": "Severe APC Loss",
+   "design": "dose_bcat_k0",
+   "form": "gated",
+   "source": "dose5",
+   "S": 0.16923922550690343,
+   "err_pct": 0.0009133591267258052
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "design": "proto_bcatKO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 15009.589566823932,
+   "err_pct": 51.5156482972076
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Normal",
+   "design": "proto_mycKO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 0.2928086490444979,
+   "err_pct": 0.11122939612495047
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "design": "proto_bcatKO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 25791.691628785957,
+   "err_pct": 59.84273958564739
+  },
+  {
+   "edge": "m_h13",
+   "regime": "Severe APC Loss",
+   "design": "proto_mycKO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 0.29331105880972147,
+   "err_pct": 0.04874468802364603
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "design": "proto_mycKO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 43857.728904111675,
+   "err_pct": 16.23356947417341
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Normal",
+   "design": "proto_hox13KO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 43858.07684037455,
+   "err_pct": 16.233496298573304
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "design": "proto_mycKO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 3104431.925646384,
+   "err_pct": 55.11291905608182
+  },
+  {
+   "edge": "h13_b",
+   "regime": "Severe APC Loss",
+   "design": "proto_hox13KO",
+   "form": "gated",
+   "source": "protocol",
+   "S": 3104691.5001595523,
+   "err_pct": 54.65419883386933
+  }
+ ],
+ "C_stats": {
+  "spearman_S": 0.7871432525525894,
+  "p": 1.1175804970988159e-25,
+  "n": 116,
+  "spearman_rho": 0.547904265125803
+ }
+}

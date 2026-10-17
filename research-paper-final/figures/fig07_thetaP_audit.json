@@ -1,0 +1,357 @@
+{
+ "figure": "fig07_thetaP",
+ "panels": {
+  "A": {
+   "source": "PINN-fisher-matrix/runs/20260921_thetaP_design/thetaP_design.json",
+   "units": "percent CRLB rel. sd of thetaP, deltaP1 known",
+   "values": {
+    "Normal": {
+     "ra6": 1.286150806731203,
+     "base10-wntInhib": 0.08324650397270156,
+     "base10": 0.03073081403307541,
+     "base10+midATRA": 0.02990020469968819,
+     "base10+wntPulse2": 0.02966344198957737,
+     "base10+kW=0.5": 0.027688802954565606,
+     "base10+kW=0.25": 0.023956334410910562,
+     "base10+kW=0.1": 0.023041460901011876,
+     "base10+kW=0.02": 0.022909859034316887,
+     "base10+kW=0": 0.022910735609093152,
+     "base10+bcatKO": 0.02375961421907389
+    },
+    "Early Adenoma": {
+     "ra6": 5.293280700925169,
+     "base10-wntInhib": 1.308336043287357,
+     "base10": 0.20783886744543478,
+     "base10+midATRA": 0.20063961139020772,
+     "base10+wntPulse2": 0.1988872351964471,
+     "base10+kW=0.5": 0.19466772437896457,
+     "base10+kW=0.25": 0.17268595810851625,
+     "base10+kW=0.1": 0.11855185883043014,
+     "base10+kW=0.02": 0.11384318190865651,
+     "base10+kW=0": 0.11343754534287184,
+     "base10+bcatKO": 0.1142666137071211
+    },
+    "Advanced Adenoma": {
+     "ra6": 51.62637839554775,
+     "base10-wntInhib": 15.279253533052998,
+     "base10": 6.330895479328878,
+     "base10+midATRA": 6.206500547152117,
+     "base10+wntPulse2": 6.1871791596389345,
+     "base10+kW=0.5": 2.9828550742432824,
+     "base10+kW=0.25": 1.1686634170165546,
+     "base10+kW=0.1": 0.49168171183352805,
+     "base10+kW=0.02": 0.40328290161927527,
+     "base10+kW=0": 0.39717140844582643,
+     "base10+bcatKO": 0.39717536813854437
+    },
+    "Severe APC Loss": {
+     "ra6": 148.3711608692863,
+     "base10-wntInhib": 72.45987502309085,
+     "base10": 55.03731631909904,
+     "base10+midATRA": 53.61480932969369,
+     "base10+wntPulse2": 53.3266523420323,
+     "base10+kW=0.5": 13.97302748625606,
+     "base10+kW=0.25": 6.243944674666886,
+     "base10+kW=0.1": 2.4680368983740983,
+     "base10+kW=0.02": 1.7176011013948789,
+     "base10+kW=0": 1.6681071833413452,
+     "base10+bcatKO": 1.7146364529290123
+    }
+   },
+   "leave_one_out_other_conditions": {
+    "Normal": {
+     "base10-wntPulse": 0.03158866263082025,
+     "base10-mycPulse": 0.031858764869507235,
+     "base10-wntRAcombo": 0.0320355163964176
+    },
+    "Early Adenoma": {
+     "base10-wntPulse": 0.2166614734039703,
+     "base10-mycPulse": 0.21816086359008668,
+     "base10-wntRAcombo": 0.21820916380611094
+    },
+    "Advanced Adenoma": {
+     "base10-wntPulse": 6.693895149360118,
+     "base10-mycPulse": 6.744847567630022,
+     "base10-wntRAcombo": 6.950572604082894
+    },
+    "Severe APC Loss": {
+     "base10-wntPulse": 58.8149304315135,
+     "base10-mycPulse": 62.97488731054064,
+     "base10-wntRAcombo": 59.20301834858537
+    }
+   },
+   "ratio_kW0.1_over_base10": {
+    "Normal": 0.7497836170630715,
+    "Early Adenoma": 0.5704027369257787,
+    "Advanced Adenoma": 0.07766384920410184,
+    "Severe APC Loss": 0.04484297315778896
+   },
+   "ratio_info_over_base10": {
+    "Normal": {
+     "base10+midATRA": 0.9729714503334262,
+     "base10+wntPulse2": 0.9652670429638072
+    },
+    "Early Adenoma": {
+     "base10+midATRA": 0.9653613583266993,
+     "base10+wntPulse2": 0.9569299411654184
+    },
+    "Advanced Adenoma": {
+     "base10+midATRA": 0.980351131592217,
+     "base10+wntPulse2": 0.9772992114371191
+    },
+    "Severe APC Loss": {
+     "base10+midATRA": 0.9741537726665697,
+     "base10+wntPulse2": 0.9689181069958328
+    }
+   }
+  },
+  "B": {
+   "source": "PINN-sensitivity/runs/20261017_paper/ms_tight",
+   "estimator": "unit-weight MLE, 36 free, best of 4 starts by cost, data seed 42",
+   "cells": {
+    "base10/Normal": {
+     "product_rec": 0.00034749027192740485,
+     "product_true": 0.0,
+     "product_err_pct": null,
+     "n_within10": 35,
+     "n_params": 36,
+     "cost": 5175.978996652122,
+     "costs": [
+      5175.978996652122,
+      5175.978996710367,
+      5175.978996741894,
+      5175.978996866304
+     ],
+     "thetaP_err_pct": 0.011420100640924247,
+     "W_err_pct": 0.19939934492992084
+    },
+    "base10/Early Adenoma": {
+     "product_rec": 0.8719151982758147,
+     "product_true": 0.875,
+     "product_err_pct": 0.35254876847832556,
+     "n_within10": 35,
+     "n_params": 36,
+     "cost": 5178.9067583305805,
+     "costs": [
+      94038.69191470923,
+      5178.906758430502,
+      7020.413736551331,
+      5178.9067583305805
+     ],
+     "thetaP_err_pct": 8.958850431836915,
+     "W_err_pct": 0.19427449597120283
+    },
+    "base10/Advanced Adenoma": {
+     "product_rec": 1.7889156852567731,
+     "product_true": 1.75,
+     "product_err_pct": 2.223753443244179,
+     "n_within10": 34,
+     "n_params": 36,
+     "cost": 5177.393397843637,
+     "costs": [
+      5177.393397923219,
+      5177.393397843637,
+      5177.393398304129,
+      5177.393398618309
+     ],
+     "thetaP_err_pct": 55.61354143301358,
+     "W_err_pct": 0.10021513530939312
+    },
+    "base10/Severe APC Loss": {
+     "product_rec": 2.7587290765562824,
+     "product_true": 2.625,
+     "product_err_pct": 5.094441011667901,
+     "n_within10": 34,
+     "n_params": 36,
+     "cost": 5177.055372396376,
+     "costs": [
+      5177.055379024715,
+      5177.055372396376,
+      5177.055399959092,
+      5177.055372882333
+     ],
+     "thetaP_err_pct": 190.79264109075237,
+     "W_err_pct": 0.1801307377341521
+    },
+    "info12/Normal": {
+     "product_rec": 0.0004704391988005283,
+     "product_true": 0.0,
+     "product_err_pct": null,
+     "n_within10": 35,
+     "n_params": 36,
+     "cost": 6214.861094315335,
+     "costs": [
+      6214.861094325014,
+      6214.861094383924,
+      6214.861094315335,
+      6214.861094365487
+     ],
+     "thetaP_err_pct": 0.025561185951894494,
+     "W_err_pct": 0.2023467869719242
+    },
+    "info12/Early Adenoma": {
+     "product_rec": 0.872998565692746,
+     "product_true": 0.875,
+     "product_err_pct": 0.22873534940045356,
+     "n_within10": 35,
+     "n_params": 36,
+     "cost": 6217.885046946588,
+     "costs": [
+      109661.09767708441,
+      6217.885047122652,
+      8329.320652566668,
+      6217.885046946588
+     ],
+     "thetaP_err_pct": 5.332387526884637,
+     "W_err_pct": 0.23144691319916255
+    },
+    "info12/Advanced Adenoma": {
+     "product_rec": 1.7961420124703595,
+     "product_true": 1.75,
+     "product_err_pct": 2.636686426877688,
+     "n_within10": 36,
+     "n_params": 36,
+     "cost": 6217.240642645217,
+     "costs": [
+      6217.240642832282,
+      6217.240650599131,
+      6217.240642931715,
+      6217.240642645217
+     ],
+     "thetaP_err_pct": 3.271425440602105,
+     "W_err_pct": 0.03954349709117307
+    },
+    "info12/Severe APC Loss": {
+     "product_rec": 2.6969458594438187,
+     "product_true": 2.625,
+     "product_err_pct": 2.740794645478808,
+     "n_within10": 34,
+     "n_params": 36,
+     "cost": 6217.113332328931,
+     "costs": [
+      6217.113343282762,
+      6217.113403480016,
+      6217.113332328931,
+      6217.113346728504
+     ],
+     "thetaP_err_pct": 145.52293123090453,
+     "W_err_pct": 0.036932933191125006
+    },
+    "dep12/Normal": {
+     "product_rec": 0.00020523659659622826,
+     "product_true": 0.0,
+     "product_err_pct": null,
+     "n_within10": 35,
+     "n_params": 36,
+     "cost": 6214.866469708535,
+     "costs": [
+      39898434.96986581,
+      6214.866469716964,
+      6214.866469708535,
+      6214.86646977961
+     ],
+     "thetaP_err_pct": 0.009062687761585142,
+     "W_err_pct": 0.022991164731256397
+    },
+    "dep12/Early Adenoma": {
+     "product_rec": 0.8767559832242587,
+     "product_true": 0.875,
+     "product_err_pct": 0.20068379705814163,
+     "n_within10": 35,
+     "n_params": 36,
+     "cost": 6215.366660395078,
+     "costs": [
+      6215.366660410854,
+      9128.35821728254,
+      6215.366660469018,
+      6215.366660395078
+     ],
+     "thetaP_err_pct": 7.496428481133513,
+     "W_err_pct": 0.007093655068524107
+    },
+    "dep12/Advanced Adenoma": {
+     "product_rec": 1.755100065204821,
+     "product_true": 1.75,
+     "product_err_pct": 0.29143229741834176,
+     "n_within10": 34,
+     "n_params": 36,
+     "cost": 6213.790339587576,
+     "costs": [
+      6213.790339587576,
+      6213.79033988104,
+      6213.790339822028,
+      1020548.8523452745
+     ],
+     "thetaP_err_pct": 17.083475287632254,
+     "W_err_pct": 0.0923464239298492
+    },
+    "dep12/Severe APC Loss": {
+     "product_rec": 2.6314819715938755,
+     "product_true": 2.625,
+     "product_err_pct": 0.24693225119525847,
+     "n_within10": 34,
+     "n_params": 36,
+     "cost": 6213.570806416233,
+     "costs": [
+      6213.570806652371,
+      6213.570806591416,
+      6213.570806416233,
+      138944.3526257046
+     ],
+     "thetaP_err_pct": 106.24917477883517,
+     "W_err_pct": 0.2011719801331857
+    }
+   },
+   "crlb_kappaP_pct_150pt": {
+    "base10": {
+     "Early Adenoma": 0.6898079516322508,
+     "Advanced Adenoma": 7.164757727310615,
+     "Severe APC Loss": 19.096653400366417
+    },
+    "info12": {
+     "Early Adenoma": 0.6433951447417217,
+     "Advanced Adenoma": 6.8646620282422885,
+     "Severe APC Loss": 17.57672819640938
+    },
+    "dep12": {
+     "Early Adenoma": 0.35465577457803055,
+     "Advanced Adenoma": 0.4237078777226726,
+     "Severe APC Loss": 0.6113239023210597
+    }
+   }
+  },
+  "C": {
+   "source": "src/wnt_pinn/model via PINN-fisher-matrix/thetaP_design.solve (LSODA rtol 1e-9), ctrl condition, central difference h = 1e-3 thetaP",
+   "peak_abs_log_sensitivity_b": {
+    "Normal": 1.5647851895219667,
+    "Early Adenoma": 0.4780573650905451,
+    "Advanced Adenoma": 0.19781962346909765,
+    "Severe APC Loss": 0.06920805287458087
+   },
+   "median_abs_log_sensitivity_b_t_ge_10 (printed)": {
+    "Normal": 1.2573986440290175,
+    "Early Adenoma": 0.3611550814048847,
+    "Advanced Adenoma": 0.1497275910293805,
+    "Severe APC Loss": 0.052115757799509055
+   },
+   "b_range": {
+    "Normal": [
+     0.2,
+     0.7351427486492167
+    ],
+    "Early Adenoma": [
+     0.19999999999999998,
+     1.0927351491231976
+    ],
+    "Advanced Adenoma": [
+     0.2,
+     1.6274110720436672
+    ],
+    "Severe APC Loss": [
+     0.2,
+     2.148707777443708
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,316 @@
+\section{Materials and methods}
+\label{sec:methods}
+
+\subsection{The WNT--RA--HOX model}
+\label{sec:model}
+
+The model is a reduced, nondimensional description of the antagonism between
+WNT/\bcat{} signalling, which sustains proliferation and stemness in the colonic
+crypt, and retinoic acid signalling, which drives differentiation through the
+HOX transcription
+factors~\citep{clevers2012wnt,nusse2017wnt,ordonezmoran2015hoxa5,bhatlekar2014hox,rhinn2012retinoic}.
+The states are \bcat{} $b$, APC $p$, HOXA5 $h_5$, HOXA13 $h_{13}$, MYC $m$, RA
+$r$, and the RA-catabolising enzyme CYP26A1 $c$. With $H_n(u;\kappa) =
+u^n/(\kappa^n+u^n)$ and Hill exponents $n=2$ for every \bcat{}, MYC and HOXA13
+input,
+\begin{align}
+\dot b &= W + \eta_{13}H_{2}(h_{13};\kappa_{13}) - b - \lambda_P\,p\,b
+        - \lambda_5\frac{h_5 b}{\kappa_5+b}, \label{eq:b}\\
+\varepsilon_P\dot p &= \frac{1+\rho_5 h_5}{1+\rho_B b+\rho_{13}h_{13}}
+        - \delta_P\,p, \qquad \delta_P = 1+\dP(1-\thP), \label{eq:p}\\
+\varepsilon_5\dot h_5 &= a_5 + \eta_R H_1(r;\kappa_R) - h_5
+        - \eta_M\frac{m h_5}{\kappa_M+m}, \label{eq:h5}\\
+\varepsilon_{13}\dot h_{13} &= a_{13} + \eta_{B13}H_{2}(b;\kappa_{B13})
+        + \eta_{M13}H_{2}(m;\kappa_{M13}) - h_{13}, \label{eq:h13}\\
+\varepsilon_M\dot m &= a_M + \eta_{BM}H_{2}(b;\kappa_{BM}) - m, \label{eq:m}\\
+\varepsilon_R\dot r &= \mu_R(t) - r - \lambda_C\,c\,r, \label{eq:r}\\
+\varepsilon_C\dot c &= a_C + \eta_{RC}H_1(r;\kappa_{RC})
+        + \eta_{BC}H_{2}(b;\kappa_{BC}) - c. \label{eq:c}
+\end{align}
+Time is scaled by the \bcat{} turnover rate and the horizon is $t\in[0,150]$.
+The retinoid supply is a basal level, a circadian dietary term and a smooth
+all-\emph{trans} retinoic acid (ATRA) pulse,
+$\mu_R(t) = \mu_0 + A_R[1+\cos(2\pi t/T_R-\varphi)] +
+\tfrac{D_R}{2}[\tanh q(t-\tau_1)-\tanh q(t-\tau_2)]$, with $T_R=24$ and a
+baseline treatment window $[\tau_1,\tau_2]=[40,88]$. Exogenous WNT and MYC
+inputs, zero by default, are added to Eqs~\eqref{eq:b} and \eqref{eq:m} as
+smooth steps of amplitude $D_W$ and $D_M$ when a condition calls for them, and
+knockdowns enter as known multiplicative efficiencies on the WNT drive ($k_W$),
+the HOXA13$\to$\bcat{} feedback ($k_{13}$) and the basal production terms
+($k_{a5},k_{a13},k_{aM},k_{aC}$), all equal to 1 unless stated. The initial
+state is $(0.20,1.00,0.80,0.30,0.30,0.60,0.40)$. The 36 kinetic parameters and
+their baseline values are listed in S1~Table; the forcing parameters are known.
+The stemness index plotted in Fig~\ref{fig:design} is
+$S=b(1+h_{13})/(1+p+h_5)$.
+
+Disease progression is represented by four regimes that differ only in WNT drive
+$W$ and APC functionality $\thP$ (Table~\ref{tab:regimes}). APC loss enters
+through one scalar, the excess degradation $\delta_P$ in Eq~\eqref{eq:p}; since
+$\thP$ and $\dP$ appear only through the product $\kappa_P\equiv\dP(1-\thP)$,
+the pair is structurally non-identifiable when both are unknown, and in the
+Normal regime ($\thP=1$) $\dP$ leaves the model entirely.
+
+\subsection{Experimental design and synthetic data}
+\label{sec:data}
+
+The base design has ten conditions per regime (Fig~\ref{fig:design}C): the
+treated baseline; five retinoid arms (no ATRA; early, late and low-dose ATRA; a
+strong-circadian arm without ATRA); and four arms that perturb the WNT/MYC
+sub-network through known inputs (a WNT pulse, a sustained WNT-inhibition step
+$D_W=-0.7$ from $t=50$, a MYC pulse, and a combined WNT and ATRA arm). Reference
+trajectories are computed with the implicit Radau method at relative and
+absolute tolerances $10^{-10}$ and
+$10^{-12}$~\citep{virtanen2020scipy}. Each condition is observed at the initial
+time and 149 further times drawn uniformly without replacement from a
+5000-point grid on $[0,150]$, all seven states, with independent Gaussian noise
+of standard deviation $\sigma=0.002$. The benchmark dataset uses data seed 42
+(seed $42+c$ for condition $c$); a replicate dataset with seed 7, never used
+for any tuning, is used to test generalisation, and 24 further seeds
+(101--124) for the Monte Carlo study. Every estimator in
+Sections~\ref{sec:res-budget}--\ref{sec:res-sgn} sees byte-identical data.
+
+\subsection{Fisher information and the Cram\'er--Rao bound}
+\label{sec:m-fim}
+
+All parameters are estimated in log coordinates, $x=\log(\theta/\theta_0)$.
+For the design above, with residuals $y_{cki}(x) - y^{\text{obs}}_{cki}$ over
+conditions $c$, times $k$ and states $i$, the Fisher information is
+\begin{equation}
+\Fim(x) = \sigma^{-2}\,J^{\top}J, \qquad J_{(cki),j} = \frac{\partial y_{cki}}{\partial x_j},
+\label{eq:fim}
+\end{equation}
+computed at the true parameters by central differences (step $10^{-4}$ in log
+space) on Radau solutions at tolerance $10^{-10}$. For an unbiased estimator,
+$\mathrm{Cov}(\hat x)\succeq\Fim^{-1}$, and the square roots of the diagonal of
+$\Fim^{-1}$ are the CRLB standard deviations; in log coordinates they are
+relative standard deviations. Because $(\thP,\dP)$ span an exact null direction
+of the 36-parameter $\Fim$ (Fig~\ref{fig:info}A,B), bounds are reported for the
+35 parameters with $\dP$ known. Fixing $\dP$ removes the null direction and
+nothing else: the bounds of the other 34 parameters are the same whether the
+degenerate pair is represented by $\thP$ or by the identifiable product
+$\kappa_P$.
+
+The PINN, the SGN-PINN and the reference classical fit minimise a
+relative-weighted least-squares objective in which state $i$ carries weight $w_i=1/\max(\max_t|y_i|,0.05)$ (the
+weighting the PINN uses). The asymptotic covariance of that estimator is the
+sandwich $\sigma^2(J^\top \Omega^2J)^{-1}J^\top \Omega^4J(J^\top \Omega^2J)^{-1}$, with $\Omega=\mathrm{diag}(w_i)$, which is not
+the CRLB: its standard deviations exceed the bound by a median of 7--9\% and at
+most 47\% across parameters and regimes, and the CRLB-expected count of the
+weighted estimator is lower by at most 0.3 parameters per regime. We use the
+CRLB itself, the tighter yardstick, throughout, and the unit-weight MLE wherever
+the question is whether the bound is attained.
+
+\paragraph{The CRLB-expected count} A recovery count is the statistic every
+earlier study of this model reports, so we translate the bound into the same
+currency. If $\hat x_j\sim\mathcal{N}(x_j,s_j^2)$ with $s_j$ the CRLB standard
+deviation, the probability that $\hat\theta_j$ is within 10\% of the truth is
+$\Phi(\log 1.1/s_j)-\Phi(\log 0.9/s_j)$, and the sum over parameters,
+$\mathbb{E}[\Ncount]$, is the number an efficient estimator recovers on average.
+We report it over the 34 parameters outside the $(\thP,\dP)$ pair, and report
+$\thP$ separately.
+
+\subsection{Maximum-likelihood estimation}
+\label{sec:m-mle}
+
+The classical reference estimator is single shooting: the ODE is integrated at
+each trial parameter vector (LSODA, relative tolerance $10^{-11}$) and the
+weighted residual is minimised by a trust-region reflective least-squares
+method with forward-difference Jacobians (step $10^{-5}$ in log space) computed
+in parallel, run to convergence (relative tolerances $10^{-12}$, at most 400
+evaluations, raised to 1500 for the one fit that reached that cap)~\citep{virtanen2020scipy}. The solver tolerance matters: with
+LSODA at $10^{-8}$ and a step of $10^{-6}$ the finite-difference Jacobian is too
+noisy along the flattest directions, and fits in the two high-WNT regimes stop
+short of the optimum, so every fit reported here uses the tighter settings. Two
+weightings are used: the relative weights $w_i$ above (the shared objective of
+all estimators) and unit weights, which make the estimator the exact maximum
+likelihood estimator (MLE) for the iid noise and are used for the Monte Carlo
+study. Starts are the common initial guess ($1.5\times$ truth, $W=1.2$,
+$\thP=0.6$, in every regime) and three starts with $\mathcal{N}(0,0.35^2)$
+log-jitter around it. The reported estimate of a multistart is the start with the
+lowest final cost; the truth is never used for selection.
+
+\paragraph{Monte Carlo test of the bound} For each regime and each of 24 data
+seeds, the unit-weight MLE with $\dP$ known is started at the truth and run to
+convergence; the empirical standard deviation of $\hat x_j$ across seeds is
+compared with the CRLB, and the standardised errors $z_j = (\hat x_j-x_j)/s_j$ with a
+standard normal. Starting at the truth isolates the statistical question (is the
+bound attained?) from the optimisation question (is the basin found?), which the
+multistart runs address.
+
+\subsection{Physics-informed neural networks}
+\label{sec:m-pinn}
+
+One network per condition represents the state trajectory, $z_\phi:t\mapsto
+\mathbb{R}^7$: a GELU multilayer perceptron of width 256 and depth 4 on a fixed
+Gaussian random Fourier embedding of time (16 frequencies, scale
+4)~\citep{tancik2020fourier,wang2021eigenvector}, with 207\,879 weights per
+condition; the embedding is needed because a plain network's spectral
+bias~\citep{rahaman2019spectral} flattens the circadian forcing. A single
+parameter vector is shared by all conditions. The loss is the weighted data
+misfit, an initial-condition penalty and a physics residual on 8000 collocation
+points, balanced adaptively, and is minimised with
+Adam~\citep{kingma2015adam} (2000 epochs; learning rates $10^{-3}$ for the
+networks, $5\times10^{-3}$ for the parameters) then
+L-BFGS~\citep{liu1989lbfgs}, followed by a parameter refinement with the networks
+frozen. Three variants form a matched ablation, each run from one start on the
+benchmark data (the integral variant also on the replicate): \emph{autodiff}, the standard residual $\dot z_\phi - F(z_\phi;\theta)$
+with $\dot z_\phi$ from automatic differentiation, unit weights and random
+collocation; \emph{weighted}, which adds the relative weights $w_i$ and a fixed
+collocation grid; and \emph{integral}, which replaces the residual by the
+derivative-free trapezoidal form
+\begin{equation}
+R_k = \frac{z_{k+1}-z_k}{\Delta t} - \tfrac12\big[F(t_k,z_k;\theta) + F(t_{k+1},z_{k+1};\theta)\big],
+\label{eq:integral}
+\end{equation}
+which never differentiates the network in time. The forward PINN of
+Section~\ref{sec:res-forward} uses the same architecture with the parameters
+known, 40 noise-free observations per state, the initial condition and 50\,000
+collocation points.
+
+\subsection{The Schur-complement Gauss--Newton PINN}
+\label{sec:m-sgn}
+
+The SGN-PINN keeps the PINN's representation and changes how it is optimised.
+For each condition the state is linear in a head matrix $A_c$,
+\begin{equation}
+z_c(t) = \big(h(t)^{\top}A_c\big)\odot s_c,\qquad
+h(t) = \big[\,\psi_{\text{PINN}}(t),\ \sin\omega_\ell t,\ \cos\omega_\ell t,\ e^{-t/\tau_m},\ 1\,\big],
+\label{eq:head}
+\end{equation}
+where $\psi_{\text{PINN}}$ are the 256 last-hidden features of the trained
+integral PINN of that condition (frozen), $\omega_\ell$ are 256 random
+frequencies uniform on $[0,\pi]$ (512 Fourier features), $\tau_m$ are 24
+log-spaced decay times in $[0.05,20]$ that represent the fast initial
+transients, and $s_c$ is the PINN's output scale. With the features fixed, the
+unknowns are $(A_1,\dots,A_{10},x)$, $7\times793\times10+36\approx5.6\times10^4$
+numbers, and the objective
+\begin{equation}
+\mathcal{L}_\lambda = \sum_c \Big\|\frac{\Omega(z_c(t_d)-y_c)}{\sigma}\Big\|^2
++ \lambda\sum_c\Delta t\,\Big\|\frac{\Omega R_c(A_c,x)}{\sigma}\Big\|^2
++ \lambda_{0}\sum_c\Big\|\frac{\Omega(z_c(0)-y_0)}{\sigma}\Big\|^2
+\label{eq:sgn}
+\end{equation}
+is a nonlinear least-squares problem in which $R_c$ is the residual
+\eqref{eq:integral} on a 3000-point grid and $\lambda_0=100$. Its Gauss--Newton
+matrix is block-arrowhead: ten dense head blocks $\mathcal{A}_c$, coupled only
+through the 36 parameters by blocks $\mathcal{B}_c$, and a parameter block
+$\mathcal{X}$. Each Levenberg--Marquardt step~\citep{levenberg1944method,marquardt1963algorithm}
+therefore costs ten Cholesky factorisations of $5551\times5551$ blocks and one
+$36\times36$ solve with the Schur complement
+\begin{equation}
+\mathcal{S} = \sum_c\big[\mathcal{X}_c - \mathcal{B}_c^{\top}(\mathcal{A}_c+D_c)^{-1}\mathcal{B}_c\big],
+\label{eq:schur}
+\end{equation}
+the reduced Gauss--Newton matrix of variable
+projection~\citep{golub1973differentiation,golub2003separable}.
+The physics weight is continued upward, $\lambda = 10^{-2}\to10^{3}$, from a
+smoothing problem in which the data dominate to one in which $z_c$ must solve
+the ODE; at large $\lambda$ the estimate approaches the relative-weighted
+least-squares estimate restricted to the span of $h$. The undamped Schur
+complement is then the Gauss--Newton curvature of the objective profiled over
+the heads; when the physics term is satisfied and the weights are close to
+uniform it approximates the profiled Fisher information of $x$, and we report
+$\mathrm{diag}(\mathcal{S}^{-1})^{1/2}$ as the estimator's own standard error,
+obtained at no extra cost, and test that approximation against the CRLB of the
+design (Section~\ref{sec:res-sgn}). Two schedules are run from the
+integral PINN's estimate (the reference formulation when the method was
+developed; the ablation of Section~\ref{sec:res-gap} was run afterwards): S1 ($\lambda=10^{-2},\dots,10^{3}$, ten iterations per
+level) and S2 (15 head-only Gauss--Newton iterations at fixed $x$, then
+$\lambda=1,\dots,10^{3}$, twelve iterations per level). The reported estimate is
+the schedule with the lower \emph{shooting} misfit, the weighted data misfit of
+the ODE solution at the estimated parameters, which requires no trust in the
+head and no knowledge of the truth. The basis and both schedules were fixed on
+the seed-42 data; the seed-7 dataset is held out.
+
+\subsection{Hybrid models, the equation-local screen and the anchor ratio}
+\label{sec:m-hybrid}
+
+A hybrid replaces one closed-form regulation with a network. For the main
+example, the \bcat{}$\to$MYC induction,
+\begin{equation}
+\eta_{BM}H_2(b;\kappa_{BM}) \;\longrightarrow\; \fnn(b),
+\qquad \varepsilon_M\dot m = a_M + \fnn(b) - m,
+\label{eq:myc-hybrid}
+\end{equation}
+which removes $(\eta_{BM},\kappa_{BM})$ from the unknowns and leaves the basal
+production $a_M$, the decay and the timescale mechanistic. $\fnn$ is a
+two-hidden-layer, five-unit tanh network (46 weights) with an $L^2$ penalty of
+$10^{-8}$ on the mean squared weight, a value calibrated to the scale of this
+objective, small, Glorot-initialised and multi-started as recommended
+in~\citep{philipps2025ude}. Thirteen edges of the model can be learned this way
+(S2~Table): seven \emph{production} edges of the form $a+f(u)$, four
+\emph{modulator} edges of the form $f(u)\cdot y$, one multivariate ratio, and
+the APC-loss law. Five constraint parameterisations are implemented for a
+production edge, all non-negative: \texttt{gated},
+$\fnn(u)=\mathrm{softplus}(g(u))(1-e^{-u/u_0})$ with $u_0=0.1\,u_{\max}$ (exact
+anchor, not monotone); \texttt{sc}, $\mathrm{softplus}(h(u))-\mathrm{softplus}(h(0))$ with $h$
+monotone through non-negative weights (an exact anchor); \texttt{sc\_bounded}, as
+\texttt{sc} with the true asymptote supplied as a bound (an oracle no real
+analysis would have); \texttt{lin}, $(u/u_{\max})\,\mathrm{softplus}(g(u))$; and
+\texttt{lin\_mono}, the same with a monotone rate. \texttt{sc} follows the
+monotone construction of~\citep{loman2025identifiability} with an exact anchor
+added.
+
+The full hybrid pipeline (all state networks, all conditions, all
+parameters) is used for the round-one and confirmation results. Every other
+hybrid experiment uses an equation-local screen: only the equation hosting the
+learned edge is fitted, with the noise-free reference states supplied on a fixed
+grid, every parameter outside that equation held at truth, and the equation's
+own parameters started from the same $1.5\times$ guess; the residual is
+\eqref{eq:integral} on that one row. Each cell is fitted with the network and,
+from the same seeds and budget, as a mechanistic control with the closed form
+and all of its parameters unknown (3000 Adam steps, 300 L-BFGS iterations, the
+restart with the lowest residual kept). Because exact states go in, the screen
+excludes state-estimation error and its absolute errors bound what the full
+pipeline achieves from below. Restart counts differ between experiments and are
+stated with each result; selection by lowest residual is not always selection by
+lowest parameter error, so numbers are compared within an experiment, not
+across experiments.
+
+For a regulator $u$ under a condition set, the anchor ratio
+\begin{equation}
+\rho_u = \frac{\min_{c,t}u_c(t)}{\max_{c,t}u_c(t)}
+\label{eq:ratio}
+\end{equation}
+is the fraction of the regulator's observed range that separates the data from
+the anchor $u=0$; it is computed from reference trajectories alone.
+
+\subsection{Fisher information of a learned term}
+\label{sec:m-hfim}
+
+For the hosting equation $k$ of a production edge, the screen minimises the
+trapezoidal residual of that one equation, with the reference states supplied on
+a fixed grid (stride 8 on the 5000-point reference grid), scaled per condition by
+$s_c=\max(\max_t|z_{k}|,0.05)$. Reading that objective as a Gaussian likelihood
+with residual noise $\sigma_r$ gives a Fisher information
+$\Fim=\sigma_r^{-2}J^{\top}J$ over the equation's mechanistic parameters (in log
+coordinates) and the learned term's weights. The learned term is represented in
+three ways: by the closed-form Hill term (the mechanistic control); by the
+screen's own \texttt{gated} and \texttt{sc} networks, fitted to the true Hill
+term (median over three fits); and by a linear family
+$\sum_{k\le K}c_k(u/u_{\max})^k$ that satisfies the anchor exactly. The
+network block is profiled out, $\Fim_{a\mid\phi}=J_a^{\top}(I-P_\phi)J_a$, with
+$P_\phi$ the projector on the network columns of $J$ above a relative singular
+value tolerance $10^{-8}$; the reported quantity is $\Gamma=\mathrm{sd}(\log a)/\sigma_r$,
+which is free of the noise scale. Away from the anchor the network block is
+nearly rank-deficient and $\Gamma$ depends on that tolerance (by a factor of 17 to 5000
+between $10^{-6}$ and $10^{-10}$ under the base design); it does not when the anchor is visited, and every rank correlation we
+report changes by at most 0.04 across the three tolerances. Jacobians are
+computed by automatic differentiation and checked against central differences;
+the bound is checked against 200 Monte Carlo refits with simulated residual
+noise for the MYC edge under two designs and two representations. Designs are
+the base design, the depletion and information-matched pairs, the protocol
+ladder of the design table and the dose arms, each at the true parameters. The
+analysis needs no training and runs on eight CPU cores in minutes per design.
+
+\subsection{Scoring and reporting}
+
+A parameter is recovered if its estimate is within 10\% relative error of the
+truth; $\Ncount$ is the number recovered. Counts are reported per regime and
+never pooled across different denominators. The functional error of a learned
+term is $100\cdot\mathrm{RMS}(\fnn-f_{\text{true}})/\mathrm{RMS}(f_{\text{true}})$
+over the observed input range. Predictions for the dose-response and the
+prospective test were written down before the corresponding fits were run and
+are reported as scored (S1~Text). Computation used one NVIDIA GPU with 95\,GB
+and a 64-core CPU node; measured wall-clock times are compared in
+Fig~\ref{fig:sgn}E.

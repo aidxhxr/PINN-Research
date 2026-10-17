@@ -1,0 +1,256 @@
+{
+ "figure": "fig10_depletion",
+ "units": "percent",
+ "sources": {
+  "base": "PINN-hybrid-ude/runs/20260801_depletion_ab/screen_nodep/screen.json",
+  "info": "PINN-hybrid-ude/runs/20260801_infoctl/screen.json",
+  "dep": "PINN-hybrid-ude/runs/20260801_depletion_ab/screen_dep/screen.json"
+ },
+ "cross_check": [
+  "PINN-hybrid-ude/runs/20260801_infoctl/comparison.txt",
+  "PINN-hybrid-ude/runs/20260801_depletion_ab/AB_comparison.txt"
+ ],
+ "cells": {
+  "base/ra_h5/Normal": {
+   "basal": 17.01728709350801,
+   "ctrl": 0.5255545363856973,
+   "nrmse": 1.172020244599601,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.12062261046635292,
+   "seed": 100
+  },
+  "base/ra_h5/Severe APC Loss": {
+   "basal": 33.52624310934515,
+   "ctrl": 41.906548808244374,
+   "nrmse": 24.448091563960645,
+   "eq": 0,
+   "n_eq": 4,
+   "ratio": 0.1433671427917845,
+   "seed": 100
+  },
+  "base/rc_cyp/Normal": {
+   "basal": 10.869799506848313,
+   "ctrl": 7.368037972836933,
+   "nrmse": 1.3244677886523575,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.12062261046635292,
+   "seed": 100
+  },
+  "base/rc_cyp/Severe APC Loss": {
+   "basal": 20.32255298853017,
+   "ctrl": 42.22649831100265,
+   "nrmse": 0.5795372580943983,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.1433671427917845,
+   "seed": 100
+  },
+  "base/bm_myc/Normal": {
+   "basal": 19.157097186005217,
+   "ctrl": 0.02259979029288021,
+   "nrmse": 4.028023677704701,
+   "eq": 1,
+   "n_eq": 2,
+   "ratio": 0.02495622699294998,
+   "seed": 100
+  },
+  "base/bm_myc/Severe APC Loss": {
+   "basal": 78.86598521042603,
+   "ctrl": 24.517990155185093,
+   "nrmse": 11.197202454398191,
+   "eq": 1,
+   "n_eq": 2,
+   "ratio": 0.06646790476684532,
+   "seed": 100
+  },
+  "base/bc_cyp/Normal": {
+   "basal": 24.595127024382236,
+   "ctrl": 7.368037972836933,
+   "nrmse": 4.2735287692654955,
+   "eq": 2,
+   "n_eq": 4,
+   "ratio": 0.02495622699294998,
+   "seed": 100
+  },
+  "base/bc_cyp/Severe APC Loss": {
+   "basal": 29.973161525505006,
+   "ctrl": 42.22649831100265,
+   "nrmse": 1.950439492905209,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.06646790476684532,
+   "seed": 100
+  },
+  "info/ra_h5/Normal": {
+   "basal": 12.945292906728486,
+   "ctrl": 0.5028988502617053,
+   "nrmse": 1.7038368854238346,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.12062807243748594,
+   "seed": 100
+  },
+  "info/ra_h5/Severe APC Loss": {
+   "basal": 33.352277209891334,
+   "ctrl": 41.62966156823071,
+   "nrmse": 24.610336018083775,
+   "eq": 0,
+   "n_eq": 4,
+   "ratio": 0.14337141161577188,
+   "seed": 100
+  },
+  "info/rc_cyp/Normal": {
+   "basal": 10.906083543319387,
+   "ctrl": 7.619379337096416,
+   "nrmse": 1.3147368957261678,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.12062807243748594,
+   "seed": 100
+  },
+  "info/rc_cyp/Severe APC Loss": {
+   "basal": 20.83747988168733,
+   "ctrl": 42.41742783417752,
+   "nrmse": 0.19749194010387192,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.14337141161577188,
+   "seed": 100
+  },
+  "info/bm_myc/Normal": {
+   "basal": 20.00525234890496,
+   "ctrl": 0.016654205219053374,
+   "nrmse": 4.191269577290586,
+   "eq": 1,
+   "n_eq": 2,
+   "ratio": 0.024961822003528845,
+   "seed": 100
+  },
+  "info/bm_myc/Severe APC Loss": {
+   "basal": 82.48523432307813,
+   "ctrl": 22.54894024682865,
+   "nrmse": 11.70427051008688,
+   "eq": 1,
+   "n_eq": 2,
+   "ratio": 0.06646567158105085,
+   "seed": 100
+  },
+  "info/bc_cyp/Normal": {
+   "basal": 26.885511622914336,
+   "ctrl": 7.619379337096416,
+   "nrmse": 4.42950330304898,
+   "eq": 2,
+   "n_eq": 4,
+   "ratio": 0.024961822003528845,
+   "seed": 100
+  },
+  "info/bc_cyp/Severe APC Loss": {
+   "basal": 46.080081240644425,
+   "ctrl": 42.41742783417752,
+   "nrmse": 2.62390696740827,
+   "eq": 2,
+   "n_eq": 4,
+   "ratio": 0.06646567158105085,
+   "seed": 100
+  },
+  "dep/ra_h5/Normal": {
+   "basal": 0.09038048335737367,
+   "ctrl": 0.07410588480640432,
+   "nrmse": 0.07400361253042737,
+   "eq": 4,
+   "n_eq": 4,
+   "ratio": 0.0,
+   "seed": 100
+  },
+  "dep/ra_h5/Severe APC Loss": {
+   "basal": 0.7274658481386717,
+   "ctrl": 0.7150556912871772,
+   "nrmse": 0.6979911116498528,
+   "eq": 4,
+   "n_eq": 4,
+   "ratio": 0.0,
+   "seed": 100
+  },
+  "dep/rc_cyp/Normal": {
+   "basal": 1.1072963351588423,
+   "ctrl": 0.0073791590169715315,
+   "nrmse": 0.11345018342174543,
+   "eq": 4,
+   "n_eq": 4,
+   "ratio": 0.0,
+   "seed": 100
+  },
+  "dep/rc_cyp/Severe APC Loss": {
+   "basal": 0.31201946680022363,
+   "ctrl": 0.7917442204926662,
+   "nrmse": 0.12124201424491689,
+   "eq": 4,
+   "n_eq": 4,
+   "ratio": 0.0,
+   "seed": 100
+  },
+  "dep/bm_myc/Normal": {
+   "basal": 2.901671507645877,
+   "ctrl": 0.012160693310083985,
+   "nrmse": 0.6279822324653325,
+   "eq": 2,
+   "n_eq": 2,
+   "ratio": 0.014957835413661623,
+   "seed": 100
+  },
+  "dep/bm_myc/Severe APC Loss": {
+   "basal": 2.522904899170814,
+   "ctrl": 0.009288176788431931,
+   "nrmse": 0.38771541620569855,
+   "eq": 2,
+   "n_eq": 2,
+   "ratio": 0.012623761551224553,
+   "seed": 100
+  },
+  "dep/bc_cyp/Normal": {
+   "basal": 25.504551894315515,
+   "ctrl": 0.0073791590169715315,
+   "nrmse": 3.1329765652077213,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.014957835413661623,
+   "seed": 100
+  },
+  "dep/bc_cyp/Severe APC Loss": {
+   "basal": 64.84680943608898,
+   "ctrl": 0.7917442204926662,
+   "nrmse": 4.10999721716388,
+   "eq": 3,
+   "n_eq": 4,
+   "ratio": 0.012623761551224553,
+   "seed": 100
+  }
+ },
+ "ratio_arm_over_base": {
+  "info/ra_h5/Normal": 0.7607142569550369,
+  "info/ra_h5/Severe APC Loss": 0.9948110529746375,
+  "info/rc_cyp/Normal": 1.0033380594047032,
+  "info/rc_cyp/Severe APC Loss": 1.0253377070020573,
+  "info/bm_myc/Normal": 1.0442736785570699,
+  "info/bm_myc/Severe APC Loss": 1.045891129147698,
+  "info/bc_cyp/Normal": 1.0931235116721105,
+  "info/bc_cyp/Severe APC Loss": 1.5373780707595222,
+  "dep/ra_h5/Normal": 0.005311098229743874,
+  "dep/ra_h5/Severe APC Loss": 0.021698400437115985,
+  "dep/rc_cyp/Normal": 0.10186906708455948,
+  "dep/rc_cyp/Severe APC Loss": 0.01535335973665927,
+  "dep/bm_myc/Normal": 0.15146718103855666,
+  "dep/bm_myc/Severe APC Loss": 0.031989772174142415,
+  "dep/bc_cyp/Normal": 1.0369758151292217,
+  "dep/bc_cyp/Severe APC Loss": 2.1634958121087426
+ },
+ "eq_params_within10": {
+  "base": "16/28",
+  "info": "15/28",
+  "dep": "26/28"
+ },
+ "log_floor_pct": "none needed (min plotted value 0.007 %)",
+ "note": "rho = x_lo/x_hi of the edge's regulator over the arm's conditions; the information-matched pair leaves rho unchanged in every cell. bc_cyp gets worse under depletion (b reaches only rho 0.013-0.015)."
+}

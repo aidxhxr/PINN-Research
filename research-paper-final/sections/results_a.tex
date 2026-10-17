@@ -1,0 +1,141 @@
+% ---------------------------------------------------------------------------
+% Results, part A: the model, the forward problem, the information budget.
+% ---------------------------------------------------------------------------
+\subsection{A seven-state model of the crypt, four disease regimes and a
+ten-condition design}
+\label{sec:res-model}
+
+The model couples three loops (Fig~\ref{fig:design}A; Methods,
+Eqs~\eqref{eq:b}--\eqref{eq:c}): a pro-stemness positive loop
+\bcat{}$\to$\allowbreak MYC$\to$\allowbreak HOXA13$\to$\allowbreak\bcat{}; a differentiation loop in which RA
+induces HOXA5, HOXA5 supports APC and APC degrades \bcat{}; and RA homeostasis
+through its catabolising enzyme CYP26A1, which \bcat{} also induces. Disease
+progression is a coupled sweep that raises WNT drive $W$ while lowering APC
+functionality $\thP$ (Table~\ref{tab:regimes}); every other parameter is shared.
+Along the sweep the \bcat{} level roughly triples, APC falls to a sixth of its
+healthy level and the stemness index rises fourfold (Fig~\ref{fig:design}B). The
+experiment that every inverse problem in this paper sees is the ten-condition
+design of Fig~\ref{fig:design}C: six conditions vary only the retinoid input and
+four perturb the WNT/MYC sub-network directly. All seven states are observed at
+150 times per condition with Gaussian noise of standard deviation 0.002, 0.1--0.7\%
+of the mean level of each state, except APC in Severe APC Loss (2.6\%).
+This is a generous design, about $10^4$ observations per regime; how the
+conclusions depend on it is examined in S1~Fig.
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}[c]{0.58\linewidth}
+{\sffamily\bfseries\large A}\\[-0.5ex]
+\centering
+\fig[width=0.97\linewidth]{fig01a_network.pdf}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.39\linewidth}
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\captionof{table}{\textbf{The four regimes.} Only $(W,\thP)$ change.}
+\label{tab:regimes}
+\begin{tabular}{lccl}
+\toprule
+regime & $W$ & $\thP$ & interpretation \\
+\midrule
+Normal & 0.80 & 1.00 & healthy crypt \\
+Early Adenoma & 1.00 & 0.75 & first WNT deregulation \\
+Advanced Adenoma & 1.50 & 0.50 & established lesion \\
+Severe APC Loss & 2.00 & 0.25 & carcinoma-like \\
+\bottomrule
+\end{tabular}
+\end{minipage}\\[1.5ex]
+\fig{fig01_design.pdf}
+\caption{\textbf{Model, regimes and experimental design.} (A) The WNT--RA--HOX
+network: one edge per term of Eqs~\eqref{eq:b}--\eqref{eq:c}, labelled with its
+parameter; blue arrows activate, red bars repress. Orange badges mark the two
+parameters that define the disease regimes; APC loss acts through the excess
+degradation $\delta_P$. The dashed edge is the main learned term of the hybrid
+models. (B) Reference trajectories (Radau, tolerance $10^{-10}$) of \bcat{}, APC
+and the stemness index $S$ under the control protocol in the four regimes; grey
+band, ATRA pulse. (C) The ten conditions of the base design: per condition, the
+retinoid drive $\mu_R(t)$, the exogenous WNT input and the exogenous MYC input,
+coloured where they differ from the control protocol (grey) and labelled with
+their amplitudes.}
+\label{fig:design}
+\end{figure}
+
+\subsection{The forward problem is not the main bottleneck}
+\label{sec:res-forward}
+
+Before asking how well a PINN estimates parameters, we ask whether it can
+represent the dynamics at all, because an inverse failure could simply be a
+representation failure. With the parameters known and 40 noise-free observations
+per state, a Fourier-feature PINN reproduces all seven states in all four regimes
+(Fig~\ref{fig:forward}A) with a mean relative $L^2$ error of 2.83\%, 1.76\%,
+2.09\% and 2.95\% (grand mean 2.41\%, or 1.59\% without APC), against 1.06\% for
+the same network trained on 100 evenly spaced labels (Fig~\ref{fig:forward}B).
+The largest relative error is in APC in the high-WNT regimes, where APC settles
+near zero and the denominator of the relative error is small (13.5\% relative,
+1.3\% normalised RMSE). The network is expressive enough for the trajectories,
+including the circadian oscillation and the treatment pulse. Its error is
+larger than the 0.1--0.7\% observation noise of the inverse problem, so
+representation is not free, but it is a few percent where the parameter errors
+of the inverse PINN below are tens of percent; the representation of the states
+is not what limits them (Section~\ref{sec:res-sgn} returns to this).
+
+\begin{figure}[tbp]
+\centering
+\fig{fig02_forward.pdf}
+\caption{\textbf{A PINN represents the dynamics.} (A) Forward PINN (dashed,
+regime colour) trained on 40 noise-free observations (open circles), the initial
+condition and the ODE residual, against the Radau reference (black), for the
+seven states in the Normal and Severe APC Loss regimes. (B) Relative $L^2$
+error per state and regime of this sparse-data PINN (filled) and of the same
+network trained on 100 evenly spaced labels (open). Mean errors 2.83/1.76/2.09/2.95\%
+(grand mean 2.41\%, against 1.06\%); the APC error in the high-WNT regimes is
+large in relative terms because APC approaches zero there.}
+\label{fig:forward}
+\end{figure}
+
+\subsection{The information budget of the design}
+\label{sec:res-budget}
+
+The Fisher information of the ten-condition design at the true parameters,
+Eq~\eqref{eq:fim}, is a single Jacobian computation that needs no estimator.
+In every regime its 35 informative eigenvalues span 5.7 to 8.3 orders of
+magnitude, and one further eigenvalue sits 7.8 to 10.9 orders below them, at the
+level of finite-difference round-off: a structural null
+direction (Fig~\ref{fig:info}A). The null direction is exactly
+the analytic degeneracy of Eq~\eqref{eq:p}: it lies in the $(\log\thP,\log\dP)$
+plane to within $10^{-6}$, with loadings that match the tangent of the level
+set $\dP(1-\thP)=\text{const}$ (Fig~\ref{fig:info}B). Its $\thP$ loading rises
+from 0 to 0.95 across the regimes, but that is algebra, the ratio
+$(1-\thP):\thP$, not a sign of saturation; we mention it because it is easily
+mistaken for one. The Fisher matrix finds the one structural fact about the
+model without being told, which we take as a check of the computation.
+
+With $\dP$ known, the CRLB of the remaining 35 parameters is the information
+budget of the design (Fig~\ref{fig:info}C). In the two low-WNT regimes every
+parameter has a relative standard deviation below 1.3\%; the budget then
+shrinks with WNT drive, to 31 of 35 parameters below 5\% in Advanced Adenoma
+and 25 of 35 in Severe APC Loss, where $\thP$ (57\%), $\rho_{13}$ (21\%),
+$\varepsilon_P$ (18\%) and $a_C$ (16\%) are the least informed. Translated into
+the currency the literature on this model has used, an efficient estimator would
+recover on average 34.0, 34.0, 33.4 and 31.1 of the 34 parameters outside the
+degenerate pair to within 10\% (the CRLB-expected count $\mathbb{E}[\Ncount]$,
+Methods), 132.5 of 136 in total (Fig~\ref{fig:info}D). A naive reading of recovery counts, of the kind the PINN results below produce,
+would conclude that the data support a dozen or so parameters per regime. The
+bound says the data support nearly all of them.
+
+\begin{figure}[tbp]
+\centering
+\fig{fig03_information.pdf}
+\caption{\textbf{The information budget of the ten-condition design.} Fisher
+information of the 36 log-parameters at the truth (150 observations per
+condition, seven states, $\sigma=0.002$). (A) Eigenvalue spectra normalised by
+the largest eigenvalue: one structural null direction in every regime. (B)
+Loadings of the null eigenvector on $\log\thP$ (light) and $\log\dP$ (dark);
+crosses, the tangent of the level set $\dP(1-\thP)=\text{const}$, which they
+match exactly. (C) Cram\'er--Rao relative standard deviation of each parameter
+with $\dP$ known, sorted by its value in Severe APC Loss; background bands,
+identifiable ($<5\%$), weak (5--50\%), non-identifiable ($>50\%$). (D)
+CRLB-expected number of the 34 parameters outside the degenerate pair that an
+efficient estimator recovers within 10\% (bars), and the number with CRLB
+standard deviation below 5\% (ticks).}
+\label{fig:info}
+\end{figure}

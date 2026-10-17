@@ -1,0 +1,250 @@
+{
+ "figure": "fig01_design",
+ "sources": {
+  "rhs": "src/wnt_pinn/model/numpy_rhs.py::_ode_rhs",
+  "parameters": "src/wnt_pinn/model/parameters.py (BASELINE, REGIMES, CONDITIONS, INITIAL_STATE)",
+  "solver": "scipy.integrate.solve_ivp Radau rtol=1e-10 atol=1e-12",
+  "grid": "t in [0,150], 1501 points"
+ },
+ "panel_B": {
+  "Normal": {
+   "W": 0.8,
+   "thetaP": 1.0,
+   "b_t150": 0.7132925135683521,
+   "apc_t150": 0.4009323187091227,
+   "S_t150": 0.9312958883549558,
+   "b_max": 0.7351577625582962,
+   "S_max": 0.987240155690003,
+   "S_mean_in_ATRA_window_40_88": 0.42978620520057587,
+   "S_mean_pre_ATRA_20_40": 0.9090851443919763
+  },
+  "Early Adenoma": {
+   "W": 1.0,
+   "thetaP": 0.75,
+   "b_t150": 1.0701378756825344,
+   "apc_t150": 0.17753040889373178,
+   "S_t150": 1.7507889106938663,
+   "b_max": 1.092745503272139,
+   "S_max": 1.8237790766198752,
+   "S_mean_in_ATRA_window_40_88": 1.0268762012712673,
+   "S_mean_pre_ATRA_20_40": 1.707038646981732
+  },
+  "Advanced Adenoma": {
+   "W": 1.5,
+   "thetaP": 0.5,
+   "b_t150": 1.602919284371077,
+   "apc_t150": 0.10176411745868856,
+   "S_t150": 2.89908874245347,
+   "b_max": 1.6274121492267253,
+   "S_max": 2.992923536546626,
+   "S_mean_in_ATRA_window_40_88": 1.9038826529164328,
+   "S_mean_pre_ATRA_20_40": 2.8324161704641067
+  },
+  "Severe APC Loss": {
+   "W": 2.0,
+   "thetaP": 0.25,
+   "b_t150": 2.122928549503135,
+   "apc_t150": 0.06798820702986018,
+   "S_t150": 4.007257132029352,
+   "b_max": 2.14870783004382,
+   "S_max": 4.119830265214331,
+   "S_mean_in_ATRA_window_40_88": 2.7726306821979234,
+   "S_mean_pre_ATRA_20_40": 3.920792599719961
+  },
+  "shaded_ATRA_window": [
+   40.0,
+   88.0
+  ],
+  "stemness_definition": "S = b(1+h13)/(1+apc+h5)",
+  "condition": "ctrl"
+ },
+ "panel_C": {
+  "ctrl": {
+   "forcing_overrides": {},
+   "mu_R_min": 0.35000000000513704,
+   "mu_R_max": 1.9298984068947975,
+   "mu_R_differs_from_ctrl": false,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "noATRA": {
+   "forcing_overrides": {
+    "DR": 0.0
+   },
+   "mu_R_min": 0.35,
+   "mu_R_max": 0.43,
+   "mu_R_differs_from_ctrl": true,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "earlyATRA": {
+   "forcing_overrides": {
+    "DR": 2.5,
+    "tau1": 20.0,
+    "tau2": 55.0
+   },
+   "mu_R_min": 0.35,
+   "mu_R_max": 2.913571686627233,
+   "mu_R_differs_from_ctrl": true,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "lateATRA": {
+   "forcing_overrides": {
+    "DR": 2.0,
+    "tau1": 90.0,
+    "tau2": 130.0
+   },
+   "mu_R_min": 0.35,
+   "mu_R_max": 2.426078133890316,
+   "mu_R_differs_from_ctrl": true,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "lowATRA": {
+   "forcing_overrides": {
+    "DR": 0.6,
+    "tau1": 40.0,
+    "tau2": 80.0
+   },
+   "mu_R_min": 0.3500000000000169,
+   "mu_R_max": 1.0261032438093405,
+   "mu_R_differs_from_ctrl": true,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "strongCirc": {
+   "forcing_overrides": {
+    "AR": 0.12,
+    "DR": 0.0
+   },
+   "mu_R_min": 0.35,
+   "mu_R_max": 0.59,
+   "mu_R_differs_from_ctrl": true,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "wntPulse": {
+   "forcing_overrides": {
+    "DW": 1.0,
+    "tauW1": 30.0,
+    "tauW2": 70.0
+   },
+   "mu_R_min": 0.35000000000513704,
+   "mu_R_max": 1.9298984068947975,
+   "mu_R_differs_from_ctrl": false,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.9999877116507956,
+   "Delta_W_differs_from_ctrl": true,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "wntInhib": {
+   "forcing_overrides": {
+    "DW": -0.7,
+    "tauW1": 50.0,
+    "tauW2": 200.0
+   },
+   "mu_R_min": 0.35000000000513704,
+   "mu_R_max": 1.9298984068947975,
+   "mu_R_differs_from_ctrl": false,
+   "Delta_W_min": -0.7,
+   "Delta_W_max": -6.551426068313048e-14,
+   "Delta_W_differs_from_ctrl": true,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "mycPulse": {
+   "forcing_overrides": {
+    "DM": 1.2,
+    "tauM1": 30.0,
+    "tauM2": 70.0
+   },
+   "mu_R_min": 0.35000000000513704,
+   "mu_R_max": 1.9298984068947975,
+   "mu_R_differs_from_ctrl": false,
+   "Delta_W_min": 0.0,
+   "Delta_W_max": 0.0,
+   "Delta_W_differs_from_ctrl": false,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 1.1999852539809546,
+   "Delta_M_differs_from_ctrl": true
+  },
+  "wntRAcombo": {
+   "forcing_overrides": {
+    "DW": 0.8,
+    "tauW1": 25.0,
+    "tauW2": 200.0,
+    "DR": 2.0,
+    "tau1": 40.0,
+    "tau2": 80.0
+   },
+   "mu_R_min": 0.3500000000000564,
+   "mu_R_max": 2.420285544120332,
+   "mu_R_differs_from_ctrl": true,
+   "Delta_W_min": 2.447217815504388e-07,
+   "Delta_W_max": 0.8,
+   "Delta_W_differs_from_ctrl": true,
+   "Delta_M_min": 0.0,
+   "Delta_M_max": 0.0,
+   "Delta_M_differs_from_ctrl": false
+  },
+  "groups": {
+   "Retinoid-only": [
+    "ctrl",
+    "noATRA",
+    "earlyATRA",
+    "lateATRA",
+    "lowATRA",
+    "strongCirc"
+   ],
+   "WNT / MYC perturbing": [
+    "wntPulse",
+    "wntInhib",
+    "mycPulse",
+    "wntRAcombo"
+   ]
+  },
+  "control_curve": "grey line = ctrl protocol (DR=1.5, tau 40-88, AR=0.04; DW=DM=0)",
+  "ylims": {
+   "RA drive  $\\mu_R(t)$": [
+    0.0,
+    3.0
+   ],
+   "WNT input  $\\Delta_W(t)$": [
+    -0.9,
+    1.15
+   ],
+   "MYC input  $\\Delta_M(t)$": [
+    -0.9,
+    1.4
+   ]
+  }
+ }
+}

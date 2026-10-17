@@ -1,0 +1,156 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{The accounting} The question this paper has asked at every level of
+the problem is whether a parameter that is not recovered was lost by the
+estimator or never present in the data, and the answer has come from one
+computation, the Fisher information of the experiment at the truth. The answer
+was different at different levels. For the 34 regularly behaved kinetic
+parameters of the mechanistic model, the bound said nearly everything is in the
+data, and the failures of earlier PINN designs, which had been read as a hard
+ceiling of the model, were an estimator gap: a converged classical estimator
+reaches the bound, and a Gauss--Newton PINN reaches the classical estimator
+where its continuation converges. For APC functionality in the high-WNT
+regimes and for the basal rate beside a learned term, the bound said the data
+do not contain the parameter, and no estimator change we tried, whether a
+different residual, a second-order optimiser, a converged maximum-likelihood
+fit or five different constraint parameterisations of the learned term, recovered it. In
+both cases the bound also names the remedy: a condition that leaves the \bcat{}
+plateau for $\thP$, and a condition that visits the anchor while still
+containing the basal term for the learned production edges. Each remedy is
+confirmed by fits (for the learned term, fits run before the bound was
+computed), against an information-matched control that added the same amount of data without visiting
+the relevant region.
+
+\paragraph{Why the bound is the right yardstick for PINNs} A PINN's
+parameter-recovery count is a property of the estimator and the data jointly,
+and without a yardstick it cannot be attributed to either. The Cram\'er--Rao
+bound costs one sensitivity computation (about 720 ODE solves per regime here,
+under four minutes on 24 cores). It is local and asymptotic, and both qualifications matter. We therefore
+verified that the bound is attained, by Monte Carlo over independent datasets
+(Section~\ref{sec:res-mc}), and we reported where it is not exactly attained:
+in the two high-WNT regimes the converged estimates scatter less than the bound
+for the most weakly informed parameters. The likelihood also has more than one
+basin, and the classical estimator from a single start can be trapped (in Early
+Adenoma it was); a few starts selected by cost were enough here, but in general
+the gap between a fit and the bound can be partly an optimisation gap of the
+likelihood itself, not of the PINN. Profile likelihood~\citep{raue2009identifiability,kreutz2013profile,simpson2023pwa}
+is the standard non-local alternative; it requires a full re-optimisation of the
+other 35 parameters at every point of every profile, and for the questions
+asked here (which parameters does this design inform, and which added
+condition informs them) a bound computed once and checked once by Monte
+Carlo, was sufficient. The practical recommendation is modest. On synthetic benchmarks, compute the
+bound of the design before training and report recovery against it: a
+parameter whose error exceeds the bound by orders of magnitude is an estimator
+problem. On real data the truth is unknown, but the same comparison can be made
+between estimators: the bound at the estimate predicts how far two estimators
+on the same data should agree, a fit whose parameters differ from a converged
+classical fit by many bound-widths has not converged, multistart costs reveal
+the multimodality that makes any local bound misleading in a wrong basin, and
+for the SGN-PINN the physics residual says whether its continuation reached an
+ODE solution.
+
+\paragraph{The estimator side} The Schur-complement Gauss--Newton PINN is not a
+new optimiser; it is the observation that freezing a trained PINN's hidden features, so that each
+state is linear in its output layer, turns the inverse problem into a separable
+nonlinear least-squares problem, for which Gauss--Newton with variable projection is the classical
+tool~\citep{golub1973differentiation,golub2003separable,oleary2013varpro}, and
+that the block-arrowhead structure of its normal equations makes each step cost
+ten small factorisations. Random-feature and extreme-learning-machine
+PINNs~\citep{huang2006elm,dong2021local,dong2023inverse} exploit the same
+linearity for forward problems; second-order and natural-gradient optimisers
+for PINNs~\citep{muller2023ngd,jnini2024gauss} are a related line. What the
+formulation adds for inverse problems is that the Schur complement it already
+computes is the head-profiled Gauss--Newton curvature, which approximates the
+profiled Fisher information when the physics term is satisfied, so the
+estimator reports an estimate of its own CRLB at no extra cost. That estimate of uncertainty is only as good as the point
+it is computed at: where the continuation stalled, the SGN-PINN reported
+confident standard deviations around wrong estimates, which is the general
+limitation of any local uncertainty estimate~\citep{transtrum2015perspective}.
+
+\paragraph{The information side, and its relation to prior work} The
+degeneracy behind the learned-term result is known: Loman and Baker construct
+it for a linear-rate term and note its generality~\citep{loman2025identifiability}.
+They also find that monotone, bounded constraints bring parametric
+identifiability on par with the fully known model, which is not what our
+monotone exact-anchor or oracle-bounded forms achieve under the base design. We
+think the difference is the variable they do not treat, the data support of
+the learned function: the same forms recover the basal rate the moment one
+condition reaches the anchor. The survey of~\citet{philipps2025ude} reports a
+learned term recovered with a spurious additive constant and attributes the
+mismatch to non-identifiabilities introduced by the network; the compensation
+identity, Eq~\eqref{eq:compensation}, says precisely which constant, and the
+hybrid Fisher information says which experiment would have removed it. To our
+reading the only optimal-experimental-design work for universal differential
+equations~\citep{plate2024oed} designs on the joint Fisher information of
+network weights and mechanistic parameters without shape constraints, so it has
+no notion of designing a condition so that a constraint binds; classical
+design for dynamic models~\citep{kreutz2009design,bandara2009oed,apgar2010sloppy,transtrum2012oed,liepe2013maximizing}
+optimises a scalar of the Fisher matrix over inputs and sampling times. The
+anchor ratio is a cruder, cheaper and constraint-aware surrogate, and the
+hybrid Fisher information is its quantitative version. In the language of
+adaptive control, both information gaps are failures of persistence of
+excitation~\citep{sastry1989adaptive,wang2006learning}: a learned map is
+identified only along the trajectory the system follows, and so, we add, is any
+constraint imposed on it.
+
+\paragraph{Biological reading} The model is a reduced caricature of the crypt,
+but two of its conclusions translate into experimental advice that does not
+depend on its details. APC functionality, the quantity that distinguishes the
+disease stages, is the parameter that a perturbation design built around
+retinoid treatment and WNT/MYC pulses informs least exactly where it matters
+most, in the high-WNT states, because \bcat{} saturates the readouts that would
+report it; a graded WNT knockdown restores it, while two added conditions that
+perturb without lowering \bcat{} do not. And when a regulatory law is learned by a flexible network
+rather than assumed, the basal transcription rate of the target gene, a
+quantity of direct biological interest, is identified either by a condition that
+silences the regulator, which in a positive-feedback network may require
+knocking down the feedback as well as the input (the single WNT knockout leaves
+\bcat{} at 1.3\% of its range because HOXA13 keeps producing it), or by a known
+partial knockdown of the basal term itself.
+
+\paragraph{Limitations} Every result is on synthetic data generated by the model
+itself, with all seven states observed at 150 time points with noise of 0.1--2.6\% of their mean levels, so
+every recovery count is an upper bound on what real measurements of a subset of
+states would give, and the regimes are not calibrated to patient data. The
+information budget depends strongly on that design (S1~Fig): with only
+\bcat{}, the two HOX genes and MYC observed, an efficient estimator would
+recover 16--30 of the 34 regular parameters per regime, with \bcat{} and MYC
+alone 4--8.5; with ten-fold larger noise and all states observed, 17--32. The accounting itself does
+not depend on the design, and it is exactly what would tell a modeller which of
+these regimes they are in before any network is trained. The
+Cram\'er--Rao analysis is local and asymptotic: in the two high-WNT regimes it
+is conservative for the weakest parameters, and the likelihood has more than one
+basin. The hybrid experiments other than the full-pipeline
+confirmations use an equation-local screen with exact states; the full pipeline
+was rerun for two edges and confirms the direction of the effects, with larger
+absolute errors than the screen's because state estimation is in the loop. Restart counts move individual hybrid cells by up to fifty points
+away from the anchor, so numbers are compared within experiments; the headline
+contrast at the anchor is replicated over three disjoint seed sets. As registered, two of the six dose-response
+predictions passed (three after rerunning one regime with more restarts) and two
+of the five prospective-test predictions (S1~Text), including the registered
+falsifier failing in one regime; the second clause of the design rule was
+formulated after the failure that revealed it, and the hybrid Fisher information reproduces it but
+was computed afterwards. The prescribed protocols for the MYC and HOXA13 edges
+require silencing a constitutive promoter, which is materially harder than the
+medium change that fixes the RA edges, and the Fisher analysis points to a
+cheaper alternative it did not test by fit: a known partial knockdown of a basal
+term identifies it without visiting the anchor. Every knockdown here, and that
+alternative in particular, assumes the knockdown efficiency is known exactly;
+real siRNA efficiencies are uncertain, and an unknown efficiency adds one
+parameter per knockdown condition that a design would have to identify too. Finally, no symbolic
+structural-identifiability analysis~\citep{villaverde2016structural,chis2011structural}
+was run; apart from the $\dP(1-\thP)$ product, every identifiability statement
+here is practical.
+
+\paragraph{Conclusion} A recovery count does not say whether to change the
+estimator or the experiment; the Cram\'er--Rao bound of the design does, at the
+cost of one sensitivity computation. In a seven-state model of colorectal-cancer signalling it
+showed that the long-standing recovery ceiling of physics-informed estimators
+was numerical, removable by a converged classical fit and by the SGN-PINN where
+its continuation converges, that the parameter
+defining the disease stage is uninformed by the conventional design in exactly
+the states that matter, and that the information a hybrid model's constraint
+carries is set by where the experiment takes the regulator. For neural and
+hybrid inverse problems in systems biology, the first diagnostic should be the
+information budget of the design.
