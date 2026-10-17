@@ -76,10 +76,10 @@ def make_tensors(refs_for_regime, conds, stride, noise_std, seed):
     return out
 
 
-def best_of(n_starts, fit):
+def best_of(n_starts, fit, seed_base=100):
     best = None
     for s in range(n_starts):
-        r = fit(seed=100 + 17 * s)
+        r = fit(seed=seed_base + 17 * s)
         if best is None or r["physics"] < best["physics"]:
             best = r
     return best
@@ -97,7 +97,15 @@ def main():
     ap.add_argument("--noise", type=float, default=0.0)
     ap.add_argument("--adam", type=int, default=3000)
     ap.add_argument("--lbfgs", type=int, default=300)
+    # 2026-09-21: independent replicate sweeps. The original runs used seeds
+    # 100 + 17*s; a different base gives a disjoint set of restarts, so the
+    # spread across bases is the restart noise of a whole best-of-N selection.
+    ap.add_argument("--seed-base", type=int, default=100)
+    ap.add_argument("--doses", default=None,
+                    help="comma list overriding anchor_doses.DOSES")
     args = ap.parse_args()
+    doses = (DOSES if args.doses is None
+             else [float(x) for x in args.doses.split(",") if x.strip()])
 
     # `config.HYBRID_TERM` defaults to a real edge, which REMOVES that edge's
     # parameters from UNKNOWN -- and INIT_GUESS/PARAM_RANGE/NOMINAL with it. The
@@ -120,7 +128,7 @@ def main():
 
     print(f"dose-response  arm={args.arm}  edge={args.edge} (eq {eq}, "
           f"basal {basal}, regulator {var})", flush=True)
-    print(f"  {len(DOSES)} doses x {len(regimes)} regimes, "
+    print(f"  {len(doses)} doses x {len(regimes)} regimes, "
           f"{args.starts} starts, 11 conditions at every dose "
           f"(noise={args.noise})", flush=True)
 
@@ -129,7 +137,7 @@ def main():
     out_json = os.path.join(args.out, f"dose_{args.arm}_{args.edge}.json")
 
     for regime in regimes:
-        for k in DOSES:
+        for k in doses:
             conds_spec = dose_conditions(args.arm, k)
             refs = solve_conditions(regime, conds_spec)
             ratio, floor = anchor_ratio(refs, var)
@@ -138,10 +146,10 @@ def main():
 
             ctrl = best_of(args.starts, lambda seed: fit_equation(
                 eq, None, regime, refs, conds, param="none", seed=seed,
-                adam=args.adam, lbfgs=args.lbfgs))
+                adam=args.adam, lbfgs=args.lbfgs), args.seed_base)
             hyb = best_of(args.starts, lambda seed: fit_equation(
                 eq, args.edge, regime, refs, conds, param=args.param,
-                seed=seed, adam=args.adam, lbfgs=args.lbfgs))
+                seed=seed, adam=args.adam, lbfgs=args.lbfgs), args.seed_base)
 
             h_basal = hyb.get("basal_err")
             c_basal = ctrl["param_err"].get(basal) if basal else None
@@ -151,6 +159,7 @@ def main():
             row = dict(arm=args.arm, edge=args.edge, eq=eq, regime=regime,
                        dose=k, anchor_ratio=ratio, anchor_floor=floor,
                        param=args.param, starts=args.starts, noise=args.noise,
+                       seed_base=args.seed_base,
                        basal_param=basal,
                        hybrid_basal_err=h_basal, ctrl_basal_err=c_basal,
                        excess_basal_err=excess,

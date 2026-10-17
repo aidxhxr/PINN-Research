@@ -171,15 +171,30 @@ INFO_CONDITIONS = [
                                       "tauW2": 110.0}},
 ]
 
-_dep = os.environ.get("HYBRID_DEPLETION", "0").strip().lower() in {
-    "1", "true", "yes", "on"}
+# FULL-PIPELINE version of the dose-response's `bcat` arm (2026-09-21). The
+# 2026-08-01 full-scale depletion run used `wntKO` (kW=0.02), under which b
+# plateaus at ~0.013 because the HOXA13 -> beta-catenin feedback keeps
+# producing it; the equation-local dose-response showed that knocking BOTH
+# arms (kW=0, k13=0) takes b to its anchor exactly and the basal error to
+# ~0. This arm swaps ONLY that one condition (raKO kept), so a run tagged
+# `_depb` differs from a `_dep` run by the HOXA13 feedback siRNA alone.
+BCAT_DEPLETION_CONDITIONS = [
+    {"name": "bcatKO", "forcing": {"kW": 0.0, "k13": 0.0}},
+    DEPLETION_CONDITIONS[1],
+]
+
+_dep_mode = os.environ.get("HYBRID_DEPLETION", "0").strip().lower()
+_dep = _dep_mode in {"1", "true", "yes", "on"}
+_dep_bcat = _dep_mode == "bcat"
 _info = os.environ.get("HYBRID_INFOCTL", "0").strip().lower() in {
     "1", "true", "yes", "on"}
-if _dep and _info:
+if (_dep or _dep_bcat) and _info:
     raise ValueError("HYBRID_DEPLETION and HYBRID_INFOCTL are alternative "
                      "12-condition arms; set at most one")
 if _dep:
     CONDITIONS = CONDITIONS + DEPLETION_CONDITIONS
+elif _dep_bcat:
+    CONDITIONS = CONDITIONS + BCAT_DEPLETION_CONDITIONS
 elif _info:
     CONDITIONS = CONDITIONS + INFO_CONDITIONS
 # NOTE (excite variant): earlier variants found that adding MORE RA-only

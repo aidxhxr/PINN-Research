@@ -15,12 +15,12 @@ TS="$(date +%Y%m%d_%H%M%S)"
 # the reference data and the condition count differ -- the run dir is tagged so
 # a depletion run can never be scored against a 10-condition control.
 DEPTAG=""
-if [[ "${HYBRID_DEPLETION:-0}" == "1" ]]; then DEPTAG="_dep"; fi
+case "${HYBRID_DEPLETION:-0}" in 1) DEPTAG="_dep" ;; bcat) DEPTAG="_depb" ;; esac
 RUN_DIR="$HERE/runs/${TS}_${VARIANT}${DEPTAG}"
 mkdir -p "$RUN_DIR"
 
 export MPLBACKEND=Agg
-export PYTHONPATH="$HERE:${PYTHONPATH:-}"
+export PYTHONPATH="$HERE:$HERE/../src:${PYTHONPATH:-}"
 
 # ---- variant -> hybrid env -------------------------------------------------
 export HYBRID_CONSTRAINT="anchored"

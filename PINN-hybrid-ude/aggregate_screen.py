@@ -47,8 +47,8 @@ def term_class(term):
 LOG_RE = re.compile(
     r"^\s+(?P<regime>\S.*?)\s{2,}(?P<term>\S+)\s+(?P<param>\S+)\s+"
     r"fNRMSE=\s*(?P<nrmse>[-\d.]+)%\s+eq params (?P<hy>\d+)/(?P<n>\d+) "
-    r"\(ctrl (?P<cn>\d+)/(?P<cnn>\d+)\)\s+basal_err=\s*(?P<be>[-\d.n]+)%?"
-    r"(?:\s+\(ctrl\s*(?P<cbe>[-\d.n]+)%\))?")
+    r"\(ctrl (?P<cn>\d+)/(?P<cnn>\d+)\)\s+basal_err=\s*(?P<be>[-\d.na]+)%?"
+    r"(?:\s+\(ctrl\s*(?P<cbe>[-\d.na]+)%\))?")
 
 
 def load(dirs):
