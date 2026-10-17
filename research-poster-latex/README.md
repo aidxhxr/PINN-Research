@@ -1,7 +1,7 @@
 # First poster — PINN dynamics, parameter recovery and uncertainty
 
 Editable LuaLaTeX poster, one landscape page, **48 × 36 inches**.
-Authors: **Nathaniel Kim · Pascal K. Kataboh**.
+Authors: **Nathaniel Kim · Amirkhan Aidarkhan · Pascal K. Kataboh**.
 
 1. **Model and formulation:** unchanged regulatory schematic, seven ODEs,
    nondimensionalization, disease regimes and the cosine RA-input plot.
@@ -61,7 +61,9 @@ Untreated dynamics retain the baseline circadian forcing (`AR=0.04`). Both
 MYC and APC use the same concentration axis at their original amplitudes.
 The plots show the full trajectories without oscillation insets.
 Treatment panels are labeled “No treatment” and “ATRA treatment”; dose values
-are retained in the source data. The existing title is retained for discussion.
+are retained in the source data. The title matches Nathaniel Kim's abstract:
+“Physics-Informed Neural Networks for Forward Modeling and Parameter Inference
+in a Reduced WNT-RA-HOX Model of Colorectal Cancer Initiation.”
 
 The displayed networks are the **150-time-per-condition integral inverse PINN**
 trained on ten conditions with additive noise sigma=0.002. They replace the
