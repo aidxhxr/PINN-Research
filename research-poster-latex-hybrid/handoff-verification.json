@@ -1,10 +1,36 @@
 {
-  "approved_original_unchanged": true,
-  "original_files_checked": 221,
-  "approved_snapshot": "poster-versions/20260907_155254_approved",
-  "first_column_unchanged": true,
+  "previous_version": "poster-versions/20260917_201930_before_hybrid_error_panels/research-poster-latex-hybrid",
+  "final_build": "builds/20260917_202247_LFupvq",
+  "pdf_sha256": "4de5a19ba676adb4cb144c5f3411577d5053592615304785d58d8a07be51851f",
+  "version_pdf_sha256": "4de5a19ba676adb4cb144c5f3411577d5053592615304785d58d8a07be51851f",
+  "title": "Identifiability and Experimental Design for Neural-Mechanistic Hybrid Models Using Physics-Informed Neural Networks in Colorectal Cancer",
+  "first_poster_sources_and_data_unchanged": true,
+  "concurrent_first_poster_artifact_updates": [
+    "research-poster-latex/preview.png",
+    "research-poster-latex/preview-detail.png",
+    "research-poster-latex/verification.json",
+    "research-poster-latex/poster-latex-source.zip",
+    "research-poster-latex/poster.pdf"
+  ],
+  "first_poster_files_checked": 94,
+  "first_two_columns_unchanged": true,
+  "saved_data_unchanged": true,
+  "old_intervention_panel_removed": true,
+  "full_model_comparison_values_match_gallery": true,
+  "displayed_error_values_checked": 32,
+  "numeric_labels_do_not_overlap": true,
   "compiled_pdf_in_zip": true,
-  "all_tex_dependencies_in_zip": true,
-  "final_build": "builds/20260907_160226_OYGjuQ",
-  "pdf_sha256": "b2854a2e37b7193c940693835ed327954393f8288486a8255814b497c4c7683b"
+  "archive_matches_current_sources": true,
+  "new_figure_in_zip": true,
+  "visible_words": 771,
+  "live_preview_checks": {
+    "poster_v1.pdf": 200,
+    "poster_v1-source.zip": 200,
+    "poster.pdf": 200,
+    "preview.png": 200,
+    "preview-detail.png": 200,
+    "poster-latex-source.zip": 200
+  },
+  "version_url": "http://localhost:8003/second/poster_v1.pdf",
+  "version_source_archive": "research-poster-latex-hybrid/builds/20260917_202247_LFupvq/poster-latex-source.zip"
 }

@@ -1,0 +1,10 @@
+{
+ "Normal": {
+  "under10": 17,
+  "max_rel_err_pct": 230.02723986818557
+ },
+ "Severe APC Loss": {
+  "under10": 7,
+  "max_rel_err_pct": 148.56676569489576
+ }
+}

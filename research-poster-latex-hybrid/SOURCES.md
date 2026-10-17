@@ -8,6 +8,13 @@ locally under `poster-versions/20260907_155254_approved/`.
 The results are from this repository.
 No model training, resampling or ODE solving was performed.
 
+The 2026-09-17 revision shortens the visible text and enlarges the plots.
+It omits the dense supervised comparison, the five-form constraint-screen
+summary and the concluding intervention advice. Their provenance and
+limitations remain below. Fig. 6 now compares full-model mechanistic and hybrid
+fits. The earlier intervention screen is preserved in the dated snapshots and
+documented below as historical material.
+
 ## Source map
 
 | Element | Original source, relative to repository root |
@@ -23,15 +30,17 @@ No model training, resampling or ODE solving was performed.
 | Autodiff recovery, Table 1 | `PINN-inverse-multicond-excite/runs/20260702_153336/*_recovered.json` |
 | Integral recovery, Table 1 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/*_recovered.json` |
 | Fisher table | `PINN-fisher-matrix/runs/20260711_203325_fisher/*_fim_summary.json` |
-| HMC geometry, Fig. 2 | `PINN-bayesian/runs/20260713_204442_bayes/Normal_posterior_samples.npz` |
-| Learned MYC activation, Fig. 3 | `PINN-hybrid-ude/runs/20260727_012448_bm_myc/{Normal,Severe_APC_Loss}_term.json` |
+| Treatment fit, Fig. 3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral` (Normal, `noATRA`/`ctrl`), cached in `data/normal_treatment_comparison.npz` (copied from the first poster) |
+| Parity plot, Fig. 4 | `data/inverse_recovery.json` (integral rows); `figures/parity_plot.py` |
+| Learned MYC activation, Fig. 5 | `PINN-hybrid-ude/runs/20260727_012448_bm_myc/{Normal,Severe_APC_Loss}_term.json` |
 | Mechanistic control, Table 2 | `PINN-hybrid-ude/runs/20260726_195830_control/*_recovered.json` |
 | RA → HOXA5 hybrid, Table 2 | `PINN-hybrid-ude/runs/20260726_214316_ra_h5/*_{recovered,term}.json` |
 | Beta-catenin → MYC hybrid, Table 2 | `PINN-hybrid-ude/runs/20260727_012448_bm_myc/*_{recovered,term}.json` |
 | APC-loss hybrid, Table 2 | `PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/*_{recovered,term}.json`; calibration in `runs/20260728_232743_apc_calibration/` |
+| Full-model error comparison, Fig. 6 | The MYC, HOXA5 and control runs above; cached in `data/hybrid_comparison.json`, plotted by `figures/compare_hybrid_errors.py::poster_comparison` |
 | Five constraint forms | `notes/2026-08-01-hybrid-edge-atlas-and-anchor-visiting.md`, Result 1; `PINN-hybrid-ude/runs/20260801_204046_screen_atlas/` |
-| MYC intervention comparison, Table 3 | `PINN-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
-| Prospective HOXA13 test, Table 3 | `PINN-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
+| Historical MYC intervention comparison (removed) | `PINN-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
+| Historical prospective HOXA13 test (removed) | `PINN-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
 | Failed HOXA13 → beta-catenin intervention | `PINN-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json` |
 | Reachability analysis | `PINN-hybrid-ude/runs/20260802_anchor_reach/anchor_reach.txt` |
 
@@ -70,7 +79,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
   state. No ablation or optimality claim for 20 is supported by these results.
 - Forward errors are the grand mean relative L2 across seven states and four
   regimes, read directly from the saved JSON. Dense supervised: 1.0554%
-  (displayed 1.06%); sparse forward PINN: 2.4074% (2.41%). The two formulations
+  (formerly displayed 1.06%); sparse forward PINN: 2.4074% (2.41%). The two formulations
   differ in their objectives as well as their numbers of labels.
 - The forward trajectory figure shows beta-catenin and HOXA5 from the same saved
   sparse-PINN checkpoints (20260712_204546), evaluated on 6000 plot times.
@@ -101,9 +110,11 @@ Its geometry, colors, labels, legend and edges are unchanged.
   described thetaP as an exception.
 - These counts do not deteriorate monotonically with WNT. The poster reports
   the actual table and the specific loss of APC-functional sensitivity.
-- Fig. 2 uses actual Normal-regime HMC samples and an iso-product guide.
-  The run fails effective-sample-size and coverage gates. It illustrates
-  parameter trade-off, not calibrated posterior uncertainty.
+- The former HMC scatter (Normal-regime thetaP/deltaP1 draws from a run that
+  fails its ESS and coverage gates) was removed on 2026-09-24. Fig. 4 now shows
+  recovered vs. true value for all 36 parameters, Normal and Severe APC Loss (integral method);
+  the count inside the ±10% margin reproduces Table 1's integral row exactly
+  (asserted in `figures/parity_plot.py`). The Fisher counts table stays beside it.
 - No marginal credible widths, 36/36 identifiability count, smoke-test
   correlation, or claim of calibrated HMC recovery is reproduced.
 - The APC product relation is a property of the equation. At thetaP = 1,
@@ -118,7 +129,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
 - State networks, remaining biological parameters and the learned term are
   fitted jointly using the integral residual. Neural regularization is 1e-8,
   calibrated to this implementation's objective scale.
-- Fig. 3 uses the actual saved Normal and Severe APC Loss function arrays.
+- Fig. 5 uses the actual saved Normal and Severe APC Loss function arrays.
   Solid gray is the true mechanistic activation; dashed blue is the learned
   term. No extrapolated curve is drawn through the unobserved gap.
   Dots at (0,0) denote the exact architectural anchor, not measured inputs.
@@ -154,10 +165,33 @@ Its geometry, colors, labels, legend and edges are unchanged.
   function error stays below 10% in all four regimes while five fewer
   parameter–regime pairs meet the parameter-error threshold.
 
-### Compensation and experimental design
+### Direct error comparison in Fig. 6
+
+- The two columns are β-catenin → MYC and RA → HOXA5. The top row shows
+  regulatory-function NRMSE; the bottom row shows errors in the corresponding
+  basal-production parameters aM and a5. Gray is the fitted mechanistic
+  control; blue is the fitted hybrid. All four regimes are shown.
+- These are the saved full multi-condition inverse-PINN runs used in Table 2,
+  not the single-equation intervention screens. Both approaches fit state
+  networks; the hybrid additionally replaces one biological activation law.
+- Both function estimates are scored on the same saved 400-point grid over
+  the hybrid's observed input range. The mechanistic curve uses the control's
+  recovered Hill coefficients. MYC uses etaBM*b^2/(kappaBM^2+b^2); HOXA5 uses
+  etaR*r/(kappaR+r). The closed-form truth is checked against the saved true
+  curve. Function NRMSE is 100 * RMS(error) / RMS(truth).
+- Parameter error is 100 * abs(estimate - truth) / abs(truth). The basal
+  parameter is retained in both models. Choosing the same parameter role for
+  both relationships keeps the compact comparison consistent. All remaining
+  equation parameters and all 34 shared parameters are available in the
+  accompanying gallery at `/hybrid_errors/`.
+- Display labels use one decimal place; exact values are recorded in
+  `assets/hybrid_error_audit.json`. The graph shows selected saved fits,
+  without uncertainty bars or an independent-replicate interpretation.
+
+### Compensation and historical experimental-design screens
 
 - The earlier illustrative anchor plot is replaced by the algebraic
-  compensation identity in equation (9). The identity applies on observed
+  compensation identity in equation (7). The identity applies on observed
   support; the shifted function can return to the zero anchor in the
   unobserved gap. It does not claim a nonzero global shift preserves f(0)=0.
 - The five-form constraint screen uses one start; the reported Normal basal
@@ -166,14 +200,14 @@ Its geometry, colors, labels, legend and edges are unchanged.
   the cited screen-atlas directory contains gated/sc cases and cannot verify
   all five forms. A tracked transcription and source-note hash are in
   `../results/inputs/constraint_screen_transcription.json`. This provenance
-  limit does not alter the existing poster's numbers.
+  limit is retained here; the range is omitted from the shortened poster.
 - The intervention screens use exact reference states, fit one host equation,
   and fix parameters outside that equation at truth. They use two starts
   (seeds 100 and 117), selecting the lower physics loss. They do not establish
   performance with noisy, sparse state estimates or biological measurements.
-- Table 3 shows 100 * hybrid_basal_err, absolute relative error against truth.
+- The removed intervention figure showed 100 * hybrid_basal_err, absolute relative error against truth.
   These are not hybrid-minus-control differences.
-- The MYC arms each use 11 conditions at every dose. Table 3 shows k=0:
+- The MYC arms each use 11 conditions at every dose. The removed figure used k=0:
   Normal 2.170 → 0.021%; Severe 1.550 → 0.006%. None is rounded to zero.
   The underlying dose series remains in the packaged data.
 - The prospective HOXA13 baseline has 10 conditions and the two depletion
@@ -184,7 +218,8 @@ Its geometry, colors, labels, legend and edges are unchanged.
   despite improved basal recovery, so functional identification is not claimed.
 - Reaching an anchor is insufficient if the intervention deletes the target
   parameter: switching off W reaches the HOXA13 anchor but leaves Normal W
-  error at 16.2%. This counterexample motivates the final design criterion.
+  error at 16.2%. This counterexample remains in the documentation; the
+  shortened poster does not state a general intervention-design criterion.
 - The old poster's universal cross-arm collapse, exact-zero recovery and
   extra-siRNA claims are not reproduced. The screens implement model
   interventions, not a validated laboratory knockdown protocol.

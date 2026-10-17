@@ -7,6 +7,22 @@ Advanced & 14 & 20 & 2 \\
 Severe & 14 & 21 & 1 \\
 }
 
+\newcommand{\UntreatedMYCError}{%
+0.31
+}
+
+\newcommand{\UntreatedAPCError}{%
+0.75
+}
+
+\newcommand{\TreatedMYCError}{%
+0.40
+}
+
+\newcommand{\TreatedAPCError}{%
+0.54
+}
+
 \newcommand{\ForwardRows}{%
 Dense supervised & 100 & 1.06\% \\
 Sparse PINN & 40 & 2.41\% \\
@@ -47,12 +63,12 @@ APC loss & 52/140 & 53/140 & 0.12 \\
 }
 
 \newcommand{\DoseRows}{%
-WNT depletion only & 2.170 & 1.550 \\
-WNT + HOXA13 feedback suppression & 0.021 & 0.006 \\
+$a_M$ & WNT depletion & 2.17 & 1.55 \\
+$a_M$ & WNT + HOXA13 suppression & 0.02 & 0.01 \\
 }
 
 \newcommand{\ProtocolRows}{%
-Baseline & 12.844 & 95.564 \\
-$\beta$-catenin depletion & 51.516 & 59.843 \\
-MYC depletion & 0.111 & 0.049 \\
+$a_{13}$ & none & 12.84 & 95.56 \\
+$a_{13}$ & $\beta$-catenin depletion & 51.52 & 59.84 \\
+$a_{13}$ & MYC depletion & 0.11 & 0.05 \\
 }

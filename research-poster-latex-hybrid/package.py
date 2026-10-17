@@ -5,7 +5,7 @@ import zipfile
 root = Path(__file__).resolve().parent
 paths = [root/name for name in ["poster.pdf", "poster.tex", "README.md", "SOURCES.md", "build.sh",
                                "verify.py", "package.py", "PRESERVED_VERSION.md"]]
-assets = ["pinn-architecture.tex", "model-original.pdf", "atra-treatment.pdf", "forward.pdf", "forward-window.tex", "posterior.pdf", "learned-myc.pdf", "tables.tex"]
+assets = ["pinn-architecture.tex", "model-original.pdf", "atra-treatment.pdf", "forward.pdf", "forward-window.tex", "parity.pdf", "normal_pinn.pdf", "normal_pinn-window.tex", "learned-myc.pdf", "hybrid-errors.pdf", "hybrid_error_audit.json", "tables.tex", "swarthmore-logo.pdf"]
 paths += [root/"assets"/name for name in assets]
 paths += list((root/"figures").glob("*.py"))
 paths += list((root/"data").glob("*"))

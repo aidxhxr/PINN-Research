@@ -1,0 +1,24 @@
+{
+  "condition_order": [
+    "noATRA",
+    "ctrl"
+  ],
+  "DR": [
+    0.0,
+    1.5
+  ],
+  "states": [
+    "m",
+    "p"
+  ],
+  "normal_only": true,
+  "height_in": 3.6,
+  "ATRA_arrow": {
+    "tau": [
+      40,
+      88
+    ],
+    "y": 1.38,
+    "panel": "ATRA treatment"
+  }
+}

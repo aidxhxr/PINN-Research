@@ -55,7 +55,7 @@
   \draw[draw=Ink!35,line width=1.0pt] (out-\j) -- (10.95,0 |- out-\j);
   \node[state] at (out-\j) {};
   \node[anchor=west,fill=white,inner xsep=5pt,inner ysep=0pt]
-    at ([xshift=.18in]out-\j) {$\widehat{\label}$};
+    at ([xshift=.18in]out-\j) {$\label$};
 }
 \foreach \layer in {1,...,4}{
   \foreach \j in {1,...,4}
@@ -68,7 +68,7 @@
 \node[loss,draw=DataBlue!60,fill=PaleBlue] (data) at (12.60,3.50)
   {\textbf{Data fit}\\$\mathcal L_{\rm data}$};
 \node[loss,draw=Muted!55,fill=Paper] (initial) at (12.60,2.42)
-  {\textbf{Initial state}\\$20\mathcal L_{\rm IC}$};
+  {\textbf{Initial state}\\$n\,\mathcal L_{\rm IC}$};
 \node[loss,draw=Garnet!65,fill=Garnet!7] (physics) at (12.60,1.34)
   {\textbf{ODE residual}\\$\mathcal L_{\rm phys}$};
 \foreach \name/\y in {data/3.50,initial/2.42,physics/1.34}{
@@ -82,6 +82,6 @@
 \node[fill=white,inner sep=4pt,font=\fontsize{24}{29}\selectfont,text=Garnet]
   at (10.00,.47) {Backpropagation\enspace\textbullet\enspace Adam $\to$ L-BFGS};
 \node[font=\fontsize{25}{31}\selectfont] at (2.91,.47)
-  {$\mathcal L_{\rm fwd}=\mathcal L_{\rm data}+\mathcal L_{\rm phys}+20\mathcal L_{\rm IC}$};
+  {$\mathcal L_{\rm fwd}=\mathcal L_{\rm data}+\mathcal L_{\rm phys}+n\,\mathcal L_{\rm IC}$};
 \end{tikzpicture}%
 \endgroup

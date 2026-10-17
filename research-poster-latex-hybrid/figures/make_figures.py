@@ -11,6 +11,9 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 import numpy as np
 from forward_plot import make_forward
+from compare_hybrid_errors import poster_comparison
+from treatment_plot import make_treatment
+from parity_plot import make_parity
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA, OUT = ROOT / "data", ROOT / "assets"
@@ -43,37 +46,45 @@ def atra_treatment():
     t = np.linspace(0, 150, 1501)
     treatment = .5*p["DR"] * (np.tanh(p["q"]*(t-p["tau1"]))
                               - np.tanh(p["q"]*(t-p["tau2"])))
-    fig, ax = plt.subplots(figsize=(15.1, 2.35))
-    fig.subplots_adjust(left=.09, right=.98, bottom=.36, top=.70)
+    fig, ax = plt.subplots(figsize=(15.1, 3.7))
+    fig.subplots_adjust(left=.09, right=.98, bottom=.25, top=.76)
     ax.plot(t, treatment, color="#78253B", lw=2.6)
     ax.set(xlim=(0, 150), ylim=(-.08, 1.65), xticks=[0, 40, 88, 150],
            yticks=[0, .75, 1.5], xlabel=r"dimensionless time $\tau$",
            ylabel="RA input")
     ax.tick_params(labelsize=22, length=4)
     ax.grid(False)
-    fig.text(.09, .88, "ATRA treatment: additive pulse", fontsize=25,
+    fig.text(.09, .90, "ATRA pulse", fontsize=25,
              color=INK, va="center")
-    fig.text(.98, .88, r"Treatment window: $40\leq\tau\leq88$", fontsize=24,
+    fig.text(.98, .90, r"$40\leq\tau\leq88$", fontsize=24,
              color=INK, va="center", ha="right")
     save(fig, "atra-treatment")
 
 def forward():
-    make_forward(DATA, OUT, [("b", r"$\beta$-catenin $b(\tau)$"), ("h5", r"HOXA5 $h_5(\tau)$")], height=4.3)
+    make_forward(DATA, OUT, [("b", r"$\beta$-catenin $b(\tau)$"), ("h5", r"HOXA5 $h_5(\tau)$")], height=4.0)
+
+def parity():
+    with plt.rc_context({"axes.grid": False, "axes.facecolor": "white", "figure.facecolor": "white"}):
+        make_parity(DATA, OUT)
+
+def treatment():
+    with plt.rc_context({"axes.grid": False, "axes.facecolor": "white", "figure.facecolor": "white"}):
+        make_treatment(DATA, OUT, height=3.6)
 
 def posterior():
     d = np.load(DATA / "normal_posterior.npz")
     names = list(map(str, d["names"]))
     th, dp = (d["values"][:, names.index(k)] for k in ("thetaP", "deltaP1"))
     product = np.mean(dp * (1 - th))
-    fig, ax = plt.subplots(figsize=(7.65, 4.0))
-    fig.subplots_adjust(left=.15, right=.965, bottom=.23, top=.95)
+    fig, ax = plt.subplots(figsize=(7.65, 4.8))
+    fig.subplots_adjust(left=.15, right=.965, bottom=.18, top=.95)
     ax.scatter(th, dp, color=BLUE, alpha=.24, s=7, linewidths=0)
     xs = np.linspace(.28, .9999, 1200)
     ax.plot(xs, product / (1-xs), color=INK, lw=1.5, ls=(0, (4, 3)))
     ax.scatter([1], [3.5], marker="x", color=RED, s=110, linewidths=2.2, zorder=5)
     ax.annotate("Truth", xy=(1, 3.5), xytext=(.63, 7), fontsize=22,
                 color=RED, arrowprops={"arrowstyle": "->", "color": RED, "lw": 1.1})
-    ax.set(xlim=(.28, 1.025), ylim=(0, 16), xlabel=r"APC functionality, $\theta_P$",
+    ax.set(xlim=(.28, 1.025), ylim=(0, 16), xlabel=r"APC functioning, $\theta_P$",
            ylabel=r"$\delta_{P1}$", xticks=[.3, .5, .7, .9, 1.0], yticks=[0, 5, 10, 15])
     ax.grid(axis="y", color=LIGHT, lw=.6)
     ax.set_axisbelow(True)
@@ -106,8 +117,8 @@ def anchor():
 
 def learned_myc():
     records = read("hybrid_comparison.json")["bm_myc"]
-    fig, axes = plt.subplots(1, 2, figsize=(14.6, 4.40), sharey=True)
-    fig.subplots_adjust(left=.085, right=.98, bottom=.20, top=.73, wspace=.20)
+    fig, axes = plt.subplots(1, 2, figsize=(14.6, 4.9), sharey=True)
+    fig.subplots_adjust(left=.085, right=.98, bottom=.18, top=.77, wspace=.20)
     for ax, regime in zip(axes, ["Normal", "Severe APC Loss"]):
         row = next(r for r in records if r["regime"] == regime)
         d = row["term"]
@@ -131,6 +142,57 @@ def learned_myc():
                bbox_to_anchor=(.54,1.015), fontsize=23, handlelength=2.6)
     save(fig, "learned-myc")
 
+def interventions():
+    """Display the former intervention table as paired points on a log scale."""
+    regimes = ["Normal", "Severe APC Loss"]
+    panels = [
+        (r"MYC: $a_M$", [
+            ("WNT depletion", "dose_wnt.json", "dose", 0),
+            ("WNT + HOXA13\nsuppression", "dose_bcat.json", "dose", 0),
+        ]),
+        (r"HOXA13: $a_{13}$", [
+            ("Baseline", "protocol_m_h13.json", "protocol", "none"),
+            (r"$\beta$-catenin depletion", "protocol_m_h13.json", "protocol", "bcatKO"),
+            ("MYC depletion", "protocol_m_h13.json", "protocol", "mycKO"),
+        ]),
+    ]
+    fig, axes = plt.subplots(2, 1, figsize=(14.6, 7.9), sharex=True,
+                             gridspec_kw={"height_ratios": [2, 3]})
+    fig.subplots_adjust(left=.37, right=.96, bottom=.15, top=.84, hspace=.61)
+    audit = []
+    for ax, (title, rows) in zip(axes, panels):
+        for index, (regime, color, marker) in enumerate(zip(regimes, [BLUE, "#78253B"], ["o", "D"])):
+            for y, (label, name, key, value) in enumerate(rows):
+                row = next(r for r in read(name) if r["regime"] == regime and r[key] == value)
+                error = 100 * row["hybrid_basal_err"]
+                offset = -.25 if index == 0 else .25
+                ax.scatter(error, y + offset, s=70, marker=marker, color=color,
+                           label=regime if y == 0 else None, zorder=3)
+                ax.annotate(f"{error:.3f}", (error, y + offset), xytext=(10, 0),
+                            textcoords="offset points", va="center", color=color, fontsize=20)
+                audit.append({"panel": title, "intervention": label, "regime": regime,
+                              "source": name, "error_percent": error})
+        ax.set_title(title, loc="left", fontsize=27, pad=13)
+        ax.set_yticks(range(len(rows)), [row[0] for row in rows])
+        ax.set_ylim(len(rows) - .5, -.5)
+        ax.set_xscale("log")
+        ax.set_xlim(.002, 600)
+        ax.set_xticks([.01, 1, 100], ["0.01", "1", "100"])
+        ax.minorticks_off()
+        ax.tick_params(axis="y", length=0, pad=17, labelsize=23)
+        ax.spines["left"].set_visible(False)
+        ax.grid(axis="x", color=LIGHT, lw=.7)
+        ax.set_axisbelow(True)
+    axes[-1].set_xlabel("Basal parameter error (%) · log scale", labelpad=12)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.62, 1.0),
+               ncol=2, frameon=False, fontsize=24, handletextpad=.4, columnspacing=1.8)
+    save(fig, "interventions")
+    (OUT / "intervention_audit.json").write_text(json.dumps(audit, indent=2) + "\n")
+
+def hybrid_errors():
+    poster_comparison(read("hybrid_comparison.json"), OUT)
+
 def tables():
     tex = ["% Generated from saved results by figures/make_figures.py."]
     def macro(name, lines):
@@ -142,6 +204,12 @@ def tables():
         assert r["n_ident"]+r["n_weak"]+r["n_nonident"] == 36
         rows.append(f"{short[r['regime']]} & {r['n_ident']} & {r['n_weak']} & {r['n_nonident']} "+r"\\")
     macro("FisherCompactRows", rows)
+    comparison = np.load(DATA/"normal_treatment_comparison.npz")
+    state_names = comparison["states"].tolist()
+    for i, condition in enumerate(["Untreated", "Treated"]):
+        for state, name in [("m", "MYC"), ("p", "APC")]:
+            error = 100*comparison["relative_l2"][i, state_names.index(state)]
+            macro(condition+name+"Error", [f"{error:.2f}"])
     macro("ForwardRows", [
         f"Dense supervised & 100 & {100*read('forward_dense.json')['grand_mean_rel_l2']:.2f}"+r"\% \\",
         f"Sparse PINN & 40 & {100*read('forward_sparse.json')['grand_mean_rel_l2']:.2f}"+r"\% \\",
@@ -190,26 +258,26 @@ def tables():
         rows.append(f"{label} & {control}/{denominator} & {hybrid}/{denominator} & {error} "+r"\\")
     macro("HybridRows", rows)
     rows, audit = [], []
-    for name, label in [("dose_wnt.json", "WNT depletion only"),
-                        ("dose_bcat.json", "WNT + HOXA13 feedback suppression")]:
+    for name, label in [("dose_wnt.json", r"$a_M$ & WNT depletion"),
+                        ("dose_bcat.json", r"$a_M$ & WNT + HOXA13 suppression")]:
         vals = [100*next(r for r in read(name) if r["regime"]==regime and r["dose"]==0)["hybrid_basal_err"]
                 for regime in ("Normal","Severe APC Loss")]
-        rows.append(label+" & "+" & ".join(f"{x:.3f}" for x in vals)+r" \\")
+        rows.append(label+" & "+" & ".join(f"{x:.2f}" for x in vals)+r" \\")
         audit.append(f"{label}: {vals}")
     macro("DoseRows", rows)
     rows = []
-    for protocol, label in [("none","Baseline"), ("bcatKO",r"$\beta$-catenin depletion"),
-                            ("mycKO","MYC depletion")]:
+    for protocol, label in [("none",r"$a_{13}$ & none"), ("bcatKO",r"$a_{13}$ & $\beta$-catenin depletion"),
+                            ("mycKO",r"$a_{13}$ & MYC depletion")]:
         vals = [100*next(r for r in read("protocol_m_h13.json")
                         if r["regime"]==regime and r["protocol"]==protocol)["hybrid_basal_err"]
                 for regime in ("Normal","Severe APC Loss")]
-        rows.append(label+" & "+" & ".join(f"{x:.3f}" for x in vals)+r" \\")
+        rows.append(label+" & "+" & ".join(f"{x:.2f}" for x in vals)+r" \\")
         audit.append(f"{label}: {vals}")
     macro("ProtocolRows", rows)
     (OUT/"tables.tex").write_text("\n\n".join(tex)+"\n")
     (OUT/"numerical_audit.txt").write_text("\n".join(audit)+"\n")
 
 if __name__ == "__main__":
-    for make in [atra_treatment, forward, posterior, learned_myc, tables]:
+    for make in [atra_treatment, forward, treatment, parity, learned_myc, hybrid_errors, tables]:
         make()
         print(f"generated {make.__name__}", flush=True)

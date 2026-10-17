@@ -1,0 +1,72 @@
+[
+  {
+    "panel": "MYC: $a_M$",
+    "intervention": "WNT depletion",
+    "regime": "Normal",
+    "source": "dose_wnt.json",
+    "error_percent": 2.1700037289003946
+  },
+  {
+    "panel": "MYC: $a_M$",
+    "intervention": "WNT + HOXA13\nsuppression",
+    "regime": "Normal",
+    "source": "dose_bcat.json",
+    "error_percent": 0.02118633164439116
+  },
+  {
+    "panel": "MYC: $a_M$",
+    "intervention": "WNT depletion",
+    "regime": "Severe APC Loss",
+    "source": "dose_wnt.json",
+    "error_percent": 1.5495320461817053
+  },
+  {
+    "panel": "MYC: $a_M$",
+    "intervention": "WNT + HOXA13\nsuppression",
+    "regime": "Severe APC Loss",
+    "source": "dose_bcat.json",
+    "error_percent": 0.0061871243730983305
+  },
+  {
+    "panel": "HOXA13: $a_{13}$",
+    "intervention": "Baseline",
+    "regime": "Normal",
+    "source": "protocol_m_h13.json",
+    "error_percent": 12.844118128980428
+  },
+  {
+    "panel": "HOXA13: $a_{13}$",
+    "intervention": "$\\beta$-catenin depletion",
+    "regime": "Normal",
+    "source": "protocol_m_h13.json",
+    "error_percent": 51.5156482972076
+  },
+  {
+    "panel": "HOXA13: $a_{13}$",
+    "intervention": "MYC depletion",
+    "regime": "Normal",
+    "source": "protocol_m_h13.json",
+    "error_percent": 0.11122939612495047
+  },
+  {
+    "panel": "HOXA13: $a_{13}$",
+    "intervention": "Baseline",
+    "regime": "Severe APC Loss",
+    "source": "protocol_m_h13.json",
+    "error_percent": 95.56356503833423
+  },
+  {
+    "panel": "HOXA13: $a_{13}$",
+    "intervention": "$\\beta$-catenin depletion",
+    "regime": "Severe APC Loss",
+    "source": "protocol_m_h13.json",
+    "error_percent": 59.84273958564739
+  },
+  {
+    "panel": "HOXA13: $a_{13}$",
+    "intervention": "MYC depletion",
+    "regime": "Severe APC Loss",
+    "source": "protocol_m_h13.json",
+    "error_percent": 0.04874468802364603
+  }
+]

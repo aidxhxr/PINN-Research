@@ -1,0 +1,187 @@
+{
+  "source": "data/hybrid_comparison.json",
+  "fit_type": "Saved full multi-condition inverse PINNs",
+  "function_scoring": "Same observed-input grid for mechanistic and hybrid functions",
+  "parameter_selection": "Basal production in each replaced-term equation",
+  "function_comparisons": [
+    {
+      "relationship": "bm_myc",
+      "regime": "Normal",
+      "mechanistic_nrmse_percent": 0.09911832747697458,
+      "hybrid_nrmse_percent": 7.893443779010406,
+      "input_min": 0.03570005909587279,
+      "input_max": 1.4305596295479166,
+      "grid_points": 400,
+      "hill_exponent": 2
+    },
+    {
+      "relationship": "bm_myc",
+      "regime": "Early Adenoma",
+      "mechanistic_nrmse_percent": 0.7807469122510238,
+      "hybrid_nrmse_percent": 9.519554821213701,
+      "input_min": 0.11475790386787844,
+      "input_max": 1.882413879352422,
+      "grid_points": 400,
+      "hill_exponent": 2
+    },
+    {
+      "relationship": "bm_myc",
+      "regime": "Advanced Adenoma",
+      "mechanistic_nrmse_percent": 18.409259070719475,
+      "hybrid_nrmse_percent": 6.150884566843571,
+      "input_min": 0.2,
+      "input_max": 2.462694900707722,
+      "grid_points": 400,
+      "hill_exponent": 2
+    },
+    {
+      "relationship": "bm_myc",
+      "regime": "Severe APC Loss",
+      "mechanistic_nrmse_percent": 8.058423426022008,
+      "hybrid_nrmse_percent": 8.314007643807956,
+      "input_min": 0.2,
+      "input_max": 3.009226745457106,
+      "grid_points": 400,
+      "hill_exponent": 2
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Normal",
+      "mechanistic_nrmse_percent": 3.6013880990161558,
+      "hybrid_nrmse_percent": 7.591418378941888,
+      "input_min": 0.1416527062286564,
+      "input_max": 1.1743511394906119,
+      "grid_points": 400,
+      "hill_exponent": 1
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Early Adenoma",
+      "mechanistic_nrmse_percent": 3.3177820528838065,
+      "hybrid_nrmse_percent": 12.599913970992045,
+      "input_min": 0.1384941541042127,
+      "input_max": 1.0364603726831105,
+      "grid_points": 400,
+      "hill_exponent": 1
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Advanced Adenoma",
+      "mechanistic_nrmse_percent": 14.671359656208269,
+      "hybrid_nrmse_percent": 23.670288638034986,
+      "input_min": 0.13659027301838506,
+      "input_max": 0.969672131406883,
+      "grid_points": 400,
+      "hill_exponent": 1
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Severe APC Loss",
+      "mechanistic_nrmse_percent": 11.666216726551585,
+      "hybrid_nrmse_percent": 17.309676921799095,
+      "input_min": 0.13570208899776037,
+      "input_max": 0.9465636555758608,
+      "grid_points": 400,
+      "hill_exponent": 1
+    }
+  ],
+  "basal_parameter_comparisons": [
+    {
+      "relationship": "bm_myc",
+      "regime": "Normal",
+      "parameter": "aM",
+      "truth": 0.18,
+      "mechanistic_estimate": 0.1806742412444398,
+      "hybrid_estimate": 0.12194035505860312,
+      "mechanistic_error_percent": 0.3745784691332188,
+      "hybrid_error_percent": 32.25535830077604,
+      "hybrid_minus_mechanistic_percentage_points": 31.88077983164282,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "bm_myc",
+      "regime": "Early Adenoma",
+      "parameter": "aM",
+      "truth": 0.18,
+      "mechanistic_estimate": 0.18820668907738056,
+      "hybrid_estimate": 0.0861804841760685,
+      "mechanistic_error_percent": 4.559271709655869,
+      "hybrid_error_percent": 52.1219532355175,
+      "hybrid_minus_mechanistic_percentage_points": 47.562681525861635,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "bm_myc",
+      "regime": "Advanced Adenoma",
+      "parameter": "aM",
+      "truth": 0.18,
+      "mechanistic_estimate": 0.3925300262596065,
+      "hybrid_estimate": 0.23662601474841416,
+      "mechanistic_error_percent": 118.07223681089249,
+      "hybrid_error_percent": 31.458897082452314,
+      "hybrid_minus_mechanistic_percentage_points": -86.61333972844018,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "bm_myc",
+      "regime": "Severe APC Loss",
+      "parameter": "aM",
+      "truth": 0.18,
+      "mechanistic_estimate": 0.2728665245364765,
+      "hybrid_estimate": 0.25439748951962254,
+      "mechanistic_error_percent": 51.59251363137582,
+      "hybrid_error_percent": 41.33193862201253,
+      "hybrid_minus_mechanistic_percentage_points": -10.260575009363293,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Normal",
+      "parameter": "a5",
+      "truth": 0.15,
+      "mechanistic_estimate": 0.3346851175674028,
+      "hybrid_estimate": 0.20610266241539882,
+      "mechanistic_error_percent": 123.1234117116019,
+      "hybrid_error_percent": 37.40177494359922,
+      "hybrid_minus_mechanistic_percentage_points": -85.72163676800268,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Early Adenoma",
+      "parameter": "a5",
+      "truth": 0.15,
+      "mechanistic_estimate": 0.3209474909395282,
+      "hybrid_estimate": 0.17581792929496273,
+      "mechanistic_error_percent": 113.96499395968546,
+      "hybrid_error_percent": 17.211952863308493,
+      "hybrid_minus_mechanistic_percentage_points": -96.75304109637696,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Advanced Adenoma",
+      "parameter": "a5",
+      "truth": 0.15,
+      "mechanistic_estimate": 0.29659141559192215,
+      "hybrid_estimate": 0.16337342473634003,
+      "mechanistic_error_percent": 97.72761039461477,
+      "hybrid_error_percent": 8.915616490893362,
+      "hybrid_minus_mechanistic_percentage_points": -88.81199390372142,
+      "in_replaced_term_equation": true
+    },
+    {
+      "relationship": "ra_h5",
+      "regime": "Severe APC Loss",
+      "parameter": "a5",
+      "truth": 0.15,
+      "mechanistic_estimate": 0.30980756483709754,
+      "hybrid_estimate": 0.17006185731845716,
+      "mechanistic_error_percent": 106.53837655806504,
+      "hybrid_error_percent": 13.374571545638112,
+      "hybrid_minus_mechanistic_percentage_points": -93.16380501242693,
+      "in_replaced_term_equation": true
+    }
+  ],
+  "display_decimal_places": 1
+}
