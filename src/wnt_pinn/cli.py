@@ -10,15 +10,23 @@ from pathlib import Path
 import sys
 
 
+CHECKOUT_MARKERS = ('pyproject.toml', 'results/registry.json')
+
+
+def is_checkout(path):
+    """A research checkout has the package metadata and the result registry."""
+    return all((path / marker).is_file() for marker in CHECKOUT_MARKERS)
+
+
 def repository_root(value=None):
     if value:
         root = Path(value).expanduser().resolve()
-        if not (root / 'AGENTS.md').is_file():
+        if not is_checkout(root):
             raise ValueError(f'Not a research checkout: {root}')
         return root
     for base in (Path.cwd(), Path(__file__).resolve().parent):
         for path in (base, *base.parents):
-            if (path / 'AGENTS.md').is_file() and (path / 'pyproject.toml').is_file():
+            if is_checkout(path):
                 return path
     raise ValueError('Run from a research checkout or supply --root PATH.')
 

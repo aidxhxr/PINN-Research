@@ -5,8 +5,9 @@ from wnt_pinn.cli import main
 
 
 def root_fixture(tmp_path):
-    (tmp_path / 'AGENTS.md').write_text('test fixture\n')
     (tmp_path / 'pyproject.toml').write_text('[project]\nname="test"\n')
+    (tmp_path / 'results').mkdir()
+    (tmp_path / 'results/registry.json').write_text('{}\n')
     return tmp_path
 
 
