@@ -16,7 +16,7 @@ excess degradation $\kappa_P=\dP(1-\thP)$, whose relative precision is
 $\thP/(1-\thP)$ times that of $\thP$, and its bound widens from 0.69\% (Early)
 to 7.2\% and 19\%. The trend survives the change of coordinates at a third of
 the magnitude, and it has a mechanism. As WNT drive rises, APC falls (time
-average 0.48 in Normal, 0.076 in Severe) and the APC-dependent removal of
+average over $t\ge10$ 0.48 in Normal, 0.076 in Severe) and the APC-dependent removal of
 \bcat{}, $\lambda_P p b$, falls from 33\% to 9\% of total \bcat{} turnover; the
 observables then respond only weakly to the APC branch, whose only free knob is
 $\thP$, and the log-sensitivity of \bcat{} to $\thP$ falls 24-fold
@@ -46,9 +46,8 @@ the depletion pair, and the number of parameters with a bound below 5\% goes fro
 25 to 25 and to all 35, respectively; in Advanced Adenoma the bound goes from
 7.2\% to 6.9\% and to 0.42\%.
 
-These are local bounds, so the comparison was repeated by fit, with the same
-converged maximum-likelihood estimator used throughout (36 free parameters, four
-starts, the best kept by cost) under the base design, the base design plus the
+These are local bounds, so the comparison was repeated by fit, with the converged maximum-likelihood estimator (here with unit weights, 36
+free parameters, four starts, the best kept by cost) under the base design, the base design plus the
 two information-matched conditions, and the base design plus the depletion pair
 (a WNT knockdown $k_W=0.02$ and a retinoid-free medium). Because $\thP$ alone is
 tied to $\dP$, the scored quantity is the identifiable product $\kappa_P$
@@ -60,10 +59,12 @@ narrower; and 0.20\%, 0.29\% and 0.25\% with the depletion pair, whose bounds
 fall to 0.35\%, 0.42\% and 0.61\%. A single dataset is one draw from the
 distribution the bound describes, and here the draws fall inside it in every
 cell; it is the bound, not the draw, that says the depletion pair is worth a
-factor of 20--30 in the high-WNT regimes and the information-matched pair almost
-nothing. The selection among four starts mattered once: in Early Adenoma the
+factor of 17--31 in the high-WNT regimes and the information-matched pair almost
+nothing. The selection among four starts mattered in three cells: in Early Adenoma the
 common starting guess converges to a local minimum under the base and
-information-matched designs, and the cost picks the global one.
+information-matched designs, and in Normal under the depletion design it stops at
+the evaluation cap far from the minimum; in each case the cost picks the global
+one.
 
 \begin{figure}[tbp]
 \centering

@@ -147,8 +147,9 @@ Severe (3.3\% against a mechanistic-control floor of 3.4\%); P3 fails in Normal
 (1.3\%) and passes in Severe (2.5\%); P4, P5 and P6 pass in both regimes (P5 gap
 0.4 and 3.3 points; P6 $\times2.0$, $\times2.3$). Three of six pass in both
 regimes. With two rather than five restarts in Severe, P3 and P5 also failed
-there because of one bad optimum at $k=0.1$ (23.4\% between neighbours at 0.8\%
-and 3.3\%), which five restarts removed.
+there: P3 because the single knockdown reached 1.5\% at $k=0$ (2.6\% with five
+restarts), P5 because of one bad optimum at $k=0.1$ (23.4\% between neighbours
+at 0.8\% and 3.3\%), which five restarts removed.
 
 \paragraph{Prospective test (registered before any fit)} Q1: \texttt{m\_h13}
 basal error below 3\% under the prescribed protocol (\texttt{mycKO}). Q2: under
@@ -188,4 +189,4 @@ residual kept.
 log-parameters on Radau solutions (rtol $10^{-10}$, atol $10^{-12}$), at the
 150 observation times of each condition of the benchmark dataset;
 $\sigma=0.002$. The design-comparison bounds for $\thP$
-(Section~\ref{sec:res-thetaP}) use 200 uniformly spaced times per condition.
+(Section~\ref{sec:res-thetaP}) use 200 uniformly spaced times per condition and a step of $10^{-3}$.

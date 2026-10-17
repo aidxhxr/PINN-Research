@@ -20,9 +20,10 @@ follows $\chi^2_{35}$ (mean 36.3 and 33.1; Fig~\ref{fig:mc}D). In the two high-W
 regimes the estimates scatter less than the bound (variance 0.88 and 0.70,
 coverage 95\% and 97\%) and the likelihood-ratio statistic falls short of
 $\chi^2_{35}$ (mean 31.9 and 31.0). This is not a failure to converge: restarting
-a fit from its own estimate with stricter stopping rules moves it by less than
-$10^{-10}$, and tightening the solver moved the likelihood-ratio statistic by
-only one to two units. It is the non-asymptotic regime of a weakly informed
+six fits per regime from their own estimates with stricter stopping rules lowers
+the cost by at most $2\times10^{-4}$, against a shortfall of about four units in
+the statistic, and moves no log-parameter by more than 0.003, and tightening the solver moved the likelihood-ratio statistic by
+at most two units. It is the non-asymptotic regime of a weakly informed
 likelihood: along the sloppiest directions the log-likelihood is far from
 quadratic over the scale of the noise, the estimator is biased there, and its
 scatter can fall below a bound that holds for unbiased estimators (the weakest
@@ -86,8 +87,9 @@ relative-weighted fit reaches the global minimum in every regime, but in Early
 Adenoma only after 536 objective evaluations, beyond the cap of 400 used
 elsewhere; the unit-weight fit from the same guess converges to a genuine local minimum
 (restarting from it with stricter stopping moves it by $10^{-5}$) at a cost 18
-times that of the global one (19 of 34 recovered). Every jittered start
-reaches the global minimum, and selecting among four starts by cost, which
+times that of the global one (19 of 34 recovered). Of the 36 jittered
+starts, 34 reach the global minimum (two in Early Adenoma stop in a local one
+at 27 of 34), and selecting among four starts by cost, which
 needs no knowledge of the truth, recovers the bound's count on both datasets
 (on the replicate 34, 34, 33 and 31, or 132 against a CRLB-expected 132.5). A few starts are cheap insurance against a likelihood with more
 than one basin.
@@ -118,7 +120,7 @@ efficient estimator.}
 Where does the PINN lose the information? Not in the representation, which
 reaches a few percent (Section~\ref{sec:res-forward}), and not in the objective,
 whose large-$\lambda$ limit is the classical one; in the optimisation. A
-first-order method on a loss whose curvature spans eight orders of magnitude
+first-order method on a loss whose curvature spans six to nine orders of magnitude
 (Fig~\ref{fig:info}A) moves the well-informed directions quickly and the rest
 barely, and the network absorbs what the parameters do not explain. The
 SGN-PINN (Methods, Eqs~\eqref{eq:head}--\eqref{eq:schur}) freezes the trained
@@ -158,13 +160,13 @@ The SGN-PINN also returns, as a by-product of its last step, the inverse of the
 Schur complement. Its square root tracks the CRLB of the design over three
 orders of magnitude, at 1.2 to 1.6 times the bound at the median across regimes
 and datasets (Fig~\ref{fig:sgn}D); the excess is expected, because the
-relative-weighted objective is itself less efficient than the bound by 7--47\%
-(Methods) and the Gauss--Newton curvature at finite $\lambda$ is not exactly the
+relative-weighted objective is itself less efficient than the bound (standard deviations a median 7--9\% and at most 47\% above it;
+Methods) and the Gauss--Newton curvature at finite $\lambda$ is not exactly the
 Fisher information. In an unconverged fit the estimate can be badly wrong (one
 parameter in the benchmark Severe fit is reported 2500 times too precise), so
 the self-reported precision is only as good as the convergence check that
 accompanies it. The method costs 15--27 minutes per regime (both schedules) on one GPU on top
-of the PINN it starts from, against 40--43 minutes for that PINN, 2--26 minutes
+of the PINN it starts from, against 40--43 minutes for that PINN, 2--32 minutes
 for one start of the classical fit and under four minutes for the bound itself
 (Fig~\ref{fig:sgn}E; all measured on a shared node under load). Its contribution is not speed: it shows that the
 estimator gap of a PINN can be closed without abandoning the network

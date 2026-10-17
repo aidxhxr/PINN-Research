@@ -117,7 +117,9 @@ each trial parameter vector (LSODA, relative tolerance $10^{-11}$) and the
 weighted residual is minimised by a trust-region reflective least-squares
 method with forward-difference Jacobians (step $10^{-5}$ in log space) computed
 in parallel, run to convergence (relative tolerances $10^{-12}$, at most 400
-evaluations, raised to 1500 for the one fit that reached that cap)~\citep{virtanen2020scipy}. The solver tolerance matters: with
+evaluations; one fit that reached the cap was rerun with 1500 and converged at
+536, and two that reached it in the design comparison are either not selected
+or agree with the next start's cost to $10^{-8}$)~\citep{virtanen2020scipy}. The solver tolerance matters: with
 LSODA at $10^{-8}$ and a step of $10^{-6}$ the finite-difference Jacobian is too
 noisy along the flattest directions, and fits in the two high-WNT regimes stop
 short of the optimum, so every fit reported here uses the tighter settings. Two
@@ -293,15 +295,16 @@ network block is profiled out, $\Fim_{a\mid\phi}=J_a^{\top}(I-P_\phi)J_a$, with
 $P_\phi$ the projector on the network columns of $J$ above a relative singular
 value tolerance $10^{-8}$; the reported quantity is $\Gamma=\mathrm{sd}(\log a)/\sigma_r$,
 which is free of the noise scale. Away from the anchor the network block is
-nearly rank-deficient and $\Gamma$ depends on that tolerance (by a factor of 17 to 5000
-between $10^{-6}$ and $10^{-10}$ under the base design); it does not when the anchor is visited, and every rank correlation we
+nearly rank-deficient and $\Gamma$ depends on that tolerance (by a factor of 17 to 8000
+between $10^{-6}$ and $10^{-10}$ under the base design, depending on the
+representation); it does not when the anchor is visited, and every rank correlation we
 report changes by at most 0.04 across the three tolerances. Jacobians are
 computed by automatic differentiation and checked against central differences;
 the bound is checked against 200 Monte Carlo refits with simulated residual
 noise for the MYC edge under two designs and two representations. Designs are
 the base design, the depletion and information-matched pairs, the protocol
 ladder of the design table and the dose arms, each at the true parameters. The
-analysis needs no training and runs on eight CPU cores in minutes per design.
+analysis needs no training and runs on eight CPU cores in 13 minutes for all 29 designs.
 
 \subsection{Scoring and reporting}
 

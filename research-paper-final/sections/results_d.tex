@@ -12,8 +12,10 @@ pipeline under the ten base conditions, the hybrid learns the function well
 (normalised RMSE 6--10\% in the four regimes) and loses the basal rate beside
 it: $a_M$ is 32.3\% and 52.1\% off in the two low-WNT regimes, where the
 mechanistic model recovers it to 0.4\% and 4.6\% (Fig~\ref{fig:learned}A;
-run \runid{20260727\_012448\_bm\_myc}). The RA$\to$HOXA5 hybrid loses $a_5$ by
-9--37\% (\runid{20260726\_214316\_ra\_h5}). Is this an estimator gap or an
+run \runid{20260727\_012448\_bm\_myc}). The RA$\to$HOXA5 hybrid misses $a_5$ by
+9--37\% (\runid{20260726\_214316\_ra\_h5}), but there the mechanistic PINN
+misses it by more (98--123\%), so the full pipeline cannot attribute that
+loss; the equation-local analysis below, with exact states, can. Is this an estimator gap or an
 information gap?
 
 The arithmetic suggests the latter. On the observed support, for any constant
@@ -138,7 +140,7 @@ mechanistic control of the same equation, and the loss is a property of the
 network's flexibility on the unobserved interval: an anchored cubic, which
 cannot bend freely between $u=0$ and $\min u$, is within a factor of four of the
 control. Second, two
-information-matched conditions change $\Gamma$ by a factor 0.90--0.99 for the
+information-matched conditions change $\Gamma$ by a factor 0.90--1.00 for the
 network and the mechanistic control alike (0.64--0.99 across all
 representations), whereas a depletion pair that reaches the anchor of the
 RA-driven edges shrinks it by a factor of $1.8$--$6.1\times10^{-4}$ and brings the network
@@ -147,8 +149,8 @@ control the same pair helps three- to twentyfold. Depletion does not add general
 information, it removes the loss that the network introduced. For the
 \bcat{}$\to$MYC edge, the double knockdown that takes \bcat{} to zero brings the
 network to its control in every regime, while the single WNT knockdown, which
-leaves \bcat{} at 1.3\% of its range, leaves a loss of 65--210. Within each dose
-arm, $\Gamma$ falls monotonically with the achieved anchor ratio (Spearman $\ge0.99$
+leaves \bcat{} at 1.3--1.5\% of its range, leaves a loss of 65--210. Within each dose
+arm, $\Gamma$ falls monotonically with the achieved anchor ratio (Spearman $\ge0.98$
 in all six arm--regime series, Fig~\ref{fig:hfim}B), but the arms do not
 collapse onto one curve: at matched $\rho\approx0.016$ in Severe APC Loss the
 loss is 3.5 for the retinoid arm and 230 for the \bcat{} arm. The anchor ratio
@@ -175,8 +177,8 @@ $2.6\times10^3$ in any regime, although the latter cuts the MYC level; only a
 protocol that also silences basal MYC transcription (\texttt{mycKO}: the
 \bcat{} double knockout plus $k_{aM}=0$) brings it to 1.01 in all four regimes.
 For HOXA13$\to$\bcat{}, whose basal parameter is $W$ itself, every protocol
-that drives HOXA13 to zero leaves the loss unchanged ($6.5\times10^4$ to
-$7.7\times10^5$): HOXA13 can only be silenced by first removing \bcat{}, whose
+that drives HOXA13 to zero leaves the loss as large as it was or larger
+($6.5\times10^4$ to $7.7\times10^5$): HOXA13 can only be silenced by first removing \bcat{}, whose
 production is $k_WW+k_{13}\eta_{13}H_2(h_{13})$, so the conditions that visit
 the anchor set $k_W=0$ and delete $W$ from their own equations. The bound is
 consistent with the second clause of the design rule that the prospective test
@@ -245,18 +247,18 @@ dose-response with the number of conditions fixed separates the two
 plus one graded depletion of depth $k\in\{1,0.3,0.1,0.03,0.01,0\}$, so no dose
 has more data than another and $k=1$ is each arm's own null. The three arms are
 graded retinoid restriction (scoring $a_5$); a graded WNT knockdown alone
-(scoring $a_M$), under which \bcat{} plateaus at 1.3\% of its range because the
+(scoring $a_M$), under which \bcat{} plateaus at about 1\% of its range because the
 HOXA13 feedback keeps producing it; and the same knockdown applied to both
 sources of \bcat{} ($k_W=k_{13}=k$), which reaches zero. The last two score the
 same edge, equation and parameter with the same seeds, budget and number of
 conditions, and at $k=0$ differ by one knockdown. Replicated with five restarts
 from three disjoint seed sets, the single knockdown leaves $a_M$ at 1.45\%
 (range 1.33--1.52) in Normal and 2.25\% (1.79--2.63) in Severe APC Loss; the
-double knockdown at 0.003\% (0.001--0.008) and 0.002\% (0.001--0.003), 500- and
-1100-fold lower, against a seed spread of 0.2 and 0.8 points. The single
+double knockdown at 0.003\% (0.001--0.008) and 0.002\% (0.001--0.003), 430- and
+1200-fold lower (ratio of the means), against a seed spread of 0.2 and 0.8 points. The single
 knockdown at $k=0$ removes the WNT drive completely, and the mechanistic control
 is then at 0.0\%; \bcat{}, still produced through the HOXA13 feedback, stops at
-1.3\% of its range, and the network's basal error stops with it. Against dose the arms separate. Against the
+about 1\% of its range, and the network's basal error stops with it. Against dose the arms separate. Against the
 achieved anchor ratio the two \bcat{} arms line up (at matched ratio they agree
 within a factor of about two) and the single-knockdown arm sits at its ratio
 floor, but the retinoid arm does not join them in Severe APC Loss: there it

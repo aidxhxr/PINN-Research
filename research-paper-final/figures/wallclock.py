@@ -5,7 +5,7 @@ text). Every number is read from a run artifact; nothing is estimated.
   * SGN-PINN: seconds of both schedules summed (both seeds), one GPU, on top
     of the PINN it starts from;
   * MLE: seconds of the single-start relative-weighted fit, CPU 14 processes;
-  * CRLB: Fisher computation, 360 sensitivity solves per regime, 48 CPU
+  * CRLB: Fisher computation, 360 sensitivity solves per regime, 24 CPU
     processes (timed once for all four regimes; per-regime = total/4).
 """
 import glob
