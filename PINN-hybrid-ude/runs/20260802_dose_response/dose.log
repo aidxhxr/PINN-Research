@@ -1,0 +1,118 @@
+=== anchor dose-response  2026-08-01T23:21:03+00:00
+    starts=2 adam=3000 lbfgs=300 regimes=Normal,Severe APC Loss
+    launched arm=ra edge=ra_h5 pid=3572814
+    launched arm=wnt edge=bm_myc pid=3572817
+    launched arm=bcat edge=bm_myc pid=3572820
+=== arms finished (rc=0)  2026-08-02T02:23:07+00:00
+
+anchor dose-response — 36 cells from runs/20260802_dose_response
+
+  arm 'ra'  edge ra_h5  basal a5  regime Normal
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.1206     2.1%    15.4%     0.5%    14.8%     3/4     
+       0.3   0.0417     0.6%     3.9%     0.0%     3.9%     4/4     
+       0.1   0.0142     0.1%     0.6%     0.0%     0.6%     4/4     
+      0.03   0.0043     0.0%     0.2%     0.0%     0.2%     4/4     
+      0.01   0.0014     0.0%     0.1%     0.0%     0.0%     4/4     
+         0   0.0000     0.0%     0.0%     0.0%    -0.0%     4/4     
+
+  arm 'ra'  edge ra_h5  basal a5  regime Severe APC Loss
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.1434    24.3%    33.1%    36.7%    -3.6%     0/4     
+       0.3   0.0464     2.8%     0.8%    31.3%   -30.4%     4/4     
+       0.1   0.0159    21.8%    23.4%     3.5%    19.9%     0/4     
+      0.03   0.0048     3.4%     3.3%     3.5%    -0.2%     4/4     
+      0.01   0.0016     3.3%     3.4%     3.5%    -0.0%     4/4     
+         0   0.0000     3.3%     3.3%     3.5%    -0.2%     4/4     
+
+  arm 'wnt'  edge bm_myc  basal aM  regime Normal
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.0250     1.7%     8.3%     0.0%     8.3%     2/2     
+       0.3   0.0250     1.5%     6.9%     0.0%     6.8%     2/2     
+       0.1   0.0225     0.4%     2.0%     0.0%     2.0%     2/2     
+      0.03   0.0159     0.3%     1.3%     0.0%     1.3%     2/2     
+      0.01   0.0140     0.3%     1.3%     0.0%     1.3%     2/2     
+         0   0.0131     0.5%     2.2%     0.0%     2.2%     2/2     
+
+  arm 'wnt'  edge bm_myc  basal aM  regime Severe APC Loss
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.0665    11.6%    81.6%    35.8%    45.8%     1/2     
+       0.3   0.0661    10.2%    70.5%    10.4%    60.1%     1/2     
+       0.1   0.0312     3.1%    21.0%     0.0%    21.0%     1/2     
+      0.03   0.0144     0.7%     4.5%     0.0%     4.5%     2/2     
+      0.01   0.0109     0.3%     2.0%     0.0%     2.0%     2/2     
+         0   0.0092     0.3%     1.5%     0.0%     1.5%     2/2     
+
+  arm 'bcat'  edge bm_myc  basal aM  regime Normal
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.0250     1.7%     8.3%     0.0%     8.3%     2/2     
+       0.3   0.0250     0.8%     3.8%     0.0%     3.8%     2/2     
+       0.1   0.0097     0.3%     1.1%     0.0%     1.1%     2/2     
+      0.03   0.0029     0.1%     0.5%     0.0%     0.5%     2/2     
+      0.01   0.0009     0.1%     0.2%     0.0%     0.2%     2/2     
+         0   0.0000     0.1%     0.0%     0.0%     0.0%     2/2     
+
+  arm 'bcat'  edge bm_myc  basal aM  regime Severe APC Loss
+      dose    ratio   fNRMSE   hybrid  control   EXCESS    eq params
+         1   0.0665    11.6%    81.6%    35.8%    45.8%     1/2     
+       0.3   0.0619     7.0%    47.6%     0.3%    47.3%     1/2     
+       0.1   0.0161     0.5%     3.1%     0.0%     3.1%     2/2     
+      0.03   0.0045     0.2%     0.9%     0.0%     0.9%     2/2     
+      0.01   0.0015     0.2%     0.1%     0.0%     0.1%     2/2     
+         0   0.0000     0.2%     0.0%     0.0%    -0.0%     2/2     
+
+========================================================================
+  PRE-REGISTERED PREDICTIONS  (see PREREGISTERED.md)
+  primary = hybrid basal error;  excess = hybrid - control, reported alongside
+========================================================================
+
+  P1  basal error is monotone in anchor ratio (Spearman >= 0.8)
+        ra    Normal             rho(hybrid)=+1.00  rho(excess)=+1.00  n=6  PASS
+        ra    Severe APC Loss    rho(hybrid)=+0.37  rho(excess)=-0.54  n=6  FAIL
+        wnt   Normal             rho(hybrid)=+0.58  rho(excess)=+0.58  n=6  FAIL
+        wnt   Severe APC Loss    rho(hybrid)=+1.00  rho(excess)=+0.94  n=6  PASS
+        bcat  Normal             rho(hybrid)=+0.99  rho(excess)=+0.99  n=6  PASS
+        bcat  Severe APC Loss    rho(hybrid)=+1.00  rho(excess)=+0.94  n=6  PASS
+
+  P2  `ra` arm: basal error < 2% at k=0, and < 3% by k=0.03
+        Normal             k=0     hybrid=  0.0% (excess -0.0%)  vs 2%  PASS
+        Normal             k=0.03  hybrid=  0.2% (excess +0.2%)  vs 3%  PASS
+        Severe APC Loss    k=0     hybrid=  3.3% (excess -0.2%)  vs 2%  FAIL
+        Severe APC Loss    k=0.03  hybrid=  3.3% (excess -0.2%)  vs 3%  FAIL
+
+  P3  `wnt` arm plateaus: basal error never below 2% at any dose
+      (this is the falsifier -- if it collapses, the anchor account is wrong)
+        Normal             best over all doses: k=0.03 hybrid=1.3% (excess +1.3%)  FAIL (falsified)
+        Severe APC Loss    best over all doses: k=0 hybrid=1.5% (excess +1.5%)  FAIL (falsified)
+
+  P4  `bcat` at k=0 (ratio 0) has basal error < 2%, and below the `wnt` arm's k=0
+        Normal             bcat=  0.0% (excess +0.0%)  vs  wnt=  2.2% (excess +2.2%)  PASS
+        Severe APC Loss    bcat=  0.0% (excess -0.0%)  vs  wnt=  1.5% (excess +1.5%)  PASS
+
+  P5  `ra` and `bcat` lie on one curve vs achieved ratio (different equations, basal params, knockdowns)
+        Normal             median basal-error gap at matched ratio = 0.4%  (n=4)  PASS
+        Severe APC Loss    median basal-error gap at matched ratio = 20.2%  (n=5)  FAIL
+
+  P6  `wnt` k=0 and `bcat` k=0.1 reach comparable ratios by different means; basal error within ~2.5x
+        Normal             wnt k=0 (ratio 0.0131) basal=2.2%   bcat k=0.1 (ratio 0.0097) basal=1.1%   x2.0  PASS
+        Severe APC Loss    wnt k=0 (ratio 0.0092) basal=1.5%   bcat k=0.1 (ratio 0.0161) basal=3.1%   x2.0  PASS
+
+  [exploratory, NOT pre-registered]  basal error vs the anchor ratio itself
+        Normal             basal_err / anchor_ratio: median 1.21x  range 0.42-3.32  (n=16)
+        Severe APC Loss    basal_err / anchor_ratio: median 4.93x  range 0.18-21.35  (n=16)
+        a median near 1.0 would mean the training-free ratio PREDICTS the error,
+        not merely orders it. Treat as a hypothesis for the next pre-registration, not a result.
+
+  --------------------------------------------------------------------
+    P1  FAIL
+    P2  FAIL
+    P3  FAIL
+    P4  PASS
+    P5  FAIL
+    P6  PASS
+  --------------------------------------------------------------------
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+  wrote runs/20260802_dose_response/dose_response.png
+=== DONE  2026-08-02T02:23:09+00:00

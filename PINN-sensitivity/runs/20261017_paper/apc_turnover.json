@@ -1,0 +1,24 @@
+{
+ "window": [
+  10.0,
+  150.0
+ ],
+ "regimes": {
+  "Normal": {
+   "apc_mean": 0.4763039433008108,
+   "apc_share": 0.3259030684718835
+  },
+  "Early Adenoma": {
+   "apc_mean": 0.20239882074467072,
+   "apc_share": 0.18844099291719377
+  },
+  "Advanced Adenoma": {
+   "apc_mean": 0.11436211005447026,
+   "apc_share": 0.1251988191579271
+  },
+  "Severe APC Loss": {
+   "apc_mean": 0.07603273499294426,
+   "apc_share": 0.09079894422670891
+  }
+ }
+}
