@@ -15,6 +15,8 @@ import numpy as np
 from .model import Parameters, observables
 
 BLUE, ORANGE, TEAL = '#2463a7', '#dd7134', '#238776'
+REGIME_COLORS = {'Normal': '#1f77b4', 'Early adenoma': '#2ca02c',
+                 'Advanced adenoma': '#ff7f0e', 'Severe APC loss': '#d40000'}
 LABELS = {'b': r'$\beta$-catenin', 'p': 'APC', 'h5': 'HOXA5', 'h13': 'HOXA13',
           'm': 'MYC', 'r': 'Retinoic acid', 'c': 'CYP26A1', 'NT': 'Total population',
           'NS': 'Stem-like population', 'FS': 'Stem-like fraction', 'FA': 'ALDH-like fraction',
@@ -35,15 +37,27 @@ def shade(ax):
     ax.set_xlabel('Time since simulation baseline (h)')
 
 
-def make_figures(results, sensitivity, out):
-    nominal = results['regime:Severe APC loss']
+def regime_label(regime):
+    return regime[0].lower() + regime[1:] if regime != 'Normal' else 'the Normal regime'
+
+
+def crossing_text(event, digits=1):
+    if event['crossing_h'] is None:
+        return 'no post-washout crossing within 168 h'
+    return f"{event['crossing_h']:.{digits}f} h"
+
+
+def make_figures(results, sensitivity, out, regime='Severe APC loss'):
+    nominal = results[f'regime:{regime}']
     t, control, treated = nominal['t'], obs(nominal,'control'), obs(nominal)
     figures = []
     with PdfPages(out/'all_figures.pdf') as book:
         def save(fig, stem, title):
+            if regime != 'Severe APC loss' and 'regime' not in stem:
+                title = f'{title} ({regime})'
             fig.suptitle(title, fontsize=15, fontweight='bold')
             fig.tight_layout(rect=(0,.035,1,.93))
-            fig.text(.5,.008,'SciPy ODE simulation | severe APC loss unless stated | shaded interval: nominal ATRA exposure',
+            fig.text(.5,.008,f'SciPy ODE simulation | {regime_label(regime)} unless stated | shaded interval: nominal ATRA exposure',
                      ha='center',fontsize=8,color='#667085')
             fig.savefig(out/'figures'/f'{stem}.png')
             fig.savefig(out/'figures'/f'{stem}.pdf')
@@ -89,8 +103,9 @@ def make_figures(results, sensitivity, out):
         pair(axs[1,0],'SSC')
         axs[1,0].axhline(.5,color='gray',ls='--')
         crossing=nominal['events']['crossing_h']
-        axs[1,0].annotate(f'Renewal resumes: {crossing:.1f} h',xy=(crossing,.5),xytext=(10,.60),
-                          arrowprops={'arrowstyle':'->','color':'gray'},fontsize=9)
+        if crossing is not None:
+            axs[1,0].annotate(f'Renewal resumes: {crossing:.1f} h',xy=(crossing,.5),xytext=(10,.60),
+                              arrowprops={'arrowstyle':'->','color':'gray'},fontsize=9)
         scatter=axs[1,1].scatter(treated['NS']/control['NS'],treated['SSC'],c=t,s=5,cmap='viridis')
         axs[1,1].axhline(.5,color='gray',ls='--')
         axs[1,1].set_xlabel('Stem-like population: ATRA / control')
@@ -101,6 +116,8 @@ def make_figures(results, sensitivity, out):
         fig,axs=plt.subplots(1,2,figsize=(11,4.8))
         crossing_samples=[r['events']['crossing_h'] for r in lhs if r['events']['crossing_h'] is not None]
         axs[0].hist(crossing_samples,bins=15,color=BLUE,alpha=.85)
+        if len(crossing_samples) < len(lhs):
+            axs[0].set_title(f'{len(lhs)-len(crossing_samples)} of {len(lhs)} samples never cross',fontsize=10)
         axs[0].set_xlabel('Post-washout threshold crossing (h)')
         axs[0].set_ylabel('Samples')
         for i,time in enumerate((88.,112.,168.)):
@@ -205,6 +222,30 @@ def make_figures(results, sensitivity, out):
         axs[1].set_xticks(x,labels)
         axs[1].set_ylabel('Reduced HOX index change')
         save(fig,'fig17_hill_robustness','Figure 17 | Main directions survive the five tested Hill shapes')
+        # Not in the source report, which gives the four regimes only as Table 8.
+        fig,axs=plt.subplots(2,3,figsize=(15,8))
+        for name,color in REGIME_COLORS.items():
+            row=results[f'regime:{name}']
+            a,c=obs(row),obs(row,'control')
+            for ax,key in zip(axs.flat,('NT','NS','FA','IH','SSC')):
+                y=a['SSC'] if key=='SSC' else a[key]-c[key] if key=='IH' else a[key]/c[key]
+                ax.plot(row['t'],y,color=color,lw=1.8,label=name)
+        for ax,key in zip(axs.flat,('NT','NS','FA','IH','SSC')):
+            shade(ax)
+            ax.set_title(LABELS[key])
+            ax.set_ylabel('ATRA (threshold 0.5)' if key=='SSC' else 'ATRA − control' if key=='IH' else 'ATRA / control')
+            ax.axhline(.5 if key=='SSC' else 0 if key=='IH' else 1,color='gray',ls='--',lw=.8)
+        axs.flat[0].legend(fontsize=9)
+        keys=['NT','NS','FS','FA']
+        x=np.arange(len(keys))
+        for j,(name,color) in enumerate(REGIME_COLORS.items()):
+            e=results[f'regime:{name}']['end']
+            axs.flat[5].bar(x+(j-1.5)*.2,[e[f'{k}_ratio'] for k in keys],width=.2,color=color,label=name)
+        axs.flat[5].set_xticks(x,keys)
+        axs.flat[5].axhline(1,color='gray',ls='--',lw=.8)
+        axs.flat[5].set_ylabel('ATRA / control at 88 h')
+        axs.flat[5].set_title('Table 8 ratios')
+        save(fig,'fig_regimes','Regime comparison | Nominal 48-h ATRA exposure in all four regimes')
     gallery='\n'.join(f'<section><h2>{title}</h2><a href="figures/{stem}.pdf">Vector PDF</a><br>'
                       f'<img src="figures/{stem}.png" alt="{title}"></section>' for stem,title in figures)
     (out/'index.html').write_text('<!doctype html><html><meta charset="utf-8"><title>Population extension results</title>'
@@ -214,23 +255,71 @@ def make_figures(results, sensitivity, out):
         '<a href="RESULTS.md">Results and limitations</a></p>'+gallery+'</html>')
 
 
-def make_brief(results, audits, config, out):
-    nominal=results['regime:Severe APC loss']
+def make_brief(results, audits, config, out, regime='Severe APC loss'):
+    from datetime import date
+    severe = regime == 'Severe APC loss'
+    slug = regime.split()[0].lower()
+    nominal=results[f'regime:{regime}']
     e=nominal['end']
     event=nominal['events']
+    W, thetaP = nominal['parameters']['W'], nominal['parameters']['thetaP']
     lhs=[v for k,v in results.items() if k.startswith('lhs:')]
-    qcross=np.quantile([x['events']['crossing_h'] for x in lhs if x['events']['crossing_h'] is not None],[.05,.5,.95])
+    crossings=[x['events']['crossing_h'] for x in lhs if x['events']['crossing_h'] is not None]
+    qcross=np.quantile(crossings,[.05,.5,.95]) if crossings else None
     all_tension=sum(x['end']['FA_ratio']<1 and x['end']['IH_change']>0 for x in lhs)
-    body=f'''# Preliminary SciPy reproduction: population extension
+    if event['crossing_h'] is not None:
+        crossing_md=(f"It re-crosses at {event['crossing_h']:.3f} h from simulation baseline, or\n"
+                     f"{event['after_washout_h']:.3f} h after washout. At that time the stem-like population remains\n"
+                     f"{100*(1-event['NS_ratio']):.2f}% below matched control.")
+        crossing_short=(f"Stem-like regrowth resumes {event['after_washout_h']:.1f} h after washout, while the population "
+                        f"remains {100*(1-event['NS_ratio']):.1f}% below control.")
+    else:
+        crossing_md='It does not re-cross 0.5 after washout within the 168-h horizon.'
+        crossing_short='The maintenance index does not re-cross 0.5 after washout within 168 h.'
+    if qcross is not None:
+        ensemble=(f"The crossing-time 5th/median/95th percentiles are\n  {qcross[0]:.3f}, {qcross[1]:.3f}, "
+                  f"{qcross[2]:.3f} h ({len(crossings)}/{len(lhs)} samples cross).")
+        interval=f'Re-crossing 5–95% interval: {qcross[0]:.2f}–{qcross[2]:.2f} h.'
+    else:
+        ensemble=interval='No sample re-crosses the maintenance threshold within 168 h.'
+    if severe:
+        nd, nr, blk = (results['variant:No differentiation']['end'], results['variant:No RA-to-HOX']['end'],
+                       results['protocol:80% block']['end'])
+        limits=(f"**Not every printed number is reproduced.** Nominal, regime, duration and schedule\n"
+                f"comparisons are audited in `tables/pdf_comparison.csv`. The no-differentiation\n"
+                f"ALDH-fraction ratio is {nd['FA_ratio']:.4f}\n"
+                f"(PDF: 1.133). Removing RA-to-HOX regulation gives HOX-index change\n"
+                f"{nr['IH_change']:.6f} (PDF: -0.027).\n"
+                f"The 80% selective-block condition gives ALDH-fraction ratio\n"
+                f"{blk['FA_ratio']:.4f} (PDF: 0.7605) and HOX-index change\n"
+                f"{blk['IH_change']:.4f} (PDF: 0.0217).\n"
+                "These discrepancies are retained, with no parameter tuning to conceal them.\n\n"
+                "In particular, setting v5r=q13r=wBr=wCr=0 removes every RA input to the upstream\n"
+                "molecular/HOX-program subsystem in the printed equations. An ATRA-induced reduction\n"
+                "in beta-catenin cannot then explain a large negative HOX-index change; only the\n"
+                "population-composition weighting still changes that index. This is a useful point\n"
+                "to clarify with the report author. The ablation figure reports the implemented\n"
+                "equations, not the unmatched numerical claim.")
+        beta_note=f"{e['b_ratio']:.6f}, consistent\nwith the PDF's 0.719"
+    else:
+        limits=(f"**The source report shows no {regime} figures.** Its only {regime} numbers are the\n"
+                f"Table 8 row, compared in `tables/pdf_comparison.csv`. NT/NS/FS/FA/IH ratios here:\n"
+                f"{e['NT_ratio']:.3f}/{e['NS_ratio']:.3f}/{e['FS_ratio']:.3f}/{e['FA_ratio']:.3f}/{e['IH_ratio']:.3f}.\n"
+                "Every other printed target (Tables 11-13, Section 10.9) is a severe-APC-loss value and is\n"
+                "not compared. The figures apply the report's protocols, ablations and ±15% ensemble unchanged\n"
+                f"at W={W:g}, thetaP={thetaP:g}: they are new model outputs, not reproductions of printed figures.")
+        beta_note=f"{e['b_ratio']:.6f}"
+    body=f'''# Preliminary SciPy reproduction: population extension ({regime})
 
 Model source: `extension/wnt_hox_ra_revised_population_dynamics.pdf` (September 2026).
 All values below are recomputed from the 14 ODEs. No neural networks or parameter fitting.
+Base regime for every scenario except the four-regime comparison: **{regime}** (W={W:g}, thetaP={thetaP:g}).
 
 ## Main result to present
 
-Under severe APC loss, a 48-hour ATRA input reduces cell abundance while increasing the
-model's reduced HOX transcriptional index. These are different model outputs and can move
-in opposite directions. After washout, stem-like cells start regrowing while still depleted.
+In {regime_label(regime)}, a 48-hour ATRA input changes total cell abundance by {100*(e['NT_ratio']-1):+.1f}%
+and stem-like abundance by {100*(e['NS_ratio']-1):+.1f}%, while the model's reduced HOX transcriptional
+index changes by {e['IH_change']:+.3f}. These are different model outputs and can move in opposite directions.
 
 | Output at 88 h | Control | ATRA | Change relative to control |
 |---|---:|---:|---:|
@@ -238,19 +327,17 @@ in opposite directions. After washout, stem-like cells start regrowing while sti
 | Stem-like population / carrying capacity | {e['NS_control']:.4f} | {e['NS_treated']:.4f} | {100*(e['NS_ratio']-1):+.2f}% |
 | ALDH-like fraction of all cells | {e['FA_control']:.4f} | {e['FA_treated']:.4f} | {100*(e['FA_ratio']-1):+.2f}% |
 | Absolute ALDH-like population / carrying capacity | {e['nA_control']:.4f} | {e['nA_treated']:.4f} | {100*(e['nA_ratio']-1):+.2f}% |
-| Reduced HOX index | {e['IH_control']:.4f} | {e['IH_treated']:.4f} | +{e['IH_change']:.4f} index units |
+| Reduced HOX index | {e['IH_control']:.4f} | {e['IH_treated']:.4f} | {e['IH_change']:+.4f} index units |
 
-The ALDH share **within the residual stem pool** rises from {100*e['SA_control']:.2f}% to
-{100*e['SA_treated']:.2f}%, even though the absolute ALDH population and its fraction of all cells
-both fall. The denominator matters.
+The ALDH share **within the residual stem pool** goes from {100*e['SA_control']:.2f}% to
+{100*e['SA_treated']:.2f}%, while the absolute ALDH population changes by {100*(e['nA_ratio']-1):+.1f}% and its
+fraction of all cells by {100*(e['FA_ratio']-1):+.1f}%. The denominator matters.
 
-HOXA5 increases {e['h5_ratio']:.3f}-fold; HOXA13 falls to {e['h13_ratio']:.3f} times control;
-CYP26A1 rises {e['c_ratio']:.3f}-fold. These are scaled model concentrations, not measured expression data.
+HOXA5 changes {e['h5_ratio']:.3f}-fold; HOXA13 {e['h13_ratio']:.3f}-fold; CYP26A1 {e['c_ratio']:.3f}-fold.
+These are scaled model concentrations, not measured expression data.
 
-The maintenance index is {e['SSC']:.4f} at exposure end (below the exact contraction threshold 0.5).
-It re-crosses at {event['crossing_h']:.3f} h from simulation baseline, or
-{event['after_washout_h']:.3f} h after washout. At that time the stem-like population remains
-{100*(1-event['NS_ratio']):.2f}% below matched control. At 168 h it remains
+The maintenance index is {e['SSC']:.4f} at exposure end ({'below' if e['SSC'] < .5 else 'above'} the exact contraction threshold 0.5).
+{crossing_md} At 168 h the stem-like population is
 {100*(1-nominal['at']['168.0']['NS_ratio']):.2f}% below control.
 
 ## What was completed
@@ -258,14 +345,13 @@ It re-crosses at {event['crossing_h']:.3f} h from simulation baseline, or
 - Implemented all seven molecular, four HOX-program, and three population equations.
 - Used the supplied parameters, separate untreated 720-h preconditioning for every parameter set,
   matched controls, BDF (rtol 1e-9, atol 1e-11, max step 0.5 h), and 0.125-h output spacing.
-- Simulated all four disease regimes; a 5-by-5 dose-duration grid; equal-area schedules;
-  selective HOX-arm blockades; three mechanism ablations; five Hill-shape settings.
+- Simulated all four disease regimes; then, in {regime_label(regime)}, a 5-by-5 dose-duration grid,
+  equal-area schedules, selective HOX-arm blockades, three mechanism ablations and five Hill-shape settings.
 - Ran {len(lhs)} Latin hypercube samples of the ten specified couplings over [0.85,1.15]
   log-uniform multipliers, seed {config['seed']}. {all_tension}/{len(lhs)} preserve lower ALDH-like
-  fraction and higher HOX index. The crossing-time 5th/median/95th percentiles are
-  {qcross[0]:.3f}, {qcross[1]:.3f}, {qcross[2]:.3f} h. These are parameter-perturbation intervals,
+  fraction and higher HOX index. {ensemble} These are parameter-perturbation intervals,
   not statistical confidence intervals or a Bayesian posterior.
-- Reproduced numerical Figures 2–14 and 17 as 14 PNG/vector-PDF pairs. Figure 1 is a schematic;
+- Drew numerical Figures 2–14 and 17 as 14 PNG/vector-PDF pairs, plus a four-regime comparison (`fig_regimes`). Figure 1 is a schematic;
   Figures 15–16 (multistability searches) and the identifiability analysis are not rerun here.
 - Checked positivity, bounded programs/populations, exact population balance identities, and
   agreement with a tighter independent Radau integration. Maximum scaled state difference:
@@ -273,27 +359,11 @@ It re-crosses at {event['crossing_h']:.3f} h from simulation baseline, or
 
 ## Reproduction choices and limits
 
-**Not every printed number is reproduced.** Nominal, regime, duration and schedule
-comparisons are audited in `tables/pdf_comparison.csv`. The no-differentiation
-ALDH-fraction ratio is {results['variant:No differentiation']['end']['FA_ratio']:.4f}
-(PDF: 1.133). Removing RA-to-HOX regulation gives HOX-index change
-{results['variant:No RA-to-HOX']['end']['IH_change']:.6f} (PDF: -0.027).
-The 80% selective-block condition gives ALDH-fraction ratio
-{results['protocol:80% block']['end']['FA_ratio']:.4f} (PDF: 0.7605) and HOX-index change
-{results['protocol:80% block']['end']['IH_change']:.4f} (PDF: 0.0217).
-These discrepancies are retained, with no parameter tuning to conceal them.
-
-In particular, setting v5r=q13r=wBr=wCr=0 removes every RA input to the upstream
-molecular/HOX-program subsystem in the printed equations. An ATRA-induced reduction
-in beta-catenin cannot then explain a large negative HOX-index change; only the
-population-composition weighting still changes that index. This is a useful point
-to clarify with the report author. The ablation figure reports the implemented
-equations, not the unmatched numerical claim.
+{limits}
 
 Equation (6) as printed has no dB multiplier, although adjacent prose implies one. The primary
-run follows the printed equation; this gives beta-catenin ratio {e['b_ratio']:.6f}, consistent
-with the PDF's 0.719. A separate physical-clock variant gives
-{results['check:physical_beta_clock']['end']['b_ratio']:.6f}. Population conclusions barely change.
+run follows the printed equation; this gives beta-catenin ratio {beta_note}. A separate physical-clock
+variant gives {results['check:physical_beta_clock']['end']['b_ratio']:.6f}.
 Other molecular clocks use the exact stated half-lives; population rates are already per hour.
 
 The four 6-h pulse endpoints are not listed explicitly in the PDF. This reproduction assumes
@@ -302,8 +372,8 @@ specified in the provided report, so the seed above is our explicit choice. Sche
 details may consequently differ. Smooth pulse tails are integrated, with no artificial cutoff.
 
 The PDF calls an ordinary Spearman correlation a PRCC-style analysis. Here the same statistic is
-correctly labeled Spearman; no partial-correlation claim is made. Time 94.9 h is measured from
-simulation baseline, not treatment start (40 h); it is approximately 54.9 h after treatment start.
+correctly labeled Spearman; no partial-correlation claim is made. Crossing times are measured from
+simulation baseline, not treatment start (40 h).
 
 The 720-h warm-up is followed exactly; it is not proof that the slower populations are at a
 perfect periodic equilibrium. Their one-day residual changes are recorded in results.json.
@@ -311,24 +381,13 @@ No raw experimental data were supplied or fitted. The HOX index is a reduced mod
 not the eight-gene clinical signature, and these simulations do not predict patient survival.
 The selective block is a hypothetical intervention on two model couplings, not an identified drug.
 
-## Suggested 60-second explanation
-
-“I implemented the complete 14-equation extension directly in SciPy and reproduced the main
-48-hour response using the supplied parameters and preconditioning. Under severe APC loss,
-the model gives about a 4.3% reduction in total cells, a 30.4% reduction in stem-like cells,
-and a 21.0% reduction in the ALDH-like fraction. At the same time, its reduced HOX index
-rises from 0.286 to 0.433. The stem-like population starts growing again about 6.9 hours
-after washout while still roughly 31.5% below control. The dose-duration and mechanism
-comparisons help explain this separation. These are preliminary reproduction results,
-not a fit to experimental data or a clinical conclusion.”
-
 ## Files
 
 - `meeting_brief.pdf`: presentation brief and four main plots.
 - `all_figures.pdf`: all 14 figure pages; `figures/`: individual PNG and vector PDF plots.
 - `index.html`: local browser gallery.
-- `tables/regimes.csv`, `endpoints.csv`, `severe_timepoints.csv`: numerical results.
-- `data/severe_APC_timeseries.csv`: every severe-regime state and observable, control and ATRA.
+- `tables/regimes.csv`, `endpoints.csv`, `{slug}_timepoints.csv`: numerical results.
+- `data/{'severe_APC' if severe else slug}_timeseries.csv`: every state and observable in this regime, control and ATRA.
 - `data/trajectories.npz`: all non-ensemble trajectories, named by scenario.
 - `results.json`, `validation.json`, `parameters.json`, `config.json`, `manifest.json`:
   full settings, audits, numerical results and file/source hashes; `source/`: code snapshot.
@@ -345,16 +404,17 @@ not a fit to experimental data or a clinical conclusion.”
                 wrapped=textwrap.fill(text,94)
                 fig.text(.06,y,wrapped,fontsize=15,va='top',linespacing=1.5,color='#344054')
                 y-=.06*(wrapped.count('\n')+1)+.035
-            fig.text(.06,.045,'Preliminary model reproduction | 15 September 2026 | SciPy only',fontsize=10,color='#667085')
+            fig.text(.06,.045,f'Preliminary model reproduction | {date.today():%d %B %Y} | SciPy only',fontsize=10,color='#667085')
             pdf.savefig(fig)
             plt.close(fig)
-        text_page('14-state population extension: preliminary results',[
+        text_page(f'14-state population extension: {regime}',[
             'Implemented 7 molecular states, 4 phenotype-conditioned HOX programs, and 3 cell populations using the supplied equations and parameters.',
-            'Severe APC loss, 48-hour ATRA exposure: total cells −4.3%; stem-like cells −30.4%; ALDH-like fraction −21.0%.',
+            f'{regime} (W = {W:g}, θP = {thetaP:g}), 48-hour ATRA exposure: total cells {100*(e["NT_ratio"]-1):+.1f}%; '
+            f'stem-like cells {100*(e["NS_ratio"]-1):+.1f}%; ALDH-like fraction {100*(e["FA_ratio"]-1):+.1f}%.',
             f'Reduced HOX index: {e["IH_control"]:.3f} → {e["IH_treated"]:.3f}. Cell abundance and transcriptional state can move in different directions.',
-            f'Stem-like regrowth resumes {event["after_washout_h"]:.1f} h after washout, while the population remains {100*(1-event["NS_ratio"]):.1f}% below control.'
+            crossing_short,
         ])
-        for stem in ('fig02_molecular','fig03_population','fig04_central_result','fig05_maintenance'):
+        for stem in ('fig02_molecular','fig03_population','fig04_central_result','fig05_maintenance','fig_regimes'):
             fig,ax=plt.subplots(figsize=(12.8,7.2))
             ax.imshow(plt.imread(out/'figures'/f'{stem}.png'))
             ax.axis('off')
@@ -363,7 +423,9 @@ not a fit to experimental data or a clinical conclusion.”
             plt.close(fig)
         text_page('Checks, scope, and next discussion',[
             f'BDF and tighter Radau agree: maximum scaled state discrepancy {audits["BDF_vs_Radau"]["maximum_scaled_state_difference"]:.2g}. Positivity and population-flux identities pass.',
-            f'{len(lhs)} parameter samples: {all_tension} preserve the main opposing response directions. Re-crossing 5–95% interval: {qcross[0]:.2f}–{qcross[2]:.2f} h.',
-            'Generated 14 numerical figure types. Main endpoints match; some ablation and selective-block values differ from the PDF and are flagged in the results audit.',
+            f'{len(lhs)} parameter samples: {all_tension} preserve the main opposing response directions. {interval}',
+            ('Generated 14 numerical figure types plus a four-regime comparison. Main endpoints match; some ablation and selective-block values differ from the PDF and are flagged in the results audit.'
+             if severe else
+             f'Generated 14 numerical figure types plus a four-regime comparison. The report has no {regime} figures; only its Table 8 row is compared. The rest are new model outputs under the report\'s protocols.'),
             'Discuss: confirm the clock and ablation definitions. Multistability and identifiability scans were not rerun. No experimental fitting or clinical survival claim.'
         ])

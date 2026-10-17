@@ -42,8 +42,12 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def source_comparison(results):
-    """Audit printed numerical targets without tuning the model to those targets."""
+def source_comparison(results, regime='Severe APC loss'):
+    """Audit printed numerical targets without tuning the model to those targets.
+
+    Only Table 8 covers every regime; the other printed targets are severe-APC-loss
+    values and are compared only when the study runs in that regime.
+    """
     comparisons = []
     def add(label, tag, key, target, time='end'):
         row = results[tag]['end'] if time == 'end' else results[tag]['at'][str(float(time))]
@@ -56,6 +60,8 @@ def source_comparison(results):
                            (.957,.696,.728,.790,1.514)]):
         for key,value in zip(('NT_ratio','NS_ratio','FS_ratio','FA_ratio','IH_ratio'),values):
             add('Table 8',f'regime:{name}',key,value)
+    if regime != 'Severe APC loss':
+        return comparisons
     for duration, values in [(24,(.987,.880,.130)),(48,(.957,.790,.147)),
                              (60,(.939,.753,.148)),(72,(.919,.721,.150))]:
         for key,value in zip(('NT_ratio','FA_ratio','IH_change'),values):
@@ -92,9 +98,14 @@ def run_study(config_path, *, root):
     """Create a fresh root/runs directory; preserve every earlier run."""
     root = Path(root)
     config = json.loads(Path(config_path).read_text())
-    extra = set(config) - {'pipeline', 'workers', 'lhs_samples', 'seed', 'solver'}
+    extra = set(config) - {'pipeline', 'workers', 'lhs_samples', 'seed', 'solver', 'regime'}
     if extra or config.get('pipeline') != 'population_extension':
         raise ValueError(f'Invalid population configuration keys/pipeline: {extra}')
+    # Regime of every non-regime scenario (grid, protocols, variants, checks, LHS).
+    regime = config.get('regime', 'Severe APC loss')
+    if regime not in REGIMES:
+        raise ValueError(f'Unknown regime {regime!r}; expected one of {list(REGIMES)}.')
+    slug = regime.split()[0].lower()
     solver = Solver(**config.get('solver', {}))
     if solver.horizon < 168 or solver.precondition_hours < 24 or solver.dt <= 0:
         raise ValueError('Study needs horizon >=168, preconditioning >=24, and dt >0.')
@@ -103,13 +114,15 @@ def run_study(config_path, *, root):
         raise ValueError('workers >=1 and lhs_samples >=12 required.')
     start = time.monotonic()
     stamp = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
-    out = root / 'runs' / f'{stamp}_population_extension_{uuid.uuid4().hex[:4]}'
+    suffix = '' if regime == 'Severe APC loss' else f'_{slug}'
+    out = root / 'runs' / f'{stamp}_population_extension{suffix}_{uuid.uuid4().hex[:4]}'
     out.mkdir(parents=True)
     for folder in ('figures', 'tables', 'data', 'source'):
         (out/folder).mkdir()
     print(f'RUN_DIRECTORY={out}', flush=True)
     write_json(out/'config.json', config)
-    write_json(out/'parameters.json', Parameters().to_dict())
+    W, thetaP = REGIMES[regime]
+    write_json(out/'parameters.json', Parameters(W=W, thetaP=thetaP).to_dict())
     source_pdf = root/'extension/wnt_hox_ra_revised_population_dynamics.pdf'
     source_files = list(Path(__file__).parent.glob('*.py')) + [root/'extension/run_population.py',
                     root/'extension/README.md', root/'tests/test_population_extension.py',
@@ -125,14 +138,15 @@ def run_study(config_path, *, root):
                 'versions': {x: version(x) for x in ('numpy', 'scipy', 'matplotlib')},
                 'git_revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root,
                                                         text=True).strip(),
-                'state_order': STATE_NAMES, 'no_fitting': True,
+                'state_order': STATE_NAMES, 'no_fitting': True, 'regime': regime,
                 'source_hashes': {str(x.relative_to(root)): sha256(x.read_bytes()).hexdigest()
                                   for x in source_files}}
     write_json(out/'manifest.json', manifest)
-    p = Parameters()
+    base = Parameters()
     tasks = []
     for name, (w, theta) in REGIMES.items():
-        tasks.append((f'regime:{name}', p.changed(W=w, thetaP=theta), NOMINAL, solver, True))
+        tasks.append((f'regime:{name}', base.changed(W=w, thetaP=theta), NOMINAL, solver, True))
+    p = base.changed(W=W, thetaP=thetaP)
     for duration in (24., 36., 48., 60., 72.):
         for amplitude in (.5, 1., 1.5, 2., 2.5):
             protocol = Protocol(f'{duration:g}h / {amplitude:g}', amplitude, ((40.,40.+duration,1.),))
@@ -167,7 +181,7 @@ def run_study(config_path, *, root):
                 results[record['tag']] = record
                 if i % 10 == 0 or i == len(tasks):
                     print(f'Completed {i}/{len(tasks)} matched comparisons ({time.monotonic()-start:.1f}s)', flush=True)
-        nominal = results['regime:Severe APC loss']
+        nominal = results[f'regime:{regime}']
         audit_results = {tag: row['audits'] for tag,row in results.items() if 'audits' in row}
         check = results['check:Radau']
         audit_results['BDF_vs_Radau'] = {
@@ -187,10 +201,10 @@ def run_study(config_path, *, root):
                    for tag,row in sorted(results.items())])
         write_csv(out/'tables/regimes.csv', [{'regime': name, **results[f'regime:{name}']['end']}
                                             for name in REGIMES])
-        write_csv(out/'tables/severe_timepoints.csv', list(nominal['at'].values()))
-        write_csv(out/'tables/pdf_comparison.csv', source_comparison(results))
+        write_csv(out/'tables/{}_timepoints.csv'.format(slug), list(nominal['at'].values()))
+        write_csv(out/'tables/pdf_comparison.csv', source_comparison(results, regime))
         oC, oA = observables(nominal['control'],p), observables(nominal['treated'],p)
-        write_csv(out/'data/severe_APC_timeseries.csv', [{'time_h': float(t),
+        write_csv(out/'data/{}_timeseries.csv'.format('severe_APC' if slug == 'severe' else slug), [{'time_h': float(t),
             **{f'control_{k}': float(v[i]) for k,v in oC.items()},
             **{f'ATRA_{k}': float(v[i]) for k,v in oA.items()}}
             for i,t in enumerate(nominal['t'])])
@@ -200,15 +214,15 @@ def run_study(config_path, *, root):
                        for j,k in enumerate(UNCERTAIN)]
         write_csv(out/'tables/spearman_sensitivity.csv', sensitivity)
         from .plotting import make_figures, make_brief
-        make_figures(results, sensitivity, out)
-        make_brief(results, audit_results, config, out)
+        make_figures(results, sensitivity, out, regime)
+        make_brief(results, audit_results, config, out, regime)
         manifest.update(status='complete', finished_utc=datetime.now(timezone.utc).isoformat(),
                         elapsed_seconds=time.monotonic()-start, matched_comparisons=len(tasks),
                         lhs_samples=sample_count)
         manifest['output_hashes'] = {str(x.relative_to(out)): sha256(x.read_bytes()).hexdigest()
                                     for x in out.rglob('*') if x.is_file() and x.name!='manifest.json'}
         write_json(out/'manifest.json', manifest)
-        (root/'extension/LATEST_RUN.txt').write_text(str(out.relative_to(root))+'\n')
+        (root/'extension'/('LATEST_RUN.txt' if not suffix else f'LATEST_RUN{suffix}.txt')).write_text(str(out.relative_to(root))+'\n')
         print(f'COMPLETE: {out}', flush=True)
         return out
     except BaseException as error:
