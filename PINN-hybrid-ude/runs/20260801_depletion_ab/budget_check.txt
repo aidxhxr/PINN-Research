@@ -1,0 +1,7 @@
+Budget check (2026-10-17): Normal bm_myc gated, 10 conditions, stride 8, 1 start, rerun with the current screen_terms.py.
+Logged in depl_test.log (ARM A): fNRMSE 4.0%, eq params 1/2, basal_err 19.2%
+--adam 3000 --lbfgs 300:
+  Normal             bm_myc     gated       fNRMSE=  4.0%  eq params 1/2 (ctrl 4/4)  basal_err=19.2% (ctrl 0.0%)  [154s]
+--adam 1500 --lbfgs 200:
+  Normal             bm_myc     gated       fNRMSE=  1.1%  eq params 2/2 (ctrl 4/4)  basal_err=5.2% (ctrl 0.0%)  [75s]
+=> the 2026-08-01 screens used 3000/300.

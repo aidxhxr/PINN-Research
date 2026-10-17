@@ -52,3 +52,4 @@ script.
 - Full-pipeline RA->HOXA5 and MYC hybrids vs control (results_d): `PINN-hybrid-ude/runs/20260726_195830_control`, `20260726_214316_ra_h5`.
 - Pre-registered dose and prospective predictions: `PREREGISTERED.md`, `dose.log`, `protocol.log` in `PINN-hybrid-ude/runs/20260802_{dose_response,protocol_test}`.
 - Screen budget: the 2026-08-01 Normal atlas and depletion A/B screens were launched inline; the follow-up runs built to match them (`run_infoctl.sh`, `run_atlas_rest.sh`) pass `--adam 3000 --lbfgs 300`.
+- Screen budget check: `PINN-hybrid-ude/runs/20260801_depletion_ab/budget_check.txt` (a rerun of the logged Normal `bm_myc` gated screen at 3000/300 reproduces it exactly; 1500/200 does not).
