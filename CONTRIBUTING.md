@@ -1,7 +1,6 @@
 # Contributing
 
-Start with the [installation guide](docs/installation.md) and the repository
-rules in [AGENTS.md](AGENTS.md). The code studies synthetic data from a
+Start with the [installation guide](docs/installation.md). The code studies synthetic data from a
 seven-state model. A successful fit alone is not evidence of accurate
 biological parameters or calibrated uncertainty.
 
@@ -22,10 +21,8 @@ an active pipeline must not silently reinterpret its previous outputs.
 
 ## Record new experiments
 
-Run every new experiment or training job in tmux. Immediately add its session,
-purpose, log path, start date and status to the active-session table in
-`AGENTS.md`. Use a new timestamped run directory. When a run finishes, update
-the session status.
+Run every new experiment or training job in tmux, and use a new timestamped
+run directory.
 
 Save the resolved configuration, code revision and local changes, dependency
 versions, hardware, input hashes, seed assignments, selection rule and outcome.

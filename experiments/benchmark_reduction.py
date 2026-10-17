@@ -132,7 +132,7 @@ def main():
     parser.add_argument("--graph-calls", default=32, type=int)
     args = parser.parse_args()
     if not os.environ.get("TMUX"):
-        parser.error("Launch in tmux and record the session in AGENTS.md")
+        parser.error("Launch this benchmark inside tmux")
     if min(args.repeats, args.iterations, args.graph_calls) < 1:
         parser.error("repeats, iterations and graph-calls must be positive")
     if args.out.exists():

@@ -97,5 +97,5 @@ The package workflow performs this check outside the checkout with only base
 dependencies. This catches imports that accidentally rely on an editable
 installation or on an undeclared PyTorch dependency.
 
-For experiment protocols and session recording, follow
-[`AGENTS.md`](../AGENTS.md) and the tracked experiment documentation.
+For experiment protocols, follow the [experiment guide](experiments.md) and the
+[contribution guide](../CONTRIBUTING.md).

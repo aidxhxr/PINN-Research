@@ -9,8 +9,9 @@ PINN-inverse-better/architecture.log
 /build.log
 /texput.log
 
-# Local working notes (AGENTS.md is the repository guide; CLAUDE.md is legacy)
+# Local working notes and agent instruction files
 notes/
+/AGENTS.md
 PINN-smaller/forward-pinn-train-hybrid/architecture.log
 
 # macOS finder junk

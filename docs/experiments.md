@@ -7,8 +7,9 @@ trainers. It preserves the existing training stages and writes new runs below
 
 The runner requires a POSIX system with tmux and process signals.
 
-Run jobs in tmux and record the session, purpose, output/log path, date and
-status in `AGENTS.md`. Start with the CPU execution check:
+Run jobs in tmux so they survive a dropped connection, and keep a record of
+each run's purpose, output path, date and status. Start with the CPU execution
+check:
 
 ```bash
 tmux new-session -s research-smoke

@@ -126,7 +126,7 @@ def main():
     parser.add_argument("--micro-only", action="store_true")
     args = parser.parse_args()
     if not os.environ.get("TMUX"):
-        parser.error("Launch this benchmark in tmux and record its session in AGENTS.md")
+        parser.error("Launch this benchmark inside tmux")
     if args.repeats < 1:
         parser.error("repeats must be positive")
     if "eager" not in args.backends or len(set(args.backends)) != len(args.backends):

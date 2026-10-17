@@ -20,7 +20,7 @@ documented below as historical material.
 | Element | Original source, relative to repository root |
 |---|---|
 | Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf`, also `poster-fable/assets/ready/schema.pdf` |
-| Equations, state order, forcing, regimes | `PINN-hybrid-ude/odes.py`, `config.py`, `residual.py`; root `AGENTS.md` |
+| Equations, state order, forcing, regimes | `PINN-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
 | Nondimensionalization | `research-paper/paper.tex`, equations ndb–ndc |
 | Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
 | Fourier network and forward losses | `PINN-smaller/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `research-paper/paper.tex` |

@@ -16,8 +16,8 @@ wnt-pinn reproduce --result inverse_recovery --output runs/reproduce-inverse
 wnt-pinn reproduce --all --output runs/reproduce-all
 ```
 
-Run reproduction and publication builds in a recorded tmux session, following
-[`AGENTS.md`](../AGENTS.md). Choose a fresh output directory each time. These
+Run reproduction and publication builds in a persistent terminal session such
+as tmux. Choose a fresh output directory each time. These
 commands read saved results and do not train models or rerun HMC.
 
 `verify` checks the schema and hashes. `reproduce` also recomputes metrics,

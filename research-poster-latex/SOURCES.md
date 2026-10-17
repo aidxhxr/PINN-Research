@@ -11,7 +11,7 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 | Element | Original source, relative to repository root |
 |---|---|
 | Regulatory schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
-| Model, state order and forcing | `PINN-inverse-pinn-boost/config.py`, `odes.py`; root `AGENTS.md` |
+| Model, state order and forcing | `PINN-inverse-pinn-boost/config.py`, `odes.py`; `docs/model.md` |
 | Baseline/cosine RA-input plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved parameters in `data/normal_treatment_provenance.json`, `parameters.noATRA` |
 | Normal Radau and PINN curves, Figs. 2–3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_{noATRA,ctrl}_net.pt`; exported to `data/normal_treatment_comparison.npz` |
 | Network and training recipe | `PINN-inverse-pinn-boost/model.py`, `training.py`, `run_boost.py`, same run's `Normal.log` |

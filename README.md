@@ -162,7 +162,7 @@ hashes. It does not retrain the models. The
 [reproduction guide](docs/reproduction.md) distinguishes metric checks, original
 figure snapshots, and the one historical result transcribed from research notes.
 
-Launch new training in tmux and record the session in [AGENTS.md](AGENTS.md):
+Launch new training in tmux:
 
 ```bash
 tmux new-session -d -s pinn_smoke -c "$PWD"

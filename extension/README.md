@@ -20,7 +20,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=src \
 ```
 
 The standalone equivalent is `python3 extension/run_population.py`.
-Record every new tmux session in root `AGENTS.md`. Each invocation creates a fresh
+Run long jobs in tmux. Each invocation creates a fresh
 timestamped directory under root `runs/`; it never overwrites an earlier run.
 `LATEST_RUN.txt` records the most recently completed directory. Four CPU workers
 are used by default. The configuration includes the solver settings, sample count,
