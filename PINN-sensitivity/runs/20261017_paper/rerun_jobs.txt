@@ -1,0 +1,4 @@
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --tag _s7_rel

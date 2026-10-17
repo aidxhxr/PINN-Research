@@ -1,0 +1,368 @@
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 1 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights none --workers 14 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 1 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 1 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 2 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 3 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 1 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 2 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 3 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 1 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 2 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 3 --seed 7 --weights none --workers 14 --tag _s7_none
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc 'Normal' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --tag _s124
+python3 -u mle.py runs/20261017_paper/mc 'Early Adenoma' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --tag _s124
+python3 -u mle.py runs/20261017_paper/mc 'Advanced Adenoma' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --tag _s124
+python3 -u mle.py runs/20261017_paper/mc 'Severe APC Loss' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --tag _s124
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 101 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s101
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 102 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s102
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 103 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s103
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 104 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s104
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 105 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s105
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 106 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s106
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 107 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s107
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 108 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s108
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 109 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s109
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 110 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s110
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 111 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s111
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 112 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s112
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 113 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s113
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 114 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s114
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 115 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s115
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 116 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s116
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 117 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s117
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 118 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s118
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 119 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s119
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 120 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s120
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 121 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s121
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 122 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s122
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 123 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s123
+python3 -u mle.py runs/20261017_paper/mc_tight 'Severe APC Loss' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s124
+python3 -u mle.py runs/20261017_paper/mc_tight 'Advanced Adenoma' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s124
+python3 -u mle.py runs/20261017_paper/mc_tight 'Early Adenoma' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s124
+python3 -u mle.py runs/20261017_paper/mc_tight 'Normal' --start truth --seed 124 --weights none --fix-deltaP1 --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s124
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 1 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 2 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 3 --seed 7 --weights rel --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s7_rel
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 1 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --design base --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 1 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --design info --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_info
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Severe APC Loss' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Advanced Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Early Adenoma' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 1 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 2 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep
+python3 -u mle.py runs/20261017_paper/ms_tight 'Normal' --start init --jitter-seed 3 --seed 42 --weights none --design dep --workers 14 --rtol 1e-11 --fd-step 1e-5 --tag _s42_none_dep

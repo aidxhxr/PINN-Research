@@ -1,0 +1,682 @@
+[
+  {
+    "regime": "Normal",
+    "term": "bm_myc",
+    "param": "gated",
+    "eq": "dm",
+    "seed": 117,
+    "physics": 2.131869054462736e-08,
+    "n_eq_params": 2,
+    "eq_under10": 2,
+    "param_err": {
+      "epsM": 0.0023331715738169243,
+      "aM": 0.06481389221417613
+    },
+    "recovered": {
+      "epsM": 0.5986000970557098,
+      "aM": 0.1683334994014483
+    },
+    "term_rmse": 0.011657991233970336,
+    "term_nrmse": 0.013580423287098978,
+    "x_lo": 0.03570015000456084,
+    "x_hi": 1.4305107103988903,
+    "basal_param": "aM",
+    "basal_err": 0.06481389221417613,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.1583561002709078e-09,
+    "ctrl_param_err": {
+      "epsM": 0.001374526375392075,
+      "aM": 0.00014726028368830833,
+      "etaBM": 2.1893022028678457e-05,
+      "kappaBM": 1.5692541502021484e-05
+    },
+    "ctrl_basal_err": 0.00014726028368830833
+  },
+  {
+    "regime": "Normal",
+    "term": "bm_myc",
+    "param": "sc",
+    "eq": "dm",
+    "seed": 117,
+    "physics": 3.2212947777468234e-08,
+    "n_eq_params": 2,
+    "eq_under10": 2,
+    "param_err": {
+      "epsM": 0.003655908266147849,
+      "aM": 0.08433148233652303
+    },
+    "recovered": {
+      "epsM": 0.5978064550403113,
+      "aM": 0.16482033317942585
+    },
+    "term_rmse": 0.015167416721329877,
+    "term_nrmse": 0.01766856185714703,
+    "x_lo": 0.03570015000456084,
+    "x_hi": 1.4305107103988903,
+    "basal_param": "aM",
+    "basal_err": 0.08433148233652303,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.1583561002709078e-09,
+    "ctrl_param_err": {
+      "epsM": 0.001374526375392075,
+      "aM": 0.00014726028368830833,
+      "etaBM": 2.1893022028678457e-05,
+      "kappaBM": 1.5692541502021484e-05
+    },
+    "ctrl_basal_err": 0.00014726028368830833
+  },
+  {
+    "regime": "Normal",
+    "term": "bm_myc",
+    "param": "sc_bounded",
+    "eq": "dm",
+    "seed": 100,
+    "physics": 7.485056189058768e-08,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.0073271087362771405,
+      "aM": 0.10495373200371698
+    },
+    "recovered": {
+      "epsM": 0.5956037347582337,
+      "aM": 0.16110832823933094
+    },
+    "term_rmse": 0.018911311804635806,
+    "term_nrmse": 0.022029834648777658,
+    "x_lo": 0.03570015000456084,
+    "x_hi": 1.4305107103988903,
+    "basal_param": "aM",
+    "basal_err": 0.10495373200371698,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.1583561002709078e-09,
+    "ctrl_param_err": {
+      "epsM": 0.001374526375392075,
+      "aM": 0.00014726028368830833,
+      "etaBM": 2.1893022028678457e-05,
+      "kappaBM": 1.5692541502021484e-05
+    },
+    "ctrl_basal_err": 0.00014726028368830833
+  },
+  {
+    "regime": "Normal",
+    "term": "bm_myc",
+    "param": "lin",
+    "eq": "dm",
+    "seed": 100,
+    "physics": 2.5821308376859876e-08,
+    "n_eq_params": 2,
+    "eq_under10": 2,
+    "param_err": {
+      "epsM": 0.0041677149222864775,
+      "aM": 0.06989587085442846
+    },
+    "recovered": {
+      "epsM": 0.5974993710466281,
+      "aM": 0.16741874324620287
+    },
+    "term_rmse": 0.012578198521975028,
+    "term_nrmse": 0.0146523750695435,
+    "x_lo": 0.03570015000456084,
+    "x_hi": 1.4305107103988903,
+    "basal_param": "aM",
+    "basal_err": 0.06989587085442846,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.1583561002709078e-09,
+    "ctrl_param_err": {
+      "epsM": 0.001374526375392075,
+      "aM": 0.00014726028368830833,
+      "etaBM": 2.1893022028678457e-05,
+      "kappaBM": 1.5692541502021484e-05
+    },
+    "ctrl_basal_err": 0.00014726028368830833
+  },
+  {
+    "regime": "Normal",
+    "term": "bm_myc",
+    "param": "lin_mono",
+    "eq": "dm",
+    "seed": 117,
+    "physics": 2.7113337705096102e-05,
+    "n_eq_params": 2,
+    "eq_under10": 0,
+    "param_err": {
+      "epsM": 29.44432580366493,
+      "aM": 2.0156414126598428
+    },
+    "recovered": {
+      "epsM": 18.26659548219896,
+      "aM": 0.5428154542787716
+    },
+    "term_rmse": 0.2990473778974575,
+    "term_nrmse": 0.3483610420730613,
+    "x_lo": 0.03570015000456084,
+    "x_hi": 1.4305107103988903,
+    "basal_param": "aM",
+    "basal_err": 2.0156414126598428,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.1583561002709078e-09,
+    "ctrl_param_err": {
+      "epsM": 0.001374526375392075,
+      "aM": 0.00014726028368830833,
+      "etaBM": 2.1893022028678457e-05,
+      "kappaBM": 1.5692541502021484e-05
+    },
+    "ctrl_basal_err": 0.00014726028368830833
+  },
+  {
+    "regime": "Early Adenoma",
+    "term": "bm_myc",
+    "param": "gated",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 3.320116136805277e-08,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.006012804836313576,
+      "aM": 0.33380821470154576
+    },
+    "recovered": {
+      "epsM": 0.5963923170982118,
+      "aM": 0.11991452135372176
+    },
+    "term_rmse": 0.06008188273036002,
+    "term_nrmse": 0.056467850214360196,
+    "x_lo": 0.11475791589958233,
+    "x_hi": 1.8821760127876601,
+    "basal_param": "aM",
+    "basal_err": 0.33380821470154576,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 4.4686401733648e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0034290449957774527,
+      "aM": 0.001476689524030412,
+      "etaBM": 0.00018429461481421852,
+      "kappaBM": 0.00017801627745028803
+    },
+    "ctrl_basal_err": 0.001476689524030412
+  },
+  {
+    "regime": "Early Adenoma",
+    "term": "bm_myc",
+    "param": "sc",
+    "eq": "dm",
+    "seed": 100,
+    "physics": 1.9002701667652047e-08,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.0016611600393199681,
+      "aM": 0.30657197422186055
+    },
+    "recovered": {
+      "epsM": 0.599003303976408,
+      "aM": 0.1248170446400651
+    },
+    "term_rmse": 0.05518637903112954,
+    "term_nrmse": 0.051866819803036125,
+    "x_lo": 0.11475791589958233,
+    "x_hi": 1.8821760127876601,
+    "basal_param": "aM",
+    "basal_err": 0.30657197422186055,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 4.4686401733648e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0034290449957774527,
+      "aM": 0.001476689524030412,
+      "etaBM": 0.00018429461481421852,
+      "kappaBM": 0.00017801627745028803
+    },
+    "ctrl_basal_err": 0.001476689524030412
+  },
+  {
+    "regime": "Early Adenoma",
+    "term": "bm_myc",
+    "param": "sc_bounded",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 7.4024130629581565e-09,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.002922468163191194,
+      "aM": 0.17890474751216262
+    },
+    "recovered": {
+      "epsM": 0.5982465191020853,
+      "aM": 0.14779714544781072
+    },
+    "term_rmse": 0.0322055682814296,
+    "term_nrmse": 0.03026834584970768,
+    "x_lo": 0.11475791589958233,
+    "x_hi": 1.8821760127876601,
+    "basal_param": "aM",
+    "basal_err": 0.17890474751216262,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 4.4686401733648e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0034290449957774527,
+      "aM": 0.001476689524030412,
+      "etaBM": 0.00018429461481421852,
+      "kappaBM": 0.00017801627745028803
+    },
+    "ctrl_basal_err": 0.001476689524030412
+  },
+  {
+    "regime": "Early Adenoma",
+    "term": "bm_myc",
+    "param": "lin",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 1.8550072215873454e-08,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.0016908653436895997,
+      "aM": 0.37981145304495123
+    },
+    "recovered": {
+      "epsM": 0.5989854807937862,
+      "aM": 0.11163393845190878
+    },
+    "term_rmse": 0.06836967370216276,
+    "term_nrmse": 0.0642571157622456,
+    "x_lo": 0.11475791589958233,
+    "x_hi": 1.8821760127876601,
+    "basal_param": "aM",
+    "basal_err": 0.37981145304495123,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 4.4686401733648e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0034290449957774527,
+      "aM": 0.001476689524030412,
+      "etaBM": 0.00018429461481421852,
+      "kappaBM": 0.00017801627745028803
+    },
+    "ctrl_basal_err": 0.001476689524030412
+  },
+  {
+    "regime": "Early Adenoma",
+    "term": "bm_myc",
+    "param": "lin_mono",
+    "eq": "dm",
+    "seed": 117,
+    "physics": 4.282832588469802e-05,
+    "n_eq_params": 2,
+    "eq_under10": 0,
+    "param_err": {
+      "epsM": 16.656364409712985,
+      "aM": 4.04812279301119
+    },
+    "recovered": {
+      "epsM": 10.59381864582779,
+      "aM": 0.9086621027420141
+    },
+    "term_rmse": 0.6806171725121265,
+    "term_nrmse": 0.6396768344164341,
+    "x_lo": 0.11475791589958233,
+    "x_hi": 1.8821760127876601,
+    "basal_param": "aM",
+    "basal_err": 4.04812279301119,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 4.4686401733648e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0034290449957774527,
+      "aM": 0.001476689524030412,
+      "etaBM": 0.00018429461481421852,
+      "kappaBM": 0.00017801627745028803
+    },
+    "ctrl_basal_err": 0.001476689524030412
+  },
+  {
+    "regime": "Advanced Adenoma",
+    "term": "bm_myc",
+    "param": "gated",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 3.1455746553168007e-09,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.003462745422767588,
+      "aM": 0.18855655181531095
+    },
+    "recovered": {
+      "epsM": 0.5979223527463394,
+      "aM": 0.14605982067324402
+    },
+    "term_rmse": 0.03399115993239616,
+    "term_nrmse": 0.028091609049371708,
+    "x_lo": 0.2,
+    "x_hi": 2.4624224971509707,
+    "basal_param": "aM",
+    "basal_err": 0.18855655181531095,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 2.5798290588778415e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0006095084292066326,
+      "aM": 0.15639429837035232,
+      "etaBM": 0.020226903225802933,
+      "kappaBM": 0.015302571814818977
+    },
+    "ctrl_basal_err": 0.15639429837035232
+  },
+  {
+    "regime": "Advanced Adenoma",
+    "term": "bm_myc",
+    "param": "sc",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 9.540801704803442e-09,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.0016858279830215632,
+      "aM": 0.6616685115998387
+    },
+    "recovered": {
+      "epsM": 0.6010114967898129,
+      "aM": 0.060899667912029026
+    },
+    "term_rmse": 0.11916951824965306,
+    "term_nrmse": 0.09848629831783537,
+    "x_lo": 0.2,
+    "x_hi": 2.4624224971509707,
+    "basal_param": "aM",
+    "basal_err": 0.6616685115998387,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 2.5798290588778415e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0006095084292066326,
+      "aM": 0.15639429837035232,
+      "etaBM": 0.020226903225802933,
+      "kappaBM": 0.015302571814818977
+    },
+    "ctrl_basal_err": 0.15639429837035232
+  },
+  {
+    "regime": "Advanced Adenoma",
+    "term": "bm_myc",
+    "param": "sc_bounded",
+    "eq": "dm",
+    "seed": 100,
+    "physics": 2.877663701716597e-09,
+    "n_eq_params": 2,
+    "eq_under10": 2,
+    "param_err": {
+      "epsM": 0.0030179915762187,
+      "aM": 0.0842357370580195
+    },
+    "recovered": {
+      "epsM": 0.5981892050542688,
+      "aM": 0.16483756732955648
+    },
+    "term_rmse": 0.015238682322448157,
+    "term_nrmse": 0.012593836370432106,
+    "x_lo": 0.2,
+    "x_hi": 2.4624224971509707,
+    "basal_param": "aM",
+    "basal_err": 0.0842357370580195,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 2.5798290588778415e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0006095084292066326,
+      "aM": 0.15639429837035232,
+      "etaBM": 0.020226903225802933,
+      "kappaBM": 0.015302571814818977
+    },
+    "ctrl_basal_err": 0.15639429837035232
+  },
+  {
+    "regime": "Advanced Adenoma",
+    "term": "bm_myc",
+    "param": "lin",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 3.919686398311305e-09,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.0005446394631047902,
+      "aM": 0.9210326265796794
+    },
+    "recovered": {
+      "epsM": 0.6003267836778629,
+      "aM": 0.0142141272156577
+    },
+    "term_rmse": 0.16583365921767987,
+    "term_nrmse": 0.1370513489752923,
+    "x_lo": 0.2,
+    "x_hi": 2.4624224971509707,
+    "basal_param": "aM",
+    "basal_err": 0.9210326265796794,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 2.5798290588778415e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0006095084292066326,
+      "aM": 0.15639429837035232,
+      "etaBM": 0.020226903225802933,
+      "kappaBM": 0.015302571814818977
+    },
+    "ctrl_basal_err": 0.15639429837035232
+  },
+  {
+    "regime": "Advanced Adenoma",
+    "term": "bm_myc",
+    "param": "lin_mono",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 2.4646868342144555e-05,
+    "n_eq_params": 2,
+    "eq_under10": 0,
+    "param_err": {
+      "epsM": 1.717271111474099,
+      "aM": 5.351968418665986
+    },
+    "recovered": {
+      "epsM": 1.6303626668844593,
+      "aM": 1.1433543153598773
+    },
+    "term_rmse": 0.9574396242260029,
+    "term_nrmse": 0.7912651308642245,
+    "x_lo": 0.2,
+    "x_hi": 2.4624224971509707,
+    "basal_param": "aM",
+    "basal_err": 5.351968418665986,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 2.5798290588778415e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0006095084292066326,
+      "aM": 0.15639429837035232,
+      "etaBM": 0.020226903225802933,
+      "kappaBM": 0.015302571814818977
+    },
+    "ctrl_basal_err": 0.15639429837035232
+  },
+  {
+    "regime": "Severe APC Loss",
+    "term": "bm_myc",
+    "param": "gated",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 4.151793049013182e-10,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.001964315499292842,
+      "aM": 0.5794312600218829
+    },
+    "recovered": {
+      "epsM": 0.6011785892995757,
+      "aM": 0.07570237319606107
+    },
+    "term_rmse": 0.10440911182069763,
+    "term_nrmse": 0.08230590541377829,
+    "x_lo": 0.2,
+    "x_hi": 3.0089710319823633,
+    "basal_param": "aM",
+    "basal_err": 0.5794312600218829,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.014114863755087e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0016464744438567567,
+      "aM": 0.35564608233305556,
+      "etaBM": 0.04709063324741705,
+      "kappaBM": 0.029338820115984543
+    },
+    "ctrl_basal_err": 0.35564608233305556
+  },
+  {
+    "regime": "Severe APC Loss",
+    "term": "bm_myc",
+    "param": "sc",
+    "eq": "dm",
+    "seed": 100,
+    "physics": 2.7082892491067534e-08,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.01012022727534386,
+      "aM": 0.39022434385245797
+    },
+    "recovered": {
+      "epsM": 0.5939278636347937,
+      "aM": 0.10975961810655756
+    },
+    "term_rmse": 0.07032780738475364,
+    "term_nrmse": 0.055439547005326446,
+    "x_lo": 0.2,
+    "x_hi": 3.0089710319823633,
+    "basal_param": "aM",
+    "basal_err": 0.39022434385245797,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.014114863755087e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0016464744438567567,
+      "aM": 0.35564608233305556,
+      "etaBM": 0.04709063324741705,
+      "kappaBM": 0.029338820115984543
+    },
+    "ctrl_basal_err": 0.35564608233305556
+  },
+  {
+    "regime": "Severe APC Loss",
+    "term": "bm_myc",
+    "param": "sc_bounded",
+    "eq": "dm",
+    "seed": 100,
+    "physics": 6.411350030300376e-09,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.006400082623803835,
+      "aM": 0.1851358992760743
+    },
+    "recovered": {
+      "epsM": 0.6038400495742823,
+      "aM": 0.21332446186969337
+    },
+    "term_rmse": 0.03326975696273785,
+    "term_nrmse": 0.026226613960829273,
+    "x_lo": 0.2,
+    "x_hi": 3.0089710319823633,
+    "basal_param": "aM",
+    "basal_err": 0.1851358992760743,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.014114863755087e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0016464744438567567,
+      "aM": 0.35564608233305556,
+      "etaBM": 0.04709063324741705,
+      "kappaBM": 0.029338820115984543
+    },
+    "ctrl_basal_err": 0.35564608233305556
+  },
+  {
+    "regime": "Severe APC Loss",
+    "term": "bm_myc",
+    "param": "lin",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 3.220245614121781e-09,
+    "n_eq_params": 2,
+    "eq_under10": 1,
+    "param_err": {
+      "epsM": 0.0026505914528472214,
+      "aM": 0.6957470119792915
+    },
+    "recovered": {
+      "epsM": 0.6015903548717083,
+      "aM": 0.05476553784372753
+    },
+    "term_rmse": 0.12536281284750553,
+    "term_nrmse": 0.09882374858576819,
+    "x_lo": 0.2,
+    "x_hi": 3.0089710319823633,
+    "basal_param": "aM",
+    "basal_err": 0.6957470119792915,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.014114863755087e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0016464744438567567,
+      "aM": 0.35564608233305556,
+      "etaBM": 0.04709063324741705,
+      "kappaBM": 0.029338820115984543
+    },
+    "ctrl_basal_err": 0.35564608233305556
+  },
+  {
+    "regime": "Severe APC Loss",
+    "term": "bm_myc",
+    "param": "lin_mono",
+    "eq": "dm",
+    "seed": 134,
+    "physics": 1.5872215427152482e-05,
+    "n_eq_params": 2,
+    "eq_under10": 0,
+    "param_err": {
+      "epsM": 1.0147739891755865,
+      "aM": 6.2526110205526155
+    },
+    "recovered": {
+      "epsM": 1.2088643935053518,
+      "aM": 1.3054699836994708
+    },
+    "term_rmse": 1.1214366163702585,
+    "term_nrmse": 0.8840306603989396,
+    "x_lo": 0.2,
+    "x_hi": 3.0089710319823633,
+    "basal_param": "aM",
+    "basal_err": 6.2526110205526155,
+    "ctrl_eq_under10": 3,
+    "ctrl_n_eq_params": 4,
+    "ctrl_physics": 1.014114863755087e-09,
+    "ctrl_param_err": {
+      "epsM": 0.0016464744438567567,
+      "aM": 0.35564608233305556,
+      "etaBM": 0.04709063324741705,
+      "kappaBM": 0.029338820115984543
+    },
+    "ctrl_basal_err": 0.35564608233305556
+  }
+]

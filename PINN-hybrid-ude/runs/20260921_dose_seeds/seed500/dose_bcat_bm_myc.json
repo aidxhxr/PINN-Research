@@ -1,0 +1,70 @@
+[
+  {
+    "arm": "bcat",
+    "edge": "bm_myc",
+    "eq": "dm",
+    "regime": "Normal",
+    "dose": 0.0,
+    "anchor_ratio": 0.0,
+    "anchor_floor": 0.0,
+    "param": "gated",
+    "starts": 5,
+    "noise": 0.0,
+    "seed_base": 500,
+    "basal_param": "aM",
+    "hybrid_basal_err": 6.71575703813253e-06,
+    "ctrl_basal_err": 0.00016590961536648113,
+    "excess_basal_err": -0.0001591938583283486,
+    "term_nrmse": 0.0005536501108707645,
+    "hybrid_eq_under10": 2,
+    "hybrid_n_eq_params": 2,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "hybrid_physics": 1.4978237455943664e-07,
+    "ctrl_physics": 1.7616476765959257e-07,
+    "hybrid_param_err": {
+      "epsM": 0.005505572810371266,
+      "aM": 6.71575703813253e-06
+    },
+    "ctrl_param_err": {
+      "epsM": 0.005365274654073697,
+      "aM": 0.00016590961536648113,
+      "etaBM": 0.00022661944412944918,
+      "kappaBM": 0.0003325625384578146
+    }
+  },
+  {
+    "arm": "bcat",
+    "edge": "bm_myc",
+    "eq": "dm",
+    "regime": "Severe APC Loss",
+    "dose": 0.0,
+    "anchor_ratio": 0.0,
+    "anchor_floor": 0.0,
+    "param": "gated",
+    "starts": 5,
+    "noise": 0.0,
+    "seed_base": 500,
+    "basal_param": "aM",
+    "hybrid_basal_err": 1.4739952773932006e-05,
+    "ctrl_basal_err": 0.00010527188155547615,
+    "excess_basal_err": -9.053192878154414e-05,
+    "term_nrmse": 0.0015446887349090965,
+    "hybrid_eq_under10": 2,
+    "hybrid_n_eq_params": 2,
+    "ctrl_eq_under10": 4,
+    "ctrl_n_eq_params": 4,
+    "hybrid_physics": 8.844420678126908e-08,
+    "ctrl_physics": 2.4981375080530226e-07,
+    "hybrid_param_err": {
+      "epsM": 0.012349927301251545,
+      "aM": 1.4739952773932006e-05
+    },
+    "ctrl_param_err": {
+      "epsM": 0.01857237610423853,
+      "aM": 0.00010527188155547615,
+      "etaBM": 0.00020520320272776615,
+      "kappaBM": 0.001969237115339917
+    }
+  }
+]

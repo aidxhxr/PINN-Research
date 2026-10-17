@@ -1,0 +1,44 @@
+/home/29/aidahxr/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+[note] runs/20260801_204046_screen_atlas: no screen.json yet -- parsing screen.log. Log lines carry only the control's OWN count, so its column below sits on the equation's full parameter set while the hybrid's sits on the surviving one -- the delta is a lower bound, not a like-for-like difference.
+
+edge       class  eq    param                         fNRMSE (N/E/A/S)    mean   eq params vs mechanistic control
+apc_b      mod    db    gated                    1.1/  0.9/ 52.8/ 65.7   30.1%            11/20 vs  12/20 (-1)
+apc_b      mod    db    sc                       1.2/  1.0/ 38.2/ 95.2   33.9%            12/20 vs  12/20 (+0)
+c_ra       mod    dr    gated                    0.0/  0.0/  0.1/  0.1    0.0%             4/4 vs   5/4 (-1)
+c_ra       mod    dr    sc                       0.1/  0.1/  0.1/  0.0    0.1%             4/4 vs   5/4 (-1)
+h5_b       mod    db    gated                    0.7/  1.1/  0.7/  1.7    1.1%            11/16 vs  11/16 (+0)
+h5_b       mod    db    sc                       0.4/  0.3/  3.0/  6.5    2.6%            10/16 vs  11/16 (-1)
+m_h5       mod    dh5   gated                    4.5/  6.7/ 44.7/ 46.6   25.6%            10/16 vs  12/16 (-2)
+m_h5       mod    dh5   sc                       4.5/ 16.2/ 57.6/ 36.2   28.6%             8/16 vs  12/16 (-4)
+b_h13      prod   dh13  gated                    9.9/  8.2/  7.9/  0.5    6.6%            10/16 vs  15/16 (-5)
+b_h13      prod   dh13  sc                       4.0/ 10.5/ 14.6/ 21.6   12.7%             9/16 vs  15/16 (-6)
+bc_cyp     prod   dc    gated                    3.3/  3.5/  3.1/  2.0    3.0%            12/16 vs  16/16 (-4)
+bc_cyp     prod   dc    sc                       5.4/  6.8/  6.0/  1.1    4.8%            12/16 vs  16/16 (-4)
+bm_myc     prod   dm    gated                    1.4/  8.2/ 10.2/ 11.2    7.7%             5/8 vs   8/8 (-3)
+bm_myc     prod   dm    sc                       1.8/  5.2/  7.7/  5.5    5.1%             5/8 vs   8/8 (-3)
+h13_b      prod   db    gated                   19.3/ 37.4/116.5/171.4   86.2%             9/16 vs  10/16 (-1)
+h13_b      prod   db    sc                      17.0/ 19.1/ 22.3/ 49.3   26.9%             9/16 vs  10/16 (-1)
+m_h13      prod   dh13  gated                   57.2/ 66.2/ 78.1/ 11.6   53.3%             3/16 vs  16/16 (-13)
+m_h13      prod   dh13  sc                      82.7/ 86.9/ 80.5/ 74.4   81.1%             2/16 vs  16/16 (-14)
+ra_h5      prod   dh5   gated                    1.2/  3.8/  4.1/ 24.4    8.4%            10/16 vs  10/16 (+0)
+ra_h5      prod   dh5   sc                       3.5/  2.8/  8.0/  7.5    5.5%            12/16 vs  10/16 (+2)
+rc_cyp     prod   dc    gated                    4.4/  0.5/  3.8/  0.6    2.3%            13/16 vs  16/16 (-3)
+rc_cyp     prod   dc    sc                       7.2/ 16.2/ 11.7/ 10.5   11.4%            12/16 vs  16/16 (-4)
+apc_prod   ratio  dapc  sc                       nan/ 33.4/ 53.5/ 16.2   34.4%             0/9 vs   5/9 (-5)
+
+basal-production parameter error (the constant the network can absorb):
+edge       basal        gated         sc    control
+b_h13      a13          32.8%      59.1%      10.0%
+bc_cyp     aC           43.8%      71.6%      25.0%
+bm_myc     aM           50.5%      32.5%      12.8%
+h13_b      W            37.3%      14.0%       7.3%
+m_h13      a13          46.4%      29.4%      10.0%
+ra_h5      a5           20.3%      20.4%      18.2%
+rc_cyp     aC           16.5%      73.9%      25.0%
+
+anchor-visitation diagnostic: corr(x_lo/x_hi, basal error) = -0.32 over 42 fits
+  x_lo/x_hi < 0.05 : mean basal err nan%  (n=0)
+  x_lo/x_hi >= 0.05: mean basal err 43.9%  (n=42)
+
+wrote runs/20260801_204046_screen_atlas/edge_atlas.png

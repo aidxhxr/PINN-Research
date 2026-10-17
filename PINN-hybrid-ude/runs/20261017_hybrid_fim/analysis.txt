@@ -1,0 +1,48 @@
+1. S(design)/S(base10), geometric mean [min, max] over 7 edges x 4 regimes (S = gated net, rtol 1e-8)
+   gated  info  x    0.938  [0.896, 0.988]
+   gated  dep   x 0.000497  [6.2e-07, 0.51]
+   gated  depb  x 0.000779  [4e-08, 0.96]
+   sc     info  x    0.932  [0.639, 0.988]
+   sc     dep   x 0.000443  [4.95e-07, 0.443]
+   sc     depb  x 0.000642  [8.88e-09, 0.994]
+   lin_3  info  x    0.939  [0.915, 0.993]
+   lin_3  dep   x    0.205  [0.0477, 0.767]
+   lin_3  depb  x    0.225  [0.015, 0.858]
+   lin_6  info  x    0.925  [0.869, 0.987]
+   lin_6  dep   x   0.0634  [0.0113, 0.575]
+   lin_6  depb  x   0.0884  [0.00368, 0.962]
+   mech   info  x    0.941  [0.911, 0.997]
+   mech   dep   x    0.166  [0.0151, 0.733]
+   mech   depb  x    0.191  [0.0114, 0.86]
+   dep/base10 restricted to cells where dep reaches the anchor (rho_dep < 1e-3):
+      n=8  x0.000348 [0.000181, 0.000614]
+   rtol sensitivity of the gated dep/base10 and info/base10 factors:
+      rtol 1e-06: info x0.888  depb x0.00494
+      rtol 1e-08: info x0.938  depb x0.000779
+      rtol 1e-10: info x0.945  depb x0.000146
+
+2. dose-response
+   [gated] within-arm Spearman(S, rho): ra/Normal=+1.00  ra/Severe APC Loss=+1.00  wnt/Normal=+0.99  wnt/Severe APC Loss=+1.00  bcat/Normal=+0.99  bcat/Severe APC Loss=+1.00
+   [gated] pooled (3 arms x 2 regimes x 6 doses) Spearman(S_net/S_mech, rho) = +0.88; log-log slope 1.75, resid sd 2.05 (ln units)
+   [sc] within-arm Spearman(S, rho): ra/Normal=+1.00  ra/Severe APC Loss=+1.00  wnt/Normal=+0.99  wnt/Severe APC Loss=+1.00  bcat/Normal=+0.99  bcat/Severe APC Loss=+1.00
+   [sc] pooled (3 arms x 2 regimes x 6 doses) Spearman(S_net/S_mech, rho) = +0.83; log-log slope 1.89, resid sd 2.48 (ln units)
+   [lin_3] within-arm Spearman(S, rho): ra/Normal=+1.00  ra/Severe APC Loss=+1.00  wnt/Normal=+0.99  wnt/Severe APC Loss=+1.00  bcat/Normal=+0.99  bcat/Severe APC Loss=+1.00
+   [lin_3] pooled (3 arms x 2 regimes x 6 doses) Spearman(S_net/S_mech, rho) = -0.22; log-log slope -0.05, resid sd 0.55 (ln units)
+   [lin_6] within-arm Spearman(S, rho): ra/Normal=+1.00  ra/Severe APC Loss=+1.00  wnt/Normal=+0.99  wnt/Severe APC Loss=+1.00  bcat/Normal=+0.99  bcat/Severe APC Loss=+1.00
+   [lin_6] pooled (3 arms x 2 regimes x 6 doses) Spearman(S_net/S_mech, rho) = +0.58; log-log slope 0.27, resid sd 0.55 (ln units)
+   matched-rho pairs (S_gated/S_mech):
+     Normal           wnt k=0 rho=0.0131 L=46.2   bcat k=0.1 rho=0.0097 L=23.4
+     Normal           wnt k=0 rho=0.0131 L=46.2   bcat k=0.03 rho=0.0029 L=8.24
+     Normal           ra k=0.1 rho=0.0142 L=11.1   bcat k=0.1 rho=0.0097 L=23.4
+     Normal           ra k=0.03 rho=0.0043 L=5.21   bcat k=0.03 rho=0.0029 L=8.24
+     Severe APC Loss  wnt k=0 rho=0.0092 L=62.2   bcat k=0.1 rho=0.0161 L=230
+     Severe APC Loss  wnt k=0 rho=0.0092 L=62.2   bcat k=0.03 rho=0.0045 L=29.7
+     Severe APC Loss  ra k=0.1 rho=0.0159 L=3.52   bcat k=0.1 rho=0.0161 L=230
+     Severe APC Loss  ra k=0.03 rho=0.0048 L=1.73   bcat k=0.03 rho=0.0045 L=29.7
+
+3. Spearman(measured hybrid basal err, S_net) vs rtol (pooled_dedup / atlas / dose)
+   rtol 1e-06: pooled_dedup=+0.77  atlas=+0.29  dose=+0.86
+   rtol 1e-08: pooled_dedup=+0.79  atlas=+0.32  dose=+0.87
+   rtol 1e-10: pooled_dedup=+0.79  atlas=+0.33  dose=+0.84
+   base10-only cells (no design change), n=56: Spearman = +0.32 (p=0.017)
+   excess basal err (hyb - ctrl) vs S_net/S_mech, n=116: Spearman = +0.45 (p=3.6e-07)
