@@ -1,0 +1,32 @@
+
+run: runs/20260802_010526_bm_myc_dep
+variant=bm_myc  term=bm_myc  param=gated  constraint=anchored  wd=1e-08
+control: runs/20260801_211530_control_dep
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      15   34        17     -2       2.3%     0.14  anchor BINDS
+Early Adenoma               16   34        16     +0       2.4%     0.14  anchor BINDS
+Advanced Adenoma            13   34        13     +0       2.9%     0.13  anchor BINDS
+Severe APC Loss             13   34        13     +0       2.7%     0.12  anchor BINDS
+TOTAL                       57             59     -2
+
+H2 localisation test -- learned term(s) sit in the dm equation(s).
+Prediction: recovery drops concentrate in those equations; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               6        5     +1
+dapc            10        8     +2
+dh5              5        5     +0
+dh13            13       13     +0
+dm               3        8     -5  <-- learned term here
+dr               4        4     +0
+dc              16       16     +0
+
+H2/H3 sharp test -- 'aM' is the basal-production term in dm;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     10.3%         0.4%
+Early Adenoma              11.7%         0.2%
+Advanced Adenoma           17.4%         0.4%
+Severe APC Loss            16.4%         0.5%

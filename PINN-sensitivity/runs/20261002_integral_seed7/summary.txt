@@ -1,0 +1,8 @@
+
+run: /home/29/aidahxr/PINN-Research/PINN-sensitivity/runs/20261002_integral_seed7
+regime                under10%  baseline  delta
+Normal                      18        10     +8
+Early Adenoma               18         4    +14
+Advanced Adenoma            13         5     +8
+Severe APC Loss              9         7     +2
+TOTAL                       58        26    +32

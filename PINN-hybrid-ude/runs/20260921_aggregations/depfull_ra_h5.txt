@@ -1,0 +1,32 @@
+
+run: runs/20260802_041545_ra_h5_dep
+variant=ra_h5  term=ra_h5  param=gated  constraint=anchored  wd=1e-08
+control: runs/20260801_211530_control_dep
+
+regime                under10%   of   control  delta  termNRMSE  gate_lo
+Normal                      18   34        18     +0      11.6%     0.00  anchor BINDS
+Early Adenoma               20   34        17     +3       9.6%     0.00  anchor BINDS
+Advanced Adenoma            18   34        14     +4       9.5%     0.00  anchor BINDS
+Severe APC Loss             18   34        14     +4       9.6%     0.00  anchor BINDS
+TOTAL                       74             63    +11
+
+H2 localisation test -- learned term(s) sit in the dh5 equation(s).
+Prediction: recovery drops concentrate in those equations; other equations ~unchanged.
+
+equation    hybrid  control  delta   note
+db               5        5     +0
+dapc            10        8     +2
+dh5              8        1     +7  <-- learned term here
+dh13            14       13     +1
+dm              16       16     +0
+dr               4        4     +0
+dc              17       16     +1
+
+H2/H3 sharp test -- 'a5' is the basal-production term in dh5;
+a constant offset trades freely between it and the learned f_NN unless f(0)=0 is pinned.
+
+regime                hybrid err  control err
+Normal                     13.0%         1.7%
+Early Adenoma               4.7%        14.0%
+Advanced Adenoma            2.4%        19.5%
+Severe APC Loss             3.8%        17.9%

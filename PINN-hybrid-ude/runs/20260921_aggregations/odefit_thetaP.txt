@@ -1,0 +1,18 @@
+Classical ODE fit (recover_odefit.py, 36 free, 4 starts, 150 obs/cond, noise 0.002) under three condition sets. 2026-09-21.
+product = deltaP1*(1-thetaP); in Normal the true product is 0 so its recovered value is given instead.
+
+== base10  (10 base conditions)
+  Advanced_Adenoma_odefit_recovered.json thetaP   32.0%  W   6.9%  product   23.7%  within10%: 19/36
+  Early_Adenoma_odefit_recovered.json thetaP   59.6%  W  14.6%  product    0.6%  within10%: 20/36
+  Normal_odefit_recovered.json thetaP    4.7%  W   5.2%  product rec=0.033  within10%: 21/36
+  Severe_APC_Loss_odefit_recovered.json thetaP  146.1%  W   5.6%  product    9.3%  within10%: 20/36
+== info12  (+midATRA,+wntPulse2 (information-matched))
+  Advanced_Adenoma_odefit_recovered.json thetaP   60.9%  W  13.7%  product   64.5%  within10%: 21/36
+  Early_Adenoma_odefit_recovered.json thetaP    5.6%  W   4.1%  product    6.8%  within10%: 24/36
+  Normal_odefit_recovered.json thetaP    6.4%  W   1.8%  product rec=0.051  within10%: 20/36
+  Severe_APC_Loss_odefit_recovered.json thetaP  182.6%  W   4.6%  product  111.1%  within10%: 14/36
+== dep12  (+wntKO(kW=0.02),+raKO (depletion))
+  Advanced_Adenoma_odefit_recovered.json thetaP   81.9%  W   6.5%  product    0.4%  within10%: 20/36
+  Early_Adenoma_odefit_recovered.json thetaP   16.3%  W   0.5%  product    1.9%  within10%: 24/36
+  Normal_odefit_recovered.json thetaP    0.5%  W   3.3%  product rec=0.004  within10%: 24/36
+  Severe_APC_Loss_odefit_recovered.json thetaP  281.1%  W   0.3%  product    0.0%  within10%: 34/36

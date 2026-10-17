@@ -1,0 +1,26 @@
+Seed replicates of the k=0 contrast (dose_response.py, gated, 5 starts, seed bases 100/300/500). 2026-09-21.
+
+('bcat', 'Normal') anchor ratio 0.0000
+   seed100: hybrid basal 0.008%  ctrl 0.017%  fNRMSE 0.10%
+   seed300: hybrid basal 0.001%  ctrl 0.017%  fNRMSE 0.05%
+   seed500: hybrid basal 0.001%  ctrl 0.017%  fNRMSE 0.06%
+   mean 0.003%  range [0.001, 0.008]  sd 0.004
+
+('bcat', 'Severe APC Loss') anchor ratio 0.0000
+   seed100: hybrid basal 0.001%  ctrl 0.011%  fNRMSE 0.17%
+   seed300: hybrid basal 0.003%  ctrl 0.011%  fNRMSE 0.16%
+   seed500: hybrid basal 0.001%  ctrl 0.011%  fNRMSE 0.15%
+   mean 0.002%  range [0.001, 0.003]  sd 0.001
+
+('wnt', 'Normal') anchor ratio 0.0131
+   seed100: hybrid basal 1.520%  ctrl 0.012%  fNRMSE 0.33%
+   seed300: hybrid basal 1.332%  ctrl 0.012%  fNRMSE 0.29%
+   seed500: hybrid basal 1.496%  ctrl 0.012%  fNRMSE 0.33%
+   mean 1.450%  range [1.332, 1.520]  sd 0.084
+
+('wnt', 'Severe APC Loss') anchor ratio 0.0092
+   seed100: hybrid basal 2.632%  ctrl 0.002%  fNRMSE 0.43%
+   seed300: hybrid basal 2.320%  ctrl 0.002%  fNRMSE 0.38%
+   seed500: hybrid basal 1.793%  ctrl 0.002%  fNRMSE 0.31%
+   mean 2.248%  range [1.793, 2.632]  sd 0.347
+
