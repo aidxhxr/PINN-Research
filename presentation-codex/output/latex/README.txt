@@ -3,25 +3,28 @@ PINN presentation - faithful LaTeX/Beamer conversion
 
 Primary source
 --------------
-Department PINN Presentation.pdf (20 slides, 16:9)
+The original 20-slide (16:9) department talk deck. It is not distributed
+here; the sources below reconstruct it.
 
 Output
 ------
-pinn_presentation.tex   Editable Beamer source
-pinn_presentation.pdf   Compiled presentation
-assets/                 Repository-native plots and diagrams
+pinn_presentation_native.tex  Beamer source with TeX Gyre font fallback
+pinn_presentation_native.pdf  Compiled presentation
+pinn_presentation.tex         Faithful variant; needs the Avenir Next font
+assets/                       Repository-native plots and diagrams
 
 Compile
 -------
-Run from this directory:
+Run from this directory (twice, for cross-references):
 
-    latexmk -lualatex -interaction=nonstopmode -halt-on-error pinn_presentation.tex
+    lualatex -interaction=nonstopmode -halt-on-error pinn_presentation_native.tex
 
 Design
 ------
 The deck is a 20-slide, one-for-one reconstruction of the source PDF. Slide
 order, titles, wording, tables, figures, and the original closing slide are
-preserved. Only the original dark geometric background was replaced with a
+preserved, except that the closing slide keeps only the questions prompt
+and the funding acknowledgement. Only the original dark geometric background was replaced with a
 consistent light academic background. The refined visual system uses Avenir
 Next, warm paper, deep navy typography, Swarthmore-inspired garnet accents,
 muted teal details, restrained image borders, and a lightly banded comparison
