@@ -2,11 +2,11 @@
 
 The ecology project was extracted into
 [ecosystem-engineer-model](https://github.com/aidxhxr/ecosystem-engineer-model)
-on 14 September 2026. Its local checkout is
-`/home/29/aidahxr/ecosystem-engineer-model`. The split import commit is
+on 14 September 2026. The split import commit is
 `795517aa452c912a71adf1612021a6d795ced191`; standalone documentation is in
 `9b2d718`. All 23 file hashes and the original subtree identity were verified
-before the remote push. PINN-Research retains a pointer and its original history.
+before the remote push. PINN-Research retains the original history; this page
+replaces the `new-theme/` pointer folder that briefly held the link.
 
 ## Preservation record
 
