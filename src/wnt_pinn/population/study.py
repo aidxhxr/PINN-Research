@@ -25,6 +25,9 @@ from scipy.stats import qmc, spearmanr
 from .model import CONTROL, NOMINAL, Parameters, Protocol, REGIMES, STATE_NAMES, observables
 from .simulation import Solver, audit, compare_at, maintenance_events, paired, precondition
 
+# The supplied model report is not distributed with the repository; when it is
+# absent, manifests record the hash of the copy the implementation was checked against.
+SOURCE_PDF_SHA256 = '29c2999a5677456c6c6d0c64b20644766de860a4c886a60b77ad4e97972a7996'
 UNCERTAIN = ('wCr', 'dAr', 'q13r', 'gAC', 'gLB', 'qLAC', 'v5r', 'dLr', 'vcr', 'krc')
 
 
@@ -133,7 +136,9 @@ def run_study(config_path, *, root):
         shutil.copy2(src, dest)
     manifest = {'status': 'running', 'started_utc': datetime.now(timezone.utc).isoformat(),
                 'source_pdf': str(source_pdf.relative_to(root)),
-                'source_pdf_sha256': sha256(source_pdf.read_bytes()).hexdigest(),
+                'source_pdf_sha256': (sha256(source_pdf.read_bytes()).hexdigest()
+                                      if source_pdf.is_file() else SOURCE_PDF_SHA256),
+                'source_pdf_present': source_pdf.is_file(),
                 'python': platform.python_version(),
                 'versions': {x: version(x) for x in ('numpy', 'scipy', 'matplotlib')},
                 'git_revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root,

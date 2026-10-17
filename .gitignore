@@ -16,6 +16,9 @@ notes/
 # Local-only material: third-party papers, personal drafts, snapshots
 /private/
 research-paper-final/cover_letter.tex
+# Supplied third-party report and a talk script for its author
+extension/wnt_hox_ra_revised_population_dynamics.pdf
+extension/web/
 PINN-smaller/forward-pinn-train-hybrid/architecture.log
 
 # macOS finder junk

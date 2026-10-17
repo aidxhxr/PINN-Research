@@ -1,7 +1,8 @@
 # SciPy reproduction of the 14-state population extension
 
 This is a direct numerical reproduction of
-`wnt_hox_ra_revised_population_dynamics.pdf`, supplied for the population extension.
+the revised population-dynamics report (`wnt_hox_ra_revised_population_dynamics.pdf`,
+September 2026) supplied for the population extension. The report is not distributed here.
 SciPy integrates the ODEs; NumPy holds arrays and Matplotlib draws the figures.
 There are no neural networks, fitted parameters, or copied curves.
 
