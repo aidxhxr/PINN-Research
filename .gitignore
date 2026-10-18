@@ -25,15 +25,15 @@ experiments/16-population-extension/web/
 .DS_Store
 
 # Beamer/LaTeX build output -- only the sources and the final PDF are tracked
-presentation/build/
+/publications/slides/archive/beamer-dark/build/
 *.nav
 *.snm
 *.toc
 *.out
 
-# presentation-codex scratch: images/text extracted from the source PDF
-presentation-codex/tmp/
-presentation-codex/output/latex/*.log
+# department-talk scratch: images/text extracted from the source PDF
+/publications/slides/department-talk/tmp/
+/publications/slides/department-talk/output/latex/*.log
 
 # research-paper build output -- .tex/.bib/figures and the final PDF are tracked
 research-paper/*.log

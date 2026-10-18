@@ -19,7 +19,7 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 | Autodiff recovery, Table 1 | `experiments/09-inverse-excitation/runs/20260702_153336/*_recovered.json` |
 | Integral recovery, Table 1 | `experiments/10-inverse-integral-residual/runs/20260711_203325_integral/*_recovered.json` |
 | Fisher diagnostics, Fig. 5 | `experiments/11-fisher-information/runs/20260711_203325_fisher/*_FIM.npy`; `data/fisher_matrices.npz` |
-| Presentation Bayesian marginals, Fig. 6 | `experiments/13-bayesian-inverse/runs/20260712_204532_bayes/{Normal,Severe_APC_Loss}_posterior_samples.npz` and summaries; source mapping in `presentation/sync_figures.sh` |
+| Presentation Bayesian marginals, Fig. 6 | `experiments/13-bayesian-inverse/runs/20260712_204532_bayes/{Normal,Severe_APC_Loss}_posterior_samples.npz` and summaries; source mapping in `publications/slides/archive/beamer-dark/sync_figures.sh` |
 | Reduced Fisher comparison, Table 2 | `experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/*_fim_summary.json`; `data/fisher_top8.json` |
 
 The original regulatory schematic SHA-256 remains

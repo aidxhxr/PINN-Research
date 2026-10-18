@@ -8,8 +8,9 @@
 # Usage:  bash sync_figures.sh
 set -euo pipefail
 
-REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEST="$REPO/presentation/assets/figures"
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$HERE/../../../.." && pwd)"
+DEST="$HERE/assets/figures"
 mkdir -p "$DEST"
 
 # dest-name <- source path (relative to repo root)

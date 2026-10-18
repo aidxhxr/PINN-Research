@@ -46,7 +46,7 @@
       "id": "presentation",
       "title": "WNT-RA-HOX research presentation",
       "status": "historical_presentation",
-      "source_directory": "presentation",
+      "source_directory": "publications/slides/archive/beamer-dark",
       "result_ids": ["hmc_diagnostics", "figure_inverse_recovery_best8", "figure_network"],
       "input_globs": ["*.tex", "*.sh", "*.sty", "*.cls", "assets/**/*"],
       "build_commands": [["bash", "build.sh"]],
