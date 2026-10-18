@@ -15,7 +15,7 @@ notes/
 
 # Local-only material: third-party papers, personal drafts, snapshots
 /private/
-research-paper-final/cover_letter.tex
+/paper/cover_letter.tex
 # Supplied third-party report and a talk script for its author
 experiments/16-population-extension/wnt_hox_ra_revised_population_dynamics.pdf
 experiments/16-population-extension/web/
