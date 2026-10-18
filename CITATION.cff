@@ -1,24 +1,44 @@
 cff-version: 1.2.0
 message: >-
-  Cite this repository when using its code. Include the Git commit and the
-  result or run identifier. Cite the associated publication separately when
-  using a published result.
+  If you use this software, please cite the paper below and, for the code,
+  this repository with the Git commit or tag you used.
 type: software
-title: "Physics-informed neural networks for a WNT-RA-HOX model"
+title: "PINN-Research: estimator and experiment-design analysis for physics-informed and hybrid models of WNT-RA-HOX signalling"
+abstract: >-
+  Forward and inverse physics-informed neural networks, Cramér-Rao and Fisher
+  identifiability analyses, converged maximum-likelihood and Schur-complement
+  Gauss-Newton estimators, Bayesian experiments and neural-mechanistic hybrids
+  for a seven-state WNT-retinoic acid-HOX model of colorectal cancer. All data
+  are synthetic and regenerated from fixed seeds.
 authors:
   - family-names: Aidarkhan
     given-names: Amirkhan
     affiliation: Swarthmore College
     email: aaidark1@swarthmore.edu
 repository-code: "https://github.com/aidxhxr/PINN-Research"
-license: MIT
 url: "https://github.com/aidxhxr/PINN-Research"
-abstract: >-
-  Forward and inverse physics-informed neural networks, local identifiability
-  analyses, Bayesian experiments, and neural-mechanistic hybrids for a
-  seven-state WNT-RA-HOX model. The research uses synthetic data.
+license: MIT
 keywords:
   - physics-informed neural networks
-  - ordinary differential equations
+  - Cramér-Rao bound
   - identifiability
+  - experimental design
+  - universal differential equations
+  - systems biology
   - scientific machine learning
+preferred-citation:
+  type: unpublished
+  title: >-
+    Estimator or experiment? A Cramér-Rao accounting of parameter recovery by
+    physics-informed and hybrid neural-mechanistic models of WNT-retinoic
+    acid-HOX signalling in colorectal cancer
+  authors:
+    - family-names: Aidarkhan
+      given-names: Amirkhan
+      affiliation: Department of Mathematics and Statistics, Swarthmore College
+    - family-names: Kataboh
+      given-names: Pascal K.
+      affiliation: Department of Mathematics and Statistics, Swarthmore College
+  year: 2026
+  notes: "Manuscript. Sources and data at https://github.com/aidxhxr/PINN-Research/tree/paper-v1"
+  url: "https://github.com/aidxhxr/PINN-Research/tree/paper-v1"
