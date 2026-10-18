@@ -1,7 +1,7 @@
 """Core WNT-HOX regulatory dynamics -- INVERSE PINN output (no scipy).
 
 Same 4 proteins / 4 regimes / styling as the forward twin in
-PINN-smaller/forward_pinn_train/pinn_core_dynamics.py, but every curve is the
+experiments/04-forward-pinn/forward_pinn_train/pinn_core_dynamics.py, but every curve is the
 INVERSE PINN's own state-net prediction z_theta(t) -- the net trained jointly
 with the 36 unknown parameters (integral-residual boost run). The `ctrl`
 condition is used, i.e. the baseline forcing that matches the scipy figure.

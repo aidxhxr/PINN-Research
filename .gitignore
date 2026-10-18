@@ -1,9 +1,9 @@
 LOGS.md
 CLAUDE.md
-PINN-inverse-solve/inverse_pinn_architecture.png
+/experiments/05-inverse-single-condition/inverse_pinn_architecture.png
 __pycache__/
 *.aux
-PINN-inverse-better/architecture.log
+/experiments/06-inverse-three-condition/architecture.log
 
 # stray LaTeX build artifacts from root-dir compiles
 /build.log
@@ -19,7 +19,7 @@ research-paper-final/cover_letter.tex
 # Supplied third-party report and a talk script for its author
 extension/wnt_hox_ra_revised_population_dynamics.pdf
 extension/web/
-PINN-smaller/forward-pinn-train-hybrid/architecture.log
+/experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.log
 
 # macOS finder junk
 .DS_Store

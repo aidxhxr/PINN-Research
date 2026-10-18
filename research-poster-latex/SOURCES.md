@@ -16,7 +16,7 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 | Normal Radau and PINN curves, Figs. 2–3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_{noATRA,ctrl}_net.pt`; exported to `data/normal_treatment_comparison.npz` |
 | Network and training recipe | `PINN-inverse-pinn-boost/model.py`, `training.py`, `run_boost.py`, same run's `Normal.log` |
 | Training diagnostics, Fig. 4 | same run's `Normal_history.json`, `Normal_recovered.json`; copied into `data/normal_inverse_*.json` |
-| Autodiff recovery, Table 1 | `PINN-inverse-multicond-excite/runs/20260702_153336/*_recovered.json` |
+| Autodiff recovery, Table 1 | `experiments/09-inverse-excitation/runs/20260702_153336/*_recovered.json` |
 | Integral recovery, Table 1 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/*_recovered.json` |
 | Fisher diagnostics, Fig. 5 | `PINN-fisher-matrix/runs/20260711_203325_fisher/*_FIM.npy`; `data/fisher_matrices.npz` |
 | Presentation Bayesian marginals, Fig. 6 | `PINN-bayesian/runs/20260712_204532_bayes/{Normal,Severe_APC_Loss}_posterior_samples.npz` and summaries; source mapping in `presentation/sync_figures.sh` |
@@ -83,7 +83,7 @@ The original regulatory schematic SHA-256 remains
 - Fig. 5 uses full 36-parameter matrices, at truth, with 7 observed states,
   10 conditions, 200 times and assumed sigma=0.002. Every sensitivity column
   is theta_i*dy/dtheta_i, including thetaP (the code's older docstring differs).
-- Matrix order is `UNKNOWN` in `PINN-inverse-multicond-excite/config.py`, not the
+- Matrix order is `UNKNOWN` in `experiments/09-inverse-excitation/config.py`, not the
   participation-sorted CSV. Display order groups all 36 parameters by ODE.
 - The Severe heatmap is Cij=Iij/sqrt(Iii*Ijj), normalized sensitivity overlap,
   not posterior covariance correlation. Large off-diagonal magnitudes flag

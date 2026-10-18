@@ -41,11 +41,11 @@ The following assets were matched to the PDF's embedded figures and used at
 native repository resolution:
 
   network-diagram/network_schematic.pdf
-  PINN-smaller/forward-pinn-train-hybrid/architecture.pdf
-  PINN-smaller/forward_pinn_train/scipy_core_dynamics.png
-  PINN-smaller/forward_pinn_train/runs/20260711_203325/pinn7_losses.png
-  PINN-smaller/forward_pinn_train/pinn_forward_core_dynamics.png
-  PINN-inverse-better/architecture.pdf
+  experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.pdf
+  experiments/04-forward-pinn/forward_pinn_train/scipy_core_dynamics.png
+  experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/pinn7_losses.png
+  experiments/04-forward-pinn/forward_pinn_train/pinn_forward_core_dynamics.png
+  experiments/06-inverse-three-condition/architecture.pdf
   PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_losses.png
   PINN-inverse-pinn-boost/pinn_inverse_core_dynamics.png
   PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png

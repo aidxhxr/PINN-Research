@@ -140,7 +140,7 @@ document the runs, metrics and limitations behind the reported results.
 
 The [research index](docs/research-index.md) identifies supported and historical
 work. The [model guide](docs/model.md) documents numerical conventions.
-`PINN-inverse-solve/` is the preserved historical baseline.
+`experiments/05-inverse-single-condition/` is the preserved historical baseline.
 
 ## Install and reproduce
 

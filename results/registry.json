@@ -24,12 +24,12 @@
       ],
       "upstream": [
         {
-          "path": "PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json",
+          "path": "experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json",
           "sha256": "bc3036a23fe3b44977f4366fd6696c86f922fcba88afbffaf603621d8764ef2c",
           "required": false
         },
         {
-          "path": "PINN-smaller/forward_pinn_train/runs/20260711_203325/forward_error_table.json",
+          "path": "experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/forward_error_table.json",
           "sha256": "0c88fb99cd3107f7b9e7b5067e2a2df8e1a3ea530a9c328ab7dc6a348760325e",
           "required": false
         }
@@ -76,22 +76,22 @@
       ],
       "upstream": [
         {
-          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Cancer-like_recovered.json",
+          "path": "experiments/09-inverse-excitation/runs/20260702_153336/Cancer-like_recovered.json",
           "sha256": "458f505b70874cddb79b47d98f07478d48f842d8b9f6770d247db79a95db2c88",
           "required": false
         },
         {
-          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Early_adenoma_recovered.json",
+          "path": "experiments/09-inverse-excitation/runs/20260702_153336/Early_adenoma_recovered.json",
           "sha256": "0f66eb6c76322a7636ac8ec127f94c6628c0c22898f6a0b3e82b0b123dca64ab",
           "required": false
         },
         {
-          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Normal_recovered.json",
+          "path": "experiments/09-inverse-excitation/runs/20260702_153336/Normal_recovered.json",
           "sha256": "b0f2cdffe092000fbfcdd866052890c77dd52fff16bca4b5bbbae14dd9a26401",
           "required": false
         },
         {
-          "path": "PINN-inverse-multicond-excite/runs/20260702_153336/Strong_APC-mutant_recovered.json",
+          "path": "experiments/09-inverse-excitation/runs/20260702_153336/Strong_APC-mutant_recovered.json",
           "sha256": "d733fa58da6846538476d0e5a192daa47bf7b972267f3239de5e55a62fadb29b",
           "required": false
         },
@@ -1010,7 +1010,7 @@
       ],
       "upstream": [
         {
-          "path": "PINN-smaller/forward-pinn-train-hybrid/pinn_forward_core_dynamics.png",
+          "path": "experiments/04-forward-pinn/forward-pinn-train-hybrid/pinn_forward_core_dynamics.png",
           "sha256": "3d6c6dedc814a76f93aaf2070a8e277ad7532a6ac9fc5c71e8307da3daa45781",
           "required": false
         }
@@ -1018,7 +1018,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-smaller/forward-pinn-train-hybrid/pinn_core_dynamics.py"
+        "experiments/04-forward-pinn/forward-pinn-train-hybrid/pinn_core_dynamics.py"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",

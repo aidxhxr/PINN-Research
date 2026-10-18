@@ -15,7 +15,7 @@ objective, data generator or seed policy need an explicit protocol revision
 and a corresponding check. Match old reference calculations before migrating
 an experiment to shared code.
 
-`PINN-inverse-solve/` is the preserved historical baseline and must remain
+`experiments/05-inverse-single-condition/` is the preserved historical baseline and must remain
 unchanged. Preserve existing runs and checkpoints elsewhere too. Changes to
 an active pipeline must not silently reinterpret its previous outputs.
 

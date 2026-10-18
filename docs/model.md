@@ -37,7 +37,7 @@ Active integral, hybrid and inverse Bayesian modules now import shared
 networks and equations through compatibility modules. Both Fisher analyses
 use shared parameter definitions and reference equations without importing an
 experiment folder through `sys.path`. Earlier experiment implementations and
-`PINN-inverse-solve/` remain historical records.
+`experiments/05-inverse-single-condition/` remain historical records.
 
 The parity fixtures in `tests/fixtures/legacy_model/` preserve original
 implementations. Tests compare equations at treatment boundaries, parameter

@@ -3,13 +3,13 @@
 Replaces the 4-panel assets/ready/forward_fit.png. Per regime the scipy Radau
 reference is drawn thick + translucent and the trained forward PINN's own
 prediction z_theta(t) thin + dashed on top (logic copied from
-PINN-smaller/forward-pinn-train-hybrid/pinn_core_dynamics.py). Nets come from
+experiments/04-forward-pinn/forward-pinn-train-hybrid/pinn_core_dynamics.py). Nets come from
 the fixed run dir below (40 sparse observations + IC + physics).
 """
 import sys
 import os
 
-SRC = "/home/29/aidahxr/PINN-Research/PINN-smaller/forward-pinn-train-hybrid"
+SRC = "/home/29/aidahxr/PINN-Research/experiments/04-forward-pinn/forward-pinn-train-hybrid"
 sys.path.insert(0, SRC)
 
 import numpy as np

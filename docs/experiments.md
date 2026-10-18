@@ -3,7 +3,7 @@
 The versioned runner executes the active integral inverse PINN and hybrid
 trainers. It preserves the existing training stages and writes new runs below
 `runs/`. Historical scripts still use their original defaults. The untouched
-`PINN-inverse-solve/` baseline is outside this runner.
+`experiments/05-inverse-single-condition/` baseline is outside this runner.
 
 The runner requires a POSIX system with tmux and process signals.
 

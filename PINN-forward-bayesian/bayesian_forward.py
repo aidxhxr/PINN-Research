@@ -21,7 +21,7 @@ is sampled:
     well the sparse-data forward solve is pinned down.
 
 It is the Bayesian version of the honest sparse-data forward solve in
-`PINN-smaller/forward-pinn-train-hybrid` (the point estimate): same ~40
+`experiments/04-forward-pinn/forward-pinn-train-hybrid` (the point estimate): same ~40
 scattered noisy observations + IC anchor + physics residual, now returning a
 posterior instead of a single fit.
 

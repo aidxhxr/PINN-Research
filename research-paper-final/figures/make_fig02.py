@@ -42,9 +42,9 @@ torch.set_num_threads(4)
 
 T = 150.0
 N_EVAL = 6000
-SPARSE = "PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546"
-DENSE = "PINN-smaller/forward_pinn_train/runs/20260711_203325"
-MODEL_PY = "PINN-smaller/forward-pinn-train-hybrid/model.py"
+SPARSE = "experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546"
+DENSE = "experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325"
+MODEL_PY = "experiments/04-forward-pinn/forward-pinn-train-hybrid/model.py"
 
 
 def _load_model_class():

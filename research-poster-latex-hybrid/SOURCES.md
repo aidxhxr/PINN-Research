@@ -23,11 +23,11 @@ documented below as historical material.
 | Equations, state order, forcing, regimes | `PINN-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
 | Nondimensionalization | `research-paper/paper.tex`, equations ndb–ndc |
 | Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
-| Fourier network and forward losses | `PINN-smaller/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `research-paper/paper.tex` |
-| Beta-catenin/HOXA5 trajectories, Fig. 2 | `data/forward_trajectories.npz`; checkpoints in `PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546/`; `figures/forward_plot.py` |
-| Dense forward accuracy | `PINN-smaller/forward_pinn_train/runs/20260711_203325/forward_error_table.json` |
-| Sparse forward accuracy | `PINN-smaller/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json` |
-| Autodiff recovery, Table 1 | `PINN-inverse-multicond-excite/runs/20260702_153336/*_recovered.json` |
+| Fourier network and forward losses | `experiments/04-forward-pinn/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `research-paper/paper.tex` |
+| Beta-catenin/HOXA5 trajectories, Fig. 2 | `data/forward_trajectories.npz`; checkpoints in `experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/`; `figures/forward_plot.py` |
+| Dense forward accuracy | `experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/forward_error_table.json` |
+| Sparse forward accuracy | `experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json` |
+| Autodiff recovery, Table 1 | `experiments/09-inverse-excitation/runs/20260702_153336/*_recovered.json` |
 | Integral recovery, Table 1 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/*_recovered.json` |
 | Fisher table | `PINN-fisher-matrix/runs/20260711_203325_fisher/*_fim_summary.json` |
 | Treatment fit, Fig. 3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral` (Normal, `noATRA`/`ctrl`), cached in `data/normal_treatment_comparison.npz` (copied from the first poster) |
@@ -74,7 +74,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
 ### Forward and inverse PINNs
 
 - The forward trainer sets lam_ic=20 and comments “strong anchor on the
-  initial condition” (`PINN-smaller/forward-pinn-train-hybrid/training.py`).
+  initial condition” (`experiments/04-forward-pinn/forward-pinn-train-hybrid/training.py`).
   The poster explains this as a heuristic weight emphasizing the known initial
   state. No ablation or optimality claim for 20 is supported by these results.
 - Forward errors are the grand mean relative L2 across seven states and four

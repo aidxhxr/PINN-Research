@@ -8,7 +8,7 @@ There are no neural networks, fitted parameters, or copied curves.
 
 The implementation is independent of the existing seven-state model because the
 PDF revises its parameters, time scales, Hill functions, and HOXA13 equation.
-The historical `PINN-inverse-solve/` baseline is untouched.
+The historical `experiments/05-inverse-single-condition/` baseline is untouched.
 
 ## Run
 

@@ -19,7 +19,7 @@ parameters are part of the nondimensional equations, not plot rescaling.
 Shared-code extraction must preserve forcing, state order, parameter order,
 network output scaling and Fourier-feature buffers. Numerical parity and
 checkpoint predictions are checked before active callers migrate. The
-protected historical `PINN-inverse-solve/` directory remains untouched.
+protected historical `experiments/05-inverse-single-condition/` directory remains untouched.
 
 New independent-seed protocols are labeled separately from the historical
 runs. Observation samples must stay fixed across optimization starts when

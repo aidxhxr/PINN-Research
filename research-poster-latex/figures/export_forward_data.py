@@ -13,7 +13,7 @@ import torch
 from scipy.integrate import solve_ivp
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT.parent / "PINN-smaller/forward-pinn-train-hybrid"
+SOURCE = ROOT.parent / "experiments/04-forward-pinn/forward-pinn-train-hybrid"
 RUN = SOURCE / "runs/20260712_204546"
 sys.path.insert(0, str(SOURCE))
 from config import BASELINE, REGIMES, Y0

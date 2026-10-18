@@ -16,8 +16,8 @@ saved runs used in current claims.
 | `PINN-fisher-matrix/`, `PINN-fisher-matrix-top8/` | Full and conditional eight-parameter local Fisher analyses | `fisher_information` |
 | `PINN-bayesian/` | Frozen-state inverse posterior experiments | `hmc_diagnostics`; reported chains fail calibration checks |
 | `PINN-forward-bayesian/` | Forward network-weight HMC and predictive exports | `bayesian_forward` |
-| `PINN-smaller/forward-pinn-train-hybrid/` | Sparse forward PINN | `forward_accuracy`, sparse formulation |
-| `PINN-smaller/forward_pinn_train/` | Dense supervised interpolation baseline | `forward_accuracy`, dense formulation |
+| `experiments/04-forward-pinn/forward-pinn-train-hybrid/` | Sparse forward PINN | `forward_accuracy`, sparse formulation |
+| `experiments/04-forward-pinn/forward_pinn_train/` | Dense supervised interpolation baseline | `forward_accuracy`, dense formulation |
 
 Supported here means that the implementation or saved outputs are used by
 current workflows. It does not imply all old launch scripts have the same
@@ -27,10 +27,10 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 
 | Location | Status and use |
 |---|---|
-| `PINN-inverse-solve/` | Protected historical inverse baseline. Do not edit. |
-| `PINN-inverse-multicond/` | Six-condition inverse and classical ODE-fit experiments |
-| `PINN-inverse-multicond-excite/` | Ten-condition WNT/MYC excitation comparison; original autodiff source for 37/144 |
-| `PINN-inverse-better/`, `PINN-inverse-multicond-better/` | Earlier optimization and identifiability attempts; retain for historical comparison |
+| `experiments/05-inverse-single-condition/` | Protected historical inverse baseline. Do not edit. |
+| `experiments/07-inverse-six-condition/` | Six-condition inverse and classical ODE-fit experiments |
+| `experiments/09-inverse-excitation/` | Ten-condition WNT/MYC excitation comparison; original autodiff source for 37/144 |
+| `experiments/06-inverse-three-condition/`, `experiments/08-inverse-small-networks/` | Earlier optimization and identifiability attempts; retain for historical comparison |
 | `experiments/01-model-prototypes/`, `experiments/02-original-pinn/`, `experiments/03-global-sensitivity/` | Early prototypes, the original PINN notebooks, and sensitivity-analysis tables |
 | `PINN-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
 | `ROADMAP.md` | Chronological historical narrative, with superseded interpretations |
