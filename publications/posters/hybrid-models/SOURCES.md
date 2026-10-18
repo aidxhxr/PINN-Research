@@ -20,9 +20,9 @@ documented below as historical material.
 |---|---|
 | Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
 | Equations, state order, forcing, regimes | `experiments/15-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
-| Nondimensionalization | `research-paper/paper.tex`, equations ndb–ndc |
+| Nondimensionalization | `publications/papers/2026-08-pinn-identifiability/paper.tex`, equations ndb–ndc |
 | Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
-| Fourier network and forward losses | `experiments/04-forward-pinn/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `research-paper/paper.tex` |
+| Fourier network and forward losses | `experiments/04-forward-pinn/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `publications/papers/2026-08-pinn-identifiability/paper.tex` |
 | Beta-catenin/HOXA5 trajectories, Fig. 2 | `data/forward_trajectories.npz`; checkpoints in `experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/`; `figures/forward_plot.py` |
 | Dense forward accuracy | `experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/forward_error_table.json` |
 | Sparse forward accuracy | `experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json` |

@@ -1,6 +1,6 @@
 """Inverse PINN: true vs recovered, the 3 best-recovered parameters x 4 regimes.
 
-Vector re-draw of the TOP ROW of research-paper/inv_recovery_bars_best8.png
+Vector re-draw of the TOP ROW of publications/papers/2026-08-pinn-identifiability/inv_recovery_bars_best8.png
 (md5-identical to experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/
 inv_recovery_bars_best8.png, produced by experiments/10-inverse-integral-residual/regen_plots.py
 -> plotting.plot_recovery_bars with params = plotting.best_params(k=8)).

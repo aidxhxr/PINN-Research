@@ -1,6 +1,6 @@
 """Bayesian inverse PINN, Severe APC Loss: the 4 worst-recovered posteriors.
 
-Vector re-draw of the TOP ROW of research-paper/bayes_worst8_severe.png
+Vector re-draw of the TOP ROW of publications/papers/2026-08-pinn-identifiability/bayes_worst8_severe.png
 (md5-identical to experiments/13-bayesian-inverse/runs/20260712_204532_bayes/
 Severe_APC_Loss_worst8_marginals.png, produced by
 experiments/13-bayesian-inverse/plot_top8_marginals.py --mode least). Data: that run's

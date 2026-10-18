@@ -47,7 +47,7 @@ the dated note exists, but its complete original run mapping is unavailable.
 |---|---|
 | `publications/posters/pinn-recovery/` | Current first poster, Nathaniel Kim and Pascal Kataboh; dynamics, inverse recovery, Fisher and Bayesian results |
 | `publications/posters/hybrid-models/` | Current second poster, Amirkhan Aidarkhan and Pascal Kataboh; learned mechanisms and anchor-reaching interventions |
-| `research-paper/` | Historical LaTeX manuscript; overlapping numerical results registered, complete text not re-audited |
+| `publications/papers/2026-08-pinn-identifiability/` | Historical LaTeX manuscript; overlapping numerical results registered, complete text not re-audited |
 | `publications/slides/archive/beamer-dark/` | Historical presentation; current first poster uses its original posterior draws with corrected coverage accounting |
 | `publications/posters/archive/2026-08-typst/`, `publications/posters/archive/2026-09-typst-v1/` | Earlier publication versions |
 | `network-diagram/` | TikZ regulatory network source and reviewed PDF |

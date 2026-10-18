@@ -36,9 +36,9 @@ experiments/16-population-extension/web/
 /publications/slides/department-talk/output/latex/*.log
 
 # research-paper build output -- .tex/.bib/figures and the final PDF are tracked
-research-paper/*.log
-research-paper/*.blg
-research-paper/*.bbl
+/publications/papers/2026-08-pinn-identifiability/*.log
+/publications/papers/2026-08-pinn-identifiability/*.blg
+/publications/papers/2026-08-pinn-identifiability/*.bbl
 
 # Package builds and local environments
 *.egg-info/
