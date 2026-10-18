@@ -21,7 +21,8 @@ def run_worker(config_path, directory, root, regime, *, resume=False):
     cfg = load_config(config_path)
     directory, root = Path(directory), Path(root)
     safe = regime.replace(" ", "_")
-    pipeline = root / ("PINN-inverse-pinn-boost" if cfg["pipeline"] == "integral" else "PINN-hybrid-ude")
+    pipeline = root / ("experiments/10-inverse-integral-residual" if cfg["pipeline"] == "integral"
+                       else "experiments/15-hybrid-ude")
     install_stop_handlers()
     sys.path.insert(0, str(pipeline))
     # Every effective hybrid setting is explicit. Ambient HYBRID_* variables

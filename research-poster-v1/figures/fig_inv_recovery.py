@@ -1,8 +1,8 @@
 """Inverse PINN: true vs recovered, the 3 best-recovered parameters x 4 regimes.
 
 Vector re-draw of the TOP ROW of research-paper/inv_recovery_bars_best8.png
-(md5-identical to PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/
-inv_recovery_bars_best8.png, produced by PINN-inverse-pinn-boost/regen_plots.py
+(md5-identical to experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/
+inv_recovery_bars_best8.png, produced by experiments/10-inverse-integral-residual/regen_plots.py
 -> plotting.plot_recovery_bars with params = plotting.best_params(k=8)).
 Data: that run dir's <regime>_recovered.json ("true" / "recovered" dicts).
 best_params ranks by mean relative error over regimes; the first three are
@@ -16,7 +16,7 @@ from matplotlib.patches import Patch
 import style
 from style import GREY, BLUE
 
-RUN = ("/home/29/aidahxr/PINN-Research/PINN-inverse-pinn-boost/runs/"
+RUN = ("/home/29/aidahxr/PINN-Research/experiments/10-inverse-integral-residual/runs/"
        "20260711_170848_replot_legendfix")
 REGIMES = [("Normal", "Normal"), ("Early_Adenoma", "Early"),
            ("Advanced_Adenoma", "Advanced"), ("Severe_APC_Loss", "Severe")]

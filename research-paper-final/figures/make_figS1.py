@@ -1,6 +1,6 @@
 """S1 Fig -- how the information budget depends on the design.
 
-Source: PINN-sensitivity/runs/20261017_paper/fim2_base/<regime>_Jcond.npy, the
+Source: experiments/17-sensitivity-pinn/runs/20261017_paper/fim2_base/<regime>_Jcond.npy, the
 per-condition sensitivities d y / d log(theta) of the benchmark design
 (nC=10, n_t=150, 7 states, 36 parameters) at the truth.
 (A) CRLB-expected count E[N10] (34 regular parameters, deltaP1 known) against
@@ -24,7 +24,7 @@ st.setup()
 sys.path.insert(0, os.path.join(st.REPO, "src"))
 from wnt_pinn.model.parameters import UNKNOWN, CONDITIONS  # noqa: E402
 
-SRC = os.path.join(st.REPO, "PINN-sensitivity/runs/20261017_paper/fim2_base")
+SRC = os.path.join(st.REPO, "experiments/17-sensitivity-pinn/runs/20261017_paper/fim2_base")
 SIG = 0.002
 keep = [i for i, k in enumerate(UNKNOWN) if k != "deltaP1"]
 reg_idx = [keep.index(UNKNOWN.index(k)) for k in UNKNOWN if k not in ("thetaP", "deltaP1")]

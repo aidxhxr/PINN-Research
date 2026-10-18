@@ -1,5 +1,5 @@
 """Collect measured wall-clock time per regime for each estimator into
-PINN-sensitivity/runs/20261017_paper/wallclock.json (used by Fig 6E and the
+experiments/17-sensitivity-pinn/runs/20261017_paper/wallclock.json (used by Fig 6E and the
 text). Every number is read from a run artifact; nothing is estimated.
   * PINN (integral): training_seconds of start 0 (seed 42 and 7), CPU 16 thr;
   * SGN-PINN: seconds of both schedules summed (both seeds), one GPU, on top

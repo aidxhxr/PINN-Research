@@ -57,7 +57,8 @@ def _git(root, *args):
 
 
 def _source_hashes(root, pipeline):
-    folder = root / ("PINN-inverse-pinn-boost" if pipeline == "integral" else "PINN-hybrid-ude")
+    folder = root / ("experiments/10-inverse-integral-residual" if pipeline == "integral"
+                     else "experiments/15-hybrid-ude")
     package = root / "src" / "wnt_pinn"
     sources = list(folder.glob("*.py"))
     for component in ("runs", "model", "networks", "kernels"):
@@ -191,7 +192,7 @@ def run_experiment(config_path, *, root=None, resume=None):
     Resume rejects changed configuration, source code, inputs or saved outputs.
     """
     root = Path(root or Path.cwd()).resolve()
-    if not (root / "PINN-inverse-pinn-boost" / "training.py").is_file():
+    if not (root / "experiments" / "10-inverse-integral-residual" / "training.py").is_file():
         raise ValueError("root must be the PINN-Research repository checkout")
     config = load_config(config_path)
     sources = _source_hashes(root, config["pipeline"])

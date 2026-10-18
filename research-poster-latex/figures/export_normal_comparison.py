@@ -13,7 +13,7 @@ from scipy.integrate import solve_ivp
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parent
-SOURCE = REPO / "PINN-inverse-pinn-boost"
+SOURCE = REPO / "experiments/10-inverse-integral-residual"
 RUN = SOURCE / "runs/20260711_203325_integral"
 sys.path.insert(0, str(SOURCE))
 from config import BASELINE, REGIMES, Y0, CONDITIONS

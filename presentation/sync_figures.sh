@@ -51,21 +51,21 @@ copy pinn_forward_core_dynamics.png \
 # -- slides 12, 14: inverse PINN losses + parameter recovery ---------------
 #    run: pinn-boost integral residual, replot with fixed legend
 copy inverse_losses.png \
-     PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_losses.png
+     experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/inv_losses.png
 copy inverse_recovery_bars_best8.png \
-     PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png
+     experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png
 
 # -- slide 13: inverse PINN vs ODE solver ----------------------------------
 copy pinn_inverse_core_dynamics.png \
-     PINN-inverse-pinn-boost/pinn_inverse_core_dynamics.png
+     experiments/10-inverse-integral-residual/pinn_inverse_core_dynamics.png
 
 # -- slides 15, 16: Bayesian posterior marginals ---------------------------
 #    run: 20260712_204532_bayes. The top8/worst8 panels were regenerated
 #    2026-07-13 (relabelled "most-sensitive", fixed Normal coverage) and are
 #    the newest versions of these two figures in the repository.
 copy normal_top8_marginals.png \
-     PINN-bayesian/runs/20260712_204532_bayes/Normal_top8_marginals.png
+     experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Normal_top8_marginals.png
 copy severe_worst8_marginals.png \
-     PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_worst8_marginals.png
+     experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Severe_APC_Loss_worst8_marginals.png
 
 echo "Done."

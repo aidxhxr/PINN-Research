@@ -3,12 +3,12 @@
 (A) Cramer-Rao relative s.d. of thetaP (deltaP1 held known, the other 34
     parameters free) per regime and per design. Training-free FIM at the truth,
     sigma = 0.002, all seven states on 200 points.
-    Source: PINN-fisher-matrix/runs/20260921_thetaP_design/thetaP_design.json
+    Source: experiments/11-fisher-information/runs/20260921_thetaP_design/thetaP_design.json
 (B) Converged maximum-likelihood fit (mle.py, 36 free, best of 4 starts) under three
     condition sets of 10 / 12 / 12 conditions: error of the identifiable product
     deltaP1*(1-thetaP) (Early/Advanced/Severe; in Normal the true product is 0)
     and the number of the 36 parameters recovered within 10 %.
-    Source: PINN-hybrid-ude/runs/20260921_odefit_thetaP/{base10,info12,dep12}/
+    Source: experiments/15-hybrid-ude/runs/20260921_odefit_thetaP/{base10,info12,dep12}/
     Cross-check: runs/20260921_aggregations/odefit_thetaP.txt
 (C) Why: the log-sensitivity theta_P * d b(t) / d theta_P of beta-catenin in the
     control condition, per regime, from the shared model (src/wnt_pinn/model,
@@ -25,12 +25,12 @@ from matplotlib.lines import Line2D
 
 import style as st
 
-sys.path.insert(0, os.path.join(st.REPO, "PINN-fisher-matrix"))
+sys.path.insert(0, os.path.join(st.REPO, "experiments/11-fisher-information"))
 import thetaP_design as td  # noqa: E402  (shared model: src/wnt_pinn/model)
 
 st.setup()
 R = st.REPO
-SRC_A = os.path.join(R, "PINN-fisher-matrix/runs/20260921_thetaP_design/thetaP_design.json")
+SRC_A = os.path.join(R, "experiments/11-fisher-information/runs/20260921_thetaP_design/thetaP_design.json")
 REG = st.REGIMES
 MK = {"Normal": "o", "Early Adenoma": "s", "Advanced Adenoma": "^", "Severe APC Loss": "D"}
 
@@ -55,8 +55,8 @@ LOO_OTHER = {r: {x["design"]: 100 * x["relsd_thetaP"] for x in rows if x["regime
 # ---------------------------------------------------------------- data (B)
 # Converged true MLE (unit weights, 36 free parameters, data seed 42), best of
 # four starts (the common +50% start and three log-jittered ones) by final cost;
-# PINN-sensitivity/runs/20261017_paper/ms/<regime>_init[_jN]_s42_none[_design].json
-MS = os.path.join(R, "PINN-sensitivity/runs/20261017_paper/ms_tight")
+# experiments/17-sensitivity-pinn/runs/20261017_paper/ms/<regime>_init[_jN]_s42_none[_design].json
+MS = os.path.join(R, "experiments/17-sensitivity-pinn/runs/20261017_paper/ms_tight")
 ARMS_B = [("base10", "base, 10 conditions", st.GREY, "o", True),
           ("info12", "+2 information-matched", st.GREY, "s", False),
           ("dep12", "+2 depletion (WNT KD, RA-free)", st.BLUE, "D", True)]
@@ -152,7 +152,7 @@ axB1.set_title("MLE: identifiable product", fontsize=7.5, loc="left")
 st.panel(axB1, "B", x=-0.30, y=1.04)
 
 # ---- B2: the bound on the product, per design (150-point benchmark design, fim2_*)
-F2 = os.path.join(R, "PINN-sensitivity/runs/20261017_paper")
+F2 = os.path.join(R, "experiments/17-sensitivity-pinn/runs/20261017_paper")
 FIM2 = {arm: json.load(open(os.path.join(F2, f"fim2_{d}", "fim_summary.json")))
         for arm, d in (("base10", "base"), ("info12", "info"), ("dep12", "dep"))}
 B2 = {}
@@ -209,7 +209,7 @@ audit = {
               "estimator": "unit-weight MLE, 36 free, best of 4 starts by cost, data seed 42",
               "cells": {f"{a}/{r}": v for (a, r), v in B.items()},
               "crlb_kappaP_pct_150pt": B2},
-        "C": {"source": "src/wnt_pinn/model via PINN-fisher-matrix/thetaP_design.solve (LSODA rtol 1e-9), "
+        "C": {"source": "src/wnt_pinn/model via experiments/11-fisher-information/thetaP_design.solve (LSODA rtol 1e-9), "
                         "ctrl condition, central difference h = 1e-3 thetaP",
               "peak_abs_log_sensitivity_b": {r: float(np.abs(C[r]["Sb"]).max()) for r in REG},
               "median_abs_log_sensitivity_b_t_ge_10 (printed)": {r: float(np.median(np.abs(C[r]["Sb"])[t >= 10]))

@@ -5,7 +5,7 @@ Right: APC p(t) — the loss that defines the disease axis.
 Solved with the repo's own Radau reference (rtol 1e-10), baseline condition.
 """
 import sys, os
-sys.path.insert(0, "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude")
+sys.path.insert(0, "/home/29/aidahxr/PINN-Research/experiments/15-hybrid-ude")
 import numpy as np
 from scipy.integrate import solve_ivp
 from config import BASELINE, REGIMES, CONDITIONS, Y0

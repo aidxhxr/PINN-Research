@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 style.setup()
-RUN = "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260802_dose_response/"
+RUN = "/home/29/aidahxr/PINN-Research/experiments/15-hybrid-ude/runs/20260802_dose_response/"
 
 recs = []
 for f in glob.glob(RUN + "dose_*_*.json"):

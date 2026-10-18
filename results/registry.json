@@ -96,22 +96,22 @@
           "required": false
         },
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Advanced_Adenoma_recovered.json",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Advanced_Adenoma_recovered.json",
           "sha256": "eebf6bc1cb7058b57c56be155c1de8d732dea7ad36d74a12f6281e7a5a4f4b2b",
           "required": false
         },
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Early_Adenoma_recovered.json",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Early_Adenoma_recovered.json",
           "sha256": "dbd354e1791a085f7f772bfda0eb582ad80103cfa0aa6dd394b08a687ad5248a",
           "required": false
         },
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_recovered.json",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_recovered.json",
           "sha256": "90d9106c7d9bf4e09158fa8ddcbd5697a7bf5d0676bb0733bee04cf347d6c173",
           "required": false
         },
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Severe_APC_Loss_recovered.json",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Severe_APC_Loss_recovered.json",
           "sha256": "43166d7f03d88f79e12564efb924ffc0904f3a322c3abb9259d8c3b4607d8d34",
           "required": false
         }
@@ -173,142 +173,142 @@
       ],
       "upstream": [
         {
-          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Advanced_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_195830_control/Advanced_Adenoma_recovered.json",
           "sha256": "e9ed8a41fc0769c2f95c97ceac12e3bd8a8061206122500f5ff6aefe7101eb3d",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Early_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_195830_control/Early_Adenoma_recovered.json",
           "sha256": "ed651533f3ff177b786096a8fac377295a570a53f6aec5b8ddc1238ce484200a",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Normal_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_195830_control/Normal_recovered.json",
           "sha256": "4c1abec09cb3d6ba2d4cf0153c9f961bc6dbaba94dfe3a66dcccfca68c3a08a1",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_195830_control/Severe_APC_Loss_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_195830_control/Severe_APC_Loss_recovered.json",
           "sha256": "bee205963794f7d7f09235522b801df6ac71c2dff70d8897cd64f5eb79d0ffb0",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma_recovered.json",
           "sha256": "573ceb41f7f6533aaeb917deffb4f4681549c80c204162f013712a3bd646bcb3",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Advanced_Adenoma_term.json",
           "sha256": "7b1d66153232eb7fa9da4934b4d2deb299f11090bb7cdc416680845d31d380fb",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma_recovered.json",
           "sha256": "a019fdb9d905793e314dc1403779e86576d2df66129a35ee96daab316fa2bc38",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Early_Adenoma_term.json",
           "sha256": "151567a340e3c2a9037ac523642bccd57faf0d68fd69b1ecc17974f88a743eab",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Normal_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Normal_recovered.json",
           "sha256": "7b2c86eb85cb180867601437d89812aa3925aa20fc532680cc39ca9c1e42ec71",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Normal_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Normal_term.json",
           "sha256": "8234d6b9cfb5d3c38cea8ebf418c339f2f5aa7984d33f91cc28db75fa55c395a",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss_recovered.json",
           "sha256": "572204f3689424419636746e6efb249d3cbb743aeb6eb9ef0fedda6700dcdf48",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/Severe_APC_Loss_term.json",
           "sha256": "f375c81ca180e35bf1347b58b9065b6a5f4562009cf9ec32ae5d6b8a8e8499c5",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Advanced_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Advanced_Adenoma_recovered.json",
           "sha256": "a872e7ffc8cd6c836103b3d165ca0ca7e4d891d14eac4c4b348950ae2e557cf7",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Advanced_Adenoma_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Advanced_Adenoma_term.json",
           "sha256": "cfc1a8dd2477ae5c2e0a5838604a73c0f3ad6a79705ae166a9b927066205dbc6",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Early_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Early_Adenoma_recovered.json",
           "sha256": "0a266b08eeee922f9a347e40d6d13d4f1b155f256d0a2495cf521dae0a63f445",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Early_Adenoma_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Early_Adenoma_term.json",
           "sha256": "7cd6410d0fdea68c309bdad44b4b015bde9db7406dd489b38efbcacfa21fbc82",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Normal_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Normal_recovered.json",
           "sha256": "2f62e367bde9b285c997b829a0f106c5982bb575b4d9bb6051bad5507323cd51",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Normal_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Normal_term.json",
           "sha256": "c4a0ee93b480e9904fcb583d7824e6cd4ff3dbc5da3a1dcceaae35d34849f714",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Severe_APC_Loss_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Severe_APC_Loss_recovered.json",
           "sha256": "247831b180a301a883cb820268f44b2d5628d82a74524daafa156365e105ecb1",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260727_012448_bm_myc/Severe_APC_Loss_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/Severe_APC_Loss_term.json",
           "sha256": "da638a7ceaf64ee95fe8652b08b26eeb6bebe62f3b0cb93f80a2bb5cf3acd1dd",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma_recovered.json",
           "sha256": "d43be1cf17ac7803747a88867005bfdb054df91c58e668a95944792290d46616",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Advanced_Adenoma_term.json",
           "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma_recovered.json",
           "sha256": "d546402dede05c8d3043dd8c8823f293f76092b96336032933aeadc207f6709b",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Early_Adenoma_term.json",
           "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal_recovered.json",
           "sha256": "f306e565fe80ca75c347912f9afb8953ca49821af0853e1fed11a85d2502ef84",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Normal_term.json",
           "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss_recovered.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss_recovered.json",
           "sha256": "b785f2e2fe2be07bcf4f08e8ecd1cdf56fcf6ddc8ad68785bc12a2e7a7c11387",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss_term.json",
+          "path": "experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/Severe_APC_Loss_term.json",
           "sha256": "e907f2f9248423abe3f1e226f3683e7c33fbf67dc06be859e76d6c196273ed24",
           "required": false
         }
@@ -344,7 +344,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-hybrid-ude/training.py",
+        "experiments/15-hybrid-ude/training.py",
         "research-poster-latex-hybrid/figures/make_figures.py"
       ],
       "reproduction": {
@@ -397,42 +397,42 @@
       ],
       "upstream": [
         {
-          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Advanced_Adenoma_FIM.npy",
+          "path": "experiments/11-fisher-information/runs/20260711_203325_fisher/Advanced_Adenoma_FIM.npy",
           "sha256": "5e18c8785d3dedc6b2f90e070c7ff6f11ee317ff5ec98292392b79b60140a17f",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Early_Adenoma_FIM.npy",
+          "path": "experiments/11-fisher-information/runs/20260711_203325_fisher/Early_Adenoma_FIM.npy",
           "sha256": "ca654463ec3d63619ee4fd2860e5d9d16b7c069297a61d8ec90584a8c831d6dc",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Normal_FIM.npy",
+          "path": "experiments/11-fisher-information/runs/20260711_203325_fisher/Normal_FIM.npy",
           "sha256": "fa6a57eb3f71478bd2df4a2910b82fc096b49876f46679018f9e58345ac5fb8b",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/Severe_APC_Loss_FIM.npy",
+          "path": "experiments/11-fisher-information/runs/20260711_203325_fisher/Severe_APC_Loss_FIM.npy",
           "sha256": "eb58986490e776ea4484e7e11f922e0e6117d8adce765de2a2adf629f791084a",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Normal_FIM.npy",
+          "path": "experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/Normal_FIM.npy",
           "sha256": "1c114943c7a43b11285f0a13d21a97bd9f176262366ad9b5c4bdd7d34062c6f0",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Early_Adenoma_FIM.npy",
+          "path": "experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/Early_Adenoma_FIM.npy",
           "sha256": "8fe7d85c2ff240351fcf627ea67a5a7510a37a72c559266b7f0911f0fae10642",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Advanced_Adenoma_FIM.npy",
+          "path": "experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/Advanced_Adenoma_FIM.npy",
           "sha256": "b9cf6660f4f483f346286a158e68a025d2bb1cef66702b2354821bf0d5c5b572",
           "required": false
         },
         {
-          "path": "PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/Severe_APC_Loss_FIM.npy",
+          "path": "experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/Severe_APC_Loss_FIM.npy",
           "sha256": "98ddeedbb775e5c7afdbf7a63edeed29524cacc873e572030c73e6cb4f830727",
           "required": false
         }
@@ -507,8 +507,8 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-fisher-matrix/fisher_matrix.py",
-        "PINN-fisher-matrix-top8/fisher_matrix.py"
+        "experiments/11-fisher-information/fisher_matrix.py",
+        "experiments/12-fisher-top8/fisher_matrix.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['fisher_information'], output_dir)",
@@ -545,22 +545,22 @@
       ],
       "upstream": [
         {
-          "path": "PINN-hybrid-ude/runs/20260802_dose_response/dose_bcat_bm_myc.json",
+          "path": "experiments/15-hybrid-ude/runs/20260802_dose_response/dose_bcat_bm_myc.json",
           "sha256": "347777be273da1d48913200b0d6c5f8dbd36db38cb45c736f0474aefae978615",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260802_dose_response/dose_wnt_bm_myc.json",
+          "path": "experiments/15-hybrid-ude/runs/20260802_dose_response/dose_wnt_bm_myc.json",
           "sha256": "a3356f7f40ecb37db7667016cb652766d89f28ef6bb61263acfc910f6a5c1f3a",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json",
+          "path": "experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json",
           "sha256": "430af58b58c3ac4cb52b37276adb5bddbd3a71e6900c0c1effe3f03b44b50941",
           "required": false
         },
         {
-          "path": "PINN-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json",
+          "path": "experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json",
           "sha256": "a1956e96d6a43bae07c75a2da465722f283fc3d5b206dc191724174c12bdf373",
           "required": false
         }
@@ -581,8 +581,8 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-hybrid-ude/dose_response.py",
-        "PINN-hybrid-ude/protocol_test.py"
+        "experiments/15-hybrid-ude/dose_response.py",
+        "experiments/15-hybrid-ude/protocol_test.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['anchor_interventions'], output_dir)",
@@ -629,32 +629,32 @@
       ],
       "upstream": [
         {
-          "path": "PINN-bayesian/runs/20260712_204532_bayes/Normal_posterior_samples.npz",
+          "path": "experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Normal_posterior_samples.npz",
           "sha256": "58f648b962eb31b6ed7edd7c06fc71bfb91168ec571c81d81b6598708e9cadca",
           "required": false
         },
         {
-          "path": "PINN-bayesian/runs/20260712_204532_bayes/Normal_posterior_summary.json",
+          "path": "experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Normal_posterior_summary.json",
           "sha256": "2e5431d9e404767bf03dbdfb511172d0990f762f3c8794f2aa826e235421cf56",
           "required": false
         },
         {
-          "path": "PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_samples.npz",
+          "path": "experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_samples.npz",
           "sha256": "7dd1ed5407e5a1a1b86eaaea6b0a3f7b95f57585583c272347f9dc4fa9b24b2c",
           "required": false
         },
         {
-          "path": "PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_summary.json",
+          "path": "experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Severe_APC_Loss_posterior_summary.json",
           "sha256": "e51a1dba95e4267fd832505097dc83eeed01974eff63ccfd71ad53243b1d7d05",
           "required": false
         },
         {
-          "path": "PINN-bayesian/runs/20260713_204442_bayes/Normal_posterior_samples.npz",
+          "path": "experiments/13-bayesian-inverse/runs/20260713_204442_bayes/Normal_posterior_samples.npz",
           "sha256": "9a9531ed4a83ed7577f1be08c62034cebd78b6d0168d9c12f2093e7eeda9fcfe",
           "required": false
         },
         {
-          "path": "PINN-bayesian/runs/20260713_204442_bayes/Normal_posterior_summary.json",
+          "path": "experiments/13-bayesian-inverse/runs/20260713_204442_bayes/Normal_posterior_summary.json",
           "sha256": "d43eb0aaba34312a0b4702b331880baf246f26822d9b292427901de58e355066",
           "required": false
         }
@@ -691,7 +691,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-bayesian/bayesian_infer.py"
+        "experiments/13-bayesian-inverse/bayesian_infer.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['hmc_diagnostics'], output_dir)",
@@ -748,42 +748,42 @@
       ],
       "upstream": [
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Normal_predictive.npz",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Normal_predictive.npz",
           "sha256": "5231929a07a4c1aec67c34f182e3605ffbf2de55381e2c61fb51b1ad996c5bf5",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Normal_predictive_summary.json",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Normal_predictive_summary.json",
           "sha256": "1402b665a6dd47bc57c43607071d6624f5f4bd0eaeb1a8eb5370c382d779eed7",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Early_Adenoma_predictive.npz",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Early_Adenoma_predictive.npz",
           "sha256": "a264ced81536ff09e6e415308b6c1c2e8f9c35c43519b49ce69407df8b252f66",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Early_Adenoma_predictive_summary.json",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Early_Adenoma_predictive_summary.json",
           "sha256": "c4d6317daa1af37a3ced242f3c067a90e42e0a0ce9964c9906eb39c198ac7845",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Advanced_Adenoma_predictive.npz",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Advanced_Adenoma_predictive.npz",
           "sha256": "182f74d32443df2dd3920a7be964e5677df22c2d43eb7465c591b7e8a9063237",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Advanced_Adenoma_predictive_summary.json",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Advanced_Adenoma_predictive_summary.json",
           "sha256": "ea7eab6e8b3093d7c1c2ca0ad519324b691b0cf28f758b623dcf3bf3eb0b0dc2",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Severe_APC_Loss_predictive.npz",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Severe_APC_Loss_predictive.npz",
           "sha256": "8e4c06d5317b39fe8308fcdc9050623f7e8c7579ac9e2d1e30a2be4565c96590",
           "required": false
         },
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/Severe_APC_Loss_predictive_summary.json",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/Severe_APC_Loss_predictive_summary.json",
           "sha256": "a45faee2edb35b092a3b91fbf797b5a8023668a7663282fa5b21eb2e7dce4765",
           "required": false
         }
@@ -803,7 +803,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-forward-bayesian/aggregate_forward.py"
+        "experiments/14-bayesian-forward/aggregate_forward.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['bayesian_forward'], output_dir)",
@@ -830,12 +830,12 @@
       ],
       "upstream": [
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_ctrl_net.pt",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_ctrl_net.pt",
           "sha256": "e14c4ddae04fb9534c061741322d1496faa353cb5d60df2b6b31e268ba5e7ffb",
           "required": false
         },
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_noATRA_net.pt",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_noATRA_net.pt",
           "sha256": "43603a92fdf8e6c38a4f9f9bfc07b3161b41e1eee9cba9bf39b5ef7f009a3cdf",
           "required": false
         }
@@ -890,12 +890,12 @@
       ],
       "upstream": [
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_history.json",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_history.json",
           "sha256": "1e815abac345f62b54fcd04e5fbef559efe142652b384650b5faa570708d9850",
           "required": false
         },
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_recovered.json",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_recovered.json",
           "sha256": "90d9106c7d9bf4e09158fa8ddcbd5697a7bf5d0676bb0733bee04cf347d6c173",
           "required": false
         }
@@ -1048,7 +1048,7 @@
       ],
       "upstream": [
         {
-          "path": "PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png",
+          "path": "experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png",
           "sha256": "98f79d8e261edd637e4c5e849de017f23d730753a1316d4b2f108c628aa83c22",
           "required": false
         }
@@ -1056,7 +1056,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-inverse-pinn-boost/plotting.py"
+        "experiments/10-inverse-integral-residual/plotting.py"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",
@@ -1086,7 +1086,7 @@
       ],
       "upstream": [
         {
-          "path": "PINN-fisher-matrix/runs/20260711_203325_fisher/cross_regime_spectra.png",
+          "path": "experiments/11-fisher-information/runs/20260711_203325_fisher/cross_regime_spectra.png",
           "sha256": "086af655c36000a98cea76d4944312f751f912ad7ba6eab9e597a847f5f8e41c",
           "required": false
         }
@@ -1094,7 +1094,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-fisher-matrix/fisher_matrix.py"
+        "experiments/11-fisher-information/fisher_matrix.py"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",
@@ -1124,7 +1124,7 @@
       ],
       "upstream": [
         {
-          "path": "PINN-forward-bayesian/runs/20260711_203325_fwdbayes/fwd_beta_bands.png",
+          "path": "experiments/14-bayesian-forward/runs/20260711_203325_fwdbayes/fwd_beta_bands.png",
           "sha256": "b69397a7e4c6489197538b9e78ae51743add7b58f6c5fc15b90ce3b064b5a573",
           "required": false
         }
@@ -1132,7 +1132,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-forward-bayesian/aggregate_forward.py"
+        "experiments/14-bayesian-forward/aggregate_forward.py"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",
@@ -1162,7 +1162,7 @@
       ],
       "upstream": [
         {
-          "path": "PINN-hybrid-ude/runs/20260802_041545_ra_h5_dep/learned_term_ra_h5.png",
+          "path": "experiments/15-hybrid-ude/runs/20260802_041545_ra_h5_dep/learned_term_ra_h5.png",
           "sha256": "9ecb0f4ff0604534078a32a8f348e7ad5e5fb3ff9672bd12978b6eddd054d56e",
           "required": false
         }
@@ -1170,7 +1170,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-hybrid-ude/plot_learned_term.py"
+        "experiments/15-hybrid-ude/plot_learned_term.py"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",
@@ -1200,7 +1200,7 @@
       ],
       "upstream": [
         {
-          "path": "PINN-hybrid-ude/runs/20260802_dose_response/dose_response.png",
+          "path": "experiments/15-hybrid-ude/runs/20260802_dose_response/dose_response.png",
           "sha256": "cea7b500830ae7c3728cfa4f5aa32f0343fc46c218b2c809f33ca1c949a03337",
           "required": false
         }
@@ -1208,7 +1208,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "PINN-hybrid-ude/aggregate_dose.py"
+        "experiments/15-hybrid-ude/aggregate_dose.py"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",

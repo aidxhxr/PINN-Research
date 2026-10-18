@@ -82,7 +82,7 @@ Choose a storage directory outside the repository:
 ```bash
 wnt-pinn artifacts archive /path/to/external/wnt-pinn-artifacts
 wnt-pinn artifacts archive /path/to/external/selected-run \
-  --select PINN-inverse-pinn-boost/runs/20260711_203325_integral
+  --select experiments/10-inverse-integral-residual/runs/20260711_203325_integral
 ```
 
 The store contains:
@@ -118,7 +118,7 @@ directly from their immutable Git revision:
 
 ```bash
 wnt-pinn artifacts restore github-history \
-  --select PINN-inverse-pinn-boost/runs/20260711_203325_integral
+  --select experiments/10-inverse-integral-residual/runs/20260711_203325_integral
 ```
 
 The `github-history` backend reads the checked-in catalog's `history_source`.
@@ -140,9 +140,9 @@ For a local store:
 
 ```bash
 wnt-pinn artifacts restore /path/to/external/wnt-pinn-artifacts \
-  --select PINN-inverse-pinn-boost/runs/20260711_203325_integral
+  --select experiments/10-inverse-integral-residual/runs/20260711_203325_integral
 wnt-pinn artifacts verify \
-  --select PINN-inverse-pinn-boost/runs/20260711_203325_integral
+  --select experiments/10-inverse-integral-residual/runs/20260711_203325_integral
 ```
 
 For an HTTPS store, publish the export's `catalog.json` and `shards/` directory
@@ -150,7 +150,7 @@ under a stable base URL, preserving their relative paths:
 
 ```bash
 wnt-pinn artifacts restore https://archive.example.org/wnt-pinn/v1 \
-  --select PINN-inverse-pinn-boost/runs/20260711_203325_integral
+  --select experiments/10-inverse-integral-residual/runs/20260711_203325_integral
 ```
 
 This is a URL example, not a configured project archive. Storage ownership,

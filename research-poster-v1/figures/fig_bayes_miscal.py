@@ -1,9 +1,9 @@
 """Bayesian inverse PINN, Severe APC Loss: the 4 worst-recovered posteriors.
 
 Vector re-draw of the TOP ROW of research-paper/bayes_worst8_severe.png
-(md5-identical to PINN-bayesian/runs/20260712_204532_bayes/
+(md5-identical to experiments/13-bayesian-inverse/runs/20260712_204532_bayes/
 Severe_APC_Loss_worst8_marginals.png, produced by
-PINN-bayesian/plot_top8_marginals.py --mode least). Data: that run's
+experiments/13-bayesian-inverse/plot_top8_marginals.py --mode least). Data: that run's
 Severe_APC_Loss_posterior_samples.npz (+ _posterior_summary.json for ci95 and
 z_truth). Worst = truth furthest outside the 95% interval (largest |z_truth|);
 the first four are epsR, W, eta13, etaBM (recomputed and asserted).
@@ -18,7 +18,7 @@ from matplotlib.patches import Patch
 import style
 from style import BLUE, RED, INK
 
-RUN = ("/home/29/aidahxr/PINN-Research/PINN-bayesian/runs/"
+RUN = ("/home/29/aidahxr/PINN-Research/experiments/13-bayesian-inverse/runs/"
        "20260712_204532_bayes")
 SAFE = "Severe_APC_Loss"
 TEX = {"epsR": r"$\epsilon_R$", "W": r"$W$", "eta13": r"$\eta_{13}$",

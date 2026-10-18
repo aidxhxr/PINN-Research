@@ -1,6 +1,6 @@
 """Fig 4 -- the Cramer-Rao bound is attained.
 
-Sources: PINN-sensitivity/runs/20261017_paper/mc_tight/ (unit-weight MLE, rtol 1e-11, deltaP1
+Sources: experiments/17-sensitivity-pinn/runs/20261017_paper/mc_tight/ (unit-weight MLE, rtol 1e-11, deltaP1
 known, started at the truth, data seeds 101-124) and fim_seed42/ (the bound).
 (A) empirical sd of each log-parameter across seeds vs its CRLB sd;
 (B) standardised errors z = (x_hat - x_true)/s_CRLB pooled per regime vs N(0,1);
@@ -20,7 +20,7 @@ from matplotlib.gridspec import GridSpec
 import style as st
 
 st.setup()
-SENS = os.path.join(st.REPO, "PINN-sensitivity")
+SENS = os.path.join(st.REPO, "experiments/17-sensitivity-pinn")
 sys.path.insert(0, os.path.join(st.REPO, "src"))
 sys.path.insert(0, SENS)
 import bench  # noqa: E402

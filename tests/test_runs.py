@@ -47,8 +47,8 @@ def test_config_rejects_invalid_or_ambiguous_inputs(override):
 
 
 @pytest.mark.parametrize("folder,launcher,variant", [
-    ("PINN-inverse-pinn-boost", "run_boost.sh", "integral"),
-    ("PINN-hybrid-ude", "run_hybrid.sh", "control"),
+    ("experiments/10-inverse-integral-residual", "run_boost.sh", "integral"),
+    ("experiments/15-hybrid-ude", "run_hybrid.sh", "control"),
 ])
 def test_shell_launcher_propagates_worker_failure(tmp_path, folder, launcher, variant):
     # A failed child must prevent aggregation from presenting a partial run as

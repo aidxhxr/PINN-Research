@@ -311,7 +311,7 @@ def make_brief(results, audits, config, out, regime='Severe APC loss'):
         beta_note=f"{e['b_ratio']:.6f}"
     body=f'''# Preliminary SciPy reproduction: population extension ({regime})
 
-Model source: `extension/wnt_hox_ra_revised_population_dynamics.pdf` (September 2026).
+Model source: the revised population-dynamics report (September 2026), not distributed with the repository.
 All values below are recomputed from the 14 ODEs. No neural networks or parameter fitting.
 Base regime for every scenario except the four-regime comparison: **{regime}** (W={W:g}, thetaP={thetaP:g}).
 

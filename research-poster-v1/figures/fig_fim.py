@@ -1,6 +1,6 @@
 """FIM identifiability verdict per regime — stacked composition of 36 params.
 
-Data: PINN-fisher-matrix/runs/20260711_203325_fisher/*_fim_summary.json and
+Data: experiments/11-fisher-information/runs/20260711_203325_fisher/*_fim_summary.json and
 *_correlated_pairs.csv (authoritative post-rename run).
 IDENT=blue / WEAK=orange / NON-IDENT=red (professor's mapping).
 """
@@ -10,7 +10,7 @@ from style import BLUE, ORANGE, RED, INK, INK2, SURFACE
 import matplotlib.pyplot as plt
 
 style.setup()
-RUN = "/home/29/aidahxr/PINN-Research/PINN-fisher-matrix/runs/20260711_203325_fisher/"
+RUN = "/home/29/aidahxr/PINN-Research/experiments/11-fisher-information/runs/20260711_203325_fisher/"
 REGIMES = ["Normal", "Early_Adenoma", "Advanced_Adenoma", "Severe_APC_Loss"]
 SHORT = ["Normal", "Early Adenoma", "Advanced Adenoma", "Severe APC Loss"]
 

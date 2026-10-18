@@ -19,7 +19,7 @@ from scipy.stats import norm
 
 import style as st
 
-SENS = os.path.join(st.REPO, "PINN-sensitivity")
+SENS = os.path.join(st.REPO, "experiments/17-sensitivity-pinn")
 RUN = os.path.join(SENS, "runs", "20261017_paper")
 sys.path.insert(0, os.path.join(st.REPO, "src"))
 sys.path.insert(0, SENS)

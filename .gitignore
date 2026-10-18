@@ -17,8 +17,8 @@ notes/
 /private/
 research-paper-final/cover_letter.tex
 # Supplied third-party report and a talk script for its author
-extension/wnt_hox_ra_revised_population_dynamics.pdf
-extension/web/
+experiments/16-population-extension/wnt_hox_ra_revised_population_dynamics.pdf
+experiments/16-population-extension/web/
 /experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.log
 
 # macOS finder junk

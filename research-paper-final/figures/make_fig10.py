@@ -26,7 +26,7 @@ import style as st
 
 st.setup()
 R = st.REPO
-RUNS = os.path.join(R, "PINN-hybrid-ude/runs")
+RUNS = os.path.join(R, "experiments/15-hybrid-ude/runs")
 SRC = {"base": os.path.join(RUNS, "20260801_depletion_ab/screen_nodep/screen.json"),
        "info": os.path.join(RUNS, "20260801_infoctl/screen.json"),
        "dep": os.path.join(RUNS, "20260801_depletion_ab/screen_dep/screen.json")}

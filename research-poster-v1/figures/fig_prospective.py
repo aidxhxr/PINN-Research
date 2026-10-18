@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 style.setup()
-RUN = "/home/29/aidahxr/PINN-Research/PINN-hybrid-ude/runs/20260802_protocol_test/"
+RUN = "/home/29/aidahxr/PINN-Research/experiments/15-hybrid-ude/runs/20260802_protocol_test/"
 
 PANELS = [
     ("protocol_m_h13.json", "m_h13 — basal a$_{13}$",

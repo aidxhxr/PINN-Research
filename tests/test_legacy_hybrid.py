@@ -36,7 +36,7 @@ sys.exit(0 if result.wasSuccessful() else 1)
 """
     result = subprocess.run(
         [sys.executable, "-c", script],
-        cwd=project / "PINN-hybrid-ude",
+        cwd=project / "experiments/15-hybrid-ude",
         env=environment,
         capture_output=True,
         text=True,

@@ -5,14 +5,14 @@
     evaluated from the saved net on [0, b_max]; the data support [b_lo, b_hi]
     is shaded.  The net honours f(0)=0 exactly but lifts f by a near-constant
     over the support, and the basal production a_M drops by the same amount.
-    Source: PINN-hybrid-ude/runs/20260727_012448_bm_myc/<regime>_{term_bm_myc.pt,term.json,recovered.json}
+    Source: experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/<regime>_{term_bm_myc.pt,term.json,recovered.json}
     (the curves cached in research-poster-latex-hybrid/data/hybrid_comparison.json
     are checked against the net on the support).
 (B) the compensation identity  mean_support[f_hat - f] = a_M - a_M_hat
     for every bm_myc fit: the five-form screen (exact states; gated, sc,
     sc_bounded, lin; lin_mono excluded -- it fails through eps_M instead) and
     the round-1 full pipeline (estimated states).
-    Source: PINN-hybrid-ude/runs/20260921_screen_5form/{screen.json,*.pt}
+    Source: experiments/15-hybrid-ude/runs/20260921_screen_5form/{screen.json,*.pt}
 (C) The edge atlas: basal-production parameter error of the seven production
     edges, hybrid (gated, sc) vs the mechanistic control fit on the same 10
     conditions, 4 regimes.  Normal parsed from
@@ -40,7 +40,7 @@ import style as st
 
 st.setup()
 R = st.REPO
-HY = os.path.join(R, "PINN-hybrid-ude")
+HY = os.path.join(R, "experiments/15-hybrid-ude")
 sys.path.insert(0, HY)
 from hybrid import MechanisticNN, ShapeConstrainedNN, AnchoredRateNN, true_term  # noqa: E402
 from config import BASELINE, REGIMES as CREG  # noqa: E402

@@ -1,11 +1,11 @@
 """Posterior marginals of W and thetaP across the 4 regimes (Bayesian inverse PINN).
 
-Vector re-draw of PINN-bayesian/runs/20260713_204442_bayes/bayes_W_thetaP.png
-(produced by PINN-bayesian/aggregate_marginals.py::plot_W_thetaP) with poster
+Vector re-draw of experiments/13-bayesian-inverse/runs/20260713_204442_bayes/bayes_W_thetaP.png
+(produced by experiments/13-bayesian-inverse/aggregate_marginals.py::plot_W_thetaP) with poster
 typography and no suptitle. Same data: the 4 per-regime
 *_posterior_samples.npz files of that run (3000 HMC draws x 36 params); the
 dotted vertical line is each regime's true value (`true` array in the npz,
-identical to PINN-bayesian/config.py REGIMES).
+identical to experiments/13-bayesian-inverse/config.py REGIMES).
 """
 import os
 import numpy as np
@@ -14,7 +14,7 @@ from matplotlib.lines import Line2D
 import style
 from style import REGIME_COLORS
 
-RUN = ("/home/29/aidahxr/PINN-Research/PINN-bayesian/runs/"
+RUN = ("/home/29/aidahxr/PINN-Research/experiments/13-bayesian-inverse/runs/"
        "20260713_204442_bayes")
 REGIMES = [("Normal", "Normal"), ("Early_Adenoma", "Early Adenoma"),
            ("Advanced_Adenoma", "Advanced Adenoma"),

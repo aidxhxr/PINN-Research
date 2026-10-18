@@ -46,11 +46,11 @@ native repository resolution:
   experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/pinn7_losses.png
   experiments/04-forward-pinn/forward_pinn_train/pinn_forward_core_dynamics.png
   experiments/06-inverse-three-condition/architecture.pdf
-  PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_losses.png
-  PINN-inverse-pinn-boost/pinn_inverse_core_dynamics.png
-  PINN-inverse-pinn-boost/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png
-  PINN-bayesian/runs/20260712_204532_bayes/Normal_top8_marginals.png
-  PINN-bayesian/runs/20260712_204532_bayes/Severe_APC_Loss_worst8_marginals.png
+  experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/inv_losses.png
+  experiments/10-inverse-integral-residual/pinn_inverse_core_dynamics.png
+  experiments/10-inverse-integral-residual/runs/20260711_170848_replot_legendfix/inv_recovery_bars_best8.png
+  experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Normal_top8_marginals.png
+  experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Severe_APC_Loss_worst8_marginals.png
 
 The severe-regime Bayesian panel is deliberately the worst8 plot; top8 is a
 different figure and does not match the source deck.

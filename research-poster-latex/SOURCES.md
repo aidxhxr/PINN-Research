@@ -11,16 +11,16 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 | Element | Original source, relative to repository root |
 |---|---|
 | Regulatory schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
-| Model, state order and forcing | `PINN-inverse-pinn-boost/config.py`, `odes.py`; `docs/model.md` |
+| Model, state order and forcing | `experiments/10-inverse-integral-residual/config.py`, `odes.py`; `docs/model.md` |
 | Baseline/cosine RA-input plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved parameters in `data/normal_treatment_provenance.json`, `parameters.noATRA` |
-| Normal Radau and PINN curves, Figs. 2–3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/Normal_{noATRA,ctrl}_net.pt`; exported to `data/normal_treatment_comparison.npz` |
-| Network and training recipe | `PINN-inverse-pinn-boost/model.py`, `training.py`, `run_boost.py`, same run's `Normal.log` |
+| Normal Radau and PINN curves, Figs. 2–3 | `experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_{noATRA,ctrl}_net.pt`; exported to `data/normal_treatment_comparison.npz` |
+| Network and training recipe | `experiments/10-inverse-integral-residual/model.py`, `training.py`, `run_boost.py`, same run's `Normal.log` |
 | Training diagnostics, Fig. 4 | same run's `Normal_history.json`, `Normal_recovered.json`; copied into `data/normal_inverse_*.json` |
 | Autodiff recovery, Table 1 | `experiments/09-inverse-excitation/runs/20260702_153336/*_recovered.json` |
-| Integral recovery, Table 1 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/*_recovered.json` |
-| Fisher diagnostics, Fig. 5 | `PINN-fisher-matrix/runs/20260711_203325_fisher/*_FIM.npy`; `data/fisher_matrices.npz` |
-| Presentation Bayesian marginals, Fig. 6 | `PINN-bayesian/runs/20260712_204532_bayes/{Normal,Severe_APC_Loss}_posterior_samples.npz` and summaries; source mapping in `presentation/sync_figures.sh` |
-| Reduced Fisher comparison, Table 2 | `PINN-fisher-matrix-top8/runs/20260711_203325_fisher_top8/*_fim_summary.json`; `data/fisher_top8.json` |
+| Integral recovery, Table 1 | `experiments/10-inverse-integral-residual/runs/20260711_203325_integral/*_recovered.json` |
+| Fisher diagnostics, Fig. 5 | `experiments/11-fisher-information/runs/20260711_203325_fisher/*_FIM.npy`; `data/fisher_matrices.npz` |
+| Presentation Bayesian marginals, Fig. 6 | `experiments/13-bayesian-inverse/runs/20260712_204532_bayes/{Normal,Severe_APC_Loss}_posterior_samples.npz` and summaries; source mapping in `presentation/sync_figures.sh` |
+| Reduced Fisher comparison, Table 2 | `experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/*_fim_summary.json`; `data/fisher_top8.json` |
 
 The original regulatory schematic SHA-256 remains
 `6836f765e455581fdfdf8bff7f8b65423f9fa1c051da3ed7afed3d80576ab086`.

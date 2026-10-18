@@ -9,7 +9,7 @@ A *linear* correlation (0.32) understates a curved valley; in log space it is
 
 Posterior GEOMETRY only -- this run fails its own calibration gates, so no
 marginal widths are quoted anywhere on the poster.
-Data: PINN-bayesian/runs/20260713_204442_bayes/Normal_posterior_samples.npz
+Data: experiments/13-bayesian-inverse/runs/20260713_204442_bayes/Normal_posterior_samples.npz
 """
 import numpy as np
 import style
@@ -17,7 +17,7 @@ from style import BLUE, RED, INK, INK2, SURFACE
 import matplotlib.pyplot as plt
 
 style.setup()
-d = np.load("/home/29/aidahxr/PINN-Research/PINN-bayesian/runs/"
+d = np.load("/home/29/aidahxr/PINN-Research/experiments/13-bayesian-inverse/runs/"
             "20260713_204442_bayes/Normal_posterior_samples.npz")
 names = [str(n) for n in d["names"]]
 th = d["values"][:, names.index("thetaP")]

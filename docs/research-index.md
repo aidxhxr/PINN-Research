@@ -11,11 +11,11 @@ saved runs used in current claims.
 | Location | Purpose | Result/protocol |
 |---|---|---|
 | `src/wnt_pinn/`, `configs/`, `experiments/` | Shared model, supported experiment runner, reproducibility tools | [Experiment guide](experiments.md) |
-| `PINN-inverse-pinn-boost/` | Integral inverse PINN and saved ten-condition comparison | `inverse_recovery`, `normal_treatment`, `training_diagnostics` |
-| `PINN-hybrid-ude/` | Learned regulatory terms and exact-state intervention screens | `hybrid_comparison`, `anchor_interventions` |
-| `PINN-fisher-matrix/`, `PINN-fisher-matrix-top8/` | Full and conditional eight-parameter local Fisher analyses | `fisher_information` |
-| `PINN-bayesian/` | Frozen-state inverse posterior experiments | `hmc_diagnostics`; reported chains fail calibration checks |
-| `PINN-forward-bayesian/` | Forward network-weight HMC and predictive exports | `bayesian_forward` |
+| `experiments/10-inverse-integral-residual/` | Integral inverse PINN and saved ten-condition comparison | `inverse_recovery`, `normal_treatment`, `training_diagnostics` |
+| `experiments/15-hybrid-ude/` | Learned regulatory terms and exact-state intervention screens | `hybrid_comparison`, `anchor_interventions` |
+| `experiments/11-fisher-information/`, `experiments/12-fisher-top8/` | Full and conditional eight-parameter local Fisher analyses | `fisher_information` |
+| `experiments/13-bayesian-inverse/` | Frozen-state inverse posterior experiments | `hmc_diagnostics`; reported chains fail calibration checks |
+| `experiments/14-bayesian-forward/` | Forward network-weight HMC and predictive exports | `bayesian_forward` |
 | `experiments/04-forward-pinn/forward-pinn-train-hybrid/` | Sparse forward PINN | `forward_accuracy`, sparse formulation |
 | `experiments/04-forward-pinn/forward_pinn_train/` | Dense supervised interpolation baseline | `forward_accuracy`, dense formulation |
 
@@ -32,7 +32,7 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 | `experiments/09-inverse-excitation/` | Ten-condition WNT/MYC excitation comparison; original autodiff source for 37/144 |
 | `experiments/06-inverse-three-condition/`, `experiments/08-inverse-small-networks/` | Earlier optimization and identifiability attempts; retain for historical comparison |
 | `experiments/01-model-prototypes/`, `experiments/02-original-pinn/`, `experiments/03-global-sensitivity/` | Early prototypes, the original PINN notebooks, and sensitivity-analysis tables |
-| `PINN-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
+| `experiments/15-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
 | `ROADMAP.md` | Chronological historical narrative, with superseded interpretations |
 | [Ecology project](https://github.com/aidxhxr/ecosystem-engineer-model) | Separate ecology research topic; outside the WNT package and result registry |
 

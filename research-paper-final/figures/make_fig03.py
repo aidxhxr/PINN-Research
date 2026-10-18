@@ -1,6 +1,6 @@
 """Fig 3 -- the information budget of the ten-condition design.
 
-Source: PINN-sensitivity/runs/20261017_paper/fim_seed42/ (fim.py): Fisher
+Source: experiments/17-sensitivity-pinn/runs/20261017_paper/fim_seed42/ (fim.py): Fisher
 information of the exact benchmark design (150 obs/condition, 7 states,
 sigma = 0.002, 10 conditions) at the true parameters, log-parameters.
 (A) FIM eigenvalue spectra (36 x 36), (B) the null direction, (C) Cramer-Rao
@@ -18,7 +18,7 @@ from matplotlib.gridspec import GridSpec
 import style as st
 
 st.setup()
-SRC = os.path.join(st.REPO, "PINN-sensitivity/runs/20261017_paper/fim_seed42")
+SRC = os.path.join(st.REPO, "experiments/17-sensitivity-pinn/runs/20261017_paper/fim_seed42")
 import sys
 sys.path.insert(0, os.path.join(st.REPO, "src"))
 from wnt_pinn.model.parameters import UNKNOWN  # noqa: E402

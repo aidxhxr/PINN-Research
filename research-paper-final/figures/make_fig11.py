@@ -28,7 +28,7 @@ import style as st
 
 st.setup()
 R = st.REPO
-RUNS = os.path.join(R, "PINN-hybrid-ude/runs")
+RUNS = os.path.join(R, "experiments/15-hybrid-ude/runs")
 D2 = os.path.join(RUNS, "20260802_dose_response")
 D5 = os.path.join(RUNS, "20260802_dose_starts5")
 DS = os.path.join(RUNS, "20260921_dose_seeds")

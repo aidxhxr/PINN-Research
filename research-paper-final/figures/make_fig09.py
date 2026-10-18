@@ -1,6 +1,6 @@
 """Fig 9 -- the Fisher information of a learned term (training-free).
 
-Source: PINN-hybrid-ude/runs/20261017_hybrid_fim/ (hybrid_fim.py,
+Source: experiments/15-hybrid-ude/runs/20261017_hybrid_fim/ (hybrid_fim.py,
 hybrid_fim_analysis.py). S = CRLB sd(log basal) / sigma_r for the screen's
 residual model (exact states, trapezoidal residual of the hosting equation),
 with the learned term represented by the screen's own 2x5 `gated` network
@@ -23,7 +23,7 @@ from scipy.stats import spearmanr
 import style as st
 
 st.setup()
-SRC = os.path.join(st.REPO, "PINN-hybrid-ude/runs/20261017_hybrid_fim")
+SRC = os.path.join(st.REPO, "experiments/15-hybrid-ude/runs/20261017_hybrid_fim")
 res = json.load(open(os.path.join(SRC, "results.json")))["results"]
 cor = json.load(open(os.path.join(SRC, "correlations.json")))
 idx = {(r["regime"], r["design"], r["edge"]): r for r in res}

@@ -126,9 +126,9 @@ def run_study(config_path, *, root):
     write_json(out/'config.json', config)
     W, thetaP = REGIMES[regime]
     write_json(out/'parameters.json', Parameters(W=W, thetaP=thetaP).to_dict())
-    source_pdf = root/'extension/wnt_hox_ra_revised_population_dynamics.pdf'
-    source_files = list(Path(__file__).parent.glob('*.py')) + [root/'extension/run_population.py',
-                    root/'extension/README.md', root/'tests/test_population_extension.py',
+    source_pdf = root/'experiments/16-population-extension/wnt_hox_ra_revised_population_dynamics.pdf'
+    source_files = list(Path(__file__).parent.glob('*.py')) + [root/'experiments/16-population-extension/run_population.py',
+                    root/'experiments/16-population-extension/README.md', root/'tests/test_population_extension.py',
                     root/'src/wnt_pinn/cli.py', Path(config_path)]
     for src in source_files:
         dest = out/'source'/src.relative_to(root)
@@ -227,7 +227,7 @@ def run_study(config_path, *, root):
         manifest['output_hashes'] = {str(x.relative_to(out)): sha256(x.read_bytes()).hexdigest()
                                     for x in out.rglob('*') if x.is_file() and x.name!='manifest.json'}
         write_json(out/'manifest.json', manifest)
-        (root/'extension'/('LATEST_RUN.txt' if not suffix else f'LATEST_RUN{suffix}.txt')).write_text(str(out.relative_to(root))+'\n')
+        (root/'experiments/16-population-extension'/('LATEST_RUN.txt' if not suffix else f'LATEST_RUN{suffix}.txt')).write_text(str(out.relative_to(root))+'\n')
         print(f'COMPLETE: {out}', flush=True)
         return out
     except BaseException as error:

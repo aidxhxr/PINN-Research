@@ -20,7 +20,7 @@ documented below as historical material.
 | Element | Original source, relative to repository root |
 |---|---|
 | Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf`, also `poster-fable/assets/ready/schema.pdf` |
-| Equations, state order, forcing, regimes | `PINN-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
+| Equations, state order, forcing, regimes | `experiments/15-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
 | Nondimensionalization | `research-paper/paper.tex`, equations ndb–ndc |
 | Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
 | Fourier network and forward losses | `experiments/04-forward-pinn/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `research-paper/paper.tex` |
@@ -28,21 +28,21 @@ documented below as historical material.
 | Dense forward accuracy | `experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/forward_error_table.json` |
 | Sparse forward accuracy | `experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/forward_error_table.json` |
 | Autodiff recovery, Table 1 | `experiments/09-inverse-excitation/runs/20260702_153336/*_recovered.json` |
-| Integral recovery, Table 1 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral/*_recovered.json` |
-| Fisher table | `PINN-fisher-matrix/runs/20260711_203325_fisher/*_fim_summary.json` |
-| Treatment fit, Fig. 3 | `PINN-inverse-pinn-boost/runs/20260711_203325_integral` (Normal, `noATRA`/`ctrl`), cached in `data/normal_treatment_comparison.npz` (copied from the first poster) |
+| Integral recovery, Table 1 | `experiments/10-inverse-integral-residual/runs/20260711_203325_integral/*_recovered.json` |
+| Fisher table | `experiments/11-fisher-information/runs/20260711_203325_fisher/*_fim_summary.json` |
+| Treatment fit, Fig. 3 | `experiments/10-inverse-integral-residual/runs/20260711_203325_integral` (Normal, `noATRA`/`ctrl`), cached in `data/normal_treatment_comparison.npz` (copied from the first poster) |
 | Parity plot, Fig. 4 | `data/inverse_recovery.json` (integral rows); `figures/parity_plot.py` |
-| Learned MYC activation, Fig. 5 | `PINN-hybrid-ude/runs/20260727_012448_bm_myc/{Normal,Severe_APC_Loss}_term.json` |
-| Mechanistic control, Table 2 | `PINN-hybrid-ude/runs/20260726_195830_control/*_recovered.json` |
-| RA → HOXA5 hybrid, Table 2 | `PINN-hybrid-ude/runs/20260726_214316_ra_h5/*_{recovered,term}.json` |
-| Beta-catenin → MYC hybrid, Table 2 | `PINN-hybrid-ude/runs/20260727_012448_bm_myc/*_{recovered,term}.json` |
-| APC-loss hybrid, Table 2 | `PINN-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/*_{recovered,term}.json`; calibration in `runs/20260728_232743_apc_calibration/` |
+| Learned MYC activation, Fig. 5 | `experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/{Normal,Severe_APC_Loss}_term.json` |
+| Mechanistic control, Table 2 | `experiments/15-hybrid-ude/runs/20260726_195830_control/*_recovered.json` |
+| RA → HOXA5 hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/*_{recovered,term}.json` |
+| Beta-catenin → MYC hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/*_{recovered,term}.json` |
+| APC-loss hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/*_{recovered,term}.json`; calibration in `runs/20260728_232743_apc_calibration/` |
 | Full-model error comparison, Fig. 6 | The MYC, HOXA5 and control runs above; cached in `data/hybrid_comparison.json`, plotted by `figures/compare_hybrid_errors.py::poster_comparison` |
-| Five constraint forms | `notes/2026-08-01-hybrid-edge-atlas-and-anchor-visiting.md`, Result 1; `PINN-hybrid-ude/runs/20260801_204046_screen_atlas/` |
-| Historical MYC intervention comparison (removed) | `PINN-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
-| Historical prospective HOXA13 test (removed) | `PINN-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
-| Failed HOXA13 → beta-catenin intervention | `PINN-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json` |
-| Reachability analysis | `PINN-hybrid-ude/runs/20260802_anchor_reach/anchor_reach.txt` |
+| Five constraint forms | `notes/2026-08-01-hybrid-edge-atlas-and-anchor-visiting.md`, Result 1; `experiments/15-hybrid-ude/runs/20260801_204046_screen_atlas/` |
+| Historical MYC intervention comparison (removed) | `experiments/15-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
+| Historical prospective HOXA13 test (removed) | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
+| Failed HOXA13 → beta-catenin intervention | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json` |
+| Reachability analysis | `experiments/15-hybrid-ude/runs/20260802_anchor_reach/anchor_reach.txt` |
 
 The regulatory schematic's SHA-256 is
 `6836f765e455581fdfdf8bff7f8b65423f9fa1c051da3ed7afed3d80576ab086`.
@@ -134,7 +134,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
   term. No extrapolated curve is drawn through the unobserved gap.
   Dots at (0,0) denote the exact architectural anchor, not measured inputs.
 - NRMSE is RMSE divided by the RMS of the true function on the saved grid,
-  as implemented in `PINN-hybrid-ude/training.py`. The figure generator
+  as implemented in `experiments/15-hybrid-ude/training.py`. The figure generator
   recomputes both RMSE and NRMSE from the arrays. Scoring uses uniform grids
   over each regime's observed regulator range. Displayed MYC errors are
   7.9% (Normal) and 8.3% (Severe); across all four regimes the range is 6.2–9.5%.
