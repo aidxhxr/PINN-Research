@@ -3,7 +3,7 @@
 # the autodiff rung on the GPU (2026-10-17). Seed-7 ablation dropped for time.
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src:$PWD
+export PYTHONPATH="$(cd ../.. && pwd)/src:$PWD"
 OUT=../17-sensitivity-pinn/runs/20261017_paper/ablation_seed42/plumb; mkdir -p $OUT
 for r in "Normal" "Early Adenoma" "Advanced Adenoma" "Severe APC Loss"; do
   safe=${r// /_}

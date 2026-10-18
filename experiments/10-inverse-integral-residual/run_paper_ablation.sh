@@ -7,7 +7,7 @@
 #   (integral = + derivative-free residual: already in experiments/17-sensitivity-pinn/runs/20261002_integral_seed{42,7})
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src:$PWD
+export PYTHONPATH="$(cd ../.. && pwd)/src:$PWD"
 for seed in 42 7; do
   OUT=../17-sensitivity-pinn/runs/20261017_paper/ablation_seed$seed
   mkdir -p $OUT/base $OUT/plumb

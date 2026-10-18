@@ -4,7 +4,7 @@
 # 1-3), PINN heads as the initial trajectory basis.
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src
+export PYTHONPATH="$(cd ../.. && pwd)/src"
 P=../10-inverse-integral-residual/runs/20260711_203325_integral
 OUT=runs/20261002_multistart; mkdir -p $OUT
 for r in "Advanced Adenoma" "Severe APC Loss"; do

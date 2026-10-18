@@ -4,7 +4,7 @@
 # data seeds 42, 7), 4 at a time x 16 threads. Skips runs already finished.
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src:$PWD
+export PYTHONPATH="$(cd ../.. && pwd)/src:$PWD"
 Q=../17-sensitivity-pinn/runs/20261017_paper
 # (no longer waits for the MLE queues: runs alongside them at reduced parallelism)
 JOBS=()

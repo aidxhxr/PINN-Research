@@ -4,7 +4,7 @@
 # most 4 at a time.
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src:$PWD
+export PYTHONPATH="$(cd ../.. && pwd)/src:$PWD"
 while pgrep -f "python3 -u run_boost.py.*ablation_seed42" > /dev/null; do sleep 60; done
 JOBS=()
 for r in "Normal" "Early Adenoma" "Severe APC Loss"; do JOBS+=("42|base|$r"); done

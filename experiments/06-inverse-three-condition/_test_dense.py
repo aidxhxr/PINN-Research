@@ -11,7 +11,7 @@ from config import REGIMES, UNKNOWN
 from reference import generate_references
 from training import train_inverse
 
-OUT = "/tmp/claude-13253/-home-29-aidahxr-PINN-Research/241c42cf-0e25-4df5-9ae4-a57d0b23335d/scratchpad/test_dense"
+OUT = os.environ.get("TEST_DENSE_OUT", os.path.join("/tmp", "pinn_test_dense"))
 os.makedirs(OUT, exist_ok=True)
 
 # config knobs from CLI:  n_data noise_std adam lbfgs [tag]

@@ -4,7 +4,7 @@
 # from that NEW integral run (frozen state nets are keyed by the new
 # regime-safe-names, so the pre-rename seed dir would not resolve).
 set -uo pipefail
-ROOT=/home/29/aidahxr/PINN-Research
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
 echo "[queue] waiting for tmux regen_boost to finish ..."
 while tmux has-session -t regen_boost 2>/dev/null; do sleep 30; done

@@ -2,7 +2,7 @@
 # Ablations of SGN-PINN on the regimes where the PINN start is in the MLE basin.
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src
+export PYTHONPATH="$(cd ../.. && pwd)/src"
 P=../10-inverse-integral-residual/runs/20260711_203325_integral
 OUT=runs/20261002_ablate; mkdir -p $OUT
 L=1e-2,1e-1,1,10,100

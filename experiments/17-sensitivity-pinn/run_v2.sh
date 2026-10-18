@@ -4,7 +4,7 @@
 # by the LOWEST FINAL DATA MISFIT at lam=1e3 (no use of the truth).
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src
+export PYTHONPATH="$(cd ../.. && pwd)/src"
 P=${PINN_DIR:-../10-inverse-integral-residual/runs/20260711_203325_integral}
 OUT=${OUT:-runs/20261002_sgn_v2}; mkdir -p $OUT
 SEED=${DATA_SEED:-42}

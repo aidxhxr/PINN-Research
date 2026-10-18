@@ -4,9 +4,9 @@ skipping fits whose output JSON exists. 4 fits at a time; each fit has a
 import os, re, shlex, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-OUT = "runs/20261017_paper"
-env = {**os.environ, "PYTHONPATH": "/home/29/aidahxr/PINN-Research/src"}
+HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = "runs/20261017_paper"  # relative to HERE; main() changes into it
+env = {**os.environ, "PYTHONPATH": os.path.abspath(os.path.join(HERE, "..", "..", "src"))}
 
 
 def target(cmd):
@@ -34,12 +34,18 @@ def run(cmd):
         fh.write(f"{status} {time.time()-t0:.0f}s {cmd}\n")
 
 
-jobs = [l.strip() for l in open(os.path.join(OUT, "cpu_jobs.txt")) if l.strip()]
-if len(sys.argv) > 1:
-    jobs = [j for j in jobs if sys.argv[1] in j]
-NPAR = int(sys.argv[2]) if len(sys.argv) > 2 else 4
-todo = [j for j in jobs if not os.path.exists(target(j))]
-print(f"{len(todo)} of {len(jobs)} fits to run", flush=True)
-with ThreadPoolExecutor(NPAR) as ex:
-    list(ex.map(run, todo))
-print("RESUME_DONE", flush=True)
+def main():
+    os.chdir(HERE)
+    jobs = [l.strip() for l in open(os.path.join(OUT, "cpu_jobs.txt")) if l.strip()]
+    if len(sys.argv) > 1:
+        jobs = [j for j in jobs if sys.argv[1] in j]
+    npar = int(sys.argv[2]) if len(sys.argv) > 2 else 4
+    todo = [j for j in jobs if not os.path.exists(target(j))]
+    print(f"{len(todo)} of {len(jobs)} fits to run", flush=True)
+    with ThreadPoolExecutor(npar) as ex:
+        list(ex.map(run, todo))
+    print("RESUME_DONE", flush=True)
+
+
+if __name__ == "__main__":
+    main()

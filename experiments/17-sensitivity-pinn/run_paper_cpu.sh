@@ -6,7 +6,7 @@
 #       data seeds 42 and 7, weights rel (shared objective) and none (true MLE)
 set -u
 cd "$(dirname "$0")"
-export PYTHONPATH=/home/29/aidahxr/PINN-Research/src
+export PYTHONPATH="$(cd ../.. && pwd)/src"
 OUT=runs/20261017_paper
 mkdir -p $OUT/mc $OUT/ms
 JOBS=$OUT/cpu_jobs.txt; : > $JOBS
