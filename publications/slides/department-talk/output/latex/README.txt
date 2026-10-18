@@ -33,7 +33,7 @@ table. Slide composition and object placement remain unchanged.
 Figure provenance
 -----------------
 The repository was read at main tree:
-bc2aa2a74bf58cf7f1ca5ba55c8e9efe1df42eb3
+e29ecd94782f1e8216eb138a1669c4423fc97b5f
 
 Repository: https://github.com/aidxhxr/PINN-Research
 

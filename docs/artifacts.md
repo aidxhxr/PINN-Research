@@ -123,7 +123,7 @@ wnt-pinn artifacts restore github-history \
 
 The `github-history` backend reads the checked-in catalog's `history_source`.
 The initial source is commit
-`587842f8981bab4b20692d43dd6da3fc059e04e8` of `aidxhxr/PINN-Research`.
+`11286ada32b690ddad06e75ff0e9591ae9c94141` of `aidxhxr/PINN-Research`.
 The implementation accepts that repository and a complete 40-character
 commit identity for each historical input. It downloads the selected paths from GitHub's HTTPS raw
 file service, then verifies the catalog's expected size and SHA256 before

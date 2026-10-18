@@ -25635,11 +25635,11 @@
     }
   ],
   "git_blob_source": "index",
-  "git_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+  "git_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
   "history_source": {
     "backend": "github-history",
     "repository": "aidxhxr/PINN-Research",
-    "revision": "587842f8981bab4b20692d43dd6da3fc059e04e8"
+    "revision": "11286ada32b690ddad06e75ff0e9591ae9c94141"
   },
   "schema_version": 1,
   "selection": "tracked runs, checkpoints, and reference caches"

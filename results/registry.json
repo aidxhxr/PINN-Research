@@ -54,7 +54,7 @@
         }
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['forward_accuracy'], output_dir)",
@@ -151,7 +151,7 @@
         }
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['inverse_recovery'], output_dir)",
@@ -342,7 +342,7 @@
         }
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/15-hybrid-ude/training.py",
         "publications/posters/hybrid-models/figures/make_figures.py"
@@ -505,7 +505,7 @@
         }
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/11-fisher-information/fisher_matrix.py",
         "experiments/12-fisher-top8/fisher_matrix.py"
@@ -579,7 +579,7 @@
       ],
       "expected": {},
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/15-hybrid-ude/dose_response.py",
         "experiments/15-hybrid-ude/protocol_test.py"
@@ -689,7 +689,7 @@
         }
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/13-bayesian-inverse/bayesian_infer.py"
       ],
@@ -801,7 +801,7 @@
       ],
       "expected": {},
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/14-bayesian-forward/aggregate_forward.py"
       ],
@@ -861,7 +861,7 @@
         }
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "publications/posters/pinn-recovery/figures/normal_inference_plots.py"
       ],
@@ -914,7 +914,7 @@
         "saved_checkpoints": 11
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "publications/posters/pinn-recovery/figures/normal_inference_plots.py"
       ],
@@ -951,7 +951,7 @@
         "max_reported_basal_error_percent": 202.8
       },
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['constraint_screen'], output_dir)",
@@ -978,7 +978,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "publications/figures/network-diagram/schematic-better.tex"
       ],
@@ -1016,7 +1016,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/04-forward-pinn/forward-pinn-train-hybrid/pinn_core_dynamics.py"
       ],
@@ -1054,7 +1054,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/10-inverse-integral-residual/plotting.py"
       ],
@@ -1092,7 +1092,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/11-fisher-information/fisher_matrix.py"
       ],
@@ -1130,7 +1130,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/14-bayesian-forward/aggregate_forward.py"
       ],
@@ -1168,7 +1168,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/15-hybrid-ude/plot_learned_term.py"
       ],
@@ -1206,7 +1206,7 @@
         }
       ],
       "original_training_git_revision": null,
-      "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
+      "code_reference_revision": "11286ada32b690ddad06e75ff0e9591ae9c94141",
       "source_code": [
         "experiments/15-hybrid-ude/aggregate_dose.py"
       ],

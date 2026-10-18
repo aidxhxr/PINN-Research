@@ -11,7 +11,7 @@ replaces the `new-theme/` pointer folder that briefly held the link.
 ## Preservation record
 
 The inspected source revision is
-`587842f8981bab4b20692d43dd6da3fc059e04e8`. Its `new-theme/` tree is
+`11286ada32b690ddad06e75ff0e9591ae9c94141`. Its `new-theme/` tree is
 `d6d794201bac67be6f869b54f536cb862db68e66`.
 
 The subtree contains 23 tracked files totaling 3,622,196 bytes:
