@@ -11,7 +11,7 @@ assets = ["pinn-architecture.tex", "model-original.pdf", "ra-forcing.pdf",
           "fisher.pdf", "tables.tex"]
 paths += [root/"assets"/name for name in assets]
 paths += list((root/"figures").glob("*.py"))
-paths += list((root/"data").glob("*"))
+paths += [p for p in (root/"data").glob("*") if p.suffix != ".log"]
 with zipfile.ZipFile(root/"poster-latex-source.zip", "w", zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(paths):
         archive.write(path, path.relative_to(root))

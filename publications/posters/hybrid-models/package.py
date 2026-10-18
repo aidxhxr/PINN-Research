@@ -8,7 +8,7 @@ paths = [root/name for name in ["poster.pdf", "poster.tex", "README.md", "SOURCE
 assets = ["pinn-architecture.tex", "model-original.pdf", "atra-treatment.pdf", "forward.pdf", "forward-window.tex", "parity.pdf", "normal_pinn.pdf", "normal_pinn-window.tex", "learned-myc.pdf", "hybrid-errors.pdf", "hybrid_error_audit.json", "tables.tex", "swarthmore-logo.pdf"]
 paths += [root/"assets"/name for name in assets]
 paths += list((root/"figures").glob("*.py"))
-paths += list((root/"data").glob("*"))
+paths += [p for p in (root/"data").glob("*") if p.suffix != ".log"]
 with zipfile.ZipFile(root/"poster-latex-source.zip", "w", zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(paths):
         archive.write(path, path.relative_to(root))
