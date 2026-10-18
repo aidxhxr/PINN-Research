@@ -98,7 +98,7 @@ solution. The equations and parameter tables are in the paper (Methods, S1 Table
 ├── configs/            Experiment profiles for `wnt-pinn run`
 ├── results/            Result registry: metrics, source hashes and stated limits
 ├── artifacts/          Catalogue of preserved checkpoints and run outputs
-├── publications/       Posters, slides, earlier manuscripts and figure sources
+├── publications/       Posters, slides, the earlier report and figure sources
 ├── docs/               Installation, model, experiments, reproduction, decisions
 ├── scripts/            Experiment runner and kernel benchmarks
 └── tests/              Numerical parity, scoring, integrity and resume tests
@@ -205,7 +205,7 @@ Software citation metadata is in [`CITATION.cff`](CITATION.cff).
 Code is released under the [MIT License](LICENSE). The manuscript, posters,
 slides, figures and documentation are licensed under
 [CC BY 4.0](LICENSE-CC-BY-4.0.txt). Third-party material, such as the
-Swarthmore College logo on the posters, remains with its owners.
+Swarthmore College logo on the second poster and the slides, remains with its owners.
 
 ## Contact
 

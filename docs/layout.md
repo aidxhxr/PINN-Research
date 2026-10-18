@@ -42,7 +42,7 @@ PINN-Research/
 │   └── figures/           network-diagram/
 ├── results/               result registry and its saved inputs
 ├── artifacts/             catalog of archived run outputs
-├── docs/                  guides, decisions, figures, history (roadmap)
+├── docs/                  guides, decisions, figures, performance records, history
 └── .github/               continuous-integration workflows
 ```
 
@@ -100,7 +100,7 @@ A path inside a moved folder keeps its tail: for example
 | `network-diagram/` | `publications/figures/network-diagram/` |
 | `ROADMAP.md`, `ROADMAP.tex`, `ROADMAP.pdf` | `docs/history/roadmap.md`, `docs/history/roadmap.tex`, `docs/history/roadmap.pdf` |
 
-Unchanged: `src/`, `tests/`, `configs/`, `docs/`, `results/`, `artifacts/`,
+Not moved: `src/`, `tests/`, `configs/`, `docs/`, `results/`, `artifacts/`,
 `publications/catalog.json`, `publications/README.md`, `.github/` and the
 root files.
 

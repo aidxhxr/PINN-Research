@@ -1,6 +1,6 @@
 # Model and protocol compatibility
 
-Status: accepted. Recorded 2026-09-14 from the repository guide, active model
+Status: accepted. Recorded 2026-09-14 from the active model
 implementations and current publication provenance.
 
 The state order is `[b, p, h5, h13, m, r, c]`: beta-catenin, APC, HOXA5,

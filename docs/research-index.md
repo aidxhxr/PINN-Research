@@ -43,7 +43,7 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 New experiments go in fresh timestamped directories. An old folder's presence
 does not establish that every run finished. Check its logs and expected
 outputs. The first five-form constraint table (registry `constraint_screen`)
-is transcribed from a dated note whose run mapping is incomplete; a complete
+is transcribed from an unpublished dated research log whose run mapping is incomplete; a complete
 rerun of all five forms is tracked in
 `experiments/15-hybrid-ude/runs/20260921_screen_5form/`.
 
@@ -56,7 +56,7 @@ rerun of all five forms is tracked in
 | `publications/posters/hybrid-models/` | Current second poster, Amirkhan Aidarkhan and Pascal K. Kataboh; identifiability and experimental design for neural–mechanistic hybrids |
 | `publications/papers/2026-08-pinn-identifiability/` | Historical LaTeX manuscript; overlapping numerical results registered, complete text not re-audited |
 | `publications/slides/department-talk/` | Department talk, July 2026 |
-| `publications/slides/archive/beamer-dark/` | Historical presentation; current first poster uses its original posterior draws with corrected coverage accounting |
+| `publications/slides/archive/beamer-dark/` | Superseded historical presentation; current first poster uses its original posterior draws with corrected coverage accounting |
 | `publications/posters/archive/2026-08-typst/`, `publications/posters/archive/2026-09-typst-v1/` | Earlier poster versions |
 | `publications/figures/network-diagram/` | TikZ regulatory network source and reviewed PDF |
 | `docs/figures/` | Seven README figure snapshots with original-asset hashes |

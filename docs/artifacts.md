@@ -171,7 +171,7 @@ temporary files, verified, then published atomically without replacement.
 
 ## Retrieve the inputs of a registered result
 
-The Python API resolves dependencies from `results/registry.json`:
+The `fetch` command resolves dependencies from `results/registry.json`:
 
 ```bash
 wnt-pinn artifacts fetch github-history --result inverse_recovery --include-upstream

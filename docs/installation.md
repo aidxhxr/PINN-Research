@@ -91,7 +91,7 @@ cd /tmp
 /tmp/wnt-pinn-wheel-check/bin/wnt-pinn --help
 ```
 
-The package workflow performs this check outside the checkout with only base
+The `package` job of the Checks workflow performs this check outside the checkout with only base
 dependencies. This catches imports that accidentally rely on an editable
 installation or on an undeclared PyTorch dependency.
 

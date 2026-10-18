@@ -1,8 +1,9 @@
 # Registered research results
 
-[`registry.json`](registry.json) records the current README's numerical claims,
-all seven README figures, both current posters, and overlapping manuscript and
-presentation results. It contains 17 records: ten numerical groups and seven
+[`registry.json`](registry.json) records the numerical claims of both current
+posters, the seven README figure snapshots in `docs/figures/`, and results
+shared with the August 2026 report and the archived presentation. The
+manuscript in `paper/` is traced by its figure audit files instead. It contains 17 records: ten numerical groups and seven
 figure snapshots.
 
 Each record includes input paths and SHA-256 hashes, the calculation, its
@@ -38,10 +39,10 @@ predictions. Anchor screens audit saved error dictionaries. Hybrid function
 NRMSE, inverse counts, Fisher classifications, Normal state errors, and inverse
 HMC diagnostics are recomputed from their saved arrays or parameter values.
 
-The second poster's five-constraint range has a documented gap. Its full
+The five-constraint range (on earlier versions of the second poster) has a documented gap. Its full
 original five-form run mapping has not been recovered. The tracked
 [`constraint_screen_transcription.json`](inputs/constraint_screen_transcription.json)
-preserves the dated note's table and source hash. Recomputing the range of that
+preserves the unpublished dated research log's table and source hash. Recomputing the range of that
 table does not verify the underlying fits.
 
 Input files are necessary for reproduction. `upstream` files document the

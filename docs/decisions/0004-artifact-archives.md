@@ -1,9 +1,12 @@
 # Artifact archives and the public research history
 
+Status: accepted. Recorded 2026-09-14.
+
 The migration preserves historical artifacts in a SHA256 catalog, external
 local archives and independently restored compressed shards. The local object
 cache can use hard links; compressed shards are separate file contents.
-All 2,924 archived files were restored from shards and verified before their
+All 2,924 archived files (2,848 catalog entries since the duplicate
+`PINN-inverse-better-copy` folder was dropped) were restored from shards and verified before their
 ordinary Git tracking changed. The historical inverse baseline remains tracked.
 
 Small inputs needed to reproduce current reported results are cached under

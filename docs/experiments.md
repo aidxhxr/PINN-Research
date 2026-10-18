@@ -5,7 +5,7 @@ trainers. It preserves the existing training stages and writes new runs below
 `runs/`. Historical scripts still use their original defaults. The untouched
 `experiments/05-inverse-single-condition/` baseline is outside this runner.
 
-The runner requires a POSIX system with tmux and process signals.
+The runner requires a POSIX system (it uses `fcntl` locks and process signals).
 
 Run jobs in tmux so they survive a dropped connection, and keep a record of
 each run's purpose, output path, date and status. Start with the CPU execution

@@ -1,7 +1,7 @@
 # MYC and APC learned terms
 
-Status: accepted. Tracked 2026-09-14 from the implementation and the dated
-2026-07-28 MYC/APC protocol note.
+Status: accepted. Recorded 2026-09-14 from the implementation and the July
+2026 MYC/APC runs in `experiments/15-hybrid-ude/`.
 
 The default learned activation is a shared two-hidden-layer tanh network
 with five units per layer, nonnegative output and exact zero-input anchor.

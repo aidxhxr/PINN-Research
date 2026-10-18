@@ -7,7 +7,9 @@ Parameter recovery means absolute relative error strictly below 10%. Counts
 always include their denominator. The matched ten-condition inverse comparison
 is 37 versus 50 out of 144 parameter-regime pairs. This is a gain of 13 pairs,
 not a doubling. Residual formulation, relative weights, collocation and starts
-changed together; the result cannot be attributed to one change in isolation.
+changed together; this comparison cannot attribute the gain to one change. A
+later matched ablation (paper Fig 5A; `experiments/17-sensitivity-pinn/runs/20261017_paper/ablation_seed42/`)
+credits the relative weights and fixed collocation, not the integral residual.
 
 Hybrid comparisons use the intersection of remaining parameter sets per regime
 and verify matching true values. RA-HOXA5 is 51 versus 53 out of 136; beta-MYC
