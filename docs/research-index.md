@@ -49,7 +49,7 @@ the dated note exists, but its complete original run mapping is unavailable.
 | `publications/posters/hybrid-models/` | Current second poster, Amirkhan Aidarkhan and Pascal Kataboh; learned mechanisms and anchor-reaching interventions |
 | `research-paper/` | Historical LaTeX manuscript; overlapping numerical results registered, complete text not re-audited |
 | `presentation/` | Historical presentation; current first poster uses its original posterior draws with corrected coverage accounting |
-| `research-poster/`, `research-poster-v1/` | Earlier publication versions |
+| `publications/posters/archive/2026-08-typst/`, `publications/posters/archive/2026-09-typst-v1/` | Earlier publication versions |
 | `network-diagram/` | TikZ regulatory network source and reviewed PDF |
 | `docs/figures/` | Seven README figure snapshots with original-asset hashes |
 
