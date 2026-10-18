@@ -1,64 +1,80 @@
-LOGS.md
-CLAUDE.md
-/experiments/05-inverse-single-condition/inverse_pinn_architecture.png
+# ---------------------------------------------------------------------------
+# Python, packaging and local environments
+# ---------------------------------------------------------------------------
 __pycache__/
-*.aux
-/experiments/06-inverse-three-condition/architecture.log
-
-# stray LaTeX build artifacts from root-dir compiles
-/build.log
-/texput.log
-
-# Local working notes and agent instruction files
-notes/
-/AGENTS.md
-
-# Local-only material: third-party papers, personal drafts, snapshots
-/private/
-/paper/cover_letter.tex
-# Supplied third-party report and a talk script for its author
-experiments/16-population-extension/wnt_hox_ra_revised_population_dynamics.pdf
-experiments/16-population-extension/web/
-/experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.log
-
-# macOS finder junk
-.DS_Store
-
-# Beamer/LaTeX build output -- only the sources and the final PDF are tracked
-/publications/slides/archive/beamer-dark/build/
-*.nav
-*.snm
-*.toc
-*.out
-
-# department-talk scratch: images/text extracted from the source PDF
-/publications/slides/department-talk/tmp/
-/publications/slides/department-talk/output/latex/*.log
-
-# research-paper build output -- .tex/.bib/figures and the final PDF are tracked
-/publications/papers/2026-08-pinn-identifiability/*.log
-/publications/papers/2026-08-pinn-identifiability/*.blg
-/publications/papers/2026-08-pinn-identifiability/*.bbl
-
-# Package builds and local environments
+*.py[cod]
 *.egg-info/
+.ipynb_checkpoints/
 /build/
 /dist/
 /.venv/
 /.pytest_cache/
 /.ruff_cache/
-*.py[cod]
-*.pt
-.ipynb_checkpoints/
 
-# New experiment outputs and local artifact stores
+# ---------------------------------------------------------------------------
+# Experiment outputs
+# Runs are git-ignored. Runs cited by the paper or the result registry are
+# force-added (git add -f) or catalogued in artifacts/catalog.json; ignoring a
+# path never untracks a file that is already tracked.
+# ---------------------------------------------------------------------------
 /runs/
-/.artifact-store/
-/artifacts/receipts/
-
-# Historical run artifacts are indexed in artifacts/catalog.json.
-# Existing baseline files remain tracked; ignored does not remove tracked files.
 **/runs/
 !/src/wnt_pinn/runs/
 !/src/wnt_pinn/runs/*.py
+*.pt
+/.artifact-store/
+/artifacts/receipts/
 
+# Regenerated diagrams and logs inside experiment folders
+/experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.log
+/experiments/05-inverse-single-condition/inverse_pinn_architecture.png
+/experiments/06-inverse-three-condition/architecture.log
+
+# ---------------------------------------------------------------------------
+# LaTeX and Typst build output (sources and final PDFs are tracked)
+# ---------------------------------------------------------------------------
+*.aux
+*.nav
+*.snm
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+/build.log
+/texput.log
+/paper/figures/*.log
+/publications/figures/network-diagram/*.log
+/publications/papers/2026-08-pinn-identifiability/*.log
+/publications/papers/2026-08-pinn-identifiability/*.blg
+/publications/papers/2026-08-pinn-identifiability/*.bbl
+/publications/slides/archive/beamer-dark/build/
+/publications/slides/department-talk/output/latex/*.log
+# images and text extracted from the original slide export
+/publications/slides/department-talk/tmp/
+
+# ---------------------------------------------------------------------------
+# Local-only material (kept on disk, never published)
+# ---------------------------------------------------------------------------
+# third-party papers, personal drafts, snapshots and other private files
+/private/
+# dated research notes and coding-agent instruction files
+/notes/
+/AGENTS.md
+/CLAUDE.md
+/LOGS.md
+/.claude/
+# journal submission correspondence
+/paper/cover_letter.tex
+# report supplied by another author, and a talk script addressed to them
+/experiments/16-population-extension/wnt_hox_ra_revised_population_dynamics.pdf
+/experiments/16-population-extension/web/
+
+# ---------------------------------------------------------------------------
+# Editors and operating systems
+# ---------------------------------------------------------------------------
+.DS_Store
+*.asv
+*.swp
+.vscode/
+.idea/
