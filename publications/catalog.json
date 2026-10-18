@@ -3,9 +3,9 @@
   "publications": [
     {
       "id": "poster_first",
-      "title": "Physics-informed neural networks: dynamics and parameter recovery",
+      "title": "Physics-Informed Neural Networks for Forward Modeling and Parameter Inference in a Reduced WNT-RA-HOX Model of Colorectal Cancer Initiation",
       "status": "current",
-      "authors": ["Nathaniel Kim", "Pascal Kataboh"],
+      "authors": ["Nathaniel Kim", "Amirkhan Aidarkhan", "Pascal K. Kataboh"],
       "source_directory": "publications/posters/pinn-recovery",
       "preview_url": "http://localhost:8003/first/poster.pdf",
       "result_ids": ["normal_treatment", "training_diagnostics", "inverse_recovery", "fisher_information", "hmc_diagnostics", "figure_network"],
@@ -18,9 +18,9 @@
     },
     {
       "id": "poster_second",
-      "title": "Neural-mechanistic hybrids and physics-informed neural networks",
+      "title": "Identifiability and Experimental Design for Neural-Mechanistic Hybrid Models Using Physics-Informed Neural Networks in Colorectal Cancer",
       "status": "current",
-      "authors": ["Amirkhan Aidarkhan", "Pascal Kataboh"],
+      "authors": ["Amirkhan Aidarkhan", "Pascal K. Kataboh"],
       "source_directory": "publications/posters/hybrid-models",
       "preview_url": "http://localhost:8003/second/poster.pdf",
       "result_ids": ["forward_accuracy", "inverse_recovery", "hybrid_comparison", "fisher_information", "hmc_diagnostics", "anchor_interventions", "constraint_screen", "figure_network"],
