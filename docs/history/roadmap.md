@@ -1,8 +1,10 @@
 > Historical narrative. This document preserves earlier interpretations and
-> is not the current result authority. Use [the research index](docs/research-index.md),
-> [registered results](results/registry.json), and current poster source notes.
+> is not the current result authority. Use [the research index](../research-index.md),
+> [registered results](../../results/registry.json), and current poster source notes.
 > Later checks corrected several claims, including structural-identifiability
 > language and the size of the matched inverse-recovery improvement.
+> Folder names below are the original ones; [the layout guide](../layout.md)
+> maps them to `experiments/NN-name/`.
 
 # PINN-Research — a chronological review
 

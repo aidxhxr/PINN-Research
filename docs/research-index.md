@@ -33,7 +33,7 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 | `experiments/06-inverse-three-condition/`, `experiments/08-inverse-small-networks/` | Earlier optimization and identifiability attempts; retain for historical comparison |
 | `experiments/01-model-prototypes/`, `experiments/02-original-pinn/`, `experiments/03-global-sensitivity/` | Early prototypes, the original PINN notebooks, and sensitivity-analysis tables |
 | `experiments/15-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
-| `ROADMAP.md` | Chronological historical narrative, with superseded interpretations |
+| `docs/history/roadmap.md` | Chronological historical narrative, with superseded interpretations |
 | [Ecology project](https://github.com/aidxhxr/ecosystem-engineer-model) | Separate ecology research topic; outside the WNT package and result registry |
 
 New experiments go in fresh timestamped directories. An old folder's presence
