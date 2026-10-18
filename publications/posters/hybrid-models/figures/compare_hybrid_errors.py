@@ -25,6 +25,9 @@ import numpy as np
 REPO = Path(__file__).resolve().parents[4]
 DEFAULT_INPUT = REPO / 'publications/posters/hybrid-models/data/hybrid_comparison.json'
 REGIMES = ['Normal', 'Early Adenoma', 'Advanced Adenoma', 'Severe APC Loss']
+# The saved comparison records run folders under their names before the
+# October 2026 layout change (see docs/layout.md).
+MOVED = {'PINN-hybrid-ude': 'experiments/15-hybrid-ude'}
 SHORT = ['Normal', 'Early adenoma', 'Advanced adenoma', 'Severe APC loss']
 COLORS = ['#64748B', '#1F77B4']
 LABELS = ['Mechanistic', 'Hybrid (neural regulation)']
@@ -47,6 +50,11 @@ SPECS = {
         'expected_counts': (51, 53, 136),
     },
 }
+
+
+def moved(rel):
+    head, sep, tail = str(rel).partition('/')
+    return MOVED.get(head, head) + sep + tail
 
 
 def digest(path):
@@ -93,12 +101,12 @@ def collect(data, keys, repo, cached_only):
             counts[2] += len(common)
             for side, folder in [('control', 'control_source'), ('hybrid', 'source')]:
                 if not cached_only:
-                    path = repo / row[folder] / (regime.replace(' ', '_') + '_recovered.json')
+                    path = repo / moved(row[folder]) / (regime.replace(' ', '_') + '_recovered.json')
                     original = json.loads(path.read_text())
                     assert all(original[name] == row[side][name] for name in ['recovered', 'true'])
                     audit[str(path.relative_to(repo))] = digest(path)
             if not cached_only:
-                path = repo / row['source'] / (regime.replace(' ', '_') + '_term.json')
+                path = repo / moved(row['source']) / (regime.replace(' ', '_') + '_term.json')
                 original = json.loads(path.read_text())
                 assert original == row['term']
                 audit[str(path.relative_to(repo))] = digest(path)
