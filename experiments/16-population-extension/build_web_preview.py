@@ -135,9 +135,8 @@ def publish(server):
         elif link.exists():
             raise FileExistsError(f'Refusing to replace existing directory: {link}')
         link.symlink_to(target,target_is_directory=True)
-    print('http://localhost:8003/extension_plots/index.html')
-    print('http://localhost:8003/extension_plots/all_figures.pdf')
-    print('http://localhost:8003/extenstion_report/html')
+    for route in ('extension_plots/index.html', 'extension_plots/all_figures.pdf', 'extenstion_report/html'):
+        print(f'Served at <preview server>/{route} (from {server})')
     print(f'HTML source: {report / "index.html"}')
 
 

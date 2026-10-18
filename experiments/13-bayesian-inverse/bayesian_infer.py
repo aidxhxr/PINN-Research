@@ -1,8 +1,8 @@
 """Bayesian inverse PINN (Tier 1): posterior over the 36 ODE parameters given
 the FROZEN pinn-boost state surrogates and the derivative-free integral residual.
 
-Motivation (see notes/2026-07-07-bayesian-pinn.md)
---------------------------------------------------
+Motivation (see this folder's README)
+-------------------------------------
 The `pinn-boost` integral-residual run is the best-working inverse PINN we have
 (17/16/10/7 under 10%). Its Stage-3 "parameter refinement on FROZEN nets"
 (training.py) is a *point* MAP estimate: it freezes the data-pinned state nets

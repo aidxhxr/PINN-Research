@@ -36,7 +36,7 @@ Design choices carried over from the rest of the study
     without spending sampled dofs.
   * CALIBRATED noise scales. The inverse run's first attempt miscalibrated
     sigma_res against a 210k-term residual sum and collapsed the posterior to a
-    stuck pinpoint (see notes/2026-07-07-bayesian-pinn.md). Here every noise
+    stuck pinpoint (see experiments/13-bayesian-inverse/README.md). Here every noise
     scale is set to the residual RMS at the MAP (reduced chi^2 = 1 per term) on
     a MODEST fixed collocation grid, so the physics likelihood cannot blow up
     with collocation count.

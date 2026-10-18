@@ -1,4 +1,4 @@
-"""Compare the previous and fused final reduction; run in a recorded tmux session.
+"""Compare the previous and fused final reduction; run it inside tmux.
 
 Host timings include dispatch and allocation. CUDA graph timings isolate device
 work and are not a prediction for the trainers, which do not use CUDA graphs.

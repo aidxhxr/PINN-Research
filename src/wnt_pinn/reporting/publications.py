@@ -20,9 +20,9 @@ def load_catalog(root):
 
 
 def build_publication(root, publication_id, output_dir, figures_only=False):
-    """Build a fresh copy, preserving the reviewed PDFs and their preview URLs.
+    """Build a fresh copy, leaving the reviewed PDFs untouched.
 
-    Run this function inside the recorded tmux validation/build session.
+    Long builds are best run in a persistent terminal session (for example tmux).
     A publication build never launches training or inference.
     """
     root, output_dir = Path(root).resolve(), Path(output_dir).resolve()
