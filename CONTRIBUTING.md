@@ -76,5 +76,5 @@ author list.
 
 A research release should identify its source revision, include checksums and
 reproduction instructions, and state which reported results were verified.
-Choose and record the project's license before distributing a release under
-a reuse grant. The repository currently does not declare a license.
+Code is released under the [MIT License](LICENSE); text, figures, posters,
+slides and other documentation under [CC BY 4.0](LICENSE-CC-BY-4.0.txt).

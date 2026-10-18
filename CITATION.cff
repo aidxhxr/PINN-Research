@@ -11,6 +11,7 @@ authors:
     affiliation: Swarthmore College
     email: aaidark1@swarthmore.edu
 repository-code: "https://github.com/aidxhxr/PINN-Research"
+license: MIT
 url: "https://github.com/aidxhxr/PINN-Research"
 abstract: >-
   Forward and inverse physics-informed neural networks, local identifiability
