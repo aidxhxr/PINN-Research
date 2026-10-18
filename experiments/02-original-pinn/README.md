@@ -45,8 +45,8 @@ the runner-up), which does not depend on the box.
 - Physics in PyTorch (`wnt_model_physics.py`) and a SciPy BDF reference
   (`wnt_reference_solver.py`, rtol 1e-8, atol 1e-10), for constant (K16 = 30)
   and dynamic K16.
-- Network (`wnt_pinn_trainer.py`): tanh MLP, 5 layers × 128 units, two fixed
-  Fourier features at the forcing frequency, hard initial-condition
+- Network (`wnt_pinn_trainer.py`): tanh MLP, 5 layers × 128 units, fixed
+  sin/cos features at the forcing frequency and twice it, hard initial-condition
   constraint, learnable per-state output scale.
 - Training (`PINN_solution.py`): windows of length 500 pinned at the WNT
   on/off times (3000, 25000); adaptive per-equation residual weights; per

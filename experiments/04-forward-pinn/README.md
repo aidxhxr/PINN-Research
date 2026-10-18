@@ -62,7 +62,7 @@ APC.
 | `forward_pinn_train/compare_grid6.py`, `scipy_core_dynamics*.py` | six-panel overlay; reference-only figures |
 | `forward-pinn-train-hybrid/architecture.{tex,pdf}` | network diagram |
 | `forward_pinn_train/runs/20260711_203325/`, `forward-pinn-train-hybrid/runs/20260712_204546/` | the two tracked runs (dense, sparse): final checkpoints, histories, error tables |
-| `*.ipynb` (top level) | early prototypes: a seven-state forward PINN, a 27-state windowed PINN, SciPy solves, an environment probe |
+| `*.ipynb` (top level) | early prototypes: a seven-state forward PINN, a 27-state windowed PINN and two identical SciPy solves |
 
 ## Reproduce
 

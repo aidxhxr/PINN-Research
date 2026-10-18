@@ -22,7 +22,7 @@ Normal / Early adenoma / Advanced adenoma / Severe APC loss.
 |---|---|---|---|---|
 | 01 | [Model prototypes](01-model-prototypes/) | Where do the model and the code base come from? | The 27-state MATLAB model, its SciPy ports and the first notebooks; provenance only | Archived |
 | 02 | [Original PINN](02-original-pinn/) | Can a PINN solve the 27-state system, and which parameters drive the seven-ODE outputs? | Corrected sensitivity analysis: with `θP ≤ 1`, Sobol S1(`θP`) falls from 0.750 to 0.154 | Archived |
-| 03 | [Global sensitivity](03-global-sensitivity/) | Which of the 30 rate constants of the 27-state model could be fixed? | 22 keep, 8 fix; strongly interacting (Σ ST 1.9–4.9) | Complete |
+| 03 | [Global sensitivity](03-global-sensitivity/) | Which of the 30 parameters of the 27-state model could be fixed? | 22 keep, 8 fix; strongly interacting (Σ ST 1.9–4.9) | Complete |
 
 ## Forward PINN
 
@@ -34,7 +34,7 @@ Normal / Early adenoma / Advanced adenoma / Severe APC loss.
 
 | # | Experiment | Question | Headline result | Status |
 |---|---|---|---|---|
-| 05 | [Single condition](05-inverse-single-condition/) | Can an inverse PINN recover the parameters from one noisy trajectory? | `W` within 5.2% in every regime; all 36 unknowns: 26 of 144 | Protected |
+| 05 | [Single condition](05-inverse-single-condition/) | Can an inverse PINN recover the parameters from one noisy trajectory? | `W` within 5.1% in every regime (two unknowns); all 36 unknowns: 26 of 144 | Protected |
 | 06 | [Three conditions](06-inverse-three-condition/) | Do three conditions and better conditioning rescue it? | 30 of 144 | Superseded |
 | 07 | [Six conditions](07-inverse-six-condition/) | Do six conditions help, and does a classical ODE fit do better? | PINN 26 of 144; ODE fit 61 of 144 | Superseded |
 | 08 | [Small networks](08-inverse-small-networks/) | Is network over-capacity the cause? | 25 of 144: capacity is not the lever | Complete (negative) |

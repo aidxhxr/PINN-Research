@@ -6,7 +6,7 @@ species, solved with `ode15s` to t = 30000). This folder keeps that model and
 its driver, the SciPy ports that made it usable from Python, the scratch
 notebooks that first tried a physics-informed neural network (PINN) on it, and
 a few early figures. It answers no research question on its own; it records
-provenance. Every experiment from [04](../04-forward-pinn/) onward uses the
+provenance. The PINN and identifiability experiments from [04](../04-forward-pinn/) onward use the
 reduced seven-state model specified in [docs/model.md](../../docs/model.md).
 
 | | |
@@ -51,7 +51,7 @@ No quantitative result is claimed from this folder. What it produced:
 | `matlab/modelsys_2025_k16dynamic.m` | 27-state MATLAB model (dynamic K16) |
 | `matlab/normasysl_call.m` | MATLAB driver: parameters, constant vs dynamic K16 plots |
 | `matlab/modelsys_2025_k16dynamic_converted.py` | SciPy port of the MATLAB function (module) |
-| `matlab/practice/practice_scripts.m` (+ `.asv` autosave) | personal MATLAB tutorial exercise; unrelated to the model |
+| `matlab/practice/practice_scripts.m` | personal MATLAB tutorial exercise; unrelated to the model |
 | `notebooks/modelsys_2025_k16dynamic_converted.{ipynb,py}` | second SciPy port; the `.py` has a runnable driver |
 | `notebooks/modelsys_smaller.py` | APC / β-catenin–TCF submodel |
 | `notebooks/wnt_pinn_starter.ipynb` | two-state toy PINN (supervised stage, then residual) |

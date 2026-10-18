@@ -47,8 +47,8 @@ Parameters within 10% of truth, out of 36 per regime:
   retinoid conditions of [07](../07-inverse-six-condition/). Data: 150 points
   per condition, noise sd 0.002, seed 42.
 - ODE fit (`recover_odefit.py`): as in [07](../07-inverse-six-condition/),
-  plus relative-error weighting with a 0.05 scale floor, 4 starts jittered
-  around the +50% guess (sd 0.35 in unconstrained space), lowest cost kept,
+  plus relative-error weighting with a 0.05 scale floor, 4 starts (the +50%
+  guess and three copies jittered with sd 0.35 in unconstrained space), lowest cost kept,
   `max_nfev=80`.
 - PINN (`main.py`): the [07](../07-inverse-six-condition/) PINN unchanged
   (autodiff residual, Stage-3 refinement), one start.

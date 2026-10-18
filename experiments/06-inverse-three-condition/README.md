@@ -7,8 +7,9 @@ each with its own state network, sharing one set of 36 parameters. It adds a
 log parameterization, decoupled learning-rate schedules that fix a
 learning-rate freeze bug, adaptive gradient-norm loss weighting and
 per-parameter identifiability reports. The gain is small: 30/144
-parameter–regime pairs within 10%, against 26/144 from one condition, and W
-and θP got worse in the Normal regime. Controlled diagnostics run from this
+parameter–regime pairs within 10%, against 26/144 from one condition. In the
+Normal regime W and θP still ended 21% and 27% off (05 had both within 1.2%
+when only those two were unknown). Controlled diagnostics run from this
 folder located the cause: gradient starvation and autodiff-derivative bias.
 
 | | |
@@ -31,8 +32,9 @@ Run `runs/20260629_162528` (36 unknowns, 3 conditions), parameters within
 | **Total** | **30/144** | | |
 
 The signature is low loss at the wrong parameters. In the Normal regime W
-rose to about 0.986 within 100 Adam epochs and stayed at 0.981–0.986 for the
-remaining 2900 epochs while the total loss fell 100-fold.
+fell from its start of 1.19 to 0.974 within 100 Adam epochs and stayed at
+0.974–0.986 for the remaining 2900 epochs while the total loss fell almost
+400-fold (1.2e-1 to 3.0e-4).
 
 Diagnostics (Normal regime; scripts and logs in this folder):
 
@@ -84,7 +86,7 @@ python3 plot_error.py runs/<timestamp>/
 python3 _test_ncond.py 6             # diagnostic: number of conditions as argument
 ```
 
-`_test_dense.py` writes to a hard-coded scratch directory; set `OUT` first.
+`_test_dense.py` writes to `/tmp/pinn_test_dense` unless `TEST_DENSE_OUT` is set.
 
 ## Notes
 

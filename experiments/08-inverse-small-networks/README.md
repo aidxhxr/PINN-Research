@@ -52,7 +52,8 @@ that minimum was not at the true parameters.
 | `training.py` | alternating optimization (`net_steps`, `par_steps`), separate network/parameter optimizers |
 | `identifiability.py`, `plot_error.py` | verdict table; error-vs-iteration plot |
 | `recover_odefit.py` | unchanged copy of the ODE fit in [07](../07-inverse-six-condition/); not run here |
-| `config.py`, `model.py`, `odes.py`, `residual.py`, `reference.py`, `plotting.py`, `metrics.py` | copied unchanged from [07](../07-inverse-six-condition/) |
+| `config.py`, `model.py`, `odes.py`, `residual.py`, `reference.py`, `metrics.py` | copied unchanged from [07](../07-inverse-six-condition/) |
+| `plotting.py` | as in 07, with log10 loss axes and a history reloader |
 
 ## Reproduce
 
