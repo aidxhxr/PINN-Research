@@ -69,7 +69,7 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--max-nfev", type=int, default=400)
     ap.add_argument("--jitter-seed", type=int, default=None,
-                    help="add N(0, 0.35^2) jitter in log space to the +50% init")
+                    help="add N(0, 0.35^2) jitter in log space to the +50%% init")
     ap.add_argument("--weights", default="rel", choices=["rel", "none"],
                     help="rel = the PINN's 1/max|y| state weights (shared benchmark "
                          "objective); none = the true iid-Gaussian MLE")
