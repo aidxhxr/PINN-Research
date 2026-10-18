@@ -203,7 +203,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
   errors span 13.8–202.8%. This range is transcribed from an unpublished dated
   research log. The complete original five-form run mapping has not been recovered;
   the cited screen-atlas directory contains gated/sc cases and cannot verify
-  all five forms. A tracked transcription and source-note hash are in
+  all five forms. A tracked transcription and its source hash are in
   `results/inputs/constraint_screen_transcription.json`. This provenance
   limit is retained here; the range is omitted from the shortened poster.
 - The intervention screens use exact reference states, fit one host equation,
@@ -214,6 +214,9 @@ Its geometry, colors, labels, legend and edges are unchanged.
   These are not hybrid-minus-control differences.
 - The MYC arms each use 11 conditions at every dose. Table 3 uses k=0:
   Normal 2.170 → 0.021%; Severe 1.550 → 0.006%. None is rounded to zero.
+  The abstract's "prospective testing confirms predictions" refers to the
+  MYC→HOXA13 protocol (12.8% → 0.1% Normal, 95.6% → 0.05% Severe); the
+  HOXA13→β-catenin prediction failed, as flagged in advance (S4 Table).
   The underlying dose series remains in the packaged data.
 - The prospective HOXA13 baseline has 10 conditions and the two depletion
   protocols each have 11. The baseline, beta-catenin depletion and MYC
