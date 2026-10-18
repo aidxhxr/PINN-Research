@@ -25,7 +25,7 @@
       "input_globs": ["*.tex", "*.py", "*.sh", "*.md", "assets/*", "data/*.json", "data/*.npz", "data/*.txt", "figures/*.py"],
       "build_commands": [["bash", "build.sh"]],
       "figure_command": ["{python}", "figures/make_figures.py"],
-      "figure_outputs": ["assets/forward.pdf", "assets/posterior.pdf", "assets/learned-myc.pdf", "assets/tables.tex"],
+      "figure_outputs": ["assets/forward.pdf", "assets/parity.pdf", "assets/learned-myc.pdf", "assets/tables.tex"],
       "outputs": ["poster.pdf", "preview.png", "verification.json", "poster-latex-source.zip"],
       "validation_scope": "Registered numerical claims; saved-array figures; one 48 by 36 inch page; embedded fonts; no overflowing text or altered network schematic. Constraint-screen range remains a documented historical transcription."
     },
