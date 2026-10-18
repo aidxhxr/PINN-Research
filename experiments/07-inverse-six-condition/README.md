@@ -81,8 +81,8 @@ directory.
   the ten-condition version of this script in [09](../09-inverse-excitation/)
   (`max_nfev=80`, finite-difference Jacobians on an LSODA solve at rtol
   1e-7). This version stops even earlier (`max_nfev=40`, one start). A
-  converged maximum-likelihood fit on the ten-condition benchmark recovers
-  35/34/33/20 = 122/144 from the same +50% start; the Severe fit stops in a
+  converged (tight-tolerance) maximum-likelihood fit on the ten-condition benchmark recovers
+  all 34 regular parameters in every regime from the same +50% start; an earlier default-tolerance fit gave 35/34/33/20 = 122/144, with the Severe fit in a
   local minimum ([17](../17-sensitivity-pinn/)).
 - The PINN's "about 8/36" ceiling was broken later by changing the estimator,
   not the network ([10](../10-inverse-integral-residual/),

@@ -59,7 +59,7 @@ per regime, i.e. all 36 minus the structurally degenerate pair
   pins to 10<sup>−3</sup> come back at 10<sup>−1</sup>. In the matched
   ablation, the derivative-free integral residual adds nothing on top of
   relative weighting and fixed collocation (17/15/10/7 against 21/19/10/10).
-  **Weighting carries the gain, not the integral residual.**
+  **Weighting and fixed collocation carry the gain, not the integral residual.**
 - **SGN-PINN (Fig 6, Section 2.6).** On the held-out seed-7 data it recovers
   34/34/33/30, with median errors 0.11%, 0.20%, 1.1% and 1.5%. Where the λ
   continuation converges (Normal, Early and Advanced on seed 7; Normal and

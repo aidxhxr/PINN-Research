@@ -27,7 +27,7 @@ eigen-directions differ from individual parameter verdicts. The eight-parameter
 analysis fixes the other 28 at truth; no reduced-parameter PINN recovery result
 has been established by that calculation.
 
-Inverse HMC conditions on frozen state networks. Saved chains fail ESS and
+Inverse HMC conditions on frozen state networks. No saved chain passes both the ESS and
 coverage checks, so their posterior widths cannot be interpreted as calibrated
 uncertainty. The first poster's presentation-derived Normal coverage is 19/36
 from the saved samples, not the plotting script's manual 18/36 override.

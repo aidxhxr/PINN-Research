@@ -3,7 +3,7 @@
 [`registry.json`](registry.json) records the numerical claims of both current
 posters, the seven README figure snapshots in `docs/figures/`, and results
 shared with the August 2026 report and the archived presentation. The
-manuscript in `paper/` is traced by its figure audit files instead. It contains 17 records: ten numerical groups and seven
+manuscript in `paper/` is traced by its figure audit files instead. The registry contains 17 records: ten numerical groups and seven
 figure snapshots.
 
 Each record includes input paths and SHA-256 hashes, the calculation, its

@@ -6,7 +6,7 @@ the revised population-dynamics report
 `wnt_hox_ra_revised_population_dynamics.pdf` (supplied privately; not in the repository). The report extends the
 molecular network with four HOX-program scores and three cell populations,
 14 states in total. There are no neural networks, fitted parameters or
-copied curves. The reproduction matches the report's Table 8, 11 and 12 Severe APC
+copied curves. The reproduction matches the report's Tables 8, 11 and 12 Severe APC
 Loss readouts to within 0.001: ATRA lowers the stem-like population by 30%
 while raising the reduced HOX index. A Normal-regime run, which the report
 does not plot, responds more strongly on every readout except the CYP26A1 fold change.

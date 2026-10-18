@@ -1,7 +1,7 @@
 # Department talk (July 2026)
 
 **Physics-Informed Neural Network for a Reduced WNT-HOX-Retinoic Acid Model of
-Colorectal Cancer**
+Colorectal Cancer**\
 Amirkhan Aidarkhan and Nathaniel Kim; advisor Pascal K. Kataboh. Department
 of Mathematics & Statistics, Swarthmore College, 21 July 2026.
 

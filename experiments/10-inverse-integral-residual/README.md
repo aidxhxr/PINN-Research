@@ -103,9 +103,7 @@ bash run_paper_ablation_plumb.sh  # plumb rung, seed 42 only
 
 The paper uses the seed-42 `base` jobs of the first script and the `plumb`
 rung of the second. The seed-7 ablation was not run. The `run_paper_ablation*`
-scripts put this checkout's `src/` on `PYTHONPATH` themselves.
-Alternatively, install the package with
-`pip install -e '.[ml]'`. Both scripts pass `--device cuda` and need a GPU, despite the `_cpu` name of the first.
+scripts put this checkout's `src/` on `PYTHONPATH` themselves. Both scripts pass `--device cuda` and need a GPU, despite the `_cpu` name of the first.
 
 `PINN_DEVICE`, `PINN_THREADS` and `PINN_CONCURRENCY` control the device,
 threads per regime and number of parallel regimes. Run long jobs in a

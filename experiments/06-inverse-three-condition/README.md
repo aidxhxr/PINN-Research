@@ -32,7 +32,7 @@ Run `runs/20260629_162528` (36 unknowns, 3 conditions), parameters within
 | **Total** | **30/144** | | |
 
 The signature is low loss at the wrong parameters. In the Normal regime W
-fell from its start of 1.19 to 0.974 within 100 Adam epochs and stayed at
+fell from its start of 1.20 to 0.974 within 100 Adam epochs and stayed at
 0.974–0.986 for the remaining 2900 epochs while the total loss fell almost
 400-fold (1.2e-1 to 3.0e-4).
 

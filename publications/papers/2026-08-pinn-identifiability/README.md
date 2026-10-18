@@ -1,7 +1,7 @@
 # PINN approximation and identifiability report (August 2026)
 
 **A Reduced WNT–HOX–Retinoic Acid Model of Colorectal Cancer Stemness and Its
-Approximation by Physics-Informed Neural Networks**
+Approximation by Physics-Informed Neural Networks**\
 Amirkhan Aidarkhan, Nathaniel Kim and Pascal Kataboh, August 2026.
 
 [PDF](paper.pdf) (52 pages, 47 references) · [source](paper.tex)

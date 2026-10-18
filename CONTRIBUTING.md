@@ -73,8 +73,8 @@ artifacts are tracked.
 
 ## Citation, releases and licensing
 
-Use [CITATION.cff](CITATION.cff) for the repository's software citation and
-include the specific Git commit and result identifier. Publication author
+[CITATION.cff](CITATION.cff) names the paper as the preferred citation; when citing
+the code, include the Git commit or tag and, for a registered result, its identifier. Publication author
 lists are recorded with each publication and may differ from the software
 author list.
 

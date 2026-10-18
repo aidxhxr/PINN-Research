@@ -81,17 +81,17 @@ the repository root) recomputes the registered 37 vs 50 from saved files.
 
 - **The classical fit here is under-converged.** `max_nfev=80` with
   finite-difference Jacobians on an LSODA solve at rtol 1e-7 is the source of
-  the old "13–18/36 ceiling". A converged maximum-likelihood fit on the
-  matched ten-condition benchmark recovers 35/34/33/20 = 122/144 from the
-  same start ([17](../17-sensitivity-pinn/)). The gain from excitation is
+  the old "13–18/36 ceiling". A converged (tight-tolerance) maximum-likelihood fit on the
+  matched ten-condition benchmark recovers all 34 regular parameters in every regime from the
+  same start ([17](../17-sensitivity-pinn/)); an earlier default-tolerance fit gave 35/34/33/20 = 122/144. The gain from excitation is
   real for this estimator, but 82/144 is not an information limit.
 - **The 37 vs 50 comparison** ([docs/decisions/0002-reported-results.md](../../docs/decisions/0002-reported-results.md))
   is a gain of 13 pairs, not a doubling. The residual, relative weighting,
   fixed collocation and multiple starts changed together. A later matched
   one-start ablation, scored on the 34 parameters outside the θP–δP1 pair,
   gives autodiff 14/10/7/2, relative weights plus fixed collocation
-  21/19/10/10, and the integral residual on top 17/15/10/7. The weighting
-  carries the gain; the integral residual adds nothing over it (scripts in
+  21/19/10/10, and the integral residual on top 17/15/10/7. Weighting and fixed
+  collocation carry the gain; the integral residual adds nothing over it (scripts in
   [10](../10-inverse-integral-residual/), outputs in
   [17](../17-sensitivity-pinn/)). The often-quoted "+24" mixes this
   comparison with the 6 → 10 condition change.

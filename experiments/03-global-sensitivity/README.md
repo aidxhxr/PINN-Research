@@ -1,6 +1,6 @@
 # 03 · Global sensitivity analysis of the 27-state model
 
-Which rate constants of the full 27-state WNT–retinoid–HOX model matter for
+Which parameters of the full 27-state WNT–retinoid–HOX model matter for
 its outputs, and which could be fixed? This experiment applies the same three
 methods as the seven-state screen in [02](../02-original-pinn/) (local
 elasticity, Morris elementary effects and Sobol variance decomposition) to 30

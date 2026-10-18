@@ -114,7 +114,7 @@ commands.
 |---|---|---|
 | Model and sensitivity | [01](experiments/01-model-prototypes/) · [02](experiments/02-original-pinn/) · [03](experiments/03-global-sensitivity/) | From the 27-state MATLAB model to the seven-state system; which parameters matter |
 | Forward PINN | [04](experiments/04-forward-pinn/) | Fourier-feature PINN reproduces all seven states from 40 sparse observations (2.41% error) |
-| Inverse-PINN ladder | [05](experiments/05-inverse-single-condition/) – [10](experiments/10-inverse-integral-residual/) | More conditions and state weighting lift PINN recovery from 26 to 50 of 144; a matched ablation credits the weighting, not the integral residual |
+| Inverse-PINN ladder | [05](experiments/05-inverse-single-condition/) – [10](experiments/10-inverse-integral-residual/) | More conditions and state weighting lift PINN recovery from 26 to 50 of 144; a matched ablation credits the weighting and fixed collocation, not the integral residual |
 | Identifiability and uncertainty | [11](experiments/11-fisher-information/) – [14](experiments/14-bayesian-forward/) | Fisher information, an eight-parameter subproblem, Bayesian inverse and forward PINNs |
 | Neural–mechanistic hybrids | [15](experiments/15-hybrid-ude/) | A learned term loses its host's basal rate; a knockdown that reaches the anchor restores it |
 | Population extension | [16](experiments/16-population-extension/) | SciPy reproduction of a 14-state cell-population model under ATRA |
@@ -164,7 +164,7 @@ GPU setup, the TeX toolchain and training runs are covered in the
   figures and tables to scripts and runs.
 - **Results.** [`results/registry.json`](results/registry.json) records the
   registered results (forward accuracy, inverse recovery, Fisher, Bayesian and
-  hybrid checks, and the README figures) with their source hashes and
+  hybrid checks, and the seven figure snapshots in `docs/figures/`) with their source hashes and
   limitations; `wnt-pinn reproduce` recomputes them, and CI runs it on every
   push to `main` and on pull requests. The paper's own numbers are traced by
   the figure audit files and `paper/REPRODUCE.md`.

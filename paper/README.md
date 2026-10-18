@@ -2,7 +2,7 @@
 
 **Estimator or experiment? A Cramér–Rao accounting of parameter recovery by
 physics-informed and hybrid neural–mechanistic models of WNT–retinoic
-acid–HOX signalling in colorectal cancer**
+acid–HOX signalling in colorectal cancer**\
 Amirkhan Aidarkhan and Pascal K. Kataboh, Department of Mathematics and
 Statistics, Swarthmore College, Swarthmore, PA, USA
 
