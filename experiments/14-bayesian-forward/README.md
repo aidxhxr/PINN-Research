@@ -7,7 +7,7 @@ the weights of a small Fourier-feature PINN given sparse noisy data, the
 initial condition and the derivative-free integral residual. The output is a
 posterior band on each reconstructed state. In all four regimes the latent
 95% band covers the noise-free reference at 91-96% of evaluation times, with
-a mean relative RMSE of 0.1-0.2%. The weight chain itself mixes poorly
+a mean relative RMSE of 0.07-0.15%. The weight chain itself mixes poorly
 (energy ESS of 3-4), so the bands are a useful picture of where the sparse
 fit is least constrained rather than calibrated intervals.
 
@@ -34,7 +34,7 @@ sigma = 0.02, 1000 warmup and 1000 draws, 40 leapfrog steps.
 the noise-free reference lies inside the 95% band of the reconstruction,
 averaged over the seven states. The relative RMSE is normalised by each
 state's maximum, floored at 0.05. The mean relative width of the latent band
-is 0.3-0.6% of the state range. The predictive band adds the observation noise
+is 0.3-0.6% of the same per-state scale. The predictive band adds the observation noise
 and is 6.7-8.0% wide.
 
 ## Method
@@ -77,7 +77,7 @@ python3 aggregate_forward.py --run runs/<timestamp>_fwdbayes   # re-aggregate or
 Use one GPU and run it in a persistent terminal session. Each regime takes
 about 50 minutes, and the four run in parallel. `runs/` is git-ignored. The
 registered predictive arrays and summaries of `runs/20260711_203325_fwdbayes/`
-are tracked as `results/inputs/*_predictive*`. The README figure
+are tracked as `results/inputs/*_predictive*`. The repository README's figure
 `docs/figures/bayesian_forward_bands.png` is a snapshot of its
 `fwd_beta_bands.png`. The command
 `wnt-pinn reproduce --result bayesian_forward --output runs/<new-dir>`

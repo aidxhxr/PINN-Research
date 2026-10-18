@@ -15,7 +15,7 @@ equation and a prospective test of a design table agree with this.
 
 | | |
 |---|---|
-| **Status** | complete |
+| **Status** | complete; maintained (the MYC hybrid also runs through the versioned runner, `configs/hybrid_myc.json`) |
 | **Period** | 2026-07 to 2026-10 |
 | **Builds on** | [10 · inverse-integral-residual](../10-inverse-integral-residual/) (training reused unchanged), [11 · fisher-information](../11-fisher-information/) |
 | **Paper** | [paper](../../paper/main.pdf): Sections 2.8–2.10, 4.7–4.8; Figs 8–11; S2–S4 Tables; S1 Text |
@@ -42,7 +42,7 @@ hosting equation's basal parameter; recovered means error below 10%.
   28. On the MYC edge, where the control recovers `a_M` to 0.0–0.1%, `gated`,
   `sc` and `lin` leave it 6.5–38% off, `lin_mono` 200–400%, and the
   oracle-bounded `sc_bounded` 10.5–17.9%. Modulator edges (`f(u)·y`) have no
-  constant to absorb: CYP26A1⊣RA and HOXA5⊣β-catenin are learned to 0.0–1.7%
+  constant to absorb: CYP26A1⊣RA and HOXA5⊣β-catenin are learned (gated) to 0.0–1.7%
   functional error with every surviving equation parameter recovered in the
   low-WNT regimes. The other two modulators degrade to 36–95% functional error
   in the high-WNT regimes (`runs/20260921_aggregations/atlas_4regime.txt`).
@@ -72,14 +72,14 @@ hosting equation's basal parameter; recovered means error below 10%.
 - **Training-free Fisher bound** (Fig 9). Under the base design the network
   loses a factor of 56 to 4×10⁵ in basal-rate precision relative to the
   mechanistic control. Information-matched conditions change the bound by
-  0.90–1.00; a depletion pair reaching the RA anchors shrinks it by
+  0.90–1.00; a depletion pair reaching the RA anchors multiplies it by
   1.8–6.1×10⁻⁴, to 1.0–1.4 times the control. Over 116 distinct screen fits its
   rank correlation with the measured basal error is +0.79 (anchor ratio alone:
   +0.55).
 
 ## Method
 
-- **Learned term.** A shared 2×5 tanh network (46 weights, Glorot-uniform,
+- **Learned term.** A 2×5 tanh network (46 weights, Glorot-uniform,
   final bias zero), non-negative with `f(0) = 0`; the replaced `(eta, kappa)`
   leave the unknowns (36 → 34). L2 penalty `1e-8` on the mean squared weight
   (`HYBRID_WD`), calibrated to this loss scale. The network is built after the
@@ -120,13 +120,13 @@ them.
 
 | run directories (`runs/`) | question | in repo | paper |
 |---|---|---|---|
-| `20260726_195830_control`, `20260726_214316_ra_h5`, `*_ra_h5_nc`, `20260727_012448_bm_myc`, `*_bm_myc_nc` | Round 1, full pipeline: what does a learned term cost; does the anchor matter? | `bm_myc` only | Fig 8A |
+| `20260726_195830_control`, `20260726_214316_ra_h5`, `*_ra_h5_nc`, `20260727_012448_bm_myc`, `*_bm_myc_nc` | Round 1, full pipeline: what does a learned term cost; does the anchor matter? | `bm_myc`; recovered JSONs of control and `ra_h5` | Fig 8A |
 | `20260728_232743_apc_calibration`, `20260728_233450_apc_mutation_frozen` | APC-loss law calibrated across severities, then frozen | no | registry |
 | `20260801_204046_screen_atlas` (Normal), `20260802_screen_atlas_rest` | Edge atlas: 12 edges × 4 regimes × {`gated`, `sc`}, 2 restarts | yes | Fig 8C |
 | `20260921_screen_5form` | Five constraint forms, MYC edge, 3 restarts | yes | Fig 8D |
 | `20260801_depletion_ab`, `20260801_infoctl` | Depletion pair vs base design; vs information-matched pair (1 restart) | yes | Fig 10 |
 | `20260802_anchor_reach` | Training-free design table | yes | S4 Table |
-| `20260802_dose_response`, `20260802_dose_starts5`, `20260921_dose_seeds`, `20260921_dose_sc` | Dose-response; Severe at 5 restarts; k = 0 over three seed sets; `sc` form | yes (`dose_sc`: summary) | Fig 11A,B |
+| `20260802_dose_response`, `20260802_dose_starts5`, `20260921_dose_seeds`, `20260921_dose_sc` | Dose-response; Severe at 5 restarts; k = 0 over three seed sets; `sc` form | yes (`dose_sc`: summary) | Fig 11A,B (`dose_sc`: Section 2.10 text) |
 | `20260802_protocol_test` | Prospective test of the design table | yes | Fig 11C |
 | `*_control_dep`, `*_bm_myc_dep`, `*_ra_h5_dep`, `*_control_depb`, `*_bm_myc_depb` | Full pipeline with depletion (12 conditions, 3 starts) | summaries | S3 Table |
 | `20261017_hybrid_fim` | Fisher bound of a learned term's basal parameter | yes | Fig 9 |
@@ -145,7 +145,7 @@ them.
 | `hybrid_fim.py`, `hybrid_fim_analysis.py` | Hybrid Fisher bound and its analysis |
 | `aggregate_hybrid.py`, `aggregate_screen.py`, `compare_screens.py`, `aggregate_dose.py`, `aggregate_protocol.py`, `plot_learned_term.py` | Scoring (the dose and protocol scripts score the registered predictions) and figures |
 | `test_hybrid_terms.py` | Learned-term tests, run from `tests/test_legacy_hybrid.py` |
-| `run_*.sh`, `chain_bm_myc.sh` | Launchers; each header states what it ran (`run_queue_shape.sh` has no recorded run) |
+| `run_*.sh`, `chain_bm_myc.sh` | Launchers; most headers state what they ran (`run_queue_shape.sh` has no recorded run) |
 | `run_boost.py`, `main.py`, `recover_odefit.py`, `*identifiability.py`, plotting | Inherited from [10](../10-inverse-integral-residual/) |
 | `odes.py`, `model.py`, `residual.py` | Re-exports from [`wnt_pinn`](../../src/wnt_pinn/) |
 

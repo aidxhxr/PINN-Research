@@ -39,7 +39,7 @@ Normal / Early adenoma / Advanced adenoma / Severe APC loss.
 | 07 | [Six conditions](07-inverse-six-condition/) | Do six conditions help, and does a classical ODE fit do better? | PINN 26 of 144; ODE fit 61 of 144 | Superseded |
 | 08 | [Small networks](08-inverse-small-networks/) | Is network over-capacity the cause? | 25 of 144: capacity is not the lever | Complete (negative) |
 | 09 | [Excitation](09-inverse-excitation/) | Do WNT- and MYC-perturbing conditions add the missing information? | ODE fit 61 → 82 of 144; autodiff PINN 37 of 144 | Complete; registry |
-| 10 | [Integral residual](10-inverse-integral-residual/) | Does a derivative-free integral residual lift the PINN itself? | 37 → 50 of 144; the matched ablation credits the state weighting, not the residual | Maintained; paper, registry |
+| 10 | [Integral residual](10-inverse-integral-residual/) | Does a derivative-free integral residual lift the PINN itself? | 37 → 50 of 144; the matched ablation credits the weighting and fixed collocation, not the residual | Maintained; paper, registry |
 
 ## Identifiability and uncertainty
 
@@ -54,7 +54,7 @@ Normal / Early adenoma / Advanced adenoma / Severe APC loss.
 
 | # | Experiment | Question | Headline result | Status |
 |---|---|---|---|---|
-| 15 | [Hybrid UDE](15-hybrid-ude/) | When a network learns one regulation, can the host equation's basal rate still be identified? | Lost under every network parameterisation (`a_M` 32%/52% off); one knockdown that reaches the anchor brings it to 0.003% | Maintained; paper, registry |
+| 15 | [Hybrid UDE](15-hybrid-ude/) | When a network learns one regulation, can the host equation's basal rate still be identified? | Lost under every network parameterisation (full pipeline: `a_M` 32%/52% off); one extra knockdown that reaches the anchor brings it to 0.003% in the equation-local screen and 0.6–1.4% in the full pipeline | Maintained; paper, registry |
 
 ## Extensions
 

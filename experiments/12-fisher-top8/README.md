@@ -71,7 +71,7 @@ names from before the rename.
 
 - The calculation conditions on the 28 fixed parameters and omits their
   uncertainty. The reduced problem is well conditioned partly because 28
-  sloppy directions were removed by assumption.
+  fixed parameters, which include every WEAK and NON-IDENT parameter of the full analysis, were removed by assumption.
 - The selection uses the full-model FIM at the truth, so the subset is chosen
   with knowledge that a real analysis would not have.
 - No reduced-parameter PINN or classical fit was run. Whether a PINN recovers

@@ -8,7 +8,7 @@ APC functionality `thetaP` under alternative designs. Every regime has exactly
 one near-null direction: the structural `thetaP`-`deltaP1` degeneracy. With
 `deltaP1` known, the bound on `thetaP` widens from 0.031% (Normal) to 55%
 (Severe APC Loss). Conditions that perturb without lowering beta-catenin
-barely change it. One WNT knockdown narrows it up to 33-fold.
+barely change it. One WNT knockdown (`kW=0.1`) narrows it 22-fold in Severe APC Loss, a full knockout 33-fold.
 
 | | |
 |---|---|
@@ -44,8 +44,8 @@ CRLB relative standard deviation of `thetaP` with `deltaP1` known and the other
 | `base10` + WNT knockdown `kW=0.1` | x0.75 | x0.57 | x0.078 | x0.045 |
 | `base10` + WNT knockout `kW=0` | x0.75 | x0.55 | x0.063 | x0.030 |
 
-The sustained WNT-inhibition step is the only base condition that carries
-`thetaP` information. Leaving out any of the other three WNT/MYC conditions
+The sustained WNT-inhibition step is the only base condition whose removal
+matters for `thetaP`. Leaving out any of the other three WNT/MYC conditions
 changes the bound by at most x1.14. In Severe APC Loss the knockdown gains
 4x at `kW=0.5`, 22x at `kW=0.1` and 33x at `kW=0`, in proportion to how far
 it lowers beta-catenin. A beta-catenin double knockout (`kW=k13=0`) gives the

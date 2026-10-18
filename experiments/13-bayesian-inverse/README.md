@@ -14,7 +14,7 @@ are therefore not calibrated uncertainty.
 
 | | |
 |---|---|
-| **Status** | complete. All chains fail the ESS and coverage gates. The final paper's uncertainty results use the Cramér-Rao bound and Monte Carlo study in [17](../17-sensitivity-pinn/) instead |
+| **Status** | complete. No chain passes both the ESS and coverage gates. The final paper's uncertainty results use the Cramér-Rao bound and Monte Carlo study in [17](../17-sensitivity-pinn/) instead |
 | **Period** | 2026-07 |
 | **Builds on** | [10 · inverse-integral-residual](../10-inverse-integral-residual/) |
 | **Paper** | not used; marginals appear on both posters and the department talk (registry record `hmc_diagnostics`) |
@@ -81,6 +81,7 @@ parameters.
 ```bash
 # needs a finished integral-PINN run with its *_net.pt and *_params.pt files
 # (git-ignored), e.g. from ../10-inverse-integral-residual/run_boost.sh
+pip install -e '.[ml,publications]'      # from the repository root: shared model, torch, matplotlib
 cd experiments/13-bayesian-inverse
 SEED_RUN=../10-inverse-integral-residual/runs/<timestamp>_integral \
 WARMUP=3000 DRAWS=3000 LEAP=48 bash run_bayes.sh     # -> runs/<timestamp>_bayes/
@@ -105,7 +106,7 @@ recomputes their coverage and ESS without resampling (see
 - The ESS is a historical single-chain estimate: raw autocorrelation summed
   until the first lag below 0.05. No R-hat is available. A passing gate would
   still need multi-chain checks.
-- The presentation code manually overrides Normal coverage to 18/36. The
+- `plot_top8_marginals.py` and the department-talk slides show Normal coverage as 18/36 (a manual override). The
   saved samples give 19/36.
 - Absolute widths depend on `sigma_res` and `n_eff`, which are modelling
   choices, not measured noise.

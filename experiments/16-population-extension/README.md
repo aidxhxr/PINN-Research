@@ -3,17 +3,17 @@
 What does a 48-hour ATRA (retinoic acid) exposure do to stem-like and
 ALDH-like cell populations? This folder holds a direct SciPy reproduction of
 the revised population-dynamics report
-`wnt_hox_ra_revised_population_dynamics.pdf`. The report extends the
+`wnt_hox_ra_revised_population_dynamics.pdf` (supplied privately; not in the repository). The report extends the
 molecular network with four HOX-program scores and three cell populations,
 14 states in total. There are no neural networks, fitted parameters or
-copied curves. The reproduction matches the report's tabulated Severe APC
+copied curves. The reproduction matches the report's Table 8, 11 and 12 Severe APC
 Loss readouts to within 0.001: ATRA lowers the stem-like population by 30%
 while raising the reduced HOX index. A Normal-regime run, which the report
-does not plot, responds more strongly on every readout.
+does not plot, responds more strongly on every readout except the CYP26A1 fold change.
 
 | | |
 |---|---|
-| **Status** | complete (preliminary reproduction; the report's Figs 15-16 and its identifiability analysis are not rerun) |
+| **Status** | complete; maintained (runs through `wnt-pinn run`). A preliminary reproduction: the report's Figs 15-16 and its identifiability analysis are not rerun |
 | **Period** | 2026-09 |
 | **Builds on** | the seven-state model ([docs/model.md](../../docs/model.md)). This is an independent implementation, because the report revises its parameters, time scales, Hill functions and HOXA13 equation |
 | **Paper** | not used |
@@ -77,7 +77,7 @@ away.
     at 40 h.
 - The config key `regime` sets the base regime for every scenario except
   the four-regime comparison. The default is Severe APC Loss. Non-default runs
-  add a four-regime figure (`fig_regimes`) and compare only the report's
+  compare only the report's
   Table 8 row, because every other printed target is a Severe value.
 
 ## Contents
@@ -87,18 +87,18 @@ away.
 | `../../src/wnt_pinn/population/model.py` | parameters (report Tables 3-7), forcing, 14-state right-hand side (Eqs 6-23), derived quantities (24-30), selective block (32) |
 | `../../src/wnt_pinn/population/simulation.py` | BDF integration, preconditioning, matched controls, threshold detection, audits |
 | `../../src/wnt_pinn/population/study.py` | scenario generation, Latin hypercube, Radau cross-check, source snapshot and exports |
-| `../../src/wnt_pinn/population/plotting.py` | figures, results PDF and meeting brief |
+| `../../src/wnt_pinn/population/plotting.py` | figures, results PDF and a short presentation brief (`meeting_brief.pdf`) |
 | `../../configs/population_extension{,_normal}.json` | solver and sampling settings; `_normal` adds `"regime": "Normal"` |
 | `../../tests/test_population_extension.py` | regression tests against the report's printed targets |
 | `run_population.py` | standalone entry point, equivalent to `wnt-pinn run` |
-| `wnt_hox_ra_revised_population_dynamics.pdf` | the source report |
+| `wnt_hox_ra_revised_population_dynamics.pdf` | the source report; supplied privately and not in the repository |
 | `population_extension_results_20260915.zip` | complete Severe run: figures, brief, tables, trajectories, source snapshot |
-| `downloads/population_extension_plots_20260915.zip` | the figures only |
-| `web/20260915_213512/` | static plain-language explanation of the Severe run (written by `build_web_preview.py`) |
+| `downloads/population_extension_plots_20260915.zip` | the 14 figures (PNG and PDF), a combined PDF and the brief |
+| `build_web_preview.py` | writes a static plain-language explanation of the Severe run to `web/` (local only, not in the repository) |
 | `LATEST_RUN.txt`, `LATEST_RUN_normal.txt`, `results` | pointers to the local run directories under the git-ignored root `runs/` |
 
 Generated figures follow the report's numbering: `fig02_molecular` to
-`fig14_sensitivity` and `fig17_hill_robustness`, 14 in all. Figure 1 is a
+`fig14_sensitivity` and `fig17_hill_robustness`, 14 in all, plus the four-regime `fig_regimes` (not in the archived 2026-09-15 run). Figure 1 is a
 schematic.
 
 ## Reproduce

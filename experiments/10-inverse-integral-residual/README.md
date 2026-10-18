@@ -6,7 +6,7 @@ four levers to the ten-condition inverse PINN of
 [09](../09-inverse-excitation/): a trapezoidal *integral* residual that uses
 network values only, relative state weighting, a fixed collocation grid and
 multiple starts. Together they raise recovery from 37 to 50 of 144
-regime-parameter pairs. A later matched ablation, run one lever at a time on
+regime-parameter pairs. A later matched ablation, adding the levers in steps on
 shared benchmark data for the final paper, shows that the weighting and fixed
 collocation carry the gain; on those data the integral residual adds nothing
 on top of them. Every variant stays 10 to 92 times above the Cramér-Rao bound
@@ -15,7 +15,7 @@ at the median, which is the "estimator gap" closed in
 
 | | |
 |---|---|
-| **Status** | complete; the integral PINN is the starting point of the SGN-PINN in [17](../17-sensitivity-pinn/) |
+| **Status** | maintained (the `wnt-pinn` runner trains this pipeline: `configs/integral.json`, see [`docs/experiments.md`](../../docs/experiments.md)); the integral PINN is the starting point of the SGN-PINN in [17](../17-sensitivity-pinn/) |
 | **Period** | 2026-07 (original runs), 2026-10 (matched ablation) |
 | **Builds on** | [09 · inverse-excitation](../09-inverse-excitation/) |
 | **Paper** | [Fig 5, Section 2.5; Methods 4.5](../../paper/main.pdf) |
@@ -82,7 +82,7 @@ the benchmark data a converged classical fit recovers all 34 in every regime
 | `training.py`, `model.py`, `residual.py` | training stages and levers; the residual and networks come from `../../src/wnt_pinn/` |
 | `config.py`, `odes.py`, `reference.py`, `prep_refs.py` | regimes, conditions, Radau references (cached once per run) |
 | `aggregate.py`, `identifiability.py`, `plot_error.py`, `regen_plots.py` | count recoveries, per-parameter verdicts, error-versus-iteration plots, standard figures from a finished run |
-| `recover_odefit.py` | classical multiple-shooting ODE fit (see [07](../07-inverse-six-condition/)) |
+| `recover_odefit.py` | classical multiple-condition ODE fit (see [07](../07-inverse-six-condition/)) |
 | `profile_identifiability.py` | exploratory profile likelihood (needs the `identifiability` package); no completed profile output is saved |
 | `pinn_core_dynamics.py`, `pinn_inverse_core_dynamics*.png` | inverse-PINN state trajectories for the core proteins, `ctrl` condition |
 | `main.py`, `run.sh`, `plotting.py`, `metrics.py` | older single-process driver with built-in plotting |
@@ -90,6 +90,7 @@ the benchmark data a converged classical fit recovers all 34 in every regime
 ## Reproduce
 
 ```bash
+pip install -e '.[ml,publications]'      # from the repository root: shared model, torch, matplotlib
 cd experiments/10-inverse-integral-residual
 bash run_boost.sh integral 2      # 4 regimes in parallel -> runs/<timestamp>_integral/
 python3 aggregate.py runs/<timestamp>_integral/
@@ -102,15 +103,15 @@ bash run_paper_ablation_plumb.sh  # plumb rung, seed 42 only
 
 The paper uses the seed-42 `base` jobs of the first script and the `plumb`
 rung of the second. The seed-7 ablation was not run. The `run_paper_ablation*`
-scripts set `PYTHONPATH` to the `src/` of the machine where they were run.
-Point it at your checkout, or install the package with
-`pip install -e '.[ml]'`.
+scripts put this checkout's `src/` on `PYTHONPATH` themselves.
+Alternatively, install the package with
+`pip install -e '.[ml]'`. Both scripts pass `--device cuda` and need a GPU, despite the `_cpu` name of the first.
 
 `PINN_DEVICE`, `PINN_THREADS` and `PINN_CONCURRENCY` control the device,
 threads per regime and number of parallel regimes. Run long jobs in a
 persistent terminal session. Training is float64. On CPU with 16 threads,
 one start of one regime took 40-43 minutes in the paper's timing (shared
-node). The July 2-start runs on a shared GPU took about 2-3 hours per start.
+node). On a shared GPU, one start of the July 2-start runs took about 50 minutes (2026-07-02) and 2-3 hours (the 2026-07-11 retraining).
 The integral rung of the ablation is the 3-start run
 `../17-sensitivity-pinn/runs/20261002_integral_seed42/` (the paper scores its
 start 0), and the replicate is `20261002_integral_seed7/`. Both are tracked.
@@ -124,7 +125,7 @@ and the [reproduction map](../../paper/REPRODUCE.md).
 ## Notes
 
 - The 37-versus-50 comparison changes the residual, weighting, collocation and
-  number of starts together. The paper's one-lever-at-a-time ablation (one
+  number of starts together. The paper's stepwise ablation (one
   start, one dataset) attributes the gain to weighting and fixed collocation.
 - `aggregate.py` prints a "baseline" of 10/4/5/7. That is an earlier
   six-condition PINN, not a matched control.
