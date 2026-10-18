@@ -2,7 +2,7 @@
 
 Install the project with the `publications` extra using
 [the installation guide](installation.md). Run the commands below from the
-repository root inside a recorded tmux session. These are saved-result
+repository root (inside tmux for long jobs). These are saved-result
 calculations, separate from [training new experiments](experiments.md).
 
 ## Rebuild a table and figure
@@ -72,11 +72,10 @@ their complete scientific narratives have not been re-audited. Their catalog
 entries list this narrower validation scope. The current poster builders
 check page size, fonts, text bounds, and the preserved network schematic.
 
-The adapters preserve the reviewed files at `publications/posters/pinn-recovery/poster.pdf`
-and `publications/posters/hybrid-models/poster.pdf`, which remain linked to
-`http://localhost:8003/first/poster.pdf` and
-`http://localhost:8003/second/poster.pdf`. To publish an intentional poster edit,
-use that project's `build.sh` in its recorded tmux session; it updates the PDF,
+The adapters leave the reviewed files at
+`publications/posters/pinn-recovery/poster.pdf` and
+`publications/posters/hybrid-models/poster.pdf` untouched. To publish an
+intentional poster edit, run that project's `build.sh`; it updates the PDF,
 previews and editable ZIP together.
 
 ## What the checks establish

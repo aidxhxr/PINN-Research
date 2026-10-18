@@ -20,10 +20,9 @@ a dark Swarthmore-style theme. Superseded by the light-theme reconstruction in
 | `legacy/` | Stand-alone references slide |
 | `build.sh` | Two `pdflatex` passes into `build/`, then copies the PDF here |
 
-Build with `bash build.sh`. `sync_figures.sh` resolves its sources against the
-layout it was written for (for example `PINN-inverse-pinn-boost/runs/...`), so
-it fails unchanged after the layout change; [`docs/layout.md`](../../../../docs/layout.md)
-gives the current locations.
+Build with `bash build.sh`. `bash sync_figures.sh` re-copies the eleven slide
+figures from their source runs (paths relative to the repository root, in the
+current layout).
 
 ## Status
 

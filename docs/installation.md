@@ -77,10 +77,8 @@ sampling is part of the build.
 
 New build outputs are in timestamped `build/publications/` directories,
 with each PDF under `<publication-id>/source/`. The reviewed PDFs remain at
-`publications/posters/pinn-recovery/poster.pdf` and `publications/posters/hybrid-models/poster.pdf`. The existing VM preview links remain
-`http://localhost:8003/first/poster.pdf` and
-`http://localhost:8003/second/poster.pdf` while that server and the SSH tunnel
-are running. The manually triggered **Build posters** GitHub workflow provides
+`publications/posters/pinn-recovery/poster.pdf` and
+`publications/posters/hybrid-models/poster.pdf`. The manually triggered **Build posters** GitHub workflow provides
 the same build and verification steps in a fresh Linux environment.
 
 ## Check a distribution

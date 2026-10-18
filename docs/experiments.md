@@ -73,7 +73,7 @@ multiple protocols and training stages; final scoring uses eager PyTorch.
 Both optimized backends require the integral residual;
 ordinary derivative-residual runs retain the eager path.
 
-For a matched smoke comparison, launch this command in a recorded tmux session:
+For a matched smoke comparison, launch this command inside tmux:
 
 ```bash
 PYTHONPATH=src python3 scripts/benchmark_kernels.py \
@@ -106,7 +106,7 @@ The [recorded GPU comparison](performance/2026-09-19-kernel-smoke.md) includes
 per-run measurements and the limits of the observed speedups.
 
 To isolate the final reduction change against its previous implementation,
-run this command in a recorded tmux session:
+run this command inside tmux:
 
 ```bash
 PYTHONPATH=src python3 scripts/benchmark_reduction.py \
