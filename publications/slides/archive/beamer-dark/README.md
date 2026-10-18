@@ -22,7 +22,8 @@ a dark Swarthmore-style theme. Superseded by the light-theme reconstruction in
 
 Build with `bash build.sh`. `bash sync_figures.sh` re-copies the eleven slide
 figures from their source runs (paths relative to the repository root, in the
-current layout).
+current layout; five are archived run outputs, so restore those first with
+`wnt-pinn artifacts restore github-history --select <path>`).
 
 ## Status
 

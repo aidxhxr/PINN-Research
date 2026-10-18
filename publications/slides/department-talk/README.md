@@ -34,6 +34,6 @@ lualatex -interaction=nonstopmode -halt-on-error pinn_presentation_native.tex
 The native deck uses Avenir Next and Menlo when installed, otherwise TeX Gyre
 Heros and Cursor, and also builds with `pdflatex`. The figures in `assets/`
 are copies, not links: re-copy one after rerunning its experiment.
-`README.txt` gives each figure's source path at commit `e29ecd9`;
-[`docs/layout.md`](../../../docs/layout.md) maps those paths, and this
-folder's previous location, to the current layout.
+`README.txt` gives each figure's source path in the current layout (the
+figures were matched at commit `e29ecd9`, whose old-layout paths
+[`docs/layout.md`](../../../docs/layout.md) translates).

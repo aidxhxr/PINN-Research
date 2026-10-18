@@ -4,7 +4,7 @@ The first poster emphasizes PINN reconstruction, parameter recovery and
 uncertainty. No model was retrained or HMC chain rerun for this revision.
 Matched Normal references were evaluated with Radau during the one-time export;
 ordinary builds only read saved arrays. Archived hybrid/forward data remain in
-`data/` and dated snapshots, but are not used by the current poster figures.
+`data/`, but are not used by the current poster figures.
 
 ## Source map
 
@@ -22,6 +22,10 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 | Presentation Bayesian marginals, Fig. 6 | `experiments/13-bayesian-inverse/runs/20260712_204532_bayes/{Normal,Severe_APC_Loss}_posterior_samples.npz` and summaries; source mapping in `publications/slides/archive/beamer-dark/sync_figures.sh` |
 | Reduced Fisher comparison, Table 2 | `experiments/12-fisher-top8/runs/20260711_203325_fisher_top8/*_fim_summary.json`; `data/fisher_top8.json` |
 
+Run directories under `experiments/*/runs/` that are absent from the checkout
+are archived; restore one with
+`wnt-pinn artifacts restore github-history --select <path>` (`docs/artifacts.md`).
+
 The original regulatory schematic SHA-256 remains
 `6836f765e455581fdfdf8bff7f8b65423f9fa1c051da3ed7afed3d80576ab086`.
 
@@ -35,7 +39,7 @@ The original regulatory schematic SHA-256 remains
 - The column-one RA forcing plot evaluates mu0 + AR*(1+cos(2*pi*t/TR-phi)):
   mu0=0.35, AR=0.04, TR=24, phi=0, so the range is 0.35–0.43. It shows the
   untreated input, including the baseline, rather than the RA state r(t).
-  The additive treatment term is plotted on the companion hybrid poster.
+  The additive treatment term appears in Eq. (3) of the companion hybrid poster.
 - In column one, thetaP is described as APC functioning. “Severe” abbreviates
   the unchanged Severe APC Loss regime (thetaP=0.25). Treatment comparison
   titles omit numeric dose labels; the underlying data and parameters are unchanged.
@@ -43,7 +47,7 @@ The original regulatory schematic SHA-256 remains
   [0,150]. Checkpoints and source-code hashes, exact parameters and exported
   relative L2 errors are in `data/normal_treatment_provenance.json`.
 - Both comparisons show full trajectories at their original amplitudes.
-  The oscillation insets from the previous proof were removed at user request.
+  Oscillation insets are not shown.
 - The saved networks come from the integral inverse-PINN run: ten conditions,
   one 4 × 256 GELU state MLP each, 16 Fourier frequencies (33 inputs), seven
   scaled outputs, 36 shared biological parameters, 150 observation times per
@@ -125,7 +129,7 @@ The original regulatory schematic SHA-256 remains
 
 The current first-poster references support PINNs, inverse biological ODE
 inference and Bayesian PINNs. Bibliographic details checked against primary
-sources on 2026-09-14 (Raissi citation retained from the approved version):
+sources on 2026-09-14 (Raissi citation retained from the earlier version):
 
 1. Raissi, Perdikaris & Karniadakis (2019). Physics-informed neural networks.
    J. Comput. Phys. 378, 686–707. [Publisher](https://doi.org/10.1016/j.jcp.2018.10.045).

@@ -1,4 +1,4 @@
-# Poster B — neural–mechanistic hybrid revision
+# Second poster — identifiability and experimental design for neural–mechanistic hybrids
 
 This is the **second poster**, focused on neural–mechanistic hybrids. The first
 poster in `../pinn-recovery/` focuses on dynamics, PINN reconstruction
@@ -11,13 +11,13 @@ The reading order is:
 
 1. **Model and formulation:** original schematic, disease regimes,
    nondimensionalization, all seven ODEs, APC functioning and retinoid forcing.
-   The additive ATRA treatment-pulse plot replaces the derived stemness index.
+   Column one opens with an abstract; the RA input, including the ATRA pulse, is Eq. (3).
 2. **PINNs and identifiability:** Fourier features, network architecture,
    forward loss and accuracy, inverse integral residual, recovery benchmark,
    APC parameter trade-off and local Fisher classification.
 3. **Neural–mechanistic hybrid:** learned MYC activation within the ODE model,
    actual function-recovery curves, direct comparison against the mechanistic
-   control, basal/neural compensation, and direct function/parameter error comparisons.
+   control, basal/neural compensation, designed-knockdown basal errors (Table 3) and direct function/parameter error comparisons.
 
 The title foregrounds identifiability and experimental design. Typography, garnet header,
 three-column grid, print dimensions and original model artwork are retained.
@@ -36,7 +36,7 @@ The learned-function and error-comparison plots use saved full-model fits.
   four hidden layers, seven state outputs and the three losses with backpropagation.
 - `assets/model-original.pdf`: original regulatory schematic, unchanged.
 - `assets/atra-treatment.pdf`: smooth additive ATRA pulse from the saved
-  trajectory parameters, with the treatment window at times 40–88.
+  trajectory parameters, with the treatment window at times 40–88 (packaged, not placed on the current poster).
 - `assets/parity.pdf`: recovered vs. true value, integral inverse PINN, 36 parameters, Normal and Severe APC Loss
   (`figures/parity_plot.py`).
 - `assets/normal_pinn.pdf`: Normal-regime MYC/APC inverse-PINN fit, untreated vs ATRA
@@ -44,7 +44,7 @@ The learned-function and error-comparison plots use saved full-model fits.
 - `assets/learned-myc.pdf`: actual learned and true MYC-activation curves.
 - `assets/hybrid-errors.pdf`: mechanistic versus hybrid function NRMSE and
   basal-production parameter errors for β-catenin → MYC and RA → HOXA5,
-  across all four regimes. The separate intervention screen has been removed.
+  across all four regimes. The former intervention-screen figure is not placed; its basal errors are Table 3.
 - `assets/hybrid_error_audit.json`: the exact values shown in the comparison.
 - `assets/tables.tex`: native LaTeX tables generated from numerical data.
 - `assets/forward.pdf`: plain beta-catenin/HOXA5 curves in column 2;
@@ -55,10 +55,9 @@ The learned-function and error-comparison plots use saved full-model fits.
 
 All equations, tables, headings and captions are editable LaTeX.
 Fonts are standard TeX Gyre Pagella and Heros. Body text is 28 pt, captions
-24 pt and tables 24–26 pt. Authors (2026-10-14 title bar, format set by the advisor): Amirkhan Aidarkhan¹ ·
+24 pt and tables 24–26 pt. Authors: Amirkhan Aidarkhan¹ ·
 Advisor: Pascal K. Kataboh¹, with ¹ Department of Mathematics & Statistics, Swarthmore
-College, Swarthmore, PA 19081 on the line below (same institution, so one superscript; no
-role descriptions). The title block is
+College, Swarthmore, PA 19081 on the line below. The title block is
 left-aligned beside a white panel holding the Swarthmore College logo
 (`assets/swarthmore-logo.pdf`, a vector trace of the official high-resolution JPG
 `assets/swarthmore-logo-source.jpg` from swarthmore.edu/communications-office/college-logo,
@@ -113,7 +112,7 @@ and a downloadable gallery. Each model pair is scored on its common 34
 parameters. The two fitted regulatory functions are evaluated on the same
 saved observed-input grid.
 
-Run in tmux, using a new timestamped output directory:
+Use a new timestamped output directory:
 
 ```bash
 python3 publications/posters/hybrid-models/figures/compare_hybrid_errors.py \

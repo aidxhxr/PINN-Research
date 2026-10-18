@@ -3,7 +3,7 @@
 TikZ drawings of the reduced WNT–RA–HOX regulatory network: β-catenin, APC,
 HOXA5, HOXA13, MYC, retinoic acid and CYP26A1, with WNT and vitamin A as
 inputs. Green arrows are activation, red bars inhibition and blue dashed
-arrows external drive.
+arrows mediation (external input in the earlier `network_schematic`).
 
 [Schematic (PDF)](schematic-better.pdf) · [source](schematic-better.tex) ·
 [preview](preview.png)

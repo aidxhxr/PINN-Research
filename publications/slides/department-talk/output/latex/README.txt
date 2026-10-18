@@ -32,15 +32,16 @@ table. Slide composition and object placement remain unchanged.
 
 Figure provenance
 -----------------
-The repository was read at main tree:
-e29ecd94782f1e8216eb138a1669c4423fc97b5f
+The repository was read at main tree
+e29ecd94782f1e8216eb138a1669c4423fc97b5f; the paths below are in the current
+layout (docs/layout.md maps them to the paths at that commit).
 
 Repository: https://github.com/aidxhxr/PINN-Research
 
 The following assets were matched to the PDF's embedded figures and used at
 native repository resolution:
 
-  publications/figures/network-diagram/network_schematic.pdf
+  publications/figures/network-diagram/schematic-better.pdf (as assets/schematic.pdf)
   experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.pdf
   experiments/04-forward-pinn/forward_pinn_train/scipy_core_dynamics.png
   experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/pinn7_losses.png
@@ -52,9 +53,12 @@ native repository resolution:
   experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Normal_top8_marginals.png
   experiments/13-bayesian-inverse/runs/20260712_204532_bayes/Severe_APC_Loss_worst8_marginals.png
 
+The five runs/ paths are archived outside the checkout; restore them with
+wnt-pinn artifacts restore github-history --select <path>
+
 The severe-regime Bayesian panel is deliberately the worst8 plot; top8 is a
 different figure and does not match the source deck.
 
-Slide 6 preserves the source deck's complete four-regime text and adds the
-user-supplied colorectal progression illustration on the right, stored as
+Slide 6 preserves the source deck's complete four-regime text and adds a
+colorectal progression illustration on the right, stored as
 assets/colorectal_progression.png.

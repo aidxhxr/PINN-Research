@@ -48,7 +48,7 @@ render previews and package the sources:
 bash build.sh
 ```
 
-Run repository builds in tmux.
+Long builds are best run in a persistent terminal session (for example tmux).
 Each build creates a timestamped directory under `builds/`. The standard build
 requires NumPy, Matplotlib and PyMuPDF; it does not train or solve an ODE.
 `figures/export_normal_comparison.py` is a separate repository-only preparation

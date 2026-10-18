@@ -22,7 +22,7 @@ current manuscript in [`paper/`](../../../paper/) supersedes it.
 
 ```bash
 bash build.sh --bib   # pdflatex, bibtex, then two pdflatex passes
-bash build.sh         # two pdflatex passes, reusing the bibliography
+bash build.sh         # two pdflatex passes, reusing paper.bbl (git-ignored; run --bib first)
 ```
 
 `build.sh` reports the page count, overfull or underfull boxes and undefined

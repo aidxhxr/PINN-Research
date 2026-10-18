@@ -1,6 +1,6 @@
 # Numerical provenance and interpretation
 
-This is a separate revision of the approved garnet poster, with model/math in
+This revision keeps the garnet layout of the earlier version, with model/math in
 column one, PINNs and identifiability in column two, and neural–mechanistic
 hybrids in column three. The first poster in `publications/posters/pinn-recovery/` has since
 been revised separately. Earlier versions are in the git history.
@@ -8,11 +8,11 @@ The results are from this repository.
 No model training, resampling or ODE solving was performed.
 
 The 2026-09-17 revision shortens the visible text and enlarges the plots.
-It omits the dense supervised comparison, the five-form constraint-screen
-summary and the concluding intervention advice. Their provenance and
+It omits the dense supervised comparison and the numerical five-form
+constraint-screen range. Their provenance and
 limitations remain below. Fig. 6 now compares full-model mechanistic and hybrid
-fits. The earlier intervention screen is preserved in the dated snapshots and
-documented below as historical material.
+fits. The intervention-screen figure was replaced by Table 3 (designed
+knockdowns), and an abstract now opens column one.
 
 ## Source map
 
@@ -21,7 +21,7 @@ documented below as historical material.
 | Original schematic, Fig. 1 | `publications/figures/network-diagram/schematic-better.pdf` |
 | Equations, state order, forcing, regimes | `experiments/15-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
 | Nondimensionalization | `publications/papers/2026-08-pinn-identifiability/paper.tex`, equations ndb–ndc |
-| Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
+| Additive ATRA treatment plot (`assets/atra-treatment.pdf`, not placed) | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
 | Fourier network and forward losses | `experiments/04-forward-pinn/forward-pinn-train-hybrid/model.py`, `pinn_core_dynamics.py`; `publications/papers/2026-08-pinn-identifiability/paper.tex` |
 | Beta-catenin/HOXA5 trajectories, Fig. 2 | `data/forward_trajectories.npz`; checkpoints in `experiments/04-forward-pinn/forward-pinn-train-hybrid/runs/20260712_204546/`; `figures/forward_plot.py` |
 | Dense forward accuracy | `experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/forward_error_table.json` |
@@ -35,13 +35,19 @@ documented below as historical material.
 | Mechanistic control, Table 2 | `experiments/15-hybrid-ude/runs/20260726_195830_control/*_recovered.json` |
 | RA → HOXA5 hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260726_214316_ra_h5/*_{recovered,term}.json` |
 | Beta-catenin → MYC hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/*_{recovered,term}.json` |
-| APC-loss hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/*_{recovered,term}.json`; calibration in `runs/20260728_232743_apc_calibration/` |
+| APC-loss hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/*_{recovered,term}.json`; calibration in `experiments/15-hybrid-ude/runs/20260728_232743_apc_calibration/` |
 | Full-model error comparison, Fig. 6 | The MYC, HOXA5 and control runs above; cached in `data/hybrid_comparison.json`, plotted by `figures/compare_hybrid_errors.py::poster_comparison` |
 | Five constraint forms | `results/inputs/constraint_screen_transcription.json`; `experiments/15-hybrid-ude/runs/20260801_204046_screen_atlas/`; full five-form rerun in `experiments/15-hybrid-ude/runs/20260921_screen_5form/` |
-| Historical MYC intervention comparison (removed) | `experiments/15-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
-| Historical prospective HOXA13 test (removed) | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
+| MYC knockdown rows, Table 3 (k=0) | `experiments/15-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
+| HOXA13 knockdown rows, Table 3 | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
 | Failed HOXA13 → beta-catenin intervention | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json` |
 | Reachability analysis | `experiments/15-hybrid-ude/runs/20260802_anchor_reach/anchor_reach.txt` |
+| Information-matched control (abstract) | `experiments/15-hybrid-ude/runs/20260801_infoctl/comparison.txt` |
+| Profile likelihood (abstract) | `publications/papers/2026-08-pinn-identifiability/paper.tex` |
+
+Run directories under `experiments/*/runs/` that are absent from the checkout
+are archived; restore one with
+`wnt-pinn artifacts restore github-history --select <path>` (`docs/artifacts.md`).
 
 The regulatory schematic's SHA-256 is
 `6836f765e455581fdfdf8bff7f8b65423f9fa1c051da3ed7afed3d80576ab086`.
@@ -60,7 +66,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
 - The disease labels Early/Advanced abbreviate Early/Advanced Adenoma.
   Severe means Severe APC Loss. The reference trajectory horizon is 150 and
   the base ATRA pulse is [40,88].
-- The derived stemness index has been removed. Its replacement plot evaluates
+- The derived stemness index has been removed. Eq. (3) gives the RA input; the packaged but unplaced `assets/atra-treatment.pdf` plots
   the additive treatment term DR/2*(tanh(q*(t-tau1))-tanh(q*(t-tau2))), with
   DR=1.5, q=0.3, tau1=40, tau2=88, from the saved baseline. This is the
   treatment contribution to muR, not the RA state or the total RA forcing.
@@ -95,8 +101,8 @@ Its geometry, colors, labels, legend and edges are unchanged.
   (total 26) beside a 37 → 50 claim.
 - The comparison is between complete implementations. Integral residual,
   relative weighting, fixed collocation and multi-start change together; the
-  gain is not isolated to the residual alone. The planned component ablation
-  did not complete. No error bars or structural-identifiability claim are made.
+  gain is not isolated to the residual alone. A later matched ablation (paper
+  Fig 5A, seed 42) credits the weights and fixed collocation, not the residual. No error bars or structural-identifiability claim are made.
 - A later 20260712 excitation rerun gives 17/8/7/6 (38), so it is not silently
   substituted for the documented 37-parameter comparator.
 
@@ -182,7 +188,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
   parameter is retained in both models. Choosing the same parameter role for
   both relationships keeps the compact comparison consistent. All remaining
   equation parameters and all 34 shared parameters are available in the
-  accompanying gallery at `/hybrid_errors/`.
+  gallery (`index.html`) that `figures/compare_hybrid_errors.py` writes to its `--out` directory.
 - Display labels use one decimal place; exact values are recorded in
   `assets/hybrid_error_audit.json`. The graph shows selected saved fits,
   without uncertainty bars or an independent-replicate interpretation.
@@ -194,8 +200,8 @@ Its geometry, colors, labels, legend and edges are unchanged.
   support; the shifted function can return to the zero anchor in the
   unobserved gap. It does not claim a nonzero global shift preserves f(0)=0.
 - The five-form constraint screen uses one start; the reported Normal basal
-  errors span 13.8–202.8%. This range is transcribed from the dated research
-  note. The complete original five-form run mapping has not been recovered;
+  errors span 13.8–202.8%. This range is transcribed from an unpublished dated
+  research log. The complete original five-form run mapping has not been recovered;
   the cited screen-atlas directory contains gated/sc cases and cannot verify
   all five forms. A tracked transcription and source-note hash are in
   `results/inputs/constraint_screen_transcription.json`. This provenance
@@ -204,9 +210,9 @@ Its geometry, colors, labels, legend and edges are unchanged.
   and fix parameters outside that equation at truth. They use two starts
   (seeds 100 and 117), selecting the lower physics loss. They do not establish
   performance with noisy, sparse state estimates or biological measurements.
-- The removed intervention figure showed 100 * hybrid_basal_err, absolute relative error against truth.
+- Table 3 (formerly an intervention figure) shows 100 * hybrid_basal_err, absolute relative error against truth.
   These are not hybrid-minus-control differences.
-- The MYC arms each use 11 conditions at every dose. The removed figure used k=0:
+- The MYC arms each use 11 conditions at every dose. Table 3 uses k=0:
   Normal 2.170 → 0.021%; Severe 1.550 → 0.006%. None is rounded to zero.
   The underlying dose series remains in the packaged data.
 - The prospective HOXA13 baseline has 10 conditions and the two depletion
