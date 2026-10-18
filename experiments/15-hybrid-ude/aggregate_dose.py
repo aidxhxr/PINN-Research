@@ -15,7 +15,7 @@ import sys
 
 import numpy as np
 
-# SA-big palette (the professor's convention used on every figure in this repo)
+# SA-big palette (the convention used on every figure in this repo)
 BLUE, ORANGE, GREY, RED = "#1f77b4", "#ff7f0e", "#7f7f7f", "#cc3333"
 ARM_STYLE = {
     "ra":   (BLUE,   "o", "graded retinoid restriction (RA $\\to$ HOXA5)"),

@@ -251,7 +251,7 @@ def train_inverse(name, refs_for_regime, *,
     # In the joint stages the very flexible state nets win the race to drive
     # the physics residual down, so once they fit the data the gradient
     # flowing to the 36 physical parameters is starved and they freeze at the
-    # wrong value (the "low loss at wrong params" signature; see session log
+    # wrong value (the "low loss at wrong params" signature, observed
     # 2026-06-30). Here we FREEZE the nets — which now track the true
     # trajectory because the data term pinned them — and optimise ONLY the
     # parameters against the physics residual on a large, fixed collocation

@@ -2,7 +2,7 @@
 # 2026-09-21: the five-form constraint screen, re-run so the paper's claim
 # "the basal penalty survives every constraint parameterisation" has artifacts
 # behind all five forms (the 2026-08-01 table survives only for gated/sc).
-# bm_myc only (narrowed 17:58 from bm_myc+ra_h5: 5-10 min per fit under GPU contention), 4 regimes, 3 starts, atlas budget.
+# bm_myc only (narrowed from bm_myc+ra_h5 for runtime: 5-10 min per fit on a shared GPU), 4 regimes, 3 starts, atlas budget.
 set -u
 cd "$(dirname "$0")"
 OUT="${OUT:-runs/20260921_screen_5form}"

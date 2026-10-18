@@ -1,6 +1,6 @@
 """Single figure style for the final paper. Every make_fig*.py imports this.
 
-Palette (the advisor's standing convention, SA-big colours):
+Palette (the project's SA-big colours):
   * regimes:  Normal #1f77b4, Early Adenoma #2ca02c, Advanced Adenoma #ff7f0e,
               Severe APC Loss #d40000 (one fixed colour per regime, everywhere);
   * verdicts: identifiable blue, weak orange, non-identifiable red;

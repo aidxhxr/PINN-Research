@@ -1,4 +1,4 @@
-"""Shared poster figure style — professor's SA palette, poster typography.
+"""Shared poster figure style — the project's SA palette, poster typography.
 
 Figures are authored at their final printed size (column width ~10.4 in) so
 they are placed in the poster at scale 1:1. SVG output embeds text as paths
@@ -10,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-# ---- palette (professor's standing request: SA-big colors) ----------------
+# ---- palette (the project's SA-big colors) -------------------------------
 BLUE = "#1f77b4"    # primary series / IDENT
 ORANGE = "#ff7f0e"  # secondary series / WEAK
 GREY = "#7f7f7f"    # neutral / reference / de-emphasis

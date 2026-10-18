@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish a static explanation alongside the existing localhost poster preview.
+"""Publish a static plain-language explanation of a population run for a local preview server.
 
 Reads completed results only; does not run or modify any simulation. The misspelled
 ``extenstion_report`` route deliberately matches the requested public URL. The

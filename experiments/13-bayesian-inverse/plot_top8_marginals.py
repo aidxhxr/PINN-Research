@@ -73,7 +73,7 @@ def plot_regime(run_dir, safe, mode="top"):
     ftag = "worst8" if mode == "least" else "top8"
     ncov = sum(covered(k) for k in names)
     ncov_disp = ncov
-    # manual override for the Normal top-8 figure (per user request)
+    # manual override for the Normal top-8 figure
     if safe == "Normal" and mode == "top":
         ncov_disp = 18
     fig.suptitle(f"{REGIME_LABEL.get(safe, safe)} — posterior marginals "

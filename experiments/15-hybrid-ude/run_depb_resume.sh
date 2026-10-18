@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 2026-09-22: resume the full-pipeline bcat arm after the 2026-09-21 CUDA OOM
-# (vLLM held 86 GB; Early Adenoma died in both control and bm_myc, and
+# (another job held 86 GB of GPU memory; Early Adenoma died in both control and bm_myc, and
 # run_hybrid.sh stops at the first failed regime). Runs the three missing
 # regimes for the control and then for bm_myc into the EXISTING run dirs, two
 # at a time, then aggregates head-to-head.

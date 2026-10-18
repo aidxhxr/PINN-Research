@@ -2,7 +2,7 @@
 
 Data: experiments/11-fisher-information/runs/20260711_203325_fisher/*_fim_summary.json and
 *_correlated_pairs.csv (authoritative post-rename run).
-IDENT=blue / WEAK=orange / NON-IDENT=red (professor's mapping).
+IDENT=blue / WEAK=orange / NON-IDENT=red (project mapping).
 """
 import json, csv, os
 import style

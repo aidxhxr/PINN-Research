@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ORDER = ["Normal", "Early Adenoma", "Advanced Adenoma", "Severe APC Loss"]
-# SA-big palette (standing preference across this repo's figures)
+# SA-big palette (used across this repo's figures)
 C_LEARNED = "#1f77b4"
 C_TRUE = "#cc3333"
 C_GREY = "#7f7f7f"

@@ -2,7 +2,7 @@
 condition shooting; in the project references) for the 36-parameter WNT-RA-HOX
 inverse problem.
 
-WHY THIS EXISTS (see Session Log 2026-06-30): the PINN inverse solver recovers
+WHY THIS EXISTS (2026-06-30): the PINN inverse solver recovers
 the state trajectory beautifully but recovers the PARAMETERS poorly — even the
 high-sensitivity W froze at ~25% error. Controlled experiments showed the
 bottleneck is the state-net's autodiff derivative: minimising the physics

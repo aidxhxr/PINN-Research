@@ -72,7 +72,7 @@ CONDITIONS = [
 ]
 # NOTE: a 3-condition setup leaves the 36-param inverse problem ill-posed
 # (Engl et al. 2009 use 16 conditions for this exact scale). Decisive
-# gradient-match experiments (see Session Log 2026-06-30) showed the recovery
+# gradient-match experiments (2026-06-30) showed the recovery
 # ceiling is set largely by the state-net derivative quality, not the raw
 # information — conditions help only marginally (3/6/8 cond -> 5/5/7 of 36
 # under 10%). These 6 are the best practical compromise; the param-refinement

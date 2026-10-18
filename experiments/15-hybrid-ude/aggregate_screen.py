@@ -29,7 +29,7 @@ import numpy as np
 from config import HYBRID_TERMS
 
 ORDER = ["Normal", "Early Adenoma", "Advanced Adenoma", "Severe APC Loss"]
-# SA-big palette (standing preference across this repo's figures)
+# SA-big palette (used across this repo's figures)
 C = {"gated": "#ff7f0e", "sc": "#1f77b4", "sc_bounded": "#2ca02c",
      "ctrl": "#7f7f7f"}
 CLASS = {"production": "prod", "modulator": "mod", "ratio": "ratio"}

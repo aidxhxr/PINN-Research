@@ -47,7 +47,7 @@ SIGMA   = 0.002     # measurement noise std (matches recover_odefit / profiling)
 REL_STEP = 1e-3     # central-difference relative perturbation for sensitivities
 K = len(UNKNOWN)
 
-# --- sensitivity-analysis (SA-big) palette — match the professor's SA plots ---
+# --- sensitivity-analysis (SA-big) palette — match the sensitivity-analysis plots ---
 # defined once in experiments/03-global-sensitivity/run_sa.py & synthesize.py; reused here so the
 # identifiability figures read as the same visual system.
 SA_BLUE, SA_ORANGE, SA_GREY, SA_DARK = "#1f77b4", "#ff7f0e", "#bbbbbb", "#444444"
