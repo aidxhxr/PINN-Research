@@ -13,7 +13,7 @@ Authors: **Nathaniel Kim · Amirkhan Aidarkhan · Pascal K. Kataboh**.
    of eight named parameters with the remaining 28 fixed at their true values.
 
 The second poster retains the neural–mechanistic hybrid and anchor-intervention
-focus. Previous versions are preserved in `poster-versions/` in the repository.
+focus. Earlier versions are in the git history.
 
 ## Files and regeneration
 

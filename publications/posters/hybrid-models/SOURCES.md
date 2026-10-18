@@ -2,9 +2,8 @@
 
 This is a separate revision of the approved garnet poster, with model/math in
 column one, PINNs and identifiability in column two, and neural–mechanistic
-hybrids in column three. The first poster in `research-poster-latex/` has since
-been revised separately. The approved original PDF/source ZIP are preserved
-locally under `poster-versions/20260907_155254_approved/`.
+hybrids in column three. The first poster in `publications/posters/pinn-recovery/` has since
+been revised separately. Earlier versions are in the git history.
 The results are from this repository.
 No model training, resampling or ODE solving was performed.
 
@@ -19,7 +18,7 @@ documented below as historical material.
 
 | Element | Original source, relative to repository root |
 |---|---|
-| Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf`, also `poster-fable/assets/ready/schema.pdf` |
+| Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
 | Equations, state order, forcing, regimes | `experiments/15-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
 | Nondimensionalization | `research-paper/paper.tex`, equations ndb–ndc |
 | Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |
@@ -38,7 +37,7 @@ documented below as historical material.
 | Beta-catenin → MYC hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/*_{recovered,term}.json` |
 | APC-loss hybrid, Table 2 | `experiments/15-hybrid-ude/runs/20260728_233450_apc_mutation_frozen/*_{recovered,term}.json`; calibration in `runs/20260728_232743_apc_calibration/` |
 | Full-model error comparison, Fig. 6 | The MYC, HOXA5 and control runs above; cached in `data/hybrid_comparison.json`, plotted by `figures/compare_hybrid_errors.py::poster_comparison` |
-| Five constraint forms | `notes/2026-08-01-hybrid-edge-atlas-and-anchor-visiting.md`, Result 1; `experiments/15-hybrid-ude/runs/20260801_204046_screen_atlas/` |
+| Five constraint forms | `results/inputs/constraint_screen_transcription.json`; `experiments/15-hybrid-ude/runs/20260801_204046_screen_atlas/`; full five-form rerun in `experiments/15-hybrid-ude/runs/20260921_screen_5form/` |
 | Historical MYC intervention comparison (removed) | `experiments/15-hybrid-ude/runs/20260802_dose_response/dose_{wnt,bcat}_bm_myc.json` |
 | Historical prospective HOXA13 test (removed) | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_m_h13.json` |
 | Failed HOXA13 → beta-catenin intervention | `experiments/15-hybrid-ude/runs/20260802_protocol_test/protocol_h13_b.json` |
@@ -199,7 +198,7 @@ Its geometry, colors, labels, legend and edges are unchanged.
   note. The complete original five-form run mapping has not been recovered;
   the cited screen-atlas directory contains gated/sc cases and cannot verify
   all five forms. A tracked transcription and source-note hash are in
-  `../results/inputs/constraint_screen_transcription.json`. This provenance
+  `results/inputs/constraint_screen_transcription.json`. This provenance
   limit is retained here; the range is omitted from the shortened poster.
 - The intervention screens use exact reference states, fit one host equation,
   and fix parameters outside that equation at truth. They use two starts

@@ -22,8 +22,8 @@ from matplotlib.lines import Line2D
 import numpy as np
 
 
-REPO = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT = REPO / 'research-poster-latex-hybrid/data/hybrid_comparison.json'
+REPO = Path(__file__).resolve().parents[4]
+DEFAULT_INPUT = REPO / 'publications/posters/hybrid-models/data/hybrid_comparison.json'
 REGIMES = ['Normal', 'Early Adenoma', 'Advanced Adenoma', 'Severe APC Loss']
 SHORT = ['Normal', 'Early adenoma', 'Advanced adenoma', 'Severe APC loss']
 COLORS = ['#64748B', '#1F77B4']

@@ -72,8 +72,8 @@ their complete scientific narratives have not been re-audited. Their catalog
 entries list this narrower validation scope. The current poster builders
 check page size, fonts, text bounds, and the preserved network schematic.
 
-The adapters preserve the reviewed files at `research-poster-latex/poster.pdf`
-and `research-poster-latex-hybrid/poster.pdf`, which remain linked to
+The adapters preserve the reviewed files at `publications/posters/pinn-recovery/poster.pdf`
+and `publications/posters/hybrid-models/poster.pdf`, which remain linked to
 `http://localhost:8003/first/poster.pdf` and
 `http://localhost:8003/second/poster.pdf`. To publish an intentional poster edit,
 use that project's `build.sh` in its recorded tmux session; it updates the PDF,

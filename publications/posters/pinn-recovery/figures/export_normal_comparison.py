@@ -12,7 +12,7 @@ import torch
 from scipy.integrate import solve_ivp
 
 ROOT = Path(__file__).resolve().parents[1]
-REPO = ROOT.parent
+REPO = ROOT.parents[2]
 SOURCE = REPO / "experiments/10-inverse-integral-residual"
 RUN = SOURCE / "runs/20260711_203325_integral"
 sys.path.insert(0, str(SOURCE))

@@ -45,8 +45,8 @@ the dated note exists, but its complete original run mapping is unavailable.
 
 | Location | Status |
 |---|---|
-| `research-poster-latex/` | Current first poster, Nathaniel Kim and Pascal Kataboh; dynamics, inverse recovery, Fisher and Bayesian results |
-| `research-poster-latex-hybrid/` | Current second poster, Amirkhan Aidarkhan and Pascal Kataboh; learned mechanisms and anchor-reaching interventions |
+| `publications/posters/pinn-recovery/` | Current first poster, Nathaniel Kim and Pascal Kataboh; dynamics, inverse recovery, Fisher and Bayesian results |
+| `publications/posters/hybrid-models/` | Current second poster, Amirkhan Aidarkhan and Pascal Kataboh; learned mechanisms and anchor-reaching interventions |
 | `research-paper/` | Historical LaTeX manuscript; overlapping numerical results registered, complete text not re-audited |
 | `presentation/` | Historical presentation; current first poster uses its original posterior draws with corrected coverage accounting |
 | `research-poster/`, `research-poster-v1/` | Earlier publication versions |

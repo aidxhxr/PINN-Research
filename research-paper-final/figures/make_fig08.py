@@ -6,7 +6,7 @@
     is shaded.  The net honours f(0)=0 exactly but lifts f by a near-constant
     over the support, and the basal production a_M drops by the same amount.
     Source: experiments/15-hybrid-ude/runs/20260727_012448_bm_myc/<regime>_{term_bm_myc.pt,term.json,recovered.json}
-    (the curves cached in research-poster-latex-hybrid/data/hybrid_comparison.json
+    (the curves cached in publications/posters/hybrid-models/data/hybrid_comparison.json
     are checked against the net on the support).
 (B) the compensation identity  mean_support[f_hat - f] = a_M - a_M_hat
     for every bm_myc fit: the five-form screen (exact states; gated, sc,
@@ -47,7 +47,7 @@ from config import BASELINE, REGIMES as CREG  # noqa: E402
 
 RUNS = os.path.join(HY, "runs")
 R1 = os.path.join(RUNS, "20260727_012448_bm_myc")
-CACHE = os.path.join(R, "research-poster-latex-hybrid/data/hybrid_comparison.json")
+CACHE = os.path.join(R, "publications/posters/hybrid-models/data/hybrid_comparison.json")
 FIVE = os.path.join(RUNS, "20260921_screen_5form")
 FIVE_TXT = os.path.join(RUNS, "20260921_aggregations/screen_5form.txt")
 ATL_LOG = os.path.join(RUNS, "20260801_204046_screen_atlas/screen.log")

@@ -118,11 +118,11 @@ Both posters are 48 × 36 inches and include editable LuaLaTeX sources.
 
 | Poster | Authors | Files |
 |---|---|---|
-| PINN dynamics and parameter recovery | Nathaniel Kim · Pascal Kataboh | [PDF](research-poster-latex/poster.pdf) · [Sources and build instructions](research-poster-latex/) |
-| Neural–mechanistic hybrids | Amirkhan Aidarkhan · Pascal Kataboh | [PDF](research-poster-latex-hybrid/poster.pdf) · [Sources and build instructions](research-poster-latex-hybrid/) |
+| PINN dynamics and parameter recovery | Nathaniel Kim · Pascal Kataboh | [PDF](publications/posters/pinn-recovery/poster.pdf) · [Sources and build instructions](publications/posters/pinn-recovery/) |
+| Neural–mechanistic hybrids | Amirkhan Aidarkhan · Pascal Kataboh | [PDF](publications/posters/hybrid-models/poster.pdf) · [Sources and build instructions](publications/posters/hybrid-models/) |
 
-The [first poster's source notes](research-poster-latex/SOURCES.md) and
-[second poster's source notes](research-poster-latex-hybrid/SOURCES.md)
+The [first poster's source notes](publications/posters/pinn-recovery/SOURCES.md) and
+[second poster's source notes](publications/posters/hybrid-models/SOURCES.md)
 document the runs, metrics and limitations behind the reported results.
 
 ## Repository layout

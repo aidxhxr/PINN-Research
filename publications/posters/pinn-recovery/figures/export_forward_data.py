@@ -13,7 +13,7 @@ import torch
 from scipy.integrate import solve_ivp
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT.parent / "experiments/04-forward-pinn/forward-pinn-train-hybrid"
+SOURCE = ROOT.parents[2] / "experiments/04-forward-pinn/forward-pinn-train-hybrid"
 RUN = SOURCE / "runs/20260712_204546"
 sys.path.insert(0, str(SOURCE))
 from config import BASELINE, REGIMES, Y0
@@ -49,7 +49,7 @@ np.savez_compressed(ROOT / "data/forward_trajectories.npz", t=t, regimes=names,
                     pinn=predictions, reference=references,
                     tau1=BASELINE["tau1"], tau2=BASELINE["tau2"])
 (ROOT / "data/forward_trajectories_provenance.json").write_text(json.dumps({
-    "run": str(RUN.relative_to(ROOT.parent)),
+    "run": str(RUN.relative_to(ROOT.parents[2])),
     "checkpoint_sha256": checkpoints, "state_order": ["b", "p", "h5", "h13", "m", "r", "c"],
     "reference": {"solver": "Radau", "rtol": 1e-10, "atol": 1e-12},
     "t_span": [0, 150], "n_plot_points": len(t), "n_training_observations": 40,

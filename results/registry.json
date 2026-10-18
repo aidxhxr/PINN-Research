@@ -13,12 +13,12 @@
       "inputs": [
         {
           "role": "dense",
-          "path": "research-poster-latex-hybrid/data/forward_dense.json",
+          "path": "publications/posters/hybrid-models/data/forward_dense.json",
           "sha256": "0c88fb99cd3107f7b9e7b5067e2a2df8e1a3ea530a9c328ab7dc6a348760325e"
         },
         {
           "role": "sparse",
-          "path": "research-poster-latex-hybrid/data/forward_sparse.json",
+          "path": "publications/posters/hybrid-models/data/forward_sparse.json",
           "sha256": "bc3036a23fe3b44977f4366fd6696c86f922fcba88afbffaf603621d8764ef2c"
         }
       ],
@@ -70,7 +70,7 @@
       "inputs": [
         {
           "role": "recovery",
-          "path": "research-poster-latex-hybrid/data/inverse_recovery.json",
+          "path": "publications/posters/hybrid-models/data/inverse_recovery.json",
           "sha256": "ff6eb3b522b713228c819e7a562e958e13a59f9e309cb4aa7b17d0418c1b46ce"
         }
       ],
@@ -167,7 +167,7 @@
       "inputs": [
         {
           "role": "comparison",
-          "path": "research-poster-latex-hybrid/data/hybrid_comparison.json",
+          "path": "publications/posters/hybrid-models/data/hybrid_comparison.json",
           "sha256": "446a35803595788050c03771958c0554807e78e421b8f6969bdc4e78e4683209"
         }
       ],
@@ -345,7 +345,7 @@
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
         "experiments/15-hybrid-ude/training.py",
-        "research-poster-latex-hybrid/figures/make_figures.py"
+        "publications/posters/hybrid-models/figures/make_figures.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['hybrid_comparison'], output_dir)",
@@ -361,17 +361,17 @@
       "inputs": [
         {
           "role": "full_matrices",
-          "path": "research-poster-latex/data/fisher_matrices.npz",
+          "path": "publications/posters/pinn-recovery/data/fisher_matrices.npz",
           "sha256": "a177214fcd2ecaff04771860a2e23c48b067dbc6e4562a5691c98833ad4b3a7f"
         },
         {
           "role": "full_summary",
-          "path": "research-poster-latex/data/fim.json",
+          "path": "publications/posters/pinn-recovery/data/fim.json",
           "sha256": "a5e7d459b95b2902af37614d4403ff88df406711b2a918baf8c98f8a994c4749"
         },
         {
           "role": "reduced_summary",
-          "path": "research-poster-latex/data/fisher_top8.json",
+          "path": "publications/posters/pinn-recovery/data/fisher_top8.json",
           "sha256": "ac803a0e20e9bf6938398a707b9c9e2ff43600af7e8660c4376717dfff0c3b97"
         },
         {
@@ -524,22 +524,22 @@
       "inputs": [
         {
           "role": "wnt",
-          "path": "research-poster-latex-hybrid/data/dose_wnt.json",
+          "path": "publications/posters/hybrid-models/data/dose_wnt.json",
           "sha256": "a3356f7f40ecb37db7667016cb652766d89f28ef6bb61263acfc910f6a5c1f3a"
         },
         {
           "role": "bcat",
-          "path": "research-poster-latex-hybrid/data/dose_bcat.json",
+          "path": "publications/posters/hybrid-models/data/dose_bcat.json",
           "sha256": "347777be273da1d48913200b0d6c5f8dbd36db38cb45c736f0474aefae978615"
         },
         {
           "role": "prospective",
-          "path": "research-poster-latex-hybrid/data/protocol_m_h13.json",
+          "path": "publications/posters/hybrid-models/data/protocol_m_h13.json",
           "sha256": "a1956e96d6a43bae07c75a2da465722f283fc3d5b206dc191724174c12bdf373"
         },
         {
           "role": "counterexample",
-          "path": "research-poster-latex-hybrid/data/protocol_h13_b.json",
+          "path": "publications/posters/hybrid-models/data/protocol_h13_b.json",
           "sha256": "430af58b58c3ac4cb52b37276adb5bddbd3a71e6900c0c1effe3f03b44b50941"
         }
       ],
@@ -819,12 +819,12 @@
       "inputs": [
         {
           "role": "trajectories",
-          "path": "research-poster-latex/data/normal_treatment_comparison.npz",
+          "path": "publications/posters/pinn-recovery/data/normal_treatment_comparison.npz",
           "sha256": "2d9eb90761282949b8941ced17919a526ec3327c3421af4ea83e9caec2a057d7"
         },
         {
           "role": "provenance",
-          "path": "research-poster-latex/data/normal_treatment_provenance.json",
+          "path": "publications/posters/pinn-recovery/data/normal_treatment_provenance.json",
           "sha256": "8257126a368774e60f4acea9c9a380f2d585d0a6eb11afadb271172a96f90aa7"
         }
       ],
@@ -863,7 +863,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "research-poster-latex/figures/normal_inference_plots.py"
+        "publications/posters/pinn-recovery/figures/normal_inference_plots.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['normal_treatment'], output_dir)",
@@ -879,12 +879,12 @@
       "inputs": [
         {
           "role": "history",
-          "path": "research-poster-latex/data/normal_inverse_history.json",
+          "path": "publications/posters/pinn-recovery/data/normal_inverse_history.json",
           "sha256": "1e815abac345f62b54fcd04e5fbef559efe142652b384650b5faa570708d9850"
         },
         {
           "role": "recovered",
-          "path": "research-poster-latex/data/normal_inverse_recovered.json",
+          "path": "publications/posters/pinn-recovery/data/normal_inverse_recovered.json",
           "sha256": "90d9106c7d9bf4e09158fa8ddcbd5697a7bf5d0676bb0733bee04cf347d6c173"
         }
       ],
@@ -916,7 +916,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "research-poster-latex/figures/normal_inference_plots.py"
+        "publications/posters/pinn-recovery/figures/normal_inference_plots.py"
       ],
       "reproduction": {
         "python_api": "wnt_pinn.reporting.reproduce(root, ['training_diagnostics'], output_dir)",
