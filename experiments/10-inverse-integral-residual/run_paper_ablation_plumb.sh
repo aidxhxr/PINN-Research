@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Weighted-variant (plumb) rung of the ablation, seed 42, on CPU in parallel with
-# the autodiff rung on the GPU (2026-10-17). Seed-7 ablation dropped for time.
+# Weighted-variant (plumb) rung of the ablation, seed 42, on the GPU alongside
+# the autodiff rung (2026-10-17). Seed-7 ablation dropped for time.
 set -u
 cd "$(dirname "$0")"
 export PYTHONPATH="$(cd ../.. && pwd)/src:$PWD"

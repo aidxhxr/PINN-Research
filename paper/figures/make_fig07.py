@@ -8,8 +8,8 @@
     condition sets of 10 / 12 / 12 conditions: error of the identifiable product
     deltaP1*(1-thetaP) (Early/Advanced/Severe; in Normal the true product is 0)
     and the number of the 36 parameters recovered within 10 %.
-    Source: experiments/15-hybrid-ude/runs/20260921_odefit_thetaP/{base10,info12,dep12}/
-    Cross-check: runs/20260921_aggregations/odefit_thetaP.txt
+    Source: experiments/17-sensitivity-pinn/runs/20261017_paper/ms_tight/*_s42_none{,_info,_dep}.json
+    (an earlier, under-converged fit is in experiments/15-hybrid-ude/runs/20260921_odefit_thetaP/)
 (C) Why: the log-sensitivity theta_P * d b(t) / d theta_P of beta-catenin in the
     control condition, per regime, from the shared model (src/wnt_pinn/model,
     the same LSODA solve thetaP_design.py uses for the FIM).

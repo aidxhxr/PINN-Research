@@ -3,8 +3,8 @@
 Seventeen experiments, numbered in the order the work developed: from the
 original 27-state model to the seven-ODE PINNs, the inverse problem,
 identifiability, neural–mechanistic hybrids and the Cramér–Rao analysis behind
-the [paper](../paper/). Each folder has its own README with the method, how to
-run it and where its outputs are.
+the [paper](../paper/). Each folder except the protected baseline (05) has its own README with the
+method, how to run it and where its outputs are.
 
 **Status.** *Maintained*: run by the current `wnt-pinn` runner. *Complete*:
 finished and kept as run. *Superseded*: a later experiment replaces it.
@@ -45,7 +45,7 @@ Normal / Early adenoma / Advanced adenoma / Severe APC loss.
 
 | # | Experiment | Question | Headline result | Status |
 |---|---|---|---|---|
-| 11 | [Fisher information](11-fisher-information/) | What does each regime's data identify, and which condition restores `θP`? | CRLB of `θP` 0.031% → 55% from Normal to Severe; one WNT knockdown shrinks the Severe bound 22-fold | Complete; paper, registry |
+| 11 | [Fisher information](11-fisher-information/) | What does each regime's data identify, and which condition restores `θP`? | CRLB of `θP` 0.031% → 55% from Normal to Severe (design study; 0.04% → 57% on the paper's benchmark); one WNT knockdown shrinks the Severe bound 22-fold | Complete; paper, registry |
 | 12 | [Fisher, eight parameters](12-fisher-top8/) | Is an eight-parameter subproblem well conditioned with the rest known? | 8 of 8 identifiable in every regime; condition numbers about 100–665 | Complete; registry |
 | 13 | [Bayesian inverse](13-bayesian-inverse/) | Can an HMC posterior say which parameters are identified? | Negative: every run fails the calibration gate | Complete; registry |
 | 14 | [Bayesian forward](14-bayesian-forward/) | How uncertain is the forward solution under HMC over network weights? | 95% band covers the reference at 91–96% of times; chains under-mixed | Complete; registry |
@@ -66,15 +66,16 @@ Normal / Early adenoma / Advanced adenoma / Severe APC loss.
 
 | # | Experiment | Question | Headline result | Status |
 |---|---|---|---|---|
-| 17 | [Sensitivity PINN](17-sensitivity-pinn/) | Estimator or experiment: what does the bound allow, and can a PINN reach it? | Bound: 132.5 of 136; PINNs 2–21 of 34; SGN-PINN 34/34/33/30 on held-out data | Complete; paper |
+| 17 | [Cramér–Rao bound and SGN-PINN](17-sensitivity-pinn/) | Estimator or experiment: what does the bound allow, and can a PINN reach it? | Bound: 132.5 of 136; PINNs 2–21 of 34; SGN-PINN 34/34/33/30 on held-out data | Complete; paper |
 
 ## Conventions
 
 - **Self-contained folders.** Each experiment keeps its own code, launch
   scripts and outputs. Historical folders keep their own copy of the model, so
   their saved runs stay reproducible with the code that made them.
-- **Long jobs in tmux.** Training and sampling runs take hours; launch them in
-  a `tmux` session so they survive a dropped connection.
+- **Long jobs.** Training and sampling runs take hours; launch them in a
+  persistent terminal session (for example `tmux`) so they survive a dropped
+  connection.
 - **Outputs.** Each run writes to the folder's `runs/<timestamp>/`, which is
   git-ignored. Runs cited by the paper or the result registry are kept: tracked
   in place, or recorded with hashes in

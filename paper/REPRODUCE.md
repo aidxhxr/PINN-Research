@@ -4,7 +4,11 @@
 passes). Every figure is made by `figures/make_*.py` from run artifacts and
 writes `figures/<name>_audit.json` listing every plotted number and its source.
 Shared style: `figures/style.py`; shared loaders: `figures/paperdata.py`.
-All paths below are relative to the repository root. `PYTHONPATH=src` for every
+All paths below are relative to the repository root, with these abbreviations:
+bare `make_*.py` and `wallclock.py` are in `paper/figures/`; other bare script
+names are in the experiment folder of the same row or item; `.../20261017_paper`
+is `experiments/17-sensitivity-pinn/runs/20261017_paper`; a `runs/...` path after
+a script is relative to that script's folder. `PYTHONPATH=src` for every
 script.
 
 The paths in this file follow the current repository layout. The manuscript
@@ -12,7 +16,9 @@ cites repository paths as of the git tag
 [`paper-v1`](https://github.com/aidxhxr/PINN-Research/tree/paper-v1), the state
 the paper was built from, where this folder was `research-paper-final/` and the
 experiments were `PINN-*/` folders at the root. Every path cited in the
-manuscript is valid at that tag; [`docs/layout.md`](../docs/layout.md) maps old
+manuscript follows that layout (the run directories in the S3 Table caption
+were not committed; S3 Table is rebuilt from the tracked `depfull_*.txt`
+aggregations listed under Tables); [`docs/layout.md`](../docs/layout.md) maps old
 paths to new ones.
 
 ## Model and data
@@ -31,12 +37,14 @@ paths to new ones.
 | Fig 4 | `make_fig04.py` | `.../20261017_paper/mc_tight` (`mle.py --start truth --weights none --fix-deltaP1 --rtol 1e-11 --fd-step 1e-5`), `mc_tight_costdrop.json` (`mc_costdrop.py`) |
 | Fig 5 | `make_fig05.py` | `.../20261017_paper/ablation_seed42` (`experiments/10-inverse-integral-residual/run_boost.py --variant base/plumb`), `experiments/17-sensitivity-pinn/runs/20261002_integral_seed{42,7}`, `.../20261017_paper/{sgn_seed42,sgn_seed7,ms_tight}` |
 | Fig 6 | `make_fig06.py`, `wallclock.py` | `.../20261017_paper/sgn_seed{42,7}` (`sgn.py`, `run_v2.sh`, `reselect.py`), `ms_tight`, `wallclock.json` |
-| Fig 7 | `make_fig07.py` | `experiments/11-fisher-information/runs/20260921_thetaP_design`; `.../20261017_paper/ms_tight/*_s42_none{,_info,_dep}.json` |
-| Fig 8 | `make_fig08.py` | `experiments/15-hybrid-ude/runs/{20260727_012448_bm_myc, 20260801_204046_screen_atlas, 20260802_screen_atlas_rest, 20260921_screen_5form}` |
+| Fig 7 | `make_fig07.py` | `experiments/11-fisher-information/runs/20260921_thetaP_design`; `.../20261017_paper/ms_tight/*_s42_none{,_info,_dep}.json`; `.../20261017_paper/fim2_{base,info,dep}` (`run_paper_fim2.sh`) |
+| Fig 8 | `make_fig08.py` | `experiments/15-hybrid-ude/runs/{20260727_012448_bm_myc, 20260801_204046_screen_atlas, 20260802_screen_atlas_rest, 20260921_screen_5form, 20260921_aggregations}` |
 | Fig 9 | `make_fig09.py` | `experiments/15-hybrid-ude/runs/20261017_hybrid_fim` (`hybrid_fim.py`, `hybrid_fim_analysis.py`) |
 | Fig 10 | `make_fig10.py` | `experiments/15-hybrid-ude/runs/{20260801_depletion_ab, 20260801_infoctl}` |
 | Fig 11 | `make_fig11.py` | `experiments/15-hybrid-ude/runs/{20260802_dose_response, 20260802_dose_starts5, 20260921_dose_seeds, 20260802_protocol_test}` |
 | S1 Fig | `make_figS1.py` | `.../20261017_paper/fim2_base` (`fim.py --save-jac`) |
+
+Figs 4–6 also read the CRLB from `.../20261017_paper/fim_seed42`.
 
 ## Tables
 - Table 1 (regimes), S1 Table (parameters), S2 Table (edges): model definitions.
@@ -44,11 +52,16 @@ paths to new ones.
 - S4 Table: `experiments/15-hybrid-ude/runs/20260802_anchor_reach/anchor_reach.txt`.
 
 ## Order of computation (2026-10-17 confirmatory runs)
-1. `experiments/17-sensitivity-pinn/fim.py` (Fisher information, ~4 min per regime on 24 cores).
-2. `experiments/17-sensitivity-pinn/run_paper_cpu.sh` job list, executed by
-   `run_paper_cpu_resume.py` (multistart and Monte Carlo MLE fits).
-3. `experiments/17-sensitivity-pinn/run_paper_sgn7.sh`, `run_paper_sgn42.sh` (SGN-PINN, GPU).
-4. `experiments/10-inverse-integral-residual/run_paper_ablation_cpu.sh` (autodiff `base`, GPU) and `run_paper_ablation_plumb.sh` (weighted `plumb`, GPU); seed 42 only.
+1. `experiments/17-sensitivity-pinn/fim.py` (Fisher information, ~4 min per regime on 24 cores), then
+   `run_paper_fim2.sh` (designs base/info/dep/depb with per-condition Jacobians).
+2. The committed job list `experiments/17-sensitivity-pinn/runs/20261017_paper/cpu_jobs.txt`,
+   executed by `run_paper_cpu_resume.py` (multistart and Monte Carlo MLE fits). Its
+   tight-tolerance lines (`mc_tight/`, `ms_tight/`) back the figures; `run_paper_cpu.sh`
+   regenerates only the default-tolerance part and truncates the file first.
+3. `experiments/17-sensitivity-pinn/run_paper_sgn7.sh`, `run_paper_sgn42.sh` (SGN-PINN, GPU), starting
+   from the integral PINNs in `experiments/17-sensitivity-pinn/runs/20261002_integral_seed{42,7}`
+   (`experiments/10-inverse-integral-residual/run_boost.py --variant integral`; network weights not committed).
+4. `experiments/10-inverse-integral-residual/run_paper_ablation_cpu.sh` (queues `base` and `plumb` for seeds 42 and 7 on the GPU; only its seed-42 `base` runs were used) and `run_paper_ablation_plumb.sh` (seed-42 `plumb`, GPU).
 5. `experiments/15-hybrid-ude/hybrid_fim.py --out runs/20261017_hybrid_fim`, then
    `hybrid_fim_analysis.py`.
 6. `paper/figures/make_*.py`, then `./build.sh`.
@@ -57,7 +70,7 @@ paths to new ones.
 
 - APC level and APC share of beta-catenin removal (results_c): `experiments/17-sensitivity-pinn/apc_turnover.py` -> `runs/20261017_paper/apc_turnover.json`.
 - Restart-convergence checks (results_b): `experiments/17-sensitivity-pinn/run_paper_restart.sh` -> `runs/20261017_paper/restart_checks.jsonl`.
-- Full-pipeline RA->HOXA5 and MYC hybrids vs control (results_d): `experiments/15-hybrid-ude/runs/20260726_195830_control`, `20260726_214316_ra_h5`.
+- Full-pipeline RA->HOXA5 and MYC hybrids vs control (results_d): `experiments/15-hybrid-ude/runs/20260726_195830_control`, `20260726_214316_ra_h5`, `20260727_012448_bm_myc`.
 - Pre-registered dose and prospective predictions: `PREREGISTERED.md`, `dose.log`, `protocol.log` in `experiments/15-hybrid-ude/runs/20260802_{dose_response,protocol_test}`.
 - Screen budget: the 2026-08-01 Normal atlas and depletion A/B screens were launched inline; the follow-up runs built to match them (`run_infoctl.sh`, `run_atlas_rest.sh`) pass `--adam 3000 --lbfgs 300`.
 - Screen budget check: `experiments/15-hybrid-ude/runs/20260801_depletion_ab/budget_check.txt` (a rerun of the logged Normal `bm_myc` gated screen at 3000/300 reproduces it exactly; 1500/200 does not).

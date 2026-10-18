@@ -137,14 +137,14 @@ per regime, i.e. all 36 minus the structurally degenerate pair
 |---|---|---|
 | `runs/20261002_integral_seed42/`, `runs/20261002_integral_seed7/` | Matched baseline: the integral PINN of [10](../10-inverse-integral-residual/) on byte-identical benchmark and replicate data. These are the start points for SGN-PINN. | JSON and `summary.txt` (network weights `*.pt` are not committed) |
 | `runs/20261017_paper/fim_seed42/` | Information budget of the benchmark design (Fig 3) | yes |
-| `runs/20261017_paper/fim2_{base,info,dep,depb}/` | Per-condition Jacobians (S1 Fig) and bounds under added designs (Section 2.7) | yes |
+| `runs/20261017_paper/fim2_{base,info,dep,depb}/` | Per-condition Jacobians (S1 Fig) and bounds under added designs (Section 2.7) | `fim_summary.json` for all four; Jacobians (`*_Jcond.npy`) for `base` only |
 | `runs/20261017_paper/mc_tight/`, `mc_tight_costdrop.json` | Is the bound attained? 96 truth-start MLE fits (Fig 4) | yes |
 | `runs/20261017_paper/ms_tight/`, `ms_tight_cap/` | Multistart MLE from the common start and 3 jittered starts (seed 42 relative and unit weights, seed 7 relative), plus the three-design θ<sub>P</sub> fits (Figs 5, 7B) | yes |
 | `runs/20261017_paper/sgn_seed42/`, `sgn_seed7/` | SGN-PINN v2, both schedules, with `reselect.json` (Figs 5, 6) | yes |
 | `runs/20261017_paper/ablation_seed42/{base,plumb}/` | Matched PINN ablation: autodiff and weighted rungs (Fig 5) | yes |
 | `runs/20261017_paper/wallclock.json` | Measured run times (Fig 6E) | yes |
 | `runs/20261017_paper/mc/`, `ms/`, `mc_costdrop.json` | The same fits at the default tolerance (LSODA 10<sup>−8</sup>, FD step 10<sup>−6</sup>). Superseded by `*_tight`. | yes (kept for comparison) |
-| `runs/20261017_paper/apc_turnover.json`, `restart_checks.jsonl` | Numbers quoted only in the text (APC share of β-catenin removal, restart checks) | not committed |
+| `runs/20261017_paper/apc_turnover.json`, `restart_checks.jsonl` | Numbers quoted only in the text (APC share of β-catenin removal, restart checks) | yes |
 | `runs/20261002_mle/`, `20261002_sgn_from_pinn0711/`, `20261002_sgn_lampath/`, `20261002_sgn_v2/`, `20261002_tpinn_v1/`, `20261002_ablate/` | Development rounds: first MLE, SGN v1 basis, λ-path tests, v2 on the earlier PINN, tangent PINN, an SGN ablation that was cancelled | not committed |
 
 ## Contents
@@ -173,8 +173,8 @@ per regime, i.e. all 36 minus the structurally degenerate pair
 All data are synthetic and regenerated from seeds. Run from the folder with the
 shared package on the path. Long jobs belong in a persistent terminal session.
 Choose fresh output directories: the `run_paper_*` scripts write into
-`runs/20261017_paper/`, which holds the committed results, and they export a
-hard-coded absolute `PYTHONPATH` that you must edit first.
+`runs/20261017_paper/`, which holds the committed results. They set
+`PYTHONPATH` to the repository's `src/` themselves.
 
 ```bash
 cd experiments/17-sensitivity-pinn
@@ -190,7 +190,7 @@ for s in $(seq 101 124); do for r in "${R[@]}"; do
   python3 -u mle.py runs/<timestamp>_mc "$r" --start truth --seed $s --weights none \
       --fix-deltaP1 --rtol 1e-11 --fd-step 1e-5 --workers 14 --tag _s$s
 done; done
-python3 mc_costdrop.py mc_tight        # reads/writes under runs/20261017_paper/ (path fixed in script)
+python3 mc_costdrop.py ../<timestamp>_mc   # argument is relative to runs/20261017_paper/; writes runs/<timestamp>_mc_costdrop.json
 
 # 3. Multistart MLE (common start + jitter seeds 1-3); rel weights shown, also --weights none
 for r in "${R[@]}"; do for j in "" 1 2 3; do

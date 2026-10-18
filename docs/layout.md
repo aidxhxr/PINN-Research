@@ -109,7 +109,8 @@ root files.
 The manuscript in [`paper/`](../paper/) cites paths in the old layout
 ([`paper/REPRODUCE.md`](../paper/REPRODUCE.md) uses the new one). Git tag
 [`paper-v1`](https://github.com/aidxhxr/PINN-Research/tree/paper-v1) preserves
-that layout, so every cited path resolves as written after
-`git checkout paper-v1`. On later commits, translate a cited path with the
+that layout: after `git checkout paper-v1`, cited paths read as written (a few
+run directories named in the S3 Table caption were never committed). On later
+commits, translate a cited path with the
 tables above. Older run manifests, logs and figure audit files also record
 paths in the old layout; the same translation applies.
