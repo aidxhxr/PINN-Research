@@ -1,6 +1,6 @@
 """
 SA-big — global + local sensitivity analysis of the 27-state Wnt/Retinoid/HOX
-model.  Large-system counterpart of `PINN/sensitivity_analysis.ipynb`.
+model.  Large-system counterpart of `experiments/02-original-pinn/sensitivity_analysis.ipynb`.
 
 Produces, for every scored output:
   * Local sensitivity (normalized elasticity): per-output signed bar charts +

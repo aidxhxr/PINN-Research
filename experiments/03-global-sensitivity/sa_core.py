@@ -3,7 +3,7 @@ SA-big — shared core for the sensitivity analysis of the *big* (27-state)
 Wnt / Retinoid / HOX model (`model_big.modelsys_2025_k16dynamic`).
 
 This is the large-system counterpart of the 7-ODE screening in
-`PINN/sensitivity_analysis.ipynb`.  It defines:
+`experiments/02-original-pinn/sensitivity_analysis.ipynb`.  It defines:
 
   * the baseline parameter set (the 27-element reaction-rate vector `p`
     + the cross-pathway coupling knobs),

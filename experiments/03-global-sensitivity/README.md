@@ -1,16 +1,16 @@
 # SA-big — Sensitivity analysis of the big (27-state) Wnt / Retinoid / HOX model
 
 This is the large-system counterpart of the 7-ODE screening in
-[`PINN/sensitivity_analysis.ipynb`](../PINN/sensitivity_analysis.ipynb).
+[`experiments/02-original-pinn/sensitivity_analysis.ipynb`](../02-original-pinn/sensitivity_analysis.ipynb).
 It applies the same suite of methods — **local elasticity**, **Morris
 elementary-effects screening**, and **Sobol variance decomposition** — to the
 full **27-state** nondimensional Wnt / Retinoid / HOX reaction model
 (`modelsys_2025_k16dynamic`, converted from the MATLAB driver
-`matlab_code/normasysl_call.m`).
+`experiments/01-model-prototypes/matlab/normasysl_call.m`).
 
 ## The model
 
-`model_big.py` is a copy of `matlab_code/modelsys_2025_k16dynamic_converted.py`
+`model_big.py` is a copy of `experiments/01-model-prototypes/matlab/modelsys_2025_k16dynamic_converted.py`
 with the solver settings exposed as keyword arguments so the analysis can trade
 fidelity for speed. State vector (27 species + 1 derived readout):
 
@@ -59,7 +59,7 @@ stemness).
 ## How to run
 
 ```bash
-cd SA-big
+cd experiments/03-global-sensitivity
 python3 run_sa.py                       # local + Morris (+ Sobol)
 python3 run_sa.py --morris-N 24 --skip-sobol
 python3 run_sa.py --sobol-N 32 --workers 60

@@ -31,7 +31,7 @@ seed protocol, defaults, dependencies or resume behavior as the new runner.
 | `PINN-inverse-multicond/` | Six-condition inverse and classical ODE-fit experiments |
 | `PINN-inverse-multicond-excite/` | Ten-condition WNT/MYC excitation comparison; original autodiff source for 37/144 |
 | `PINN-inverse-better/`, `PINN-inverse-multicond-better/` | Earlier optimization and identifiability attempts; retain for historical comparison |
-| `PINN-forward/`, `PINN/` | Early implementations, notebooks, and sensitivity-analysis tables |
+| `experiments/01-model-prototypes/`, `experiments/02-original-pinn/`, `experiments/03-global-sensitivity/` | Early prototypes, the original PINN notebooks, and sensitivity-analysis tables |
 | `PINN-hybrid-ude/runs/*screen*`, `*protocol*`, `*dose*` | Equation-level or dose-specific screens; inspect their protocol before comparing to joint inverse fits |
 | `ROADMAP.md` | Chronological historical narrative, with superseded interpretations |
 | [Ecology project](https://github.com/aidxhxr/ecosystem-engineer-model) | Separate ecology research topic; outside the WNT package and result registry |

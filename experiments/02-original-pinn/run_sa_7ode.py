@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Standalone reproduction of PINN/sensitivity_analysis.ipynb -> CSV tables.
+Standalone reproduction of experiments/02-original-pinn/sensitivity_analysis.ipynb -> CSV tables.
 
 The notebook stores only PNG figures; this script runs the identical model and
 analysis (verbatim model / QoI / sampler settings) and writes numeric tables to
-PINN/sa_results/ so the numbers can be cited in a paper.
+experiments/02-original-pinn/sa_results/ so the numbers can be cited in a paper.
 
 Two parameter boxes are run by default:
 
@@ -50,7 +50,7 @@ from SALib.analyze import sobol as sobol_analyze
 
 # ============================================================
 # Model (7-variable nondimensional Wnt / RA system) + stemness
-# -- copied verbatim from PINN/sensitivity_analysis.ipynb, cell 1
+# -- copied verbatim from sensitivity_analysis.ipynb, cell 1
 # ============================================================
 def hill(x, K, n=1):
     x = max(x, 0.0)
@@ -207,7 +207,7 @@ def run_box(outdir, thetap_max, skip_sobol):
 
     cfg = {
         "generated": datetime.now().isoformat(timespec="seconds"),
-        "source_notebook": "PINN/sensitivity_analysis.ipynb",
+        "source_notebook": "experiments/02-original-pinn/sensitivity_analysis.ipynb",
         "output_dir": outdir,
         "thetap_max_clip": thetap_max,
         "model": {
@@ -331,7 +331,7 @@ def _salib_version():
         return "unknown"
 
 
-REF = {  # values read off PINN/sa_plots/{morris,sobol}_stemness.png
+REF = {  # values read off sa_plots/{morris,sobol}_stemness.png
     "morris": {"mu_star": 1.2120, "sigma": 0.3596},
     "sobol": {"S1": 0.7496, "ST": 0.8082},
 }
