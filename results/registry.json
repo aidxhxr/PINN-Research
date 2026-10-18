@@ -972,7 +972,7 @@
       ],
       "upstream": [
         {
-          "path": "network-diagram/preview.png",
+          "path": "publications/figures/network-diagram/preview.png",
           "sha256": "abc6b875cbb0665ff5fba4adced3e18126c57c4eb5f3c5c19e9dc88fe84a4d10",
           "required": false
         }
@@ -980,7 +980,7 @@
       "original_training_git_revision": null,
       "code_reference_revision": "587842f8981bab4b20692d43dd6da3fc059e04e8",
       "source_code": [
-        "network-diagram/schematic-better.tex"
+        "publications/figures/network-diagram/schematic-better.tex"
       ],
       "metric_definition": "Exact SHA-256 equality with the original figure asset. Reproduction copies the verified bytes.",
       "denominator": "Not a numerical metric.",

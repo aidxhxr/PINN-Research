@@ -57,7 +57,7 @@
       "id": "network",
       "title": "WNT-RA-HOX regulatory network",
       "status": "current_asset",
-      "source_directory": "network-diagram",
+      "source_directory": "publications/figures/network-diagram",
       "result_ids": ["figure_network"],
       "input_globs": ["*.tex"],
       "build_commands": [["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "schematic-better.tex"]],

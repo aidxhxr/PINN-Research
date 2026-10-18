@@ -50,7 +50,7 @@ the dated note exists, but its complete original run mapping is unavailable.
 | `publications/papers/2026-08-pinn-identifiability/` | Historical LaTeX manuscript; overlapping numerical results registered, complete text not re-audited |
 | `publications/slides/archive/beamer-dark/` | Historical presentation; current first poster uses its original posterior draws with corrected coverage accounting |
 | `publications/posters/archive/2026-08-typst/`, `publications/posters/archive/2026-09-typst-v1/` | Earlier publication versions |
-| `network-diagram/` | TikZ regulatory network source and reviewed PDF |
+| `publications/figures/network-diagram/` | TikZ regulatory network source and reviewed PDF |
 | `docs/figures/` | Seven README figure snapshots with original-asset hashes |
 
 [`publications/catalog.json`](../publications/catalog.json) defines the build

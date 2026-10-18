@@ -28,7 +28,7 @@ echo "Syncing deck figures into assets/figures/"
 
 # -- slide 3: biological network schematic (vector) -------------------------
 copy schematic.pdf \
-     network-diagram/schematic-better.pdf
+     publications/figures/network-diagram/schematic-better.pdf
 
 # -- slide 7: reference dynamics from the stiff ODE solver ------------------
 copy scipy_core_dynamics.png \

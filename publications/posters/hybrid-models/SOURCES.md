@@ -18,7 +18,7 @@ documented below as historical material.
 
 | Element | Original source, relative to repository root |
 |---|---|
-| Original schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
+| Original schematic, Fig. 1 | `publications/figures/network-diagram/schematic-better.pdf` |
 | Equations, state order, forcing, regimes | `experiments/15-hybrid-ude/odes.py`, `config.py`, `residual.py`; `docs/model.md` |
 | Nondimensionalization | `publications/papers/2026-08-pinn-identifiability/paper.tex`, equations ndb–ndc |
 | Additive ATRA treatment plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved baseline in `data/forward_trajectories_provenance.json` |

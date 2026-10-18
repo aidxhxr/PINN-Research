@@ -10,7 +10,7 @@ ordinary builds only read saved arrays. Archived hybrid/forward data remain in
 
 | Element | Original source, relative to repository root |
 |---|---|
-| Regulatory schematic, Fig. 1 | `network-diagram/schematic-better.pdf` |
+| Regulatory schematic, Fig. 1 | `publications/figures/network-diagram/schematic-better.pdf` |
 | Model, state order and forcing | `experiments/10-inverse-integral-residual/config.py`, `odes.py`; `docs/model.md` |
 | Baseline/cosine RA-input plot | `src/wnt_pinn/model/numpy_rhs.py::_ra_input`; saved parameters in `data/normal_treatment_provenance.json`, `parameters.noATRA` |
 | Normal Radau and PINN curves, Figs. 2–3 | `experiments/10-inverse-integral-residual/runs/20260711_203325_integral/Normal_{noATRA,ctrl}_net.pt`; exported to `data/normal_treatment_comparison.npz` |

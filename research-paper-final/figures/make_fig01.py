@@ -1,7 +1,7 @@
 """Figure 1 (panels B, C): reference dynamics and the ten-condition design.
 
 Panel A (the WNT-RA-HOX network schematic) is placed separately by LaTeX from
-network-diagram/schematic-better.pdf; this script draws only B and C.
+publications/figures/network-diagram/schematic-better.pdf; this script draws only B and C.
 
   B  scipy Radau reference (rtol 1e-10, atol 1e-12) in the control condition
      `ctrl` for the four regimes: beta-catenin b, APC and the stemness index

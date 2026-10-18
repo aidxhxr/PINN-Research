@@ -40,7 +40,7 @@ Repository: https://github.com/aidxhxr/PINN-Research
 The following assets were matched to the PDF's embedded figures and used at
 native repository resolution:
 
-  network-diagram/network_schematic.pdf
+  publications/figures/network-diagram/network_schematic.pdf
   experiments/04-forward-pinn/forward-pinn-train-hybrid/architecture.pdf
   experiments/04-forward-pinn/forward_pinn_train/scipy_core_dynamics.png
   experiments/04-forward-pinn/forward_pinn_train/runs/20260711_203325/pinn7_losses.png
