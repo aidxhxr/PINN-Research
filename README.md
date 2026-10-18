@@ -1,185 +1,207 @@
-# Physics-informed neural networks for a WNT–RA–HOX model
+<div align="center">
 
-This repository studies state reconstruction, parameter recovery and learned
-regulatory terms in a model of colorectal cancer stemness. It contains forward
-and inverse physics-informed neural networks (PINNs), Fisher and Bayesian
-analyses, and neural–mechanistic hybrids. The experiments use synthetic data
-generated from the model.
+# Estimator or experiment?
 
-## Model
+**A Cramér–Rao accounting of parameter recovery by physics-informed and hybrid
+neural–mechanistic models of WNT–retinoic acid–HOX signalling in colorectal cancer**
 
-Seven coupled ODEs describe β-catenin, APC, HOXA5, HOXA13, MYC, retinoic acid
-and CYP26A1. Retinoic-acid input includes circadian forcing and an ATRA pulse.
-The inverse problem has 36 unknown parameters. WNT drive `W` and APC
-functionality `θP` define four model regimes:
+[![Checks](https://github.com/aidxhxr/PINN-Research/actions/workflows/checks.yml/badge.svg)](https://github.com/aidxhxr/PINN-Research/actions/workflows/checks.yml)
+[![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776ab)](pyproject.toml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-2ea44f)](LICENSE)
+[![Text: CC BY 4.0](https://img.shields.io/badge/text-CC%20BY%204.0-ef9421)](LICENSE-CC-BY-4.0.txt)
+[![Paper](https://img.shields.io/badge/paper-PDF-b31b1b)](paper/main.pdf)
 
-| Regime | W | θP |
+[**Paper**](paper/main.pdf) ·
+[**Reproduce**](paper/REPRODUCE.md) ·
+[**Experiments**](experiments/) ·
+[**Posters & slides**](publications/) ·
+[**Docs**](docs/)
+
+</div>
+
+---
+
+When a physics-informed neural network (PINN) or a neural–mechanistic hybrid
+returns the wrong parameters, either the **estimator** failed or the
+**experiment** never contained the information. The two call for opposite
+remedies and are rarely told apart. This repository separates them with the
+Cramér–Rao bound (CRLB) of the experiment actually performed, and carries that
+accounting through a seven-state model of WNT, retinoic acid and HOX signalling,
+from the healthy crypt to severe APC loss.
+
+<p align="center">
+  <img src="paper/figures/fig05_estimator_gap.png" width="820"
+       alt="Parameters recovered within 10% by three PINN formulations, SGN-PINN and maximum likelihood, against the CRLB-expected count, in four disease regimes">
+</p>
+<p align="center"><sub>
+<b>The estimator gap.</b> (A) Parameters recovered within 10% of truth, out of 34,
+in four disease regimes. (B) Error of each estimate against its Cramér–Rao
+standard deviation. (C) Median error in units of the bound: inverse PINNs sit
+10–92× above it; maximum likelihood and SGN-PINN come within a factor of two
+of it. Paper, Fig 5.
+</sub></p>
+
+## Findings
+
+- **The information is there; the PINNs miss it.** Three inverse-PINN
+  formulations recover 2–21 of 34 parameters per regime. The bound says an
+  efficient estimator would recover 132.5 of 136 regime–parameter pairs, and a
+  converged maximum-likelihood fit attains it on independent datasets where the
+  data are informative. The PINNs' errors are 10–92 times the bound at the median.
+- **SGN-PINN closes the gap.** A Schur-complement Gauss–Newton PINN freezes the
+  network's features, so the problem becomes separable with a block-arrowhead
+  structure. Wherever its continuation converges (both low-WNT regimes on two
+  datasets), it matches the classical estimator and reports its own precision.
+- **Where the bound is wide, change the experiment.** APC functionality, the
+  parameter that defines the disease stage, loses three orders of magnitude of
+  precision as β-catenin saturates. One WNT knockdown restores it;
+  information-matched conditions do not.
+- **A learned term needs its anchor visited.** The constraint `f(0) = 0` of a
+  learned regulatory term is informative only if some condition drives the
+  regulator to zero, so the host equation's basal rate is lost under every
+  network parameterisation tried. A knockdown that visits the anchor, in a
+  condition that still contains the basal term, removes most of the loss.
+
+## The model
+
+<img align="right" src="docs/figures/network.png" width="330"
+     alt="Regulatory network of β-catenin, APC, HOXA5, HOXA13, MYC, retinoic acid and CYP26A1">
+
+Seven coupled ODEs for β-catenin, APC, HOXA5, HOXA13, MYC, retinoic acid and
+CYP26A1, with circadian retinoic-acid forcing and an ATRA treatment pulse. The
+inverse problem has 36 kinetic parameters, observed under ten experimental
+conditions (retinoid schedules plus WNT and MYC perturbations). WNT drive `W`
+and APC functionality `θP` define four disease regimes:
+
+| Regime | `W` | `θP` |
 |---|---:|---:|
 | Normal | 0.8 | 1.00 |
-| Early Adenoma | 1.0 | 0.75 |
-| Advanced Adenoma | 1.5 | 0.50 |
-| Severe APC Loss | 2.0 | 0.25 |
+| Early adenoma | 1.0 | 0.75 |
+| Advanced adenoma | 1.5 | 0.50 |
+| Severe APC loss | 2.0 | 0.25 |
 
-![WNT–RA–HOX regulatory network](docs/figures/network.png)
+All data are synthetic, regenerated from fixed seeds against a Radau reference
+solution. The equations, parameter tables and numerical conventions are in
+[docs/model.md](docs/model.md) and [`src/wnt_pinn/model/`](src/wnt_pinn/model/).
 
-The state order is `[b, p, h5, h13, m, r, c]`. Reference trajectories use
-SciPy's Radau solver over dimensionless time `[0, 150]`, with the default ATRA
-pulse on `[40, 88]`. Setting `DR=0` removes the pulse while retaining the
-circadian input.
-
-## Forward and inverse PINNs
-
-The forward PINN maps Fourier features of time to seven state trajectories.
-Training combines observation, initial-condition and ODE-residual losses.
-With 40 observation times, its mean relative L2 error is 2.41% across seven
-states and four regimes. A separate supervised network trained on 100 labels
-has 1.06% error; the two runs use different training objectives.
-
-![Forward PINN and Radau reference trajectories](docs/figures/forward_pinn.png)
-
-Solid curves show the reference solution; dashed curves show the PINN.
-The shaded interval marks ATRA treatment.
-
-The inverse PINN fits one state network per experimental condition and shares
-the biological parameters across conditions. The following runs each use ten
-conditions, including WNT and MYC perturbations. Counts are parameters within
-10% of their true values.
-
-| Inverse PINN | Normal | Early | Advanced | Severe | Total / 144 |
-|---|---:|---:|---:|---:|---:|
-| Autodiff residual | 16 | 9 | 6 | 6 | 37 |
-| Integral residual | 17 | 16 | 10 | 7 | 50 |
-
-The integral implementation uses a trapezoidal residual, relative state
-weighting, fixed collocation and multiple starts. These changes were made
-together, so the comparison does not isolate the effect of the residual.
-Accurate trajectories can still accompany large parameter errors.
-
-![Eight best-recovered parameters in an inverse-PINN run](docs/figures/inverse_recovery_best8.png)
-
-The figure shows a selected subset of eight parameters; the table reports
-recovery over all 36.
-
-## Identifiability and uncertainty
-
-Fisher information, profile likelihood and Bayesian sampling examine which
-parameter combinations the observations constrain. High WNT weakens
-sensitivity to APC functionality. Each full Fisher matrix has one near-null
-direction under the analysis threshold. An eight-parameter subset has no
-near-null directions and condition numbers of about 100–665 when the other
-28 parameters are fixed at truth. This is a local sensitivity result;
-PINN recovery of that subset has not been tested.
-
-![Fisher-information eigenvalue spectra across regimes](docs/figures/fim_spectra.png)
-
-The forward Bayesian model samples network weights with Hamiltonian Monte
-Carlo (HMC). The inverse model freezes the state networks and samples the
-36 biological parameters. The inverse HMC runs fail effective-sample-size and
-coverage checks, so their interval widths are unreliable.
-
-![Bayesian forward predictions for β-catenin](docs/figures/bayesian_forward_bands.png)
-
-Forward posterior bands for β-catenin. Coverage and sampling diagnostics are
-saved with each run.
-
-## Neural–mechanistic hybrids
-
-A small neural network replaces one regulatory term inside the ODE system.
-For β-catenin activation of MYC, the learned term has two hidden layers of
-five tanh units and satisfies `f(0)=0`. The remaining biological parameters
-and state networks are fitted jointly with it.
-
-MYC activation error is 6.2–9.5% NRMSE over the observed regulator ranges.
-On the 34 parameters shared by the hybrid and mechanistic control, recovery
-within 10% of truth falls from 48 to 43 out of 136 parameter–regime pairs.
-Function accuracy and parameter recovery therefore need separate evaluation.
-
-![RA to HOXA5 hybrid with depletion conditions](docs/figures/hybrid_learned_term.png)
-
-This separate RA-to-HOXA5 example uses RA and WNT depletion conditions.
-The MYC comparison above uses the joint hybrid runs recorded in the result registry.
-
-An anchor at `f(0)=0` can leave basal production ambiguous when the data never
-approach zero. On the observed range, an offset in the learned function can
-compensate for an error in the basal term. In an equation-level MYC screen,
-adding HOXA13 feedback suppression to WNT depletion reduces Normal-regime
-basal error from 2.170% to 0.021%, with 11 conditions in each arm.
-
-![Basal-parameter error across depletion doses](docs/figures/hybrid_dose_response.png)
-
-These intervention screens fit one equation to exact states, with parameters
-outside that equation fixed at truth. Basal recovery can improve while
-function recovery worsens. Validation with noisy, sparse state estimates
-remains to be done.
-
-## Posters
-
-Both posters are 48 × 36 inches and include editable LuaLaTeX sources.
-
-| Poster | Authors | Files |
-|---|---|---|
-| PINN dynamics and parameter recovery | Nathaniel Kim · Pascal Kataboh | [PDF](publications/posters/pinn-recovery/poster.pdf) · [Sources and build instructions](publications/posters/pinn-recovery/) |
-| Neural–mechanistic hybrids | Amirkhan Aidarkhan · Pascal Kataboh | [PDF](publications/posters/hybrid-models/poster.pdf) · [Sources and build instructions](publications/posters/hybrid-models/) |
-
-The [first poster's source notes](publications/posters/pinn-recovery/SOURCES.md) and
-[second poster's source notes](publications/posters/hybrid-models/SOURCES.md)
-document the runs, metrics and limitations behind the reported results.
+<br clear="right">
 
 ## Repository layout
 
-| Path | Contents |
-|---|---|
-| `src/wnt_pinn/` | Shared equations and networks, experiment runner, reporting and artifact tools |
-| `configs/` | Validated experiment profiles, including a small CPU example |
-| `tests/` | Numerical parity, parameter scoring, archive integrity and resume checks |
-| `results/registry.json` | Source hashes, metrics and limitations for reported results |
-| `artifacts/catalog.json` | Inventory of preserved checkpoints and run outputs |
-| `publications/catalog.json` | Build recipes and result dependencies for papers, posters and slides |
-| `docs/` | Installation, model, experiment and reproduction guides |
-| `PINN-*/` | Active compatibility entrypoints and historical experiments |
+```text
+.
+├── paper/              Manuscript, figure scripts with audit files, reproduction map
+├── experiments/        Seventeen self-contained experiments, in research order
+├── src/wnt_pinn/       Shared model, networks, kernels, run manager and reporting
+├── configs/            Experiment profiles for `wnt-pinn run`
+├── results/            Result registry: metrics, source hashes and stated limits
+├── artifacts/          Catalogue of preserved checkpoints and run outputs
+├── publications/       Posters, slides, earlier manuscripts and figure sources
+├── docs/               Installation, model, experiments, reproduction, decisions
+├── scripts/            Experiment runner and kernel benchmarks
+└── tests/              Numerical parity, scoring, integrity and resume tests
+```
 
-The [research index](docs/research-index.md) identifies supported and historical
-work. The [model guide](docs/model.md) documents numerical conventions.
-`experiments/05-inverse-single-condition/` is the preserved historical baseline.
+## Experiments
 
-## Install and reproduce
+Each folder in [`experiments/`](experiments/) answers one question and has its
+own README with results, method and launch commands.
 
-From the repository root, create an environment and install the CPU research
-tools. GPU setup and the TeX toolchain are described in the
-[installation guide](docs/installation.md).
+| Phase | Experiments | What it established |
+|---|---|---|
+| Model and sensitivity | [01](experiments/01-model-prototypes/) · [02](experiments/02-original-pinn/) · [03](experiments/03-global-sensitivity/) | From the 27-state MATLAB model to the seven-state system; which parameters matter |
+| Forward PINN | [04](experiments/04-forward-pinn/) | Fourier-feature PINN reproduces all seven states from 40 sparse observations (2.41% error) |
+| Inverse-PINN ladder | [05](experiments/05-inverse-single-condition/) – [10](experiments/10-inverse-integral-residual/) | More conditions, state weighting and an integral residual lift PINN recovery from 26 to 50 of 144 |
+| Identifiability and uncertainty | [11](experiments/11-fisher-information/) – [14](experiments/14-bayesian-forward/) | Fisher information, an eight-parameter subproblem, Bayesian inverse and forward PINNs |
+| Neural–mechanistic hybrids | [15](experiments/15-hybrid-ude/) | A learned term loses its host's basal rate; a knockdown that reaches the anchor restores it |
+| Population extension | [16](experiments/16-population-extension/) | SciPy reproduction of a 14-state cell-population model under ATRA |
+| Cramér–Rao bound and SGN-PINN | [17](experiments/17-sensitivity-pinn/) | The estimator gap, converged maximum likelihood and the Schur-complement Gauss–Newton PINN |
+
+See [`experiments/README.md`](experiments/README.md) for every experiment's question, headline number and status.
+
+<details>
+<summary><b>More figures</b>: forward PINN, inverse recovery, Fisher spectra, Bayesian bands, learned terms, dose response</summary>
+<br>
+
+| | |
+|:---:|:---:|
+| <img src="docs/figures/forward_pinn.png" width="400" alt="Forward PINN and Radau reference trajectories"><br><sub>Forward PINN (dashed) against the Radau reference (solid); shading marks ATRA treatment. [04](experiments/04-forward-pinn/)</sub> | <img src="docs/figures/inverse_recovery_best8.png" width="400" alt="Eight best-recovered parameters in an inverse-PINN run"><br><sub>The eight best-recovered parameters of an inverse-PINN run (a subset of 36). [10](experiments/10-inverse-integral-residual/)</sub> |
+| <img src="docs/figures/fim_spectra.png" width="400" alt="Fisher-information eigenvalue spectra across regimes"><br><sub>Fisher-information eigenvalue spectra in the four regimes. [11](experiments/11-fisher-information/)</sub> | <img src="docs/figures/bayesian_forward_bands.png" width="400" alt="Bayesian forward predictive bands for beta-catenin"><br><sub>Posterior-predictive bands for β-catenin from HMC over network weights. [14](experiments/14-bayesian-forward/)</sub> |
+| <img src="docs/figures/hybrid_learned_term.png" width="400" alt="Learned RA to HOXA5 term with depletion conditions"><br><sub>Learned RA→HOXA5 regulation with depletion conditions. [15](experiments/15-hybrid-ude/)</sub> | <img src="docs/figures/hybrid_dose_response.png" width="400" alt="Basal-parameter error across depletion doses"><br><sub>Basal-parameter error across depletion doses at fixed experimental effort. [15](experiments/15-hybrid-ude/)</sub> |
+
+</details>
+
+## Quick start
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+git clone https://github.com/aidxhxr/PINN-Research.git
+cd PINN-Research
+python3 -m venv .venv && source .venv/bin/activate
 python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
 python -m pip install -e '.[ml,dev,publications]'
-make check
-wnt-pinn reproduce --all
+
+make check                 # ruff + the test suite (CPU, a few minutes)
+wnt-pinn reproduce --all   # recompute every registered result from saved inputs
 ```
 
-Reproduction recomputes registered saved results and writes reports with input
-hashes. It does not retrain the models. The
-[reproduction guide](docs/reproduction.md) distinguishes metric checks, original
-figure snapshots, and the one historical result transcribed from research notes.
-
-Launch new training in tmux:
+Regenerate a paper figure from its saved runs (no training):
 
 ```bash
-tmux new-session -d -s pinn_smoke -c "$PWD"
-tmux send-keys -t pinn_smoke '.venv/bin/wnt-pinn run configs/smoke_cpu.json' C-m
-tmux attach -t pinn_smoke
+PYTHONPATH=src python paper/figures/make_fig05.py
 ```
 
-The [experiment guide](docs/experiments.md) covers full configurations, independent
-seeds, resource limits, run manifests and resume. New runs use timestamped
-subdirectories of `runs/`.
+GPU setup, the TeX toolchain and training runs are covered in the
+[installation](docs/installation.md) and [experiment](docs/experiments.md) guides.
 
-`make posters` builds both posters in isolated directories using saved arrays.
-The reviewed PDFs remain available through the links above. See the
-[artifact guide](docs/artifacts.md) for restoring archived research files and
-[contribution guide](CONTRIBUTING.md) for checks and review requirements.
+## Reproducibility
 
-## Author
+- **Figures.** Every figure in the paper is drawn by `paper/figures/make_*.py`
+  from saved run artifacts and writes an audit file listing each plotted number
+  with the run it comes from. [`paper/REPRODUCE.md`](paper/REPRODUCE.md) maps
+  figures and tables to scripts and runs.
+- **Results.** [`results/registry.json`](results/registry.json) records each
+  reported result with its source hashes and limitations;
+  `wnt-pinn reproduce` recomputes them, and CI runs it on every push.
+- **Paths in the paper.** The manuscript cites repository paths as of the
+  [`paper-v1`](https://github.com/aidxhxr/PINN-Research/tree/paper-v1) tag.
+  The folders were renamed after that tag; [docs/layout.md](docs/layout.md)
+  maps old paths to new ones.
 
-Amirkhan Aidarkhan, Swarthmore College.
-Contact: <aaidark1@swarthmore.edu> · <amirkhanaidarkhan06@gmail.com>.
+## Publications
+
+| | Authors | Files |
+|---|---|---|
+| **Paper.** Estimator or experiment? A Cramér–Rao accounting of parameter recovery by physics-informed and hybrid neural–mechanistic models | A. Aidarkhan, P. K. Kataboh | [PDF](paper/main.pdf) · [source](paper/) |
+| **Poster.** Physics-Informed Neural Networks for Forward Modeling and Parameter Inference in a Reduced WNT-RA-HOX Model of Colorectal Cancer Initiation | N. Kim, A. Aidarkhan, P. K. Kataboh | [PDF](publications/posters/pinn-recovery/poster.pdf) · [source](publications/posters/pinn-recovery/) |
+| **Poster.** Identifiability and Experimental Design for Neural-Mechanistic Hybrid Models Using Physics-Informed Neural Networks in Colorectal Cancer | A. Aidarkhan, P. K. Kataboh | [PDF](publications/posters/hybrid-models/poster.pdf) · [source](publications/posters/hybrid-models/) |
+
+The earlier report, archived posters and the department talk are listed in
+[`publications/`](publications/).
+
+## Citation
+
+```bibtex
+@unpublished{aidarkhan2026estimator,
+  title  = {Estimator or experiment? A {Cram\'er--Rao} accounting of parameter
+            recovery by physics-informed and hybrid neural--mechanistic models
+            of {WNT}--retinoic acid--{HOX} signalling in colorectal cancer},
+  author = {Aidarkhan, Amirkhan and Kataboh, Pascal K.},
+  year   = {2026},
+  note   = {Manuscript. Code and data:
+            \url{https://github.com/aidxhxr/PINN-Research/tree/paper-v1}}
+}
+```
+
+Software citation metadata is in [`CITATION.cff`](CITATION.cff).
+
+## License
+
+Code is released under the [MIT License](LICENSE). The manuscript, posters,
+slides, figures and documentation are licensed under
+[CC BY 4.0](LICENSE-CC-BY-4.0.txt). Third-party material, such as the
+Swarthmore College logo on the posters, remains with its owners.
+
+## Contact
+
+Amirkhan Aidarkhan, Department of Mathematics and Statistics, Swarthmore College ·
+<aaidark1@swarthmore.edu>. Advisor: Pascal K. Kataboh.
